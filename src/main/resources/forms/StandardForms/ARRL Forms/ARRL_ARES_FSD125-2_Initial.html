@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    
+    <title>NTS Monthy Report-{var FinalCall}-{var Month}-{var Year}</title><style type="text/css">
+body, td, th {
+font-family: Arial, Helvetica, sans-serif;
+}
+.zentriert {
+text-align: center;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-align: left;
+font-weight: normal;
+font-style: normal;
+}
+textarea {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+.rechtsbuendig {
+text-align: right;
+}
+.SubmitBtn {
+text-align: right;
+}
+.version {
+font-size: 10px;
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+}
+</style></head>
+<body>
+    <form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="Hosp Bed Report" method="post" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" pbzloc="1" style="font-family: Arial Black;">
+      <table style="height: 498px; width: 907px;" align="center" border="0">
+        <tbody>
+          <tr>
+            <td>
+              <table style="font-size: 14px; width: 777px; height: 387px;" border="3" bordercolor="#999999" cellpadding="2" cellspacing="2">
+                <tbody>
+                  <tr>
+                    <td colspan="2" style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 204); height: 25px;"><small><b><big>&nbsp;
+                            &nbsp; &nbsp; &nbsp;NATIONAL
+                            TRAFFIC SYSTEM
+                            MONTHLY REPORT &nbsp; &nbsp;</big></b></small><small><span style="font-size: 12px;">FSD125-2<big style="font-weight: bold;"><big>&nbsp;</big></big><big><big><small><small>
+                                  Ver 8 </small></small></big></big></span></small><small><span style="font-size: 12px;"><big style="font-weight: bold;"><big>
+                              &nbsp;&nbsp;&nbsp; <br />
+                    </big></big></span></small></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; vertical-align: top; background-color: rgb(204, 204, 204);" colspan="2">
+                      <small><span style="font-size: 12px;"></span><small style="font-style: italic;"><font color="#080000" face="Verdana" size="4"><small><small>For
+use
+                                by Section
+                                or Local
+                                NTS nets only</small></small></font></small></small></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">1.
+                        Net Name: &nbsp;
+                      <input maxlength="60" size="70" name="Netname" />
+                      &nbsp; &nbsp;</div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left"><span style="color: black;">2. Net
+                          Abbreviation:&nbsp;                        <input maxlength="12" size="12" name="NetAb" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.
+                          Month:&nbsp;&nbsp;</span>
+                          <select size="3" name="Month">
+                            <option>JAN</option>
+                            <option>FEB</option>
+                            <option>MAR</option>
+                            <option>APR</option>
+                            <option>MAY</option>
+                            <option>JUN</option>
+                            <option>AUG</option>
+                            <option>SEP</option>
+                            <option>OCT</option>
+                            <option>NOV</option>
+                            <option>DEC</option>
+                          </select>
+                          <span style="color: black;">&nbsp;
+                        &nbsp; &nbsp; 4. Year: &nbsp;</span>
+                          <select size="3" name="Year">
+                            <option>2017</option>
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                          </select>
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">5.
+                      Nr. of Sessions:&nbsp;&nbsp;                      <input maxlength="5" size="5" name="Sess" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp;  &nbsp; 6. Nr. of Messages
+                      Handled:&nbsp;                      
+                      <input maxlength="5" size="5" name="Handle" />
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">7.
+                      Nr. of Check-ins:&nbsp; &nbsp;
+                      <input maxlength="5" size="5" name="Checkin" />
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp;&nbsp; 8.
+                      Manager's Call: &nbsp;
+                      <input maxlength="10" size="10" name="Call" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp;</div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">9.
+                          NTS Liaison is Maintained
+                          With:&nbsp;                          <input maxlength="35" size="35" name="Maint" />
+&nbsp; Net:&nbsp;  <input maxlength="20" size="20" name="Net" />
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; height: 40px; text-align: center;" colspan="2">
+                      <div align="left">10.
+                      Approving&nbsp; Name: &nbsp;
+                      <input maxlength="35" size="40" name="FinalName" />
+&nbsp;Call:&nbsp;<input maxlength="10" size="10" name="FinalCall" />
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td colspan="5" style="vertical-align: top; height: 40px; text-align: center;">
+                      <p style="text-align: left;">&nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Comments:&nbsp;<br />
+                        &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp;<textarea cols="115" rows="5" name="Comments" placeholder="Max comment size 400 characters"></textarea>
+                        <br />
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; vertical-align: top; height: 8%;" colspan="2"><span style="font-style: italic;"></span>
+                      &nbsp; &nbsp; If not sent electronically you should:
+                      <p class="western" style="margin-bottom: 0in; line-height: 100%;"><font style="font-size: 10pt;" size="2">Mail
+                          to: ARRL Section
+                          Traffic Manager or American Radio Relay League<br />
+                          Section
+                          Manager &nbsp; &nbsp;225 Main Street &nbsp; </font><font style="font-size: 10pt;" size="2"> Newington,
+                          Connecticut 06111</font></p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px;" colspan="2"><small>
+                        <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; width: 52px; color: green;" value="Submit" type="submit" /><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp; </span></span></small><input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset" /><small><span style="color: rgb(128, 0, 0);">&nbsp; &nbsp;
+&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;
+&nbsp; &nbsp;You may print or save this form from your Sent
+Items
+folder of Express&nbsp; &nbsp;&nbsp;</span></small><small><span style="color: rgb(128, 0, 0);"> <br /></span></small></td></tr></tbody></table>
+              <br /><small>&nbsp;</small></td>
+</tr>
+</tbody>
+</table>
+</form>
+</body></html>

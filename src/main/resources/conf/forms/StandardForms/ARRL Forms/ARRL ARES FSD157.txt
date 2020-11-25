@@ -1,0 +1,41 @@
+Form: ARRL_ARES_FSD157_Initial.html,ARRL_ARES_FSD157_Viewer.html
+
+Subject:ARES FSD157-<var Activity>-<var Area> 
+
+Msg:
+1. Nature of Activity: [<var Activity>]
+2. Description of Activity: <var Description>
+3. Places or Areas Involved: <var Area>
+4. Number of Amateurs Participating: <var Numbers>
+5. Event START Date/Time: <var EventStart>
+6. Event END Date/Time: <var EventEnd>
+7: Event Duration in Hours: <var Duration>
+8. Total Person Hours: <var TotalHours>
+9. Number of Repeaters Used: <var RepNum>
+
+10. Estimated Staffing Cost: <var PersonCost>
+11. Estimated Equipment Cost: <var EquipCost>
+12. Total Cost of Service: <var TotalCost>
+
+13. Nets and/or Frequencies Used & Repeater Call Signs: <var Nets>
+14. Number of Messages Handled: <var MsgNum> 
+15. Names of Agencies Receiving Support: <var AgenName>
+16. Calls Signs of Amateurs as Major Participants: <var PartAm>
+
+17. Other Comments:
+
+<var Comments>
+----------------------------
+Amateur Radio Organization Providing Service:
+ <var GroupName>
+
+Location of Organization: <var City>
+Your Name: <var YourName>  Call Sign: <var Call>
+Primary Email: <var Email>
+Address: <var Address>
+ARRL Appointmnet: <var Apt>
+Telephone Days: <var PhoneDays>  Telephone Evenings: <var PhoneNight>
+-----------------------------
+Approving Name: <var FinalName>
+Date/Time: <var ActivityDateTime1>
+

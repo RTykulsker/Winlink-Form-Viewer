@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<RMS_Express_Form>
+  <form_parameters>
+    <xml_file_version>1.0</xml_file_version>
+    <rms_express_version>1.5.32.1</rms_express_version>
+    <submission_datetime>20201123234731</submission_datetime>
+    <senders_callsign>W7MIR</senders_callsign>
+    <grid_square>CN87VN</grid_square>
+    <display_form>Winlink_Check_In_Viewer.html</display_form>
+    <reply_template></reply_template>
+  </form_parameters>
+  <variables>
+    <msgto>KM6SO;RTYKULSKER@GMAIL.COM</msgto>
+    <msgcc></msgcc>
+    <msgsender>W7MIR</msgsender>
+    <msgsubject></msgsubject>
+    <msgbody></msgbody>
+    <msgp2p>False</msgp2p>
+    <msgisreply>False</msgisreply>
+    <msgisforward>False</msgisforward>
+    <msgisacknowledgement>False</msgisacknowledgement>
+    <msgseqnum>12</msgseqnum>
+    <datetime>2020-11-23 15:46</datetime>
+    <status>Exercise</status>
+    <band>HF Amateur</band>
+    <session>Vara HF</session>
+    <title></title>
+    <assigned>KM6SO</assigned>
+    <location>radio room</location>
+    <extgps>(Not available)</extgps>
+    <withspaces></withspaces>
+    <nospaces></nospaces>
+    <addformat></addformat>
+    <gps>(Not available)</gps>
+    <gps2></gps2>
+    <mgrs></mgrs>
+    <grid></grid>
+    <comments>testing vara hf</comments>
+    <parseme></parseme>
+    <submit>Submit</submit>
+    <templateversion>Winlink Check in 2.93s</templateversion>
+    <testcall>W7MIR</testcall>
+  </variables>
+</RMS_Express_Form>

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>AK State ARES ICS213-{var Subjectline}</title>
+
+<style type="text/css">
+@media print {
+
+#printPageButton {
+    display: none;
+  }
+.form-control, .form-control.nobug {
+border: 0;
+outline: 0;
+box-shadow: none;
+font-size:14px;
+}
+.form-control.nobug {
+transition: none; /*-- THIS IS IMPORTANT -- */
+}
+}
+
+body, td, th {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+.zentriert {
+font-size: 12px;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+textarea {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+hr.reddot {
+  border-top: 1px dashed red;
+}
+
+.rechtsbuendig {
+font-size: 12px;
+}
+.SubmitBtn {
+font-size: 12px;
+}
+.version {
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+font-size: 12px;
+}
+
+</style>
+<script type="text/javascript">
+function MessageToText(intext) {
+return "MessageToText function: "
+// + intext.replaceAll('<br>', '\n') }
+String.prototype.replaceAll = function(search, replace) {
+if (replace === undefined) {
+return this.toString();
+}
+return this.split(search).join(replace);
+}
+}
+</script>
+
+</head>
+<body>
+<table style="font-family: Arial;" align="center" border="0" width="900">
+<tbody>
+<tr>
+<td>
+<table style="width: 910px; height: 281px;" pbzloc="55" border="2" bordercolor="#999999" cellpadding="4" cellspacing="0">
+<tbody>
+<tr>
+<td colspan="2" align="undefined" valign="undefined">
+<table style="text-align: left; width: 952px; height: 48px;" border="1" cellpadding="2" cellspacing="2">
+<tbody>
+<tr>
+<td style="vertical-align: top; text-align: center;">No
+&nbsp;<br />
+<input readonly="readonly" value="{var SeqNum}" maxlength="14" size="15" name="SeqNum" /></td>
+<td style="vertical-align: top; text-align: center;">Precedence<br />
+<input maxlength="11" size="11" readonly="readonly" name="Priority" value="{var Priority}" /><br />
+</td>
+<td style="vertical-align: top; background-color: white; text-align: center;">HX<br />&nbsp;<input readonly="readonly" maxlength="4" size="4" name="HX" value="{var HX}" />&nbsp;</td>
+<td style="vertical-align: top; text-align: center;">Org Station<br />
+<input readonly="readonly" value="{var OrgStation}" maxlength="10" size="10" name="OrgStation" /></td>
+<td style="text-align: center; vertical-align: top;">Check<br />
+<input readonly="readonly" value="{var Check}" maxlength="4" size="4" name="Check" /></td>
+<td style="vertical-align: top; text-align: center;">Org Location<br />
+<input readonly="readonly" value="{var OrgLocation}" maxlength="22" size="22" name="OrgLocation" /></td>
+<td style="vertical-align: top; text-align: center;">Time <br />
+<input readonly="readonly" value="{var Time}" maxlength="8" size="8" name="Time" /> </td>
+<td style="vertical-align: top; text-align: center;">Date &nbsp;<br />
+<input readonly="readonly" value="{var Date}" maxlength="11" size="12" name="Date" /></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="font-size: small; text-align: center; vertical-align: top; background-color: rgb(255, 255, 204);"><strong></strong><strong><small><big><small><big><span style="font-weight: normal;"></span></big></small></big></small></strong><strong><small><big><small><big><span style="font-weight: normal;"></span></big></small></big></small></strong><strong><small>&nbsp;</small></strong><strong><small><big><small><big><span style="font-weight: normal;">&nbsp;<span style="font-style: italic;">ALASKA
+State ARES</span></span></big></small></big></small></strong><strong><small><span style="font-style: italic;">&nbsp;</span><big><big>
+&nbsp; &nbsp; <span style="font-weight: normal;">GENERAL
+MESSAGE</span></big><small><span style="font-weight: normal;"><span style="font-weight: bold;">
+</span>&nbsp; &nbsp; &nbsp;&nbsp;</span><big><span style="font-weight: normal;"></span>
+<span style="font-weight: normal;"><small> &nbsp;Vers 10 &nbsp;</small></span></big></small></big></small></strong><strong><small><big><small><big><span style="font-weight: normal;"><small> </small></span></big></small></big></small></strong><strong></strong><strong><small><big><small><span style="font-weight: normal;"></span></small></big></small></strong><strong><small><big><small><big><span style="font-weight: normal;"></span><span style="font-weight: normal;"></span></big></small></big></small></strong></td>
+</tr>
+
+
+
+
+<tr>
+<td colspan="4" style="vertical-align: top; background-color: white; text-align: justify;">&nbsp;<span style="width:750px; word-wrap:break-word; display:inline-block;">{MsgOriginalBody}</span><br /></td>
+</tr>
+
+<tr>
+<td colspan="4" style="vertical-align: top; text-align: justify;"><div align="left"><span style="font-weight: normal;"></span>
+  <hr class="reddot"/>
+  <span style="font-weight: normal;">&nbsp;9. Reply: <span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;</span><span style="font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-weight: normal;">&nbsp;</span>Check:: {VAR ReplyCheck} <br />
+  <br />
+  </span><span style="width:700px; word-wrap:break-word; display:inline-block;">{var reply}<br />
+</span></div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="4"><div align="left"><br />
+  10. Replied By: 
+      <input id="Replied_Name" maxlength="20" name="Replied_Name" readonly="readonly" size="20" value="{var Replied_Name}" type="text" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><big>&nbsp;Position/Title:
+  </big></small>
+  <input id="Approved_PosTitle" maxlength="25" name="Replied_PosTitle" readonly="readonly" size="30" value="{var Replied_PosTitle}" />
+&nbsp;&nbsp;&nbsp;&nbsp;Date/Time:
+<input id="RDateTime" maxlength="21" name="RDateTime" readonly="readonly" size="21" value="{var RDateTime}" />
+&nbsp; <small><big>&nbsp;&nbsp;&nbsp;</big></small></div></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</body></html>

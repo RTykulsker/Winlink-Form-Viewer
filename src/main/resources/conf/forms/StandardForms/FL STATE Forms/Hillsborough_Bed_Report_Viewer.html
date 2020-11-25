@@ -1,0 +1,277 @@
+<!-- Hospital Template V1.5
+	 by W4BGH, Bernard Huth
+-->     
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<title>Hillsborough County Available Hospital Beds</title>
+<style type="text/css">
+
+@media print {
+#printPageButton {
+    display: none;
+  }
+  .form-control, .form-control.nobug {
+border: 0;
+outline: 0;
+box-shadow: none;
+font-size:12px;
+}
+.form-control.nobug {
+transition: none; /*-- THIS IS IMPORTANT -- */
+}
+ input {
+         outline: none !important;
+		box-shadow: none;
+		border: none;
+		}
+		
+		.dontPrint {
+       display:none;
+    }
+		
+}
+.blue_background {
+	background-color: #04749B;
+}
+.blue_separator {
+	background-color: #BCEDF3;
+}
+.HOSPITAL {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	font-style: normal;
+	font-weight: bold;
+	color: #333;
+	text-align: center;
+}
+.Header {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	background-color: #EFEFEF;
+}
+
+.TableBackground {
+	background-color: #EFEFEF;
+	text-align: left;
+}
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.centered {
+	text-align: center;
+}
+input,select {
+    border: 1px solid #4195fc; /* some kind of blue border */
+
+    /* other CSS styles */
+
+    /* round the corners */
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+
+
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 4px #4195fc;
+       -moz-box-shadow: 0px 0px 4px #4195fc;
+            box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+			
+	background-color: #f0f0fa;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	padding: 2px;
+}
+textarea {
+
+    /* round the corners */
+    -webkit-border-radius: 2px;
+       -moz-border-radius: 2px;
+            border-radius: 2px;
+
+
+    /* make it glow! */
+    -webkit-box-shadow: 0px 0px 2px #4195fc;
+       -moz-box-shadow: 0px 0px 2px #4195fc;
+            box-shadow: 0px 0px 2px #4195fc; /* some variation of blue for the shadow */
+			
+	background-color: #f3f3fa;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	padding: 10px;
+	margin: 10px;
+}
+.MSGtext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.SubmitBtn {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+.FromText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #aaa;
+}
+.Download {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #aaa;
+}
+.punctuation {
+	margin-top: 15px;
+}
+.P2Pcheckbox {
+	margin-bottom: 15px;
+}
+.style5 {background-color: #EFEFEF; font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-align: center;}
+</style>
+
+<script type="text/javascript">
+function start() {	
+}
+</script>
+
+</head>
+
+<body onload="start();">
+<br />
+<form id='Registration' method='post' action='http://{FormServer}:{FormPort}' enctype='multipart/form-data'>
+<table width="1080" height="104" border="0" align="center">
+  <tr>
+    <td height="20" colspan="6" class="blue_background">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="6" class="HOSPITAL">Hillsborough County AVAILABLE HOSPITAL BEDS</td>
+  </tr>
+  <tr>
+    <td height="20" colspan="6" class="blue_background">&nbsp;</td></tr>
+ </table>
+<table width="1080" height="70" border="0" align="center">
+<tr class="Header">
+     <td> <p id="hospitalName">Hospital Name:</p></td>
+     <td> <p id="datetime">Filing Date/Time:</p></td>
+  </tr>  
+  <tr>
+     <td> <label for ="hospitalName"></label>       <input type="text" readonly="readonly"  name="name" id="name" value="{var name1}" size="30" maxlength="30" class="centered" /></td>
+     <td> <label for ="datetime"></label>
+     <input type="text" readonly="readonly"name="time1" id="datetime" size="25" maxlength="30" value="{var time1}"  class="centered" /></td>
+   </tr>
+</table>  
+<table width="1080" height="114" border="0" align="center">
+  <tr valign="top" class="Header">
+    <td width="110" height="33"><p id="totallicensed">Total Licensed:</p></td>
+    <td width="110"><p id="adulticu">Adult ICU:</p></td>
+    <td width="110"><p id="burn">Burn:</p></td>
+    <td width="110"><p id="operatingroom">Operating Room:</p></td>
+    <td width="110"><p id="medsurgtele">Med/Surg/Tele:</p></td>
+    <td width="110"><p id="pediatricicu">Pediatric ICU:</p></td>
+    <td width="110"><p id="pedmedsurg">Pediatric Med/Surg:</p></td>
+    <td width="110"><p id="obgyn">OB/Gyn:</p></td>    
+    <td width="110"><p id="niculevel2">NICU Level 2:</p></td>    
+  </tr>
+  <tr  bgcolor="#F8F8F8">
+    <td height="44"><label for="totallicensed"></label>
+    <input name="totallicensed" readonly="readonly" type="text" id="totallicensed" size="3" maxlength="4" class="centered" value="{var totallicensed1}" /></td>
+    <td><label for="adulticu"></label>
+    <input name="adulticu" readonly="readonly"type="text" id="adulticu" size="3" maxlength="3" class="centered" value="{var adulticu1}" /></td>
+    <td><label for="burn"></label>
+    <input name="burn" type="text" readonly="readonly"id="burn" size="3" maxlength="3" class="centered" value="{var burn1}" /></td>    
+    <td><label for="operatingroom"></label>
+    <input type="text" name="operatingroom" readonly="readonly"id="operating1" size="3" maxlength="3" class="centered" value="{var operating1}" /></td>
+    <td><label for="medsurgtele"></label>
+    <input type="text" name="medsurgtele" readonly="readonly"id="medsurgtele" size="3" maxlength="3" class="centered" value="{var medsurgtele1}" /></td>
+    <td><label for="pediatricicu"></label>
+    <input type="text" name="pediatricicu" readonly="readonly"id="pediatricicu" size="3" maxlength="3" class="centered" value="{var pediatricicu1}" /></td>
+    <td><label for="pedmedsurg"></label>
+    <input type="text" name="pedmedsurg" readonly="readonly"id="pedmedsurg" size="3" maxlength="3" class="centered" value="{var pedmedsurg1}" /></td>
+    <td><label for="obgyn"></label>
+    <input type="text" name="obgyn" readonly="readonly"id="obgyn" size="3" maxlength="3" class="centered" value="{var obgyn1}" /></td>
+    <td><label for="niculevel2"></label>
+    <input type="text" name="niculevel2" readonly="readonly"id="niculevel2" size="3" maxlength="3" class="centered" value="{var niculevel21}" /></td>
+  </tr>
+  <tr>
+    <td height="8" colspan="9" class="blue_separator"></td>
+  </tr>
+  </table>
+<table width="1080" height="111" border="0" align="center">
+  <tr valign="top" class="Header">
+    <td width="110" height="32"><p id="niculevel3">NICU Level 3:</p></td>
+    <td width="110"><p id="negflowiso">Neg Flow Isolation:</p></td>
+    <td width="110"><p id="adultpsych">Adult Psychiatric:</p></td>
+    <td width="110"><p id="adultsubabuse">Adult Substance Abuse:</p></td>
+    <td width="110"><p id="childpsych">Child Psychiatric:</p></td>
+    <td width="110"><p id="childsubabuse">Child Substance Abuse:</p></td>
+    <td width="110"><p id="compmedrehab">Comp Med Rehab:</p></td>
+    <td width="110"><p id="longterm">Long Term:</p></td>    
+    <td width="110"><p id="skillednursing">Skilled Nursing Unit:</p></td>    
+  </tr>
+  <tr  bgcolor="#F8F8F8">
+    <td height="43"><label for="niculevel3"></label>
+    <input name="niculevel3" type="text" readonly="readonly"id="niculevel3" size="3" maxlength="3" class="centered" value="{var niculevel31}" /></td>
+    <td><label for="negflowiso"></label>
+    <input name="negflowiso" type="text" readonly="readonly"id="negflowiso" size="3" maxlength="3" class="centered" value="{var negflowiso1}" /></td>
+    <td><label for="adultpsych"></label>
+    <input name="adultpsych" type="text" readonly="readonly"id="adultpsych" size="3" maxlength="3" class="centered" value="{var adultpsych1}" /></td>    
+    <td><label for="adultsubabuse"></label>
+    <input type="text" name="adultsubabuse" readonly="readonly"id="adultsubabuse" size="3" maxlength="3" class="centered" value="{var adultsubabuse1}" /></td>
+    <td><label for="childpsych"></label>
+    <input type="text" name="childpsych" readonly="readonly"id="childpsych" size="3" maxlength="3" class="centered" value="{var childpsych1}" /></td>
+    <td><label for="childsubabuse"></label>
+    <input type="text" name="childsubabuse" readonly="readonly"id="childsubabuse" size="3" maxlength="3" class="centered" value="{var childsubabuse1}" /></td>
+    <td><label for="compmedrehab"></label>
+    <input type="text" name="compmedrehab" readonly="readonly"id="compmedrehab" size="3" maxlength="3" class="centered" value="{var compmedrehab1}" /></td>
+    <td><label for="longterm"></label>
+    <input type="text" name="longterm" readonly="readonly"id="longterm" size="3" maxlength="3" class="centered" value="{var longterm1}" /></td>
+    <td><label for="skillednursing"></label>
+    <input type="text" name="skillednursing" readonly="readonly"id="skillednursing" size="3" maxlength="3" class="centered" value="{var skillednursing1}" /></td>
+  </tr>
+  <tr>
+    <td height="8" colspan="9" class="blue_separator"></td>
+  </tr>
+  </table>
+  <table width="1080" height="101" border="0" align="center">
+    <tr class="Header">
+      <td width="110" height="73" ><p id="elecproblem">Electricity Problem:</p>
+          <label for="electricity"></label>
+      <input type="text" readonly="readonly" name="electricity" id="electricity" size="3" maxlength="3" class="centered" value="{var elecproblem1}"><br></td>
+      <td width="110" ><p align="center" id="wateravailable">Water Available:</p>
+          <label for="water"></label>
+          <div align="center">
+              <input type="text" readonly="readonly"name="water" id="water" size="3" maxlength="3" class="centered" value="{var wateravailable1}">
+              <br>
+          </div></td>
+      <td width="110" ><p id="physicaldamage">Physical Damage:</p>
+          <label for="damage"></label>
+          <input type="text" readonly="readonly"name="damage" id="damage" size="3" maxlength="3" class="centered" value="{var physicaldamage1}"><br></td>
+    </tr>
+    <tr class="Header">
+      <td height="22"  colspan="3" ><div align="left">Comments:<br />
+        <span style="width:850px; margin: 25px;  word-wrap:break-word; display:inline-block;">{var Comments} </span>
+      </div></td>
+    </tr>
+  </table>
+
+  <table width="1080" border="0" align="center">
+    <tr valign="top">
+      <td width="116"  class="Header"><span class="FromText">
+      </big></big>&nbsp; &nbsp; &nbsp; &nbsp;</big></big><br /></td>
+        
+      <td width="731" class="Header">&nbsp;</td>
+      <td width="219" class="Header"><div align="center"><span class="style5">Version 2.0 W4BGH</span></div></td>
+    </tr>
+  </table>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<RMS_Express_Form>
+  <form_parameters>
+    <xml_file_version>1.0</xml_file_version>
+    <rms_express_version>1.5.32.0</rms_express_version>
+    <submission_datetime>20201123180026</submission_datetime>
+    <senders_callsign>KM6SO</senders_callsign>
+    <grid_square>CN87VM</grid_square>
+    <display_form>ICS213RR_WA_Viewer.html</display_form>
+    <reply_template></reply_template>
+  </form_parameters>
+  <variables>
+    <msgto></msgto>
+    <msgcc></msgcc>
+    <msgsender>KM6SO</msgsender>
+    <msgsubject></msgsubject>
+    <msgbody></msgbody>
+    <msgp2p>False</msgp2p>
+    <msgisreply>False</msgisreply>
+    <msgisforward>False</msgisforward>
+    <msgisacknowledgement>False</msgisacknowledgement>
+    <msgseqnum>51</msgseqnum>
+    <incname>n/a</incname>
+    <agname>ARC/King County</agname>
+    <datetime>09/21/2020 - 0945</datetime>
+    <reqtracknum>1</reqtracknum>
+    <parseme></parseme>
+    <qty1>12</qty1>
+    <kind1>na</kind1>
+    <type1>na</type1>
+    <item1>3 inch (or larger) chocolate chip cookies</item1>
+    <reqdatetime1>9/22/20 0945</reqdatetime1>
+    <estdatetime1></estdatetime1>
+    <cost1></cost1>
+    <supneed>none</supneed>
+    <duration>n/a -- will be consumed</duration>
+    <reqloc1>ARC Mercer Island HQ</reqloc1>
+    <reploc>Bob Tykulsker, 206-605-6214</reploc>
+    <sub>QFC, New Seasons, Costco</sub>
+    <priority1>Incident Stabilization</priority1>
+    <priority>Incident Stabilization</priority>
+    <b12a>YES</b12a>
+    <b12b>YES</b12b>
+    <b12c>YES</b12c>
+    <b13>YES</b13>
+    <explain></explain>
+    <reqname>Bob Tykulsker</reqname>
+    <reqphone>206-605-6214</reqphone>
+    <reqauth>Bob Tykulsker</reqauth>
+    <eocnum></eocnum>
+    <supname1></supname1>
+    <notes></notes>
+    <logrep></logrep>
+    <datetime1></datetime1>
+    <orderby>------</orderby>
+    <other></other>
+    <elevate>------</elevate>
+    <statenum></statenum>
+    <mutualnum></mutualnum>
+    <fincomm></fincomm>
+    <finrepname></finrepname>
+    <datetime2></datetime2>
+    <submit>Submit</submit>
+  </variables>
+</RMS_Express_Form>

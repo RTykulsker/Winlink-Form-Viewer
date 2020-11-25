@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    
+    <title>NTS Monthy Report-{var FinalCall}-{var Month}-{var Year}</title><style type="text/css">
+
+@media print {
+
+#printPageButton {
+    display: none;
+  }
+  .form-control, .form-control.nobug {
+border: 0;
+outline: 0;
+box-shadow: none;
+font-size:12px;
+}
+.form-control.nobug {
+transition: none; /*-- THIS IS IMPORTANT -- */
+}
+ input {
+         outline: none !important;
+		box-shadow: none;
+		border: none;
+		}
+}
+body, td, th {
+font-family: Arial, Helvetica, sans-serif;
+}
+.zentriert {
+text-align: center;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-align: left;
+font-weight: normal;
+font-style: normal;
+}
+textarea {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+.rechtsbuendig {
+text-align: right;
+}
+.SubmitBtn {
+text-align: right;
+}
+.version {
+font-size: 10px;
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+}
+</style></head>
+<body>
+    <form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="Hosp Bed Report" method="post" pbzloc="1" style="font-family: Arial Black;">
+      <table style="height: 498px; width: 907px;" align="center" border="0">
+        <tbody>
+          <tr>
+            <td>
+              <table style="font-size: 14px; width: 776px; height: 362px;" border="3" bordercolor="#999999" cellpadding="2" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td colspan="2" style="vertical-align: top; text-align: center; background-color: rgb(255, 255, 204); height: 25px;"><small><b><big>&nbsp;
+                            NATIONAL TRAFFIC SYSTEM
+                            MONTHLY REPORT</big></b><span style="font-size: 14px;"></span></small><big><small>
+                          &nbsp; </small></big><small><span style="font-size: 12px;"><big><big><small><small><small><big>FSD
+                                      125-2</big>&nbsp;<big>
+                                      Ver 8 </big></small></small></small></big></big></span></small><small><span style="font-size: 12px;"><big style="font-weight: bold;"><big>&nbsp;&nbsp;
+                              <br />
+                    </big></big></span></small></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; background-color: rgb(204, 204, 204);" colspan="2"><small><span style="font-size: 12px;"></span></small><small><small><font color="#080000" face="Verdana" size="4"><small><small></small></small></font></small></small><small><span style="font-size: 12px;"></span></small><small><span style="font-size: 12px;"></span></small><br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2">&nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                      <div align="left">1.
+                      Net Name: &nbsp;
+                      <input readonly="readonly" value="{var Netname}" maxlength="60" size="70" name="Netname" />
+                      &nbsp;
+                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp;</div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left"><span style="color: black;">2. Net
+                          Abbreviation:&nbsp;                        <input readonly="readonly" value="{var NetAb}" maxlength="12" size="12" name="NetAb" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3.
+                          Month:&nbsp;                        <input readonly="readonly" value="{var Month}" maxlength="5" size="5" name="Month" />
+                        &nbsp; &nbsp; &nbsp; 4. Year:
+                        <input readonly="readonly" value="{var Year}" maxlength="5" size="5" name="Year" />
+                    </span></div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">5.
+                      Nr. of Sessions:&nbsp;&nbsp;                      <input readonly="readonly" value="{var Sess}" maxlength="5" size="5" name="Sess" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp; &nbsp; 6. Nr. of Messages
+                      Handled:&nbsp;                      <input readonly="readonly" value="{var Handle}" maxlength="5" size="5" name="Handle" />
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">7.
+                      Nr. of Check-ins:&nbsp; &nbsp;
+                      <input readonly="readonly" value="{var Checkin}" maxlength="5" size="5" name="Checkin" />
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8. Manager's Call: &nbsp;
+                      <input readonly="readonly" value="{var Call}" maxlength="10" size="10" name="Call" />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      &nbsp; &nbsp;&nbsp;</div></td>
+                  </tr>
+                  <tr>
+                    <td style="height: 40px; text-align: center;" colspan="2"><div align="left">9.
+                        NTS Liaison is Maintained
+                        With:&nbsp;                      <input readonly="readonly" value="{var Maint}" maxlength="35" size="35" name="Maint" />
+&nbsp; Net:&nbsp;  <input readonly="readonly" value="{var Net}" maxlength="20" size="20" name="Net" />
+                    </div></td>
+                  </tr>
+                  <tr>
+                    <td style="vertical-align: middle; height: 40px; text-align: center;" colspan="2">
+                      <div align="left">10.
+                        Approving Name: &nbsp;
+                        <input readonly="readonly" value="{var FinalName}" maxlength="35" size="40" name="FinalName" />
+&nbsp;Call:&nbsp;  <input readonly="readonly" value="{var FinalCall}" maxlength="10" size="10" name="FinalCall" />
+                      </div></td>
+                  </tr>
+                  <tr>
+                    <td style="background-color: rgb(255, 255, 204); text-align: justify;" colspan="2"><br />
+                      Comments:<br />
+                      <br />
+                      <span style="width:700px; word-wrap:break-word; display:inline-block;">{var Comments}</span><br /><br />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="height: 25px; text-align: justify;" colspan="2"><small><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;"></span></span><span style="color: rgb(128, 0, 0);"></span></small><big><big>
+                      <input name="printPageButton" class="BtnFormat1" id="printPageButton" style="color: rgb(0, 0, 128);" onclick="javascript:window.print()" value=" Print " enctype="multipart/form-data" type="button" />
+                    </big></big></td>
+</tr>
+</tbody>
+</table>
+<br />
+<small>&nbsp;</small></td>
+</tr>
+</tbody>
+</table>
+</form>
+</body></html>

@@ -1,0 +1,52 @@
+Form:Shares_Spotrep-2_Initial.html,Shares_Spotrep-2_Viewer.html
+
+To: <MsgTo>
+Cc: <MsgCc>
+Subject://WL2K P/ SPOTREP <var UDTG>
+Msg:
+
+R  <var UDTG>
+FM <var MsgSender>
+TO <var MsgTo>
+INFO <var MsgCc>
+BT
+UNCLASS
+
+SUBJ SPOTREP <var UDTG>
+
+1. City/State/Territory:  <var City>
+
+2. Landline Works?  [ <var Land> ]   <var Comm1>
+
+3. Cell Phone Works?  [ <var Cell> ]  <var Comm2>
+
+4. AM/FM broadcast Station Status: <var Comm3>
+
+5. TV Stations Status:  <var Comm4>
+
+6. Public Water Works Status:  <var Comm5>
+
+7. Commercial Power Status:  <var Comm6>
+
+8. Internet Working?  [ <var Inter> ]   <var Comm7>
+
+9. Additional Comments
+
+  <var Message>
+
+--------------------------------
+Poc <var POC>
+--------------------------------
+BT
+NNNN
+
+(If not using Winlink Express, you may ignore the .xml file attached)
+
+------------------------------------
+Express Sending Station: <MsgSender>
+Express Version: <ProgramVersion>
+Template Version: <var Templateversion>
+
+
+
+

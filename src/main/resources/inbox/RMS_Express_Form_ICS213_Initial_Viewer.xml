@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<RMS_Express_Form>
+  <form_parameters>
+    <xml_file_version>1.0</xml_file_version>
+    <rms_express_version>1.5.32.0</rms_express_version>
+    <submission_datetime>20201120205017</submission_datetime>
+    <senders_callsign>KM6SO</senders_callsign>
+    <grid_square>CN87VM</grid_square>
+    <display_form>ICS213_Initial_Viewer.html</display_form>
+    <reply_template>ICS213_SendReply.0</reply_template>
+  </form_parameters>
+  <variables>
+    <msgto></msgto>
+    <msgcc></msgcc>
+    <msgsender>KM6SO</msgsender>
+    <msgsubject></msgsubject>
+    <msgbody></msgbody>
+    <msgp2p>False</msgp2p>
+    <msgisreply>False</msgisreply>
+    <msgisforward>False</msgisforward>
+    <msgisacknowledgement>False</msgisacknowledgement>
+    <msgseqnum>26</msgseqnum>
+    <showdr></showdr>
+    <inc_name>test</inc_name>
+    <to_name>Net Control</to_name>
+    <txtstr></txtstr>
+    <fm_name>Bob Tykulsker</fm_name>
+    <subjectline>Weekly Net</subjectline>
+    <mdate>2020-11-20</mdate>
+    <mtime>12:49</mtime>
+    <message>This is my test message</message>
+    <message2>This is my test message</message2>
+    <approved_name>Bob Tykulsker</approved_name>
+    <approved_postitle>Radio Operator</approved_postitle>
+    <submit>Submit</submit>
+    <testcall>KM6SO</testcall>
+    <parseme>{
+  "ShowDR": "",
+  "txtfiletoread": "",
+  "inc_name": "test",
+  "to_name": "Net Control",
+  "txtStr": "",
+  "fm_name": "Bob Tykulsker",
+  "Subjectline": "Weekly Net",
+  "Mdate": "2020-11-20",
+  "Mtime": "12:49",
+  "Message": "This is my test message",
+  "Message2": "This is my test message",
+  "Approved_Name": "Bob Tykulsker",
+  "Approved_PosTitle": "Radio Operator",
+  "ResetForm": "Reset Form ",
+  "testCall": "KM6SO",
+  "parseme": "",
+  "Templateversion": "ICS 213  v.41.8"
+}</parseme>
+    <templateversion>ICS 213  v.41.8</templateversion>
+  </variables>
+</RMS_Express_Form>

@@ -1,0 +1,85 @@
+Form:  Uniform Disaster Situation Report.html,Uniform Disaster Situation Report Viewer.html
+
+To: 
+Subject:UNIFORM DISASTER SITUATION REPORT - <var city>, <var st>	
+
+Msg:
+WISCONSIN EMERGENCY MANAGEMENT 
+DEPARTMENT OF MILITARY AFFAIRS 
+UNIFORM DISASTER SITUATION REPORT
+
+NAME OF PERSON SUBMITTING REPORT: <var name>
+STREET ADDRESS: <var address>
+CITY: <var city>       ST: <var st>   ZIP: <var zip>
+PHONE NO: <var phone>
+EMAIL: <var email>
+TYPE OF INCIDENT: <var inctype>
+DATE & TIME OF INCIDENT: <var datetime> 
+DATE REPORTED: <var rptdate>
+VERSION: <var RptVersion>
+
+LOCATION OF INCIDENT 
+  WEM REGION: <var WEMVersion>
+  COUNTY: <var county>
+  OTHER LOCATION DETAILS (ATTACH A MAP SHOWING LOCATIONS): <var otherloc>
+  CITY: <var loccity>
+  TOWNSHIP: <var township>
+  VILLAGE: <var village>
+
+ESTIMATED NUMBER OF INDIVIDUALS IMPACTED
+  SHELTERED: <var impactshelter>
+  DEATHS: <var impactdeath>
+  INJURIES: <var impactinjur>
+  HOMELESS: <var impacthomeless>
+  EVACUATED: <var impactevac>
+
+PRIVATE SECTOR DAMAGE ESTIMATES
+  ESTIMATED NO. OF RESIDENTIAL HOMES
+    AFFECTED: <var rAffected>
+    MINOR: <var rMinor>
+    MAJOR: <var rMajor>
+    DESTROYED: <var rDestroyed>
+    TOTAL RESIDENTIAL: <var rTotal>
+    ESTIMATED DOLLAR AMOUNT: $<var rDollar>
+    PERCENT COVERED BY INSURANCE : <var rPercent> % 
+
+  ESTIMATED NO. OF BUSINESSES
+    AFFECTED: <var bAffected>
+    MINOR: <var bMinor>
+    MAJOR: <var rMajor>
+    DESTROYED: <var rDestroyed>
+    TOTAL BUSINESS: <var bTotal> 
+    ESTIMATED DOLLAR AMOUNT: $<var bDollar>
+    PERCENT COVERED BY INSURANCE: <var bPercent> % 
+
+    FARM BUILDINGS DAMAGED?  <var FarmBld>
+    CROPS AFFECTED?   <var cAffect>
+    LIVESTOCK LOST?  <var livestock>
+    TOTAL AGRICULTURAL COSTS: $<var tAgCosts>
+    TOTAL PRIVATE SECTOR DAMAGE: $<var tPuublicdamage>
+
+PUBLIC SECTOR DAMAGE ESTIMATES
+  A) DEBRIS CLEARANCE: $<var damageA>
+  B) PROTECTIVE MEASURES: $<var damageB>
+  C) ROAD SYSTEMS: $<var damageC>
+  D) WATER CONTROL FACILITIES: $<var damageD>
+  E) PUBLIC BLDGS & RELATED EQUIPMENT: $<var damageE>
+  F) PUBLIC UTILITY SYSTEMS: $<var damageF>
+  G) OTHER: $<var damageG>
+  TOTAL PUBLIC SECTOR DAMAGE: $<var totaldamage>
+
+DESCRIBE LOCAL ACTIONS TAKEN OR TO BE TAKEN. INCLUDE NAMES AND PUBLIC OFFICIALS INVOLVED IN THE RESPONSE EFFORTS. 
+<var localactions>
+
+DESCRIBE OUTSIDE ASSISTANCE NEEDED OR BEING REQUESTED.
+<var outsideneeded>
+
+ADDITIONAL COMMENTS (INCLUDE ECONOMIC OR OTHER IMPACTS ON AFFECTED COMMUNITIES).
+<var comments>
+
+DOES THE COUNTY INTEND TO APPLY FOR ASSISTANCE FROM THE WISCONSIN DISASTER FUND? <var applywdf>
+
+Form WEM-0002 
+-----------
+Express Sender: <MsgSender>
+Form version: <var formVers>

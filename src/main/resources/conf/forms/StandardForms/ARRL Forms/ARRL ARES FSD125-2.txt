@@ -1,0 +1,30 @@
+Form: ARRL_ARES_FSD125-2_Initial.html,ARRL_ARES_FSD125-2_Viewer.html
+
+To:
+Subject: NTS Monthly Report-<var FinalCall>-<var Month>-<var Year>
+	
+Msg:     
+1. Net Name: <var Netname>
+
+2. Net Abbreviation: <var NetAb>
+
+3. Month: <var Month>   4. Year: <var Year>
+
+5. Nr. of Sessions: [<var Sess>]   
+
+6. Nr. of Messages Handled: [<var Handle>]
+
+7. Nr. of Checkins: [<var Checkin>]
+
+8. Managers call: <var Call>
+
+9. NTS Liason With: <var Maint>  Net: <var Net>
+-------------------------------
+Comments: 
+
+<var Comments>
+
+10. Name: <var FinalName>  Call: <var FinalCall>
+
+(Name in # 10 indicates approval, same as signature)
+

@@ -1,0 +1,37 @@
+Form: ARRL_ARES_FSD212_Initial.html,ARRL_ARES_FSD212_Viewer.html
+
+To:
+Subject: Monthly DEC-EC Report-<var Jur>-<var Month>-<var Year>
+	
+Msg:     
+Jurisdiction: <var Jur>
+Month: <var Month> Year: <var Year>
+
+Total # of ARES Members: <var Mem>
+Changes Since Last Month: <var Change> 
+
+Local Net Name: <var NetNa>
+Total Sessions: <var Sess>
+NTS Liaison With Net: <var Lia>
+
+NUMBER OF EVENTS THIS MONTH
+----------------------------------
+Drills: <var Drill>
+Person Hours: <var Drill1>
+
+Public Service: <var Pub>
+Person Hours: <var Pub1>
+
+Emergencies: <var Emer>
+Person Hours: <var Emer1>
+
+Total ARES Operations: <var TotARES>
+Total Person Hours: <var TotARES1>
+----------------------------------
+Comments: 
+
+ <var Comments>
+
+Person Submittng Report: <var PerName>
+Title <var Title> Other <var Other>
+Call: <var Call>

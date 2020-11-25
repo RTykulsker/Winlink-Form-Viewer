@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>DEC-EC Report-{var Jur}-{var Month}-{var Year}</title>
+
+<style type="text/css">
+
+@media print {
+
+#printPageButton {
+    display: none;
+  }
+  .form-control, .form-control.nobug {
+border: 0;
+outline: 0;
+box-shadow: none;
+font-size:12px;
+}
+.form-control.nobug {
+transition: none; /*-- THIS IS IMPORTANT -- */
+}
+ input {
+         outline: none !important;
+		box-shadow: none;
+		border: none;
+		}
+}
+
+body, td, th {
+font-family: Arial, Helvetica, sans-serif;
+}
+.zentriert {
+text-align: center;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-align: left;
+font-weight: normal;
+font-style: normal;
+}
+textarea {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+.rechtsbuendig {
+text-align: right;
+}
+.SubmitBtn {
+text-align: right;
+}
+.version {
+font-size: 10px;
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+}
+</style></head>
+<body>
+<form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="DEC-EC Report" method="post" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" pbzloc="8" style="font-family: Arial Black;">
+<table style="height: 498px; width: 907px;" align="center" border="0">
+<tbody>
+<tr>
+<td>
+<table style="font-size: 14px; width: 835px; height: 539px;" border="3" bordercolor="#999999" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td colspan="2" style="height: 25px; vertical-align: top; text-align: center; background-color: rgb(255, 255, 204);"><small><b><big><big>&nbsp;
+&nbsp; &nbsp; MONTHLY DEC - EC REPORT&nbsp;</big>
+&nbsp;</big></b></small><small><span style="font-size: 12px;"><big style="font-weight: bold;"><big>
+</big></big><br />
+<big style="font-style: italic;"><big>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Amateur Radio
+Emergency Service</big></big><big style="font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;</big></big></span></small><small><span style="font-size: 12px;">FSD 212<big style="font-weight: bold;"><big>&nbsp;</big></big><big><big><small><small>
+<small>Ver 4.1</small></small></small></big></big></span></small><small><span style="font-size: 12px;"><big style="font-weight: bold;"><big>
+&nbsp;</big></big></span></small></td>
+</tr>
+<tr>
+<td colspan="2" pbzloc="1" style="height: 40px; text-align: center;"><div align="left">Jurisdiction&nbsp;
+      <input maxlength="45" name="Jur" readonly="readonly" size="50" value="{var Jur}" />
+&nbsp; Month &nbsp;
+  <input maxlength="3" name="Month" readonly="readonly" size="4" value="{var Month}" type="text" />
+&nbsp;&nbsp;Year &nbsp;
+  <input maxlength="4" name="Year" readonly="readonly" size="5" value="{var Year}" type="text" />
+</div></td>
+</tr>
+<tr>
+<td colspan="2" style="height: 40px; vertical-align: middle; text-align: center;"><div align="left">Total
+  Number of ARES Members &nbsp;
+  <input maxlength="5" name="Mem" readonly="readonly" size="6" value="{var Mem}" type="text" />
+&nbsp; Changes
+  Since Last Month&nbsp;  <input maxlength="6" name="Change" readonly="readonly" size="7" value="{var Change}" type="text" /> 
+&nbsp;<span style="color: black;"></span></div></td>
+</tr>
+<tr>
+<td colspan="2" style="height: 40px; text-align: center;"><div align="left"><span style="color: black;">&nbsp;Local Net Name&nbsp;        <input maxlength="35" name="NetNa" readonly="readonly" size="40" value="{var NetNa}" type="text" />
+      &nbsp; Total Sessions &nbsp;</span><span style="color: black;">
+        <input maxlength="4" name="Sess" readonly="readonly" size="5" value="{var Sess}" />
+      </span></div></td>
+</tr>
+<tr>
+<td colspan="2" pbzloc="2" style="height: 40px; text-align: center;"><div align="left">NTS Liaison
+  Maintained With <small><span style="color: rgb(0, 102, 0);">(net
+  name)</span></small>&nbsp; 
+  <input maxlength="35" name="Lia" readonly="readonly" size="40" value="{var Lia}" type="text" />
+</div></td>
+</tr>
+<tr>
+<td style="height: 40px; width: 50%; text-align: center;"><div align="left"><br />
+      Number of Drills - Tests - Training this Month&nbsp; &nbsp;
+      <input maxlength="4" name="Drill" readonly="readonly" size="5" value="{var Drill}" type="text" />
+      <br />
+      <br />
+      Number of Public Service Events this Month &nbsp; &nbsp;
+      <input maxlength="4" name="Pub" readonly="readonly" size="5" value="{var Pub}" type="text" />
+      <br />
+      <br />
+      Number of Emergency Operations this Month &nbsp;
+      <input maxlength="4" name="Emer" readonly="readonly" size="5" value="{var Emer}" type="text" />
+      <br />
+&nbsp;</div></td>
+<td style="vertical-align: top; text-align: center; width: 30%;"><div align="left"><br />
+      Person Hours &nbsp;
+      <input maxlength="4" name="Drill1" readonly="readonly" size="5" value="{var Drill1}" type="text" />
+      <br />
+      <br />
+      Person Hours &nbsp;
+      <input maxlength="4" name="Pub" readonly="readonly" size="5" value="{var Pub1}" type="text" />
+      <br />
+      <br />
+      Person Hours &nbsp;
+      <input maxlength="4" name="Emer1" readonly="readonly" size="5" value="{var Emer1}" type="text" />
+</div></td>
+</tr>
+<tr>
+<td style="height: 40px; text-align: center; background-color: rgb(204, 204, 204);">&nbsp;
+&nbsp; &nbsp; &nbsp; <div align="left">Total Number of ARES Operations this
+  Month &nbsp;
+  <input maxlength="5" name="TotARES" readonly="readonly" size="6" value="{var TotARES}" />
+&nbsp; &nbsp; &nbsp;&nbsp; </div></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><div align="left">Total
+  Person Hours&nbsp;  <input maxlength="5" name="TotARES1" readonly="readonly" size="6" value="{var TotARES1}" />
+&nbsp; &nbsp; &nbsp; &nbsp; </div></td>
+</tr>
+<tr>
+<td colspan="5" style="height: 30px; vertical-align: top; text-align: justify;">
+<p style="text-align: left;">Comments:
+&nbsp;</p>
+<p style="text-align: left;"><span style="width:750px; word-wrap:break-word; display:inline-block;">{var Comments}</span>&nbsp; </p>
+</td>
+</tr>
+
+<tr><td style="height: 40px; vertical-align: top; text-align: center;" colspan="2"><div align="left"><br />
+  Report by <small style="color: rgb(0, 102, 0);">(name)</small>&nbsp; 
+  <input readonly="readonly" value="{var PerName}" maxlength="25" size="30" name="PerName" />
+  Title&nbsp;&nbsp;
+  <input maxlength="6" size="7" readonly="readonly" name="Title" value="{var Title}" />
+  Other &nbsp;
+  <input readonly="readonly" value="{var Other}" maxlength="22" size="25" name="Other" /> 
+  Call 
+  <input readonly="readonly" value="{var Call}" maxlength="9" size="10" name="Call" /> 
+</div></td></tr><tr>
+<td colspan="2" style="text-align: justify; height: 30px;"><small><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp;</span>&nbsp;&nbsp;</span></small><big><big>
+  <input name="printPageButton" class="BtnFormat1" id="printPageButton" style="color: rgb(0, 0, 128);" onclick="javascript:window.print()" value=" Print " enctype="multipart/form-data" type="button" />
+</big></big><small><span style="color: rgb(128, 0, 0);"></span></small></td>
+</tr>
+</tbody>
+</table>
+<br />
+<small>&nbsp;</small></td>
+</tr>
+</tbody>
+</table>
+</form>
+</body></html>

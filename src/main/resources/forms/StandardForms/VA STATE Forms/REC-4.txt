@@ -1,0 +1,219 @@
+Form: REC-4_Initial.html,REC-4_Viewer.html
+
+To: 
+Subject:Form REC-4-Field Team 
+Msg:
+
+I. TEAM
+Jurisdiction: <var rec4_juris>
+Team Designation: <var rec4_des>
+Date: <var rec4_date>
+
+II. STAFF
+a. Team Leader
+   Name: <var LdrNam>
+   Organization: <var LdrOrg>
+b. Role: <var stfb_role>
+   Name: <var stfb_nam>
+   Organization: <var StfB_Org>
+c. Role: <var StfC_Role>
+   Name: <var StfC_Nam>
+   Organization: <var StfC_Org>
+d. Role: <var StfD_role>
+   Name: <var StfD_Nam>
+   Organization: <var stfd_org>
+e. Role: <var stfe_role>
+   Name: <var stfe_nam>
+   Organizaton: <var stfe_org>
+
+SURVEY METER 1
+Make:  <var Mtr1_Make>
+Model: <var Mtr1_Modl>
+Serial: <var Mtr1_Ser>
+Detectors
+External or D1:
+Model: <var Mtr1-D1_Mod>
+Serial: <var Mtr1-D1_Ser>
+Internal or D2:
+Model: <var Mtr1-D2_Mod>
+Serial: <var Mtr1-D2_Ser>
+Detector 3 (D3):
+Model: <var Mtr1-D3_Mod>
+Serial: <var Mtr1-D3_Ser>
+Detector 4 (D4):
+Model: <var Mtr1-D4_Mod>
+Serial: var Mtr1-D4_Ser>
+
+SURVEY METER 2
+Make:  <var Mtr2_Make>
+Model: <var Mtr2_Modl>
+Serial: <var Mtr2_Ser>
+Detectors
+External or D1:
+Model: <var Mtr2-D1_Mod>
+Serial: <var Mtr2-D1_Ser>
+Internal or D2:
+Model: <var Mtr2-D2_Mod>
+Serial: <var Mtr2-D2_Ser>
+Detector 3 (D3):
+Model: <var Mtr2-D3_Mod>
+Serial: <var Mtr2-D3_Ser>
+Detector 4 (D4):
+Model: <var Mtr2-D4_Mod>
+Serial: <var Mtr2-D4_Ser>
+
+IV. READINGS
+Reading 1:
+Time:       <var R1_Time>
+Location:   <var R1_Loc>
+Meter/Det:  <var R1_SmDet>
+3ft open:   <var R1_3FtO>
+3ft closed: <var R1_3FtC>
+3in open:   <var R1_3InO>
+3in closed: <var R1_3InC>
+Remarks:    <var R1_Rmrk>
+
+Reading 2:
+Time:       <var R2_Time>
+Location:   <var R2_Loc>
+Meter/Det:  <var R2_SmDet>
+3ft open:   <var R2_3FtO>
+3ft closed: <var R2_3FtC>
+3in open:   <var R2_3InO>
+3in closed: <var R2_3InC>
+Remarks:    <var R2_Rmrk>
+
+Reading 3:
+Time:       <var R3_Time>
+Location:   <var R3_Loc>
+Meter/Det:  <var R3_SmDet>
+3ft open:   <var R3_3FtO>
+3ft closed: <var R3_3FtC>
+3in open:   <var R3_3InO>
+3in closed: <var R3_3InC>
+Remarks:    <var R3_Rmrk>
+
+Reading 4:
+Time:       <var R4_Time>
+Location:   <var R4_Loc>
+Meter/Det:  <var R4_SmDet>
+3ft open:   <var R4_3FtO>
+3ft closed: <var R4_3FtC>
+3in open:   <var R4_3InO>
+3in closed: <var R4_3InC>
+Remarks:    <var R4_Rmrk>
+
+Reading 5:
+Time:       <var R5_Time>
+Location:   <var R5_Loc>
+Meter/Det:  <var R5_SmDet>
+3ft open:   <var R5_3FtO>
+3ft closed: <var R5_3FtC>
+3in open:   <var R5_3InO>
+3in closed: <var R5_3InC>
+Remarks:    <var R5_Rmrk>
+
+Reading 6:
+Time:       <var R6_Time>
+Location:   <var R6_Loc>
+Meter/Det:  <var R6_SmDet>
+3ft open:   <var R6_3FtO>
+3ft closed: <var R6_3FtC>
+3in open:   <var R6_3InO>
+3in closed: <var R6_3InC>
+Remarks:    <var R6_Rmrk>
+
+Reading 7:
+Time:       <var R7_Time>
+Location:   <var R7_Loc>
+Meter/Det:  <var R7_SmDet>
+3ft open:   <var R7_3FtO>
+3ft closed: <var R7_3FtC>
+3in open:   <var R7_3InO>
+3in closed: <var R7_3InC>
+Remarks:    <var R7_Rmrk>
+
+Reading 8:
+Time:       <var R8_Time>
+Location:   <var R8_Loc>
+Meter/Det:  <var R8_SmDet>
+3ft open:   <var R8_3FtO>
+3ft closed: <var R8_3FtC>
+3in open:   <var R8_3InO>
+3in closed: <var R8_3InC>
+Remarks:    <var R8_Rmrk>
+
+Reading 9:
+Time:       <var R9_Time>
+Location:   <var R9_Loc>
+Meter/Det:  <var R9_SmDet>
+3ft open:   <var R9_3FtO>
+3ft closed: <var R9_3FtC>
+3in open:   <var R9_3InO>
+3in closed: <var R9_3InC>
+Remarks:    <var R9_Rmrk>
+
+Reading 10:
+Time:       <var R10_Time>
+Location:   <var R10_Loc>
+Meter/Det:  <var R10_SmDet>
+3ft open:   <var R10_3FtO>
+3ft closed: <var R10_3FtC>
+3in open:   <var R10_3InO>
+3in closed: <var R10_3InC>
+Remarks:    <var R10_Rmrk>
+
+Reading 11:
+Time:       <var R11_Time>
+Location:   <var R11_Loc>
+Meter/Det:  <var R11_SmDet>
+3ft open:   <var R11_3FtO>
+3ft closed: <var R11_3FtC>
+3in open:   <var R11_3InO>
+3in closed: <var R11_3InC>
+Remarks:    <var R11_Rmrk>
+
+Reading 12:
+Time:       <var R12_Time>
+Location:   <var R12_Loc>
+Meter/Det:  <var R12_SmDet>
+3ft open:   <var R12_3FtO>
+3ft closed: <var R12_3FtC>
+3in open:   <var R12_3InO>
+3in closed: <var R12_3InC>
+Remarks:    <var R12_Rmrk>
+
+Reading 13:
+Time:       <var R13_Time>
+Location:   <var R13_Loc>
+Meter/Det:  <var R13_SmDet>
+3ft open:   <var R13_3FtO>
+3ft closed: <var R13_3FtC>
+3in open:   <var R13_3InO>
+3in closed: <var R13_3InC>
+Remarks:    <var R13_Rmrk>
+
+Reading 14:
+Time:       <var R14_Time>
+Location:   <var R14_Loc>
+Meter/Det:  <var R14_SmDet>
+3ft open:   <var R14_3FtO>
+3ft closed: <var R14_3FtC>
+3in open:   <var R14_3InO>
+3in closed: <var R14_3InC>
+Remarks:    <var R14_Rmrk>
+
+Reading 15:
+Time:       <var R15_Time>
+Location:   <var R15_Loc>
+Meter/Det:  <var R15_SmDet>
+3ft open:   <var R15_3FtO>
+3ft closed: <var R15_3FtC>
+3in open:   <var R15_3InO>
+3in closed: <var R15_3InC>
+Remarks:    <var R15_Rmrk>
+
+------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion> 
+Senders Template Version: <var Templateversion>

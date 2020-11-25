@@ -1,0 +1,60 @@
+Form: NRC_Initial.html,NRC_Viewer.html
+Subject: REPORT OF EMERGENCY for <var Location>, <var a1Date> at <var a1Time>
+To: 
+Msg: 
+MESSAGE # <var MSGNUM>
+This is <var Location>
+Standby for a(n) <var b1>
+Use the Report Emergency Form to copy this message 
+
+Item 1. EMERGENCY CLASSIFICATION: <var radio2`>
+In accordance with EAL <var EAL1> <var EAL2> <var EAL3> . <var EAL4> Declared at <var a1Time> (24-hr time) on <var a1Date> 
+This is <var EmgComm> / Emergency Communicator
+Please acknowledge receipt of this message <var A1> <var A1> 
+Notification completed at <var b1Time2> (24-hr time) on <var b1Date2> 
+
+Item 2. METOROLOGICAL DATA: bASED ON <var b3>
+Time: <var c2Date2> (24-hr time) AVE Wind Speed: <var Windspd> mph; AVE Wind Direction from <var WindDir> degrees (0° to 360 °
+
+Item 3. RELEASE OF RADIOACTIVE MATERIAL:
+Routine releases ongoing due to plant operations. Additional radiological releases associated with the event:
+<var b4>
+
+Item 4. SITE ACCESS: <var b5> 
+
+Item 5. PROTECTIVE ACTION RECOMMENDATION:
+<var b6>
+
+Item 6. UPDATE SCHEDULE: <var b7> <var OtherTXtime> 
+
+NOTE: Items 7 - 11 may be excluded for a message reporting initial entry into the Emergency Plan, an emergency classification change or PAR changes 
+
+Item 7. EMERGENCY RESPONSE ACTIONS UNDERWAY: <var bt2>
+<var b8> <var Otheritem7> 
+
+
+Item 8. EVACUATION OR COMPANY DISMISSAL OF SITE PERSONNEL: <var bt4>
+<var b9> <var Otheritem8>
+
+Item 9. PROGNOSIS OF SITUATION SINCE LAST REPORT: <var bt5>
+<var b9> ; <var Otheritem9> 
+
+Item 10. ASSISTANCE REQUESTED OR BEING PROVIDED: <var bt6>
+<var numfire> (#) Fire Units from <var firefrom>
+<var numpolice> (#) Police Units from <var policefrom> 
+<var numrescue> (#) Rescue Units from <var rescuefrom>
+<var numother> Other <var otherreq>
+
+Item 11. ADDITIONAL INFORMATION: <var bt7>
+
+<var Info>
+
+Item 12. TERMINATION INFORMATION
+Event Terminated at: <var f12Time> (24-hr time) on date <var f12Date>
+---
+This is <var Location2> out at <var outTime> (24-hr time) on <var outdate> 
+
+------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion> 
+Senders Template Version: <var Templateversion>

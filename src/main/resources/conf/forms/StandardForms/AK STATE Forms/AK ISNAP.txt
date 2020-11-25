@@ -1,0 +1,47 @@
+Form: Alaska_ISNAP_Initial.html,Alaska_ISNAP_Initial_Viewer.html
+
+
+To: 
+Subject:ALASKA ISNAP: <var Station> - <var Date_Time>
+SeqInc:
+Msg:
+Alaska ISNAP
+
+1. Station Reporting: 
+   <var Station> 
+
+2. Location/ City & Zip code: 
+   <var Location>
+
+3. Date & Time:  
+   <var Date_Time>
+
+4. POWER STATUS:  
+   <var PowerStatus>
+
+5. WATER STATUS:  
+   <var WaterStatus>
+
+6. SANITATION STATUS: 
+   <var SanitationStatus>
+
+7. MEDICAL FACILITY STATUS:  
+   <var MedStatus>
+
+8. COMMUNICATIONS STATUS: 
+   <var CommsStatus>
+
+9. TRANSPORTATION STATUS: 
+   <var TransStatus>
+
+10. SOURCE:
+   <var Source>
+
+11. Remarks
+
+    <var Remarks>
+
+------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>

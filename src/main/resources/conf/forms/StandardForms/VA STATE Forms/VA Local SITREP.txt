@@ -1,0 +1,159 @@
+Form: Virginia_Local_SITREP_Initial.html,Virginia_Local_SITREP_Viewer.html
+
+To: <MsgTo>
+Cc: <MsgCc>
+
+Subject: SITREP-<var Incident>-<var Agency>-<var ActivityDateTime1>
+Msg:
+00. Incident Name: <var Incident>
+
+------------------------------------
+AGENCY OVERVIEW
+
+01. Sitrep Status: <var SitRepStat>
+
+02. Sitrep #: <var SitRepNum>
+
+03. Political Jurisdiction: <var Agency> 
+
+04. As of: <var ActivityDateTime> 
+   04a: Report Prepared Date/Time: <var ActivityDateTime1>                             
+
+05. Emergency Type: <var EmType>
+
+06. Brief Description:
+   <var BriefDesc>
+
+------------------------------------
+LOCALITY STATUS
+
+07. Current Emergency Declaration Status: <var DecStat>
+   07a. Date/Time Emergency Declared: <var DecDate>
+   07b. Date/Time Emergency Terminated: <var DecTerm>
+   07c. Date/Time Declaration Rescinded: <var DecRes>
+
+08. Current EOC Status: <var EOCStat>
+   08a. Date/Time EOC Opened: <var EOCOpen>
+   08b. Date/Time EOC Closed: <var EOCClosed>
+
+09. Government Offices Status: <var GovStat>
+
+10. School System Status (K-12): <var SchStat>
+
+11. Current Shelter Status: <var ShelStat>
+
+12. Evacuation Status: <var EvacStat>
+
+13. Additional Status Information:
+   <var AddlStat>
+
+14. Estimated Number Evacuated: <var EvacNum>
+
+15. Areas Evacuated:
+   <var EvacArea>
+
+16. Amateur Radio Status: <var RadioStat>
+
+17. Number of People in Impacted Area: <var ImpPop>
+
+------------------------------------
+CASUALTY REPORT
+
+18. Injured: <var Injd>
+
+19. Missing: <var Misg>
+
+20. Dead: <var Dead>
+
+------------------------------------
+SIGNIFICANT ISSUES
+
+21. Impact Summary:
+   <var ImpSum>
+
+22. Provide a synopsis of significant issues being faced by the locality:
+   <var Synop>
+
+23. Anticipated Issues:
+   <var Ant1>
+
+------------------------------------
+EMERGENCY SUPPORT FUNCTIONS
+
+24. ESF 1 - Transportation:
+   <var ESF1>
+
+25. ESF 2 - Communications:
+   <var ESF2>
+
+26. ESF 3 - Public Works and Engineering:
+   <var ESF3>
+
+27. ESF 4 - Firefighting:
+   <var ESF4>
+
+28. ESF 5 - Emergency Management:
+   <var ESF5>
+
+29. ESF 6 - Mass Care, Housing, and Human Services:
+   <var ESF6>
+
+30. ESF 7 - Logistics:
+   <var ESF7>
+
+31. ESF 8 - Health and Human Services:
+   <var ESF8>
+
+32. ESF 9 - Search and Rescue:
+   <var ESF9>
+
+33. ESF 10 - Hazardous Materials Response:
+   <var ESF10>
+
+34. ESF 11 - Agriculture and Natural Resources:
+   <var ESF11>
+
+35. ESF 12 - Energy:
+   <var ESF12>
+
+36. ESF 13 - Public Safety and Security:
+   <var ESF13>
+
+37. ESF 14 - Recovery:
+   <var ESF14>
+
+38. ESF 15 - External Affairs:
+   <var ESF15>
+
+39. ESF 16 - Military Affairs:
+   <var ESF16>
+
+40. ESF 17 - Volunteers and Donations:
+   <var ESF17>
+
+------------------------------------
+GENERAL
+
+41. Additional Comments:
+   <var AddlCom>
+
+42. Prepared By: <var PrepBy>
+
+43. Job Title: <var JobTitle>
+
+44. Call Back Number: <var CallNum>
+
+45. Fax Number: <var FaxNum>
+
+46. Email: <var Email>
+
+####### END OF REPORT #######
+
+Winlink Express Sender's Call Sign: <var MsgSender>
+
+####### END OF MESSAGE #######
+
+------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>

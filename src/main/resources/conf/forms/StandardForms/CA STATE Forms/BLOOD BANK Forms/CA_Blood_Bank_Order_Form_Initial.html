@@ -1,0 +1,1121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>CA BB Blood Order Form Initial</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body, td, th {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+.zentriert {
+font-size: 12px;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 1px;
+-moz-border-radius-topright: 1px;
+-moz-border-radius-bottomright: 1px;
+-moz-border-radius-bottomleft: 1px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+textarea {
+margin: 2px;
+padding: 2px;
+-moz-border-radius-topleft: 1px;
+-moz-border-radius-topright: 1px;
+-moz-border-radius-bottomright: 1px;
+-moz-border-radius-bottomleft: 1px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+.rechtsbuendig {
+font-size: 12px;
+}
+.SubmitBtn {
+font-size: 12px;
+}
+.version {
+margin: 1px;
+color: #666666;
+position: relative;
+left: 0px;
+top: 1px;
+font-size: 12px;
+}
+#TextHeader {
+background-color: #dddddd;
+font-size: 12px;
+}
+</style>
+<style type="text/css">
+.style2 {font-size: 14}
+.formtext {font-family: Arial, Helvetica, sans-serif;
+font-size: 11pt;
+font-weight: normal;
+}
+</style>
+<style>
+/*
+
+body {color:#000; background:#fff; font:100%/1.5 arial,sans-serif;}
+
+h2 {margin-top:0}
+
+*/
+
+/* Styling applied to classes only */
+
+/* Pop-up content shifted off-screen when not in view.
+
+Still readable by screen-reader software.
+
+When targeted it fills the browser window.
+
+*/
+
+.pop-up {
+	position:absolute;
+	top:0;
+	left:-500em;
+	visibility: visible;
+}
+
+.pop-up:target {position:static; left:0;}
+
+/* The pop-up itself */
+
+.popBox {
+	background:#ffffff;
+	position:absolute;
+	left:25%;
+	right:25%;
+	top:10%;
+	bottom:20%;
+	z-index:10;
+	border:1px solid #3a3a3a;
+
+/* CSS3 where available: rounded corners, drop-shadow, and fade in. */
+
+border-radius:.25rem;
+
+box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
+	opacity:0;
+	transition: opacity 0.8s ease-out;
+	visibility: visible;
+}
+
+:target .popBox {position:fixed; opacity:1;}
+
+/* Light box properties */
+
+.lightbox {
+
+display:none;
+
+text-indent:-200em;
+
+background-color:rgba(0,0,0,.4);
+
+width:100%;
+
+height:100%;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+bottom:0;
+
+right:0;
+
+z-index:5;
+
+}
+
+:target .lightbox {display:block;}
+
+/* The pop-ups close link, moved via CSS to the top right of the pop-up */
+
+.close:link,
+
+.close:visited {
+	position: absolute;
+	top: -0.75em;
+	right: -0.75em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 1.8;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 50%;
+
+box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+	visibility: visible;
+}
+
+.close:before {content:"X";}
+
+.close:hover,
+
+.close:active,
+
+.close:focus {
+
+box-shadow: 0 0 .5rem .5rem rba(255,0,0,.5);
+
+background-color: #c00;
+
+color: #fff;
+
+}
+
+.close span {
+
+text-indent: -200em;
+
+display: block;
+
+}
+
+/* The pop-up content div will scroll if it has too much content */
+
+.popScroll {
+	position:absolute;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	overflow-y: auto;
+
+*overflow-y: scroll;
+	padding-right: 0.5em;
+	visibility: visible;
+}
+
+.popScroll h2 {margin-top:0}
+
+.formtext1 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+
+margin: 10px;
+}
+
+  input[type=button] {
+
+  border: 2px solid #0f88f2;;
+   border-radius:.25rem;
+  color: black;
+  padding: 2px 2px;
+ background-color: white;
+  text-decoration: none;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+input[type=submit] {
+ border: 2px solid green;
+  border-radius:.25rem;
+  background-color: white;
+  color: black;
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+input[type=reset] {
+ border: 2px solid red;
+ border-radius:.25rem;
+  background-color: white;
+  color: black;
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+input[type=black1] {
+ border: 2px solid #999999;
+   width:225px;
+  border-radius:.25rem;
+
+  background-color: white;
+  color: black;
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+
+</style>
+<script type="text/javascript">
+function TimeNow(Timefld, FocusFld) {
+var txt;
+var d = new Date(),
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+  if (thismonth < 10) { thismonth = "0" + thismonth}
+thisday = d.getDate();
+ if (thisday < 10) { thisday = "0" + thisday}
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m ;
+var RightNow = prompt("", myprompt);
+document.getElementById(Timefld).value = RightNow;
+
+} 
+
+
+function AutoGrowTextArea(textField)
+{
+if (textField.clientHeight < textField.scrollHeight)
+{
+textField.style.height = textField.scrollHeight + "px";
+if (textField.clientHeight < textField.scrollHeight)
+{
+textField.style.height = (textField.scrollHeight * 2 - textField.clientHeight) + "px";
+}
+}
+}
+function Countthelines(f) { var text1 = f
+var text2 = text1.replace(/\s+$/,"");
+var split2 = text2.split("\n"); var mytotal = split2.length * 17;
+if (mytotal < 150) {
+mytotal = 150;
+}
+var tstr = mytotal.toString();
+return tstr;
+}
+function newfix(f){
+var ThisText = document.getElementById(f).value;
+var makeit = Countthelines(ThisText);
+document.getElementById(f).style.height = makeit+"px"; }
+function Fixarea() {
+newfix("msg");
+newfix("reply");
+AutoGrowTextArea(document.getElementById("msg"));
+AutoGrowTextArea(document.getElementById("reply"));
+}
+function RWS(str){
+var text2 = str.replace(/\s+$/,"");
+return text2.trim();
+}
+
+function isNumberKey(evt)
+{
+var charCode = (evt.which) ? evt.which : event.keyCode
+if (charCode < 48 || charCode > 57)
+return false;
+return true;
+}
+
+function Totalstock()
+{
+mytotal = 0;
+var c1 = document.getElementById('Stock_1').value;
+var c2 = document.getElementById('Stock_2').value;
+var c3 = document.getElementById('Stock_3').value;
+var c4 = document.getElementById('Stock_4').value;
+var c5 = document.getElementById('Stock_5').value;
+var c6 = document.getElementById('Stock_6').value;
+var c7 = document.getElementById('Stock_7').value;
+var c8 = document.getElementById('Stock_8').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4)+Number(c5)+Number(c6)+Number(c7)+Number(c8);
+document.getElementById('Total1').value = mytotal;
+}
+function Totalact()
+{
+mytotal = 0;
+var c1 = document.getElementById('Act1').value;
+var c2 = document.getElementById('Act2').value;
+var c3 = document.getElementById('Act3').value;
+var c4 = document.getElementById('Act4').value;
+var c5 = document.getElementById('Act5').value;
+var c6 = document.getElementById('Act6').value;
+var c7 = document.getElementById('Act7').value;
+var c8 = document.getElementById('Act8').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4)+Number(c5)+Number(c6)+Number(c7)+Number(c8);
+document.getElementById('Total2').value = mytotal;
+}
+function TotalOrd()
+{
+mytotal = 0;
+var c1 = document.getElementById('Ord1').value;
+var c2 = document.getElementById('Ord2').value;
+var c3 = document.getElementById('Ord3').value;
+var c4 = document.getElementById('Ord4').value;
+var c5 = document.getElementById('Ord5').value;
+var c6 = document.getElementById('Ord6').value;
+var c7 = document.getElementById('Ord7').value;
+var c8 = document.getElementById('Ord8').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4)+Number(c5)+Number(c6)+Number(c7)+Number(c8);
+document.getElementById('Total3').value = mytotal;
+}
+
+function Totalstock2()
+{
+mytotal = 0;
+var c1 = document.getElementById('Stock_9').value;
+var c2 = document.getElementById('Stock_10').value;
+var c3 = document.getElementById('Stock_11').value;
+var c4 = document.getElementById('Stock_12').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total4').value = mytotal;
+}
+function Totalact2()
+{
+mytotal = 0;
+var c1 = document.getElementById('Act9').value;
+var c2 = document.getElementById('Act10').value;
+var c3 = document.getElementById('Act11').value;
+var c4 = document.getElementById('Act12').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total5').value = mytotal;
+}
+function TotalOrd2()
+{
+mytotal = 0;
+var c1 = document.getElementById('Ord9').value;
+var c2 = document.getElementById('Ord10').value;
+var c3 = document.getElementById('Ord11').value;
+var c4 = document.getElementById('Ord12').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total6').value = mytotal;
+}
+// 
+function Totalstock3()
+{
+mytotal = 0;
+var c1 = document.getElementById('Stock_13').value;
+var c2 = document.getElementById('Stock_14').value;
+mytotal = Number(c1)+Number(c2);
+document.getElementById('Total7').value = mytotal;
+}
+function Totalact3()
+{
+mytotal = 0;
+var c1 = document.getElementById('Act13').value;
+var c2 = document.getElementById('Act14').value;
+mytotal = Number(c1)+Number(c2);
+document.getElementById('Total8').value = mytotal;
+}
+function TotalOrd3()
+{
+mytotal = 0;
+var c1 = document.getElementById('Ord13').value;
+var c2 = document.getElementById('Ord14').value;
+mytotal = Number(c1)+Number(c2);
+document.getElementById('Total9').value = mytotal;
+}
+// set 4
+function Totalstock4()
+{
+mytotal = 0;
+var c1 = document.getElementById('Stock_15').value;
+var c2 = document.getElementById('Stock_16').value;
+var c3 = document.getElementById('Stock_17').value;
+var c4 = document.getElementById('Stock_18').value;
+
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total10').value = mytotal;
+}
+function Totalact4()
+{
+mytotal = 0;
+var c1 = document.getElementById('Act15').value;
+var c2 = document.getElementById('Act16').value;
+var c3 = document.getElementById('Act17').value;
+var c4= document.getElementById('Act18').value;
+
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total11').value = mytotal;
+}
+function TotalOrd4()
+{
+mytotal = 0;
+var c1 = document.getElementById('Ord15').value;
+var c2 = document.getElementById('Ord16').value;
+var c3 = document.getElementById('Ord17').value;
+var c4 = document.getElementById('Ord18').value;
+mytotal = Number(c1)+Number(c2)+Number(c3)+Number(c4);
+document.getElementById('Total12').value = mytotal;
+}
+//s set 5
+function Totalstock5()
+{
+mytotal = 0;
+var c1 = document.getElementById('Stock_19').value;
+var c2 = document.getElementById('Stock_20').value;
+var c3 = document.getElementById('Stock_21').value;
+
+mytotal = Number(c1)+Number(c2)+Number(c3);
+document.getElementById('Total13').value = mytotal;
+}
+function Totalact5()
+{
+mytotal = 0;
+var c1 = document.getElementById('Act19').value;
+var c2 = document.getElementById('Act20').value;
+var c3 = document.getElementById('Act21').value;
+
+mytotal = Number(c1)+Number(c2)+Number(c3);
+document.getElementById('Total14').value = mytotal;
+}
+function TotalOrd5()
+{
+mytotal = 0;
+var c1 = document.getElementById('Ord19').value;
+var c2 = document.getElementById('Ord20').value;
+var c3 = document.getElementById('Ord21').value;
+mytotal = Number(c1)+Number(c2)+Number(c3);
+document.getElementById('Total15').value = mytotal;
+}
+
+// Test auto collect
+// Add parseme
+//    <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
+function saveTextAsFile(fileNameToSaveAs, textToWrite) {
+var textToWrite = document.getElementById('parseme').value; 
+var fileNameToSaveAs = "Blood Bank Order Form " + DateforFile()+".txt";
+fileNameToSaveAs = prompt("", fileNameToSaveAs);
+
+  /* Saves a text string as a blob file*/  
+  var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+      ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+      ieEDGE = navigator.userAgent.match(/Edge/g),
+      ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
+
+  if (ie && ieVer<10) {
+    console.log("No blobs on IE ver<10");
+    return;
+  }
+
+  var textFileAsBlob = new Blob([textToWrite], {
+    type: 'text/plain'
+  });
+
+  if (ieVer>-1) {
+    window.navigator.msSaveBlob(textFileAsBlob, fileNameToSaveAs);
+
+  } else {
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = function(e) { document.body.removeChild(e.target); };
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  }
+}
+
+
+
+
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+function loadFileAsText()
+{
+
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+
+function DateforFile(RightNow) {
+var txt;
+var d = new Date(),
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0" + thismonth}
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0" + thisday}
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + '_' + m ;
+return myprompt;
+}
+
+function isObject(arg) {
+  return Object.prototype.toString.call(arg)==='[object Object]';
+}
+
+function formDataToObject(elForm) {
+  if (!elForm instanceof Element) return;
+  var fields = elForm.querySelectorAll('input, select, textarea'),
+    o = {};
+  for (var i=0, imax=fields.length; i<imax; ++i) {
+    var field = fields[i],
+      sKey = field.name || field.id;
+    if (field.type==='button' || field.type==='image' || field.type==='submit' || !sKey) continue;
+    switch (field.type) {
+      case 'checkbox':
+        o[sKey] = +field.checked;
+        break;
+      case 'radio':
+        if (o[sKey]===undefined) o[sKey] = '';
+        if (field.checked) o[sKey] = field.value;
+        break;
+      case 'select-multiple':
+        var a = [];
+        for (var j=0, jmax=field.options.length; j<jmax; ++j) {
+          if (field.options[j].selected) a.push(field.options[j].value);
+        }
+        o[sKey] = a;
+        break;
+      default:
+        o[sKey] = field.value;
+    }
+  }
+ // alert('Form data:\n\n' + JSON.stringify(o, null, 2));
+ document.getElementById('parseme').value = JSON.stringify(o, null, 2);
+//  return o;
+}
+
+function populateForm(o) {
+
+o =  JSON.parse(document.getElementById('parseme').value);
+ //if (!isObject(o)) return;
+if (!isObject(o)) return;
+  for (var i in o) {
+    var el = document.getElementById(i) || document.querySelector('[name=' + i + ']');
+    if (el.type==='radio') el = document.querySelectorAll('[name=' + i + ']');
+    switch (typeof o[i]) {
+      case 'number':
+        el.checked = o[i];
+        break;
+      case 'object':
+        if (el.options && o[i] instanceof Array) {
+          for (var j=0, jmax=el.options.length; j<jmax; ++j) {
+            if (o[i].indexOf(el.options[j].value)>-1) el.options[j].selected = true;
+          }
+        }
+        break;
+      default:
+        if (el instanceof NodeList) {
+          for (var j=0, jmax=el.length; j<jmax; ++j) {
+            if (el[j].value===o[i]) el[j].checked = true;
+          }
+        } else {
+          el.value = o[i];
+        }
+    }
+  }
+  AutoGrowTextArea(document.getElementById("Comments"));
+}
+
+function SaveData() {
+	
+			formDataToObject(document.getElementById('myform'))
+			saveTextAsFile();
+			
+			//saveTextAsFile();
+			}
+
+//-------
+ function readBlob(opt_startByte, opt_stopByte) {
+  
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+
+    var file = files[0];
+    var start = parseInt(opt_startByte) || 0;
+    var stop = parseInt(opt_stopByte) || file.size - 1;
+
+    var reader = new FileReader();
+
+    // If we use onloadend, we need to check the readyState.
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        document.getElementById('byte_content').textContent = evt.target.result;
+        document.getElementById('byte_range').textContent = 
+            ['Read bytes: ', start + 1, ' - ', stop + 1,
+             ' of ', file.size, ' byte file'].join('');
+      }
+    };
+
+    var blob = file.slice(start, stop + 1);
+    reader.readAsBinaryString(blob);
+  }
+    	
+  window.onload = function () { 
+ 
+ //Check the support for the File API support 
+ if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var fileSelected = document.getElementById('txtfiletoread');
+	
+    fileSelected.addEventListener('change', function (e) { 
+         //Set the extension for the file 
+         var fileExtension = /text.*/; 
+         //Get the file object 
+         var fileTobeRead = fileSelected.files[0];
+        //Check of the extension match 
+         if (fileTobeRead.type.match(fileExtension)) { 
+             //Initialize the FileReader object to read the 2file 
+			
+             var fileReader = new FileReader(); 
+             fileReader.onload = function (e) { 
+                 var fileContents = document.getElementById('filecontents'); 
+                
+				document.getElementById('parseme').value =fileReader.result;
+				populateForm(obj = document.getElementById('parseme').value);
+			 } 
+             fileReader.readAsText(fileTobeRead); 
+         } 
+         else { 
+             alert("Please select text file"); 
+         }
+ 
+    }, false);
+} 
+ else { 
+     alert("Files are not supported"); 
+ } 
+ Checkifinbrowser();
+//var txt = document.getElementById('parseme').value;
+//var myobject = txt;
+//populateForm(myobject);
+ }
+ function Checkifinbrowser() {
+
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+}
+
+</script>
+</head>
+<body>
+<div style="text-align: center;">
+<form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+<div id="pop1" class="pop-up"><!-- The pop-up block -->
+
+<div class="popBox"><!-- If the content becomes larger than the pop-up this div will scroll the content -->
+
+<div class="popScroll"><!-- Test for help starts here -->
+
+<p> </p>
+
+<h2>Blood Bank Form Info</h2>
+
+<p align="left"><strong>Purpose</strong>.<br>
+
+<br>
+
+This form documents your Blood and Blood Products inventory and/or request for products.
+<br /><br />
+This is a radio delivery form for Winlink Express to Winlink Express and is also sent as plain text. The template will auto add column TOTALS for you, just click on next box after entering numbers. </small>
+<p>&nbsp;</p>
+<p>For form use and or further info contact: San Diego Blood Bank - Hospital Services Department.<br /> 
+    619 400-8250 Fax 619 725-3017 
+        </p>
+  </p>
+<p align="left">
+    <strong>More Information</strong><br />
+    <br /><p align="left">
+  You can save your completed HTML to a text file. This will allow you to later reload the Form
+  with ALL entered form data. You do this prior to submitting the form. Then you can open a new Form and load the saved HTML form data. 
+  NOTE: Date and Times will be the previous, so change if needed. This is much like using FireFox and the addon Formlet. It will save the info
+  as a text file with the Date and Time as the text file name. Now you can use any browser, save your form, (as many versions as you like), and then re-populate.
+  <br />
+  <br />
+  Printing this form is dependent upon your selected
+  
+printer and its settings. Various Web Browsers and and their viewing
+  
+sizes are not all the same. Printing from a browsers print function
+  
+may be different from the operating systems default print mode.
+  
+Select what works for you, for both printing and viewing.
+  
+You may print direct to the printer as a HTML or save as a
+  
+PDF then print the PDF. In some instances Landscape mode may print
+  
+better than Portrait. <br />
+</div>
+
+<!-- The close pop-up link correctly positioned at the end of the content block -->
+
+<a href="#links" class="close"><span>Back
+
+to links</span></a> </div>
+
+</div>
+  <table border="0" align="left" style="text-align: left; ">
+<tbody align="center">
+<tr align="left">
+<td>
+<table width="725" border="1" align="left" cellpadding="1" cellspacing="0" bordercolor="#999999" style="width: 750px; height: 1460px; text-align: left; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+  <td width="815" height="30" colspan="2" align="center" valign="top" style="text-align: center; vertical-align: middle; height: 30px; background-color: rgb(255, 204, 204);"><div align="center"><strong><span class="SubmitBtn"><big>&nbsp;<span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;<span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span>San
+      Diego  Blood
+      Bank (SD CA) - Blood  /
+      Inventory
+      Order Form</big><small><big><big><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span>&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span>&nbsp;</big></big></small></span><small><big><span class="formtext"><small><a href="#pop1"><span style="color: rgb(204, 0, 0);">Form Info</span></a>&nbsp;</small></span></big></small>  
+       <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
+      </strong></div></td></tr>
+<tr>
+<td height="35" colspan="2" style="text-align: center;"><p>       Hospital Services Department &nbsp; &nbsp;
+  619 400-8250
+&nbsp; &nbsp;Fax &nbsp;619 725-3017
+&nbsp;&nbsp; WB1OOD@winlink.org</p>
+  </td>
+</tr>
+<tr style="font-weight: bold;">
+<td style="text-align: center; vertical-align: top;" colspan="2"><div align="left">
+  <p><span style="font-weight: normal;"><span style="color: red;"><strong><small><big><span style="font-weight: normal;">
+    <input title="Use Message &gt;Templates settings to manage Tracking #. Overwrite if needed." value="{MsgSender}-{SeqNum}" type="hidden" maxlength="14" size="12" name="SeqNum" />
+    </span></big></small></strong>
+          &nbsp;<input type="button" value=" Load Blood Bank Order Form Data " onclick="document.getElementById('txtfiletoread').click();" />
+          </span></span></p>
+  <p><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;&nbsp;</span></span></span></span>Requesting Hospital:</span> </span><b>
+      <input placeholder="Use full Hospital name." maxlength="35" name="Req_Hosp" required="required" size="40" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </b>
+            <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea> 
+            <br />
+    </p>
+</div></td>
+</tr>
+<tr>
+<td height="40" colspan="2" style="text-align: center;"><div align="left"><br />
+      <span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span>Hospital Technician Name:&nbsp;&nbsp;
+      <input placeholder="Use full name." maxlength="30" name="Tech_Name" required="required" size="35" />
+&nbsp; <span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span></span></span> Date/Time: &nbsp;
+  <input maxlength="18" size="18" name="Time1" id="Time1" placeholder="Click to add Date/Time" onclick="TimeNow('Time1', 'To1')" />
+</div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2">
+<table style="text-align: center; width: 679px; height: 311px;" border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td style="background-color: white;" colspan="4"></td>
+</tr>
+<tr style="font-weight: bold;">
+<td height="35" colspan="4" style="text-align: center;">Leuko-Reduced Red Blood Cells (RBCL)</td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: white;"></td>
+<td style="font-style: italic; text-align: center;">Stock Level</td>
+<td style="font-style: italic; text-align: center;">Actual</td>
+<td style="font-style: italic; text-align: center;">Order</td>
+</tr>
+<tr>
+<td style="text-align: center;">O
+Positive</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_1" id="Stock_1"  onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act1" id="Act1" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord1" id="Ord1" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">O
+Negative</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_2" id="Stock_2" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act2" id="Act2" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="vertical-align: bottom; text-align: center;"><input value="0" maxlength="8" size="8" name="Ord2" id="Ord2" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">A
+Positive</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_3" id="Stock_3" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act3"  id="Act3" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord3" id="Ord3" onClick="this.select();" nkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">A
+Negative</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_4" id="Stock_4" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act4" id="Act4" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord4" id="Ord4" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">B
+Positive</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_5" id="Stock_5" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act5" id="Act5" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord5" id="Ord5" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">B
+Negative</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_6" id="Stock_6" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act6" id="Act6" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord6" id="Ord6" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">AB
+Positive</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_7" id="Stock_7" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act7" id="Act7" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord7" id="Ord7" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">AB
+Negative</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_8" id="Stock_8" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act8" id="Act8" onClick="this.select();" onkeypress="return isNumberKey(event)"  onchange = "Totalact()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord8" id="Ord8" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd()"/></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: rgb(255, 255, 204);">TOTAL</td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total1" type="text" id="Total1" value="0" size="8" maxlength="8" readonly="true" /></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total2" type="text" id="Total2" value="0" size="8" maxlength="8" readonly="true" /></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total3" type="text" id="Total3" value="0" size="8" maxlength="8" readonly="true"/></td>
+</tr>
+</tbody>
+</table>
+<span style="font-weight: bold;"></span></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2">
+<table style="text-align: center; width: 679px; height: 195px;" border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td colspan="4"></td>
+</tr>
+<tr>
+<td height="35" colspan="4" style="text-align: center;"><span style="font-weight: bold;">Leuko-Reduced
+Irradiated Red Blood Cells (RBCLI</span>)</td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: white;"></td>
+<td style="font-style: italic; text-align: center;">Stock Level</td>
+<td style="font-style: italic; text-align: center;">Actual</td>
+<td style="font-style: italic; text-align: center;">Order</td>
+</tr>
+<tr>
+<td style="text-align: center;">O +,
+cmv-</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_9" id="Stock_9"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock2()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act9" id="Act9"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact2()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord9" id="Ord9"  onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd2()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">O -,
+cmv-</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_10" id="Stock_10"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock2()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act10" id="Act10" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact2()"/></td>
+<td style="vertical-align: bottom; text-align: center;"><input value="0" maxlength="8" size="8" name="Ord10" id="Ord10" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd2()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">A +,
+cmv-</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_11" id="Stock_11"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock2()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act11" id="Act11" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact2()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord11" id="Ord11" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd2()"/></td>
+</tr>
+<tr>
+<td style="text-align: center;">A
+-, cmv-</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_12" id="Stock_12" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock2()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act12" id="Act12" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact2()"/></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord12"  id="Ord12"  onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd2()"/></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: rgb(255, 255, 204);">TOTAL</td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total4" type="text" id="Total4" value="0" size="8" maxlength="8" readonly="true"/></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total5" type="text" id="Total5" value="0" size="8" maxlength="8" readonly="true"/></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total6" type="text" id="Total6" value="0" size="8" maxlength="8" readonly="true"/></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<table style="text-align: center; width: 679px; height: 195px;" border="1" cellpadding="2" cellspacing="0"><tbody>
+<tr>
+<td colspan="4"></td>
+</tr>
+<tr style="font-weight: bold;">
+<td height="35" colspan="4" style="text-align: center; width: 651px;">Leuko-Reduced Platelets (APLT)</td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: white; width: 651px;"></td>
+<td style="font-style: italic; text-align: center;">Stock Level</td>
+<td style="font-style: italic; text-align: center;">Actual</td>
+<td style="font-style: italic; text-align: center;">Order</td>
+</tr>
+<tr>
+<td style="text-align: center; width: 651px;">Platelets
+A/T</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_13" id="Stock_13" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock3()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act13" id="Act13" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact3()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord13"id="Ord13" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd3()" /></td>
+</tr>
+<tr>
+<td style="text-align: center; width: 651px;">Platelets
+Irr</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_14" ID="Stock_14" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock3()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act14" id="Act14" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact3()"/></td>
+<td style="vertical-align: bottom; text-align: center;"><input value="0" maxlength="8" size="8" name="Ord14" id="Ord14" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd3()"/></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: rgb(255, 255, 204); width: 651px;">TOTAL</td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total7" type="text" id="Total7" value="0" size="8" maxlength="8" readonly="true"/></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total8" type="text" id="Total8" value="0" size="8" maxlength="8" readonly="true"  /></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total9" type="text" id="Total9" value="0" size="8" maxlength="8" readonly="true"/></td>
+</tr>
+<tr>
+<td style="width: 651px;" colspan="4">Special
+Instructions:
+&nbsp;<input maxlength="80" size="90" name="SpecInst" /></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<table style="text-align: center; width: 679px; height: 195px;" border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td height="35" colspan="4" style="text-align: center;"><span style="font-weight: bold;">Frozen
+Plasma (200-399ml)</span></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: white;"></td>
+<td style="font-style: italic; text-align: center;">Stock Level</td>
+<td style="font-style: italic; text-align: center;">Actual</td>
+<td style="font-style: italic; text-align: center;">Order</td>
+</tr>
+<tr>
+<td style="text-align: center;">O&nbsp;</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_15" id="Stock_15" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act15" id="Act15" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord15" id="Ord15" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd4()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_16" id="Stock_16" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act16" id="Act16"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact4()" /></td>
+<td style="vertical-align: bottom; text-align: center;"><input value="0" maxlength="8" size="8" name="Ord16" id="Ord16" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd4()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_17" id="Stock_17"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act17" id="Act17" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord17" id="Ord17"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd4()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">AB</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_18" id="Stock_18" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act18" id="Act18" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact4()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord18" id="Ord18" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd4()" /></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: rgb(255, 255, 204);">TOTAL</td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total10" type="text"  id="Total10" value="0" size="8" maxlength="8" readonly="true"/></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total11" type="text" id="Total11" value="0" size="8" maxlength="8" readonly="true"/></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total12" type="text"  id="Total12" value="0" size="8" maxlength="8" readonly="true"/></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<table style="text-align: center; width: 680px; height: 189px;" border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td colspan="4"></td>
+</tr>
+<tr>
+<td height="35" colspan="4" style="text-align: center;"><span style="font-weight: bold;">Single
+Cryo (CAF) Pooled Cryo (CAF PL</span>)</td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: white;"></td>
+<td style="font-style: italic; text-align: center;">Stock Level</td>
+<td style="font-style: italic; text-align: center;">Actual</td>
+<td style="font-style: italic; text-align: center;">Order</td>
+</tr>
+<tr>
+<td style="text-align: center;">CAF A</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_19" id="Stock_19" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock5()"  /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act19" id="Act19" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact5()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord19"  id="Ord19" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd5()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">CAF AB</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_20"id="Stock_20" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock5()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act20" id="Act20" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact5()"  /></td>
+<td style="vertical-align: bottom; text-align: center;"><input value="0" maxlength="8" size="8" name="Ord20" id="Ord20" onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "TotalOrd5()" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">CAF PL
+A</td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Stock_21" id="Stock_21"  onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalstock5()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Act21" id="Act21"onClick="this.select();" onkeypress="return isNumberKey(event)" onchange = "Totalact5()" /></td>
+<td style="text-align: center;"><input value="0" maxlength="8" size="8" name="Ord21" id="Ord21"onClick="this.select();"  onkeypress="return isNumberKey(event)" onchange = "TotalOrd5()" /></td>
+</tr>
+<tr>
+<td style="text-align: center; background-color: rgb(255, 255, 204);">TOTAL</td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total13" type="text" id="Total13" value="0" size="8" maxlength="8" readonly="true" /></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total14" type="text" id="Total14" value="0" size="8" maxlength="8" readonly="true" /></td>
+<td style="text-align: center; background-color: rgb(204, 204, 204);"><input name="Total15" type="text"id="Total15" value="0" size="8" maxlength="8" readonly="true"  /></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="3"><div align="left"><span style="color: rgb(0, 102, 0);"><span style="font-weight: normal;"><span style="color: red;"><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span><span style="font-weight: normal;"><span style="color: red;">&nbsp;</span></span></span></span> Additional
+    Comments from Requesting Hospital</span><br />
+    <textarea placeholder="Be brief and concise. Use no abbreviations." cols="100" rows="2" name="Comments" id="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
+</div></td>
+</tr>
+<tr>
+<td colspan="3" pbzloc="34" style="vertical-align: top; background-color: white; height: 30px;"><small><span class="formtext"><span style="font-family: Calibri;"><big>
+<input type="button" value="Save Blood Bank Order Form Data"  onclick="SaveData()" />
+</big>&nbsp;</span></span><span class="formtext"><span style="font-family: Calibri;"><big></big></span></span>&nbsp;<span class="formtext"><span style="font-family: Calibri;">&nbsp;<big></big></span></span><span class="formtext"><span style="font-family: Calibri;"> <small> </small> </span></span>
+</small>
+  <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" pbzloc="33" size="3" style="height: 24px; width: 48px; " value="Submit" type="submit" /><small>&nbsp;&nbsp; &nbsp;</small><input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
+  <small>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="formtext1">
+ <input name="Templateversion" type="hidden" id="templateversion" value="Blood Bank Order Form version 18.1" />
+ </span>&nbsp;&nbsp;&nbsp;<span class="SubmitBtn"><small><big><big>&nbsp;</big>&nbsp; </big></small></span><span class="style2"><small><big><small>Vers 18</small></big></small></span><small><big><small>.1 &nbsp; 
+ <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+ </small></big></small></small></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+  <div align="left"></div>
+</form>
+</div>
+</body></html>

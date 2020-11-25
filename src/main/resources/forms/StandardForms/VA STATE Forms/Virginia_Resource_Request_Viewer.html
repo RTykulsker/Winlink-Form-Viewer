@@ -1,0 +1,1172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /><title>Virginia Resource Request</title>
+
+
+
+<style type="text/css">
+
+<!--
+
+@media print {
+
+
+
+#printPageButton {
+
+    display: none;
+
+  }
+
+
+
+.form-control, .form-control.nobug {
+
+border: 0;
+
+outline: 0;
+
+box-shadow: none;
+
+font-size:14px;
+
+}
+
+.form-control.nobug {
+
+transition: none; /*-- THIS IS IMPORTANT -- */
+
+}
+
+input, textarea {
+
+outline: none !important;
+
+box-shadow: none;
+
+border: none;
+
+overflow: visible;
+
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11px;
+
+}
+
+.formtext {
+
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+
+}
+
+</style>
+
+<script>
+
+function shortmonth(monthnum) {
+
+var monthname;
+
+shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+
+monthname = shortmonths [monthnum];s
+
+return monthname; }
+
+</script>
+
+<script>
+
+function SetDateTime(TType,TheFld, FocusFld) {
+
+var txt;
+
+var myprompt;
+
+var d = new Date(),
+
+thisyear = d.getFullYear();
+
+thismonth= d.getMonth();
+
+thisday = d.getDate();
+
+var monname;
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+
+var now = new Date();
+
+var utch = now.getUTCHours();
+
+if (utch < 10) { utch = "0"+utch};
+
+var utcs = now.getUTCMinutes();
+
+if (utcs < 10) { utcs = "0"+utcs};
+
+var myUTCtime = utch+":"+utcs+"Z";
+
+var utcstr = d.toUTCString();
+
+var localt = d.toLocaleTimeString();
+
+var isostr = d.toISOString();
+
+monthname = shortmonth (thismonth);
+
+thismonth = thismonth + 1;
+
+switch (TType) {
+
+case 'hms' :
+
+myprompt = h + ':' + m + ':' + s;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'hm' :
+
+myprompt = h + ':' + m;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'mmm-d-y': myprompt = monthname+'-'+thisday+ '-' + thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'localampm': var myprompt = localt;
+
+var RightNow = prompt("Local time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldate': var myprompt = thisyear+ '-'+thismonth+'-'+thisday;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldatetime': var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m ;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'autodate': var RightNow = thisyear+'-'+thismonth+ '-'+thisday ;
+
+//var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'autotime': var RightNow = h + ':' + m ;
+
+//var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'iso': var myprompt = isostr;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'utc': var myprompt = utcstr;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'zulu': var myprompt = isostr;
+
+myprompt = isostr.replace("T", " "); slen = myprompt.length;
+
+myprompt = myprompt.substr(0, slen-5)+'Z';
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'UTChm': var myprompt = myUTCtime;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+}
+
+// if(FocusFld !== null && FocusFld !== '') {document.getElementById(FocusFld).focus()} --/
+
+}; </script>
+
+<script>
+
+function AutoGrowTextArea(textField)
+
+{
+
+if (textField.clientHeight < textField.scrollHeight)
+
+{
+
+textField.style.height = textField.scrollHeight + "px";
+
+if (textField.clientHeight < textField.scrollHeight)
+
+{
+
+textField.style.height = (textField.scrollHeight * 2 - textField.clientHeight) + "px";
+
+}
+
+}
+
+}
+
+function Countthelines(f) { var text1 = f
+
+var text2 = text1.replace(/\s+$/,"");
+
+var split2 = text2.split("\n"); var mytotal = split2.length * 17;
+
+if (mytotal < 150) {
+
+mytotal = 150;
+
+}
+
+var tstr = mytotal.toString();
+
+return tstr;
+
+}
+
+function newfix(f){
+
+var ThisText = document.getElementById(f).value;
+
+var makeit = Countthelines(ThisText);
+
+document.getElementById(f).style.height = makeit+"px"; }
+
+function Fixarea() {
+
+newfix("msg");
+
+newfix("reply");
+
+AutoGrowTextArea(document.getElementById("msg"));
+
+AutoGrowTextArea(document.getElementById("reply"));
+
+}
+
+function RWS(str){
+
+var text2 = str.replace(/\s+$/,"");
+
+return text2.trim();
+
+}
+
+function Flip(theid,working) {
+
+x1 = document.getElementById(theid).value;
+
+if (x1 == '' || x1 == '') { document.getElementById(theid).value = working} 
+
+else { document.getElementById(theid).value = '';}
+
+}
+
+function shortmonth(monthnum) {
+
+var monthname;
+
+shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+
+monthname = shortmonths [monthnum];s
+
+return monthname; }
+
+</script>
+
+<script>
+
+function SetDateTime(TType,TheFld, FocusFld) {
+
+var txt;
+
+var myprompt;
+
+var d = new Date(),
+
+thisyear = d.getFullYear();
+
+thismonth= d.getMonth();
+
+thisday = d.getDate();
+
+var submonth = thismonth+1; ;
+
+if (submonth < 10) { submonth = "0"+submonth};
+
+var subday = thisday;
+
+if (thisday < 10) { thisday = "0"+thisday};
+
+var monname;
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+
+var now = new Date();
+
+var utch = now.getUTCHours();
+
+if (utch < 10) { utch = "0"+utch};
+
+var utcs = now.getUTCMinutes();
+
+if (utcs < 10) { utcs = "0"+utcs};
+
+var myUTCtime = utch+":"+utcs+"Z";
+
+var utcstr = d.toUTCString();
+
+var localt = d.toLocaleTimeString();
+
+var isostr = d.toISOString();
+
+monthname = shortmonth (thismonth);
+
+thismonth = thismonth + 1;
+
+switch (TType) {
+
+case 'hms' :
+
+myprompt = h + ':' + m + ':' + s;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'hm' :
+
+myprompt = h + ':' + m;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'mmm-d-y': myprompt = monthname+'-'+thisday+ '-' + thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'localampm': var myprompt = localt;
+
+var RightNow = prompt("Local time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldate': var myprompt = thisyear+ '-'+thismonth+'-'+thisday;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldatetime': var myprompt = thisyear+'/'+thismonth+ '/'+thisday+' '+h  + m ;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'autofulldatetime': var RightNow = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m ;
+
+//var RightNow = prompt("Date time:", myprompt);
+
+//document.getElementById(TheFld).value = RightNow;
+
+//var ORTimestamp = thisyear+submonth+subday+h+m+s;
+
+//document.getElementById('TimeStampOR').value = ORTimestamp; break;
+
+case 'iso': var myprompt = isostr;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'utc': var myprompt = utcstr;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'zulu': var myprompt = isostr;
+
+myprompt = isostr.replace("T", " "); slen = myprompt.length;
+
+myprompt = myprompt.substr(0, slen-5)+'Z';
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'UTChm': var myprompt = myUTCtime;
+
+var RightNow = prompt("Date time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+}
+
+}
+
+
+
+function Checkboxes(){
+
+// var x = document.getElementById('box').checked;
+
+var t1 = ''; t1 = t1+ '{var auth}';
+
+
+
+if (t1 =="YES") { document.getElementById('authb').checked=true;}
+
+
+
+
+
+} 
+
+
+
+</script>
+
+<style>
+
+<!--
+
+TD{ bgcolor="#ffffff" valign="top"}
+
+.SubmitBtn {font-size: 12px;
+
+font-family: Arial,Helvetica,sans-serif;
+
+font-weight: inherit;
+
+}
+
+</script>
+
+.style24 {font-family: Arial,Helvetica,sans-serif; font-size: 20px}
+
+</style>
+
+<style>
+
+/*
+
+body {color:#000; background:#fff; font:100%/1.5 arial,sans-serif;}
+
+h2 {margin-top:0}
+
+*/
+
+/* Styling applied to classes only */
+
+/* Pop-up content shifted off-screen when not in view.
+
+Still readable by screen-reader software.
+
+When targeted it fills the browser window.
+
+*/
+
+.pop-up {position:absolute; top:0; left:-500em;}
+
+.pop-up:target {position:static; left:0;}
+
+/* The pop-up itself */
+
+.popBox {
+
+background:#ffffff;
+
+/* alternatively fixed width / height and negative margins from 50% */
+
+position:absolute; left:30%; right:30%; top:30%; bottom:30%;
+
+z-index:10;
+
+border:1px solid #3a3a3a;
+
+/* CSS3 where available: rounded corners, drop-shadow, and fade in. */
+
+border-radius:.25rem;
+
+box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
+
+opacity:0;
+
+transition: opacity 0.8s ease-out;
+
+}
+
+:target .popBox {position:fixed; opacity:1;}
+
+/* Light box properties */
+
+.lightbox {
+
+display:none;
+
+text-indent:-200em;
+
+background-color:rgba(0,0,0,.4);
+
+width:100%;
+
+height:100%;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+bottom:0;
+
+right:0;
+
+z-index:5;
+
+}
+
+:target .lightbox {display:block;}
+
+/* The pop-ups close link, moved via CSS to the top right of the pop-up */
+
+.close:link,
+
+.close:visited {
+
+position: absolute;
+
+top: -0.75em;
+
+right: -0.75em;
+
+display: block;
+
+width: 2em;
+
+height: 2em;
+
+line-height: 1.8;
+
+padding: 0;
+
+text-align: center;
+
+text-decoration: none;
+
+background-color: #000;
+
+border: 2px solid #fff;
+
+color: #fff;
+
+border-radius: 50%;
+
+box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+
+}
+
+.close:before {content:"X";}
+
+.close:hover,
+
+.close:active,
+
+.close:focus {
+
+box-shadow: 0 0 .5rem .5rem rba(255,0,0,.5);
+
+background-color: #c00;
+
+color: #fff;
+
+}
+
+.close span {
+
+text-indent: -200em;
+
+display: block;
+
+}
+
+/* The pop-up content div will scroll if it has too much content */
+
+.popScroll {
+
+position:absolute;
+
+top: 1rem;
+
+left: 1rem;
+
+right: 1rem;
+
+bottom: 1rem;
+
+overflow-y: auto;
+
+*overflow-y: scroll;
+
+padding-right: 0.5em;
+
+}
+
+.popScroll h2 {margin-top:0}
+
+.style11 {
+
+font-size: 9pt;
+
+color: #006600;
+
+}
+
+.style12 {font-size: 18px}
+
+.style6 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 20px;
+
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body onload = "Checkboxes();">
+
+<form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="ICS213" method="post" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" ="">
+
+
+
+<table style="width: 888px; " border="1" cellpadding="3" cellspacing="0">
+
+<colgroup><col width="657" /></colgroup> <tbody>
+
+<tr valign="middle" bgcolor="#f8f8ff">
+
+<td height="35" colspan="2">
+
+<div  align="center"><span class="style6">&nbsp;
+
+&nbsp; &nbsp; &nbsp; &nbsp;<span class="style6">Virginia Resource Request</span></div>
+
+</td>
+
+</tr>
+
+<tr valign="middle">
+
+<td colspan="2" class="formtext" style="height: 35px; text-align: right;">Event Name: <input name="event_name" readonly="readonly" id="event_name" value="{var event_name}" size="40" maxlength="38" /><br />
+
+Mission Number: <input  maxlength="38" name="leave_blank" id="leave_blank" size="40" r/> </td>
+
+</tr>
+
+<tr valign="middle">
+
+<td colspan="2" rowspan="1"><span style="font-weight: bold;">&nbsp;Requesting Agency/Locality
+
+Information</span><o:p style="font-weight: bold;"></o:p><span style="font-weight: bold;">
+
+</span><br />
+
+<span style="font-size: 9pt;"><span style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;</span>&nbsp;</span>Note: Authorized
+
+Representatives are those individuals within a locality or state agency
+
+who
+
+have written authority to incur cost or enter into contractual
+
+agreements on
+
+behalf <br />
+
+<span style="font-weight: bold;">&nbsp;<span style="font-weight: bold;">&nbsp;</span></span>ofagency/locality.</span></td>
+
+</tr>
+
+<tr valign="middle">
+
+<td colspan="2" cclass="formtext">
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left;">
+
+<tbody>
+
+<tr valign="top">
+
+<td width="26%" colspan="1" rowspan="1">
+
+<span style="font-weight: bold;">&nbsp;</span>Request Originator:</td>
+
+<td width="74%"> {var originator} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td colspan="1" rowspan="1">
+
+&nbsp;Initial Date/Time:</td>
+
+<td> {var init_date} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td colspan="1" rowspan="1">
+
+&nbsp;State Agency/Locality:</td>
+
+<td> {var agency} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td><span style="font-weight: bold;">&nbsp;</span>Authorized Representative Name:</td>
+
+<td> {var rep_name} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td><span style="font-weight: bold;">&nbsp;</span>Authorized Representative Title:</td>
+
+<td> {var rep_title} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td height="25" colspan="1" rowspan="1">
+
+<span style="font-weight: bold;">&nbsp;</span>Auth. Representative Approval:</td>
+
+<td ><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">
+
+<input name="authb" type="checkbox" id="authb" onclick="Flip('auth', 'YES')" value="YES'" disabled required=""/> 
+
+{var auth}
+
+<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">I am authorized by my jurisdiction/agency to obligate funds for this request.</span></span></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</td>
+
+</tr>
+
+<tr valign="middle" style="font-weight: bold;">
+
+<td colspan="2" rowspan="1"><span style="font-weight: bold;">&nbsp;</span>Request for
+
+Assistance Information</td>
+
+</tr>
+
+<tr valign="middle">
+
+<td colspan="2" class="formtext">
+
+<p ><span style="font-weight: bold;">&nbsp;</span>1. What CAPABILITY does your
+
+agency require and what will
+
+the resource be doing (scope of work)?
+
+  <br />
+
+  <span class="formtext"> <span style="width:800px; margin-left: 10px;  word-wrap:break-word; display:inline-block;"> {var resource_cap}</span>
+
+</span></p>
+
+<p ><span style="font-weight: bold;">&nbsp;</span>2. Please specify the SIZE
+
+and AMOUNT of the resource
+
+required to meet this capability requested:</p>
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left; ">
+
+<tbody>
+
+<tr>
+
+<td width="25%"  colspan="1" rowspan="1" valign="top">
+
+<span style="font-weight: bold;">&nbsp;</span>Size:</td>
+
+<td width="75%" valign="top" >&nbsp;{var resource_size}</td>
+
+</tr>
+
+<tr>
+
+<td  colspan="1" rowspan="1" valign="top">
+
+<span style="font-weight: bold;">&nbsp;</span>Amount:</td>
+
+<td valign="top" >&nbsp;{var resource_amt} </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p><span style="font-weight: bold;">&nbsp;</span>3. Where does this resource need to be delivered to?
+
+Please
+
+provide address of LOCATION needed.</p>
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left; ">
+
+<tbody>
+
+<tr valign="top">
+
+<td width="25%" colspan="1" rowspan="1"><span style="font-weight: bold;">&nbsp;</span>Address of Location
+
+Needed:</td>
+
+<td width="75%" >&nbsp;{var address_loc} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td  colspan="1" rowspan="1" >
+
+<span style="font-weight: bold;">&nbsp;</span>Latitude/Longitude:</td>
+
+<td >&nbsp;{var lat_lon} </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p ><span style="font-weight: bold;">&nbsp;</span>4. TIME requirements:<o:p></o:p></p>
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left; ">
+
+<tbody>
+
+<tr valign="top">
+
+<td width="26%" colspan="1" rowspan="1" s><span style="font-weight: bold;">&nbsp;</span>Arrival Date/Time:</td>
+
+<td width="74%" >&nbsp;{var arrival_date} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td rowspan="1" scolspan="1">
+
+&nbsp;Work Start Date/Time:</td>
+
+<td >&nbsp;{var work_start} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td >&nbsp;Duration of
+
+Deployment:</td>
+
+<td >&nbsp;{var duration}
+
+</td>
+
+</tr>
+
+<tr valign="top">
+
+<td  >&nbsp;If Other, Specify:</td>
+
+<td s>&nbsp;{var other_duration}</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p >&nbsp;5. What POTENTIAL
+
+RESOURCE/FEMA TYPED RESOURCE do you
+
+believe could meet this request?<o:p></o:p></p>
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left;  ">
+
+<tbody>
+
+<tr valign="top">
+
+<td width="151"  style="vertical-align: top; width: 130px;"><span style="font-weight: bold;">&nbsp;</span>Potential
+
+Resource:</td>
+
+<td width="713"><span style="width:600px; margin: 10px;  word-wrap:break-word; display:inline-block;">{var resource_type}</span> </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p ><span style="font-weight: bold;">&nbsp;</span>6. POINT OF CONTACT to call
+
+about this request:<span style="font-size: 9pt;"><br />
+
+<span style="font-weight: bold;">&nbsp;<span style="font-weight: bold;">&nbsp;</span></span>Note: Points of contact are those individuals resource providers can
+
+call and ask questions about
+
+the request, get delivery locations, etc. <br />
+
+<span style="font-weight: bold;"><span style="font-weight: bold;">&nbsp;</span>&nbsp;</span>This person may not be the
+
+authorized
+
+representative.</span></p>
+
+<span style="font-size: 9pt;"></span>
+
+<table width="100%" border="1" cellpadding="2" cellspacing="0" style="text-align: left; ">
+
+<tbody>
+
+<tr valign="top">
+
+<td width="27%" colspan="1" rowspan="1" style="h"><span style="font-weight: bold;">&nbsp;</span>Contact
+
+Name</td>
+
+<td width="73%" >&nbsp;{var contact_name} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td rowspan="1" style= colspan="1"><span style="font-weight: bold;">&nbsp;</span>Contact
+
+Email</td>
+
+<td s>&nbsp;{var contact_email} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td rowspan="1" style= colspan="1"><span style="font-weight: bold;">&nbsp;</span>Contact
+
+Phone Number</td>
+
+<td >&nbsp;{var contact_phone} </td>
+
+</tr>
+
+<tr valign="top">
+
+<td colspan="1" rowspan="1" ><span style="font-weight: bold;">&nbsp;</span>Alternate
+
+24-hour Phone</td>
+
+<td >&nbsp;{var alt_phone} </td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<p><span style="font-weight: bold;">&nbsp;</span>7. COMMENTS:<br />
+
+<span style="width:800px; margin: 10px;  word-wrap:break-word; display:inline-block;">{var comments} </span><br />
+
+  <span style="font-size: 9pt;"><o:p></o:p></span></p>
+
+</td>
+
+</tr>
+
+<tr valign="middle" class="formtext">
+
+<td colspan="1" >
+
+<div align="left"> <span style="font-family: Calibri;"><small>&nbsp;
+&nbsp;<span style="color: rgb(204, 0, 0);"></span> </small></span> &nbsp; &nbsp;<span class="style11"> &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;Winlink Senders Base
+
+Call:</span> {var Call}
+
+</div></td>
+
+<td style="width: 120px;">
+
+<div align="left">Ver 2.1<span style="font-style: italic;"> KW6GB</span></div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</form>
+
+</body></html>

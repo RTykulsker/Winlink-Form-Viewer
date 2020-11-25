@@ -1,0 +1,19 @@
+Form: POD_General_Message_SendReply.html,POD_General_Message_SendReply_Viewer.html
+Def: MsgOriginalBody=<var MsgOriginalBody> 
+
+To: 
+Subject: POD_General Message-<var Subjectline>
+<var MsgOriginalBody>
+
+Msg:
+-------    
+<var Reply>
+---------------------------------------------------------
+11. REPLIED BY: <var Replied_Name>
+    POSITION & TITLE: <var Replied_PosTitle>
+    REPLIED DATE & TIME: <var DateTime>
+    FACIITY:  <var Facility>
+
+---------------------------------------------------------------
+BELOW IS THE ORIGINAL POD General Message as it was SENT:
+----------------------------------------------------------------

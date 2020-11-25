@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.surftools</groupId>
+	<artifactId>pfe</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>PatFrontEnd</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+  		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<java.version>15</java.version>
+		<maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+		<maven.appassembler.plugin.version>1.10</maven.appassembler.plugin.version>
+
+		<args4j.version>2.32</args4j.version>
+		<log4j.version>1.2.17</log4j.version>
+		<slf4j.version>1.7.6</slf4j.version>
+		<junit.version>4.12</junit.version>
+		<sparkjava-version>2.9.3</sparkjava-version>
+
+	</properties>
+
+	<dependencies>	
+	
+		<dependency>
+			<groupId>args4j</groupId>
+			<artifactId>args4j</artifactId>
+			<version>${args4j.version}</version>
+		</dependency>	
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>	
+		
+		<dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>${sparkjava-version}</version>
+        </dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- mvn package -DskipTests=true -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>${maven.appassembler.plugin.version}</version>
+
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<extraJvmArguments>-XX:-UseGCOverheadLimit</extraJvmArguments>
+					<configurationSourceDirectory>src/main/resources/conf</configurationSourceDirectory>
+					<configurationDirectory>conf</configurationDirectory>
+					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+					<platforms>
+						<platform>all</platform>
+					</platforms>					
+					<programs>
+						<program>
+							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
+							<id>fv</id>
+							<commandLineArguments>
+                				<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
+                			</commandLineArguments>							
+						</program>
+						<program>
+							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
+							<id>fv-server</id>
+							<commandLineArguments>
+                				<commandLineArgument>--server</commandLineArgument>
+                				<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
+                			</commandLineArguments>
+						</program>											
+					</programs>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<filters>
+			<filter>${user.home}/configuration.properties</filter>
+		</filters>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+
+				<includes> 
+					<include>**/*.xml</include> 
+					<include>**/*.properties</include>
+					<include>forms</include>
+					<include>fv.conf</include>      
+				</includes>
+				
+
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>				
+				</includes>
+			</testResource>
+		</testResources>
+	</build>
+</project>

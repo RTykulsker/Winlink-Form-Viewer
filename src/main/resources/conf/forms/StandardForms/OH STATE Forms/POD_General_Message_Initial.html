@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>POD-General Message</title>
+
+<style type="text/css">
+body, td, th {
+font-family: Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: lighter;
+font-size: 14px;
+}
+.zentriert {
+text-align: center;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: normal;
+font-style: normal;
+}
+textarea {
+padding-right: 1px;
+padding-left: 1px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-topleft: 2px;
+font-size: 12px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-weight: normal;
+font-style: normal;
+}
+.rechtsbuendig {
+text-align: right;
+}
+.SubmitBtn {
+text-align: right;
+}
+.version {
+font-size: 10px;
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+}
+.formtext {font-family: Arial, Helvetica, sans-serif;
+font-size: 11pt;
+font-weight: normal;
+}
+.style2 {font-size: 12px}
+</style><!-- HICS-ICS213 Template-->
+<script>
+function shortmonth(monthnum) {
+var monthname;
+shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+monthname = shortmonths [monthnum];s
+return monthname; }
+
+function SetDateTime(TType,TheFld, FocusFld) {
+var txt;
+var myprompt;
+var d = new Date(),
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thisday = d.getDate();
+var submonth = thismonth+1; ;
+if (submonth < 10) { submonth = "0"+submonth};
+var subday = thisday;
+if (thisday < 10) { thisday = "0"+thisday};
+var monname;
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var now = new Date();
+var utch = now.getUTCHours();
+if (utch < 10) { utch = "0"+utch};
+var utcs = now.getUTCMinutes();
+if (utcs < 10) { utcs = "0"+utcs};
+var myUTCtime = utch+":"+utcs+"Z";
+var utcstr = d.toUTCString();
+var localt = d.toLocaleTimeString();
+var isostr = d.toISOString();
+monthname = shortmonth (thismonth);
+thismonth = thismonth + 1;
+switch (TType) {
+case 'hms' :
+myprompt = h + ':' + m + ':' + s;
+var RightNow = prompt("Time:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'hm' :
+myprompt = h + ':' + m;
+var RightNow = prompt("Time:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
+var RightNow = prompt("Date:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
+var RightNow = prompt("Date:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
+var RightNow = prompt("Date:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'mmm-d-y': myprompt = monthname+'-'+thisday+ '-' + thisyear;
+var RightNow = prompt("Date:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'localampm': var myprompt = localt;
+var RightNow = prompt("Local time:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'fulldate': var myprompt = thisyear+ '-'+thismonth+'-'+thisday;
+var RightNow = prompt("Date:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+case 'fulldatetime': var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m ;
+var RightNow = prompt("Date time:", myprompt);
+document.getElementById(TheFld).value = RightNow;
+break;
+}//var ORTimestamp = thisyear+submonth+subday+h+m+s;
+//document.getElementById('TimeStampOR').value = ORTimestamp; break;
+
+}
+
+function AutoGrowTextArea(textField)
+{
+if (textField.clientHeight < textField.scrollHeight)
+{
+textField.style.height = textField.scrollHeight + "px";
+if (textField.clientHeight < textField.scrollHeight)
+{
+textField.style.height = (textField.scrollHeight * 2 - textField.clientHeight) + "px";
+}
+}
+}
+function Countthelines(f) { var text1 = f
+var text2 = text1.replace(/\s+$/,"");
+var split2 = text2.split("\n"); var mytotal = split2.length * 17;
+if (mytotal < 150) {
+mytotal = 150;
+}
+var tstr = mytotal.toString();
+return tstr;
+}
+function newfix(f){
+var ThisText = document.getElementById(f).value;
+var makeit = Countthelines(ThisText);
+document.getElementById(f).style.height = makeit+"px"; }
+function Fixarea() {
+newfix("msg");
+newfix("reply");
+AutoGrowTextArea(document.getElementById("msg"));
+AutoGrowTextArea(document.getElementById("reply"));
+}
+function RWS(str){
+var text2 = str.replace(/\s+$/,"");
+return text2.trim();
+}
+
+// add save load
+
+
+function saveTextAsFile(fileNameToSaveAs, textToWrite) {
+var textToWrite = document.getElementById('parseme').value; 
+var fileNameToSaveAs = "POD Initial Message " + DateforFile()+".txt";
+fileNameToSaveAs = prompt("", fileNameToSaveAs);
+
+  /* Saves a text string as a blob file*/  
+  var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+      ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+      ieEDGE = navigator.userAgent.match(/Edge/g),
+      ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
+
+  if (ie && ieVer<10) {
+    console.log("No blobs on IE ver<10");
+    return;
+  }
+
+  var textFileAsBlob = new Blob([textToWrite], {
+    type: 'text/plain'
+  });
+
+  if (ieVer>-1) {
+    window.navigator.msSaveBlob(textFileAsBlob, fileNameToSaveAs);
+
+  } else {
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = function(e) { document.body.removeChild(e.target); };
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  }
+}
+
+
+
+
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+function loadFileAsText()
+{
+
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+
+function DateforFile(RightNow) {
+var txt;
+var d = new Date(),
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0" + thismonth}
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0" + thisday}
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + '_' + m ;
+return myprompt;
+}
+
+function isObject(arg) {
+  return Object.prototype.toString.call(arg)==='[object Object]';
+}
+
+function formDataToObject(elForm) {
+  if (!elForm instanceof Element) return;
+  var fields = elForm.querySelectorAll('input, select, textarea'),
+    o = {};
+  for (var i=0, imax=fields.length; i<imax; ++i) {
+    var field = fields[i],
+      sKey = field.name || field.id;
+    if (field.type==='button' || field.type==='image' || field.type==='submit' || !sKey) continue;
+    switch (field.type) {
+      case 'checkbox':
+        o[sKey] = +field.checked;
+        break;
+      case 'radio':
+        if (o[sKey]===undefined) o[sKey] = '';
+        if (field.checked) o[sKey] = field.value;
+        break;
+      case 'select-multiple':
+        var a = [];
+        for (var j=0, jmax=field.options.length; j<jmax; ++j) {
+          if (field.options[j].selected) a.push(field.options[j].value);
+        }
+        o[sKey] = a;
+        break;
+      default:
+        o[sKey] = field.value;
+    }
+  }
+ // alert('Form data:\n\n' + JSON.stringify(o, null, 2));
+ document.getElementById('parseme').value = JSON.stringify(o, null, 2);
+//  return o;
+}
+
+function populateForm(o) {
+
+o =  JSON.parse(document.getElementById('parseme').value);
+ //if (!isObject(o)) return;
+if (!isObject(o)) return;
+  for (var i in o) {
+    var el = document.getElementById(i) || document.querySelector('[name=' + i + ']');
+    if (el.type==='radio') el = document.querySelectorAll('[name=' + i + ']');
+    switch (typeof o[i]) {
+      case 'number':
+        el.checked = o[i];
+        break;
+      case 'object':
+        if (el.options && o[i] instanceof Array) {
+          for (var j=0, jmax=el.options.length; j<jmax; ++j) {
+            if (o[i].indexOf(el.options[j].value)>-1) el.options[j].selected = true;
+          }
+        }
+        break;
+      default:
+        if (el instanceof NodeList) {
+          for (var j=0, jmax=el.length; j<jmax; ++j) {
+            if (el[j].value===o[i]) el[j].checked = true;
+          }
+        } else {
+          el.value = o[i];
+        }
+    }
+  }
+    Fixfields();
+
+
+}
+
+function SaveData() {
+	
+			formDataToObject(document.getElementById('myform'))
+			saveTextAsFile();
+			
+			//saveTextAsFile();
+			}
+
+//-------
+ function readBlob(opt_startByte, opt_stopByte) {
+  
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+
+    var file = files[0];
+    var start = parseInt(opt_startByte) || 0;
+    var stop = parseInt(opt_stopByte) || file.size - 1;
+
+    var reader = new FileReader();
+
+    // If we use onloadend, we need to check the readyState.
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        document.getElementById('byte_content').textContent = evt.target.result;
+        document.getElementById('byte_range').textContent = 
+            ['Read bytes: ', start + 1, ' - ', stop + 1,
+             ' of ', file.size, ' byte file'].join('');
+      }
+    };
+
+    var blob = file.slice(start, stop + 1);
+    reader.readAsBinaryString(blob);
+  }
+    	
+  window.onload = function () { 
+ 
+ //Check the support for the File API support 
+ if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var fileSelected = document.getElementById('txtfiletoread');
+	
+    fileSelected.addEventListener('change', function (e) { 
+         //Set the extension for the file 
+         var fileExtension = /text.*/; 
+         //Get the file object 
+         var fileTobeRead = fileSelected.files[0];
+        //Check of the extension match 
+         if (fileTobeRead.type.match(fileExtension)) { 
+             //Initialize the FileReader object to read the 2file 
+			
+             var fileReader = new FileReader(); 
+             fileReader.onload = function (e) { 
+                 var fileContents = document.getElementById('filecontents'); 
+                
+				document.getElementById('parseme').value =fileReader.result;
+				populateForm(obj = document.getElementById('parseme').value);
+					 } 
+             fileReader.readAsText(fileTobeRead); 
+         } 
+         else { 
+             alert("Please select text file"); 
+         }
+ 
+    }, false);
+} 
+ else { 
+     alert("Files are not supported"); 
+ } 
+ Fixfields();
+ }
+ 
+ function Fixfields() { 
+ AutoGrowTextArea(document.getElementById("Message"));
+
+
+}
+// function setcolors() {
+
+
+
+</script>
+</head>
+<body>
+<form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+<table style="width: 791px; height: 638px;" border="0">
+<tbody>
+<tr>
+<td pbzloc="17">
+<table pbzloc="11" style="width: 929px; height: 378px;" border="1" bordercolor="#999999" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td height="60" colspan="2" style="width: 860px; text-align: center; height: 35px; background-color: rgb(204, 255, 255);"><p><strong><small><big style="font-weight: bold;"><big>&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </big></big></small></strong><small><big><big>POINT
+  OF DISPENSE</big>
+  <big>GENERAL
+  MESSAGE FORM</big></big></small><strong><small><big style="font-weight: bold;">&nbsp;
+  </big></small></strong><small><big><big>(Medical)</big></big></small><strong><small>  <big style="font-weight: bold;"><big>&nbsp;
+&nbsp;&nbsp;</big></big></small></strong><span class="style2"><small><small><big pbzloc="1"> Vers 7 </big></small></small></span></p>
+  <p><small><small><strong style="font-weight: normal;"><big pbzloc="1">
+  <input type="button" value=" Load Initial POD Message" onclick="document.getElementById('txtfiletoread').click();" />
+  <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
+    </big></strong></small></small></p></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="4" pbzloc="18"><div align="left"><br>
+       &nbsp;1.
+  Incident Name&nbsp;  <input id="Incident_Name" maxlength="60" name="Incident_Name" required="required" size="70" type="text">
+</div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2"><div align="left"><br>
+ &nbsp;2. To<small>
+  <big>(Name / Position)&nbsp;  <input id="To_Name" maxlength="60" name="To_Name" required="required" size="70" type="text">
+</big></small></div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2"><div align="left"><br>
+ &nbsp;3. From (Name
+  / Position)<strong></strong> &nbsp; 
+  <input id="From_Name" maxlength="60" name="From_Name" required="required" size="70" type="text">
+<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea></div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="3"><div align="left"><br>
+       &nbsp;4. Subject&nbsp;      <input id="Subjectline" maxlength="50" name="Subjectline" pbzloc="9" required="required" size="55">
+      <span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>5.
+  Date <strong>
+  <input title="You can overwrite if needed" id="Date" maxlength="13" placeholder="Click for Date" name="Date" required="required" size="13"  onclick="SetDateTime('fulldate',this.id)"> 
+  </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.Time<strong>
+  <input title="You can overwrite if needed" id="Time" maxlength="12" name="Time" required="required" placeholder="Click for Time"  size="12" onclick="SetDateTime('hm',this.id)"> 
+</strong></div></td>
+</tr>
+<tr>
+<td height="30" colspan="2" valign="top" style="text-align: center; " pbzloc="3"><div align="left">
+  <p><span style="color: black;">&nbsp;</span><span style="color: black;">7. Message Priority</span><span pbzloc="24" style="font-weight: bold;"> &nbsp;
+            <select name="Priority" pbzloc="15" size="1">
+                <option selected="selected" value="LOW">LOW</option>
+                <option value="MEDIUM">MEDIUM</option>
+                <option value="HIGH">HIGH</option>
+            </select>
+&nbsp; </span>&nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp; &nbsp;7A. This
+      concerns&nbsp;a Vaccine<span pbzloc="10" style="font-weight: bold;">&nbsp;
+      <select name="Vaccine" pbzloc="1" size="1">
+            <option selected="selected" value="NO">NO</option>
+            <option value="UPDATE">UPDATE</option>
+            <option value="REQUEST">REQUEST</option>
+      </select>
+</span></p>
+  </div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="2"><table style="text-align: left; width: 915px; height: 115px;" border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr bgcolor="#FFFFCC">
+<td style="width: 50%; text-align: center;">Vaccine
+Name</td>
+<td style="text-align: center;">Doses
+Remaining</td>
+<td style="text-align: center;">Time</td>
+</tr>
+<tr>
+<td style="text-align: center;"><input maxlength="50" name="Vaccine1" size="60" type="text"></td>
+<td style="text-align: center;"><input maxlength="8" name="Doses1" size="8" type="text"></td>
+<td style="text-align: center;"><input maxlength="10" placeholder="Click for Time" name="Time1"id="Time1" size="10" type="text"onclick="SetDateTime('hm',this.id)"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><input maxlength="50" name="Vaccine2" size="60" type="text"></td>
+<td style="text-align: center;"><input maxlength="8" name="Doses2" size="8" type="text"></td>
+<td style="text-align: center;"><input maxlength="10"  placeholder="Click for Time" name="Time2" id="Time2" size="10" type="text"onclick="SetDateTime('hm',this.id)"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><input maxlength="50" name="Vaccine3" size="60" type="text"></td>
+<td style="text-align: center;"><input maxlength="8" name="Doses3" size="8" type="text"></td>
+<td style="text-align: center;"><input maxlength="10"  placeholder="Click for Time" name="Time3"  id="Time3"size="10" type="text"onclick="SetDateTime('hm',this.id)"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="height: 88px; text-align: center;"><div align="left"><br>
+   &nbsp;8. Message <small>(Be brief and accurate)</small><br>
+</div>
+  <div align="left">
+    <label pbzloc="10">
+     &nbsp;
+     <textarea cols="130" id="Message" name="Message"   rows="2"onchange="this.value=RWS(this.value)" onkeyup="AutoGrowTextArea(this)"></textarea>
+    </label>
+  </div></td>
+</tr>
+<tr>
+<td style="text-align: center;" colspan="4"><div align="left"><br>
+       &nbsp;9. Approved By&nbsp;      
+       <input id="Approved_Name" maxlength="30" name="Approved_Name" required="required" size="35" type="text">
+&nbsp;&nbsp; Position&nbsp;  <input id="Approved_PosTitle" maxlength="30" name="Approved_PosTitle" required="required" size="35" type="text">
+</div></td>
+</tr>
+<tr pbzloc="22">
+  <td colspan="4" pbzloc="3" style="height: 35px; vertical-align: baseline;"><span style="font-family: Calibri;"><small><span class="formtext"><span style="font-family: Calibri;"><small><big><big><small><span style="font-family: Calibri;">
+    <input type="button" value="Save Initial POD Message"  style="color: blue;"onclick="SaveData()" />
+    </span>&nbsp;&nbsp;</small></big></big></small></span></span></small></span>
+    <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" name="Submit" pbzloc="4" post="" size="7" style="height: 26px;  color: green;" value="Submit" type="submit"> <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset">&nbsp;&nbsp;
+&nbsp;<small><span style="color: rgb(153, 0, 0);"><big>
+&nbsp; &nbsp; &nbsp;</big></span></small></span></td></tr>
+</tbody>
+</table>
+<br>
+&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</form>
+</body></html>

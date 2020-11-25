@@ -1,0 +1,1108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" /><title>REPORT OF EMERGENCY</title>
+<style type="text/css">
+.roter_Untergrund {
+border-width: thin;
+background-color: #ff0000;
+}
+.RADIOGRAM {
+border-width: thin;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 28px;
+font-style: normal;
+font-weight: bold;
+color: #333333;
+text-align: center;
+}
+.Kopfzeile {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+color: #000000;
+text-align: center;
+background-color: #efefef;
+}
+zellenhintergrund {
+background-color: #000000;
+}
+zellenhintergrund {
+background-color: #efefef;
+}
+zellenfeld {
+text-align: center;
+}
+hintergrundtabelle {
+background-color: #efefef;
+}
+.TabelleHintergrund {
+background-color: #efefef;
+text-align: left;
+}
+body, td, th {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+rechtsbuendig {
+font-size: 12px;
+}
+rb {
+text-align: right;
+}
+.TabelleHintergrund tr td .background_table {
+text-align: left;
+}
+.TabelleHintergrund tr td {
+text-align: left;
+}
+.zentriert {
+text-align: center;
+}
+input, select {
+border: 1px solid #4195fc;
+padding: 2px;
+-moz-border-radius-topleft: 4px;
+-moz-border-radius-topright: 4px;
+-moz-border-radius-bottomright: 4px;
+-moz-border-radius-bottomleft: 4px;
+background-color: #f0f0fa;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+textarea {
+margin: 10px;
+padding: 10px;
+-moz-border-radius-topleft: 4px;
+-moz-border-radius-topright: 4px;
+-moz-border-radius-bottomright: 4px;
+-moz-border-radius-bottomleft: 4px;
+background-color: #f3f3fa;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+.MSGtext {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+.SubmitBtn {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: bold;
+color: #006600;
+}
+.FromText {
+font-family: Arial,Helvetica,sans-serif;
+color: #aaaaaa;
+font-size: 12px;
+}
+.Download {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 10px;
+color: #aaaaaa;
+}
+.punctuation {
+margin-top: 1px;
+visibility: hidden;
+}
+.P2Pcheckbox {
+margin-bottom: 15px;
+}
+.Kopfzeile1 {font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-weight: bold;
+color: #000;
+text-align: center;
+background-color: #EFEFEF;
+}
+.punctuation1 {margin-top: 15px;
+}.estyle1 {color: #33CC00;
+ background-color: green; }
+.estyle2 {color: #FF0000;
+ background-color: red; }
+</style>
+<style>
+/*
+body {color:#000; background:#fff; font:100%/1.5 arial,sans-serif;}
+h2 {margin-top:0}
+*/
+/* Styling applied to classes only */
+/* Pop-up content shifted off-screen when not in view.
+Still readable by screen-reader software.
+When targeted it fills the browser window.
+*/
+.pop-up {
+	position:absolute;
+	top:0;
+	left:-500em;
+}
+.pop-up:target {position:static; left:0;}
+/* The pop-up itself */
+.popBox {
+	background:#ffffff;
+	position:absolute;
+	left:20%;
+	right:20%;
+	top:16%;
+	bottom:16%;
+	z-index:10;
+	border:1px solid #3a3a3a;
+/* CSS3 where available: rounded corners, drop-shadow, and fade in. */
+border-radius:.25rem;
+box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
+	opacity:0;
+	transition: opacity 0.8s ease-out;
+}
+:target .popBox {position:fixed; opacity:1;}
+/* Light box properties */
+.lightbox {
+display:none;
+text-indent:-200em;
+background-color:rgba(0,0,0,.4);
+width:100%;
+height:100%;
+position:fixed;
+top:0;
+left:0;
+bottom:0;
+right:0;
+z-index:5;
+}
+:target .lightbox {display:block;}
+/* The pop-ups close link, moved via CSS to the top right of the pop-up */
+.close:link,
+.close:visited {
+	position: absolute;
+	top: -0.75em;
+	right: -0.75em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 1.8;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 50%;
+box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+	visibility: visible;
+}
+.close:before {content:"X";}
+.close:hover,
+.close:active,
+.close:focus {
+box-shadow: 0 0 .5rem .5rem rba(255,0,0,.5);
+background-color: #c00;
+color: #fff;
+}
+.close span {
+text-indent: -200em;
+display: block;
+}
+/* The pop-up content div will scroll if it has too much content */
+.popScroll {
+	position:absolute;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	overflow-y: auto;
+*overflow-y: scroll;
+	padding-right: 0.5em;
+	visibility: visible;
+}
+.popScroll h2 {margin-top:0}
+.red {
+color: red;
+  }
+.style25 {font-size: 18px}
+.style35 {font-size: 12px; color: #2A0000; }
+.style36 {font-size: 14px; color: #2A0000; }
+.style37 {
+	font-size: 14px;
+	font-weight: bold;
+}
+.style38 {font-size: 12px}
+.SubmitBtn1 {font-size: 12px;
+font-weight: inherit;
+}
+.FormReg {font-size: 11px; font-family:Arial, Helvetica, sans-serif}
+.formbold {font-size: 11px; font-weight: bold; font-family:Arial, Helvetica, sans-serif}
+.formtext1 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+
+margin: 10px;
+}
+.style3 {font-family: Calibri}
+.formtext {font-family: Arial, Helvetica, sans-serif;
+font-size: 11pt;
+font-weight: normal;
+}
+ input[type=button] {
+
+  border: 2px solid #0f88f2;;
+   border-radius:.25rem;
+  
+  font-size: 14px;
+  padding: 2px 2px;
+ background-color: white;
+  text-decoration: none;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+input[type=submit] {
+ border: 2px solid green;
+  border-radius:.25rem;
+  background-color: white;
+ 
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+input[type=reset] {
+ border: 2px solid red;
+ border-radius:.25rem;
+  background-color: white;
+ 
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+input[type=regular] {
+ border: 2px solid #999999;
+  border-radius:.25rem;
+width:45px;
+  background-color: white;
+ 
+  padding: 2px 2px;
+  font-size: 12px;
+   cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+var TimeLocal;
+var TimeUTC;
+var thewordcnt;
+function shortmonth(monthnum) {
+var monthname;
+shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+monthname = shortmonths [monthnum];
+return monthname;
+}
+var cnt;
+function cookie_counter () {
+var expdate = new Date();
+var counter;
+// Set expiration date to a year from now.
+expdate.setTime(expdate.getTime() + (24 * 60 * 60 * 1000 * 365)); if(!(counter = GetCookie())) counter = 0;
+counter++;
+SetCookie("Callsign", counter, expdate, "/", null, false);
+document.getElementById('NumberVal').value = counter;
+}
+
+function AutoGrowTextArea(textField)
+
+{
+
+if (textField.clientHeight < textField.scrollHeight)
+
+{
+
+textField.style.height = textField.scrollHeight + "px";
+
+if (textField.clientHeight < textField.scrollHeight)
+
+{
+
+textField.style.height = (textField.scrollHeight * 2 - textField.clientHeight) + "px";
+
+}
+
+}
+
+}
+
+function Countthelines(f) { var text1 = f
+
+var text2 = text1.replace(/\s+$/,"");
+var ar = text2.length /100;
+var mytotal = (text1.length+ar) * 15.5;
+
+//var split2 = text2.split("\n"); var mytotal = split2.length * 15.5;
+
+if (mytotal < 150) {
+
+mytotal = 150;
+
+}
+
+var tstr = mytotal.toString();
+
+return tstr;
+
+}
+
+function newfix(f){
+
+var ThisText = document.getElementById(f).value;
+alert(' 352'+Countthelines(ThisText));
+ar = ThisText.length
+alert(' 349 '+Countthelines(ThisText));
+var makeit = Countthelines(ThisText);
+document.getElementById(f).style.height = makeit+"px"; }
+
+function Fixarea() {
+
+newfix("Message");
+
+newfix("reply");
+
+AutoGrowTextArea(document.getElementById("Message"));
+
+AutoGrowTextArea(document.getElementById("reply"));
+
+}
+  
+function Flip2(theid,working) {
+ document.getElementById(theid).value = working} 
+
+function Flip(theid,working) {
+x1 = document.getElementById(theid).value;
+if (x1 == '' || x1 == '') { document.getElementById(theid).value = working;} 
+else { document.getElementById(theid).value = '';}
+}
+function SetDateTime(TType,TheFld, FocusFld) {
+
+//id="tformat" value="Local"
+var txt;
+
+var myprompt;
+
+var d = new Date(),
+
+thisyear = d.getFullYear();
+
+thismonth= d.getMonth();
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0" + thisday}
+var monname;
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+
+var now = new Date();
+
+var utch = now.getUTCHours();
+
+if (utch < 10) { utch = "0"+utch};
+
+var utcs = now.getUTCMinutes();
+
+if (utcs < 10) { utcs = "0"+utcs};
+
+var myUTCtime = utch+":"+utcs+"Z";
+
+var utcstr = d.toUTCString();
+
+var localt = d.toLocaleTimeString();
+
+var isostr = d.toISOString();
+var UTCyear = d.getUTCFullYear();
+//monthname = shortmonth (thismonth);
+var UTCmon = d.getUTCMonth();  
+var UTCmon = UTCmon+1;
+if (UTCmon < 10) { UTCmon = "0" + UTCmon}
+
+var UTCdate = d.getUTCDate();  
+thismonth = thismonth + 1;
+  if (thismonth < 10) { thismonth = "0" + thismonth}
+//if (thismonth < 10) { thismonth = "0" + thismonth}
+
+myUTCdate = UTCyear+'/'+UTCmon+'/'+UTCdate;
+switch (TType) {
+
+case 'hms' :
+
+myprompt = h + ':' + m + ':' + s;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'hm' :
+
+
+
+ var myprompt = h +':' + m;
+
+var RightNow = prompt("Time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'mmm-d-y': myprompt = thismonth+'-'+thisday+ '-' + thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'localampm': var myprompt = localt;
+
+var RightNow = prompt("Local time:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldate': 
+
+var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+case 'autofulldate': 
+
+var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
+
+var RightNow =myprompt;
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldatetime': 
+
+var myprompt = thisyear+'/'+thismonth+ '/'+thisday+' '+h  +':'+ m ;
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+}
+}
+
+// add save load
+
+
+function saveTextAsFile(fileNameToSaveAs, textToWrite) {
+var textToWrite = document.getElementById('parseme').value; 
+var fileNameToSaveAs = "NCR Data  " + DateforFile()+".txt";
+fileNameToSaveAs = prompt("", fileNameToSaveAs);
+
+  /* Saves a text string as a blob file*/  
+  var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+      ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+      ieEDGE = navigator.userAgent.match(/Edge/g),
+      ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
+
+  if (ie && ieVer<10) {
+    console.log("No blobs on IE ver<10");
+    return;
+  }
+
+  var textFileAsBlob = new Blob([textToWrite], {
+    type: 'text/plain'
+  });
+
+  if (ieVer>-1) {
+    window.navigator.msSaveBlob(textFileAsBlob, fileNameToSaveAs);
+
+  } else {
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = function(e) { document.body.removeChild(e.target); };
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  }
+}
+
+
+
+
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
+function loadFileAsText()
+{
+
+    var fileToLoad = document.getElementById("fileToLoad").files[0];
+ 
+    var fileReader = new FileReader();
+    fileReader.onload = function(fileLoadedEvent) 
+    {
+        var textFromFileLoaded = fileLoadedEvent.target.result;
+        document.getElementById("inputTextToSave").value = textFromFileLoaded;
+    };
+    fileReader.readAsText(fileToLoad, "UTF-8");
+}
+
+
+function DateforFile(RightNow) {
+var txt;
+var d = new Date(),
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0" + thismonth}
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0" + thisday}
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + '_' + m ;
+return myprompt;
+}
+
+function isObject(arg) {
+  return Object.prototype.toString.call(arg)==='[object Object]';
+}
+
+function formDataToObject(elForm) {
+  if (!elForm instanceof Element) return;
+  var fields = elForm.querySelectorAll('input, select, textarea'),
+    o = {};
+  for (var i=0, imax=fields.length; i<imax; ++i) {
+    var field = fields[i],
+      sKey = field.name || field.id;
+    if (field.type==='button' || field.type==='image' || field.type==='submit' || !sKey) continue;
+    switch (field.type) {
+      case 'checkbox':
+        o[sKey] = +field.checked;
+        break;
+      case 'radio':
+        if (o[sKey]===undefined) o[sKey] = '';
+        if (field.checked) o[sKey] = field.value;
+        break;
+      case 'select-multiple':
+        var a = [];
+        for (var j=0, jmax=field.options.length; j<jmax; ++j) {
+          if (field.options[j].selected) a.push(field.options[j].value);
+        }
+        o[sKey] = a;
+        break;
+      default:
+        o[sKey] = field.value;
+    }
+  }
+ // alert('Form data:\n\n' + JSON.stringify(o, null, 2));
+ document.getElementById('parseme').value = JSON.stringify(o, null, 2);
+//  return o;
+}
+
+function populateForm(o) {
+
+o =  JSON.parse(document.getElementById('parseme').value);
+ //if (!isObject(o)) return;
+if (!isObject(o)) return;
+  for (var i in o) {
+    var el = document.getElementById(i) || document.querySelector('[name=' + i + ']');
+    if (el.type==='radio') el = document.querySelectorAll('[name=' + i + ']');
+    switch (typeof o[i]) {
+      case 'number':
+        el.checked = o[i];
+        break;
+      case 'object':
+        if (el.options && o[i] instanceof Array) {
+          for (var j=0, jmax=el.options.length; j<jmax; ++j) {
+            if (o[i].indexOf(el.options[j].value)>-1) el.options[j].selected = true;
+          }
+        }
+        break;
+      default:
+        if (el instanceof NodeList) {
+          for (var j=0, jmax=el.length; j<jmax; ++j) {
+            if (el[j].value===o[i]) el[j].checked = true;
+          }
+        } else {
+          el.value = o[i];
+        }
+    }
+  }
+    Fixfields();
+
+
+}
+
+function SaveData() {
+	
+			formDataToObject(document.getElementById('myform'))
+			saveTextAsFile();
+			
+			//saveTextAsFile();
+			}
+
+//-------
+ function readBlob(opt_startByte, opt_stopByte) {
+  
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+      alert('Please select a file!');
+      return;
+    }
+
+    var file = files[0];
+    var start = parseInt(opt_startByte) || 0;
+    var stop = parseInt(opt_stopByte) || file.size - 1;
+
+    var reader = new FileReader();
+
+    // If we use onloadend, we need to check the readyState.
+    reader.onloadend = function(evt) {
+      if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        document.getElementById('byte_content').textContent = evt.target.result;
+        document.getElementById('byte_range').textContent = 
+            ['Read bytes: ', start + 1, ' - ', stop + 1,
+             ' of ', file.size, ' byte file'].join('');
+      }
+    };
+
+    var blob = file.slice(start, stop + 1);
+    reader.readAsBinaryString(blob);
+  }
+    	
+  window.onload = function () { 
+ 
+ //Check the support for the File API support 
+ if (window.File && window.FileReader && window.FileList && window.Blob) {
+    var fileSelected = document.getElementById('txtfiletoread');
+	
+    fileSelected.addEventListener('change', function (e) { 
+         //Set the extension for the file 
+         var fileExtension = /text.*/; 
+         //Get the file object 
+         var fileTobeRead = fileSelected.files[0];
+        //Check of the extension match 
+         if (fileTobeRead.type.match(fileExtension)) { 
+             //Initialize the FileReader object to read the 2file 
+			
+             var fileReader = new FileReader(); 
+             fileReader.onload = function (e) { 
+                 var fileContents = document.getElementById('filecontents'); 
+                
+				document.getElementById('parseme').value =fileReader.result;
+				populateForm(obj = document.getElementById('parseme').value);
+					 } 
+             fileReader.readAsText(fileTobeRead); 
+         } 
+         else { 
+             alert("Please select text file"); 
+         }
+ 
+    }, false);
+} 
+ else { 
+     alert("Files are not supported"); 
+ } 
+ Fixfields();
+  Checkifinbrowser();
+ }
+ 
+ function Fixfields() { 
+//AutoGrowTextArea(document.getElementById("Notes"));
+//AutoGrowTextArea(document.getElementById("FinComm"));
+//AutoGrowTextArea(document.getElementById("Item1"));
+//AutoGrowTextArea(document.getElementById("Explain"));
+}
+
+function Checkifinbrowser() {
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+}
+</script>
+</head>
+<form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+
+
+  <table style="width: 980px;" border="1" cellpadding="5" cellspacing="0">
+      <tbody><tr bgcolor="#f8f8ff">
+        <td style="text-align: center; vertical-align: top;" bgcolor="#dee9f9" height="25"><div class="style25" align="center">
+          <div align="center">
+            <p>REPORT OF EMERGENCY - FOR USE BY STATE AND LOCALS</p>
+            
+  <input type="button" value="Load NCR data" onclick="document.getElementById('txtfiletoread').click();" />
+  <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/><textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea> 
+          </div>
+        </div></td>
+      </tr>
+      <tr b="">
+        <td style="text-align: center; vertical-align: top;"><div align="left">
+          <p class="style35"><span class="style37">MESSAGE #</span>
+              <input name="MSGNUM" type="text" id="MSGNUM" size="10" maxlength="10" />
+              <br />
+              <br />
+			  
+			
+              <select name="locations" id="locations" onclick="document.getElementById('Location').value=this.value; document.getElementById('Location2').value=this.value; ">
+                <option>Select Location</option>
+                <option value="North Anna">North Anna</option>
+                <option value="Surry Power Station">Surry Power Station</option>
+              </select>
+              <input name="Location" type="hidden" id="Location" />
+              <br />
+              <br />
+              Standby for a(n) 
+              <input name="b1" type="radio" value="Drill Message" checked="checked" />
+              Drill Message &nbsp;
+              <input name="b1" type="radio" value="Emergency Message" />
+              Emergency Message &nbsp;
+              <input name="b1" type="radio" value="Drill Termination" />
+              Drill Termination &nbsp; &nbsp;
+              <input name="b1" type="radio" value="Message Emergency" />
+              Message Emergency &nbsp; &nbsp;
+              <input name="b1" type="radio" value="Termination Message" />
+
+            Termination Message<br />
+            <strong>Use the Report Emergency Form to copy this message </strong></p>
+          </div></td>
+      </tr>
+      <tr>
+        <td height="111" align="left" valign="top"><div align="left"><span class="style36"><strong>Item 1. EMERGENCY CLASSIFICATION</strong>:
+              <input name="b2" type="radio" value="NOUE" onclick="Flip2('radio2', this.value)"/>
+NONE &nbsp;
+<input name="b2" type="radio" value="Alert" onclick="Flip2('radio2', this.value)" />
+Alert &nbsp;
+<input name="b2" type="radio" value="Site Emergency" onclick="Flip2('radio2', this.value)" />
+Site Emergency &nbsp;
+<input name="b2" type="radio" value="General Emergency " onclick="Flip2('radio2', this.value)"/>
+General Emergency
+
+<input name="radio2" type="hidden" id="radio2" />
+<br />
+In accordance with EAL
+<input name="EAL1" type="text" id="EAL1" size="2" maxlength="1" />
+<input name="EAL2" type="text" id="EAL2" size="2" maxlength="1" />
+<input name="EAL3" type="text" id="EAL3" size="2" maxlength="1" />
+.
+<input name="EAL4" type="text" id="EAL4" size="2" maxlength="1" />
+&nbsp; &nbsp; Declared at
+<input placeholder="Click for time" name="a1Time" type="text" id="a1Time" onclick="SetDateTime('hm',this.id)"/>
+(24-hr time) on
+<input placeholder="Click for date" name="a1Date" type="text" id="a1Date" onclick="SetDateTime('fulldate',this.id)"/>
+<br />
+This is
+<input placeholder="Operator Name and Call sign" name="EmgComm" type="text" id="EmgComm" size="30" maxlength="29" />
+/ Emergency Communicator<br />
+Please acknowledge receipt of thiss message
+<input name="A1" type="checkbox" id="A1" value="Checked by operator when called on Roll Call" onclick="Flip (this id,bt1)" />
+Check this box when indicated by roll-call.
+<input name="bt1" type="hidden" id="bt1" />
+<br />
+Notification completed at
+<input placeholder="Click for time" name="b1Time2" type="text" id="b1Time2" onclick="SetDateTime('hm',this.id)"/>
+(24-hr time) on
+<input name="b1Date2" type="text" id="b1Date2" placeholder="Click for date"  onclick="SetDateTime('fulldate',this.id)"/>
+        </span></div></td>
+      </tr>
+      <tr>
+        <td height="57" align="left" valign="top" class="style36"><strong>Item 2. METOROLOGICAL DATA: BASED ON
+          </strong>
+          <input name="b3" type="radio" value="On site Measurements" />
+          On site Measurements&nbsp;          <input name="b3" type="radio" value="Off site Measurements" />
+          Off site Measurements&nbsp;          <input name="b3" type="radio" value="Not Available" checked="checked" />
+          Not Available<br />
+          <span class="style38">Time:
+          <input placeholder="Click for time" name="c2Date2" type="text" id="c2Date2" onclick="SetDateTime('hm',this.id)" />
+          (24-hr time) &nbsp;&nbsp;            &nbsp; AVE Wind Speed:          
+          <input name="Windspd" type="text" id="Windspd" size="10" maxlength="10" />
+          mph; &nbsp;&nbsp;&nbsp;&nbsp;            &nbsp; AVE Wind Direction from          
+          <input name="WindDir" type="text" id="WindDir" />
+        degrees (0&deg; to 360 &deg;</span></td>
+      </tr>
+      <tr>
+        <td height="124" align="left" valign="top"><strong>Item 3. RELEASE OF RADIOACTIVE MATERIAL:</strong><br />
+          Routine releases ongoing due to plant operations. Additional radiological releases associated with the event:<br />
+          <span class="style36">
+          <input name="b4" type="radio" value="A. No radiological release. Will NOT transmit Repon of Radiological Conditions to Virginia EOC." checked="checked" />
+          </span>A. No radiological release. Will NOT transmit Repon of Radiological Conditions to Virginia EOC.<br />
+          <span class="style36">
+          <input name="b4" type="radio" value="B. Radiological release in progress. Will transmit Report of Radiological Conditions to Virginia EOC." />
+          </span>B. Radiological release in progress. Will transmit Report of Radiological Conditions to Virginia EOC.<br />
+          <span class="style36">
+          <input name="b4" type="radio" value="C. Radiological release now terminated. Will transmit Report of Radiological Conditions to Virginia EOC." />
+          </span>C. Radiological release now terminated. Will transmit Report of Radiological Conditions to Virginia EOC.<br />
+          <span class="style36">
+          <input name="b4" type="radio" value="D. Radiological release projected to occur. Will transmit Report of Radiological Conditions to Virginia EOC." />
+          </span>D. Radiological release projected to occur. Will transmit Report of Radiological Conditions to Virginia EOC.<br /></td>
+      </tr>
+      <tr>
+        <td height="27" align="left" valign="top"> <strong>Item 4. SITE ACCESS:</strong><span class="style36">&nbsp;&nbsp;&nbsp;</span><span class="style36">
+          <input name="b5" type="radio" value="Available" />
+        </span>Available	<span class="style36">
+        &nbsp;&nbsp;&nbsp;
+<input name="b5" type="radio" value="Not Available" />
+        </span>Not Available   <input name="b5" type="radio" style="display: none;" value="--" checked="checked" />
+</td>
+      </tr>
+      <tr>
+        <td height="49" align="left" valign="top"><strong>Item 5. PROTECTIVE ACTION RECOMMENDATION:</strong><br />
+          <span class="style36">&nbsp;&nbsp;
+          <input name="b6" type="radio" value="Is NOT required" />
+          </span> Is NOT required <span class="style36">&nbsp;&nbsp;&nbsp;
+          <input name="b6" type="radio" value="Will be transmitted to VEOC" />
+          </span>Will be transmitted to VEOC <span class="style36">&nbsp;&nbsp;
+          <input name="b6" type="radio" value="Has been transmitted to VEOC" />
+          </span>Has been transmitted to VEOC <span class="style36">
+          <input name="b6" type="radio" style="display: none;" value="--" checked="checked" />
+          </span></td>
+      </tr>
+      <tr>
+        <td height="39" align="left" valign="top"><strong>Item 6. UPDATE SCHEDULE: 
+          </strong><span class="style36">
+          <input name="b7" type="radio" value="60 minute" />
+        </span>60 minute; <span class="style36">
+        <input name="b7" type="radio" value="Other: " />
+        </span>Other 
+        <input name="OtherTXtime" type="text" id="OtherTXtime" /> <span class="style36">
+        <input name="b7" type="hidden" value="Not scheduled" checked="checked" />
+        </span></td>
+      </tr>
+      <tr>
+        <td height="27" align="left" valign="top" bgcolor="#f8f8ff"><strong>NOTE: Items 7 - 11 may be excluded for a message reporting initial entry into the Emergency Plan, an emergency classification change or PAR changes </strong></td>
+      </tr>
+      <tr>
+        <td height="52" align="left" valign="top"><p><strong>Item 7. EMERGENCY RESPONSE ACTIONS UNDERWAY: </strong><span class="style36">&nbsp;&nbsp;
+              &nbsp;
+ &nbsp;
+ 
+ <input name="check7" type="checkbox" id="check7" value="Excluded from message"onclick="Flip (this id,bt2)" />
+</span> Excluded from message<span class="style36">
+<input name="bt2" type="hidden" id="bt2" />
+</span><br />
+            <span class="style36">&nbsp;&nbsp;
+              <input name="b8" type="radio" value="None" />
+</span> None <span class="style36">&nbsp;&nbsp;
+              <input name="b8" type="radio" value="Station emergency personnel called in" />
+            </span> Station emergency personnel called in<span class="style36">&nbsp;&nbsp;
+                                          <input name="b8" type="radio" value="Station monitoring teams dispatched off-site" />
+            </span> Station monitoring teams dispatched off-site <span class="style36">&nbsp;&nbsp;
+            <input name="b8" type="text" value="Other: " />
+            </span> Other 
+              <input name="Otheritem7" type="text" id="Otheritem7" />
+              <span class="style36">
+               <input name="b8" type="radio" style="display: none;" value="--" checked="checked" />
+              </span><br />
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td height="27" align="left" valign="top"><strong>Item 8. EVACUATION OR COMPANY DISMISSAL OF SITE PERSONNEL:<span class="style36"> &nbsp;
+ &nbsp;</span></strong><span class="style36">
+ &nbsp;
+ &nbsp;
+ <input name="Check8" type="checkbox" id="Check8" value="Excluded from message" onclick="Flip (this id,bt4)"/>
+        </span> Excluded from message <span class="style36">
+        <input name="bt4" type="hidden" id="bt4" />
+        </span><br />
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><span class="style36"> &nbsp;&nbsp;
+                  <input name="b9" type="radio" style="display: text;" value="NO Evacuation" checked="checked" />
+            </span>No</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td width="35%"><span class="style36">&nbsp;&nbsp;
+            </span>Evacuation to Primary Remote Assembly Area</td>
+            <td width="14%"><span class="style36">
+              <input name="b9" type="radio" value="Evacuation to Primary Remote Assembly Area  Planned " />
+            </span> Planned</td>
+            <td width="16%"><span class="style36">
+              <input name="b9" type="radio" value="Evacuation to Primary Remote Assembly Area in progress " />
+            </span> in progress</td>
+            <td width="18%"><span class="style36">
+              <input name="b9" type="radio" value="Evacuation to Primary Remote Assembly Area  Completed" />
+            </span> Completed</td>
+            <td width="17%"><span class="style36">
+              <input name="b9" type="radio" value="Evacuation to Primary Remote Assembly Area Released from RAA" />
+            </span> Released from RAA</td>
+          </tr>
+          <tr>
+            <td><span class="style36">&nbsp;&nbsp;
+            </span>Evacuation to Secondary Remote Assembly Area:</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Evacuation to Secondary Remote Assembly Area: PLANNED  " />
+            </span>Planned</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Evacuation to Secondary Remote Assembly Area: iIN PROGRESS " />
+            </span>in progress</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Evacuation to Secondary Remote Assembly Area: Conpleted" />
+            </span>Completed</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Evacuation to Secondary Remote Assembly Area: Released from RAA" />
+            </span>Released from RAA</td>
+          </tr>
+          <tr>
+            <td height="16"><span class="style36">&nbsp;&nbsp;</span> <span class="style36">
+            </span>Company Dismissal: </td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Company Dismissal: Planned" />
+            </span>Planned</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Company Dismissal: in progress" />
+            </span>in progress</td>
+            <td><span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Company Dismissal:  Completed" />
+            </span>Completed</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2"><span class="style36">&nbsp;&nbsp;</span> <span class="style36">
+              <input name="b9" type="radio" style="display: text;" value="Other: " />
+              </span>Other ;
+              <input name="Otheritem8" type="text" id="Otheritem8" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="27" align="left" valign="top"><strong>Item 9. PROGNOSIS OF SITUATION SINCE LAST REPORT</strong>: <strong><span class="style36">&nbsp; &nbsp;</span></strong><span class="style36"> &nbsp; &nbsp;
+            <input name="check9" type="checkbox" id="check9" value="Excluded from message" onclick="Flip (this id,bt5)"/>
+        </span> Excluded from message <span class="style36">
+        <input name="bt5" type="hidden" id="bt5" />
+        </span><br />
+           <span class="style36">
+           &nbsp;&nbsp;
+<input name="b10" type="radio" value="Is NOT required" />
+           </span>Stable<span class="style36">&nbsp;&nbsp; </span> <span class="style36">
+           <input name="b10" type="radio" value="Is NOT required" />
+           </span>Worsening<span class="style36">&nbsp;&nbsp; </span> <span class="style36">
+           <input name="b10" type="radio" value="Is NOT required" />
+           </span>Improving<span class="style36">&nbsp;&nbsp;
+
+           <input name="b10" type="radio" value="Is NOT required" />
+           </span> Other; <input name="Otheritem9" type="text" id="Otheritem9" />
+           <span class="style36">
+           &nbsp;&nbsp;
+<input name="b10" type="hidden" value="--" />
+           </span></td>
+      </tr>
+      <tr>
+        <td height="27" align="left" valign="top"><strong>Item 10. ASSISTANCE REQUESTED OR BEING PROVIDED: <span class="style36">&nbsp; &nbsp;</span></strong><span class="style36"> &nbsp; &nbsp;
+            <input name="check10" type="checkbox" id="check10" value="Excluded from message"onclick="Flip (this id,bt6)" />
+        </span> Excluded from message <span class="style36">
+        <input name="bt6" type="hidden" id="bt6" />
+        </span><br />
+          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="43%"><span class="style36">&nbsp;&nbsp;</span>
+                <input name="numfire" type="text" id="numfire" size="10" maxlength="10" />                <span class="style36"> </span>(#) Fire Units from
+                <input name="firefrom" type="text" id="firefrom" /></td>
+              <td width="57%"><span class="style36">&nbsp;&nbsp;</span>
+                <input name="numpolice" type="text" id="numpolice" size="10" /> 
+                  <span class="style36"> </span>(#) Police Units from 
+                <input name="policefrom" type="text" id="policefrom" /></td>
+            </tr>
+            <tr>
+              <td><span class="style36">&nbsp;&nbsp;</span>
+                <input name="numrescue" type="text" id="numrescue" size="10" maxlength="10" />                
+                <span class="style36"> </span>(#) Rescue Units from 
+                <input name="rescuefrom" type="text" id="rescuefrom" /></td>
+              <td><span class="style36">&nbsp;&nbsp;</span>
+                <input name="numother" type="text" id="numother" size="10" /> 
+                                <span class="style36"> </span>Other 
+                <input name="otherreq" type="text" id="otherreq" /></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td height="131" align="left" valign="top"><p><strong>Item 11. ADDITIONAL INFORMATION: <span class="style36"> &nbsp;</span></strong><span class="style36"> &nbsp; &nbsp;
+              <input name="check11" type="checkbox" id="check11" value="Excluded from message" onclick="Flip (this id,bt7)"/>
+        </span> Excluded from message
+        <span class="style36">
+        <input name="bt7" type="hidden" id="bt7" />
+        </span>        <textarea placeholder="Be Brief and Concise" name="Info" cols="125" rows="3" id="Info" onkeyup="AutoGrowTextArea(this)"  ></textarea>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td height="42" align="left" valign="top"><strong>Item 12. TERMINATION INFORMATION</strong><br />
+Event Terminated at:<span class="style36">
+<input placeholder="Click for time" name="f12Time" type="text" id="f12Time" onclick="SetDateTime('hm',this.id)" />
+(24-hr time) on
+<input placeholder="Click for date" name="f12Date" type="text" id="f12Date" onclick="SetDateTime('fulldate',this.id)" /> 
+date
+</span></td>
+      </tr>
+  </tbody>
+  </table>
+  <p>This is 
+    <input name="Location2" type="text" id="Location2" size="15" readonly="readonly" />
+    out at<span class="style36">
+    <input placeholder="Click for time" name="outTime" type="text" id="outTime" onclick="SetDateTime('hm',this.id)"  />
+(24-hr time) on
+
+</span><span class="style36">
+<input placeholder="Click for date" name="outdate" type="text" id="outdate" onclick="SetDateTime('fulldate',this.id)"/>
+&nbsp;date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="FormReg"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"><span class="formtext1">
+<input name="Templateversion" type="hidden" id="templateversion" value="NRC Report of Emergency v. 4" />
+<span class="formbold"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"> v<span class="style3"> 0. 4 </span></span></span></span></span></span></span></span></span></span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;March 2014</span></p>
+  <hr />
+  <span class="style36"><br />
+&nbsp;<small><span class="formtext"><span style="font-family: Calibri;"><small><big><big><small><span style="font-family: Calibri;">
+<input type="button" value="Save NRC data" onclick="SaveData()" />
+</span>&nbsp;&nbsp;</small></big></big></small></span></span></small>&nbsp;<span ><span><span style="font-size: 12px;"></span></span></span>&nbsp;
+  <input style="height: 28px; width: 52px; " title="After submitting, close browser, then address message for posting" class="SubmitBtn1" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" value="Submit" type="submit" />
+&nbsp;<span style="color: rgb(128, 0, 0);"> &nbsp;</span>
+  <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
+  <span style="color: rgb(128, 0, 0);"> &nbsp; &nbsp;<span style="color: black;"> </span><span style="color: black;">&nbsp;</span></span></span>
+  </div>
+</form>
+</body></html>

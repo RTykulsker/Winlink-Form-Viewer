@@ -1,0 +1,23 @@
+Form: Clay_County_Extended_Shelter_Initial.html, Clay_County_Extended_Shelter_Viewer.html
+
+To: 
+Subject: CLAY County Extended Shelter Report-<var Subjectline>
+Msg: 
+No: <var Number>  Precedence: <var Priority>  HX: <var HX>  Org Sta: <var OrgStation> Time: <var Time> Date: <var Date>
+
+TO: <var To_Name>               Position: <var To_position>
+From: <var From_Name>           Position: <var From_position> Shelter Manager
+Subject <var Subjectline>       Date:  <var TheDate>   Time: <var TheTime>
+
+----------------------------------------------------------------    
+
+Message
+Rpt Date    <var t1>    Rpt Time     <var t2>    Guests    <var t3>    Oxygen    <var t4>  Electric    <var t5>
+Staff    <var t6>    <Volunteers    <var t7>    Caregivers    <var t8>    Sheriff    <var t9>    Fire    <var t10>
+Pets    <var t11>    Other A    <var t12>    ther B    <var t13> 
+
+-------------------------------------------------
+APPROVED BY: <var Approved_Name>  POSITION & TITLE: <var Approved_PosTitle>
+
+For form use and information contact Ray, WD4SEN
+

@@ -1,0 +1,41 @@
+Form: Hillsborough_Bed_Report_Initial.html,Hillsborough_Bed_Report_Viewer.html
+
+Subj://WL2K Available Hospital Beds from <var name> @ <var time>
+
+Msg:
+HILLSBOROUGH COUNTY AVAILABLE HOSPITAL BEDS:
+
+Hospital Name:         <var name1>
+Date/Time:             <var time1>
+
+Total Licensed:        <var totallicensed1>
+Adult ICU:             <var adulticu1>
+Burn:                  <var burn1>
+Operating Room:        <var operating1>
+Med/Surg/Tele:         <var medsurgtele1>
+Pediatric ICU:         <var pediatricicu1>
+Pediatric Med/Surg:    <var pedmedsurg1>
+OB/Gyn:                <var obgyn1>
+NICU Level 2:          <var niculevel21>
+NICU Level 3:          <var niculevel31>
+Neg Flow Isolation:    <var negflowiso1>
+Adult Psychiatric:     <var adultpsych1>
+Adult Substance Abuse: <var adultsubabuse1>
+Child Psychiatric:     <var childpsych1>
+Child Substance Abuse: <var childsubabuse1>
+Comp Med Rehab:        <var compmedrehab1>
+Long Term:             <var longterm1>
+Skilled Nursing Unit:  <var skillednursing1>
+------
+Electricity Problem:   <var elecproblem1>
+Water Available:       <var wateravailable1>
+Physical Damage:       <var physicaldamage1>
+
+Comments:
+<var Comments>
+
+-------------------------------------------------------------------
+
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><title>Salvation Army ICS213-{var Subjectline}</title>
+
+<style type="text/css">
+@media print {
+
+#printPageButton {
+    display: none;
+  }
+.form-control, .form-control.nobug {
+border: 0;
+outline: 0;
+box-shadow: none;
+font-size:14px;
+}
+.form-control.nobug {
+transition: none; /*-- THIS IS IMPORTANT -- */
+}
+}
+body, td, th {
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+.zentriert {
+font-size: 12px;
+}
+input, select {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+textarea {
+padding: 1px;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+font-weight: inherit;
+}
+.rechtsbuendig {
+font-size: 12px;
+}
+.SubmitBtn {
+font-size: 12px;
+}
+.version {
+color: #666666;
+position: relative;
+left: 0px;
+top: 3px;
+font-size: 12px;
+}
+.auto-style5 {	font-size: x-large;
+	color: #FF0000;
+}
+
+.auto-style3 {	text-align: center;
+}
+.auto-style4 {	font-size: medium;
+}
+.style15 {font-size: 10pt; font-family: Arial, Helvetica, sans-serif; }
+.style16 {font-size: 14px; font-weight: bold;}
+.auto-style6 {	text-align: left;
+}
+.style17 {font-size: 18}
+.style19 {
+	font-size: x-large;
+	color: #ff8080;
+	font-weight: bold;
+	font-style: italic;
+}
+</style><!-- ICS 213 Template --></head>
+<body>
+<table style="height: 259px; font-family: Arial;" align="center" border="0">
+<tbody>
+<tr>
+<td>&nbsp;
+<table border="2" cellpadding="6" cellspacing="0" bordercolor="#999999" style="width: 847px; height: 423px;"0">
+<tbody>
+<tr>
+<td style="text-align: justify; vertical-align: top;">
+  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#999999" style="text-align: left;  height: 50px;">
+    <tbody>
+      <tr>
+        <td style="vertical-align: top; text-align: center;">Precedence<br />
+            <span class="style16">{var Priority}
+            </span> </td>
+        <td style="vertical-align: top; text-align: center;">Org Station<br />
+            <span class="style16">{var OrgStation}</span></td>
+        <td style="vertical-align: top; text-align: center;">Org Location<br />
+            <span class="style16">{var OrgLocation}</span></td>
+        <td style="vertical-align: top; text-align: center;">Time<br />
+            <span class="style16">{var msgTime}
+            </span></td>
+        <td style="vertical-align: top; text-align: center;">Date<br />
+            <span class="style16">{var msgDate}</span></td>
+      </tr>
+    </tbody>
+  </table></td>
+</tr>
+
+<tr>
+  <td style="text-align: center; vertical-align: top; background-color: rgb(255, 255, 204);" colspan="3"><span class="style19">Salvation Army Team Emergency Radio Network</span></td>
+</tr>
+<tr>
+  <td colspan="3" bgcolor="#f8f8ff" style="text-align: center; vertical-align: top; "><span class="auto-style3"><small><strong><big><small><big><span class="auto-style4">SATERN General Message&nbsp; ICS213</span></big></small></big><small><big></big></small></strong></small></span></td>
+</tr><tr>
+<td colspan="3" valign="middle" style="text-align: center;"><div align="left" class="style17"><strong style="font-weight: normal;">&nbsp;&nbsp;1. Incident Name:&nbsp;&nbsp;</strong>      
+    <strong>{var Incident_Name}
+    <input id="Incident_Name" maxlength="60" name="Incident_Name" readonly="readonly" size="75" value="{var Incident_Name}" type="hidden" />
+    </strong></div></td>
+</tr>
+<tr>
+<td valign="middle" nowrap="nowrap" style="text-align: center;"><div align="left" class="style17">
+    <strong style="font-weight: normal;">&nbsp;&nbsp;</strong><strong><span style="font-weight: normal;">2. To</span></strong><strong style="font-weight: normal;">: </strong>
+    <strong>{var To_Name}</strong> <span class="auto-style6">
+    <input id="To_Name" maxlength="60" name="To_Name" readonly="readonly" size="75" value="{var To_Name}" type="hidden" style="width: 345px" />
+    <input id="To_Phone" maxlength="60" name="To_Phone" readonly="readonly" size="75" value="{var To_Phone}" type="hidden" style="width: 100px" />
+    <input id="To_Email" maxlength="60" name="To_Email" readonly="readonly" size="75" value="{var To_Email}" type="hidden" style="width: 140px" />
+    <input id="To_TSC" maxlength="60" name="To_TSC" readonly="readonly" size="75" value="{var To_TSC}" type="hidden" style="width: 329px" />
+</span> </p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;<strong style="font-weight: normal;">&nbsp;&nbsp;</strong>&nbsp;Phone:
+      <strong>{var To_Phone}</strong> &nbsp; &nbsp;   &nbsp; &nbsp;    &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;   Email:
+      <strong>{var To_Email} </strong> &nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;   &nbsp; &nbsp;&nbsp;  &nbsp; &nbsp; Town, State, Country:
+      <strong>{var To_TSC}
+      </strong></p>
+</div></td>
+</tr>
+<tr>
+<td colspan="3" valign="middle" nowrap="nowrap" style="text-align: center;"><div align="left" class="style17">
+  <strong style="font-weight: normal;">
+    &nbsp;&nbsp;3. From</strong><small><big>: </big>
+    <strong>{var From_Name}</strong> <span class="auto-style6"><small>
+    <input id="From_Name" maxlength="60" name="From_Name" readonly="readonly" size="75" value="{var From_Name}" type="hidden" style="width: 329px" />
+    <small>
+    <input id="From_Phone" maxlength="60" name="From_Phone" readonly="readonly" size="75" value="{var From_Phone}" type="hidden" style="width: 102px" />
+    </small> <small>
+    <input id="From_Email" maxlength="60" name="From_Email" readonly="readonly" size="75" value="{var From_Email}" type="hidden" style="width: 140px" />
+    </small>
+    <input id="from_tsc"From_TSC"" maxlength="60" name="From_TSC" readonly="readonly" size="30" value="{var From_TSC}" type="hidden" style="width: 344px" />
+    </small></span> </small></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong style="font-weight: normal;">&nbsp;&nbsp;</strong>Phone:
+    <strong>{var From_Phone}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email:
+    <strong>{var From_Email} </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Town, State, Country:&nbsp;
+    <strong>{var From_TSC}
+    </strong></p>
+</div></td>
+</tr>
+<tr>
+<td valign="middle" style="text-align: center;"><div align="left" class="style17">
+      <strong style="font-weight: normal;">&nbsp;&nbsp;</strong>4. Subject:&nbsp;<strong> {var Subjectline} </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.
+&amp; 6.&nbsp;Date/Time:&nbsp;
+<strong>  {var DateTime}
+<input id="Subjectline" maxlength="50" name="Subjectline" readonly="readonly" size="55" value="{var Subjectline}" type="hidden" />
+<strong style="font-weight: normal;">
+<input id="Date" maxlength="21" name="Date" readonly="readonly" size="21" value="{var DateTime}"type="hidden" />
+</strong></strong></div></td>
+</tr>
+<tr>
+<td colspan="3" valign="middle" style="height: 70px; vertical-align: top;  text-align: justify;"><div align="left" class="style17">
+  <strong style="font-weight: normal;">&nbsp;&nbsp;</strong>7. Message:
+  <br />
+  <span style="width:750px; word-wrap:break-word; display:inline-block;"><span style="width:750px; margin: 25px;  word-wrap:break-word; display:inline-block;"><strong>{var Message}</strong></span> <strong><strong style="font-weight: normal;">
+          <input id="Message" maxlength="21" name="Message" readonly="readonly" size="21" value="{var Message}"type="hidden" />
+          </strong></strong>
+          </span></p>
+</div></td>
+</tr>
+<tr>
+<td colspan="3" valign="middle" style="vertical-align: middle; text-align: center;"><div align="left" class="style17">
+      <strong style="font-weight: normal;">&nbsp;&nbsp;</strong>8. Sent by:&nbsp;
+      <strong>{var Approved_Name}</strong>    &nbsp; &nbsp;
+      <input name="Approved_Name" type="hidden" id="Approved_Name" value="{var Approved_Name}" /> 
+      <small><big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operator Name :
+</big></small>
+      <strong>{var Approved_PosTitle}
+      <input name="Approved_PosTitle" type="hidden" id="Approved_PosTitle" value="{var Approved_PosTitle}" />
+      </strong></div></td>
+</tr>
+<tr>
+<td height="37" colspan="3" style="text-align: justify;"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="80%"><big><big>&nbsp;</big></big><big><big>    &nbsp; &nbsp; &nbsp;</big></big></td>
+    <td width="20%"><div align="right"><span class="style15">Version 2 WA5EEZ
+            <input name="Templateversion" type="hidden" id="Templateversion" value="1" />
+    </span></div></td>
+  </tr>
+</table>  
+  </td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</body></html>
