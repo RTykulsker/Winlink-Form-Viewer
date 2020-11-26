@@ -38,10 +38,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.surftools.wfv.tools.FormViewer;
-
 public class FormUtils {
-  private static final Logger logger = LoggerFactory.getLogger(FormViewer.class);
+  private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
   private final File formsDir;
   private final String version;
