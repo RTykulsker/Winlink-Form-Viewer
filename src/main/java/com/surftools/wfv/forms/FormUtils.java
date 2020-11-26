@@ -28,7 +28,6 @@ SOFTWARE.
 package com.surftools.wfv.forms;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -60,28 +59,29 @@ public class FormUtils {
   }
 
   /**
-   * return canonical pathname for form
+   * return canonical pathname for form; given form name
    *
    * @param displayFormName
-   *
-   * @param viewFileName
    * @return
-   * @throws IOException
+   * @throws Exception
+   *           if not found or more than one matching name found
    */
   public String findFormFile(String displayFormName) throws Exception {
     List<Path> matchingPaths = new ArrayList<>();
     Files.walk(Paths.get(formsDir.getCanonicalFile().toURI())).filter(Files::isRegularFile).forEach((f) -> {
       String fileName = f.getFileName().toString();
       if (fileName.equals(displayFormName)) {
-        if (fileName.endsWith(displayFormName)) {
-          matchingPaths.add(f);
-          logger.debug("found matching filename: " + fileName);
-        }
+        matchingPaths.add(f);
+        logger.debug("found matching filename: " + fileName);
       }
     });
 
     if (matchingPaths.size() > 1) {
-      throw new RuntimeException("found multiple matching fileNames");
+      throw new RuntimeException("found multiple matching fileNames for: " + displayFormName);
+    }
+
+    if (matchingPaths.size() == 0) {
+      throw new RuntimeException("no form found for: " + displayFormName);
     }
 
     return matchingPaths.get(0).toFile().getCanonicalPath();

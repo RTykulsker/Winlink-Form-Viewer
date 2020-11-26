@@ -4,5 +4,6 @@
 .metadata
 target
 src/main/resources/*.csv
+src/main/resources/outbox
 .~lock*
 

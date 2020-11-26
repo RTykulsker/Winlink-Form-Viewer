@@ -135,17 +135,11 @@ public class FormViewer {
       String viewContent = Files.readString(Paths.get(viewFileName));
       logger.debug("viewFile: " + viewFileName + ", got " + viewContent.length() + " bytes");
 
-      WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
-      parser.parse(viewContent, true);
+      FormResults results = generateResults(viewContent);
 
-      String displayFormName = parser.getValue("display_form");
-      logger.debug("displayFormName: " + displayFormName);
-
-      String resultString = generateResult(displayFormName, parser);
-
-      Path resultPath = Paths.get(cm.getAsString(ConfigurationKey.OUTBOX_PATH), displayFormName);
-      Files.writeString(resultPath, resultString);
-      logger.debug("wrote " + resultString.length() + " bytes to " + resultPath.toFile().getCanonicalPath());
+      Path resultPath = Paths.get(cm.getAsString(ConfigurationKey.OUTBOX_PATH), results.displayFormName);
+      Files.writeString(resultPath, results.resultString);
+      logger.debug("wrote " + results.resultString.length() + " bytes to " + resultPath.toFile().getCanonicalPath());
 
       Utils.openBrowser(cm.getAsString(ConfigurationKey.BROWSER_PATH), resultPath);
 
@@ -186,7 +180,21 @@ public class FormViewer {
     return lastModifiedFile.getCanonicalPath();
   }
 
-  private String generateResult(String displayFormName, WinlinkExpressViewerParser parser) throws Exception {
+  /**
+   * this is the money shot! generate output, given the content of the viewer: find the matching form and substitute
+   * values
+   *
+   * @param viewContent
+   * @return
+   * @throws Exception
+   */
+  private FormResults generateResults(String viewContent) throws Exception {
+    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
+    parser.parse(viewContent, true);
+
+    String displayFormName = parser.getValue("display_form");
+    logger.debug("displayFormName: " + displayFormName);
+
     FormUtils formUtils = new FormUtils(cm.getAsString(ConfigurationKey.FORMS_PATH));
     String formFileName = formUtils.findFormFile(displayFormName);
     String formContent = Files.readString(Paths.get(formFileName));
@@ -195,7 +203,17 @@ public class FormViewer {
     var variableMap = parser.getVariableMap();
     WinlinkExpressTemplateProcessor tp = new WinlinkExpressTemplateProcessor();
     String resultString = tp.process(formContent, variableMap);
-    return resultString;
+    return new FormResults(displayFormName, resultString);
+  }
+
+  class FormResults {
+    final String displayFormName;
+    final String resultString;
+
+    public FormResults(String displayFormName, String resultString) {
+      this.displayFormName = displayFormName;
+      this.resultString = resultString;
+    }
   }
 
   class NotFoundHandler implements Route {
@@ -233,15 +251,9 @@ public class FormViewer {
       InputStream is = file.getInputStream();
       String viewContent = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
 
-      WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
-      parser.parse(viewContent, true);
-
-      String displayFormName = parser.getValue("display_form");
-      logger.debug("displayFormName: " + displayFormName);
-
-      String resultString = generateResult(displayFormName, parser);
-      logger.info(commonLogFormat(request, displayFormName, resultString));
-      return resultString;
+      FormResults results = generateResults(viewContent);
+      logger.info(commonLogFormat(request, results.displayFormName, results.resultString));
+      return results.resultString;
     }
 
     private String commonLogFormat(Request request, String displayFormName, String resultString) {
