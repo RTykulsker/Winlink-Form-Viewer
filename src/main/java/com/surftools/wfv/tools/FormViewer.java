@@ -181,8 +181,9 @@ public class FormViewer {
   }
 
   /**
-   * this is the money shot! generate output, given the content of the viewer: find the matching form and substitute
-   * values
+   * this is the money shot!
+   *
+   * generate output, given the content of the viewer: find the matching form and substitute values
    *
    * @param viewContent
    * @return

@@ -2,8 +2,8 @@
 <RMS_Express_Form>
   <form_parameters>
     <xml_file_version>1.0</xml_file_version>
-    <rms_express_version>1.5.32.0</rms_express_version>
-    <submission_datetime>20201120205017</submission_datetime>
+    <rms_express_version>1.5.33.0</rms_express_version>
+    <submission_datetime>20201128200208</submission_datetime>
     <senders_callsign>KM6SO</senders_callsign>
     <grid_square>CN87VM</grid_square>
     <display_form>ICS213_Initial_Viewer.html</display_form>
@@ -19,17 +19,17 @@
     <msgisreply>False</msgisreply>
     <msgisforward>False</msgisforward>
     <msgisacknowledgement>False</msgisacknowledgement>
-    <msgseqnum>26</msgseqnum>
+    <msgseqnum>29</msgseqnum>
     <showdr></showdr>
     <inc_name>test</inc_name>
-    <to_name>Net Control</to_name>
+    <to_name>MIRO Net Control</to_name>
     <txtstr></txtstr>
     <fm_name>Bob Tykulsker</fm_name>
     <subjectline>Weekly Net</subjectline>
-    <mdate>2020-11-20</mdate>
-    <mtime>12:49</mtime>
-    <message>This is my test message</message>
-    <message2>This is my test message</message2>
+    <mdate>2020-11-28</mdate>
+    <mtime>12:01</mtime>
+    <message>testing reply</message>
+    <message2>testing reply</message2>
     <approved_name>Bob Tykulsker</approved_name>
     <approved_postitle>Radio Operator</approved_postitle>
     <submit>Submit</submit>
@@ -38,14 +38,14 @@
   "ShowDR": "",
   "txtfiletoread": "",
   "inc_name": "test",
-  "to_name": "Net Control",
+  "to_name": "MIRO Net Control",
   "txtStr": "",
   "fm_name": "Bob Tykulsker",
   "Subjectline": "Weekly Net",
-  "Mdate": "2020-11-20",
-  "Mtime": "12:49",
-  "Message": "This is my test message",
-  "Message2": "This is my test message",
+  "Mdate": "2020-11-28",
+  "Mtime": "12:01",
+  "Message": "testing reply",
+  "Message2": "testing reply",
   "Approved_Name": "Bob Tykulsker",
   "Approved_PosTitle": "Radio Operator",
   "ResetForm": "Reset Form ",
