@@ -41,60 +41,69 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.surftools.wfv.config.ConfigurationKey;
+import com.surftools.wfv.config.IConfigurationManager;
+import com.surftools.wfv.tools.Utils;
+
 public class WinlinkExpressViewerParser {
   private static final Logger logger = LoggerFactory.getLogger(WinlinkExpressTemplateProcessor.class);
 
   private Map<String, String> keyValueMap;
+  private final IConfigurationManager cm;
 
-  public WinlinkExpressViewerParser() {
+  public WinlinkExpressViewerParser(IConfigurationManager cm) {
     keyValueMap = new HashMap<>();
+    this.cm = cm;
   }
 
-  public void parse(String xmlString, boolean doVerbose) throws Exception {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    ByteArrayInputStream input = new ByteArrayInputStream(xmlString.getBytes("UTF-8"));
-    Document document = builder.parse(input);
-    document.getDocumentElement().normalize();
+  public void parse(String xmlString, boolean doVerbose) {
+    try {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      ByteArrayInputStream input = new ByteArrayInputStream(xmlString.getBytes("UTF-8"));
+      Document document = builder.parse(input);
+      document.getDocumentElement().normalize();
 
-    NodeList formParametersNodeList = document.getElementsByTagName("form_parameters").item(0).getChildNodes();
-    for (int i = 0; i < formParametersNodeList.getLength(); ++i) {
-      Node node = formParametersNodeList.item(i);
-      if (node.getNodeType() == Node.ELEMENT_NODE) {
-        Element element = (Element) node;
-        String name = element.getNodeName().toLowerCase();
-        Node child = element.getFirstChild();
-        String value = null;
-        if (child != null) {
-          value = element.getFirstChild().getNodeValue();
+      NodeList formParametersNodeList = document.getElementsByTagName("form_parameters").item(0).getChildNodes();
+      for (int i = 0; i < formParametersNodeList.getLength(); ++i) {
+        Node node = formParametersNodeList.item(i);
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+          Element element = (Element) node;
+          String name = element.getNodeName().toLowerCase();
+          Node child = element.getFirstChild();
+          String value = null;
+          if (child != null) {
+            value = element.getFirstChild().getNodeValue();
+          }
+          if (doVerbose) {
+            logger.debug("form_parameter, name: " + name + ", value: " + value);
+          }
+          keyValueMap.put(name, value);
         }
-        if (doVerbose) {
-          logger.debug("form_parameter, name: " + name + ", value: " + value);
-        }
-        keyValueMap.put(name, value);
       }
-    }
 
-    NodeList variablesList = document.getElementsByTagName("variables").item(0).getChildNodes();
-    for (int i = 0; i < variablesList.getLength(); ++i) {
-      Node node = variablesList.item(i);
+      NodeList variablesList = document.getElementsByTagName("variables").item(0).getChildNodes();
+      for (int i = 0; i < variablesList.getLength(); ++i) {
+        Node node = variablesList.item(i);
 
-      if (node.getNodeType() == Node.ELEMENT_NODE) {
-        Element element = (Element) node;
-        String name = element.getNodeName().toLowerCase();
-        Node child = element.getFirstChild();
-        if (child == null) {
-          continue;
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+          Element element = (Element) node;
+          String name = element.getNodeName().toLowerCase();
+          Node child = element.getFirstChild();
+          if (child == null) {
+            continue;
+          }
+          String value = element.getFirstChild().getNodeValue();
+          if (doVerbose) {
+            logger.debug("variables, name: " + name + ", value: " + value);
+          }
+          keyValueMap.put(name, value);
         }
-        String value = element.getFirstChild().getNodeValue();
-        if (doVerbose) {
-          logger.debug("variables, name: " + name + ", value: " + value);
-        }
-        keyValueMap.put(name, value);
       }
+      logger.debug("after parsing, map has " + keyValueMap.size() + " entries");
+    } catch (Exception e) {
+      Utils.fatal(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, e.getMessage());
     }
-    logger.debug("after parsing, map has " + keyValueMap.size() + " entries");
-
   }
 
   public String getValue(String key) {

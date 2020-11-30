@@ -71,7 +71,7 @@ import spark.Spark;
 public class FormViewer {
   private static final Logger logger = LoggerFactory.getLogger(FormViewer.class);
 
-  private static final String DEFAULT_CONFIG_FILE_NAME = "src/main/resources/fv.conf";
+  private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
   private IConfigurationManager cm;
 
@@ -99,10 +99,6 @@ public class FormViewer {
 
   private void run() {
     try {
-
-      // TODO-- support multiple versions of template files, auto-unzip,
-      // TODO-- support fetching latest version of template files from winlink
-
       cm = new PropertyFileConfigurationManager(configFileName);
 
       if (isServer && viewFileName != null) {
@@ -111,6 +107,10 @@ public class FormViewer {
 
       if (isServer) {
         final int port = cm.getAsInt(ConfigurationKey.SERVER_PORT, 8080);
+        if (!Utils.isPortAvailable(port)) {
+          Utils.fatal(cm, ConfigurationKey.EMSG_PORT_IN_USE, String.valueOf(port));
+        }
+
         final var initHandler = new InitHandler();
         final var uploadHandler = new UploadHandler();
         final var notFoundHandler = new NotFoundHandler();
@@ -121,12 +121,14 @@ public class FormViewer {
         Spark.post("*", notFoundHandler);
         Spark.put("*", notFoundHandler);
         Spark.delete("*", notFoundHandler);
+        Spark.init();
 
         final String ipAddress = Utils.getLocalIPv4Address();
         final String serverUrl = "http://" + ipAddress + ":" + port;
-        Utils.openBrowser(cm.getAsString(ConfigurationKey.BROWSER_PATH), serverUrl);
+        Utils.openBrowser(cm, serverUrl);
 
-        logger.info("main thread exiting; listening on port: " + serverUrl);
+        logger.info("listening on port: " + serverUrl);
+
         return;
       }
 
@@ -137,11 +139,21 @@ public class FormViewer {
 
       FormResults results = generateResults(viewContent);
 
-      Path resultPath = Paths.get(cm.getAsString(ConfigurationKey.OUTBOX_PATH), results.displayFormName);
+      String outboxDirName = cm.getAsString(ConfigurationKey.OUTBOX_PATH);
+
+      File outBoxDir = new File(outboxDirName);
+      if (!outBoxDir.exists()) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_OUTBOX_NOT_FOUND, outboxDirName);
+      }
+      if (!outBoxDir.isDirectory()) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_OUTBOX_NOT_DIR, outboxDirName);
+      }
+
+      Path resultPath = Paths.get(outboxDirName, results.displayFormName);
       Files.writeString(resultPath, results.resultString);
       logger.debug("wrote " + results.resultString.length() + " bytes to " + resultPath.toFile().getCanonicalPath());
 
-      Utils.openBrowser(cm.getAsString(ConfigurationKey.BROWSER_PATH), resultPath);
+      Utils.openBrowser(cm, resultPath);
 
     } catch (Exception e) {
       logger.error("Exception running, " + e.getMessage(), e);
@@ -158,15 +170,23 @@ public class FormViewer {
    */
   private String resolveViewFile(String viewFileName, IConfigurationManager cm) throws Exception {
     if (viewFileName != null) {
+      File viewFile = new File(viewFileName);
+      if (!viewFile.exists()) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_VIEW_FILE_NOT_FOUND, viewFileName);
+      }
       logger.debug("using supplied viewFileName: " + viewFileName);
       return viewFileName;
     }
 
     File dir = new File(cm.getAsString(ConfigurationKey.INBOX_PATH));
-    logger.debug("using inbox: " + dir.getCanonicalPath());
+    String dirName = dir.getCanonicalPath();
+    if (!dir.exists()) {
+      Utils.fatal(cm, ConfigurationKey.EMSG_INBOX_NOT_FOUND, dirName);
+    }
+    logger.debug("using inbox: " + dirName);
     File[] files = dir.listFiles();
     if (files == null || files.length == 0) {
-      throw new RuntimeException("no files in inbox: " + dir.getCanonicalPath());
+      Utils.fatal(cm, ConfigurationKey.EMSG_INBOX_EMPTY, dirName);
     }
 
     File lastModifiedFile = files[0];
@@ -190,13 +210,13 @@ public class FormViewer {
    * @throws Exception
    */
   private FormResults generateResults(String viewContent) throws Exception {
-    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
+    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser(cm);
     parser.parse(viewContent, true);
 
     String displayFormName = parser.getValue("display_form");
     logger.debug("displayFormName: " + displayFormName);
 
-    FormUtils formUtils = new FormUtils(cm.getAsString(ConfigurationKey.FORMS_PATH));
+    FormUtils formUtils = new FormUtils(cm);
     String formFileName = formUtils.findFormFile(displayFormName);
     String formContent = Files.readString(Paths.get(formFileName));
     logger.debug("formFile: " + formFileName + ", got " + formContent.length() + " bytes");
@@ -225,6 +245,13 @@ public class FormViewer {
           + request.pathInfo());
       response.status(404);
       String htmlFileName = cm.getAsString(ConfigurationKey.SERVER_404_HTML);
+      File htmlFile = new File(htmlFileName);
+      if (!htmlFile.exists()) {
+        String message = String.format("404 HTML file: %s not found. Substituting!", htmlFileName);
+        logger.warn(message);
+        String html = "<!DOCTYPE html><html><title>Not Found</title><body><h1>Not Found</h1></body></html>";
+        return html;
+      }
       return Files.readString(Paths.get(htmlFileName));
     }
 
@@ -235,6 +262,12 @@ public class FormViewer {
     @Override
     public Object handle(Request request, Response response) throws Exception {
       String initialHtmlFileName = cm.getAsString(ConfigurationKey.SERVER_INITIAL_HTML);
+
+      File initialHtmlFile = new File(initialHtmlFileName);
+      if (!initialHtmlFile.exists()) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_INIT_HTML_NOT_FOUND, initialHtmlFileName);
+      }
+
       logger.debug("serving initial html from: " + initialHtmlFileName);
       return Files.readString(Paths.get(initialHtmlFileName));
     }

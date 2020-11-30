@@ -68,29 +68,6 @@ public class WinlinkExpressTemplateProcessor {
           logger.error("Exception for token: " + token + ", " + e.getMessage());
         }
       }
-
-      // if (variableMap.containsKey(tokenKey)) {
-      // replacementValue = variableMap.get(tokenKey);
-      //
-      // logger.debug("replacing: " + tokenKey + " with " + replacementValue);
-      // try {
-      // result = result.replaceAll(Pattern.quote(token), replacementValue);
-      // } catch (Exception e) {
-      // logger.error("Exception for token: " + token + ", " + e.getMessage());
-      // }
-      // } else {
-      // if (doReplaceNotFoundWithEmptyString) {
-      // try {
-      // replacementValue = "";
-      // logger.debug("replacing: " + tokenKey + " with " + replacementValue);
-      // result = result.replaceAll(Pattern.quote(token), "");
-      // } catch (Exception e) {
-      // logger.error("Exception for token: " + token + ", " + e.getMessage());
-      // }
-      // } else {
-      // logger.warn("Source string contained an unsupported token: " + tokenKey);
-      // }
-      // }
     }
 
     return result;

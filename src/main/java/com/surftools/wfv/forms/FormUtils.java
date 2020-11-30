@@ -37,20 +37,27 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.surftools.wfv.config.ConfigurationKey;
+import com.surftools.wfv.config.IConfigurationManager;
+import com.surftools.wfv.tools.Utils;
+
 public class FormUtils {
   private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
+  private final IConfigurationManager cm;
   private final File formsDir;
   private final String version;
 
-  public FormUtils(String formsDirName) throws Exception {
+  public FormUtils(IConfigurationManager cm) throws Exception {
+    String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
     formsDir = new File(formsDirName);
     if (!formsDir.exists()) {
-      throw new RuntimeException("Forms path: " + formsDir + " not found");
+      Utils.fatal(cm, ConfigurationKey.EMSG_FORMS_DIR_NOT_FOUND, formsDirName);
     }
     if (!formsDir.isDirectory()) {
-      throw new RuntimeException("Forms path: " + formsDir + " is not a directory");
+      Utils.fatal(cm, ConfigurationKey.EMSG_FORMS_DIR_NOT_DIR, formsDirName);
     }
+    this.cm = cm;
 
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
     version = Files.readString(versionPath);
@@ -77,11 +84,11 @@ public class FormUtils {
     });
 
     if (matchingPaths.size() > 1) {
-      throw new RuntimeException("found multiple matching fileNames for: " + displayFormName);
+      Utils.fatal(cm, ConfigurationKey.EMSG_MULTIPLE_FORM_FILES_FOUND, displayFormName);
     }
 
     if (matchingPaths.size() == 0) {
-      throw new RuntimeException("no form found for: " + displayFormName);
+      Utils.fatal(cm, ConfigurationKey.EMSG_NO_FORM_FILE_FOUND, displayFormName);
     }
 
     return matchingPaths.get(0).toFile().getCanonicalPath();

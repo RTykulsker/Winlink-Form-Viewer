@@ -28,10 +28,13 @@ SOFTWARE.
 package com.surftools.wfv.tools;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.Socket;
 import java.net.SocketException;
 import java.nio.file.Path;
 import java.util.Enumeration;
@@ -39,10 +42,19 @@ import java.util.Enumeration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.surftools.wfv.config.ConfigurationKey;
+import com.surftools.wfv.config.IConfigurationManager;
+
 public class Utils {
   private static final Logger logger = LoggerFactory.getLogger(Utils.class);
 
-  public static void openBrowser(String browserFileName, String url) throws Exception {
+  public static void openBrowser(IConfigurationManager cm, String url) throws Exception {
+    String browserFileName = cm.getAsString(ConfigurationKey.BROWSER_PATH);
+    File browserFile = new File(browserFileName);
+    if (!browserFile.exists()) {
+      Utils.fatal(cm, ConfigurationKey.EMSG_BROWSER_NOT_FOUND, browserFileName);
+    }
+
     ProcessBuilder processBuilder = new ProcessBuilder(browserFileName, url);
     Process process = processBuilder.start();
     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -60,8 +72,24 @@ public class Utils {
 
   }
 
-  public static void openBrowser(String browserFileName, Path url) throws Exception {
-    openBrowser(browserFileName, url.toFile().getCanonicalPath());
+  public static void fatal(IConfigurationManager cm, ConfigurationKey key, String value) {
+    String defaultValue = key.getErrorMessage();
+    String template = cm.getAsString(key, defaultValue);
+    String message = String.format(template, value);
+    logger.error(message);
+    System.exit(1);
+  }
+
+  public static void openBrowser(IConfigurationManager cm, Path url) throws Exception {
+    openBrowser(cm, url.toFile().getCanonicalPath());
+  }
+
+  public static boolean isPortAvailable(int port) {
+    try (Socket ignored = new Socket("localhost", port)) {
+      return false;
+    } catch (IOException ignored) {
+      return true;
+    }
   }
 
   public static String getLocalIPv4Address() {
