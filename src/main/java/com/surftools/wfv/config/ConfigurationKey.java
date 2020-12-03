@@ -46,6 +46,7 @@ public enum ConfigurationKey {
   EMSG_MULTIPLE_FORM_FILES_FOUND("emsg.multiple.form.files.found", "Multiple form files found matching %s. Exiting!"), //
   EMSG_OUTBOX_NOT_FOUND("emsg.outbox.dir.not.found", "Outbox directory: %s not found. Exiting!"), //
   EMSG_OUTBOX_NOT_DIR("emsg.outbox.dir.not.dir", "Outbox directory: %s not a directory. Exiting!"), //
+  EMSG_NO_UPLOAD_FILE("emsg.no.upload.file", "No file fould in upload post. Continuing!"), //
 
   BROWSER_PATH("browser.path"), //
   FORMS_PATH("forms.path"), //

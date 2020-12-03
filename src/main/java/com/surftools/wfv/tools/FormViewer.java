@@ -41,6 +41,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletException;
 import javax.servlet.http.Part;
 
 import org.kohsuke.args4j.CmdLineParser;
@@ -116,7 +117,7 @@ public class FormViewer {
         final var notFoundHandler = new NotFoundHandler();
         Spark.port(port);
         Spark.get("/", initHandler);
-        Spark.post("/view", uploadHandler);
+        Spark.post("/upload", uploadHandler);
         Spark.get("*", notFoundHandler);
         Spark.post("*", notFoundHandler);
         Spark.put("*", notFoundHandler);
@@ -241,7 +242,7 @@ public class FormViewer {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
-      logger.debug("not found: host: " + request.ip() + ", method: " + request.requestMethod() + ", pathInfo: "
+      logger.info("not found: host: " + request.ip() + ", method: " + request.requestMethod() + ", pathInfo: "
           + request.pathInfo());
       response.status(404);
       String htmlFileName = cm.getAsString(ConfigurationKey.SERVER_404_HTML);
@@ -268,7 +269,7 @@ public class FormViewer {
         Utils.fatal(cm, ConfigurationKey.EMSG_INIT_HTML_NOT_FOUND, initialHtmlFileName);
       }
 
-      logger.debug("serving initial html from: " + initialHtmlFileName);
+      logger.info("serving initial html from: " + initialHtmlFileName);
       return Files.readString(Paths.get(initialHtmlFileName));
     }
 
@@ -278,15 +279,36 @@ public class FormViewer {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
+      String viewContent = null;
 
-      MultipartConfigElement multipartConfigElement = new MultipartConfigElement("");
-      request.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
-      Part file = request.raw().getPart("file"); // file is name of the upload form
-      InputStream is = file.getInputStream();
-      String viewContent = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+      try {
+        // handle form upload; gets placed into a multipart ...
+        MultipartConfigElement multipartConfigElement = new MultipartConfigElement("");
+        request.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
+        Part file = request.raw().getPart("file"); // file is name of the upload form
+
+        if (file == null) {
+          Utils.warn(cm, ConfigurationKey.EMSG_NO_UPLOAD_FILE, null);
+          response.status(500);
+          return cm.getAsString(ConfigurationKey.EMSG_NO_UPLOAD_FILE);
+        }
+
+        InputStream is = file.getInputStream();
+        viewContent = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
+      } catch (ServletException e) {
+        // handle XMLHttpRequest, file contents placed in form body
+        viewContent = request.body();
+      }
+
+      if (viewContent == null || viewContent.length() == 0) {
+        Utils.warn(cm, ConfigurationKey.EMSG_NO_UPLOAD_FILE, null);
+        response.status(500);
+        return cm.getAsString(ConfigurationKey.EMSG_NO_UPLOAD_FILE);
+      }
 
       FormResults results = generateResults(viewContent);
       logger.info(commonLogFormat(request, results.displayFormName, results.resultString));
+      response.status(200);
       return results.resultString;
     }
 

@@ -80,6 +80,13 @@ public class Utils {
     System.exit(1);
   }
 
+  public static void warn(IConfigurationManager cm, ConfigurationKey key, String value) {
+    String defaultValue = key.getErrorMessage();
+    String template = cm.getAsString(key, defaultValue);
+    String message = String.format(template, value);
+    logger.warn(message);
+  }
+
   public static void openBrowser(IConfigurationManager cm, Path url) throws Exception {
     openBrowser(cm, url.toFile().getCanonicalPath());
   }
@@ -119,4 +126,5 @@ public class Utils {
     }
     return ip;
   }
+
 }
