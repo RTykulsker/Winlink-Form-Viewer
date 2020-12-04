@@ -1,60 +1,0 @@
-Form:Virginia_Resource_Request_initial.html,Virginia_Resource_Request_Viewer.html
-
-Subject: Virginia Resource Request: <var agency>-<var init_date> from: <var Call>
-SeqInc:	
-Msg:  
-
-VIRGINIA RESOURCE REQUEST
-
-Event Name:   <var event_name>
-Mission Number: 
-
-Requesting Agency/Locality Information 
-
-Request Originator:   <var originator>
-
- Initial Date/Time:   <var init_date>
-
- State Agency/Locality:   <var agency>
-
- Authorized Representative Name:   <var rep_name>
-
- Authorized Representative Title:   <var rep_title>
-
- Auth. Representative Approval:   <var auth>
-
-Request for Assistance Information
-
-1. What CAPABILITY does your agency require and what will the resource be doing (scope of work)?
-  <var resource_cap>
-2. Please specify the SIZE and AMOUNT of the resource required to meet this capability requested:
-  Size:    <var resource_size>
-  Amount:    <var resource_amt>
-
-3. Where does this resource need to be delivered to? Please provide address of LOCATION needed.
-  Address of Location Needed:   <var address_loc
- 
-  Latitude/Longitude:   <var lat_lon>
-
-4. TIME requirements:
- Arrival Date/Time:   <var arrival_date>
- Work Start Date/Time:   <var work_start>
- Duration of Deployment:   <var duration>
- If Other, Specify:   <var other_duration>
-5. What POTENTIAL RESOURCE/FEMA TYPED RESOURCE do you believe could meet this request?
-Potential Resource:
- 
-   <var resource_type>
-
-6. POINT OF CONTACT to call about this request:
-
- Contact Name:   <var contact_name>
-
- Contact Email:   <var contact_email>
- Contact Phone Number:   <var contact_phone>
- Alternate 24-hour Phone:   <var alt_phone>
-7. COMMENTS:   <var comments>
-
-------------------------------------Express Sending Station: <MsgSender>Senders Express Version: <ProgramVersion>Senders Template Version: <var Templateversion>
-
-
