@@ -37,7 +37,8 @@ import org.slf4j.LoggerFactory;
 public class WinlinkExpressTemplateProcessor {
   private static final Logger logger = LoggerFactory.getLogger(WinlinkExpressTemplateProcessor.class);
 
-  private final static String regex = "\\{var ([^}]++)\\}";
+  // private final static String regex = "\\{var ([^}]++)\\}";
+  private final static String regex = "\\{[vV][aA][rR] ([^}]++)\\}";
   private final static Pattern pattern = Pattern.compile(regex);
 
   private boolean doReplaceNotFoundWithEmptyString;
