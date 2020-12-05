@@ -41,7 +41,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletException;
 import javax.servlet.http.Part;
 
 import org.kohsuke.args4j.CmdLineParser;
@@ -72,6 +71,9 @@ import spark.Spark;
 public class FormViewer {
   private static final Logger logger = LoggerFactory.getLogger(FormViewer.class);
 
+  private static final String FILE_UPLOAD_PATH = "/uploadFile";
+  private static final String XHR_UPLOAD_PATH = "/uploadXHR";
+
   private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
   private IConfigurationManager cm;
@@ -84,7 +86,7 @@ public class FormViewer {
   private String viewFileName = null;
 
   @Option(name = "--server", metaVar = "SERVER_MODE", usage = "run as http server, default: false", required = false)
-  private boolean isServer = false;
+  private boolean isServer = true;
 
   public static void main(String[] args) {
     FormViewer app = new FormViewer();
@@ -112,12 +114,12 @@ public class FormViewer {
           Utils.fatal(cm, ConfigurationKey.EMSG_PORT_IN_USE, String.valueOf(port));
         }
 
-        final var initHandler = new InitHandler();
-        final var uploadHandler = new UploadHandler();
         final var notFoundHandler = new NotFoundHandler();
+        final var uploadHandler = new UploadHandler();
         Spark.port(port);
-        Spark.get("/", initHandler);
-        Spark.post("/upload", uploadHandler);
+        Spark.get("/", new InitHandler());
+        Spark.post(FILE_UPLOAD_PATH, uploadHandler);
+        Spark.post(XHR_UPLOAD_PATH, uploadHandler);
         Spark.get("*", notFoundHandler);
         Spark.post("*", notFoundHandler);
         Spark.put("*", notFoundHandler);
@@ -211,8 +213,16 @@ public class FormViewer {
    * @throws Exception
    */
   private FormResults generateResults(String viewContent) throws Exception {
-    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser(cm);
-    parser.parse(viewContent, true);
+    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
+    String errorMessage = parser.parse(viewContent, true);
+    if (errorMessage != null) {
+      if (isServer) {
+        Utils.warn(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, errorMessage);
+      } else {
+        Utils.fatal(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, errorMessage);
+      }
+      return new FormResults(null, errorMessage, 500);
+    }
 
     String displayFormName = parser.getValue("display_form");
     logger.debug("displayFormName: " + displayFormName);
@@ -225,16 +235,18 @@ public class FormViewer {
     var variableMap = parser.getVariableMap();
     WinlinkExpressTemplateProcessor tp = new WinlinkExpressTemplateProcessor();
     String resultString = tp.process(formContent, variableMap);
-    return new FormResults(displayFormName, resultString);
+    return new FormResults(displayFormName, resultString, 200);
   }
 
   class FormResults {
     final String displayFormName;
     final String resultString;
+    final int responseCode;
 
-    public FormResults(String displayFormName, String resultString) {
+    public FormResults(String displayFormName, String resultString, int responseCode) {
       this.displayFormName = displayFormName;
       this.resultString = resultString;
+      this.responseCode = responseCode;
     }
   }
 
@@ -280,8 +292,10 @@ public class FormViewer {
     @Override
     public Object handle(Request request, Response response) throws Exception {
       String viewContent = null;
+      String requestPath = request.pathInfo();
+      if (requestPath.equals(FILE_UPLOAD_PATH)) {
+        logger.info("requestPath: " + requestPath);
 
-      try {
         // handle form upload; gets placed into a multipart ...
         MultipartConfigElement multipartConfigElement = new MultipartConfigElement("");
         request.raw().setAttribute("org.eclipse.jetty.multipartConfig", multipartConfigElement);
@@ -295,8 +309,7 @@ public class FormViewer {
 
         InputStream is = file.getInputStream();
         viewContent = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
-      } catch (ServletException e) {
-        // handle XMLHttpRequest, file contents placed in form body
+      } else if (requestPath.equals(XHR_UPLOAD_PATH)) {
         viewContent = request.body();
       }
 
@@ -307,27 +320,25 @@ public class FormViewer {
       }
 
       FormResults results = generateResults(viewContent);
-      logger.info(commonLogFormat(request, results.displayFormName, results.resultString));
-      response.status(200);
+      logger.info(commonLogFormat(request, results.displayFormName, results));
+      response.status(results.responseCode);
       return results.resultString;
     }
+  }
 
-    private String commonLogFormat(Request request, String displayFormName, String resultString) {
+  private String commonLogFormat(Request request, String displayFormName, FormResults results) {
+    // [10/Oct/2000:13:55:36 -0700]
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss xxxx");
+    String timeString = formatter.format(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
 
-      // [10/Oct/2000:13:55:36 -0700]
-      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss xxxx");
-      String timeString = formatter.format(ZonedDateTime.of(LocalDateTime.now(), ZoneId.systemDefault()));
-
-      StringBuilder sb = new StringBuilder();
-      sb.append(request.ip());
-      sb.append(" - - [");
-      sb.append(timeString);
-      sb.append("] ");
-      sb.append("\"POST /view/" + displayFormName + "\"");
-      sb.append(" 200 ");
-      sb.append(resultString.length());
-      return sb.toString();
-
-    }
+    StringBuilder sb = new StringBuilder();
+    sb.append(request.ip());
+    sb.append(" - - [");
+    sb.append(timeString);
+    sb.append("] ");
+    sb.append("\"POST" + request.pathInfo() + displayFormName + "\"");
+    sb.append(" " + results.responseCode + " ");
+    sb.append(results.resultString.length());
+    return sb.toString();
   }
 }

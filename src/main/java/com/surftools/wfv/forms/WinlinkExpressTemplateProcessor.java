@@ -37,7 +37,6 @@ import org.slf4j.LoggerFactory;
 public class WinlinkExpressTemplateProcessor {
   private static final Logger logger = LoggerFactory.getLogger(WinlinkExpressTemplateProcessor.class);
 
-  // private final static String regex = "\\{var ([^}]++)\\}";
   private final static String regex = "\\{[vV][aA][rR] ([^}]++)\\}";
   private final static Pattern pattern = Pattern.compile(regex);
 
@@ -51,6 +50,7 @@ public class WinlinkExpressTemplateProcessor {
     // https://stackoverflow.com/questions/17462146
     Matcher matcher = pattern.matcher(source);
     String result = source;
+
     while (matcher.find()) {
       String token = matcher.group(); // Ex: {var fizz}
       String tokenKey = matcher.group(1).toLowerCase(); // Ex: fizz
@@ -63,6 +63,7 @@ public class WinlinkExpressTemplateProcessor {
         logger.warn("Source string contained an unsupported token: " + tokenKey);
       } else {
         try {
+          replacementValue = replacementValue.replace("\"", "&quot;");
           logger.debug("replacing: " + tokenKey + " with " + replacementValue);
           result = result.replaceAll(Pattern.quote(token), replacementValue);
         } catch (Exception e) {

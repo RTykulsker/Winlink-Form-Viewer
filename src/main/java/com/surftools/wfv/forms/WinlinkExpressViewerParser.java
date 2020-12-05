@@ -41,22 +41,16 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.surftools.wfv.config.ConfigurationKey;
-import com.surftools.wfv.config.IConfigurationManager;
-import com.surftools.wfv.tools.Utils;
-
 public class WinlinkExpressViewerParser {
   private static final Logger logger = LoggerFactory.getLogger(WinlinkExpressTemplateProcessor.class);
 
   private Map<String, String> keyValueMap;
-  private final IConfigurationManager cm;
 
-  public WinlinkExpressViewerParser(IConfigurationManager cm) {
+  public WinlinkExpressViewerParser() {
     keyValueMap = new HashMap<>();
-    this.cm = cm;
   }
 
-  public void parse(String xmlString, boolean doVerbose) {
+  public String parse(String xmlString, boolean doVerbose) {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       DocumentBuilder builder = factory.newDocumentBuilder();
@@ -102,8 +96,9 @@ public class WinlinkExpressViewerParser {
       }
       logger.debug("after parsing, map has " + keyValueMap.size() + " entries");
     } catch (Exception e) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, e.getMessage());
+      return e.getMessage();
     }
+    return null;
   }
 
   public String getValue(String key) {
