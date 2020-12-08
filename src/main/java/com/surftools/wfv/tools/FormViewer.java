@@ -86,7 +86,7 @@ public class FormViewer {
   private String viewFileName = null;
 
   @Option(name = "--server", metaVar = "SERVER_MODE", usage = "run as http server, default: false", required = false)
-  private boolean isServer = true;
+  private boolean isServer = false;
 
   public static void main(String[] args) {
     FormViewer app = new FormViewer();
@@ -336,7 +336,7 @@ public class FormViewer {
     sb.append(" - - [");
     sb.append(timeString);
     sb.append("] ");
-    sb.append("\"POST" + request.pathInfo() + displayFormName + "\"");
+    sb.append("\"POST" + request.pathInfo() + "/" + displayFormName + "\"");
     sb.append(" " + results.responseCode + " ");
     sb.append(results.resultString.length());
     return sb.toString();

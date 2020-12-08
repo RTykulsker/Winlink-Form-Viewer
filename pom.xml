@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.3.1-SNAPSHOT</version>
+	<version>0.3.3-SNAPSHOT</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>
@@ -15,12 +15,10 @@
 		<maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
 		<maven.appassembler.plugin.version>1.10</maven.appassembler.plugin.version>
 
-		<args4j.version>2.32</args4j.version>
-		<log4j.version>1.2.17</log4j.version>
-		<slf4j.version>1.7.6</slf4j.version>
+		<args4j.version>2.33</args4j.version>
+		<logback.version>1.2.3</logback.version>
 		<junit.version>4.12</junit.version>
 		<sparkjava-version>2.9.3</sparkjava-version>
-
 	</properties>
 
 	<dependencies>	
@@ -29,26 +27,14 @@
 			<groupId>args4j</groupId>
 			<artifactId>args4j</artifactId>
 			<version>${args4j.version}</version>
-		</dependency>	
+		</dependency>
 		
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.6</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>	
-		
 		<dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
