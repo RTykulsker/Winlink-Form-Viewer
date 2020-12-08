@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.3.3-SNAPSHOT</version>
+	<version>0.3.4-SNAPSHOT</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>
@@ -82,7 +82,7 @@
 					<configurationSourceDirectory>src/main/resources/conf</configurationSourceDirectory>
 					<configurationDirectory>conf</configurationDirectory>
 					<copyConfigurationDirectory>true</copyConfigurationDirectory>
-					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+					<includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
 					<platforms>
 						<platform>all</platform>
 					</platforms>					

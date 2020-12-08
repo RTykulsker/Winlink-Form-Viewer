@@ -65,9 +65,9 @@ public class WinlinkExpressTemplateProcessor {
         try {
           replacementValue = replacementValue.replace("\"", "&quot;");
           logger.debug("replacing: " + tokenKey + " with " + replacementValue);
-          result = result.replaceAll(Pattern.quote(token), replacementValue);
+          result = result.replace(token, replacementValue);
         } catch (Exception e) {
-          logger.error("Exception for token: " + token + ", " + e.getMessage());
+          logger.error("Exception for token: " + token + ", value: " + replacementValue + ", " + e.getMessage());
         }
       }
     }
