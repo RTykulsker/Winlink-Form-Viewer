@@ -40,7 +40,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ant.compress.taskdefs.Unzip;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -51,6 +50,8 @@ import org.slf4j.LoggerFactory;
 import com.surftools.wfv.config.ConfigurationKey;
 import com.surftools.wfv.config.IConfigurationManager;
 import com.surftools.wfv.tools.Utils;
+
+import net.lingala.zip4j.ZipFile;
 
 public class FormUtils {
 
@@ -183,10 +184,7 @@ public class FormUtils {
         fos.close();
 
         // unzip
-        Unzip unzipper = new Unzip();
-        unzipper.setSrc(zipFile);
-        unzipper.setDest(formsDir);
-        unzipper.execute();
+        new ZipFile(zipFile).extractAll(formsDirName);
 
         // rename zip
         Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");

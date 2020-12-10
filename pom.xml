@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.4.1-SNAPSHOT</version>
+	<version>0.4.2-SNAPSHOT</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>
@@ -15,12 +15,12 @@
 		<maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
 		<maven.appassembler.plugin.version>1.10</maven.appassembler.plugin.version>
 
-		<ant-compress.version>1.5</ant-compress.version>
 		<args4j.version>2.33</args4j.version>
 		<logback.version>1.2.3</logback.version>
 		<jsoup.version>1.13.1</jsoup.version>
 		<junit.version>4.13.1</junit.version>
 		<sparkjava-version>2.9.3</sparkjava-version>
+		<zip4j.version>2.6.4</zip4j.version>
 	</properties>
 
 	<dependencies>	
@@ -43,10 +43,10 @@
             <version>${sparkjava-version}</version>
         </dependency>
         
-		<dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>ant-compress</artifactId>
-			<version>${ant-compress.version}</version>
+        <dependency>
+			<groupId>net.lingala.zip4j</groupId>
+			<artifactId>zip4j</artifactId>
+			<version>2.6.1</version>
 		</dependency>
         
 		<dependency>
