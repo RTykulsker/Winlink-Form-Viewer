@@ -29,11 +29,15 @@ package com.surftools.wfv.forms;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.File;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.surftools.wfv.config.ConfigurationKey;
 import com.surftools.wfv.config.PropertyFileConfigurationManager;
+import com.surftools.wfv.tools.Utils;
 
 public class FormUtilsTest {
   private static final Logger logger = LoggerFactory.getLogger(FormUtilsTest.class);
@@ -89,5 +93,31 @@ public class FormUtilsTest {
     fu.updateForms();
 
     logger.debug("end test_updateForms");
+  }
+
+  /**
+   * this is not a unit test
+   *
+   * @throws Exception
+   */
+  @Test
+  public void test_emptyFormsDir() throws Exception {
+    logger.debug("begin test_emptyFormsDir");
+
+    final var cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
+    final var formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
+    final var formsDir = new File(formsDirName);
+
+    if (formsDir.exists()) {
+      var newFormsDir = new File(formsDirName + "-" + Utils.makeTimestamp());
+      formsDir.renameTo(newFormsDir);
+      logger.info("formsDir: " + formsDirName + " renamed to:" + newFormsDir.getName());
+    } else {
+      logger.info("formsDir: " + formsDirName + " not found");
+    }
+
+    new FormUtils(cm);
+
+    logger.debug("end test_emptyFormsDir");
   }
 }

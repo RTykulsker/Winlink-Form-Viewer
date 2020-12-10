@@ -38,8 +38,6 @@ public enum ConfigurationKey {
   EMSG_INIT_HTML_NOT_FOUND("emsg.initial.html.not.found", "Initial HTML file: %s not found. Exiting!"), //
   EMSG_INBOX_NOT_FOUND("emsg.inbox.not.found", "Inbox directory: %s not found. Exiting!"), //
   EMSG_INBOX_EMPTY("emsg.no.files.in.inbox", "Inbox directory: %s empty. Exiting!"), //
-  EMSG_FORMS_DIR_NOT_FOUND("emsg.forms.dir.not.found", "Forms directory: %s not found. Exiting!"), //
-  EMSG_FORMS_DIR_NOT_DIR("emsg.forms.dir.not.dir", "Forms directory: %s not a directory. Exiting!"), //
   EMSG_VIEW_FILE_NOT_FOUND("emsg.view.file.not.found", "View File: %s not found. Exiting!"), //
   EMSG_CANT_PARSE_VIEW_FILE("emsg.cant.parse.view.file", "Can't parse view file: %s. Exiting!"), //
   EMSG_NO_FORM_FILE_FOUND("emsg.no.form.file.found", "No form files found matching %s. Exiting!"), //
@@ -47,6 +45,7 @@ public enum ConfigurationKey {
   EMSG_OUTBOX_NOT_FOUND("emsg.outbox.dir.not.found", "Outbox directory: %s not found. Exiting!"), //
   EMSG_OUTBOX_NOT_DIR("emsg.outbox.dir.not.dir", "Outbox directory: %s not a directory. Exiting!"), //
   EMSG_NO_UPLOAD_FILE("emsg.no.upload.file", "No file fould in upload post. Continuing!"), //
+  EMSG_CANT_MAKE_FORMS_DIR("emsg.cant.make.form.dir", "Can't create forms dir: %s. Exiting!"), //
 
   BROWSER_PATH("browser.path"), //
   FORMS_PATH("forms.path"), //

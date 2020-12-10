@@ -37,6 +37,8 @@ import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
 
 import org.slf4j.Logger;
@@ -124,6 +126,18 @@ public class Utils {
       throw new RuntimeException(e);
     }
     return ip;
+  }
+
+  /**
+   * return a String representing a LocalDateTime string
+   *
+   * @return
+   */
+  public static String makeTimestamp() {
+    final var now = LocalDateTime.now();
+    final var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+    final var timestamp = now.format(formatter);
+    return timestamp;
   }
 
 }

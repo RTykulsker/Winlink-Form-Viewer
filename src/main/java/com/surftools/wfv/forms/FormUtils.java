@@ -57,21 +57,41 @@ public class FormUtils {
 
   private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
+  private static final String LAST_KNOWN_VERSION = "1.0.141.0";
+
   private final IConfigurationManager cm;
   private final File formsDir;
-  private String version;
+  private String version = LAST_KNOWN_VERSION;
   private String updateURL;
 
   public FormUtils(IConfigurationManager cm) throws Exception {
-    String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
-    formsDir = new File(formsDirName);
-    if (!formsDir.exists()) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_FORMS_DIR_NOT_FOUND, formsDirName);
-    }
-    if (!formsDir.isDirectory()) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_FORMS_DIR_NOT_DIR, formsDirName);
-    }
     this.cm = cm;
+
+    String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
+
+    boolean needsInitialDownload = false;
+    formsDir = new File(formsDirName);
+
+    if (!formsDir.exists()) {
+      logger.warn("Forms directory: " + formsDirName + " not found. Creating.");
+      needsInitialDownload = true;
+    }
+
+    if (!formsDir.isDirectory()) {
+      String timestamp = Utils.makeTimestamp();
+      File renamedTo = new File(formsDirName + "-" + timestamp);
+      logger.warn("Forms directory: " + formsDirName + " not a directory. Renamed to: " + renamedTo.getName());
+      formsDir.renameTo(renamedTo);
+      needsInitialDownload = true;
+    }
+
+    if (needsInitialDownload) {
+      boolean makeOk = formsDir.mkdirs();
+      if (!makeOk) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
+      }
+      int retCode = updateForms();
+    }
 
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
     version = Files.readString(versionPath);
