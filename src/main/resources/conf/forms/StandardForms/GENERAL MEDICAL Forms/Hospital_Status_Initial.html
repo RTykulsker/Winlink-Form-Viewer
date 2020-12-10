@@ -59,7 +59,7 @@ When targeted it fills the browser window.
 .popBox {
 background:#ffffff;
 /* alternatively fixed width / height and negative margins from 50% */
-position:absolute; left:30%; right:30%; top:30%; bottom:30%;
+position:absolute; left:20%; right:20%; top:10%; bottom:15%;
 z-index:10;
 border:1px solid #3a3a3a;
 /* CSS3 where available: rounded corners, drop-shadow, and fade in. */
@@ -133,6 +133,10 @@ display: block;
 }
 .style7 {font-size: 10px}
 .style48 {font-size: 12px}
+.style49 {color: #000000}
+.style50 {font-size: 10px; color: #000000; }
+.style57 {font-size: 9px}
+.style58 {color: #000000; font-size: 9px; }
 </style>
 <script>
 function shortmonth(monthnum) {
@@ -774,41 +778,38 @@ to links</span></a> </div>
         </tr>
       </table>
       <table width="100%"  border="1" cellspacing="0" cellpadding="4">
-        <tr bgcolor="#dee9f9">
+        <tr valign="top" bgcolor="#dee9f9">
           <td colspan="7" class="formbold">5. FACILITY OPERATING STATUS <br />
-            <table width="100%"  border="0" cellspacing="0" cellpadding="4">
+            <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
               <tr class="FormReg">
-                <td width="14%">&nbsp;Normal </td>
-                <td width="39%">&nbsp;Modified partially functional - no assistance needed (explain)</td>
-                <td width="47%">&nbsp;Limited partially functional,- Some assistance needed (explain)&nbsp;&nbsp;</td>
+                <td width="8%">&nbsp;</td>
+                <td width="12%">&nbsp;<span class="style50">Normal</span> </td>
+                <td width="36%">&nbsp;<span class="style50">Modified<span class="style57">- partially functional - no assistance needed (explain)</span></span></td>
+                <td width="44%" class="style50">&nbsp;Limited- <span class="style57">partially functional,- Some assistance needed (explain)&nbsp;&nbsp;</span></td>
               </tr>
               <tr class="FormReg">
-                <td>&nbsp;UNKNOWN</td>
-                <td>&nbsp;Impaired- major assistance needed (explain)</td>
-                <td>&nbsp;Not functional major assistance needed (explain)</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;<span class="style50">UNKNOWN</span></td>
+                <td><span class="style50">&nbsp;Impaired-</span><span class="style58"> major assistance needed (explain)</span></td>
+                <td class="style50">&nbsp;Not functional- <span class="style57">major assistance needed (explain)</span></td>
               </tr>
             </table></td>
           </tr>
-        <tr class="FormReg">
+        <tr valign="top" class="FormReg">
           <td width="27%">Check ability to provide essential care services</td>
           <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" onclick=" document.getElementById('A5a').value = 'NORMAL'" value="NORMAL" checked="checked"/>
-  NORMAL
-    <input name="A5a" type="hidden" id="A5a" value="NORMAL" /></td>
+    NORMAL
+      <input name="A5a" type="hidden" id="A5a" value="NORMAL" /></td>
           <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="MODIFIED partially functional - no assistance needed"  onclick=" document.getElementById('A5a').value = 'MODIFIED'" />
-  MODIFIED
-    </td>
+    MODIFIED </td>
           <td width="10%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="LIMITED" onclick=" document.getElementById('A5a').value = 'LIMITED'" />
-  LIMITED
-          </td>
+    LIMITED </td>
           <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="IMPAIRED" onclick=" document.getElementById('A5a').value = 'IMPAIRED'"/>
-  IMPAIRED
-          </td>
+    IMPAIRED </td>
           <td width="17%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="NOT FUNCTIONAL" onclick=" document.getElementById('A5a').value = 'NOT FUNCTIONAL'" />
-  NOT FUNCTIONAL 
-          </td>
+    NOT FUNCTIONAL </td>
           <td width="13%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="UNKNOWN"  onclick=" document.getElementById('A5a').value = 'UNKNOWN'" />
-  UNKNOWN
-          </td>
+    UNKNOWN </td>
         </tr>
         <tr class="FormReg">
           <td colspan="7"><textarea name="Comments5" cols="130" rows="1" id="Comments5" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>            </td>
@@ -1153,8 +1154,8 @@ NO </td>
 <small><span style="font-family: Calibri;">
 
 </span>&nbsp;&nbsp;&nbsp;&nbsp; </small>
-<input name="Templateversion" type="hidden" id="Templateversion" value="1.9" />
-</span><span class="FormReg">Version 1.9
+<input name="Templateversion" type="hidden" id="Templateversion" value="1.9.2" />
+</span><span class="FormReg">Version 1.9.2
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span></p>
       </td>

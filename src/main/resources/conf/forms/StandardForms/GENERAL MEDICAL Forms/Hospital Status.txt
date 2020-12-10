@@ -21,7 +21,7 @@ Report Type: <var aReportType>  <var updatenum>
 4d. Contact Email Address: <var Contactemail>
 
 5. FACILITY OPERATING STATUS 
-   <var A5a> - Ability to provide essential care services: 
+* <var A5a> - Ability to provide essential care services * 
     
      STATUS definitions:
      Normal 
@@ -29,8 +29,7 @@ Report Type: <var aReportType>  <var updatenum>
      Limited partially functional,- Some assistance needed (explain)
      Impaired- major assistance needed (explain)
      Not functional major assistance needed (explain)
-
-Comments 
+--
 <var Comments5>
 
 6. COMMUNICATIONS
@@ -41,13 +40,15 @@ Comments
   Cell Phone: <var A6e>
   Satellite Phone: <var A6f>
   HEART Amateur Radio: <var A6g>
+--
+<var Comments6>
 
 7. UTILITIES
   Power: <var A7a>
   Water: <var A7b>
   Sanitation: <var A7c>
   Heating/Ventilation/AC: <var A7d>
-Comments:
+--
 <var Comments7>
 
 8. EVACUATION
@@ -55,7 +56,7 @@ Comments:
   Partial Evacuation: <var Partial8>  <var A8b>
   Total Evacuation: <var Total8>   <var A8c>
   Shelter in place: <var Shelter8>   <var A8d>
-Comments:
+--
 <var Comments8>
 
 9. IMPACT/CASUALTIES - provide estimated numbers and any comments:
@@ -63,14 +64,14 @@ Comments:
   Estimated # <var Delayed9> Delayed injuries = Moderate care needed YELLOW 
   Estimated # <var Minor9> Minor injuries = Care not needed immediately GREEN 
   Estimated # <var Fatalities9> Fatalities BLACK = Deceased 
-Comments:
+--
 <var Comments9>
 10. ADDITIONAL INFORMATION:
   Internal disaster plan activated? <var plan10a> 
   Facility Command Center activated? <var FCCActive10>
   Emergency generator power in use? <var generator10>
   Will you send Resource Request within 4 hours? <var ResiourceRequest10>
-Comments:
+--
 <var Comments10>
 ---
 Express Sending Station: <MsgSender>

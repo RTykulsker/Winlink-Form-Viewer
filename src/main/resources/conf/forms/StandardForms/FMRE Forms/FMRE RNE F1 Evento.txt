@@ -16,12 +16,11 @@ Descripcion del Evento:
  <var Type>
 
 Lugar: 
- <var Loc>
+<var Loc>
 
 Requerimientos:
 -----------------
-
- <var Req>
+<var Req>
 -----------------
 
 Mensaje:
@@ -30,7 +29,8 @@ Mensaje:
  <var Mes>
 -----------------
 
-   http://www.fmre.mx/
+http://www.fmre.mx/
+<var Templateversion>
 
 
 

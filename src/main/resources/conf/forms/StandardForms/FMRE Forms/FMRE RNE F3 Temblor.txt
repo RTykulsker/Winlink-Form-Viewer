@@ -30,9 +30,10 @@ Lesionados: <var Injuries>
 Fallecidos: <var Deaths>
 
 Informacion Adicional:
- <var Narrative>
+<var Narrative>
 
- 
+----
+<var Templateversion>
 
 
 

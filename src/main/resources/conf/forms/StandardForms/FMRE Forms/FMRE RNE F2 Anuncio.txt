@@ -17,7 +17,7 @@ Anuncio:
 ------------------------------
  
 www.fmre.mx
-
+<var Templateversion>
 
 
 

@@ -88,6 +88,9 @@ public class FormViewer {
   @Option(name = "--server", metaVar = "SERVER_MODE", usage = "run as http server, default: false", required = false)
   private boolean isServer = false;
 
+  @Option(name = "--updateFormsAndExit", metaVar = "UPDATE_FORMS_AND_EXIT", usage = "update forms, if available and exit, default: false", required = false)
+  private boolean updateFormsAndExit = false;
+
   public static void main(String[] args) {
     FormViewer app = new FormViewer();
     CmdLineParser parser = new CmdLineParser(app);
@@ -103,6 +106,12 @@ public class FormViewer {
   private void run() {
     try {
       cm = new PropertyFileConfigurationManager(configFileName);
+
+      if (updateFormsAndExit) {
+        FormUtils formUtils = new FormUtils(cm);
+        int retCode = formUtils.updateForms();
+        System.exit(retCode);
+      }
 
       if (isServer && viewFileName != null) {
         throw new RuntimeException("can't run as server AND handle file: " + viewFileName);

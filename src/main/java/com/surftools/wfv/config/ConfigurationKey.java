@@ -56,6 +56,9 @@ public enum ConfigurationKey {
   SERVER_INITIAL_HTML("server.initialHtml"), // for internal server
   SERVER_404_HTML("server.404Html"), //
   SERVER_PORT("server.port"), //
+
+  FORMS_UPDATE_URL_PREFIX("forms.update.url.prefix"), //
+  FORMS_UPDATE_URL_MAGIC("forms.update.url.magic"), //
   ;
 
   private final String key;

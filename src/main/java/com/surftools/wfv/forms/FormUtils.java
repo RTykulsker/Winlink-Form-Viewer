@@ -28,12 +28,23 @@ SOFTWARE.
 package com.surftools.wfv.forms;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpClient.Redirect;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ant.compress.taskdefs.Unzip;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,11 +53,13 @@ import com.surftools.wfv.config.IConfigurationManager;
 import com.surftools.wfv.tools.Utils;
 
 public class FormUtils {
+
   private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
   private final IConfigurationManager cm;
   private final File formsDir;
-  private final String version;
+  private String version;
+  private String updateURL;
 
   public FormUtils(IConfigurationManager cm) throws Exception {
     String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
@@ -63,6 +76,134 @@ public class FormUtils {
     version = Files.readString(versionPath);
 
     logger.debug("Forms path: " + formsDir + ", version: " + version);
+  }
+
+  public boolean isFormsUpdateAvailable() {
+    // https://winlink.org/content/how_manually_update_standard_templates_version_10142
+
+    boolean ret = false;
+    String urlPrefix = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_PREFIX);
+
+    String version = getVersion(); // 1.0.141.0
+    version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
+    String requestUriString = urlPrefix + version;
+    logger.debug("checking for new form version via: " + requestUriString);
+
+    try {
+      HttpClient client = HttpClient.newBuilder() //
+          .followRedirects(Redirect.NORMAL) //
+          .build(); //
+
+      HttpRequest request = HttpRequest.newBuilder() //
+          .uri(URI.create(requestUriString)) //
+          .build();
+
+      HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+      String responseUriString = response.uri().toURL().toString();
+      logger.debug("response uri: " + responseUriString);
+
+      if (!requestUriString.equals(responseUriString)) {
+        logger.info("new forms update available: " + responseUriString);
+        updateURL = findUpdateURL(response.body());
+        logger.debug("download from: " + updateURL);
+        ret = true;
+      }
+    } catch (Exception e) {
+      logger.error("Error processing form check: " + e.getMessage(), e);
+    }
+    return ret;
+  }
+
+  private String findUpdateURL(String body) {
+    Document doc = Jsoup.parse(body);
+    Elements links = doc.select("a[href]");
+    String magic = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_MAGIC, "1drv.ms");
+    for (Element e : links) {
+      String link = e.attr("href");
+      if (link.contains(magic)) {
+        return link;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * update forms, if update available
+   *
+   * @return 0 if nothing to update, 1 if updated
+   */
+  public int updateForms() {
+    int retCode = 0;
+    if (updateURL == null) {
+      boolean isAvailable = isFormsUpdateAvailable();
+      if (!isAvailable || updateURL == null) {
+        logger.debug("no form updates available");
+        return retCode;
+      }
+    }
+
+    try {
+      HttpClient client = HttpClient.newBuilder() //
+          .followRedirects(Redirect.NORMAL) //
+          .build(); //
+
+      HttpRequest request = HttpRequest.newBuilder() //
+          .uri(URI.create(updateURL)) //
+          .build();
+
+      HttpResponse<String> firstResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
+      String responseUriString = firstResponse.uri().toURL().toString();
+      // https://stackoverflow.com/questions/26541705/how-to-download-a-file-from-onedrive-after-using-the-onedrive-picker-to-get-the
+      responseUriString = responseUriString.replace("/redir", "/download");
+      logger.debug("updated responseUriString: " + responseUriString);
+
+      request = HttpRequest.newBuilder() //
+          .uri(URI.create(responseUriString)) //
+          .build();
+
+      HttpResponse<byte[]> secondResponse = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
+      byte[] bytes = secondResponse.body();
+
+      if (bytes != null && bytes.length > 1_000_000) {
+        logger.info("downloaded new forms: " + bytes.length + " bytes");
+
+        // rename existing forms directory
+        String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
+        File formsDir = new File(formsDirName);
+        String formsParentDirName = formsDir.getParent();
+        File renameDir = new File(formsDir + "-" + getVersion());
+        logger.info("rename formsDir from: " + formsDirName + " to: " + renameDir.getName());
+        formsDir.renameTo(renameDir);
+
+        // write the bytes to a file
+        Path zipPath = Path.of(formsParentDirName, "StandardForms.zip");
+        File zipFile = zipPath.toFile();
+        FileOutputStream fos = new FileOutputStream(zipFile);
+        fos.write(bytes);
+        fos.close();
+
+        // unzip
+        Unzip unzipper = new Unzip();
+        unzipper.setSrc(zipFile);
+        unzipper.setDest(formsDir);
+        unzipper.execute();
+
+        // rename zip
+        Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
+        version = Files.readString(versionPath);
+        File renameZipFile = new File(formsDirName + "-" + getVersion() + ".zip");
+        zipFile.renameTo(renameZipFile);
+        logger.info("wrote zipped forms file to: " + renameZipFile.getName());
+        logger.info("downloaded new forms, version: " + getVersion());
+        retCode = 1;
+      }
+    } catch (
+
+    Exception e) {
+      logger.error("Error processing form check: " + e.getMessage(), e);
+    }
+
+    return retCode;
   }
 
   /**
@@ -96,5 +237,9 @@ public class FormUtils {
 
   public String getVersion() {
     return version;
+  }
+
+  public String getUpdateURL() {
+    return updateURL;
   }
 }

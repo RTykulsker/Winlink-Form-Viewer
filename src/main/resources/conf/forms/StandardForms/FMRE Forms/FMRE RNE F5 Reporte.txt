@@ -20,8 +20,7 @@ Correo electronico: <var Email>
 Telefono: <var Phone>
 
 Asignacion o rol en este incidente -evento?:
-
- <var Comm1>
+<var Comm1>
 ------------------------
 
 Resumen del evento - incidente y; describa algunas actividades en las que estuvo involucrado.:

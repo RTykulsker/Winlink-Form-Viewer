@@ -37,7 +37,7 @@ Intensidad de la Lluvia: <var Lluvia>
 
 ----------------------------------------------------------------
 www.fmre.mx 
-
+<var Templateversion>
 
 
 
