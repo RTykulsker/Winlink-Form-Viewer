@@ -71,6 +71,11 @@ import spark.Spark;
 public class FormViewer {
   private static final Logger logger = LoggerFactory.getLogger(FormViewer.class);
 
+  // create a separate logger so that we can log server access to a file, etc.
+  private static final Logger serverLogger = LoggerFactory.getLogger("serverLogger");
+
+  private static final String FV_VERSION = "0.5.1";
+
   private static final String FILE_UPLOAD_PATH = "/uploadFile";
   private static final String XHR_UPLOAD_PATH = "/uploadXHR";
 
@@ -85,11 +90,14 @@ public class FormViewer {
   @Option(name = "--view-file", metaVar = "VIEW_FILE_NAME", usage = "path to viewer file, default: (none)", required = false)
   private String viewFileName = null;
 
-  @Option(name = "--server", metaVar = "SERVER_MODE", usage = "run as http server, default: false", required = false)
+  @Option(name = "--server", usage = "run as http server, default: false", required = false)
   private boolean isServer = false;
 
-  @Option(name = "--updateFormsAndExit", metaVar = "UPDATE_FORMS_AND_EXIT", usage = "update forms, if available and exit, default: false", required = false)
+  @Option(name = "--updateFormsAndExit", usage = "update forms, if available and exit, default: false", required = false)
   private boolean updateFormsAndExit = false;
+
+  @Option(name = "--help", usage = "show help and exit, default: false", required = false)
+  private boolean showHelpAndExit = false;
 
   public static void main(String[] args) {
     FormViewer app = new FormViewer();
@@ -100,11 +108,17 @@ public class FormViewer {
     } catch (Exception e) {
       System.err.println(e.getMessage());
       parser.printUsage(System.err);
+      System.err.println("\n\n" + getHelpText());
     }
   }
 
   private void run() {
     try {
+      if (showHelpAndExit) {
+        System.out.println(getHelpText());
+        return;
+      }
+
       cm = new PropertyFileConfigurationManager(configFileName);
 
       if (updateFormsAndExit) {
@@ -195,10 +209,16 @@ public class FormViewer {
     if (!dir.exists()) {
       Utils.fatal(cm, ConfigurationKey.EMSG_INBOX_NOT_FOUND, dirName);
     }
+
     logger.debug("using inbox: " + dirName);
     File[] files = dir.listFiles();
     if (files == null || files.length == 0) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_INBOX_EMPTY, dirName);
+      ConfigurationKey key = ConfigurationKey.EMSG_INBOX_EMPTY;
+      String defaultValue = key.getErrorMessage();
+      String template = cm.getAsString(key, defaultValue);
+      String message = String.format(template, dirName);
+      logger.info(message);
+      System.exit(0);
     }
 
     File lastModifiedFile = files[0];
@@ -225,10 +245,14 @@ public class FormViewer {
     WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
     String errorMessage = parser.parse(viewContent, true);
     if (errorMessage != null) {
+      ConfigurationKey key = ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE;
       if (isServer) {
-        Utils.warn(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, errorMessage);
+        String defaultValue = key.getErrorMessage();
+        String template = cm.getAsString(key, defaultValue);
+        errorMessage = String.format(template, errorMessage);
+        logger.warn(errorMessage);
       } else {
-        Utils.fatal(cm, ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE, errorMessage);
+        Utils.fatal(cm, key, errorMessage);
       }
       return new FormResults(null, errorMessage, 500);
     }
@@ -329,7 +353,7 @@ public class FormViewer {
       }
 
       FormResults results = generateResults(viewContent);
-      logger.info(commonLogFormat(request, results.displayFormName, results));
+      serverLogger.info(commonLogFormat(request, results.displayFormName, results));
       response.status(results.responseCode);
       return results.resultString;
     }
@@ -349,5 +373,51 @@ public class FormViewer {
     sb.append(" " + results.responseCode + " ");
     sb.append(results.resultString.length());
     return sb.toString();
+  }
+
+  @SuppressWarnings("preview")
+  private static String getHelpText() {
+    String help = """
+        This is fv, a Winlink Form Viewer, version $VERSION.
+
+        FV works in conjunction with with Winlink Express (WE).
+        FV combines the small "view" file transmitted by WE with the the
+        associated form (which is not transmitted). The result is then displayed
+        in a browser. This is very useful when the view file is transmitted by
+        regular (SMTP) email version radio (WE) email
+
+        FV can operate in several modes, each with a corresponding script in the
+        $FV_HOME/bin directory:
+        -- fv-file: read the view file supplied on the command line
+
+        -- fv-inbox: read the most most recent view file found in the inbox.
+          The default location for the inbox is $FV_HOME/conf/inbox, but you can
+          override this in the configuration file (see below).
+
+        -- fv-server: start as a web server that allows you to "upload" or use
+          "drag-and-drop". After displaying a form, you can specify another file
+          by refreshing your browser (typically, F5). The server listens on port
+          8080 by default, but you can change this via the configuration file
+          (see below).
+
+        -- fv-update: this attempts to check whether the version of the forms
+          library used is up to date with the version supplied by WE. If not, it
+          attempts to download and install the most up to date version. This is
+          an experimental feature and is likely to break as the Winlink team
+          change how they handle updates. If necessary, you can manually install
+          a new forms library. The location is specified in the configuration
+          file (see below).
+
+        -- fv-help: print this usage message.
+
+        FV needs to read a configuration file to properly work. The default
+        configuration file is located in $FV_HOME/conf/fv.conf. You can use an
+        alternative configuration file by specifying with --config-file <name>
+
+        FV uses a logging configuration file at $FV_HOME/conf/logback.xml to
+        control program logging
+        """;
+    help = help.replace("$VERSION", FV_VERSION);
+    return help;
   }
 }

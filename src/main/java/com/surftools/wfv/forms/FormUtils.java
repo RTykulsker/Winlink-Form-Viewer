@@ -90,7 +90,7 @@ public class FormUtils {
       if (!makeOk) {
         Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
       }
-      int retCode = updateForms();
+      updateForms();
     }
 
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
@@ -108,7 +108,7 @@ public class FormUtils {
     String version = getVersion(); // 1.0.141.0
     version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
     String requestUriString = urlPrefix + version;
-    logger.debug("checking for new form version via: " + requestUriString);
+    logger.info("checking for new form version via: " + requestUriString);
 
     try {
       HttpClient client = HttpClient.newBuilder() //
@@ -128,6 +128,8 @@ public class FormUtils {
         updateURL = findUpdateURL(response.body());
         logger.debug("download from: " + updateURL);
         ret = true;
+      } else {
+        logger.info("no new forms update available, current version: " + getVersion());
       }
     } catch (Exception e) {
       logger.error("Error processing form check: " + e.getMessage(), e);

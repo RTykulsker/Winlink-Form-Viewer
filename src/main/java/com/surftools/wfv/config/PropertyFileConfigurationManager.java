@@ -50,6 +50,7 @@ public class PropertyFileConfigurationManager extends AbstractConfigurationManag
   public PropertyFileConfigurationManager(String configFileName) throws Exception {
     Properties properties = new Properties();
     try {
+      logger.info("using configuration file: " + configFileName);
       properties.load(new FileInputStream(new File(configFileName)));
 
       List<String> propertiesWithoutConfigurationKeys = new ArrayList<>();

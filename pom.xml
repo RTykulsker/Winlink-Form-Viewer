@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.4.3-SNAPSHOT</version>
+	<version>0.5.1</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>
@@ -92,21 +92,39 @@
 				</executions>
 
 				<configuration>
-					<extraJvmArguments>-XX:-UseGCOverheadLimit</extraJvmArguments>
+					<extraJvmArguments>
+						-DLogback.debug=false
+						-Dlogback.statusListenerClass=ch.qos.logback.core.status.NopStatusListener
+					</extraJvmArguments>
 					<configurationSourceDirectory>src/main/resources/conf</configurationSourceDirectory>
 					<configurationDirectory>conf</configurationDirectory>
 					<copyConfigurationDirectory>true</copyConfigurationDirectory>
-					<includeConfigurationDirectoryInClasspath>false</includeConfigurationDirectoryInClasspath>
+					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
 					<platforms>
 						<platform>all</platform>
 					</platforms>					
 					<programs>
 						<program>
 							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
-							<id>fv</id>
+							<id>fv-help</id>
+							<commandLineArguments>
+								<commandLineArgument>--help</commandLineArgument>
+							</commandLineArguments>
+						</program>
+						<program>
+							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
+							<id>fv-inbox</id>
 							<commandLineArguments>
                 				<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
                 			</commandLineArguments>							
+						</program>
+						<program>
+							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
+							<id>fv-file</id>
+							<commandLineArguments>
+								<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
+								<commandLineArgument>--view-file</commandLineArgument>
+							</commandLineArguments>
 						</program>
 						<program>
 							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>

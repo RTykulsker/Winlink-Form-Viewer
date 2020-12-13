@@ -2,12 +2,22 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-        <pattern>%d{HH:mm:ss.SSS} %-5level %class{0}.%M - %msg%n</pattern>
+		<pattern>%d{HH:mm:ss.SSS} %-5level %msg%n</pattern>
     </encoder>
   </appender>
   
+  <appender name="SERVER_LOGGER" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
   <logger name="com.surftools" level="INFO"/>
   
+  <logger name="serverLogger" level="INFO">
+      <appender-ref ref="SERVER_LOGGER" />
+  </logger>
+
   <root level="WARN">
     <appender-ref ref="STDOUT" />
   </root>
