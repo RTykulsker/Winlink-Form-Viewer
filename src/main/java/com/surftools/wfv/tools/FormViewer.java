@@ -74,14 +74,14 @@ public class FormViewer {
   // create a separate logger so that we can log server access to a file, etc.
   private static final Logger serverLogger = LoggerFactory.getLogger("serverLogger");
 
-  private static final String FV_VERSION = "0.5.1";
+  private static final String FV_VERSION = "0.5.2";
 
   private static final String FILE_UPLOAD_PATH = "/uploadFile";
   private static final String XHR_UPLOAD_PATH = "/uploadXHR";
 
   private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
-  private IConfigurationManager cm;
+  private static IConfigurationManager cm;
 
   @Option(name = "--config-file", metaVar = "CONFIGURATION_FILE_NAME", usage = "path to configuration file, default: "
       + DEFAULT_CONFIG_FILE_NAME, required = false)
@@ -114,15 +114,16 @@ public class FormViewer {
 
   private void run() {
     try {
+      cm = new PropertyFileConfigurationManager(configFileName);
+
       if (showHelpAndExit) {
         System.out.println(getHelpText());
         return;
       }
 
-      cm = new PropertyFileConfigurationManager(configFileName);
-
       if (updateFormsAndExit) {
         FormUtils formUtils = new FormUtils(cm);
+        logger.info("Current forms version: " + formUtils.getVersion());
         int retCode = formUtils.updateForms();
         System.exit(retCode);
       }
@@ -132,10 +133,14 @@ public class FormViewer {
       }
 
       if (isServer) {
-        final int port = cm.getAsInt(ConfigurationKey.SERVER_PORT, 8080);
+        final int port = cm.getAsInt(ConfigurationKey.SERVER_PORT, 6676);
         if (!Utils.isPortAvailable(port)) {
           Utils.fatal(cm, ConfigurationKey.EMSG_PORT_IN_USE, String.valueOf(port));
         }
+        final String ipAddress = Utils.getLocalIPv4Address();
+        final String serverUrl = "http://" + ipAddress + ":" + port;
+        final long pid = ProcessHandle.current().pid();
+        logger.info("listening on port: " + serverUrl + ", processId: " + pid);
 
         final var notFoundHandler = new NotFoundHandler();
         final var uploadHandler = new UploadHandler();
@@ -149,11 +154,7 @@ public class FormViewer {
         Spark.delete("*", notFoundHandler);
         Spark.init();
 
-        final String ipAddress = Utils.getLocalIPv4Address();
-        final String serverUrl = "http://" + ipAddress + ":" + port;
         Utils.openBrowser(cm, serverUrl);
-
-        logger.info("listening on port: " + serverUrl);
 
         return;
       }
@@ -213,10 +214,7 @@ public class FormViewer {
     logger.debug("using inbox: " + dirName);
     File[] files = dir.listFiles();
     if (files == null || files.length == 0) {
-      ConfigurationKey key = ConfigurationKey.EMSG_INBOX_EMPTY;
-      String defaultValue = key.getErrorMessage();
-      String template = cm.getAsString(key, defaultValue);
-      String message = String.format(template, dirName);
+      String message = getEmptyInboxMessage(dirName);
       logger.info(message);
       System.exit(0);
     }
@@ -228,8 +226,39 @@ public class FormViewer {
       }
     }
 
-    logger.debug("returning file: " + lastModifiedFile.getCanonicalPath());
+    logger.info("using last modified file: " + lastModifiedFile.getName() + ", from inbox: " + dir.getCanonicalPath());
     return lastModifiedFile.getCanonicalPath();
+  }
+
+  /**
+   * return appropriate text if inbox is empty
+   *
+   * Since this might be a complex message, we'll first try reading the text from a file
+   *
+   * If that fails, we'll look for text in a configuration parameter
+   *
+   * If that fails, we'll take take from configuration key
+   *
+   * @param dirName
+   * @return
+   */
+  private String getEmptyInboxMessage(String dirName) {
+    String template = null;
+    String emptyInboxFileName = cm.getAsString(ConfigurationKey.EMPTY_INBOX_FILE);
+    try {
+      Path emptyInboxPath = Paths.get(emptyInboxFileName);
+      template = Files.readString(emptyInboxPath);
+    } catch (Exception e) {
+      logger.info("couldn't get empty inbox text from file: " + emptyInboxFileName + ", " + e.getLocalizedMessage());
+    }
+
+    if (template == null) {
+      ConfigurationKey key = ConfigurationKey.EMSG_INBOX_EMPTY;
+      template = cm.getAsString(key, key.getErrorMessage());
+    }
+
+    String message = template.replace("${inboxDir}", dirName);
+    return message;
   }
 
   /**
@@ -375,9 +404,8 @@ public class FormViewer {
     return sb.toString();
   }
 
-  @SuppressWarnings("preview")
   private static String getHelpText() {
-    String help = """
+    final String defaultText = """
         This is fv, a Winlink Form Viewer, version $VERSION.
 
         FV works in conjunction with with Winlink Express (WE).
@@ -397,7 +425,7 @@ public class FormViewer {
         -- fv-server: start as a web server that allows you to "upload" or use
           "drag-and-drop". After displaying a form, you can specify another file
           by refreshing your browser (typically, F5). The server listens on port
-          8080 by default, but you can change this via the configuration file
+          6676 by default, but you can change this via the configuration file
           (see below).
 
         -- fv-update: this attempts to check whether the version of the forms
@@ -417,7 +445,26 @@ public class FormViewer {
         FV uses a logging configuration file at $FV_HOME/conf/logback.xml to
         control program logging
         """;
-    help = help.replace("$VERSION", FV_VERSION);
-    return help;
+    if (cm == null) {
+      return defaultText;
+    }
+
+    String helpText = null;
+    String usageFileName = null;
+    try {
+
+      if (cm == null) {
+        helpText = defaultText;
+      } else {
+        usageFileName = cm.getAsString(ConfigurationKey.USAGE_FILE);
+        Path usageFilePath = Paths.get(usageFileName);
+        helpText = Files.readString(usageFilePath);
+      }
+      helpText = helpText.replace("$VERSION", FV_VERSION);
+    } catch (Exception e) {
+      logger.debug("Error getting usage file:" + usageFileName + ", " + e.getLocalizedMessage());
+    }
+
+    return helpText;
   }
 }

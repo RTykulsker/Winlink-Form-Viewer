@@ -94,7 +94,7 @@ public class FormUtils {
     }
 
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
-    version = Files.readString(versionPath);
+    version = Files.readString(versionPath).trim();
 
     logger.debug("Forms path: " + formsDir + ", version: " + version);
   }
@@ -129,10 +129,10 @@ public class FormUtils {
         logger.debug("download from: " + updateURL);
         ret = true;
       } else {
-        logger.info("no new forms update available, current version: " + getVersion());
+        logger.info("no new forms update available.");
       }
     } catch (Exception e) {
-      logger.error("Error processing form check: " + e.getMessage(), e);
+      logger.error("Error in isFormsUpdateAvailable(): " + e.getMessage(), e);
     }
     return ret;
   }
@@ -220,7 +220,7 @@ public class FormUtils {
     } catch (
 
     Exception e) {
-      logger.error("Error processing form check: " + e.getMessage(), e);
+      logger.error("Error in updateForms(): " + e.getMessage(), e);
     }
 
     return retCode;

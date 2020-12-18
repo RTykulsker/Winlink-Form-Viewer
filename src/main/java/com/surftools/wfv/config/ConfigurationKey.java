@@ -32,12 +32,13 @@ public enum ConfigurationKey {
   MAILBOX_PATH("mailbox.path"), //
   PAT_PATH("pat.path"), //
 
-  EMSG_PORT_IN_USE("emsg.port.in.use", "port: %s is already in use. Exiting!"), //
+  EMSG_PORT_IN_USE("emsg.port.in.use",
+      "port: %s is already in use. Consider browsing to that port, terminating the application that is using that port, or changing the fv.conf server.port value to a different port number. Exiting!"), //
   EMSG_BROWSER_NOT_FOUND("emsg.browser.not.found", "Browser executable: %s not found. Exiting!"), //
   EMSG_URL_FILE_NOT_FOUND("emsg.url.not.found", "URL file: %s not found. Exiting!"), //
   EMSG_INIT_HTML_NOT_FOUND("emsg.initial.html.not.found", "Initial HTML file: %s not found. Exiting!"), //
   EMSG_INBOX_NOT_FOUND("emsg.inbox.not.found", "Inbox directory: %s not found. Exiting!"), //
-  EMSG_INBOX_EMPTY("emsg.no.files.in.inbox", "Inbox directory: %s empty. Exiting!"), //
+  EMSG_INBOX_EMPTY("emsg.inbox.empty", "Inbox directory: ${inboxDir} empty. Exiting!"), //
   EMSG_VIEW_FILE_NOT_FOUND("emsg.view.file.not.found", "View File: %s not found. Exiting!"), //
   EMSG_CANT_PARSE_VIEW_FILE("emsg.cant.parse.view.file", "Can't parse view file: %s. Exiting!"), //
   EMSG_NO_FORM_FILE_FOUND("emsg.no.form.file.found", "No form files found matching %s. Exiting!"), //
@@ -51,6 +52,8 @@ public enum ConfigurationKey {
   FORMS_PATH("forms.path"), //
   INBOX_PATH("inbox.path"), //
   OUTBOX_PATH("outbox.path"), //
+  USAGE_FILE("usage.file"), //
+  EMPTY_INBOX_FILE("empty.inbox.file"), //
 
   SERVER_INITIAL_HTML("server.initialHtml"), // for internal server
   SERVER_404_HTML("server.404Html"), //
