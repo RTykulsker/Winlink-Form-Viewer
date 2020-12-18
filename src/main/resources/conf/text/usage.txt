@@ -1,4 +1,4 @@
-This is fv, a Winlink Form Viewer, version 0.5.2.
+This is fv, a Winlink Form Viewer, version 0.6.1.
 
 FV works in conjunction with with Winlink Express (WE).
 FV combines the small "view" file transmitted by WE with the the
@@ -8,11 +8,6 @@ regular (SMTP) email version radio (WE) email
 
 FV can operate in several modes, each with a corresponding script in the
 $FV_HOME/bin directory:
--- fv-file: read the view file supplied on the command line
-
--- fv-inbox: read the most most recent view file found in the inbox.
-  The default location for the inbox is $FV_HOME/conf/inbox, but you can
-  override this in the configuration file (see below).
 
 -- fv-server: start as a web server that allows you to "upload" or use
   "drag-and-drop". After displaying a form, you can specify another file
@@ -27,8 +22,6 @@ $FV_HOME/bin directory:
   change how they handle updates. If necessary, you can manually install
   a new forms library. The location is specified in the configuration
   file (see below).
-
--- fv-help: print this usage message.
 
 FV needs to read a configuration file to properly work. The default
 configuration file is located in $FV_HOME/conf/fv.conf. You can use an

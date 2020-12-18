@@ -1,14 +1,19 @@
+investigate Apache Tika to detect non-view files
+allow for external text for port in use message
+
+require update mode to get a confirmation
+
+make a README.md file
+
+incorporate "heavy" ink in web form
+avoid need to refresh in web form
+
 DONE -- drop down to Java 8
 DONE -- remove inbox, file, and help modes
 DONE -- remove starting browser; and in fv.conf
 DONE -- good enough for now; investigate Javalin vs JavaSpart to see which is more active
-investigate Apache Tika to detect non-view files
-allow for external text for port in use message
 DONE -- clean up conf directory
 DONE -- clean up fv.conf
 DONE -- put sample view files into sample folder
-make a README.md file
-incorporate "heavy" ink in web form
-avoid need to refresh in web form
 DONE -- avoid multiple drag and drop in web form
 DONE -- remove unused html for non-drag-and-drop

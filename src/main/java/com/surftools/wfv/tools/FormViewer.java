@@ -62,8 +62,9 @@ import spark.Route;
 import spark.Spark;
 
 /**
- * view a Winlink Express (WE) form in a browser, with values populated source can be from a web page or cli (last file
- * in inbox, or named file)
+ * start as web server,
+ *
+ * accept a Winlink Express (WE) view file, merge with the referenced form, return merged form
  *
  * @author bobt
  *
