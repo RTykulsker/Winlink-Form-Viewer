@@ -27,16 +27,12 @@ SOFTWARE.
 
 package com.surftools.wfv.tools;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.Socket;
 import java.net.SocketException;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
@@ -49,29 +45,6 @@ import com.surftools.wfv.config.IConfigurationManager;
 
 public class Utils {
   private static final Logger logger = LoggerFactory.getLogger(Utils.class);
-
-  public static void openBrowser(IConfigurationManager cm, String url) throws Exception {
-    String browserFileName = cm.getAsString(ConfigurationKey.BROWSER_PATH);
-    File browserFile = new File(browserFileName);
-    if (!browserFile.exists()) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_BROWSER_NOT_FOUND, browserFileName);
-    }
-
-    ProcessBuilder processBuilder = new ProcessBuilder(browserFileName, url);
-    Process process = processBuilder.start();
-    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-    String line;
-    StringBuilder sb = new StringBuilder();
-    while ((line = reader.readLine()) != null) {
-      sb.append(line);
-      sb.append("\n");
-    }
-    logger.debug(sb.toString());
-
-    int exitCode = process.waitFor();
-    logger.debug("browser exited with error code : " + exitCode);
-
-  }
 
   public static void fatal(IConfigurationManager cm, ConfigurationKey key, String value) {
     String defaultValue = key.getErrorMessage();
@@ -86,10 +59,6 @@ public class Utils {
     String template = cm.getAsString(key, defaultValue);
     String message = String.format(template, value);
     logger.warn(message);
-  }
-
-  public static void openBrowser(IConfigurationManager cm, Path url) throws Exception {
-    openBrowser(cm, url.toFile().getCanonicalPath());
   }
 
   public static boolean isPortAvailable(int port) {

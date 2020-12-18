@@ -88,17 +88,11 @@ public class FormViewer {
       + DEFAULT_CONFIG_FILE_NAME, required = false)
   private String configFileName = DEFAULT_CONFIG_FILE_NAME;
 
-  @Option(name = "--view-file", metaVar = "VIEW_FILE_NAME", usage = "path to viewer file, default: (none)", required = false)
-  private String viewFileName = null;
-
   @Option(name = "--server", usage = "run as http server, default: false", required = false)
   private boolean isServer = false;
 
-  @Option(name = "--updateFormsAndExit", usage = "update forms, if available and exit, default: false", required = false)
-  private boolean updateFormsAndExit = false;
-
-  @Option(name = "--help", usage = "show help and exit, default: false", required = false)
-  private boolean showHelpAndExit = false;
+  @Option(name = "--updateForms", usage = "update forms, if available and exit, default: false", required = false)
+  private boolean updateForms = false;
 
   public static void main(String[] args) {
     FormViewer app = new FormViewer();
@@ -109,7 +103,6 @@ public class FormViewer {
     } catch (Exception e) {
       System.err.println(e.getMessage());
       parser.printUsage(System.err);
-      System.err.println("\n\n" + getHelpText());
     }
   }
 
@@ -117,20 +110,11 @@ public class FormViewer {
     try {
       cm = new PropertyFileConfigurationManager(configFileName);
 
-      if (showHelpAndExit) {
-        System.out.println(getHelpText());
-        return;
-      }
-
-      if (updateFormsAndExit) {
+      if (updateForms) {
         FormUtils formUtils = new FormUtils(cm);
         logger.info("Current forms version: " + formUtils.getVersion());
         int retCode = formUtils.updateForms();
         System.exit(retCode);
-      }
-
-      if (isServer && viewFileName != null) {
-        throw new RuntimeException("can't run as server AND handle file: " + viewFileName);
       }
 
       if (isServer) {
@@ -155,111 +139,16 @@ public class FormViewer {
         Spark.delete("*", notFoundHandler);
         Spark.init();
 
-        Utils.openBrowser(cm, serverUrl);
-
         return;
       }
 
-      // command-line processing
-      viewFileName = resolveViewFile(viewFileName, cm);
-      String viewContent = Files.readString(Paths.get(viewFileName));
-      logger.debug("viewFile: " + viewFileName + ", got " + viewContent.length() + " bytes");
-
-      FormResults results = generateResults(viewContent);
-
-      String outboxDirName = cm.getAsString(ConfigurationKey.OUTBOX_PATH);
-
-      File outBoxDir = new File(outboxDirName);
-      if (!outBoxDir.exists()) {
-        Utils.fatal(cm, ConfigurationKey.EMSG_OUTBOX_NOT_FOUND, outboxDirName);
-      }
-      if (!outBoxDir.isDirectory()) {
-        Utils.fatal(cm, ConfigurationKey.EMSG_OUTBOX_NOT_DIR, outboxDirName);
-      }
-
-      Path resultPath = Paths.get(outboxDirName, results.displayFormName);
-      Files.writeString(resultPath, results.resultString);
-      logger.debug("wrote " + results.resultString.length() + " bytes to " + resultPath.toFile().getCanonicalPath());
-
-      Utils.openBrowser(cm, resultPath);
+      System.err.println(getUsageText());
+      System.exit(1);
 
     } catch (Exception e) {
       logger.error("Exception running, " + e.getMessage(), e);
     }
 
-  }
-
-  /**
-   * return either explicitly named viewer, or latest file in inbox
-   *
-   * @param viewFileName
-   * @param cm
-   * @return
-   */
-  private String resolveViewFile(String viewFileName, IConfigurationManager cm) throws Exception {
-    if (viewFileName != null) {
-      File viewFile = new File(viewFileName);
-      if (!viewFile.exists()) {
-        Utils.fatal(cm, ConfigurationKey.EMSG_VIEW_FILE_NOT_FOUND, viewFileName);
-      }
-      logger.debug("using supplied viewFileName: " + viewFileName);
-      return viewFileName;
-    }
-
-    File dir = new File(cm.getAsString(ConfigurationKey.INBOX_PATH));
-    String dirName = dir.getCanonicalPath();
-    if (!dir.exists()) {
-      Utils.fatal(cm, ConfigurationKey.EMSG_INBOX_NOT_FOUND, dirName);
-    }
-
-    logger.debug("using inbox: " + dirName);
-    File[] files = dir.listFiles();
-    if (files == null || files.length == 0) {
-      String message = getEmptyInboxMessage(dirName);
-      logger.info(message);
-      System.exit(0);
-    }
-
-    File lastModifiedFile = files[0];
-    for (int i = 1; i < files.length; i++) {
-      if (lastModifiedFile.lastModified() < files[i].lastModified()) {
-        lastModifiedFile = files[i];
-      }
-    }
-
-    logger.info("using last modified file: " + lastModifiedFile.getName() + ", from inbox: " + dir.getCanonicalPath());
-    return lastModifiedFile.getCanonicalPath();
-  }
-
-  /**
-   * return appropriate text if inbox is empty
-   *
-   * Since this might be a complex message, we'll first try reading the text from a file
-   *
-   * If that fails, we'll look for text in a configuration parameter
-   *
-   * If that fails, we'll take take from configuration key
-   *
-   * @param dirName
-   * @return
-   */
-  private String getEmptyInboxMessage(String dirName) {
-    String template = null;
-    String emptyInboxFileName = cm.getAsString(ConfigurationKey.EMPTY_INBOX_FILE);
-    try {
-      Path emptyInboxPath = Paths.get(emptyInboxFileName);
-      template = Files.readString(emptyInboxPath);
-    } catch (Exception e) {
-      logger.info("couldn't get empty inbox text from file: " + emptyInboxFileName + ", " + e.getLocalizedMessage());
-    }
-
-    if (template == null) {
-      ConfigurationKey key = ConfigurationKey.EMSG_INBOX_EMPTY;
-      template = cm.getAsString(key, key.getErrorMessage());
-    }
-
-    String message = template.replace("${inboxDir}", dirName);
-    return message;
   }
 
   /**
@@ -405,67 +294,17 @@ public class FormViewer {
     return sb.toString();
   }
 
-  @Deprecated
-  // TODO remove
-  private static String getHelpText() {
-    final String defaultText = ""; // "
-    // This is fv, a Winlink Form Viewer, version $VERSION.
-    //
-    // FV works in conjunction with with Winlink Express (WE).
-    // FV combines the small "view" file transmitted by WE with the the
-    // associated form (which is not transmitted). The result is then displayed
-    // in a browser. This is very useful when the view file is transmitted by
-    // regular (SMTP) email version radio (WE) email
-    //
-    // FV can operate in several modes, each with a corresponding script in the
-    // $FV_HOME/bin directory:
-    // -- fv-file: read the view file supplied on the command line
-    //
-    // -- fv-inbox: read the most most recent view file found in the inbox.
-    // The default location for the inbox is $FV_HOME/conf/inbox, but you can
-    // override this in the configuration file (see below).
-    //
-    // -- fv-server: start as a web server that allows you to "upload" or use
-    // "drag-and-drop". After displaying a form, you can specify another file
-    // by refreshing your browser (typically, F5). The server listens on port
-    // 6676 by default, but you can change this via the configuration file
-    // (see below).
-    //
-    // -- fv-update: this attempts to check whether the version of the forms
-    // library used is up to date with the version supplied by WE. If not, it
-    // attempts to download and install the most up to date version. This is
-    // an experimental feature and is likely to break as the Winlink team
-    // change how they handle updates. If necessary, you can manually install
-    // a new forms library. The location is specified in the configuration
-    // file (see below).
-    //
-    // -- fv-help: print this usage message.
-    //
-    // FV needs to read a configuration file to properly work. The default
-    // configuration file is located in $FV_HOME/conf/fv.conf. You can use an
-    // alternative configuration file by specifying with --config-file <name>
-    //
-    // FV uses a logging configuration file at $FV_HOME/conf/logback.xml to
-    // control program logging
-    // """;
-    if (cm == null) {
-      return defaultText;
-    }
-
+  private String getUsageText() {
     String helpText = null;
     String usageFileName = null;
     try {
+      usageFileName = cm.getAsString(ConfigurationKey.USAGE_FILE);
+      Path usageFilePath = Paths.get(usageFileName);
+      helpText = Files.readString(usageFilePath);
 
-      if (cm == null) {
-        helpText = defaultText;
-      } else {
-        usageFileName = cm.getAsString(ConfigurationKey.USAGE_FILE);
-        Path usageFilePath = Paths.get(usageFileName);
-        helpText = Files.readString(usageFilePath);
-      }
       helpText = helpText.replace("$VERSION", FV_VERSION);
     } catch (Exception e) {
-      logger.debug("Error getting usage file:" + usageFileName + ", " + e.getLocalizedMessage());
+      logger.error("Error getting usage file:" + usageFileName + ", " + e.getLocalizedMessage());
     }
 
     return helpText;

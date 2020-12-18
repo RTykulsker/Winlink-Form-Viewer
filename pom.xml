@@ -106,28 +106,6 @@
 					<programs>
 						<program>
 							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
-							<id>fv-help</id>
-							<commandLineArguments>
-								<commandLineArgument>--help</commandLineArgument>
-							</commandLineArguments>
-						</program>
-						<program>
-							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
-							<id>fv-inbox</id>
-							<commandLineArguments>
-                				<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
-                			</commandLineArguments>							
-						</program>
-						<program>
-							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
-							<id>fv-file</id>
-							<commandLineArguments>
-								<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
-								<commandLineArgument>--view-file</commandLineArgument>
-							</commandLineArguments>
-						</program>
-						<program>
-							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
 							<id>fv-server</id>
 							<commandLineArguments>
                 				<commandLineArgument>--server</commandLineArgument>
@@ -138,7 +116,7 @@
 							<mainClass>com.surftools.wfv.tools.FormViewer</mainClass>
 							<id>fv-update</id>
 							<commandLineArguments>
-                				<commandLineArgument>--updateFormsAndExit</commandLineArgument>
+                				<commandLineArgument>--updateForms</commandLineArgument>
                 				<commandLineArgument>--config-file conf/fv.conf</commandLineArgument>
                 			</commandLineArguments>
 						</program>

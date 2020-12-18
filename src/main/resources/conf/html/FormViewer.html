@@ -1,14 +1,172 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Winlink Form ViewerI</title>
+
+<style>
+body
+{
+	font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
+	font-size: 90%;
+	margin: 10px;
+	color: #333;
+	background-color: #fff;
+}
+
+h1, h2
+{
+	font-size: 1.5em;
+	font-weight: normal;
+}
+
+h2
+{
+	font-size: 1.3em;
+}
+
+legend
+{
+	font-weight: bold;
+	color: #333;
+}
+
+#filedrag
+{
+	display: none;
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+}
+
+#filedrag.hover
+{
+	color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
+
+</style>
+
+</head>
 <body>
 
-<p>Click on the "Choose File" button to upload a file:</p>
+<h1>Winlink Form Viewer</h1>
 
-<form id="uploadFile" enctype="multipart/form-data" method="post" action="uploadFile">
-   <input id="file" name="file" type="file" />
-   <input type="submit" value="submit" id="submit" />
+<form id="upload" action="uploadXHR" method="POST" enctype="multipart/form-data">
+
+<fieldset>
+<legend>Winlink Form View Upload -- refresh browser (F5) to process new file</legend>
+
+<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+<div>
+	<label for="fileselect">Files to upload:</label>
+	<input type="file" id="fileselect" name="fileselect[]" />
+	<div id="filedrag">or drop files here</div>
+</div>
+
+<div id="submitbutton">
+	<button type="submit">Upload Files</button>
+</div>
+
+</fieldset>
+
 </form>
 
+<div id="progress"></div>
 
+<script>
+(function() {
+	// getElementById
+	function $id(id) {
+		return document.getElementById(id);
+	}
+
+
+	// file drag hover
+	function FileDragHover(e) {
+		e.stopPropagation();
+		e.preventDefault();
+		e.target.className = (e.type == "dragover" ? "hover" : "");
+	}
+
+
+	// file selection
+	function FileSelectHandler(e) {
+		// cancel event and hover styling
+		FileDragHover(e);
+
+		// fetch FileList object
+		var files = e.target.files || e.dataTransfer.files;
+
+		if (files.length > 1) {
+			alert("Please only drop one Winlink \"view\" XML file");
+			return;
+		}
+
+		// process all File objects
+		for (var i = 0, f; f = files[i]; i++) {
+			UploadFile(f);
+		}
+	}
+
+
+	// upload files
+	function UploadFile(file) {
+		var xhr = new XMLHttpRequest();
+		if (xhr.upload && file.size <= $id("MAX_FILE_SIZE").value) {
+			xhr.onreadystatechange = function(e) {
+				if (xhr.readyState == 4) {
+					document.write(xhr.response);
+				}
+			};
+
+			// start upload
+			xhr.open("POST", $id("upload").action, true);
+			xhr.setRequestHeader("X_FILENAME", file.name);
+			xhr.send(file);
+		}
+	}
+
+
+	function Init() {
+		var fileselect = $id("fileselect"),
+			filedrag = $id("filedrag"),
+			submitbutton = $id("submitbutton");
+
+		// file select
+		fileselect.addEventListener("change", FileSelectHandler, false);
+
+		// is XHR2 available?
+		var xhr = new XMLHttpRequest();
+		if (xhr.upload) {
+
+			// file drop
+			filedrag.addEventListener("dragover", FileDragHover, false);
+			filedrag.addEventListener("dragleave", FileDragHover, false);
+			filedrag.addEventListener("drop", FileSelectHandler, false);
+			filedrag.style.display = "block";
+
+			// remove submit button
+			submitbutton.style.display = "none";
+		}
+
+	}
+
+	// call initialization file
+	if (window.File && window.FileList && window.FileReader) {
+		Init();
+	}
+
+
+})();
+</script>
 </body>
 </html>
