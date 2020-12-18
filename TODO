@@ -1,0 +1,13 @@
+DONE -- drop down to Java 8
+investigate Javalin vs JavaSpart to see which is more active
+investigate Apache Tika to detect non-view files
+allow for external text for port in use message
+clean up conf directory
+clean up fv.conf
+put sample view files into sample folder
+remove inbox, file, and help modes
+make a README.md file
+incorporate "heavy" ink in web form
+avoid need to refresh in web form
+avoid multiple drag and drop in web form
+remove unused html for non-drag-and-drop

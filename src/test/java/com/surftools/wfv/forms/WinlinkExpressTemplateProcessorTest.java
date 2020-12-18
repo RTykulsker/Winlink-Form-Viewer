@@ -33,6 +33,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -45,12 +46,12 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_noVars() {
     logger.debug("begin test_noVars");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "hello, world";
-    final var expected = source;
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "hello, world";
+    final String expected = source;
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -61,13 +62,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_simple() {
     logger.debug("begin test_simple");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{var greet}, world";
-    final var expected = "hello, world";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{var greet}, world";
+    final String expected = "hello, world";
     variableMap.put("greet", "hello");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -78,13 +79,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_multiple() {
     logger.debug("begin test_multiple");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{var greet} {var greet} {var greet}, world";
-    final var expected = "hello hello hello, world";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{var greet} {var greet} {var greet}, world";
+    final String expected = "hello hello hello, world";
     variableMap.put("greet", "hello");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -95,13 +96,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_quotes() {
     logger.debug("begin test_quotes");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{var greet}, \"world\"";
-    final var expected = "&quot;hello&quot;, \"world\"";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{var greet}, \"world\"";
+    final String expected = "&quot;hello&quot;, \"world\"";
     variableMap.put("greet", "\"hello\"");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -112,13 +113,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_ampersand() {
     logger.debug("begin test_ampersand");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{var greet}, &world&";
-    final var expected = "&hello&, &world&";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{var greet}, &world&";
+    final String expected = "&hello&, &world&";
     variableMap.put("greet", "&hello&");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -129,14 +130,14 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_notFound_replaceEmptyTrue() {
     logger.debug("begin test_notFound_replaceEmptyTrue");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
     assertTrue(processor.isDoReplaceNotFoundWithEmptyString());
 
-    final var source = "{var greet}, world";
-    final var expected = ", world";
-    final var variableMap = new HashMap<String, String>();
+    final String source = "{var greet}, world";
+    final String expected = ", world";
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -150,15 +151,15 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_notFound_replaceEmptyFalse() {
     logger.debug("begin test_notFound_replaceEmptyFalse");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
     processor.setDoReplaceNotFoundWithEmptyString(false);
     assertFalse(processor.isDoReplaceNotFoundWithEmptyString());
 
-    final var source = "{var greet}, world";
-    final var expected = source;
-    final var variableMap = new HashMap<String, String>();
+    final String source = "{var greet}, world";
+    final String expected = source;
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -169,13 +170,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_MiXeD_CaSe_VaR() {
     logger.debug("begin test_MiXeD_CaSe_VaR");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{VaR greet}, world";
-    final var expected = "hello, world";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{VaR greet}, world";
+    final String expected = "hello, world";
     variableMap.put("greet", "hello");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 
@@ -186,13 +187,13 @@ public class WinlinkExpressTemplateProcessorTest {
   public void test_MiXeD_CaSe_VaLuE() {
     logger.debug("begin test_MiXeD_CaSe_VaLuE");
 
-    final var processor = new WinlinkExpressTemplateProcessor();
-    final var source = "{var GrEeT}, world";
-    final var expected = ", world";
-    final var variableMap = new HashMap<String, String>();
+    final WinlinkExpressTemplateProcessor processor = new WinlinkExpressTemplateProcessor();
+    final Map<String, String> variableMap = new HashMap<>();
+    final String source = "{var GrEeT}, world";
+    final String expected = ", world";
     variableMap.put("gReEt", "hello");
 
-    final var actual = processor.process(source, variableMap);
+    final String actual = processor.process(source, variableMap);
     assertNotNull(actual);
     assertEquals(expected, actual);
 

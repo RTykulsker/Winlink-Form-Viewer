@@ -36,6 +36,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.surftools.wfv.config.ConfigurationKey;
+import com.surftools.wfv.config.IConfigurationManager;
 import com.surftools.wfv.config.PropertyFileConfigurationManager;
 import com.surftools.wfv.tools.Utils;
 
@@ -47,8 +48,8 @@ public class FormUtilsTest {
   public void test_version() throws Exception {
     logger.debug("begin test_version");
 
-    final var cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
-    final var fu = new FormUtils(cm);
+    final IConfigurationManager cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
+    final FormUtils fu = new FormUtils(cm);
 
     assertNotNull(fu);
     logger.debug("version: " + fu.getVersion());
@@ -65,8 +66,8 @@ public class FormUtilsTest {
   public void test_isFormsUpdateAvailable() throws Exception {
     logger.debug("begin test_isFormsUpdateAvailable");
 
-    final var cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
-    final var fu = new FormUtils(cm);
+    final IConfigurationManager cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
+    final FormUtils fu = new FormUtils(cm);
 
     boolean isAvailable = fu.isFormsUpdateAvailable();
     if (isAvailable) {
@@ -87,8 +88,8 @@ public class FormUtilsTest {
   public void test_updateForms() throws Exception {
     logger.debug("begin test_updateForms");
 
-    final var cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
-    final var fu = new FormUtils(cm);
+    final IConfigurationManager cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
+    final FormUtils fu = new FormUtils(cm);
 
     fu.updateForms();
 
@@ -104,12 +105,12 @@ public class FormUtilsTest {
   public void test_emptyFormsDir() throws Exception {
     logger.debug("begin test_emptyFormsDir");
 
-    final var cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
-    final var formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
-    final var formsDir = new File(formsDirName);
+    final IConfigurationManager cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
+    final String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
+    final File formsDir = new File(formsDirName);
 
     if (formsDir.exists()) {
-      var newFormsDir = new File(formsDirName + "-" + Utils.makeTimestamp());
+      File newFormsDir = new File(formsDirName + "-" + Utils.makeTimestamp());
       formsDir.renameTo(newFormsDir);
       logger.info("formsDir: " + formsDirName + " renamed to:" + newFormsDir.getName());
     } else {

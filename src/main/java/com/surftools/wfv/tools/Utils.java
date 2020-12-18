@@ -134,9 +134,9 @@ public class Utils {
    * @return
    */
   public static String makeTimestamp() {
-    final var now = LocalDateTime.now();
-    final var formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
-    final var timestamp = now.format(formatter);
+    final LocalDateTime now = LocalDateTime.now();
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+    final String timestamp = now.format(formatter);
     return timestamp;
   }
 

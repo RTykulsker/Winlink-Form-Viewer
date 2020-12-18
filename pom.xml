@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.5.2</version>
+	<version>0.6.1</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>

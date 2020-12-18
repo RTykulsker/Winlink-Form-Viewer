@@ -38,6 +38,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.MultipartConfigElement;
@@ -142,8 +143,8 @@ public class FormViewer {
         final long pid = ProcessHandle.current().pid();
         logger.info("listening on port: " + serverUrl + ", processId: " + pid);
 
-        final var notFoundHandler = new NotFoundHandler();
-        final var uploadHandler = new UploadHandler();
+        final Route notFoundHandler = new NotFoundHandler();
+        final Route uploadHandler = new UploadHandler();
         Spark.port(port);
         Spark.get("/", new InitHandler());
         Spark.post(FILE_UPLOAD_PATH, uploadHandler);
@@ -294,7 +295,7 @@ public class FormViewer {
     String formContent = Files.readString(Paths.get(formFileName));
     logger.debug("formFile: " + formFileName + ", got " + formContent.length() + " bytes");
 
-    var variableMap = parser.getVariableMap();
+    Map<String, String> variableMap = parser.getVariableMap();
     WinlinkExpressTemplateProcessor tp = new WinlinkExpressTemplateProcessor();
     String resultString = tp.process(formContent, variableMap);
     return new FormResults(displayFormName, resultString, 200);
@@ -404,47 +405,49 @@ public class FormViewer {
     return sb.toString();
   }
 
+  @Deprecated
+  // TODO remove
   private static String getHelpText() {
-    final String defaultText = """
-        This is fv, a Winlink Form Viewer, version $VERSION.
-
-        FV works in conjunction with with Winlink Express (WE).
-        FV combines the small "view" file transmitted by WE with the the
-        associated form (which is not transmitted). The result is then displayed
-        in a browser. This is very useful when the view file is transmitted by
-        regular (SMTP) email version radio (WE) email
-
-        FV can operate in several modes, each with a corresponding script in the
-        $FV_HOME/bin directory:
-        -- fv-file: read the view file supplied on the command line
-
-        -- fv-inbox: read the most most recent view file found in the inbox.
-          The default location for the inbox is $FV_HOME/conf/inbox, but you can
-          override this in the configuration file (see below).
-
-        -- fv-server: start as a web server that allows you to "upload" or use
-          "drag-and-drop". After displaying a form, you can specify another file
-          by refreshing your browser (typically, F5). The server listens on port
-          6676 by default, but you can change this via the configuration file
-          (see below).
-
-        -- fv-update: this attempts to check whether the version of the forms
-          library used is up to date with the version supplied by WE. If not, it
-          attempts to download and install the most up to date version. This is
-          an experimental feature and is likely to break as the Winlink team
-          change how they handle updates. If necessary, you can manually install
-          a new forms library. The location is specified in the configuration
-          file (see below).
-
-        -- fv-help: print this usage message.
-
-        FV needs to read a configuration file to properly work. The default
-        configuration file is located in $FV_HOME/conf/fv.conf. You can use an
-        alternative configuration file by specifying with --config-file <name>
-
-        FV uses a logging configuration file at $FV_HOME/conf/logback.xml to
-        control program logging
-        """;
+    final String defaultText = ""; // "
+    // This is fv, a Winlink Form Viewer, version $VERSION.
+    //
+    // FV works in conjunction with with Winlink Express (WE).
+    // FV combines the small "view" file transmitted by WE with the the
+    // associated form (which is not transmitted). The result is then displayed
+    // in a browser. This is very useful when the view file is transmitted by
+    // regular (SMTP) email version radio (WE) email
+    //
+    // FV can operate in several modes, each with a corresponding script in the
+    // $FV_HOME/bin directory:
+    // -- fv-file: read the view file supplied on the command line
+    //
+    // -- fv-inbox: read the most most recent view file found in the inbox.
+    // The default location for the inbox is $FV_HOME/conf/inbox, but you can
+    // override this in the configuration file (see below).
+    //
+    // -- fv-server: start as a web server that allows you to "upload" or use
+    // "drag-and-drop". After displaying a form, you can specify another file
+    // by refreshing your browser (typically, F5). The server listens on port
+    // 6676 by default, but you can change this via the configuration file
+    // (see below).
+    //
+    // -- fv-update: this attempts to check whether the version of the forms
+    // library used is up to date with the version supplied by WE. If not, it
+    // attempts to download and install the most up to date version. This is
+    // an experimental feature and is likely to break as the Winlink team
+    // change how they handle updates. If necessary, you can manually install
+    // a new forms library. The location is specified in the configuration
+    // file (see below).
+    //
+    // -- fv-help: print this usage message.
+    //
+    // FV needs to read a configuration file to properly work. The default
+    // configuration file is located in $FV_HOME/conf/fv.conf. You can use an
+    // alternative configuration file by specifying with --config-file <name>
+    //
+    // FV uses a logging configuration file at $FV_HOME/conf/logback.xml to
+    // control program logging
+    // """;
     if (cm == null) {
       return defaultText;
     }
