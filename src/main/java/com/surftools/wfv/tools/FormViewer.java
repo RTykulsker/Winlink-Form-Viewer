@@ -113,8 +113,9 @@ public class FormViewer {
 
       if (updateForms) {
         FormUtils formUtils = new FormUtils(cm);
-        int retCode = formUtils.updateForms();
-        System.exit(retCode);
+        formUtils.updateForms();
+        logger.info("exiting");
+        System.exit(0);
       }
 
       if (isServer) {

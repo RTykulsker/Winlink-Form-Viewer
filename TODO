@@ -1,7 +1,5 @@
 investigate Apache Tika to detect non-view files
 
-require update mode to get a confirmation
-
 make a README.md file
 
 incorporate "heavy" ink in web form
@@ -18,3 +16,4 @@ DONE -- clean up fv.conf
 DONE -- put sample view files into sample folder
 DONE -- avoid multiple drag and drop in web form
 DONE -- remove unused html for non-drag-and-drop
+DONE -- require update mode to get a confirmation

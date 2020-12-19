@@ -63,28 +63,6 @@ public class FormUtilsTest {
    * @throws Exception
    */
   @Test
-  public void test_isFormsUpdateAvailable() throws Exception {
-    logger.debug("begin test_isFormsUpdateAvailable");
-
-    final IConfigurationManager cm = new PropertyFileConfigurationManager(DEFAULT_CONFIG_FILE_NAME);
-    final FormUtils fu = new FormUtils(cm);
-
-    boolean isAvailable = fu.isFormsUpdateAvailable();
-    if (isAvailable) {
-      String updateURL = fu.getUpdateURL();
-      assertNotNull(updateURL);
-      logger.debug("updateURL: " + updateURL);
-    }
-
-    logger.debug("end test_isFormsUpdateAvailable");
-  }
-
-  /**
-   * this is not a unit test
-   *
-   * @throws Exception
-   */
-  @Test
   public void test_updateForms() throws Exception {
     logger.debug("begin test_updateForms");
 

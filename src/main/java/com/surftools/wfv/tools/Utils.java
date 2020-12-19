@@ -27,7 +27,9 @@ SOFTWARE.
 
 package com.surftools.wfv.tools;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -45,6 +47,21 @@ import com.surftools.wfv.config.IConfigurationManager;
 
 public class Utils {
   private static final Logger logger = LoggerFactory.getLogger(Utils.class);
+
+  public static boolean promptForBoolean(String prompt) {
+    boolean ret = false;
+
+    System.out.print(prompt);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    try {
+      String line = reader.readLine();
+      ret = Utils.toBoolean(line);
+    } catch (Exception e) {
+      ;
+    }
+
+    return ret;
+  }
 
   public static void fatal(IConfigurationManager cm, ConfigurationKey key, String value) {
     String defaultValue = key.getErrorMessage();

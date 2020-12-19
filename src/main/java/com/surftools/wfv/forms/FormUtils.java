@@ -57,12 +57,14 @@ public class FormUtils {
 
   private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
+  // this is the format that is in StandardForms/Standard_Forms_Version.dat
   private static final String LAST_KNOWN_VERSION = "1.0.141.0";
 
   private final IConfigurationManager cm;
   private final File formsDir;
   private String version = LAST_KNOWN_VERSION;
   private String updateURL;
+  private boolean formsAlreadyUpdated = false;
 
   public FormUtils(IConfigurationManager cm) throws Exception {
     this.cm = cm;
@@ -74,6 +76,10 @@ public class FormUtils {
 
     if (!formsDir.exists()) {
       logger.warn("Forms directory: " + formsDirName + " not found. Creating.");
+      boolean makeOk = formsDir.mkdirs();
+      if (!makeOk) {
+        Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
+      }
       needsInitialDownload = true;
     }
 
@@ -86,28 +92,41 @@ public class FormUtils {
     }
 
     if (needsInitialDownload) {
-      boolean makeOk = formsDir.mkdirs();
-      if (!makeOk) {
-        Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
-      }
+      // boolean makeOk = formsDir.mkdirs();
+      // if (!makeOk) {
+      // Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
+      // }
+
       updateForms();
     }
 
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
-    version = Files.readString(versionPath).trim();
+    File versionFile = versionPath.toFile();
+    if (versionFile.exists()) {
+      version = Files.readString(versionPath).trim();
+    }
+    // this chops off the last dotted decimal and removes all dots
+    // this is the format for getting versions
+    version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
 
     logger.debug("Forms path: " + formsDir + ", version: " + version);
   }
 
-  public boolean isFormsUpdateAvailable() {
-    // https://winlink.org/content/how_manually_update_standard_templates_version_10142
+  /**
+   * get the latest version available
+   *
+   * SIDE EFFECT: sets remoteURL
+   *
+   * @return
+   */
+  public String getRemoteVersion() {
+    String remoteVersion = null;
 
-    boolean ret = false;
+    // https://winlink.org/content/how_manually_update_standard_templates_version_10142
     String urlPrefix = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_PREFIX);
 
-    String version = getVersion(); // 1.0.141.0
-    version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
-    String requestUriString = urlPrefix + version;
+    String localVersion = getVersion(); // 10141
+    String requestUriString = urlPrefix + localVersion;
     logger.info("checking for new form version via: " + requestUriString);
 
     try {
@@ -121,20 +140,14 @@ public class FormUtils {
 
       HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
       String responseUriString = response.uri().toURL().toString();
-      logger.debug("response uri: " + responseUriString);
-
-      if (!requestUriString.equals(responseUriString)) {
-        logger.info("new forms update available: " + responseUriString);
-        updateURL = findUpdateURL(response.body());
-        logger.debug("download from: " + updateURL);
-        ret = true;
-      } else {
-        logger.info("no new forms update available.");
-      }
+      remoteVersion = responseUriString.substring(urlPrefix.length());
+      updateURL = findUpdateURL(response.body());
+      logger.debug(
+          "remoteVersion: " + remoteVersion + ", updateURL: " + updateURL + ", responseURI: " + responseUriString);
     } catch (Exception e) {
       logger.error("Error in isFormsUpdateAvailable(): " + e.getMessage(), e);
     }
-    return ret;
+    return remoteVersion;
   }
 
   private String findUpdateURL(String body) {
@@ -155,15 +168,26 @@ public class FormUtils {
    *
    * @return 0 if nothing to update, 1 if updated
    */
-  public int updateForms() {
-    logger.info("Current forms version: " + getVersion());
-    int retCode = 0;
-    if (updateURL == null) {
-      boolean isAvailable = isFormsUpdateAvailable();
-      if (!isAvailable || updateURL == null) {
-        logger.debug("no form updates available");
-        return retCode;
-      }
+  public void updateForms() {
+    if (formsAlreadyUpdated) {
+      logger.info("forms already updated during startup");
+    }
+
+    logger.info("Checking for latest Winlink forms");
+    logger.info("Currently installed version: " + getVersion());
+
+    String remoteVersion = getRemoteVersion();
+    logger.info("Latest available version: " + remoteVersion);
+
+    if (remoteVersion.equals(getVersion())) {
+      logger.info("The installed version is the same as the most current version");
+    }
+
+    boolean okToContinue = Utils
+        .promptForBoolean("Update currently installed forms with version " + remoteVersion + "? Default [no]: ");
+    if (!okToContinue) {
+      logger.info("skipping forms update");
+      return;
     }
 
     try {
@@ -216,7 +240,7 @@ public class FormUtils {
         zipFile.renameTo(renameZipFile);
         logger.info("wrote zipped forms file to: " + renameZipFile.getName());
         logger.info("downloaded new forms, version: " + getVersion());
-        retCode = 1;
+        formsAlreadyUpdated = true;
       }
     } catch (
 
@@ -224,7 +248,6 @@ public class FormUtils {
       logger.error("Error in updateForms(): " + e.getMessage(), e);
     }
 
-    return retCode;
   }
 
   /**
