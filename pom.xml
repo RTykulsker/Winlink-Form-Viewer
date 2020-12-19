@@ -23,8 +23,7 @@
 		<zip4j.version>2.6.4</zip4j.version>
 	</properties>
 
-	<dependencies>	
-	
+	<dependencies>
 		<dependency>
 			<groupId>args4j</groupId>
 			<artifactId>args4j</artifactId>

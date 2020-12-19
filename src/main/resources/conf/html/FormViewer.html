@@ -5,6 +5,7 @@
 <title>Winlink Form ViewerI</title>
 
 <style>
+
 body
 {
 	font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
@@ -52,11 +53,30 @@ legend
 	box-shadow: inset 0 3px 4px #888;
 }
 
+#topDiv
+{
+	background-color: #f00;
+}
+
+#bottomDiv
+{
+	background-color: #0f0;
+}
+
+
+.fullSize
+{
+	width: 100%; 
+	height: 100%;
+		background-color: #00f;
+}
+
 </style>
 
 </head>
 <body>
 
+<div id="topDiv">
 <h1>Winlink Form Viewer</h1>
 
 <form id="upload" action="uploadXHR" method="POST" enctype="multipart/form-data">
@@ -80,7 +100,12 @@ legend
 
 </form>
 
-<div id="progress"></div>
+<hr>
+</div>
+
+<div id="bottomDiv">
+<div id="viewContent" class="fullSize" />
+</div>
 
 <script>
 (function() {
@@ -124,7 +149,8 @@ legend
 		if (xhr.upload && file.size <= $id("MAX_FILE_SIZE").value) {
 			xhr.onreadystatechange = function(e) {
 				if (xhr.readyState == 4) {
-					document.write(xhr.response);
+					// document.write(xhr.response);
+					document.getElementById("viewContent").innerHTML='<object type="text/html" data="viewContent" />';
 				}
 			};
 

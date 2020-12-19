@@ -29,7 +29,7 @@ package com.surftools.wfv.config;
 
 public enum ConfigurationKey {
   EMSG_CANT_MAKE_FORMS_DIR("emsg.cant.make.form.dir", "Can't create forms dir: %s. Exiting!"), //
-  EMSG_CANT_PARSE_VIEW_FILE("emsg.cant.parse.view.file", "Can't parse view file: %s. Exiting!"), //
+  EMSG_CANT_PARSE_VIEW_FILE("emsg.cant.parse.view.file", "Can't parse view file: %s"), //
   EMSG_INIT_HTML_NOT_FOUND("emsg.initial.html.not.found", "Initial HTML file: %s not found. Exiting!"), //
   EMSG_MULTIPLE_FORM_FILES_FOUND("emsg.multiple.form.files.found", "Multiple form files found matching %s. Exiting!"), //
   EMSG_NO_FORM_FILE_FOUND("emsg.no.form.file.found", "No form files found matching %s. Exiting!"), //

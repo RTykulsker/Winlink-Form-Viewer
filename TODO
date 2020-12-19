@@ -1,4 +1,3 @@
-investigate Apache Tika to detect non-view files
 
 make a README.md file
 
@@ -17,3 +16,5 @@ DONE -- put sample view files into sample folder
 DONE -- avoid multiple drag and drop in web form
 DONE -- remove unused html for non-drag-and-drop
 DONE -- require update mode to get a confirmation
+DONE -- didn't work; trying a light-weight alternative; investigate Apache Tika to detect non-view files
+

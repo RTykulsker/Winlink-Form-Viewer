@@ -83,6 +83,8 @@ public class FormViewer {
 
   private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
+  private FormResults viewContentResults = null;
+
   private static IConfigurationManager cm;
 
   @Option(name = "--config-file", metaVar = "CONFIGURATION_FILE_NAME", usage = "path to configuration file, default: "
@@ -130,8 +132,10 @@ public class FormViewer {
 
         final Route notFoundHandler = new NotFoundHandler();
         final Route uploadHandler = new UploadHandler();
+        final Route viewContentHandler = new ViewContentHandler();
         Spark.port(port);
         Spark.get("/", new InitHandler());
+        Spark.get("viewContent", viewContentHandler);
         Spark.post(FILE_UPLOAD_PATH, uploadHandler);
         Spark.post(XHR_UPLOAD_PATH, uploadHandler);
         Spark.get("*", notFoundHandler);
@@ -162,19 +166,24 @@ public class FormViewer {
    * @throws Exception
    */
   private FormResults generateResults(String viewContent) throws Exception {
-    WinlinkExpressViewerParser parser = new WinlinkExpressViewerParser();
-    String errorMessage = parser.parse(viewContent, true);
+    String errorMessage = null;
+    WinlinkExpressViewerParser parser = null;
+    String viewContentLowerCase = viewContent.toLowerCase();
+    if (viewContentLowerCase.startsWith("<?xml version=\"1.0\"?>")
+        && viewContentLowerCase.contains("<rms_express_form>")) {
+      parser = new WinlinkExpressViewerParser();
+      errorMessage = parser.parse(viewContent, true);
+    } else {
+      errorMessage = "uploaded content doesn't appear to be valid Winlink View file";
+    }
+
     if (errorMessage != null) {
       ConfigurationKey key = ConfigurationKey.EMSG_CANT_PARSE_VIEW_FILE;
-      if (isServer) {
-        String defaultValue = key.getErrorMessage();
-        String template = cm.getAsString(key, defaultValue);
-        errorMessage = String.format(template, errorMessage);
-        logger.warn(errorMessage);
-      } else {
-        Utils.fatal(cm, key, errorMessage);
-      }
-      return new FormResults(null, errorMessage, 500);
+      String defaultValue = key.getErrorMessage();
+      String template = cm.getAsString(key, defaultValue);
+      errorMessage = String.format(template, errorMessage);
+      logger.warn(errorMessage);
+      return new FormResults(null, errorMessage, 401);
     }
 
     String displayFormName = parser.getValue("display_form");
@@ -240,6 +249,21 @@ public class FormViewer {
 
   }
 
+  class ViewContentHandler implements Route {
+
+    @Override
+    public Object handle(Request request, Response response) throws Exception {
+      if (viewContentResults != null) {
+        logger.warn("### bobt: returning content");
+        response.status(viewContentResults.responseCode);
+        return viewContentResults.resultString;
+
+      }
+      logger.warn("### bobt: no content to return");
+      return "";
+    }
+  }
+
   class UploadHandler implements Route {
 
     @Override
@@ -256,7 +280,7 @@ public class FormViewer {
 
         if (file == null) {
           Utils.warn(cm, ConfigurationKey.EMSG_NO_UPLOAD_FILE, null);
-          response.status(500);
+          response.status(401);
           return cm.getAsString(ConfigurationKey.EMSG_NO_UPLOAD_FILE);
         }
 
@@ -268,13 +292,14 @@ public class FormViewer {
 
       if (viewContent == null || viewContent.length() == 0) {
         Utils.warn(cm, ConfigurationKey.EMSG_NO_UPLOAD_FILE, null);
-        response.status(500);
+        response.status(401);
         return cm.getAsString(ConfigurationKey.EMSG_NO_UPLOAD_FILE);
       }
 
       FormResults results = generateResults(viewContent);
       serverLogger.info(commonLogFormat(request, results.displayFormName, results));
       response.status(results.responseCode);
+      viewContentResults = results;
       return results.resultString;
     }
   }
