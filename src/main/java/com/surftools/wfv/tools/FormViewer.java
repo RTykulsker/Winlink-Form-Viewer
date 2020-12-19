@@ -113,7 +113,6 @@ public class FormViewer {
 
       if (updateForms) {
         FormUtils formUtils = new FormUtils(cm);
-        logger.info("Current forms version: " + formUtils.getVersion());
         int retCode = formUtils.updateForms();
         System.exit(retCode);
       }

@@ -156,6 +156,7 @@ public class FormUtils {
    * @return 0 if nothing to update, 1 if updated
    */
   public int updateForms() {
+    logger.info("Current forms version: " + getVersion());
     int retCode = 0;
     if (updateURL == null) {
       boolean isAvailable = isFormsUpdateAvailable();

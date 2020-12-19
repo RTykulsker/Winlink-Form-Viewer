@@ -1,5 +1,4 @@
 investigate Apache Tika to detect non-view files
-allow for external text for port in use message
 
 require update mode to get a confirmation
 
@@ -7,6 +6,8 @@ make a README.md file
 
 incorporate "heavy" ink in web form
 avoid need to refresh in web form
+
+build launchers that drop dead if not configured
 
 DONE -- drop down to Java 8
 DONE -- remove inbox, file, and help modes
