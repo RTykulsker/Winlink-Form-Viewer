@@ -9,7 +9,7 @@
 body
 {
 	font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
-	font-size: 90%;
+	font-size: 100%;
 	margin: 10px;
 	color: #333;
 	background-color: #fff;
@@ -55,20 +55,19 @@ legend
 
 #topDiv
 {
-	background-color: #f00;
 }
 
 #bottomDiv
 {
-	background-color: #0f0;
 }
 
 
 .fullSize
 {
-	width: 100%; 
+	width: 100%;
 	height: 100%;
-		background-color: #00f;
+	display: flex;
+	justify-content: center;
 }
 
 </style>
@@ -150,7 +149,12 @@ legend
 			xhr.onreadystatechange = function(e) {
 				if (xhr.readyState == 4) {
 					// document.write(xhr.response);
-					document.getElementById("viewContent").innerHTML='<object type="text/html" data="viewContent" />';
+					document.getElementById("viewContent").innerHTML=xhr.response;					
+				}
+				if (xhr.status != 200) {
+					document.getElementById("viewContent").style.color = "red";
+				} else {
+					document.getElementById("viewContent").style.color = "black";
 				}
 			};
 

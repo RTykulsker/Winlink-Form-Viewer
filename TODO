@@ -1,8 +1,6 @@
-
 make a README.md file
 
 incorporate "heavy" ink in web form
-avoid need to refresh in web form
 
 build launchers that drop dead if not configured
 
@@ -17,4 +15,4 @@ DONE -- avoid multiple drag and drop in web form
 DONE -- remove unused html for non-drag-and-drop
 DONE -- require update mode to get a confirmation
 DONE -- didn't work; trying a light-weight alternative; investigate Apache Tika to detect non-view files
-
+DONE -- avoid need to refresh in web form

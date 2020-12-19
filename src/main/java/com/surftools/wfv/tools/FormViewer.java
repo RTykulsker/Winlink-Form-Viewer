@@ -83,8 +83,6 @@ public class FormViewer {
 
   private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
-  private FormResults viewContentResults = null;
-
   private static IConfigurationManager cm;
 
   @Option(name = "--config-file", metaVar = "CONFIGURATION_FILE_NAME", usage = "path to configuration file, default: "
@@ -132,10 +130,8 @@ public class FormViewer {
 
         final Route notFoundHandler = new NotFoundHandler();
         final Route uploadHandler = new UploadHandler();
-        final Route viewContentHandler = new ViewContentHandler();
         Spark.port(port);
         Spark.get("/", new InitHandler());
-        Spark.get("viewContent", viewContentHandler);
         Spark.post(FILE_UPLOAD_PATH, uploadHandler);
         Spark.post(XHR_UPLOAD_PATH, uploadHandler);
         Spark.get("*", notFoundHandler);
@@ -249,21 +245,6 @@ public class FormViewer {
 
   }
 
-  class ViewContentHandler implements Route {
-
-    @Override
-    public Object handle(Request request, Response response) throws Exception {
-      if (viewContentResults != null) {
-        logger.warn("### bobt: returning content");
-        response.status(viewContentResults.responseCode);
-        return viewContentResults.resultString;
-
-      }
-      logger.warn("### bobt: no content to return");
-      return "";
-    }
-  }
-
   class UploadHandler implements Route {
 
     @Override
@@ -299,7 +280,6 @@ public class FormViewer {
       FormResults results = generateResults(viewContent);
       serverLogger.info(commonLogFormat(request, results.displayFormName, results));
       response.status(results.responseCode);
-      viewContentResults = results;
       return results.resultString;
     }
   }
