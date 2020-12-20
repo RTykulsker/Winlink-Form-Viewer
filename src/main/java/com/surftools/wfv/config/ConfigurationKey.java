@@ -39,7 +39,6 @@ public enum ConfigurationKey {
 
   FORMS_PATH("forms.path"), //
   USAGE_FILE("usage.file"), //
-  VERBIAGE_FILE("verbiage.file"), // user-friendly text displayed on form
 
   SERVER_INITIAL_HTML("server.initialHtml"), // for internal server
   SERVER_INITIAL_VIEW("server.initialView"), // the initial view to be displayed

@@ -1,8 +1,0 @@
-FV works in conjunction with with <a href="https://winlink.org" target="_new">Winlink Express (WE)</a>
- when using the <strong>forms</strong> or <strong>templates</strong> feature of WE.
-<p/>
-FV combines the small "view" file transmitted by WE with the appropriate template as displays a complete view.
-<p/>
-To use, simply save the "view" file attachment that you receive via traditional 
-email and then upload it on this page, using either the [Choose File] button or just 
-"drag and drop".

@@ -242,17 +242,7 @@ public class FormViewer {
       }
       String initialContent = Files.readString(Paths.get(initialHtmlFileName));
 
-      String verbiageFileName = cm.getAsString(ConfigurationKey.VERBIAGE_FILE);
-      File verbiageFile = new File(verbiageFileName);
-      String verbiage = "";
-      if (!verbiageFile.exists()) {
-        logger.warn("verbiage file: " + verbiageFile.getCanonicalPath() + " not found, ignoring");
-      } else {
-        verbiage = Files.readString(Paths.get(verbiageFileName));
-      }
-
       initialContent = initialContent.replace("$VERSION", FV_VERSION);
-      initialContent = initialContent.replace("$VERBIAGE", verbiage);
 
       logger.info("serving initial html from: " + initialHtmlFileName);
       return initialContent;
