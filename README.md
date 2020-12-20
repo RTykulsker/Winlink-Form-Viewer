@@ -1,41 +1,41 @@
-#Winlink Form Viewer (fv)
+# Winlink Form Viewer (fv)
 
-##Purpose
+## Purpose
 The Winlink Form Viewer (fv) is a web-based program to display a Winlink "view" file in a browser, without having the Winlink Express software installed on your computer.
 
 
-##Features
+## Features
 - runs on Windows, MacOs, Linux platforms
 - software is web-based. The server can be running on the local desktop, the local network, or anywhere on the Internet. This means that fv can be used by users who aren't Amateur Radio or SHARES operators
 - configurable text, server settings, error messages, web pages, logging, etc. to support user and organizational needs
 
-##Installation
+## Installation
 - unzip anywhere
 - from the unzipped, install directory, start the server by typing: **bin/fv-server**
 
 ## Running
 - save the Winlink "view" file attachment that you receive from a regular (SMTP) email
-- with your favorite browser, browse to http://localhost:6686
+- with your favorite browser, browse to http://localhost:6676
 - on the web page, select the view file, either with the [Choose file]  button, or dragging and dropping onto the drop zone 
 - the "view" file is automatically uploaded, matched with the corresponding Standard Template and the resulting form is displayed below the input box
 
 
-##Screenshot
-![Screen Shot](http://surftools.com/fv/fv.png  "Screen Shot with initial View file")
+## Screenshot
+![Screen Shot](https://raw.githubusercontent.com/RTykulsker/Winlink-Form-Viewer/main/fv.png  "Screen Shot")
 
 
-##Uninstallation
+## Uninstallation
 Just remove the installation directory
 
-##Configuration
+## Configuration
 A configuration file is **required** to run. The supplied configuration file, conf/fv.conf, has reasonable values and need not be modified.
 
 Details of each configuration parameter is available in a separate [Configuration.md](Configuration.md)  document
 
-####Logging
+#### Logging
 Logging is provided by the SL4J framework and Logback implementation. The logging configuration file is located at conf/logback.xml
 
-####Wrapper Scripts
+#### Wrapper Scripts
 Two scripts are provided in the bin directory:
 - bin/fv-server: for running the fv program.
 - bin/fv-update: for checking the installed version of the Standard Templates against the most current version available from the Winlink.org web site
@@ -50,15 +50,15 @@ These scripts use the configuration file found at conf/fv.conf, but you can over
 - modify the wrapper scripts bin/launch-fv-server, bin/launch-fv-update to set the installation directory
 - set an environment variable $FV_HOME before using the bin/launch-fv-server, etc scripts
 
-##Updating the Standard Templates
+## Updating the Standard Templates
 As mentioned above, there is a script that will check and download the latest version from the Winlink website. I consider this process somewhat brittle, since it relies on undocumented and unsupported features from the Winlink website.
 
 If your are running on the Windows platform **and** Winlink Express is already installed, you can change the configuration file to point to the Standard Templates directory as maintained by the Winlink Express program itself. Typically, this will be on C:\RMS Express\Standard Templates. 
 
-##Dependencies
+## Dependencies
 The fv program **requires** Java 8 or later. You can download the latest, free version of Java here: [Java Download](https://jdk.java.net/15/) 
 
-##Acknowledgments
+## Acknowledgments
 Vadim Volk, N7PIX, made invaluable suggestions to improve the usability of fv.
 
 This project wouldn't exist without the efforts of the volunteers of the [Amateur Radio Safety Foundation](https://www.arsfi.org/) and the [Winlink Development Team](https://winlink.org/). Their efforts have led to the robust messaging system using radio pathways when the Internet is not present. Winlink is the de-facto standard for radio-based EmComm messaging.
@@ -74,5 +74,5 @@ This project was built with many components from the Java ecosystem. I would lik
 -eclispe: https://www.eclipse.org/
 -java: https://openjdk.java.net/
 
-##License
-[MIT](https://opensource.org/licenses/MIT) 
+## License
+[MIT](https://opensource.org/licenses/MIT)
