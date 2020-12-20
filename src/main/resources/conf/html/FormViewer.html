@@ -49,8 +49,6 @@ legend {
 }
 
 .fullSize {
-	width: 100%;
-	height: 100%;
 	display: flex;
 	justify-content: center;
 }
@@ -75,7 +73,7 @@ legend {
 
 <h1>Winlink Form Viewer (fv) -- version $VERSION</h1>
 
-<div id="verbiage">
+<div>
 FV works in conjunction with with <a href="https://winlink.org" target="_new">Winlink Express (WE)</a>
  when using the <strong>forms</strong> or <strong>templates</strong> feature of WE.
 <p/>
@@ -112,7 +110,7 @@ email and then upload it on this page, using either the [Choose File] button or 
 
 <hr>
 
-<div id="viewContent" class="fullSize" />
+<div id="viewContent" class="fullSize"/>
 
 <script>
 (function() {
@@ -185,7 +183,6 @@ email and then upload it on this page, using either the [Choose File] button or 
 		// is XHR2 available?
 		var xhr = new XMLHttpRequest();
 		if (xhr.upload) {
-
 			// file drop
 			filedrag.addEventListener("dragover", FileDragHover, false);
 			filedrag.addEventListener("dragleave", FileDragHover, false);
