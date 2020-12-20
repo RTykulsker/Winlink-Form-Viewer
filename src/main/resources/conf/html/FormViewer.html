@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Winlink Form ViewerI</title>
+<title>Winlink Form Viewer (fv)</title>
 
 <style>
 
-body
-{
+body {
 	font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
 	font-size: 100%;
 	margin: 10px;
@@ -15,25 +14,21 @@ body
 	background-color: #fff;
 }
 
-h1, h2
-{
+h1, h2 {
 	font-size: 1.5em;
 	font-weight: normal;
 }
 
-h2
-{
+h2 {
 	font-size: 1.3em;
 }
 
-legend
-{
+legend {
 	font-weight: bold;
 	color: #333;
 }
 
-#filedrag
-{
+#filedrag {
 	display: none;
 	font-weight: bold;
 	text-align: center;
@@ -45,29 +40,31 @@ legend
 	cursor: default;
 }
 
-#filedrag.hover
-{
+#filedrag.hover {
 	color: #f00;
 	border-color: #f00;
 	border-style: solid;
 	box-shadow: inset 0 3px 4px #888;
 }
 
-#topDiv
-{
-}
-
-#bottomDiv
-{
-}
-
-
-.fullSize
-{
+.fullSize {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
+}
+
+.flex-container {
+	display: flex;
+	align-items: center;
+}
+
+.flex-left {
+	flex: 1;
+}
+
+.flex-right {
+	flex: 1;
 }
 
 </style>
@@ -75,20 +72,35 @@ legend
 </head>
 <body>
 
-<div id="topDiv">
-<h1>Winlink Form Viewer</h1>
+<h1>Winlink Form Viewer (fv) -- version $VERSION</h1>
 
+<div id="verbiage">
+FV works in conjunction with with <a href="https://winlink.org" target="_new">Winlink Express (WE)</a>
+ when using the <strong>forms</strong> or <strong>templates</strong> feature of WE.
+<p/>
+FV combines the small "view" file transmitted by WE with the appropriate template as displays a complete view.
+<p/>
+To use, simply save the "view" file attachment that you receive via traditional 
+email and then upload it on this page, using either the [Choose File] button or just 
+"drag and drop".
+
+
+</div>
+
+<p/>
 <form id="upload" action="uploadXHR" method="POST" enctype="multipart/form-data">
 
 <fieldset>
-<legend>Winlink Form View Upload -- refresh browser (F5) to process new file</legend>
+<legend>View File Upload</legend>
 
 <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
 
-<div>
-	<label for="fileselect">Files to upload:</label>
-	<input type="file" id="fileselect" name="fileselect[]" />
-	<div id="filedrag">or drop files here</div>
+<div class="flex-container">
+	<div class="flex-left">
+		<label for="fileselect">View file to upload:</label>
+		<input type="file" id="fileselect" name="fileselect[]" />
+	</div>
+	<div id="filedrag" class="flex-right">or drop a single file here</div>
 </div>
 
 <div id="submitbutton">
@@ -100,11 +112,8 @@ legend
 </form>
 
 <hr>
-</div>
 
-<div id="bottomDiv">
 <div id="viewContent" class="fullSize" />
-</div>
 
 <script>
 (function() {
@@ -149,7 +158,7 @@ legend
 			xhr.onreadystatechange = function(e) {
 				if (xhr.readyState == 4) {
 					// document.write(xhr.response);
-					document.getElementById("viewContent").innerHTML=xhr.response;					
+					document.getElementById("viewContent").innerHTML=xhr.response;
 				}
 				if (xhr.status != 200) {
 					document.getElementById("viewContent").style.color = "red";

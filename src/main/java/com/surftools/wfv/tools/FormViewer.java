@@ -76,7 +76,7 @@ public class FormViewer {
   // create a separate logger so that we can log server access to a file, etc.
   private static final Logger serverLogger = LoggerFactory.getLogger("serverLogger");
 
-  private static final String FV_VERSION = "0.5.2";
+  private static final String FV_VERSION = "0.6.1";
 
   private static final String FILE_UPLOAD_PATH = "/uploadFile";
   private static final String XHR_UPLOAD_PATH = "/uploadXHR";
@@ -108,6 +108,7 @@ public class FormViewer {
   }
 
   private void run() {
+    logger.info("Winlink Form Viewer (fv), version: " + FV_VERSION + ", processId: " + ProcessHandle.current().pid());
     try {
       cm = new PropertyFileConfigurationManager(configFileName);
 
@@ -125,8 +126,7 @@ public class FormViewer {
         }
         final String ipAddress = Utils.getLocalIPv4Address();
         final String serverUrl = "http://" + ipAddress + ":" + port;
-        final long pid = ProcessHandle.current().pid();
-        logger.info("listening on port: " + serverUrl + ", processId: " + pid);
+        logger.info("listening on port: " + serverUrl);
 
         final Route notFoundHandler = new NotFoundHandler();
         final Route uploadHandler = new UploadHandler();
@@ -240,7 +240,11 @@ public class FormViewer {
       }
 
       logger.info("serving initial html from: " + initialHtmlFileName);
-      return Files.readString(Paths.get(initialHtmlFileName));
+
+      String initialContent = Files.readString(Paths.get(initialHtmlFileName));
+      initialContent = initialContent.replace("$VERSION", FV_VERSION);
+
+      return initialContent;
     }
 
   }
