@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<RMS_Express_Form>
+  <form_parameters>
+    <xml_file_version>1.0</xml_file_version>
+    <rms_express_version>1.5.33.0</rms_express_version>
+    <submission_datetime>20201217025733</submission_datetime>
+    <senders_callsign>KM6SO</senders_callsign>
+    <grid_square>CN87VM</grid_square>
+    <display_form>Quick Message Viewer.html</display_form>
+    <reply_template></reply_template>
+  </form_parameters>
+  <variables>
+    <msgto></msgto>
+    <msgcc></msgcc>
+    <msgsender>KM6SO</msgsender>
+    <msgsubject></msgsubject>
+    <msgbody></msgbody>
+    <msgp2p>False</msgp2p>
+    <msgisreply>False</msgisreply>
+    <msgisforward>False</msgisforward>
+    <msgisacknowledgement>False</msgisacknowledgement>
+    <msgseqnum>32</msgseqnum>
+    <attn>All Users</attn>
+    <parseme></parseme>
+    <from_name>Bob Tykulsker</from_name>
+    <time>2020-12-16 18:56</time>
+    <subjectline>Winlink Form Viewer in Action!</subjectline>
+    <message>This is an example of a Winlink standard template, populated with content by FV</message>
+    <submit>Submit</submit>
+    <testcall>KM6SO</testcall>
+    <templateversion>Quick Message version 10.2</templateversion>
+  </variables>
+</RMS_Express_Form>

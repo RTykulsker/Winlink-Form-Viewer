@@ -78,8 +78,9 @@ public class FormViewer {
 
   private static final String FV_VERSION = "0.6.1";
 
-  private static final String FILE_UPLOAD_PATH = "/uploadFile";
-  private static final String XHR_UPLOAD_PATH = "/uploadXHR";
+  private static final String FILE_UPLOAD_URL = "/uploadFile";
+  private static final String XHR_UPLOAD_URL = "/uploadXHR";
+  private static final String INITIAL_VIEW_URL = "/sendInitialView";
 
   private static final String DEFAULT_CONFIG_FILE_NAME = "fv.conf";
 
@@ -130,10 +131,12 @@ public class FormViewer {
 
         final Route notFoundHandler = new NotFoundHandler();
         final Route uploadHandler = new UploadHandler();
+        final Route initialViewHandler = new InitialViewHandler();
         Spark.port(port);
         Spark.get("/", new InitHandler());
-        Spark.post(FILE_UPLOAD_PATH, uploadHandler);
-        Spark.post(XHR_UPLOAD_PATH, uploadHandler);
+        Spark.post(FILE_UPLOAD_URL, uploadHandler);
+        Spark.post(XHR_UPLOAD_URL, uploadHandler);
+        Spark.post(INITIAL_VIEW_URL, initialViewHandler);
         Spark.get("*", notFoundHandler);
         Spark.post("*", notFoundHandler);
         Spark.put("*", notFoundHandler);
@@ -233,18 +236,51 @@ public class FormViewer {
     @Override
     public Object handle(Request request, Response response) throws Exception {
       String initialHtmlFileName = cm.getAsString(ConfigurationKey.SERVER_INITIAL_HTML);
-
       File initialHtmlFile = new File(initialHtmlFileName);
       if (!initialHtmlFile.exists()) {
         Utils.fatal(cm, ConfigurationKey.EMSG_INIT_HTML_NOT_FOUND, initialHtmlFileName);
       }
+      String initialContent = Files.readString(Paths.get(initialHtmlFileName));
+
+      String verbiageFileName = cm.getAsString(ConfigurationKey.VERBIAGE_FILE);
+      File verbiageFile = new File(verbiageFileName);
+      String verbiage = "";
+      if (!verbiageFile.exists()) {
+        logger.warn("verbiage file: " + verbiageFile.getCanonicalPath() + " not found, ignoring");
+      } else {
+        verbiage = Files.readString(Paths.get(verbiageFileName));
+      }
+
+      initialContent = initialContent.replace("$VERSION", FV_VERSION);
+      initialContent = initialContent.replace("$VERBIAGE", verbiage);
 
       logger.info("serving initial html from: " + initialHtmlFileName);
-
-      String initialContent = Files.readString(Paths.get(initialHtmlFileName));
-      initialContent = initialContent.replace("$VERSION", FV_VERSION);
-
       return initialContent;
+    }
+  }
+
+  class InitialViewHandler implements Route {
+
+    @Override
+    public Object handle(Request request, Response response) throws Exception {
+      String initialViewFileName = cm.getAsString(ConfigurationKey.SERVER_INITIAL_VIEW);
+
+      File initialViewFile = new File(initialViewFileName);
+      if (!initialViewFile.exists()) {
+        String message = "initial view file: " + initialViewFile.getCanonicalPath() + " not found";
+        logger.warn(message);
+        response.status(404);
+        return message;
+      }
+
+      logger.info("serving initial view from: " + initialViewFileName);
+
+      String viewContent = Files.readString(Paths.get(initialViewFileName));
+      viewContent = viewContent.replace("$VERSION", FV_VERSION);
+
+      FormResults results = generateResults(viewContent);
+      response.status(results.responseCode);
+      return results.resultString;
     }
 
   }
@@ -255,7 +291,7 @@ public class FormViewer {
     public Object handle(Request request, Response response) throws Exception {
       String viewContent = null;
       String requestPath = request.pathInfo();
-      if (requestPath.equals(FILE_UPLOAD_PATH)) {
+      if (requestPath.equals(FILE_UPLOAD_URL)) {
         logger.info("requestPath: " + requestPath);
 
         // handle form upload; gets placed into a multipart ...
@@ -271,9 +307,12 @@ public class FormViewer {
 
         InputStream is = file.getInputStream();
         viewContent = new BufferedReader(new InputStreamReader(is)).lines().collect(Collectors.joining("\n"));
-      } else if (requestPath.equals(XHR_UPLOAD_PATH)) {
+      } else if (requestPath.equals(XHR_UPLOAD_URL)) {
         viewContent = request.body();
       }
+
+      String fileName = request.headers("X_FILENAME");
+      logger.info("receivedfilename: " + fileName + ", " + viewContent.length() + " bytes");
 
       if (viewContent == null || viewContent.length() == 0) {
         Utils.warn(cm, ConfigurationKey.EMSG_NO_UPLOAD_FILE, null);
