@@ -58,6 +58,7 @@ If your are running on the Windows platform **and** Winlink Express is already i
 ## Dependencies
 The fv program **requires** Java 15 or later. You can download the latest, free version of Java here: [Java Download](https://jdk.java.net/15/)
 
+
 ## Acknowledgments
 Vadim Volk, N7PIX, made invaluable suggestions to improve the usability of fv.
 
@@ -75,4 +76,8 @@ This project was built with many components from the Java ecosystem. I would lik
 -java: https://openjdk.java.net/
 
 ## License
+<<<<<<< HEAD
 [MIT](https://opensource.org/licenses/MIT)
+=======
+[MIT](https://opensource.org/licenses/MIT) 
+>>>>>>> ebcc4641a1b5471ffd180301ae1106a96fbf52f6
