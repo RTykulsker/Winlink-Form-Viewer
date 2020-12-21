@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# simple script to launch fv programs
+
+# hard-code FV_HOME, modify next line as needed
+# FV_HOME=/home/apps/fv
+
+if [[ -z "$FV_HOME" ]];
+then
+	echo "FV_HOME not set, exiting"
+	exit
+fi
+
+cd "$FV_HOME"
+bin/fv-server
+
