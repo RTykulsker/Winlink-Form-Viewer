@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.surftools</groupId>
 	<artifactId>wfv</artifactId>
-	<version>0.6.1</version>
+	<version>0.6.2</version>
 
 	<name>WinlinkFormViewer</name>
 	<url>http://maven.apache.org</url>
@@ -11,7 +11,7 @@
 	<properties>
   		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<java.version>8</java.version>
+		<java.version>15</java.version>
 		<maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
 		<maven.appassembler.plugin.version>1.10</maven.appassembler.plugin.version>
 

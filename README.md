@@ -56,7 +56,7 @@ As mentioned above, there is a script that will check and download the latest ve
 If your are running on the Windows platform **and** Winlink Express is already installed, you can change the configuration file to point to the Standard Templates directory as maintained by the Winlink Express program itself. Typically, this will be on C:\RMS Express\Standard Templates. 
 
 ## Dependencies
-The fv program **requires** Java 8 or later. You can download the latest, free version of Java here: [Java Download](https://jdk.java.net/15/) 
+The fv program **requires** Java 15 or later. You can download the latest, free version of Java here: [Java Download](https://jdk.java.net/15/)
 
 ## Acknowledgments
 Vadim Volk, N7PIX, made invaluable suggestions to improve the usability of fv.

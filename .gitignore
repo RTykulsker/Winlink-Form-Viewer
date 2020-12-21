@@ -4,6 +4,8 @@
 .metadata
 target
 fv.conf
+conf
+TODO
 src/main/resources/*.csv
 src/main/resources/outbox
 src/main/resources/conf/outbox
