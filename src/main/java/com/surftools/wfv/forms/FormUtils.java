@@ -92,11 +92,6 @@ public class FormUtils {
     }
 
     if (needsInitialDownload) {
-      // boolean makeOk = formsDir.mkdirs();
-      // if (!makeOk) {
-      // Utils.fatal(cm, ConfigurationKey.EMSG_CANT_MAKE_FORMS_DIR, formsDirName);
-      // }
-
       updateForms();
     }
 
@@ -105,6 +100,7 @@ public class FormUtils {
     if (versionFile.exists()) {
       version = Files.readString(versionPath).trim();
     }
+
     // this chops off the last dotted decimal and removes all dots
     // this is the format for getting versions
     version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
@@ -130,12 +126,12 @@ public class FormUtils {
     logger.info("checking for new form version via: " + requestUriString);
 
     try {
-      HttpClient client = HttpClient.newBuilder() //
-          .followRedirects(Redirect.NORMAL) //
-          .build(); //
+      HttpClient client = HttpClient.newBuilder()
+          .followRedirects(Redirect.NORMAL)
+          .build(); 
 
-      HttpRequest request = HttpRequest.newBuilder() //
-          .uri(URI.create(requestUriString)) //
+      HttpRequest request = HttpRequest.newBuilder() 
+          .uri(URI.create(requestUriString))   
           .build();
 
       HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -191,12 +187,12 @@ public class FormUtils {
     }
 
     try {
-      HttpClient client = HttpClient.newBuilder() //
-          .followRedirects(Redirect.NORMAL) //
-          .build(); //
+      HttpClient client = HttpClient.newBuilder()
+          .followRedirects(Redirect.NORMAL) 
+          .build();
 
-      HttpRequest request = HttpRequest.newBuilder() //
-          .uri(URI.create(updateURL)) //
+      HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create(updateURL))
           .build();
 
       HttpResponse<String> firstResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -205,8 +201,8 @@ public class FormUtils {
       responseUriString = responseUriString.replace("/redir", "/download");
       logger.debug("updated responseUriString: " + responseUriString);
 
-      request = HttpRequest.newBuilder() //
-          .uri(URI.create(responseUriString)) //
+      request = HttpRequest.newBuilder()
+          .uri(URI.create(responseUriString))
           .build();
 
       HttpResponse<byte[]> secondResponse = client.send(request, HttpResponse.BodyHandlers.ofByteArray());

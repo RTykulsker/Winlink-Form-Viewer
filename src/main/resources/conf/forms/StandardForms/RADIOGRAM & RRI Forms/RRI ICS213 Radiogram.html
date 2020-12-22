@@ -122,6 +122,7 @@ background-color: #EFEFEF;
  background-color: red; }
 </style>
 <style>
+
 /*
 body {color:#000; background:#fff; font:100%/1.5 arial,sans-serif;}
 h2 {margin-top:0}
@@ -843,7 +844,7 @@ var p8 = document.getElementById('Time1').value + ' ';
 var p9 = document.getElementById('Date').value;var preamble = p1 + p2 + p3 +  p4 +  p5 +  p6 +  p7 +p8 + p9 +'\n' ;
 var preamble=preamble.replace(/\  /gm, " ");
 var a1 = document.getElementById('To1').value;
-var a1 = 'TO'+'\n'+a1;
+//var a1 = 'TO'+'\n'+a1;
 var a2 = document.getElementById('ToPosition').value;
 var a3 = document.getElementById('Address').value;
 var a3b = document.getElementById('City').value;
@@ -858,8 +859,13 @@ if (a5a.length < 1) { a5a = 'NO PHONE'};
 if (a5b.length > 0) {var a5b = " EXT "+a5b;}  
 var a5 = a5a+a5b+' '+a5c;
 var a6 = document.getElementById('From').value;
-var a6 = 'FROM'+'\n'+a6;
+//var a6 = 'FROM'+'\n'+a6;
+//FromContact
+var fc1 =document.getElementById('FromContact').value;
+if (fc1.length > 0) {var fc1 = fc1+'\n';}  ;
+
 var a7 = document.getElementById('FromPosition').value;
+var thefrom = a6 + "  " + a7+ "\n" + fc1;
 var a10 = document.getElementById('Subject').value;
 var a11 = document.getElementById('LTime').value;
 
@@ -867,12 +873,14 @@ var Address = a1 + "  " + a2+ "\n";
 // sept 1 bug if (a3.length > 0) {var Address = Address+ a3 + "\n";}
 if (a4.length > 0) {var Address = Address+ a4 + "\n";}
 if (a5.length > 0) {var Address = Address+ a5 + "\n";}
-var Address = Address +a6 + "  " + a7+ "\n";
-var Address = Address+ a10 + "  " +a11+"\n";
-var Address = Address +'BT' + '\n' ;mytext = preamble + Address;var m1 = document.getElementById('MessageTXT').value;
+//var Address = Address +a6 + "  " + a7+ "\n";
+var Address = Address+ a10 + "  " +a11;
+//var Address = Address+"\n"+ a10 + "  " +a11+"\n";
+var Address = Address +'\nBT' + '\n' ;mytext = preamble + Address;var m1 = document.getElementById('MessageTXT').value;
 var answer=m1.substring(0,m1.length - 2);
 m1 = m1.trim();
-mytext = mytext + m1 + '\n' + 'BT' + '\n' ;
+var mytext = mytext + m1 + '\n' + 'BT' + '\n'+thefrom ;
+//var = mytext = mytext +thefrom;
 var s1 = document.getElementById('RoutingR').value;
 mytext = mytext + s1 + '\n';
 var s2 = document.getElementById('RoutingT').value;
@@ -1415,32 +1423,36 @@ SVC<br />
                   </td>
                 </tr>
                 <tr bgcolor="#f9fafc">
-                  <td colspan="2" style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left"><span class="background_table"><strong>Phone:&nbsp;&nbsp;</strong></span>                  <span class="background_table"><span style="font-weight: normal;"><span style="font-weight: normal;">
-                  <input name="HPhone" id="HPhone" title="22 Characters Max. Use spaces" onkeypress="return isNumberKey(event)" onchange="fixphone(this.value); this.value=this.value.toUpperCase(); Checkifphoneisvalid(this.value)" size="23" maxlength="22" placeholder="555 444 6789" />
-                  </span> </span>&nbsp; <strong>&nbsp;Extension: </strong>
-                  <input name="PhoneExtention" type="text" id="PhoneExtention" size="10" maxlength="5" placeholder="NUMBERS"onkeypress="return isNumberKey(event)" />
-                  <span style="font-weight: normal;">&nbsp; &nbsp;&nbsp; </span></span><span style="font-weight: normal;"><strong>&nbsp;E-mail:</strong> &nbsp;</span> <span class="background_table"><span style="font-weight: normal;"> <span style="font-weight: normal;">
-                  <input maxlength="65" name="Email" id="Email" size="75" placeholder="EMAIL IF KNOWN"  onkeyup="fixpunct(this.value, this.id)" onchange="fixemail(this.value);" onblur="this.value= this.value.toUpperCase();"/>
-                  </span> </span></span><span class="background_table"><span style="font-weight: normal;">&nbsp;</span></span><span class="background_table"><span style="font-weight: normal;"></span></span><span class="background_table"><span style="font-weight: normal;">&nbsp;</span></span></div>
-                  </td>
-                </tr>
-                <tr bgcolor="#f9fafc">
-                  <td style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left"><strong>From (Name):</strong>
-                      <input style="text-transform: uppercase;" placeholder="First and Last Name Minimum" maxlength="45" name="From" id="From" size="50" onkeyup="fixpunct(this.value, this.id)" required="required" onchange="this.value=this.value.toUpperCase();" />
-</div>
-                  </td>
-                  <td style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left"><strong>Position (Title &amp; Agency): </strong>
-                      <input style="text-transform: uppercase;" maxlength="35" name="FromPosition" id="FromPosition" size="35" onkeyup="fixpunct(this.value, this.id)" required="required" onchange="this.value=this.value.toUpperCase();" />
-                  </div>
-                  </td>
-                </tr>
-                <tr bgcolor="#f9fafc">
-                  <td style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left"><strong>Subject: (optional)</strong>
-                      <input style="text-transform: uppercase;" maxlength="55" name="Subject" id="Subject" placeholder="Optional" size="60" onkeyup="fixpunct(this.value, this.id)" onchange="this.value=this.value.toUpperCase();" />
-                  </div>
-                  </td>
-                  <td style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left"><strong>Local Time:</strong>&nbsp;
-                      <input placeholder="Enter Local time" name="LTime" id="LTime" title="Use UTC time" size="12" maxlength="12" />
+                  <td colspan="2" style="vertical-align: top; text-align: center;" nowrap="nowrap" valign="top"><div class="style26" align="left">
+                    <p><span class="background_table"><strong>Phone:&nbsp;&nbsp;</strong></span>                  <span class="background_table"><span style="font-weight: normal;"><span style="font-weight: normal;">
+                      <input name="HPhone" id="HPhone" title="22 Characters Max. Use spaces" onkeypress="return isNumberKey(event)" onchange="fixphone(this.value); this.value=this.value.toUpperCase(); Checkifphoneisvalid(this.value)" size="23" maxlength="22" placeholder="555 444 6789" />
+                      </span> </span>&nbsp; <strong>&nbsp;Extension: </strong>
+                      <input name="PhoneExtention" type="text" id="PhoneExtention" size="10" maxlength="5" placeholder="NUMBERS"onkeypress="return isNumberKey(event)" />
+                      <span style="font-weight: normal;">&nbsp; &nbsp;&nbsp; </span></span><span style="font-weight: normal;"><strong>&nbsp;E-mail:</strong> &nbsp;</span> <span class="background_table"><span style="font-weight: normal;"> <span style="font-weight: normal;">
+                      <input maxlength="65" name="Email" id="Email" size="75" placeholder="EMAIL IF KNOWN"  onkeyup="fixpunct(this.value, this.id)" onchange="fixemail(this.value);" onblur="this.value= this.value.toUpperCase();"/>
+                    </span> </span></span><span class="background_table"><span style="font-weight: normal;">&nbsp;</span></span><span class="background_table"><span style="font-weight: normal;"></span></span><span class="background_table"><span style="font-weight: normal;">&nbsp;</span></span></p>
+                   <br />
+                   <table width="100%"  style="border-top: 1.5px dashed red;border-bottom: 1.5px dashed red; border-right: 1.5px dashed red;border-left: 1.5px dashed red;"  cellspacing="0" cellpadding="6">
+                     <tr bgcolor="#ffe6e6">
+                       <td width="49%"><strong>From (Name):</strong>
+                         <input style="text-transform: uppercase;" placeholder="First and Last Name Minimum" maxlength="45" name="From" id="From" size="50" onkeyup="fixpunct(this.value, this.id)" required="required" onchange="this.value=this.value.toUpperCase();" /></td>
+                       <td width="51%"><strong>Position (Title &amp; Agency): </strong>
+                         <input style="text-transform: uppercase;" maxlength="35" name="FromPosition" id="FromPosition" size="35" onkeyup="fixpunct(this.value, this.id)" required="required" onchange="this.value=this.value.toUpperCase();" /></td>
+                     </tr>
+                     <tr bgcolor="#ffe6e6">
+                       <td colspan="2"><strong>Sender's preferred Contact information: 
+                         <input name="FromContact" type="text" style="text-transform: uppercase;" onkeyup="fixpunct(this.value, this.id)" onchange="this.value=this.value.toUpperCase();"  id="FromContact" size="100" />
+                       </strong></td>
+                       </tr>
+                     <tr bgcolor="#ffe6e6">
+                       <td><div class="style26" align="left"><strong>Subject: (optional)</strong>
+                             <input style="text-transform: uppercase;" maxlength="55" name="Subject" id="Subject" placeholder="Optional" size="60" onkeyup="fixpunct(this.value, this.id)" onchange="this.value=this.value.toUpperCase();" />
+                       </div></td>
+                       <td><strong> Date/Time originated:</strong>&nbsp;
+                         <input placeholder="e.g. YYYYMMDDTTTTZ" name="LTime" id="LTime" title="Preferred DTG " size="25" maxlength="25" /></td>
+                     </tr>
+                   </table>
+           
                   </div>
                   </td>
                 </tr>
@@ -1488,7 +1500,7 @@ SVC<br />
     </small></big></span></span>&nbsp;&nbsp;<span class="style26"><span style="font-size: 10px;"><big style="font-style: italic;">
     <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
     </big></span></span><span class="style31"><small style="color: rgb(0, 153, 0); font-weight: bold;"><big style="font-style: italic;">
-    Contact KB1TCE with questions</big></small></span><span class="style29"><small> Ver .100</small></span>&nbsp;&nbsp;&nbsp;</small>
+    Contact KB1TCE with questions</big></small></span><span class="style29"><small> Ver .4.2</small></span>&nbsp;&nbsp;</small>
                     </p></td>
               </tr>
           </tbody></table>
