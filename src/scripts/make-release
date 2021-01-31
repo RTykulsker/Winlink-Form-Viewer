@@ -1,0 +1,102 @@
+#! /bin/bash
+
+# script to make a release, suitable for github
+
+logEnabled=${FVMR_LOG_ENABLED:=1}
+cleanupEnabled=${FVMR_CLEANUP_ENABLED:=1}
+homeDir=${FVMR_HOME_DIR:=$HOME/workspaces/java8/WinlinkFormViewer}
+
+###############################################################################
+## log messages to console
+###############################################################################
+function log() {
+    if [[ $logEnabled == 1 ]]
+    then
+        echo $*
+    fi
+}
+
+###############################################################################
+## cleanup after processing
+###############################################################################
+function cleanup() {
+    	if [[ $cleanupEnabled == 1 ]]
+    	then
+		log "begin cleanup"
+ 
+	    	log "end cleanup"
+    	fi
+      	
+	popd > /dev/null
+    	exit 0
+}
+
+###############################################################################
+## getVersion
+###############################################################################
+function getVersion() {
+	local version=""
+
+	version=$(grep -a -m 1 -h version pom.xml |cut -d '>' -f 2|cut -d '<' -f 1)
+	echo $version
+}
+
+#######################################################################
+## main
+#######################################################################
+
+function main() {
+	#set -x
+	pushd . > /dev/null
+	trap "stty echo && popd > /dev/null && cleanup" INT
+	log "begin make-release"
+
+    	if [[ ! -e $homeDir ]]
+    	then
+        	echo "ERROR: homeDir: $homeDir does not exist, exiting"
+		cleanup
+    	else
+        	log "using homeDir $homeDir"
+		cd $homeDir
+    	fi
+
+	local version=$(getVersion)
+	if [[ "$version" = "" ]]
+	then
+		echo "ERROR: couldn't get version, exiting."
+		cleanup
+	else
+		echo "creating version: $version"
+	fi
+
+	# basic assembly
+	packageDir="target/appassembler"
+	rm -rf "$packageDir"
+	mvn package -DskipTests=true
+    	if [[ ! -e "$packageDir" ]]
+    	then
+        	echo "ERROR: packing failed, exiting."
+		cleanup
+    	else
+        	log "using homeDir $homeDir"
+		cd $homeDir
+    	fi
+
+	# copy some extra files
+	cp Configuration.md "$packageDir"
+	cp README.md "$packageDir"
+	cp src/scripts/launch* "$packageDir"/bin
+
+	pushd "$packageDir" > /dev/null
+	zip -r "fv-$version".zip *
+	ls -ls *.zip
+	popd > /dev/null
+
+
+	log "end make-release"
+	cleanup
+}
+
+main $*
+
+
