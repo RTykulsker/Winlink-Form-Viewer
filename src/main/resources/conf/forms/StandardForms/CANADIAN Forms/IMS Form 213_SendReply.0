@@ -13,7 +13,7 @@ No: [<var replySeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Statio
 7. MESSAGE:  
 <var Message2>  
 
-8. Name Signature of Sender: <var Approved_Name>
+8. Approved by: <var Approved_Name>
 9. Position/Contact info of Sender: <var Approved_PosTitle>
 10. Date/Time Sent: <var DateTimeSent>
 

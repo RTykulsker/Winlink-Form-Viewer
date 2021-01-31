@@ -22,6 +22,12 @@ text-align: left;
 font-weight: normal;
 font-style: normal;
 }
+
+
+
+input { 
+    text-align: center; 
+}
 textarea {
 padding: 1px;
 -moz-border-radius-topleft: 2px;
@@ -749,7 +755,7 @@ function Checkifinbrowser() {
                             style="font-size: 12px;"><span
 
                             style="font-size: 12px;">
-                          <input name="Hospital" id="Hospital" size="100"
+                          <input style="text-align:left;" name="Hospital" id="Hospital" size="100"
 
                                         maxlength="98"
 
@@ -876,7 +882,7 @@ function Checkifinbrowser() {
                         </tr>
                         <tr>
                           <td><div align="center">6</div></td>
-                          <td>Pediatric Ward</td>
+                          <td>Pediatric Bed </td>
                           <td><div align="center">
                             <input name="F1" type="text"  onkeypress="return isNumberKey(event)" id="F1" size="10" maxlength="10" />
                           </div></td>
@@ -980,19 +986,6 @@ function Checkifinbrowser() {
                         </tr>
                         <tr>
                           <td><div align="center">14</div></td>
-                          <td><input name="otherservice"type="text"  id="otherservice" size="55" maxlength="53"  placeholder="Other Service/Department" /></td>
-                          <td><div align="center">
-                            <input name="M1" type="text"  onkeypress="return isNumberKey(event)" id="M1" size="10" maxlength="10" />
-                          </div></td>
-                          <td><div align="center">
-                            <input name="M2" type="text"  onkeypress="return isNumberKey(event)" id="M2" size="10" maxlength="10" />
-                          </div></td>
-                          <td valign="top"><div align="center">
-                            <input name="M3" type="text"  onkeypress="return isNumberKey(event)" id="M3" size="10" maxlength="10" />
-                          </div></td>
-                        </tr>
-                        <tr>
-                          <td><div align="center">15</div></td>
                           <td>Ventilator</td>
                           <td><div align="center">
                             <input name="N1" type="text"  onkeypress="return isNumberKey(event)" id="N1" size="10" maxlength="10" />
@@ -1005,7 +998,7 @@ function Checkifinbrowser() {
                           </div></td>
                         </tr>
                         <tr>
-                          <td><div align="center">16</div></td>
+                          <td><div align="center">15</div></td>
                           <td>Mass Decontamination Facility Available</td>
                           <td><div align="center">
       <input name="MassDecon" type="radio" value="YES" />
@@ -1021,23 +1014,23 @@ function Checkifinbrowser() {
                         <tr>
                           <td width="1%"></td>
                           <td width="23%" valign="top"><div align="right">Report Completed by: &nbsp; </div></td>
-                          <td width="76%" valign="top"><input name="Name" type="text" id="Name" size="35" required="required" /></td>
+                          <td width="76%" valign="top"><input style="text-align:left;" name="Name" type="text" id="Name" size="35" required="required" /></td>
                         </tr>
                         <tr valign="top">
                           <td>&nbsp;</td>
                           <td><div align="right">PHONE NUMBER &nbsp;</div></td>
-                          <td><input name="Phone" type="text" id="Phone" required="required" /></td>
+                          <td><input style="text-align:left;" name="Phone" type="text" id="Phone" required="required" /></td>
                         </tr>
                         <tr valign="top">
                           <td height="27" >&nbsp;</td>
                           <td><div align="right">DATE &nbsp; </div></td>
-                          <td><input title="Overwrite if needed"
+                          <td><input style="text-align:left;" title="Overwrite if needed"
 
                           maxlength="12" size="12" name="ReportDate" id="ReportDate" placeholder="Click for Date"
 
                           onclick="SetDateTime('mmm-d-y',this.id)" required="required" /> 
                           &nbsp; &nbsp; Time : 
-                          <input maxlength="12" size="12" name="Time1" id="Time1"
+                          <input style="text-align:left;" maxlength="12" size="12" name="Time1" id="Time1"
 
                           placeholder="Click for Time" onclick="SetDateTime('hm',this.id)"
 
@@ -1046,9 +1039,9 @@ function Checkifinbrowser() {
                       </table>
                     <p align="left"><span style="color: rgb(204, 0, 0);">&nbsp;&nbsp; </span>Addtional Comments:<strong><br />
                         <span style="color: rgb(204, 0, 0);"> </span>
-                        <textarea
+                        <textarea style="text-align:left;"
 
-cols="120" rows="2" name="Comments" id="Comments" o="" nchange="this.value=RWS(this.value)"
+cols="120" rows="2" name="Comments" id="Comments" onchange="this.value=RWS(this.value)"
 
 onkeyup="AutoGrowTextArea(this)" placeholder="Be Brief and Concise"></textarea>
                     </strong></p>
@@ -1060,9 +1053,9 @@ onkeyup="AutoGrowTextArea(this)" placeholder="Be Brief and Concise"></textarea>
                     WITHIN 60 MINUTES OF REQUEST</strong></p>
                     <table width="100%"  border="0" cellspacing="0" cellpadding="3">
                       <tr valign="top">
-                          <td>EFFECTIVE: 06-01-08 <br />
-                            REVISED: 04-01-18 <br />
-                          SUPERSEDES: 07-01-17</td>
+                          <td>EFFECTIVE: 03-19-09<br />
+                            REVISED: 10-01-20 <br />
+                          SUPERSEDES: 04-01-18 </td>
                           <td>&nbsp;</td>
                           <td><div align="right">PAGE 1 OF 1 &nbsp;</div></td>
                       </tr>
@@ -1101,7 +1094,7 @@ style="color: rgb(128, 0, 0);"><span class="style27" style="color: black;">Expre
 
                                     id="Templateversion" value="LA Bed AVAILABILITY 0.7.2" />
   <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-</span></span>Version 0.7<span style="font-size: 12px;">.2<big
+</span></span>Version 0.7<span style="font-size: 12px;">.4<big
 
 style="font-weight: bold;">  <span class="Header">
 </span></span></div></td>

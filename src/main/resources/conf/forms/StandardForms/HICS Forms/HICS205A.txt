@@ -170,7 +170,7 @@ Issued Device ID#/Comments:
 ---------------------------------------------
 4. Special Instructions:
 
-<var Instructions>
+<var specialInstructions>
 ---------------------------------------------
 5. Prepared by:(CUL) <var PreparedName>
 Date: <var Date_Time>  Time: <var Time>

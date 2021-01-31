@@ -262,7 +262,7 @@ display: block;
 
 .popScroll h2 {margin-top:0}
 }
-.style29 {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; margin: 10px; }
+.style29 {font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: normal; margin: 10px; }
 .style32 {font-size: 14px}
 .style7 {color: #FF0000;
 	font-size: 10px;
@@ -308,7 +308,17 @@ input[type=reset] {
 input[type=black] {
  border: 2px solid #999999;
   border-radius:.25rem;
-  width: 45px;
+  width: 60px;
+  background-color: white;
+  color: black;
+  padding: 2px 2px;
+  font-size: 14px;
+   cursor: pointer;
+}
+input[type=black1] {
+ border: 2px solid #999999;
+  border-radius:.25rem;
+  width: 145px;
   background-color: white;
   color: black;
   padding: 2px 2px;
@@ -384,6 +394,8 @@ var RightNow = prompt("Date/Time:", myprompt);
 
 document.getElementById(Timefld).value = RightNow;
 }
+
+
  function DateNow(Timefld, FocusFld) {
 
 var txt;
@@ -618,12 +630,13 @@ return text2.trim();
 getit();
 Checkifinbrowser();
  }
-
-function saveTextAsFile(fileNameToSaveAs, textToWrite) {
+//function saveTextAsFile(fileNameToSaveAs, textToWrite, Fsuffix)
+function saveTextAsFile(Fsuffix) {
 var textToWrite = document.getElementById('parseme').value; 
 mytitle = document.getElementById('Title').value; 
-var fileNameToSaveAs = mytitle+" ICS309 " + DateforFile()+".txt";
+var fileNameToSaveAs = mytitle+" ICS309 " + DateforFile()+"."+Fsuffix;
 fileNameToSaveAs = prompt("", fileNameToSaveAs);
+if (fileNameToSaveAs == null){return};
 
   /* Saves a text string as a blob file*/  
   var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
@@ -831,6 +844,33 @@ function RWS(str){
 var text2 = str.replace(/\s+$/,"");
 return text2.trim();
 }
+function ExportData() {
+var exheader= "Time,From,To,Subject"+"\n"
+	var mydata= "";
+	var mydata= exheader;
+
+         	for (x = 1; x <31; x++) {
+
+        //var tabs = lines[line].split('\t',11);
+         	
+				var mydata=mydata + document.getElementById('Time'+x).value+",";
+		 		var mydata=mydata+document.getElementById('To'+x).value+",";
+				var mydata=mydata+document.getElementById('From'+x).value+",";
+				var mydata=mydata+'"'+document.getElementById('Sub'+x).value+'"';
+				var mydata=mydata+"\n";
+			}
+			
+			
+			
+			var mydata=mydata+"\n";
+		
+
+			document.getElementById('parseme').value = mydata;
+			
+			saveTextAsFile('csv');
+			
+			//saveTextAsFile();
+			}
 
 function SaveData() {
 	var mydata= "";
@@ -864,7 +904,7 @@ function SaveData() {
 
 			document.getElementById('parseme').value = mydata;
 			
-			saveTextAsFile();
+			saveTextAsFile('txt');
 			
 			//saveTextAsFile();
 			}
@@ -936,7 +976,7 @@ function Checkifinbrowser() {
 <div class="popScroll"><!-- Test for help starts here -->
 <p> </p>
 ICS 309 General Purpose Communications Log Purpose: <br />
-<br />
+<br /> <p align="left">
 The 309 Communications Log allows you to record details of message traffic and is
 used by either an individual on an event or a Net Control Operator
 (NCO). These logs provide the basic reference from which to extract
@@ -955,13 +995,19 @@ original forms MUST be forwarded to the Documentation Unit. </p>
 This form is NOT the ICS309 Communications Message Log that is built into Winlink Express.
 That tool creates a PDF record of inbound/outbound message traffic information.</p><br />
 <strong>More Information</strong><br /><br />
-You can save your completed HTML to a text file. This will allow you to reload the ICS309
+<p align="left">You can save your completed HTML to a text file. This will allow you to reload the ICS309
 with ALL entered form data. You do this prior to submitting the form. Then you can open a new 309 and load the saved HTML form data. 
 NOTE: Dates and Times will be the previous, so change if needed. It will save the info
 as a text file with the Date and Time as the text file name. Now you can use any browser, save your form, (as many versions as you like), and then re-populate.
 <br />
 <br />
-<strong> NOTE on printing. </strong><br />
+<p align="left">Import a ".txt" file with tab-delimited data by using the "Load ICS309 Data" button. 
+The data should be in this format:
+Time      From       To       Subject
+Note that the "Save ICS309 Data" saves the ICS309 data in the same format.
+Tab delimited data can be copied and pasted easily into spreadsheets.
+<br /><br />
+ NOTE on printing. <br />
 
 <br />
 
@@ -992,7 +1038,7 @@ better than Portrait. <br /><br />
   <table style="background-color: rgb(250, 250, 255); width: 768px; height: 859px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="1">
     <tbody>
       <tr>
-        <td valign="top"  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><big style="color: rgb(102, 51, 51);"><span style="font-style: italic;">COMMUNICATIONS LOG</span></big> &nbsp;</big></b><big>ICS 309</big> <big><small><span style="font-style: italic; color: rgb(204, 102, 0);"><span style="color: rgb(153, 51, 0);"><big><small><span class="style29">Ver 13.2</span></small></big></span></span><br /> 
+        <td valign="top"  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><big style="color: rgb(102, 51, 51);"><span style="font-style: italic;">COMMUNICATIONS LOG</span></big> &nbsp;</big></b><big>ICS 309</big> <big><small><span style="font-style: italic;"><big><small><span class="style29">Ver 13.8</span></small></big></span><br /> 
           <span  id="SubjectText"> </span>                    </small></big></p>
             <div align="left"><b><big>
               <input type="black" value="Setup" onclick="SetupTitle()" />
@@ -1007,7 +1053,7 @@ better than Portrait. <br /><br />
           </big>&nbsp;</p></td>
         <td style="text-align: center; vertical-align: top;"><p><br />
           Date/Time Prepared &nbsp;<br />
-                <input style="color: rgb(204, 0, 0);" required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="18" id="ActivityDateTime1" size="20" onclick="DateNow2('ActivityDateTime1', 'Activities1')" />        
+                <input  required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="18" id="ActivityDateTime1" size="20" onclick="DateNow2('ActivityDateTime1', 'Activities1')" />        
           </p>
           </td>
       </tr>
@@ -1238,12 +1284,14 @@ better than Portrait. <br /><br />
             <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="6"  value="Submit" type="submit" />
     &nbsp;<span style="font-weight: bold;"></span>
             <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
-&nbsp; &nbsp;<span style="color: rgb(153, 0, 0);"></span><span style="font-style: italic; color: rgb(204, 102, 0);"><span style="color: rgb(153, 51, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp;
+<input type="black1" value="Export Data to CSV file"  onclick="if(confirm('Export to CSV allows for export to spreadsheets and compatibility with the Winlink generated ICS309 in CSV format.')) {ExportData()}" />
+</big></span></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 &nbsp;&nbsp;
 <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="HICS 213 v 2.2" />
+                                    id="Templateversion" value="ICS 309 v13.7" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<big><small></small></big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></td>
       </tr>
     </tbody>

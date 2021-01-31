@@ -76,8 +76,5 @@ This project was built with many components from the Java ecosystem. I would lik
 -java: https://openjdk.java.net/
 
 ## License
-<<<<<<< HEAD
 [MIT](https://opensource.org/licenses/MIT)
-=======
-[MIT](https://opensource.org/licenses/MIT) 
->>>>>>> ebcc4641a1b5471ffd180301ae1106a96fbf52f6
+

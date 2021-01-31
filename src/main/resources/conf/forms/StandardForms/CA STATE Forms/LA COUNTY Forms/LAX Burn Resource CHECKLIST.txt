@@ -80,10 +80,10 @@ Burn Debridement/ Escharotomy Tray    [24 trays]
 Dry Burn Dressing (32X36)    [600 each] 
 <var CO19>
 
-Gauze Bandage Rolls (Kerlix) 4"    [400 each] 
+Gauze Bandage 4" Rolls    [400 each] 
 <var CO20>
 
-Tubular Elastic Net Bandage (Burn Net)  (Size #1, 5, 6, 7, 10, 22)    [36 each size] 
+Tubular Elastic Net Bandage (Size #1, 5, 6, 7, 10, 22)    [36 each size] 
 <var CO21>
 -----
 Notes/Comments

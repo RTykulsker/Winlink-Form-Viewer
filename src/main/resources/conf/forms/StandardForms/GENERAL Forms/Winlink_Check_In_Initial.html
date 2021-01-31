@@ -238,6 +238,15 @@ width:40px;
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
 .style47 {color: #000000}
+.style48 {
+	color: #FF0000;
+	font-size: 12px;
+	font-weight: bold;
+}
+.style49 {
+	color: #006600;
+	font-style: italic;
+}
 </style>
 <script type="text/javascript">
 
@@ -288,6 +297,15 @@ var RightNow = prompt("", myprompt);
 document.getElementById(Timefld).value = RightNow;
 } </script>
 <script>
+function punctwrdcnt(s, fieldid) {  
+  
+var s = s.replace(/(\r\n|\n|\r)/gm,"   \t"); 
+document.getElementById(fieldid).value = s;  
+  
+return(s); 
+//punctwrdcnt =s;
+
+}  
 function AutoGrowTextArea(textField)
 {
 if (textField.clientHeight < textField.scrollHeight)
@@ -457,7 +475,7 @@ function saveTextAsFile(fileNameToSaveAs, textToWrite) {
 var textToWrite = document.getElementById('parseme').value; 
 var fileNameToSaveAs =  "Winlink Check-in " + DateforFile()+".txt";
 fileNameToSaveAs = prompt("", fileNameToSaveAs);
-
+if (fileNameToSaveAs == null){return};
   /* Saves a text string as a blob file*/  
   var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
       ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
@@ -929,6 +947,13 @@ function Checkifinbrowser() {
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
 
+function addtabs (s,fieldid){
+
+
+var s = s.replace(/(\r\n|\n|\r)/gm,"  "); 
+document.getElementById(fieldid).value = s;  
+
+}
 </script></head>
 <body >
 <span style="font-family:  Arial, Helvetica, sans-serif;"> </span>
@@ -969,14 +994,14 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <div align="left">
   <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span></span></span><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span><span class="style17">Date/Time</span></span></span> &nbsp; 
         <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime" required="required" maxlength="19" id="ActivityDateTime1" size="21" onclick="TimeNow('ActivityDateTime1', 'Activities1')" /> 
-&nbsp; <span class="style23" style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">Status</span></span>&nbsp; &nbsp;
+&nbsp; <span class="style48" style="font-family: Arial, Helvetica, sans-serif;;">Select Status </span>&nbsp; &nbsp;
     <select name="Status" size="3" id="Status" required="required" > 
-      <option>Exercise </option> 
-      <option>Net Check In </option> 
+      <option selected="selected">Exercise </option>
+      <option>Net</option>
       <option>REAL EVENT</option>
     </select>
     &nbsp; &nbsp;
-    Band&nbsp; &nbsp;<span class="style2">
+    Band&nbsp; &nbsp;&nbsp;<span class="style2">
     <select name="Band" size="3" id="Band" required="required">
       <option>-N/A-</option>
       <option>VHF</option>
@@ -1002,11 +1027,11 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 &nbsp;<span class="style1">&nbsp;</span></span><span class="style22">Send To</span></span>
 &nbsp; 
-    <input placeholder="Seperate Calls/ Emails with a semi-colon; You can modify prior to posting." maxlength="75" size="77" name="MsgTo"  id="MsgTo" onchange="this.value=this.value.toUpperCase();" onblur= "store();"/> 
+    <input placeholder="Separate Calls/Emails with a SEMICOLON; You can modify prior to posting." maxlength="79" size="79" name="MsgTo"  id="MsgTo" onchange="this.value=this.value.toUpperCase();" onblur= "store();"/> 
     <span class="style3">
     <input name="Title" type="hidden" id="Title" value="Winlink Net" />
-&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear &quot;ALL Send To&quot; Entries. </a><br />
-    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><em>Entries  will remain until you change or clear them.</em><br />
+&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries. </a><br />
+    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style49">Entries  will remain until you change or clear them.</span><br />
      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span>
      <span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
 &nbsp;
@@ -1018,7 +1043,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
      </span><span> <span></span></span> &nbsp; Calls Signs of Initial  On-Site Operator(s)&nbsp; 
-     <input placeholder="Enter Only CALLSIGNS! separate with a space or comma." maxlength="60" required="required" size="65" name="Assigned" id="Assigned" onchange="this.value=this.value.toUpperCase();"/>
+     <input placeholder="Enter ONLY CALLSIGNS!" maxlength="60" required="required" size="65" name="Assigned" id="Assigned" onchange="this.value=this.value.toUpperCase();"/>
 &nbsp;&nbsp;Sender &nbsp;
     <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
     <br />
@@ -1057,18 +1082,21 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <tr>
 <td height="106" colspan="5" style="vertical-align: top; text-align: center; height: 70px;">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 200 &nbsp;</span></span> 
-            <textarea placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER." cols="140" rows="2" maxlength="200" name="Comments" id="Comments"  onkeydown="return (event.keyCode!=13);"
- onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea> 
+  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 250 &nbsp;</span></span>
+    <textarea placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER." cols="140" rows="2" maxlength="250" name="Comments" id="Comments" 
+ onkeyup="AutoGrowTextArea(this)" onchange="addtabs(this.value,'Commentstab')"></textarea>            
+    <textarea  cols="140" rows="2" maxlength="250" name="Commentstab" id="Commentstab" 
+ style="display: none;"></textarea>
             <span style="font-family:  Arial, Helvetica, sans-serif;;">  
             <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
+			
           </span></p>
   </div>
 </td>
 </tr>
 <tr>
 <td height="38" colspan="2"><span style="font-family:  Arial, Helvetica, sans-serif;;"> <span style="font-family:  Arial, Helvetica, sans-serif;">
-  <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Check in data" />
+  <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Check in Data" />
 </span>&nbsp;&nbsp; 
 <input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
 &nbsp; </span>
@@ -1083,8 +1111,8 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 2.93</span>&nbsp;&nbsp;<span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 2.93s" />
+&nbsp; <span class="style25">Ver 2.97</span>&nbsp;&nbsp;<span style="font-size: 12px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 2.97" />
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span></span></td>
 </tr>
@@ -1103,13 +1131,15 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 
 <p> </p>
 <strong>More Information</strong><br /><br />
+<strong>This form is normally sent only upon initial checkin, unless other arrangements are made. There is a separate CHECK OUT form that can be used when closing the station.</strong><br /> <br />
+
 The SETUP Icon top left allows you to add your agency or groups name to the template. It will remain as such until you change it. You can clear the title by opening SETUP again and use your space bar.<br />
 <br />
 In the Send To: entry field, you can pre address the form. This will stay as such until you change or clear it. Many groups send the check in form to a common address(s).
 Separate calls or Emails with a semicolon; You can always modify prior to posting the message.
 <br />
 <br />
-Copy and paste to a spreadsheet is available, both TAB and CSV, located in the bottom portion of the sent text message.<br />
+Copy and paste to a spreadsheet is available, TAB separation, located in the bottom portion of the sent text message.<br />
 <br />
 
 Printing this form is dependent upon your selected
@@ -1127,7 +1157,6 @@ You may print direct to the printer as a HTML or save as a
 PDF then print the PDF. In some instances Landscape mode may print
 
 better than Portrait. <br /> <br /> 
-<strong>This form is normally sent only upon initial checkin, unless other arrangements are made.</strong><br /> <br />
 
  You may enter manually Decimal Degrees: 32.5042,-116.9834 or enter MGRS Coordinates: 11SNR0184195204 or 11S NR 01841 95204
  <br /> <br /> 

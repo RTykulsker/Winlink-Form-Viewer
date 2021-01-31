@@ -143,7 +143,6 @@ display: block;
 	padding-right: 0.5em;
 }
 .popScroll h2 {margin-top:0}
-.style25 {color: rgb(204, 0, 0)}
 
 @media print {
 
@@ -163,7 +162,7 @@ display: block;
 		box-shadow: none;
 		border: none;
 }
-</style>  
+    </style>  
     <script>
 
 
@@ -517,7 +516,7 @@ if (!isObject(o)) return;
     }
   }
 	Fixfields();
-setcolor2();
+//setcolor2();
 
 }
 
@@ -687,12 +686,12 @@ function myNewFunction(element) {
                         </tr>
                         <tr >
                           <td   colspan="2" valign="top" nowrap="nowrap"><div align="left"><br />
-                            &nbsp;SUBJECT:<strong> DRC EQUIPMENT CHECKLIST LIST<br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ITEMS DEPLOYED TO OTHER FACILITIES                            <br />
+                            &nbsp;SUBJECT:<strong> DRC EQUIPMENT CHECKLIST LIST FOR <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ITEMS DEPLOYED TO OTHER FACILITIES                            <br />
                             </strong></div>                            <div align="center"><span style="font-size: 12px;">
                           </span>                                <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
                           </div></td>
-                          <td valign="top"><div align="right">(HOSPITALS)&nbsp;&nbsp; <br />
+                          <td valign="top"><div align="right">(HOSPITAL)&nbsp;&nbsp; <br />
                           <strong>REFERENCE NO. 1102.2&nbsp;&nbsp;</strong></div></td>
                         </tr>
                         <tr >
@@ -745,201 +744,136 @@ function myNewFunction(element) {
                           <td width="25%"><div align="center"><strong>Number Checked Out</strong></div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Blankets/Sleeping Bags</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q1}</span>
-                            </div></td>
+                          <td>Blankets/Sleeping Bags</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q1}</span> </div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO1}</span></div></td>
                         </tr>
                         <tr>
-                          <td valign="top">CBRNE Monitoring Equipment</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q2}</span
+                          <td>Radiation Detection Equipment</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q2}</span
                           ></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO2}</span></div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Chairs</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q3}</span>
-                          </div></td>
+                          <td>Chairs</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q3}</span> </div></td>
                           <td valign="top"><div align="center">{var CO3}</div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Cots: Temps Beds</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q4}</span>
-
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO4}</span> </div></td>
+                          <td>Stretcher with wheels</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q4}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO4}</span> </div></td>
                         </tr>
                         <tr>
-                          <td height="24" valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simpler Life</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q5}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO5}</span>     </div></td>
+                          <td>Surge bed/cots</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q5}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO5}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Junkin Cots</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q6}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO6}</span>                        </div></td>
+                          <td>Disposable Linen</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q6}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO6}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Disposable Linen</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q7}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO7}</span>                         </div></td>
+                          <td>Electrical Cords</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q7}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO7}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Electrical Cords</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q8}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO8}</span>                          </div></td>
+                          <td>Non-ambulatory Evacuation Equip</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q8}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO8}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Combine Chairs &amp; various: Evacuation Equip</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q9}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO9}</span>                           </div></td>
+                          <td>Pop Up Canopy</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q9}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO9}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">E-Z UP® Tents</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q10}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO10}</span>                        </div></td>
+                          <td>Gas Cans (5 gallon)</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q10}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO10}</span> </div></td>
                         </tr>
                         <tr>
-                          <td valign="top">Gas Cans with Fuel</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q11}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO11}</span>                         </div></td>
-                        </tr>
-                        <tr>
-                          <td valign="top">HAM Radio</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q12}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO12}</span></div></td>
-                        </tr>
-                        <tr>
-                          <td valign="top">In-Line Heating System (for tents)</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q13}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO13}</span>                          </div></td>
-                        </tr>
-                        <tr>
-                          <td valign="top">Isolation HEPA Filters</td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q14}</span>
-                          </div></td>
-                          <td valign="top">
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO14}</span>                        </div></td>
+                          <td>Isolation HEPA Filters</td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q11}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO11}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Medical/Surgical Supplies</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q15}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO15}</span></div></td>
-                        </tr>
-                        <tr>
-                          <td>Miscellaneous Supplies (rope, barrier tape, work gloves, buckets, megaphone, etc.)</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q16}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO16}</span>                         </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q12}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO12}</span></div></td>
                         </tr>
                         <tr>
                           <td>Outdoor Lighting</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q17}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO17}</span>                         </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q13}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO13}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Pharmaceutical Cache</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q18}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO18}</span>                          </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q14}</span> </div></td>
+                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO14}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Portable Fans</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q19}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO19}</span>                          </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q15}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO15}</span></div></td>
                         </tr>
                         <tr>
-                          <td>Portable Honda Generators</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q20}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO20}</span>                         </div></td>
-                        </tr>
-                        <tr>
-                          <td>Portable Sinks/Hand Washing Stations </td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q21}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO21}</span> </div></td>
+                          <td>Portable Sinks/Hand Washing Stations</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q16}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO16}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Portable Toilets</td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q22}</span>
-                          </div></td>
-                          <td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO22}</span></div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q17}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO17}</span> </div></td>
                         </tr>
                         <tr>
-                          <td>Post - Decontamination Clothes</td>
-                          <td>
-                              <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q23}</span>
-                          </div></td><td>
-                            <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO23}</span></div></td>
+                          <td>Post - Decontamination Clothes (Adult)</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q18}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO18}</span> </div></td>
+                        </tr>
+                        <tr>
+                          <td>Post - Decontamination Clothes (Pediatric)</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q19}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO19}</span> </div></td>
+                        </tr>
+                        <tr>
+                          <td>Tables (6-8 feet long)</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q20}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO20}</span> </div></td>
+                        </tr>
+                        <tr>
+                          <td>Tents</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q21}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO21}</span> </div></td>
+                        </tr>
+                        <tr>
+                          <td>Decontamination Inserts</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q22}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO22}</span></div></td>
+                        </tr>
+                        <tr>
+                          <td>HVAC Units</td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q23}</span> </div></td>
+                          <td><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO23}</span></div></td>
                         </tr>
                       </table>
                       <footer> <table width="100%"  border="0" cellspacing="0" cellpadding="5">
                         <tr>
-                          <td width="78%" valign="top"><p>EFFECTIVE: 07-01-06<br />
-                          REVISED: 04-01-18<br />
-                          SUPERSEDES: 07-01-17</p>
+                          <td width="78%" valign="top"><p>REVISED: 10-01-20<br />
+                          SUPERSEDES: 09-18-19</p>
                           </td>
                           <td width="22%"><div align="right">PAGE 1 OF 2&nbsp;&nbsp;</div></td>
                         </tr>
              
 					 
-					  </table>          <p></p>
-					  </footer><table width="100%"  border="0" cellspacing="0" cellpadding="5">
+					  </table>          
+                      </footer>
+                      <table width="100%"  border="0" cellspacing="0" cellpadding="5">
                         <tr>
-                          <td width="78%" valign="top"><p>&nbsp;SUBJECT:<strong> DRC EQUIPMENT CHECKLIST LIST<br />
+                          <td width="78%" valign="top"><p>&nbsp;SUBJECT:<strong> DRC EQUIPMENT CHECKLIST LIST FOR <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ITEMS DEPLOYED TO OTHER FACILITIES </strong></p></td>
                           <td width="22%"><div align="right"><strong>REFERENCE NO. 1102.2&nbsp;</strong></div></td>
                         </tr>
@@ -951,124 +885,34 @@ function myNewFunction(element) {
                           <td width="22%"><div align="center"><strong>Number Checked Out</strong></div></td>
                         </tr>
                         <tr>
-                          <td>Tables (6-8 feet long)</td>
+                          <td>Towable Generator (20 KW minimum)</td>
                           <td valign="top">
                           <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q24}</span></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO24}</span>&nbsp;</div></td>
                         </tr>
                         <tr>
-                          <td>Tents (18x24)</td>
+                          <td>Towing Vehicle (Prime mover)</td>
                           <td valign="top">
                           <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q25}</span></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO25}</span>&nbsp;</div></td>
                         </tr>
                         <tr>
-                          <td>Tents (10x10)</td>
+                          <td>Trailers</td>
                           <td valign="top">
                           <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q26}</span></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO26}</span>&nbsp;</div></td>
                         </tr>
                         <tr>
-                          <td>Tent Lighting</td>
+                          <td>Vortran® Portable Vents </td>
                           <td valign="top">
                           <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q27}</span></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO27}</span>&nbsp;</div></td>
                         </tr>
                         <tr>
-                          <td height="24">Towable Generator (various types)</td>
+                          <td height="24">Vortran® Portable Vents </td>
                           <td valign="top">
                           <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q28}</span></div></td>
                           <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO28}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Towing Vehicle</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q29}</span></div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO29}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Trailers</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q30}</span></div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO30}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Ventilators</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q31}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO31}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Vortran® Portable Vents</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q32}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO32}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Vortran® Portable Vents</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q33}</span></div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO33}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Weight Tubes</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q34}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO34}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Other Supplies:</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q35}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO35}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Communication Equipment – Walkie Talkies, Phones, etc.</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q36}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO36}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Batteries – as need for each piece of equipment</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q37}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO37}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td>Security Equipment – as needed per facility</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q38}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO38}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td><span style="width:440px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Other1}</span></td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q39}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO39}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td><span style="width:440px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Other2}</span></td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q40}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO40}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td><span style="width:440px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Other3}</span>;</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q42}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO41}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td><span style="width:440px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Other4}</span>&nbsp;</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q42}</span> </div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO42}</span>&nbsp;</div></td>
-                        </tr>
-                        <tr>
-                          <td><span style="width:440px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Other5}</span>&nbsp;</td>
-                          <td valign="top">
-                          <div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Q43}</span></div></td>
-                          <td valign="top"><div align="center"><span style="width:175px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var CO43}</span>&nbsp;</div></td>
                         </tr>
                         <tr>
                           <td colspan="3"><p>&nbsp;Notes/Comments</p>
@@ -1091,7 +935,7 @@ function myNewFunction(element) {
                           {var Facility2}</td>
                         </tr>
                         <tr valign="top">
-                          <td height="27" >&nbsp;</td>
+                          <td height="24" >&nbsp;</td>
                           <td><div align="left">Returned by:</div></td>
                           <td>{var Returnedby}</td>
                           <td>Date returned:
@@ -1103,25 +947,37 @@ function myNewFunction(element) {
                             {var ReturnedReceived}
                           </div></td>
                         </tr>
+                        <tr valign="top">
+                          <td height="27" >&nbsp;</td>
+                          <td colspan="3"><table style="border-top: 1px dashed red;border-bottom: 1px dashed red; border-right: 1px dashed red;border-left: 1px dashed red;" width="100%"  border="0" cellspacing="0" cellpadding="8">
+                            <tr>
+                              <td valign="top"><div align="center"><strong>Statement of Verification
+                                  </strong></div>
+                                <p><strong> I hereby verify that an inventory of all Grant funded items listed above has been completed and all items are up to PAR.</strong></p>
+                                  <p><strong> Verified By: {var Verifiedby} &nbsp;&nbsp;&nbsp;Date: {var VerifyDate} <br />
+        (Printed Name and Signature) </strong></p>
+                                  <p><strong>Should any item on the above list fall below PAR levels, notify the EMS Agency immediately. </strong></p>
+                              <p><strong>Notification to EMS Agency by: {var Notificationby} &nbsp;&nbsp;&nbsp;&nbsp;Date: {var NotificationDate} </strong></p></td>
+                            </tr>
+                          </table></td>
+                        </tr>
                       </table>
                       <table width="100%"  border="0" cellspacing="0" cellpadding="3">
                       <tr valign="top">
-                          <td>EFFECTIVE: 06-01-08 <br />
-                            REVISED: 04-01-18 <br />
-                          SUPERSEDES: 07-01-17</td>
+                        <td>&nbsp;</td>
                           <td>&nbsp;</td>
-                          <td><div align="right">PAGE 2 OF 2 &nbsp;<span
+                          <td><div align="right">PAGE 2 OF 2<br />
+                            Version 0.8.3<span
 
                             style="font-size: 12px;"><span
 
-                                  class="Header"><br />
-                                  <span
+                                  class="Header"><span
 
                             style="font-size: 12px;">
-                                  <input name="Templateversion" type="hidden"
+                            <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="LA DRC EQUIPMENT CHECKLIST 0.8" />
-                                  </span> </span></span>Version 0.8.1</div></td>
+                                    id="Templateversion" value="LA DRC EQUIPMENT CHECKLIST 0.8.3" />
+                            </span></span></span></div></td>
                       </tr>
                     </table>                      </td>
                   </tr>

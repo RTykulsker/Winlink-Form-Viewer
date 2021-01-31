@@ -64,7 +64,7 @@ When targeted it fills the browser window.
 .popBox {
 background:#ffffff;
 /* alternatively fixed width / height and negative margins from 50% */
-position:absolute; left:30%; right:30%; top:30%; bottom:30%;
+position:absolute; left:10%; right:10%; top:10%; bottom:10%;
 z-index:10;
 border:1px solid #3a3a3a;
 /* CSS3 where available: rounded corners, drop-shadow, and fade in. */
@@ -329,11 +329,11 @@ if (x1 == '[ X ]'){ document.getElementById(theid).value = '[ ]'};
 // export to excel
 function ExporttoExcel(fileNameToSaveAs, textToWrite) {
 var textToWrite = document.getElementById('parseme').value; 
-var excelheader = document.getElementById('NameA').value +'\t'+document.getElementById('NameB').value +'\t'+document.getElementById('NameB').value;
-var textToWrite = excelheader + "\r" + textToWrite;
-var fileNameToSaveAs = "Information Form " + DateforFile()+".xls";
+//var excelheader = '"'+document.getElementById('NameA').value +'","'+document.getElementById('NameB').value +'","'+document.getElementById('NameB').value;
+//var textToWrite = excelheader + '"\r' + textToWrite;
+var fileNameToSaveAs = "Information Form " + DateforFile()+".csv";
 fileNameToSaveAs = prompt("", fileNameToSaveAs);
-
+if (fileNameToSaveAs == null){return};
   /* Saves a text string as a blob file*/  
   var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
       ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
@@ -367,22 +367,22 @@ fileNameToSaveAs = prompt("", fileNameToSaveAs);
 function ExportData() {
 		var mydata= "";
 		
-		var mydata=mydata + document.getElementById('NameA').value+"\t"; 
-				var mydata=mydata + document.getElementById('NameB').value+"\t"; 
-						var mydata=mydata + document.getElementById('NameC').value+"\n"; 
+		var mydata=mydata +'"'+ document.getElementById('NameA').value+'",'; 
+				var mydata=mydata +'"'+ document.getElementById('NameB').value+'",'; 
+						var mydata=mydata +'"'+ document.getElementById('NameC').value+'"\n'; 
 	for (x = 1; x <31; x++) {
 
         //var tabs = lines[line].split('\t',11);
-         
-			var mydata=mydata + document.getElementById('Assignment'+x).value+"\t";
+         if (document.getElementById('Assignment'+x).value !== ''){
+			var mydata=mydata +'"'+ document.getElementById('Assignment'+x).value+'",';
 			
-		 		var mydata=mydata+document.getElementById('Name'+x).value+"\t";
+		 		var mydata=mydata+'"'+document.getElementById('Name'+x).value+'",';
 
-			var mydata=mydata+document.getElementById('Method'+x).value+"\t";
+			var mydata=mydata+'"'+document.getElementById('Method'+x).value+'"\n';
 		
-						var mydata=mydata+"\n";
+						
 			document.getElementById('parseme').value = mydata;
-			
+			}
 			 }   
 			 
 		
@@ -400,7 +400,7 @@ function saveTextAsFile(fileNameToSaveAs, textToWrite) {
 var textToWrite = document.getElementById('parseme').value; 
 var fileNameToSaveAs = "Information Form " + DateforFile()+".txt";
 fileNameToSaveAs = prompt("", fileNameToSaveAs);
-
+if (fileNameToSaveAs == null){return};
   /* Saves a text string as a blob file*/  
   var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
       ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
@@ -675,14 +675,14 @@ function Checkifinbrowser() {
 <div class="popScroll"><!-- Test for help starts here -->
 <p> </p>
 <h2>General Purpose Information Form</h2>
-<p align="left">Purpose. <br />
+<p align="left"><strong>Purpose.</strong> <br />
 <br />
 The form allows you determine the column names. You define what you are
 using the form for.
 Use can be to indicate inventory, list of staff members, event
 check-ins, whatever you need.<br />
 </p>
-<p align="left"> Preparation.<br />
+<p align="left"> <strong>Preparation.</strong><br />
 <br />
 Define the forms use and give a brief description in the two fields top
 left.
@@ -693,14 +693,14 @@ Form also sends the information as plain text, properly formatted in
 the message body for Non-Express users.
 </p>
 <strong>More Information</strong><br /><br />
-You can save your completed HTML to a text file. This will allow you to reload the template
+<p align="left">You can save your completed HTML to a text file. This will allow you to reload the template
 with ALL entered form data. You do this prior to submitting the form. Then you can open a new form and load the saved HTML form data. 
 NOTE: Date and Times will be the previous, so change if needed. It will save the info
 as a text file with the Date and Time as a file name. Now you can use any browser, save your form, (as many versions as you like), and then re-populate.
 <br />
 <br />You can also save the Information Form info to a TAB style spreadshhet if desired. 
 <br /><br />
-Printing this form is dependent upon your selected
+<p align="left">Printing this form is dependent upon your selected
 
 printer and its settings. Various Web Browsers and and their viewing
 
@@ -729,7 +729,7 @@ to links</span></a> </div>
 <tr valign="top" bgcolor="#dee9f9">
 <td colspan="2" nowrap="nowrap" style="text-align: center;"><p><big><span style="font-weight: bold;">&nbsp;
  INFORMATION
-&nbsp;FORM &nbsp;&nbsp;</span><small>Ver 8.3</small><br /> 
+&nbsp;FORM &nbsp;&nbsp;</span><small>Ver 8.5</small><br /> 
 <span  id="SubjectText"><strong>WINLINK </strong></span>
 </big></p>
   <p align="left"><b><big>
@@ -988,7 +988,7 @@ Comments or Additional&nbsp; Information&nbsp;<br />
     <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
     <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="Information form v 8.3" />
+                                    id="Templateversion" value="Information form v 8.5" />
     </big></span></b></td>
 </tr>
 </tbody>

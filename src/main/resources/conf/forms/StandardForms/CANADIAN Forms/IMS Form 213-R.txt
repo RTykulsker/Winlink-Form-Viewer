@@ -17,7 +17,7 @@ No: [<var InitialSeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Stat
 7. MESSAGE:  
 <var Message>
 
-8. Name Signature of Sender: <var Approved_Name>
+8. Approved by: <var Approved_Name>
 9. Position/Contact info of Sender: <var Approved_PosTitle>
 10. Date/Time Sent: <var DateTimeSent>
 

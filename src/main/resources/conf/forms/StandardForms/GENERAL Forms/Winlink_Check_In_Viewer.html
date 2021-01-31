@@ -248,8 +248,6 @@ font-weight: inherit;
 
 .style12 {font-size: 14px}
 
-.style14 {font-size: 12px; color: #333333; }
-
 .style24 {	color: #FF0000;
 
 	font-style: italic;
@@ -257,31 +255,13 @@ font-weight: inherit;
 }
 
 .style23 {color: #FF0000}
-
-.style25 {color: #FF0000;
-
-	font-size: 10px;
-
-}
-
-.style25 {font-size: 10px}
-
-.style25 {color: #333333;
-
-	font-size: 10px;
-
-}
-
-.style25 {font-size: 10px}
-
 </style>
 
 <script type="text/javascript">
 
 function DoCheck() {
-var checkit = document.getElementById('addformat').value;
-if (checkit) { document.getElementById("Format").checked = true;
-} else {document.getElementById("Format").checked = false; }
+s = "{var Comments}";
+//alert(s.length);
 }
 
 function Flip() {  
@@ -359,13 +339,13 @@ var nospace = document.getElementById('NoSpaces').value;
 
 
 
-<td height="94" colspan="2" style="vertical-align: middle; text-align: center; width: 50%;"><div align="left"><span style="font-family:  Arial, Helvetica, sans-serif;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif; color: black;">&nbsp;</span></span>Date/Time</span></span>&nbsp;
+<td height="94" colspan="2" style="vertical-align: middle; text-align: center; width: 50%;"><div align="left"><span style="font-family:  Arial, Helvetica, sans-serif;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif; color: black;">&nbsp;</span></span><span class="style12">Date/Time</span></span></span>&nbsp;
 
 
 
       <input readonly="readonly" maxlength="19" size="20" name="DateTime" value="{var DateTime}" />
 
-&nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;"><small style="color: black;"> <span style="color: black;">Status</span>&nbsp;</span><span style="font-family:  Arial, Helvetica, sans-serif;">
+&nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;"><small style="color: black;"> <span class="style12" style="color: black;">Status</span>&nbsp;</span><span style="font-family:  Arial, Helvetica, sans-serif;">
 
 
 
@@ -373,38 +353,34 @@ var nospace = document.getElementById('NoSpaces').value;
 
 
 
-  </span><span style="font-family:  Arial, Helvetica, sans-serif;"></span><span style="font-family:  Arial, Helvetica, sans-serif;"></span>&nbsp; &nbsp;Band&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;">
+  </span>&nbsp; &nbsp;<span class="style12">Band</span>&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;">
 
   <input name="Band" id="Band" value="{var Band}" size="12" maxlength="11" readonly="readonly" />
-  &nbsp; &nbsp;</span>Session<span style="font-family:  Arial, Helvetica, sans-serif;">&nbsp;
+  &nbsp; &nbsp;</span><span class="style12">Session</span><span style="font-family:  Arial, Helvetica, sans-serif;">&nbsp;
 
   <input name="Session" id="Session" value="{var Session}" size="12" maxlength="11" readonly="readonly" />
 
   </span><span class="style4"> <br />
 
-  &nbsp;&nbsp;</span><span style="font-size: 12px;">
+  &nbsp;&nbsp;</span>
 
-  </span><span style="font-family:  Arial, Helvetica, sans-serif;">&nbsp; <br />
+  <span style="font-family:  Arial, Helvetica, sans-serif;">&nbsp; <br />
 
   <br />
 
 
 
-  </span><span style="color: rgb(153, 0, 0);"></span><span style="font-family:  Arial, Helvetica, sans-serif;"></span>
+  </span>
 
 
 
-  <small style="color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif; color: black;"></span></span>
-
-
-
-  <span style="font-family:  Arial, Helvetica, sans-serif;"> &nbsp;Initial  Assigned Operators&nbsp; </span>
+  <span style="font-family:  Arial, Helvetica, sans-serif;">&nbsp;<span class="style12">Initial  Assigned Operators</span>&nbsp; </span>
 
   <input readonly="readonly" value="{var Assigned}" title="Call signs only." maxlength="60" size="65" name="Assigned" />
 
-&nbsp;  <span style="font-size: 12px;"><small style="color: black;">Sender&nbsp;&nbsp; 
+&nbsp;  <span style="font-size: 12px;"><small style="color: black;"><span class="style12">Sender</span>&nbsp;&nbsp; 
 
-  <input style="color: rgb(204, 0, 0);" title="Call sign or tactical used to send mail" readonly="readonly" maxlength="16" size="17" name="MsgSender" value="{var MsgSender}" />
+  <input stitle="Call sign or tactical used to send mail" readonly="readonly" maxlength="16" size="17" name="MsgSender" value="{var MsgSender}" />
 
   </span>  <br />
 
@@ -452,14 +428,14 @@ var nospace = document.getElementById('NoSpaces').value;
 <input name="addformat" type="hidden" id="addformat" value="{var addformat}" />
 </p>
 
-  <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>GPS Coordinates if provided&nbsp;    
+  <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span><span class="style12">GPS Coordinates if provided</span>&nbsp;    
     <input name="GPS" type="text" id="GPS" value="{var GPS2}" readonly="readonly" size="25" maxlength="25" placeholder="EXAMPLE: 38.5567, -121.7932" />
 
     <em>&nbsp; <em></em>&nbsp; <em></em><em></em> MGRS&nbsp; </em><span class="style23"></span>
 
     <input name="MGRS" type="text" id="MGRS" value="{var MGRS}" readonly="readonly" size="25" maxlength="25" placeholder="Optional- MGRS coordinates"/>
 
-    <span class="style24">&nbsp;</span><em><em> <em><em><em> <em></em> <em></em><span class="style24"> </span><span class="style24">&nbsp;</span></em></em></em><span class="style24">&nbsp;</span></em>Grid&nbsp;
+    <span class="style24">&nbsp;</span><em><em> <em><em><em>   <span class="style24">&nbsp;</span></em></em></em><span class="style24">&nbsp;</span></em><span class="style12">Grid</span>&nbsp;
     <input name="Grid" readonly="readonly" ype="text" id="Grid" value="{var Grid}" size="8" maxlength="8" />
 <span class="style24">&nbsp;</span></em><br />
 
@@ -511,9 +487,7 @@ var nospace = document.getElementById('NoSpaces').value;
 
     
 
-&nbsp; &nbsp; &nbsp;&nbsp;<span style="font-weight: bold;"></span>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-</div></td>
+&nbsp; &nbsp; &nbsp;&nbsp;<span style="font-weight: bold;"></span>&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
 
 
 
@@ -525,22 +499,11 @@ var nospace = document.getElementById('NoSpaces').value;
 
 
 
-<td height="74" colspan="5" style="vertical-align: top; text-align: left; height: 40px;">
-
-  <p> <span style="font-family:  Arial, Helvetica, sans-serif; color: black;">Comments<br />
-  </span>
-    <textarea readonly="readonly" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER." cols="120" rows="4" name="Comments" id="Comments"  onkeydown="return (event.keyCode!=13);"
- onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)">{var Comments}</textarea>
-    <br />
-
-      <br />
-
-      </span></p>
-
-  </td>
-
-
-
+  <td height="74" colspan="5" style="vertical-align: top; text-align: left; height: 40px;"> <p><span style="font-family:  Arial, Helvetica, sans-serif; color: black;"><span class="style12"><strong>Comments</strong></span>:</span></p>
+    <p><span style="font-family:  Arial, Helvetica, sans-serif; color: black;">        </span>
+           {var comments} <br />
+      </p>
+    </span></td>
 </tr>
 
 
