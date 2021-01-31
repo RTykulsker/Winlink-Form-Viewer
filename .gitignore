@@ -4,6 +4,7 @@
 .metadata
 target
 fv.conf
+fv*zip
 conf
 TODO
 src/main/resources/*.csv
