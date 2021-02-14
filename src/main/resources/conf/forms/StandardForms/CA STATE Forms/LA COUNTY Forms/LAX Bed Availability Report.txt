@@ -1,4 +1,4 @@
-Form: LA Bed Availability_Initial.html,LA Bed Availability_Report_Viewer.html
+Form:LA Bed Availability_Initial.html,LA Bed Availability_Report_Viewer.html
 To:
 Subject: BED AVAILABILITY REPORT for <var Hospital>, <var ReportDate>  <var Time1>
 	

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" /><title>ICS309 Communications Log</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ICS309 Communications Log</title>
 
 <style type="text/css">
 
@@ -324,6 +324,11 @@ input[type=black1] {
   padding: 2px 2px;
   font-size: 14px;
    cursor: pointer;
+}
+.style39 {color: #FF0000; font-size: 12px;}
+.style41 {font-size: 14px; font-weight: bold; }
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
 }
 </style>
  <script>
@@ -909,8 +914,51 @@ function SaveData() {
 			//saveTextAsFile();
 			}
 			
+function Cleardata(){
+if(confirm('Are you sure?')){
+for (x = 1; x <31; x++) 
+{
+document.getElementById('Time'+x).value ='';
+document.getElementById('To'+x).value ='';
+document.getElementById('From'+x).value='';
+document.getElementById('Sub'+x).value ='';;
+}
+}
+}
+
+function parsestring2(mType) {
+	var mytext = document.getElementById('parseme2').value;
+var myType = mType;
+	
+var lines = mytext.split('\n');
+    for(var line = 0; line < lines.length - 1; line++){
+        // By tabs
+		//alert (lines[line]);
+		var x = line +1;
+
+		
+     if (line <30) { 
+	  	var tabs = lines[line].split('\t',4);
+
+         	if (tabs[0] != null){document.getElementById('Time'+x).value =tabs[0]};
+			if (tabs[1] != null){document.getElementById('To'+x).value =tabs[1] };
+			if (tabs[2] != null){document.getElementById('From'+x).value =tabs[2] };
+			if (tabs[3] != null){document.getElementById('Sub'+x).value =tabs[3] };
+
+		}
+			}
+			 alert ('Data has been parsed.');   
+	 document.getElementById('lnk').click();
+			}
+			
+			
+		//
 
 
+	
+	function selectaddress(){  
+ location.href="#pop3";  
+} 
 function parsestring(mType) {
 	var mytext = document.getElementById('parseme').value;
 var myType = mType;
@@ -948,17 +996,7 @@ var lines = mytext.split('\n');
 			}
 			}
 			}
-			
-			
-		//
-
-
-	
-	function selectaddress(){  
- location.href="#pop3";  
-} 
-
-function Checkifinbrowser() {
+			function Checkifinbrowser() {
  var x= document.getElementById("testCall").value; 
  var n = x.search("{Msg");
  if (n>-1) { 
@@ -1031,6 +1069,28 @@ better than Portrait. <br /><br />
 <!-- The close pop-up link correctly positioned at the end of the content block --><a href="#links" class="close"><span>Back to links</span></a>
 </div>
 </div>
+ <div class="pop-up" id="pop3">
+    <!-- The pop-up block -->
+    <div class="popBox">
+      <!-- If the content becomes larger than the pop-up this div will scroll the content -->
+      <div class="popScroll">
+        <p> </p>
+        <h3>Copy and Paste up to 30 lines Data From Spreadsheet</h3>
+        <span class="style23">
+        <p align="left">Copy the data from the spreadsheet and paste in box below, then click "Parse Data".<br />
+		Tab delineation only. Ensure fields match & do not exceed form field lengths, or data entries will not be correct. 
+        </p>
+        <textarea name="parseme2" cols="78" rows="6" id="parseme2" placeholder="Paste spreadsheet data here" ></textarea> 
+		<BR />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=button value="Parse Data" onClick="parsestring2('P');">
+		
+		
+        </span>
+        <p align="left"></p>
+        <a href="#links">Close this window</a> </div>
+      <!-- The close pop-up link correctly positioned at the end of the content block -->
+      <a id="lnk" href="#links" class="close"><span>Back to links</span></a>
+    </div>
+  </div>
 <table align="center" border="0" width="778">
 <tbody>
 <tr>
@@ -1038,7 +1098,7 @@ better than Portrait. <br /><br />
   <table style="background-color: rgb(250, 250, 255); width: 768px; height: 859px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="1">
     <tbody>
       <tr>
-        <td valign="top"  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><big style="color: rgb(102, 51, 51);"><span style="font-style: italic;">COMMUNICATIONS LOG</span></big> &nbsp;</big></b><big>ICS 309</big> <big><small><span style="font-style: italic;"><big><small><span class="style29">Ver 13.8</span></small></big></span><br /> 
+        <td valign="top"  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><big style="color: rgb(102, 51, 51);"><span style="font-style: italic;">COMMUNICATIONS LOG</span></big> &nbsp;</big></b><big>ICS 309</big><big><small><br /> 
           <span  id="SubjectText"> </span>                    </small></big></p>
             <div align="left"><b><big>
               <input type="black" value="Setup" onclick="SetupTitle()" />
@@ -1053,7 +1113,7 @@ better than Portrait. <br /><br />
           </big>&nbsp;</p></td>
         <td style="text-align: center; vertical-align: top;"><p><br />
           Date/Time Prepared &nbsp;<br />
-                <input  required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="18" id="ActivityDateTime1" size="20" onclick="DateNow2('ActivityDateTime1', 'Activities1')" />        
+                <input tabindex="2" required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="18" id="ActivityDateTime1" size="20" onclick="DateNow2('ActivityDateTime1', 'Activities1')" />        
           </p>
           </td>
       </tr>
@@ -1065,7 +1125,7 @@ better than Portrait. <br /><br />
               <input name="Title" type="hidden" id="Title" value="Set up title" />
               </small></span></span></div></td>
         <td style="text-align: center; vertical-align: top;" colspan="2">
-        Task Name&nbsp;        <input maxlength="55" size="60" name="TaskName"  id="TaskName" /></td>
+        Task Name&nbsp;        <input maxlength="55" size="60" name="TaskName"  id="TaskName" "/></td>
       </tr>
       <tr>
         <td valign="top" style="text-align: top; vertical-align: top;">
@@ -1073,7 +1133,7 @@ better than Portrait. <br /><br />
          <input required="required" maxlength="35" size="40" name="OpName" id="OpName" /></td>
         <td valign="top" style="text-align: center; vertical-align: top;">
         Station ID
-          <input title="Your Call sign or assigned ID" required="required" maxlength="13" size="14" name="OperId" id="OperId"/></td>
+          <input title="Your Call sign or assigned ID" required="required" maxlength="13" size="14" name="OperId" id="OperId" tabindex="6"/></td>
         <td style="vertical-align: top; text-align: center;" colspan="2"><span style="color: rgb(0, 102, 0);"></span><span style="color: rgb(153, 0, 0);"><span style="color: rgb(204, 0, 0);"></span></span><big> </big><small><span style="color: rgb(0, 153, 0);"><big>Express Sender</big></span>
               <input title="This is the Call or Tactical that is being used to send form." readonly="readonly" maxlength="16" size="16" name="MsgSender"  id="MsgSender"value="{MsgSender}" />
               </small></td>
@@ -1084,7 +1144,7 @@ better than Portrait. <br /><br />
     <input type="button" value=" Load ICS309 Data " onclick="document.getElementById('txtfiletoread').click();" />
 &nbsp;&nbsp;&nbsp;<big><small><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;<span class="style34">PAGE #</span> &nbsp;</span></small>
 <input name="Page" id="Page" value="1" size="3" maxlength="2" />
-<small><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;<span class="style36">Track &amp; Increment your page #'s </span></span><span class="style35"><span class="style38">(Default is 1)</span></span> <span style="font-style: italic;"><span class="style35">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></small></big></div></td></tr>
+<small><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;<span class="style36">Track &amp; Increment your page #'s </span></span><span class="style35"><span class="style38">(Default is 1)</span></span> <span style="font-style: italic;"><span class="style35">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="style32">&nbsp;</span></span><span class="style32"><a href="javascript:selectaddress();">Paste Data from a Spreadsheet</a></span> <span style="font-style: italic;"><span class="style35">&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="style32">&nbsp;</span></span><span class="style41"><a href="javascript:Cleardata();" class="style39">CLEAR Data</a></span></small></big></div></td></tr>
       <tr>
         <td style="vertical-align: top; text-align: center;" colspan="3"><table style="text-align: left; width: 792px; height: 736px;" border="1" cellpadding="2" cellspacing="2">
             <tbody>
@@ -1291,8 +1351,8 @@ better than Portrait. <br /><br />
 &nbsp;&nbsp;
 <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="ICS 309 v13.7" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<big><small></small></big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></td>
+                                    id="Templateversion" value="ICS 309 v13.9" />
+<big><small><span style="font-style: italic;"><big><small><span class="style29">Ver 13.9</span></small></big></span></small></big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<big><small></small></big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></td>
       </tr>
     </tbody>
   </table>

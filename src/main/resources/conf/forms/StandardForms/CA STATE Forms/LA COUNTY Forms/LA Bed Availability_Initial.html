@@ -713,7 +713,7 @@ function Checkifinbrowser() {
               </b>
               <table style="font-size: 14px; width: 800px; height: 542px;" cellspacing="0"
 
-                cellpadding="2" bordercolor="#999999" border="1" width="882">
+                cellpadding="2" bordercolor="#999999" border="1" width="1695">
                 <tbody>
                   <tr bgcolor="#f8f8ff">
                     <td colspan="2" style="height: 15%; vertical-align: top; text-align: center; ">
@@ -759,7 +759,7 @@ function Checkifinbrowser() {
 
                                         maxlength="98"
 
-                                        placeholder="Full Name of Facility" required="required" />
+                                        placeholder="Full Name of Facility" required="required" tabindex="-1"/>
                           </span></span>                      <span
 
                             style="font-size: 12px;"><span
@@ -771,7 +771,7 @@ function Checkifinbrowser() {
                       </div> <table width="100%"  border="1" cellpadding="3" cellspacing="0" bgcolor="#98FB98" id="ColorBanner">
                         <tr>
                           <td height="18" valign="top"><div align="left">&nbsp;<span style="color: rgb(204, 0, 0);">&nbsp;</span><span class="style24">&nbsp;Hospital Service Level:
-                                <select name="ServiceLevel" id="ServiceLevel"  onchange="myNewFunction(this);">
+                                <select name="ServiceLevel" id="ServiceLevel"  tabindex="2" onchange="myNewFunction(this);">
                                   <option value="GREEN = Normal Operations " selected="selected">GREEN = Normal Operations </option>
                                   <option value="YELLOW = Under Control">YELLOW = Under Control</option>
                                   <option value="ORANGE = Modified Service">ORANGE = Modified Service</option>
@@ -784,22 +784,22 @@ function Checkifinbrowser() {
 
                           placeholder="Click for Time" onclick="SetDateTime('hm',this.id)"
 
-                          required="required" />
+                          tabindex="3" required="required" />
                           </span></div></td>
                         </tr>
                       </table>                      </td>
                   </tr>
                   <tr>
                     <td style="text-align: justify;" colspan="2">
-                      <table width="100%"  border="1" cellspacing="0" cellpadding="3">
+                      <table width="99%"  border="1" cellspacing="0" cellpadding="3">
                         <tr>
                           <td colspan="2"><div align="center"><strong>BED AVAILABILITY</strong></div></td>
-                          <td width="20%"><div align="center"><strong># Available <br />
+                          <td width="19%"><div align="center"><strong># Available <br />
                           Immediately</strong></div></td>
                           <td width="20%"><div align="center"><strong># Available <br />
                           within 24 Hours </strong><br />
                             Complete only when checked 
-                            <input type="checkbox" name="checkbox" value="checkbox" onclick="Flip('IN24HR', '[ X ]')"/>
+                            <input type="checkbox" name="checkbox" value="checkbox"  tabindex="-1"  onclick="Flip('IN24HR', '[ X ]')"/>
                             <span
 
                             style="font-size: 12px;"><span
@@ -808,202 +808,202 @@ function Checkifinbrowser() {
 
                             style="font-size: 12px;">
                             </span></span></span></div></td>
-                          <td width="20%" valign="top"><p align="center"><strong># Available<br />
+                          <td width="18%" valign="top"><p align="center"><strong># Available<br />
                           within 72 Hours </strong><br />
                             Complete only when checked 
-                            <input name="checkbox2" type="checkbox" id="checkbox2" onclick="Flip('IN72HR', '[ X ]')"/>
+                            <input name="checkbox2" type="checkbox" id="checkbox2"  tabindex="-1"  onclick="Flip('IN72HR', '[ X ]')"/>
 </p>
                           </td>
                         </tr>
                         <tr>
-                          <td width="5%"><div align="center">1</div></td>
-                          <td width="35%">Medical/Surgical</td>
+                          <td width="3%"><div align="center">1</div></td>
+                          <td width="40%">Medical/Surgical</td>
                           <td><div align="center">
-                            <input name="A1" type="text" onkeypress="return isNumberKey(event)" id="A1" size="10" maxlength="10" />
+                            <input name="A1" type="text" onkeypress="return isNumberKey(event)" id="A1" size="10" maxlength="10" tabindex="4"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="A2" type="text"  onkeypress="return isNumberKey(event)" id="A2" size="10" maxlength="10" />
+                            <input name="A2" type="text"  onkeypress="return isNumberKey(event)" id="A2" size="10" maxlength="10" tabindex="21"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="A3" type="text"  onkeypress="return isNumberKey(event)" id="A3" size="10" maxlength="10" />
+                            <input name="A3" type="text"  onkeypress="return isNumberKey(event)" id="A3" size="10" maxlength="10" tabindex="35"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">2</div></td>
                           <td>Telemetry</td>
                           <td><div align="center">
-                            <input name="B1" type="text"  onkeypress="return isNumberKey(event)" id="B1" size="10" maxlength="10" />
+                            <input name="B1" type="text"  onkeypress="return isNumberKey(event)" id="B1" size="10" maxlength="10" tabindex="5"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="B2" type="text" onkeypress="return isNumberKey(event)"  id="B2" size="10" maxlength="10" />
+                            <input name="B2" type="text" onkeypress="return isNumberKey(event)"  id="B2" size="10" maxlength="10"  tabindex="22">
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="B3" type="text" onkeypress="return isNumberKey(event)"  id="B3" size="10" maxlength="10" />
+                            <input name="B3" type="text" onkeypress="return isNumberKey(event)"  id="B3" size="10" maxlength="10" tabindex="36" />
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">3</div></td>
                           <td>Adult ICU</td>
                           <td><div align="center">
-                            <input name="C1" type="text"  onkeypress="return isNumberKey(event)" id="C1" size="10" maxlength="10" />
+                            <input name="C1" type="text"  onkeypress="return isNumberKey(event)" id="C1" size="10" maxlength="10" tabindex="6" />
                           </div></td>
                           <td><div align="center">
-                            <input name="C2" type="text"  onkeypress="return isNumberKey(event)" id="C2" size="10" maxlength="10" />
+                            <input name="C2" type="text"  onkeypress="return isNumberKey(event)" id="C2" size="10" maxlength="10"  tabindex="22"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="C3" type="text"  onkeypress="return isNumberKey(event)" id="C3" size="10" maxlength="10" />
+                            <input name="C3" type="text"  onkeypress="return isNumberKey(event)" id="C3" size="10" maxlength="10" tabindex="36"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">4</div></td>
                           <td>Pediatric ICU</td>
                           <td><div align="center">
-                            <input name="D1" type="text"  onkeypress="return isNumberKey(event)" id="D1" size="10" maxlength="10" />
+                            <input name="D1" type="text"  onkeypress="return isNumberKey(event)" id="D1" size="10" maxlength="10" tabindex="7" />
                           </div></td>
                           <td><div align="center">
-                            <input name="D2" type="text"  onkeypress="return isNumberKey(event)" id="D2" size="10" maxlength="10" />
+                            <input name="D2" type="text"  onkeypress="return isNumberKey(event)" id="D2" size="10" maxlength="10"  tabindex="23"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="D3" type="text"  onkeypress="return isNumberKey(event)" id="D3" size="10" maxlength="10" />
+                            <input name="D3" type="text"  onkeypress="return isNumberKey(event)" id="D3" size="10" maxlength="10" tabindex="37"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">5</div></td>
                           <td>Neonatal ICU </td>
                           <td><div align="center">
-                            <input name="E1" type="text" onkeypress="return isNumberKey(event)"  id="E1" size="10" maxlength="10" />
+                            <input name="E1" type="text" onkeypress="return isNumberKey(event)"  id="E1" size="10" maxlength="10" tabindex="8"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="E2" type="text" onkeypress="return isNumberKey(event)"  id="E2" size="10" maxlength="10" />
+                            <input name="E2" type="text" onkeypress="return isNumberKey(event)"  id="E2" size="10" maxlength="10"  tabindex="24"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="E3" type="text" onkeypress="return isNumberKey(event)"  id="E3" size="10" maxlength="10" />
+                            <input name="E3" type="text" onkeypress="return isNumberKey(event)"  id="E3" size="10" maxlength="10" tabindex="38"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">6</div></td>
                           <td>Pediatric Bed </td>
                           <td><div align="center">
-                            <input name="F1" type="text"  onkeypress="return isNumberKey(event)" id="F1" size="10" maxlength="10" />
+                            <input name="F1" type="text"  onkeypress="return isNumberKey(event)" id="F1" size="10" maxlength="10" tabindex="9"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="F2" type="text"  onkeypress="return isNumberKey(event)" id="F2" size="10" maxlength="10" />
+                            <input name="F2" type="text"  onkeypress="return isNumberKey(event)" id="F2" size="10" maxlength="10"  tabindex="25"/>
                           </div></td>
                           <td valign="top">
                             <div align="center">
-                              <input name="F3" type="text"  onkeypress="return isNumberKey(event)" id="F3" size="10" maxlength="10" />
+                              <input name="F3" type="text"  onkeypress="return isNumberKey(event)" id="F3" size="10" maxlength="10" tabindex="39" />
                             </div></td></tr>
                         <tr>
                           <td><div align="center">7</div></td>
                           <td>Obstetrics/Gynecology</td>
                           <td><div align="center">
-                            <input name="G1" type="text" onkeypress="return isNumberKey(event)" id="G1" size="10" maxlength="10" />
+                            <input name="G1" type="text" onkeypress="return isNumberKey(event)" id="G1" size="10" maxlength="10" tabindex="10"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="G2" type="text" onkeypress="return isNumberKey(event)"  id="G2" size="10" maxlength="10" />
+                            <input name="G2" type="text" onkeypress="return isNumberKey(event)"  id="G2" size="10" maxlength="10"  tabindex="26"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="G3" type="text" onkeypress="return isNumberKey(event)"  id="G3" size="10" maxlength="10" />
+                            <input name="G3" type="text" onkeypress="return isNumberKey(event)"  id="G3" size="10" maxlength="10" tabindex="40"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">8</div></td>
                           <td>Trauma</td>
                           <td><div align="center">
-                            <input name="H1" type="text"  onkeypress="return isNumberKey(event)" id="H1" size="10" maxlength="10" />
+                            <input name="H1" type="text"  onkeypress="return isNumberKey(event)" id="H1" size="10" maxlength="10" tabindex="11"/>
 </div></td>
                           <td><div align="center">
-                            <input name="H2" type="text"  onkeypress="return isNumberKey(event)" id="H2" size="10" maxlength="10" />
+                            <input name="H2" type="text"  onkeypress="return isNumberKey(event)" id="H2" size="10" maxlength="10"  tabindex="27"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="H3" type="text"  onkeypress="return isNumberKey(event)" id="H3" size="10" maxlength="10" />
+                            <input name="H3" type="text"  onkeypress="return isNumberKey(event)" id="H3" size="10" maxlength="10" tabindex="41" />
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">9</div></td>
                           <td>Burn</td>
                           <td><div align="center">
-                            <input name="I1"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" />
+                            <input name="I1"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" tabindex="12"/>
 </div></td>
                           <td><div align="center">
-                            <input name="I2"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" />
+                            <input name="I2"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10"  tabindex="28"/>
 </div></td>
-                          <td valign="top"><div align="center">
-                            <input name="I3" type="text"  onkeypress="return isNumberKey(event)"  id="I3" size="10" maxlength="10" />
+                          <td valign="top"><div align="center">		
+                            <input name="I3" type="text"  onkeypress="return isNumberKey(event)"  id="I3" size="10" maxlength="10" tabindex="42"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">10</div></td>
                           <td>Negative Pressure/Isolation</td>
                           <td><div align="center">
-                            <input name="J1"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" />
+                            <input name="J1"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" tabindex="13"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="J2"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" />
+                            <input name="J2"  onkeypress="return isNumberKey(event)" type="text" size="10" maxlength="10" tabindex="29"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="J3"  onkeypress="return isNumberKey(event)" type="text" id="J3" size="10" maxlength="10" />
+                            <input name="J3"  onkeypress="return isNumberKey(event)" type="text" id="J3" size="10" maxlength="10" tabindex="43"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">11</div></td>
                           <td>Psychiatric</td>
                           <td><div align="center">
-                            <input name="K1"  onkeypress="return isNumberKey(event)" type="text" id="K1" size="10" maxlength="10" />
+                            <input name="K1"  onkeypress="return isNumberKey(event)" type="text" id="K1" size="10" maxlength="10" tabindex="14"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="K2"  onkeypress="return isNumberKey(event)" type="text" id="K2" size="10" maxlength="10" />
+                            <input name="K2"  onkeypress="return isNumberKey(event)" type="text" id="K2" size="10" maxlength="10"  tabindex="30"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="K3"  onkeypress="return isNumberKey(event)" type="text" id="K3" size="10" maxlength="10" />
+                            <input name="K3"  onkeypress="return isNumberKey(event)" type="text" id="K3" size="10" maxlength="10" tabindex="44" />
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">12</div></td>
                           <td>Operating Room</td>
                           <td><div align="center">
-                            <input name="L1" type="text"  onkeypress="return isNumberKey(event)" id="L1" size="10" maxlength="10" />
+                            <input name="L1" type="text"  onkeypress="return isNumberKey(event)" id="L1" size="10" maxlength="10" tabindex="15"/>
                           </div></td>
                           <td><div align="center">
-                            <input name="L2" type="text" onkeypress="return isNumberKey(event)"id="L2" size="10" maxlength="10" />
+                            <input name="L2" type="text" onkeypress="return isNumberKey(event)"id="L2" size="10" maxlength="10"  tabindex="31"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="L3" type="text" onkeypress="return isNumberKey(event)" id="L3" size="10" maxlength="10" />
+                            <input name="L3" type="text" onkeypress="return isNumberKey(event)" id="L3" size="10" maxlength="10" tabindex="45"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">13</div></td>
-                          <td><input name="otherservicea" type="text"  id="otherservicea" size="55" maxlength="53" placeholder="Other Service/Department" /></td>
+                          <td><input name="otherservicea" type="text"  id="otherservicea" size="55" maxlength="53" placeholder="Other Service/Department"tabindex="16" /></td>
                           <td><div align="center">
-                              <input name="O1" type="text"  onkeypress="return isNumberKey(event)" id="O1" size="10" maxlength="10" />
+                              <input name="O1" type="text"  onkeypress="return isNumberKey(event)" id="O1" size="10" maxlength="10" tabindex="17" />
                           </div></td>
                           <td><div align="center">
-                              <input name="O2" type="text"  onkeypress="return isNumberKey(event)" id="O2" size="10" maxlength="10" />
+                              <input name="O2" type="text"  onkeypress="return isNumberKey(event)" id="O2" size="10" maxlength="10"tabindex="32" />
                           </div></td>
                           <td valign="top"><div align="center">
-                              <input name="O3" type="text"  onkeypress="return isNumberKey(event)" id="O3" size="10" maxlength="10" />
+                              <input name="O3" type="text"  onkeypress="return isNumberKey(event)" id="O3" size="10" maxlength="10" tabindex="46"/>
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">14</div></td>
                           <td>Ventilator</td>
                           <td><div align="center">
-                            <input name="N1" type="text"  onkeypress="return isNumberKey(event)" id="N1" size="10" maxlength="10" />
+                            <input name="N1" type="text"  onkeypress="return isNumberKey(event)" id="N1" size="10" maxlength="10" tabindex="18" />
                           </div></td>
                           <td><div align="center">
-                            <input name="N2" type="text"  onkeypress="return isNumberKey(event)" id="N2" size="10" maxlength="10" />
+                            <input name="N2" type="text"  onkeypress="return isNumberKey(event)" id="N2" size="10" maxlength="10"  tabindex="33"/>
                           </div></td>
                           <td valign="top"><div align="center">
-                            <input name="N3" type="text"  onkeypress="return isNumberKey(event)" id="N3" size="10" maxlength="10" />
+                            <input name="N3" type="text"  onkeypress="return isNumberKey(event)" id="N3" size="10" maxlength="10" tabindex="47" />
                           </div></td>
                         </tr>
                         <tr>
                           <td><div align="center">15</div></td>
                           <td>Mass Decontamination Facility Available</td>
                           <td><div align="center">
-      <input name="MassDecon" type="radio" value="YES" />
+      <input name="MassDecon" type="radio" value="YES" tabindex="19" />
       YES &nbsp; &nbsp;
-      <input name="MassDecon" type="radio" value="NO" checked="checked" />
+      <input name="MassDecon" type="radio" value="NO" checked="checked" tabindex="20" />
                           NO</div></td>
                           <td>&nbsp;</td>
                           <td valign="top">&nbsp;</td>
@@ -1014,25 +1014,25 @@ function Checkifinbrowser() {
                         <tr>
                           <td width="1%"></td>
                           <td width="23%" valign="top"><div align="right">Report Completed by: &nbsp; </div></td>
-                          <td width="76%" valign="top"><input style="text-align:left;" name="Name" type="text" id="Name" size="35" required="required" /></td>
+                          <td width="76%" valign="top"><input style="text-align:left;" tabindex="48"name="Name" type="text" id="Name" size="35" required="required" /></td>
                         </tr>
                         <tr valign="top">
                           <td>&nbsp;</td>
                           <td><div align="right">PHONE NUMBER &nbsp;</div></td>
-                          <td><input style="text-align:left;" name="Phone" type="text" id="Phone" required="required" /></td>
+                          <td><input style="text-align:left;" name="Phone" type="text" tabindex="49" id="Phone" required="required" /></td>
                         </tr>
                         <tr valign="top">
                           <td height="27" >&nbsp;</td>
                           <td><div align="right">DATE &nbsp; </div></td>
                           <td><input style="text-align:left;" title="Overwrite if needed"
 
-                          maxlength="12" size="12" name="ReportDate" id="ReportDate" placeholder="Click for Date"
+                          maxlength="12" size="12" name="ReportDate" id="ReportDate" tabindex="50" placeholder="Click for Date"
 
-                          onclick="SetDateTime('mmm-d-y',this.id)" required="required" /> 
+                          onclick="SetDateTime('mmm-d-y',this.id)" required="required"  /> 
                           &nbsp; &nbsp; Time : 
                           <input style="text-align:left;" maxlength="12" size="12" name="Time1" id="Time1"
 
-                          placeholder="Click for Time" onclick="SetDateTime('hm',this.id)"
+                          placeholder="Click for Time"  tabindex="50" onclick="SetDateTime('hm',this.id)"
 
                           required="required" /></td>
                         </tr>
@@ -1041,7 +1041,7 @@ function Checkifinbrowser() {
                         <span style="color: rgb(204, 0, 0);"> </span>
                         <textarea style="text-align:left;"
 
-cols="120" rows="2" name="Comments" id="Comments" onchange="this.value=RWS(this.value)"
+cols="120" rows="2" name="Comments" id="Comments" tabindex="51"  onkeydown="return (event.keyCode!=09);" onchange="this.value=RWS(this.value)"
 
 onkeyup="AutoGrowTextArea(this)" placeholder="Be Brief and Concise"></textarea>
                     </strong></p>
@@ -1062,17 +1062,17 @@ onkeyup="AutoGrowTextArea(this)" placeholder="Be Brief and Concise"></textarea>
                       </table>                      </td>
                   </tr>
                   <tr>
-                    <td width="740" height="34"> 
+                    <td width="1629" height="34"> 
                       <span style="font-family: Calibri;">
-                      <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save LA Bed Availablity Data" />
+                      <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save LA Bed Availablity Data" tabindex="51" />
                       </span>&nbsp;&nbsp;<span style="color: rgb(128, 0, 0);"><span><span style="font-size: 12px;"></span></span></span>&nbsp;&nbsp;
                       <input class="SubmitBtn" enctype="multipart/form-data"
 
-id="Submit" method="Post" name="Submit" size="8" style="height: 28px;  "
+id="Submit" method="Post" name="Submit" size="8" style="height: 28px; tabindex="51"  
 
 value="Submit" type="submit" /> 
    
-  <input class="BtnFormat2" value="Reset Form " name="ResetForm"
+  <input class="BtnFormat2" value="Reset Form " name="ResetForm" tabindex="51" 
 
 type="reset" />
 
@@ -1085,16 +1085,16 @@ style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">      
 style="color: rgb(128, 0, 0);"><span class="style26"
 
 style="color: rgb(128, 0, 0);"><span class="style27" style="color: black;">Express Sending Station:  {var MsgSender}</span><span class="style27"> </span></span><span class="style27"> </span> </span></span></span></td>
-<td width="134"><div align="center"><span
+<td width="52"><div align="center"><span
 
                             style="font-size: 12px;"><span
 
                                   class="Header">
   <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="LA Bed AVAILABILITY 0.7.2" />
+                                    id="Templateversion" value="LA Bed AVAILABILITY 0.7.5" />
   <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-</span></span>Version 0.7<span style="font-size: 12px;">.4<big
+</span></span>Version 0.7<span style="font-size: 12px;">.6<big
 
 style="font-weight: bold;">  <span class="Header">
 </span></span></div></td>

@@ -29,6 +29,10 @@ TAB Delimited:
 
 <var Title>	<var DateTime>	<var MsgSender>	<var Assigned>	<var Location>	<var GPS2>	<var MGRS>	<var Grid>	<var Band>	<var Session>	<var Commentstab>
 
+Semicolon Delimited Values: 
+
+<var Title>;<var DateTime>;<var MsgSender>;<var Assigned>;<var Location>;<var GPS2>;<var MGRS>;<var Grid>;<var Band>;<var Session>;<var Commentstab>
+
 ----------
 <var Templateversion>
 
