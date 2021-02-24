@@ -9,7 +9,7 @@ No: [<var InitialSeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Stat
 
    
 1. INCIDENT NAME: <var Incident_Name>
-2. OPerational Period: <var OpPeriod>
+2. Operational Period: <var OpPeriod>
 3. TO: (Name & Position): <var To_Name>
 4. FROM: (Name & Position): <var From_Name>
 5. SUBJECT: <var Subjectline>

@@ -38,7 +38,7 @@ Flood: <var Flood>
 
 Hail: <var HailSize>
 
-High Wind Speed: Windspeed
+High Wind Speed:  Windspeed:
 
 Tornado / Funnel Cloud: <var Tornado>
 
