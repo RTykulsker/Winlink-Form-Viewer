@@ -48,9 +48,8 @@ legend {
 	box-shadow: inset 0 3px 4px #888;
 }
 
-.fullSize {
-	display: flex;
-	justify-content: center;
+.contentContainer {
+	margin: 0 auto;
 }
 
 .flex-container {
@@ -71,7 +70,8 @@ legend {
 </head>
 <body>
 
-<h1>Winlink Form Viewer (fv) -- version $VERSION</h1>
+<div id="headBlock">
+<h1 onclick="hideHeadBlock()">Winlink Form Viewer (fv) -- version $VERSION</h1>
 
 <div>
 FV works in conjunction with with <a href="https://winlink.org" target="_new">Winlink Express (WE)</a>
@@ -82,6 +82,9 @@ FV combines the small "view" file transmitted by WE with the appropriate templat
 To use, simply save the "view" file attachment that you receive via traditional 
 email and then upload it on this page, using either the [Choose File] button or just 
 "drag and drop".
+
+<!-- button onclick="hideHeadBlock()">Hide Header</button -->
+
 </div>
 
 <p/>
@@ -109,16 +112,26 @@ email and then upload it on this page, using either the [Choose File] button or 
 </form>
 
 <hr>
+</div>
 
-<div id="viewContent" class="fullSize"/>
+<div id="viewContent" class="contentContainer"/>
+
 
 <script>
+function hideHeadBlock() {
+	var x = document.getElementById("headBlock");
+	if (x.style.display === "none") {
+		x.style.display = "block";
+	} else {
+		x.style.display = "none";
+	}
+}
+
 (function() {
 	// getElementById
 	function $id(id) {
 		return document.getElementById(id);
 	}
-
 
 	// file drag hover
 	function FileDragHover(e) {

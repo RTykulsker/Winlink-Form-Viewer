@@ -76,7 +76,7 @@ public class FormViewer {
   // create a separate logger so that we can log server access to a file, etc.
   private static final Logger serverLogger = LoggerFactory.getLogger("serverLogger");
 
-  private static final String FV_VERSION = "0.6.2";
+  private static final String FV_VERSION = "0.7.1";
 
   private static final String FILE_UPLOAD_URL = "/uploadFile";
   private static final String XHR_UPLOAD_URL = "/uploadXHR";
@@ -215,8 +215,9 @@ public class FormViewer {
 
     @Override
     public Object handle(Request request, Response response) throws Exception {
-      logger.info("not found: host: " + request.ip() + ", method: " + request.requestMethod() + ", pathInfo: "
-          + request.pathInfo());
+      logger
+          .info("not found: host: " + request.ip() + ", method: " + request.requestMethod() + ", pathInfo: "
+              + request.pathInfo());
       response.status(404);
       String htmlFileName = cm.getAsString(ConfigurationKey.SERVER_404_HTML);
       File htmlFile = new File(htmlFileName);
