@@ -1,9 +1,11 @@
 Form:10lineICS205_Initial.html,10lineICS205_Viewer.html
 
 To: 
-Subject:205-<var Incident_Name> - <var ActivityDateTime2>  
+Subject:ICS 205-<var Incident_Name> - <var ActivityDateTime2>  
 
 Msg:
+<var FormTitle>
+
 1. Incident Name: <var Incident_Name>
 2. Date & Time Prepared: <var ActivityDateTime2>
 

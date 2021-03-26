@@ -1,4 +1,4 @@
-Form: LA Resource Request.html,LA Resource Request Viewer.html
+Form: LAX Resource Request.html,LAX Resource Request Viewer.html
 To:
 Subject: LA Resource Request: <var REQAgency> # <var TrackingNum>, <var TheDate>  <var Time1>
 

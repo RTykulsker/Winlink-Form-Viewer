@@ -66,24 +66,25 @@ font-size: 12px;
 background-color: #dddddd;
 font-size: 12px;
 }
-</style></head>
+    .style1 {font-size: 13px}
+    </style></head>
 <body>
     <br />
     <div style="text-align: center;">&nbsp;
       <form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="ICS210" method="post" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" pbzloc="0">
-        <table align="center" border="0" width="778">
+        <table align="left" border="0" width="778">
           <tbody>
             <tr>
               <td>
-                <table style="background-color: rgb(250, 250, 255); width: 887px; height: 881px;" border="1" bordercolor="#999999" cellpadding="1" cellspacing="1">
+                <table  width: 887px; height: 881px;" border="1" bordercolor="#999999" cellpadding="3" cellspacing="0">
                   <tbody>
-                    <tr>
-                      <td style="text-align: center; background-color: rgb(255, 255, 204);" colspan="2">&nbsp; &nbsp; &nbsp; &nbsp;
+                    <tr bgcolor="#dee9f9">
+                      <td colspan="2" style="text-align: center; ">&nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp;&nbsp; <big><span style="font-weight: bold;">RESOURCE
-                            STATUS CHANGE &nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS210</small><big><span style="font-weight: bold;"> &nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>Ver
-                            8.3</small></big></td>
+                            STATUS CHANGE &nbsp; &nbsp;&nbsp; &nbsp;</span><small>(ICS210)</small><big></big></big><big><small><br />
+                            <span class="style1">{var FormTitle}</span>                      </small></big></td>
                     </tr>
                     <tr>
                       <td height="105" style="vertical-align: top; text-align: center; width: 50%;">
@@ -97,44 +98,39 @@ font-size: 12px;
 <span style="font-weight: bold;">&nbsp;2. Operational
                         Period <br style="font-weight: bold;" />
                           <br />
-                        </span>&nbsp;<span style="font-weight: bold;">
-                          DATE</span>&nbsp; &nbsp; <span style="font-style: italic;">From&nbsp;</span>
+                        </span>&nbsp; DATE&nbsp; &nbsp; From<span style="font-style: italic;">&nbsp;</span>
                           <b>
                           <input readonly="readonly" value="{var DateFrom}" maxlength="11" id="DateFrom" name="DateFrom" size="12" />
-                          &nbsp;</b><span style="font-style: italic;">To</span>&nbsp;
+                          &nbsp;</b>To&nbsp;
                           <b>
                           <input readonly="readonly" value="{var DateTo}" maxlength="11" id="DateTo" name="DateTo" size="12" />
-                          </b><b>&nbsp;</b><span style="font-weight: bold;">&nbsp; &nbsp;
-                          &nbsp;&nbsp;</span><b> </b><span style="font-weight: bold;"> &nbsp;
+                          &nbsp;</b><span style="font-weight: bold;">&nbsp; &nbsp;
+                          &nbsp;&nbsp;</span> <span style="font-weight: bold;"> &nbsp;
                           &nbsp;&nbsp; <br />
                           <br />
-                          &nbsp;<span style="font-weight: bold;"> </span>TIME &nbsp; </span>&nbsp;<span style="font-style: italic;">
-                          From</span>&nbsp; <b>
+                          &nbsp; </span>TIME<span style="font-weight: bold;"> &nbsp; </span>&nbsp; From&nbsp; <b>
                           <input readonly="readonly" value="{var TimeFrom}" maxlength="11" id="TimeFrom" name="TimeFrom" size="12" />
-                          &nbsp;</b><span style="font-style: italic;">To</span>&nbsp;
+                          &nbsp;</b>To&nbsp;
                           <b>
                           <input readonly="readonly" value="{var TimeTo}" maxlength="11" id="TimeTo" name="TimeTo" size="12" />
 </b></div></td>
                     </tr>
                     <tr>
                       <td colspan="3">
-                        <table style="text-align: left; width: 871px; height: 696px;" border="1" cellpadding="3" cellspacing="2">
+                        <table style="text-align: left; width: 871px; height: 696px;" border="1" cellpadding="3" cellspacing="0">
                           <tbody>
-                            <tr>
-                              <td style="text-align: center; vertical-align: top; width: 11%; background-color: rgb(204, 204, 204);" height="36"><span style="font-weight: bold;">3.
+                            <tr valign="top" bgcolor="#f8f8ff">
+                              <td height="29" style="text-align: center; vertical-align: middle; width: 11%; "><span style="font-weight: bold;">3.
                                   Resource #</span></td>
-                              <td style="text-align: center; vertical-align: top; width: 15%; background-color: rgb(204, 204, 204);"><span style="font-weight: bold;">4. New Status<br />
-                                </span><small><br />
-                                </small></td>
-                              <td style="text-align: center; vertical-align: top; width: 20%; background-color: rgb(204, 204, 204);" valign="top"><span style="font-weight: bold;">5.
-                                  From<br />
-                                </span><small><br />
-                                </small></td>
-                              <td style="text-align: center; vertical-align: top; width: 20%; background-color: rgb(204, 204, 204);" valign="top"><span style="font-weight: bold;">6.
-                                  To<br />
-                                </span><small><br />
-                                </small></td>
-                              <td style="text-align: center; vertical-align: top; width: 23%; background-color: rgb(204, 204, 204);" colspan="2"><span style="font-weight: bold;">7.
+                              <td style="text-align: center; vertical-align: middle; width: 15%; "><span style="font-weight: bold;">4. New Status</span><small><br />
+                              </small></td>
+                              <td style="text-align: center; vertical-align: middle; width: 20%; "><span style="font-weight: bold;">5.
+                                  From</span><small><br />
+                              </small></td>
+                              <td style="text-align: center; vertical-align: middle; width: 20%; "><span style="font-weight: bold;">6.
+                                  To</span><small><br />
+                              </small></td>
+                              <td colspan="2" style="text-align: center; vertical-align: middle; width: 23%; "><span style="font-weight: bold;">7.
                                   Time &amp; Date of Change</span></td>
                             </tr>
                             <tr valign="top">
@@ -405,8 +401,7 @@ font-size: 12px;
                       <td style="vertical-align: top; text-align: center;" colspan="3"><div align="left"><span style="font-weight: bold;"><br />
                       &nbsp;&nbsp;8.
                           Comments</span><br />
-                        <br />
-                        <span style="width:750px; word-wrap:break-word; display:inline-block;">&nbsp;&nbsp;{var Comments}</span><br />
+                        <span style="width:750px; margin: 10px;  word-wrap:break-word; display:inline-block;">{var Comments}</span><br />
                         <br />
                       </div></td>
                     </tr>
@@ -418,7 +413,7 @@ By </span>&nbsp;
 <input readonly="readonly" value="{var PreparedName}" maxlength="45" size="50" id="PreparedName" name="PreparedName" title="Printed name same as signature for Radio Delivery." />
 &nbsp;&nbsp;&nbsp;<span style="font-weight: bold;">Date/Time </span>
 <input readonly="readonly" value="{var TimeDate}" maxlength="21" size="22" id="Date_Time" name="TimeDate" />
-&nbsp;&nbsp;</td>
+&nbsp;<big><small>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>&nbsp;<big><big><span style="font-weight: bold;">&nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp;</small></big>Ver 8.3</small></big></td>
 </tr>
 </tbody>
 </table>
@@ -427,6 +422,6 @@ By </span>&nbsp;
 </tr>
 </tbody>
 </table>
-</form>
+      </form>
 </div>
 </body></html>

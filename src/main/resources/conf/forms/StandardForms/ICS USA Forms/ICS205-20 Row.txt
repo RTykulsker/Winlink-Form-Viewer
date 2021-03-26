@@ -1,9 +1,12 @@
 Form:ICS205_Initial.html,ICS205_Viewer.html
 
 To: 
-Subject: 205-<var Incident_Name> - <var ActivityDateTime2>  
+Subject: ICS 205 - <var Incident_Name> - <var ActivityDateTime2>  
 
 Msg:
+ICS 205
+<var FormTitle>
+
 1. Incident Name: <var Incident_Name>
 2. Date & Time Prepared: <var ActivityDateTime2>
 
@@ -262,6 +265,7 @@ REMARKS: <var Remarks20>
 6. Approved by: <var PreparedName> Date/Time: <var ActivityDateTime1>
 IAP Page: <var IAP_Page>
 
-Express Sender: <var MsgSender>
-
-
+--------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>

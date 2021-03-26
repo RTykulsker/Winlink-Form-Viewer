@@ -56,7 +56,7 @@ font-size: 12px;
 }
 </style><style type="text/css">
 .style3 {font-size: medium; }
-.style11 {color: #FF0000}
+.style4 {font-size: 14px}
 </style></head>
 <body>
 
@@ -68,45 +68,45 @@ font-size: 12px;
 <tbody>
 <tr>
 <td>
-<table style="width: 789px; height: 1067px;" border="2" bordercolor="#999999" cellpadding="2" cellspacing="2">
+<table style="width: 789px; height: 1067px;" border="1" bordercolor="#999999" cellpadding="2" cellspacing="0">
 <tbody>
 <tr>
-<td style="height: 20px; text-align: center; background-color: rgb(255, 255, 204);" colspan="2"><span class="style3" style="font-weight: bold;"><big>ACTIVITY
-LOG</big></span><span class="style3"><big> &nbsp;</big><small> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<big>ICS214 &nbsp; </big><big></big></small></span><small><big>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp;</big>&nbsp; Ver 16.5</small></td>
+<td bgcolor="#dee9f9" style="height: 20px; text-align: center; "><span class="style3" style="font-weight: bold;"><big><small>&nbsp; &nbsp;</small><small>&nbsp; &nbsp;</small><small>&nbsp;<big>&nbsp; &nbsp; &nbsp; &nbsp; </big> &nbsp;</small><small>&nbsp; &nbsp;</small>ACTIVITY
+LOG</big></span><span class="style3"><big> &nbsp;</big><small> &nbsp; &nbsp; &nbsp;&nbsp; <span class="rechtsbuendig">&nbsp;<big>(ICS214)</big></span><big></big></span><big> &nbsp;</big><small><br />
+<span class="style4">{var FormTitle}</span></small></td>
 </tr>
 <tr>
-<td colspan="2" style="vertical-align: top; width: 40%; height: 15px;"><br />
+<td style="vertical-align: top; width: 40%; height: 15px;"><br />
 1. Incident Name&nbsp; <input maxlength="55" readonly="readonly" id="Incident_Name" name="Incident_Name" size="60" value="{var Incident_Name}" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style="font-weight: normal;"><span class="style11">Page #</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style="font-weight: normal;">Page #
 <input name="Page" id="Page" value="{var Page}" size="3" readonly="readonly" maxlength="2" />
 </b></td>
 </tr>
 <tr>
-<td colspan="2"><br />
+<td><br />
 2. Operational &nbsp;Period&nbsp;<span style="font-weight: bold;"> &nbsp;</span>(Date/Time)<span style="font-weight: bold;">&nbsp; </span>From <span style="font-weight: bold;">&nbsp;</span> <b>
 <input maxlength="22" readonly="readonly" id="DateTimeFrom" name="DateTimeFrom" size="22" value="{var DateTimeFrom}" /> </b>&nbsp; <span style="font-weight: bold;">&nbsp;</span>To&nbsp;<span style="font-weight: bold;"> </span>&nbsp;<b>
 <input maxlength="22" readonly="readonly" id="DateTimeTo" name="DateTimeTo" size="22" value="{var DateTimeTo}" /> </b></td>
 </tr>
 <tr>
-<td colspan="2" style="height: 15px;"><br />
+<td style="height: 15px;"><br />
 3. Name&nbsp; <span style="font-weight: bold;">&nbsp;</span>
 <input readonly="readonly" value="{var Name}" maxlength="40" size="45" id="Name1" name="Name1" />
 <span style="font-weight: bold;">&nbsp; </span>4. ICS
 Position &nbsp; <input readonly="readonly" value="{var ICS_Position}" maxlength="40" size="45" id="ICS_Position" name="ICS_Position" /></td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; height: 15px;" colspan="2"><br />
-5&nbsp; &nbsp;Home Agency and Unit<big>&nbsp; </big>
+<td style="vertical-align: top; text-align: left; height: 15px;"><br />
+5. &nbsp;Home Agency and Unit<big>&nbsp; </big>
 <input readonly="readonly" maxlength="50" size="64" value="{var Home_Agency}" id="Home_Agency1" name="Home_Agency1" /></td>
 </tr>
 <tr>
-<td style="background-color: rgb(204, 204, 204); text-align: center;" colspan="3">6. Resources Assigned &nbsp;</td>
-</tr>
-<tr>
-<td style="text-align: center; vertical-align: top;" colspan="3">
+<td style="text-align: center; vertical-align: top;" colspan="2">
 <table style="width: 755px; height: 904px;" border="1" cellpadding="1" cellspacing="0">
 <tbody>
+<tr bgcolor="#f8f8ff">
+  <td colspan="3" class="zentriert" style="width: 18%; height: 20px;"><div align="left">6. Resources Assigned</div></td>
+  </tr>
 <tr>
 <td class="zentriert" style="width: 18%; height: 20px;">Name</td>
 <td class="zentriert" width="18%">ICS
@@ -153,10 +153,9 @@ Position</td>
 <td colspan="1" style="height: 15px; text-align: center; vertical-align: middle; background-color: white;"><input maxlength="35" readonly="readonly" size="40" id="Name1" name="ICS_Position8" value="{var ICS_Position8}" /></td>
 <td style="height: 15px; text-align: center; vertical-align: middle; background-color: white;"><input readonly="readonly" maxlength="50" id="Home_Agency8" name="Home_Agency8" size="64" value="{var Home_Agency8}" /></td>
 </tr>
-<tr>
-<td style="height: 20px; background-color: rgb(204, 204, 204);" colspan="3"><b>&nbsp;</b>&nbsp;7.
-Activity Log&nbsp;</td>
-</tr>
+<tr bgcolor="#f8f8ff">
+  <td colspan="3" style="text-align: center; height: 20px; " time=""><div align="left"><b>&nbsp;</b>&nbsp;7. Activity Log</div></td>
+  </tr>
 <tr>
 <td style="text-align: center; height: 20px; background-color: white;" time="">Date &amp; Time</td>
 <td style="text-align: center; background-color: white;" colspan="2">Notable
@@ -258,15 +257,14 @@ Activities <span style="font-weight: bold;">&nbsp;</span></td>
 <td style="height: 15px;"><input value="{var ActivityDateTime24}" name="ActivityDateTime24" id="ActivityDateTime24" size="20" readonly="readonly" maxlength="20" /></td>
 <td colspan="2"><input readonly="readonly" value="{var Activities24}" maxlength="100" size="110" id="Activities22" name="Activities24" /></td>
 </tr>
-<tr>
-<td style="height: 20px; vertical-align: middle; text-align: left; background-color: rgb(204, 204, 204);" colspan="3">&nbsp; <big><big>
-</big></big><span style="color: rgb(204, 0, 0);"></span>  8. Prepared By &nbsp;
-<input readonly="readonly" maxlength="35" size="40" id="PreparedName" name="PreparedName" value="{var PreparedName}" /> <small><b>&nbsp;</b></small>
-&nbsp;
-<span style="color: rgb(0, 102, 0);">Express Sender</span> &nbsp;
-<input readonly="readonly" maxlength="16" size="16" name="MsgSender" value="{var MsgSender}" />
-&nbsp;</td>
-</tr>
+<tr bgcolor="#f8f8ff">
+  <td colspan="3" style="height: 15px;">&nbsp; <big><big> </big></big><span style="color: rgb(204, 0, 0);"></span> 8. Prepared By &nbsp;
+    <input readonly="readonly" maxlength="35" size="40" id="PreparedName" name="PreparedName" value="{var PreparedName}" />
+    <small><b>&nbsp;</b></small> &nbsp;Express Sender &nbsp;
+    <input readonly="readonly" maxlength="16" size="16" name="MsgSender" value="{var MsgSender}" />
+&nbsp;<span class="style3"><small><big> </big><big></big></small></span><small><big>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</big>&nbsp; Ver 16.5</small></td>
+  </tr>
+
 </tbody>
 </table>
 </td>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <title>ICS214A Individual Activity Log</title>
 	<style type="text/css">
@@ -140,6 +140,7 @@ When targeted it fills the browser window.
 	position:absolute;
 	top:0;
 	left:-500em;
+	visibility: visible;
 }
 
 .pop-up:target {position:static; left:0;}
@@ -163,6 +164,7 @@ border-radius:.25rem;
 box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
 	opacity:0;
 	transition: opacity 0.8s ease-out;
+	visibility: visible;
 }
 
 :target .popBox {position:fixed; opacity:1;}
@@ -218,6 +220,7 @@ z-index:5;
 	border-radius: 50%;
 
 box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+	visibility: visible;
 }
 
 .close:before {content:"X";}
@@ -256,11 +259,11 @@ display: block;
 
 *overflow-y: scroll;
 	padding-right: 0.5em;
+	visibility: visible;
 }
 
 .popScroll h2 {margin-top:0}
 }
-.style10 {font-family: Arial, Helvetica, sans-serif; font-size: small; font-weight: normal; margin: 10px; }
     .style11 {color: #FF0000}
 	
 	  input[type=button] {
@@ -303,6 +306,15 @@ input[type=black1] {
    cursor: pointer;
 }
 
+    body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.style12 {font-size: 12px}
+    .style13 {font-weight: normal; margin: 10px; font-family: Arial, Helvetica, sans-serif;}
+    .style14 {font-size: 10px}
+    .style15 {font-size: 14px}
+    .style16 {font-size: 10px; color: #FF0000; }
+    .style17 {font-size: 11px}
     </style>
 	
 	
@@ -571,6 +583,7 @@ return text2.trim();
      alert("Files are not supported"); 
  } 
 Checkifinbrowser();
+getit(); 
  }
 
 function saveTextAsFile(fileNameToSaveAs, textToWrite) {
@@ -889,17 +902,46 @@ function Checkifinbrowser() {
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
 
+function RestoreTitle() {
+
+var RightNow = document.getElementById('FormTitle').value;
+
+//document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+	   function store(){
+ 	var formatted= document.getElementById("FormTitle");
+     localStorage.setItem("ics214A", formatted.value);
+	 //alert (localStorage.getItem("ics214"));
+    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("ics214A");
+	//alert(storedValue);
+	document.getElementById('FormTitle').value = storedValue;
+	RestoreTitle();
+	
+	}
+	function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('FormTitle').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('FormTitle').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+
+}
 
  </script></head>
 <body>
-
-    
-    
-    
-    
+   
+<div align="left"></div>
 <form pbzloc="0" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="ICS213" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
-
-      <div id="pop1" class="pop-up"><!-- The pop-up block -->
+     <input type="button" value="Setup" onclick="SetupTitle()" /> 
+      </b>  &nbsp;<span class="style16">Click to add an agency or group name</span>    <p></p>      <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
         <div class="popBox"><!-- If the content becomes larger than the pop-up this div will scroll the content -->
 
@@ -907,7 +949,7 @@ function Checkifinbrowser() {
 
             <p> </p>
 
-            <h3>INDIVIDUAL LOG ICS FORM 214A</h3>
+            <h3>INDIVIDUAL LOG ICS FORM 214A </h3>
 
             <p align="left"><strong>Purpose</strong>.<br />
 
@@ -989,8 +1031,8 @@ as a text file with the Date and Time as the text file name. Now you can use any
         to links</span></a> </div>
 
   </div>
-
-      <table align="center" border="0" width="500">
+</span> </span>
+<table width="500" border="0" align="left" cellspacing="0">
 
         <tbody>
 
@@ -1003,70 +1045,78 @@ as a text file with the Date and Time as the text file name. Now you can use any
                 <tbody>
 
                   <tr>
-
-                    <td width="747" colspan="2" valign="top" style="vertical-align: bottom; height: 20px; background-color: rgb(255, 255, 204);"><div align="center"><big>  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</big><span style="font-weight: bold;"><big>INDIVIDUAL
-
-                          ACTIVITY LOG<big>
-
-                            &nbsp;</big> &nbsp; &nbsp; &nbsp; </big></span>ICS
-
-                      214A <span class="style10">Ver 15.2</span><b style="font-weight: normal;"><small><big><small><big><small><big><small><span style="font-weight: bold;"><big> &nbsp; </big></span>&nbsp;&nbsp; <a href="#pop1"><big style="color: rgb(204, 0, 0);"> Form Information</big></a></small></big></small></big></small></big></small></b><small><big><small><span class="style6"><span class="formtext">
+                 <td width="747" colspan="2" valign="top" bgcolor="#dee9f9" style="vertical-align: bottom; height: 20px;;"><div align="center">
+                      <p><big> &nbsp; &nbsp;<span style="font-weight: bold;"><big> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span></big></span>&nbsp; &nbsp;<span style="font-weight: bold;"><big> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span></big></span>&nbsp; &nbsp;<span style="font-weight: bold;"><big> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span></big></span>&nbsp;&nbsp;<span class="style12">&nbsp;</span></big><span class="style12" style="font-weight: bold;"><big>INDIVIDUAL
+  
+                          ACTIVITY LOG</big></span><span style="font-weight: bold;"><big><big>
+  
+                            &nbsp;</big> <span class="style14">&nbsp;<span class="style17">   </span></span></big></span><span class="style17">(ICS
+  
+                      214A)</span> <b style="font-weight: normal;"><small><big><small><big><small><big><small><span style="font-weight: bold;"><big> &nbsp; </big></span></small><span style="font-weight: bold;"><big> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span> <span class="style14">&nbsp; &nbsp; </span></big></span><small>&nbsp;&nbsp; </small></big></small></big></small></big></small></b><small><big><small><span class="style6"><span class="formtext">                      
                       <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
-
-                                </span></span> </small></big></small></div></td>
+  
+                    </span></span>   <big>&nbsp; <a href="#pop1" class="style14"><span style="color: rgb(204, 0, 0);"> Form Information</span></a></big> </small></big></small></p>
+                      <span class="style15"  id="SubjectText">test </span>
+                    </div></td>
 
                   </tr>
 
                   <tr style="font-weight: bold;">
 
-                    <td colspan="2"><span style="font-weight: normal;"><br />
-
-                        &nbsp;1. Incident Name &nbsp;</span><b> 
-                    <input size="55" required="required" name="Incident_Name" maxlength="45" id="Incident_Name" title="Incident number is optional" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><b style="font-weight: normal;"><span class="style11">Page #</span>
-                    <input maxlength="2" size="3" name="Page" id="Page" />
-                    </b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>
-
-                  </tr>
-
-                  <tr>
-
-                    <td colspan="2"><br />
-
-                      <span style="font-weight: normal;">&nbsp;</span>2. Operational Period<span style="font-weight: bold;"> </span>&nbsp;(Date/Time)
-
-&nbsp;
-
-                      From&nbsp;<span style="font-weight: bold;">
-
-                        &nbsp;</span><b> 
-                        <input title="24 hour format local time" required="required" name="DateTimeFrom" maxlength="24" id="DateTimeFrom" size="24" /></b>&nbsp;<span style="font-weight: bold;"> </span>To &nbsp; <b>
-
-                        <input title="24 hour format local time" required="required" name="DateTimeTo" maxlength="24" id="DateTimeTo" size="24" /></b></td>
+                    <td colspan="2"><span class="style12" style="font-weight: normal;"><br />
+&nbsp;1. Incident Name &nbsp;</span><span class="style12"><b> 
+                  <input size="55" required="required" name="Incident_Name" maxlength="45" id="Incident_Name" title="Incident number is optional" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><b style="font-weight: normal;">Page<span class="style11"> #</span>
+                  <input maxlength="2" size="3" name="Page" id="Page" />
+                  </b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><b style="font-weight: normal;">
+                  <input name="FormTitle" type="hidden" id="FormTitle" />
+                  </b></span></td>
 
                   </tr>
 
                   <tr>
 
-                    <td colspan="2"><br />
+                    <td colspan="2"><span class="style12"><br />
 
-                      <span style="font-weight: normal;">&nbsp;</span>3. Individual Name <span style="font-weight: bold;">&nbsp;</span>
+                      <span style="font-weight: normal;">&nbsp;</span>2. Operational Period &nbsp;(Date/Time)
 
-                      <input size="45" required="required" name="Name1" maxlength="40" id="Name1" type="text" />&nbsp;&nbsp;4.
+&nbsp; From&nbsp;<span style="font-weight: bold;">
 
-                      ICS Section <span style="font-weight: bold;">&nbsp;</span>
+                    &nbsp;</span><b> 
+                    <input title="24 hour format local time" required="required" name="DateTimeFrom" maxlength="24" id="DateTimeFrom" size="24" />
+                        </b>&nbsp; To &nbsp; <b>
 
-                      <input size="40" required="required" name="ICS_Position1" maxlength="35" id="ICS_Position1" /></td>
+                        <input title="24 hour format local time" required="required" name="DateTimeTo" maxlength="24" id="DateTimeTo" size="24" />
+                        </b></span></td>
 
                   </tr>
 
                   <tr>
 
-                    <td colspan="2"><br />
+                    <td colspan="2"><span class="style12"><br />
 
-                      <span style="font-weight: normal;">&nbsp;</span>5.&nbsp;Assignment / Location<small><big><span style="font-weight: bold;"></span></big>&nbsp;</small>
+                      <span style="font-weight: normal;">&nbsp;</span>3. Individual Name <span style="font-weight: bold;">&nbsp;</span></span>
 
-                      <input id="Home_Agency1" maxlength="60" name="Home_Agency1" required="required" size="70" /></td>
+                      <span class="style12">
+                      <input size="45" required="required" name="Name1" maxlength="40" id="Name1" type="text" />
+                      &nbsp;&nbsp;4.
+
+                      ICS Section <span style="font-weight: bold;">&nbsp;</span></span>
+
+                      <span class="style12">
+                      <input size="40" required="required" name="ICS_Position1" maxlength="35" id="ICS_Position1" />
+                    </span></td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td colspan="2"><span class="style12"><br />
+
+                      <span style="font-weight: normal;">&nbsp;</span>5.&nbsp;Assignment / Location<small>&nbsp;</small>
+
+                    <input id="Home_Agency1" maxlength="60" name="Home_Agency1" required="required" size="70" />
+                    </span></td>
 
                   </tr>
 
@@ -1080,33 +1130,34 @@ as a text file with the Date and Time as the text file name. Now you can use any
 
                           <tr>
 
-                            <td style="height: 10px; text-align: justify; background-color: white;" colspan="3">
+                            <td colspan="3" class="style12" style="height: 10px; text-align: justify; background-color: white;">
 
                              
 
 <b><span style="font-weight: normal;"><span style="color: black;"><br />
 <span style="font-weight: normal;">&nbsp;</span>6.
 
-                                    Activity Log&nbsp;</span></span></b><b style="font-weight: normal;">                                 &nbsp;&nbsp;&nbsp;&nbsp;</b><b style="font-weight: normal;">
+                                    Activity Log&nbsp;</span></span></b><b style="font-weight: normal;">                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                     
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                <small><big><small><span class="style6"><span class="formtext">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                <small><big><small><span class="style6"><span class="style13">
                                 <input type="button" value=" Load All ICS214A Data " onclick="document.getElementById('txtfiletoread').click();" />
 </span></span><big><small><big><small><input type="reset" value="Clear Activity Log" onclick="getConfirmation()" />&nbsp;&nbsp;&nbsp;</small></big></small></big></small></big></small>						    
-                            <textarea name="parseme" cols="80" rows="3" id="parseme" placeholder="Paste spreadsheet data here" style="display: none;"></textarea> </b></td>
+                                    <textarea name="parseme" cols="80" rows="3" id="parseme" placeholder="Paste spreadsheet data here" style="display: none;"></textarea> 
+                            </b></td>
 
                           </tr>
 
-                          <tr>
+                          <tr bgcolor="#f8f8ff">
 
-                            <td style="height: 15px; text-align: center; background-color: rgb(204, 204, 204);">Time<br />
+                            <td style="height: 15px; text-align: center; "><span class="style15"><strong>Time</strong><br />
 
-                            </td>
+                            </span></td>
 
-                            <td style="text-align: center; background-color: rgb(204, 204, 204);" colspan="2">Major
+                            <td colspan="2" style="text-align: center; "><span class="style15"><strong>Major
 
-Events &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Events</strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
-&nbsp; &nbsp; &nbsp;</td>
+&nbsp; &nbsp; &nbsp;</span></td>
 
 </tr>
 
@@ -1163,7 +1214,6 @@ Events &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <td style="height: 15px; text-align: center; vertical-align: middle; background-color: white;"><input maxlength="10" size="10" name="Time7" id="Time7" placeholder="click for time" onclick="TimeNow('Time7', 'Activities7')" /></td>
 
 <td style="height: 15px; text-align: center; vertical-align: middle; background-color: white;" colspan="2"><input size="120" name="Activities7" maxlength="110" id="Activities7" /></td>
-
 </tr>
 
 <tr>
@@ -1312,22 +1362,25 @@ Events &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 <tr>
 
-<td style="vertical-align: top; height: 30px; background-color: rgb(204, 204, 204);" pbzloc="34" colspan="3"><small>&nbsp;<br />
-
-</small><small><big><span style="font-weight: normal;">&nbsp;</span>7.
-
-Prepared by&nbsp;</big></small> <input title="Name and Position" size="40" required="required" name="PreparedName" maxlength="35" id="PreparedName" />
-
-&nbsp;<big>
-<input type="button" value="Save ICS214A Data"  onclick="SaveData()" />
+<td colspan="3" bgcolor="#f8f8ff" style="vertical-align: top; height: 30px; " pbzloc="34"><p><small>&nbsp;<br />
+  
+</small><span class="style12"><small><big><span style="font-weight: normal;">&nbsp;</span>7.
+  
+Prepared by&nbsp;</big></small>
+  <input title="Name and Position" size="40" required="required" name="PreparedName" maxlength="35" id="PreparedName" />
+  
+&nbsp;</span></p>
+  <p><big>
+    <input type="button" value="Save ICS214A Data"  onclick="SaveData()" />
 &nbsp; &nbsp;</big>
-<input value=" Submit " style="height: 24px;" size="3" pbzloc="33" name="Submit" method="post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
-<big> &nbsp;</big><big> &nbsp;</big>&nbsp;
-<input  name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-<input name="Templateversion" type="hidden"
+      <input value=" Submit " style="height: 24px;" size="3" pbzloc="33" name="Submit" method="post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
+      <big> &nbsp; &nbsp;</big>&nbsp;
+      <input  name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
+      <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+      <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="HICS 213 v 2.2" /></td>
+                                    id="Templateversion" value="ICS 214A  v 15.3" />
+      <span class="style14"><big> &nbsp; &nbsp;</big><big> &nbsp; &nbsp;</big><big> &nbsp; &nbsp;</big><big> &nbsp; &nbsp;</big>Ver 15.3</span> </p></td>
 
 </tr>
 
@@ -1346,7 +1399,7 @@ Prepared by&nbsp;</big></small> <input title="Name and Position" size="40" requi
 
 
 </table>
-
+<p>
 </form>
 
 </body></html>

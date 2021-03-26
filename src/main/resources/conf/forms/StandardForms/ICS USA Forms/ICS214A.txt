@@ -1,8 +1,8 @@
 Form: ICS214A_Initial.html,ICS214A_Viewer.html
 
 To: 
-Subject: 214A-<var Incident_Name>-<var Name1>-<var DateTimeFrom> TO <var DateTimeTo>
-Msg:  PAGE #: <var Page> 
+Subject: ICS 214A- <var Incident_Name> - <var Name1> - <var DateTimeFrom> to <var DateTimeTo>
+Msg:  ICS 214A<var FormTitle>PAGE #: <var Page> 
 1. Incident Name: <var Incident_Name>
 2. Operational Period: From: <var DateTimeFrom> To: <var DateTimeTo>
 3: Individual Name: <var Name1>

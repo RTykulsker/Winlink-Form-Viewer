@@ -61,6 +61,7 @@ background-color: #dddddd;
 font-size: 12px;
 }
 .style1 {font-size: 10px}
+.style2 {font-size: 14px}
 </style></head>
 <body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#000099" link="#000099" vlink="#990099">
 <form action="http://{FormServer}:{FormPort}" enctype="multipart/form-data" id="Worksheet" method="post" pbzloc="0">
@@ -72,23 +73,25 @@ font-size: 12px;
 <tbody>
 <tr>
 <td colspan="3" valign="undefined">
-<table style="width: 1131px; height: 816px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="1" cellspacing="1">
+<table style="width: 1131px; height: 816px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="4" cellspacing="0">
 <tbody>
 <tr>
 <td style="height: 45px; width: 52%; vertical-align: top; text-align: left;">
-<p><b><big><small><big>&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #000000;">COMMUNICATIONS
-RESOURCE AVAILABILITY WORKSHEET</span></big><span style="color: #000000;"> </span><small style="color: rgb(153, 102, 51);">&nbsp;</small><span style="color: rgb(153, 102, 51);">&nbsp;</span></small></big></b><small style="color: rgb(153, 102, 51);">
-<span style="font-weight: bold;">&nbsp;</span><big style="color: black;">ICS217A
-&nbsp;<span class="style1">Vers 14.2</span></big></small></p>
+<p align="center"><b><big><small><big> &nbsp;<span style="color: #000000;">COMMUNICATIONS
+RESOURCE AVAILABILITY WORKSHEET</span></big> <small style="color: rgb(153, 102, 51);">&nbsp;</small><span style="color: rgb(153, 102, 51);">&nbsp;</span></small></big></b><small style="color: rgb(153, 102, 51);">
+<span style="font-weight: bold;">(&nbsp;</span><big style="color: black;">ICS217A<span class="style1">)<br />
+</span></big></small><small style="color: rgb(153, 102, 51);"><big style="color: black;"><span class="style1"><span class="style2">{var FormTitle}</span><br />
+</span></big></small></p>
 </td>
-<td style="width: 7%; vertical-align: top;"><div align="center"><small>&nbsp;&nbsp;Frequency&nbsp;Band<br />
+<td style="width: 7%; vertical-align: top;"><small><br />
+  &nbsp;&nbsp;Frequency&nbsp;Band<br />
 &nbsp;&nbsp;
-  <input maxlength="9" name="Bands" readonly="readonly" size="9" value="{var Bands}" type="text" />
-&nbsp;&nbsp; </small></div></td>
-<td style="width: 25%; text-align: center; vertical-align: middle;"><div align="left"><small>&nbsp; &nbsp;<big>Description</big><br />
-        &nbsp;&nbsp;
-        <input maxlength="50" name="Description" readonly="readonly" size="55" value="{var Description}" />
+    <input maxlength="9" name="Bands" readonly="readonly" size="9" value="{var Bands}" type="text" />
+&nbsp;&nbsp; </small></td>
+<td valign="top" style="width: 25%; text-align: center; "><div align="left"><small>&nbsp;<big><br />
+  Description</big><br />
+&nbsp;&nbsp;
+            <input maxlength="50" name="Description" readonly="readonly" size="55" value="{var Description}" />
 </small></div></td>
 </tr>
 <tr valign="top">
@@ -152,7 +155,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone1" readonly="readonly" size="7" value="{var RxTone1}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq1" readonly="readonly" size="10" value="{var TxFreq1}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone1" readonly="readonly" size="7" value="{var TxTone1}" type="text" /></td>
-<td pbzloc="8"><input maxlength="1" name="Mode1" readonly="readonly" size="1" value="{var Mode1}" type="text" /></td>
+<td pbzloc="8"><div align="center">
+  <input maxlength="1" name="Mode1" readonly="readonly" size="1" value="{var Mode1}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks1" readonly="readonly" size="55" value="{var Remarks1}" type="text" /></td>
 </tr>
 <tr>
@@ -164,7 +169,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone2" readonly="readonly" size="7" value="{var RxTone2}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq2" readonly="readonly" size="10" value="{var TxFreq2}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone2" readonly="readonly" size="7" value="{var TxTone2}" type="text" /></td>
-<td pbzloc="3"><input maxlength="1" name="Mode2" readonly="readonly" size="1" value="{var Mode2}" type="text" /></td>
+<td pbzloc="3"><div align="center">
+  <input maxlength="1" name="Mode2" readonly="readonly" size="1" value="{var Mode2}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks2" readonly="readonly" size="55" value="{var Remarks2}" type="text" /></td>
 </tr>
 <tr>
@@ -176,7 +183,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone3" readonly="readonly" size="7" value="{var RxTone3}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq3" readonly="readonly" size="10" value="{var TxFreq3}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone3" readonly="readonly" size="7" value="{var TxTone3}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode3" readonly="readonly" size="1" value="{var Mode3}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode3" readonly="readonly" size="1" value="{var Mode3}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks3" readonly="readonly" size="55" value="{var Remarks3}" type="text" /></td>
 </tr>
 <tr>
@@ -188,7 +197,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone4" readonly="readonly" size="7" value="{var RxTone4}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq4" readonly="readonly" size="10" value="{var TxFreq4}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone4" readonly="readonly" size="7" value="{var TxTone4}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode4" readonly="readonly" size="1" value="{var Mode4}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode4" readonly="readonly" size="1" value="{var Mode4}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks4" readonly="readonly" size="55" value="{var Remarks4}" type="text" /></td>
 </tr>
 <tr>
@@ -200,7 +211,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone5" readonly="readonly" size="7" value="{var RxTone5}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq5" readonly="readonly" size="10" value="{var TxFreq5}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone5" readonly="readonly" size="7" value="{var TxTone5}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode5" readonly="readonly" size="1" value="{var Mode5}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode5" readonly="readonly" size="1" value="{var Mode5}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks5" readonly="readonly" size="55" value="{var Remarks5}" type="text" /></td>
 </tr>
 <tr>
@@ -212,7 +225,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone6" readonly="readonly" size="7" value="{var RxTone6}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq6" readonly="readonly" size="10" value="{var TxFreq6}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone6" readonly="readonly" size="7" value="{var TxTone6}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode6" readonly="readonly" size="1" value="{var Mode6}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode6" readonly="readonly" size="1" value="{var Mode6}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks6" readonly="readonly" size="55" value="{var Remarks6}" type="text" /></td>
 </tr>
 <tr>
@@ -224,7 +239,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone7" readonly="readonly" size="7" value="{var RxTone7}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq7" readonly="readonly" size="10" value="{var TxFreq7}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone7" readonly="readonly" size="7" value="{var TxTone7}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode7" readonly="readonly" size="1" value="{var Mode7}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode7" readonly="readonly" size="1" value="{var Mode7}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks7" readonly="readonly" size="55" value="{var Remarks7}" type="text" /></td>
 </tr>
 <tr>
@@ -236,7 +253,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone8" readonly="readonly" size="7" value="{var RxTone8}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq8" readonly="readonly" size="10" value="{var TxFreq8}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone8" readonly="readonly" size="7" value="{var TxTone8}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode8" readonly="readonly" size="1" value="{var Mode8}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode8" readonly="readonly" size="1" value="{var Mode8}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks8" readonly="readonly" size="55" value="{var Remarks8}" type="text" /></td>
 </tr>
 <tr>
@@ -248,7 +267,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone9" readonly="readonly" size="7" value="{var RxTone9}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq2" readonly="readonly" size="10" value="{var TxFreq9}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone9" readonly="readonly" size="7" value="{var TxTone9}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode9" readonly="readonly" size="1" value="{var Mode9}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode9" readonly="readonly" size="1" value="{var Mode9}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks9" readonly="readonly" size="55" value="{var Remarks9}" type="text" /></td>
 </tr>
 <tr>
@@ -260,7 +281,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone10" readonly="readonly" size="7" value="{var RxTone10}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq10" readonly="readonly" size="10" value="{var TxFreq10}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone10" readonly="readonly" size="7" value="{var TxTone10}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode10" readonly="readonly" size="1" value="{var Mode10}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode10" readonly="readonly" size="1" value="{var Mode10}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks10" readonly="readonly" size="55" value="{var Remarks10}" type="text" /></td>
 </tr>
 <tr>
@@ -272,7 +295,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone11" readonly="readonly" size="7" value="{var RxTone11}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq11" readonly="readonly" size="10" value="{var TxFreq11}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone11" readonly="readonly" size="7" value="{var TxTone11}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode11" readonly="readonly" size="1" value="{var Mode11}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode11" readonly="readonly" size="1" value="{var Mode11}" type="text" />
+</div></td>
 <td pbzloc="6" valign="undefined"><input maxlength="50" name="Remarks11" readonly="readonly" size="55" value="{var Remarks11}" type="text" /></td>
 </tr>
 <tr>
@@ -284,7 +309,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone12" readonly="readonly" size="7" value="{var RxTone12}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq12" readonly="readonly" size="10" value="{var TxFreq12}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone12" readonly="readonly" size="7" value="{var TxTone12}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode12" readonly="readonly" size="1" value="{var Mode12}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode12" readonly="readonly" size="1" value="{var Mode12}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks12" readonly="readonly" size="55" value="{var Remarks12}" type="text" /></td>
 </tr>
 <tr>
@@ -296,7 +323,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone13" readonly="readonly" size="7" value="{var RxTone13}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq13" readonly="readonly" size="10" value="{var TxFreq13}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone13" readonly="readonly" size="7" value="{var TxTone13}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode13" readonly="readonly" size="1" value="{var Mode13}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode13" readonly="readonly" size="1" value="{var Mode13}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks13" readonly="readonly" size="55" value="{var Remarks13}" type="text" /></td>
 </tr>
 <tr>
@@ -308,7 +337,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone14" readonly="readonly" size="7" value="{var RxTone14}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq14" readonly="readonly" size="10" value="{var TxFreq14}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone14" readonly="readonly" size="7" value="{var TxTone14}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode14" readonly="readonly" size="1" value="{var Mode14}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode14" readonly="readonly" size="1" value="{var Mode14}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks14" readonly="readonly" size="55" value="{var Remarks14}" type="text" /></td>
 </tr>
 <tr>
@@ -320,7 +351,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone15" readonly="readonly" size="7" value="{var RxTone15}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq15" readonly="readonly" size="10" value="{var TxFreq15}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone15" readonly="readonly" size="7" value="{var TxTone15}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode15" readonly="readonly" size="1" value="{var Mode15}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode15" readonly="readonly" size="1" value="{var Mode15}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks15" readonly="readonly" size="55" value="{var Remarks15}" type="text" /></td>
 </tr>
 <tr>
@@ -332,7 +365,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone16" readonly="readonly" size="7" value="{var RxTone16}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq16" readonly="readonly" size="10" value="{var TxFreq16}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone16" readonly="readonly" size="7" value="{var TxTone16}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode16" readonly="readonly" size="1" value="{var Mode16}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode16" readonly="readonly" size="1" value="{var Mode16}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks16" readonly="readonly" size="55" value="{var Remarks16}" type="text" /></td>
 </tr>
 <tr>
@@ -344,7 +379,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone17" readonly="readonly" size="7" value="{var RxTone17}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq17" readonly="readonly" size="10" value="{var TxFreq17}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone17" readonly="readonly" size="7" value="{var TxTone17}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode17" readonly="readonly" size="1" value="{var Mode17}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode17" readonly="readonly" size="1" value="{var Mode17}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks17" readonly="readonly" size="55" value="{var Remarks17}" type="text" /></td>
 </tr>
 <tr>
@@ -356,7 +393,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone18" readonly="readonly" size="7" value="{var RxTone18}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq18" readonly="readonly" size="10" value="{var TxFreq18}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone18" readonly="readonly" size="7" value="{var TxTone18}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode18" readonly="readonly" size="1" value="{var Mode18}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode18" readonly="readonly" size="1" value="{var Mode18}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks18" readonly="readonly" size="55" value="{var Remarks18}" type="text" /></td>
 </tr>
 <tr>
@@ -368,7 +407,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone19" readonly="readonly" size="7" value="{var RxTone19}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq19" readonly="readonly" size="10" value="{var TxFreq19}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone19" readonly="readonly" size="7" value="{var TxTone19}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode19" readonly="readonly" size="1" value="{var Mode19}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode19" readonly="readonly" size="1" value="{var Mode19}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks19" readonly="readonly" size="55" value="{var Remarks19}" type="text" /></td>
 </tr>
 <tr>
@@ -380,7 +421,9 @@ Freq&nbsp; </span></span><span style="font-size: 9px;"><span>N/W</span></span></
 <td valign="undefined"><input maxlength="7" name="RxTone20" readonly="readonly" size="7" value="{var RxTone20}" type="text" /></td>
 <td valign="undefined"><input maxlength="10" name="TxFreq20" readonly="readonly" size="10" value="{var TxFreq20}" type="text" /></td>
 <td valign="undefined"><input maxlength="7" name="TxTone20" readonly="readonly" size="7" value="{var TxTone20}" type="text" /></td>
-<td valign="undefined"><input maxlength="1" name="Mode20" readonly="readonly" size="1" value="{var Mode20}" type="text" /></td>
+<td valign="undefined"><div align="center">
+  <input maxlength="1" name="Mode20" readonly="readonly" size="1" value="{var Mode20}" type="text" />
+</div></td>
 <td valign="undefined"><input maxlength="50" name="Remarks2" readonly="readonly" size="55" value="{var Remarks20}" type="text" /></td>
 </tr>
 <tr>
@@ -393,12 +436,13 @@ frequency is </font></font><font face="Arial" size="1"><font pbzloc="11" face="A
 analog or digital,</font></font><font face="Arial" size="1"><font pbzloc="10" face="Arial" size="1"> M indicating mixed mode. All channels are shown </font></font><font face="Arial" size="1"><font pbzloc="7" face="Arial" size="1">as
 if programmed in a control station, mobile or portable radio. Repeater
 and base stations must be programmed with the Rx and Tx reversed.
-&nbsp; &nbsp;&nbsp;</font></font></p>
+&nbsp; &nbsp;&nbsp;<br />
+</font></font></p>
 </td>
 </tr>
 </tbody>
 </table>
-</td>
+<p align="right"><small style="color: rgb(153, 102, 51);"><big style="color: black;"> &nbsp;<span class="style1">Vers 14.3</span></big></small></p></td>
 </tr>
 </tbody>
 </table>

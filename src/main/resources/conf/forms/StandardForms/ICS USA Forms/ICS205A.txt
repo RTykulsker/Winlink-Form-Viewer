@@ -1,8 +1,11 @@
-Form: ICS205A_Initial.html,ICS205A_Viewer.html
+Form:ICS205A_Initial.html,ICS205A_Viewer.html
 
 To: 
-Subject: 205A-<var Incident_Name>-<var ActivityDateTime1>
+Subject: ICS 205A-<var Incident_Name>-<var ActivityDateTime1>
 Msg:
+ICS 205A
+<var FormTitle>
+
 Page #: [<var Page>]
 
 1. Incident/Event Name: <var Incident_Name>
@@ -79,7 +82,9 @@ METHOD: <var Method20>
 Date/Time: <var ActivityDateTime1> 
 ---------------------------------------------
 
-Express Sender: <var MsgSender>
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>
 
 
 

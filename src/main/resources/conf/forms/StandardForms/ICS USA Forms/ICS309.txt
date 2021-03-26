@@ -1,10 +1,10 @@
 Form:ICS309_Initial.html,ICS309_Viewer.html
 
 FROM: 
-Subject:309-<var Title>-<var OpName>-<var OperId>-<var ActivityDateTime1> 
+Subject:ICS 309- <var Title> - <var OpName> - <var OperId> - <var ActivityDateTime1> 
 
 Msg:
-<var Title> ICS309
+<var Title> - ICS309
 
 PAGE #: <var Page>
 

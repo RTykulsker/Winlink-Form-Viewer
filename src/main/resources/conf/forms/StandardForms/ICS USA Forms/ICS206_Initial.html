@@ -145,34 +145,35 @@ When targeted it fills the browser window.
 
 */
 
-.pop-up {position:absolute; top:0; left:-500em;}
+.pop-up {
+	position:absolute;
+	top:0;
+	left:-500em;
+	visibility: visible;
+}
 
 .pop-up:target {position:static; left:0;}
 
 /* The pop-up itself */
 
 .popBox {
-
-background:#ffffff;
-
-/* alternatively fixed width / height and negative margins from 50% */
-
-position:absolute; left:30%; right:30%; top:30%; bottom:30%;
-
-z-index:10;
-
-border:1px solid #3a3a3a;
+	background:#ffffff;
+	position:absolute;
+	left:20%;
+	right:20%;
+	top:15%;
+	bottom:20%;
+	z-index:10;
+	border:1px solid #3a3a3a;
 
 /* CSS3 where available: rounded corners, drop-shadow, and fade in. */
 
 border-radius:.25rem;
 
 box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
-
-opacity:0;
-
-transition: opacity 0.8s ease-out;
-
+	opacity:0;
+	transition: opacity 0.8s ease-out;
+	visibility: visible;
 }
 
 :target .popBox {position:fixed; opacity:1;}
@@ -212,37 +213,23 @@ z-index:5;
 .close:link,
 
 .close:visited {
-
-position: absolute;
-
-top: -0.75em;
-
-right: -0.75em;
-
-display: block;
-
-width: 2em;
-
-height: 2em;
-
-line-height: 1.8;
-
-padding: 0;
-
-text-align: center;
-
-text-decoration: none;
-
-background-color: #000;
-
-border: 2px solid #fff;
-
-color: #fff;
-
-border-radius: 50%;
+	position: absolute;
+	top: -0.75em;
+	right: -0.75em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 1.8;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 50%;
 
 box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
-
+	visibility: visible;
 }
 
 .close:before {content:"X";}
@@ -272,23 +259,16 @@ display: block;
 /* The pop-up content div will scroll if it has too much content */
 
 .popScroll {
-
-position:absolute;
-
-top: 1rem;
-
-left: 1rem;
-
-right: 1rem;
-
-bottom: 1rem;
-
-overflow-y: auto;
+	position:absolute;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	overflow-y: auto;
 
 *overflow-y: scroll;
-
-padding-right: 0.5em;
-
+	padding-right: 0.5em;
+	visibility: visible;
 }
 
 .popScroll h2 {margin-top:0}
@@ -300,6 +280,12 @@ padding-right: 0.5em;
 font-size: 11pt;
 font-weight: normal;
 }
+.style7 {color: #FF0000;
+	font-size: 10px;
+}
+.style14 {font-size: 12px}
+.style16 {font-family: Arial, Helvetica, sans-serif}
+.style8 {font-size: 10px}
 </style>
 
 <script type="text/javascript">
@@ -352,7 +338,7 @@ var RightNow = prompt("Date / Time:", myprompt);
 
 document.getElementById(Timefld).value = RightNow;
 
-document.getElementById(FocusFld).focus();
+//document.getElementById(FocusFld).focus();
 
 } </script>
 
@@ -597,6 +583,8 @@ if (!isObject(o)) return;
         }
     }
   }
+  getit();
+  //SetupTitle();
 AutoGrowTextArea(document.getElementById("Procedures"));
 }
 
@@ -674,8 +662,11 @@ function SaveData() {
 //var myobject = txt;
 //populateForm(myobject);
 Checkifinbrowser();
+getit();
  }
  
+
+
  function Checkifinbrowser() {
  var x= document.getElementById("testCall").value; 
  var n = x.search("{Msg");
@@ -684,16 +675,54 @@ Checkifinbrowser();
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
+function RestoreTitle() {
+
+var RightNow = document.getElementById('FormTitle').value;
+
+//document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+	   function store(){
+ 	var formatted= document.getElementById("FormTitle");
+     localStorage.setItem("ics206", formatted.value);
+	 //alert (localStorage.getItem("ics205a"));
+    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("ics206");
+	//alert(storedValue);
+	document.getElementById('FormTitle').value = storedValue;
+	
+	RestoreTitle();
+	
+	}
+	function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('FormTitle').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('FormTitle').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+
+}
+ 
+ function Flip(theid,working) {
+x1 = document.getElementById(theid).value;
+if (x1 == '' || x1 == '') { document.getElementById(theid).value = working} 
+else { document.getElementById(theid).value = '';}
+}
+
 
 </script>
 
 </head>
 
 <body pbzloc="9">
-
 <form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
-
-<div id="pop1" class="pop-up"><!-- The pop-up block -->
+ <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
 <div class="popBox"><!-- If the content becomes larger than the pop-up this div will scroll the content -->
 
@@ -791,556 +820,442 @@ better than Portrait. <br />
 
 to links</span></a> </div>
 
-</div>
-
-<table style="width: 1011px; height: 1522px;" border="1" cellpadding="3" cellspacing="3">
+</div> <div align="left"><b>
+    <input type="button" value="Setup" onclick="SetupTitle()" />
+    </b>&nbsp; <span class="style7">&nbsp;Click to add an agency or group name </span><span class="style8">&nbsp;</span> <span style="font-size: 12px;"></span>&nbsp;<br>
+  </div>
+  <table style="width: 1011px; " border="1" cellpadding="3" cellspacing="0">
 
 <tbody>
 
-<tr pbzloc="9">
+<tr bgcolor="#dee9f9" pbzloc="9">
 
-<td style="text-align: center; background-color: rgb(255, 255, 204);" colspan="5"><span style="font-weight: bold;"></span><big pbzloc="1"> <span style="font-weight: bold;">&nbsp;
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-
-&nbsp; &nbsp;&nbsp;
+<td height="84" colspan="6" style="text-align: center;"><span style="font-weight: bold;"></span><span style="font-weight: bold;">
 
 &nbsp;Medical Plan</span> &nbsp;&nbsp;
 
-&nbsp;&nbsp; <small>ICS 206&nbsp;</small></big><span style="font-weight: bold;"><big>&nbsp;</big></span>Vers
+&nbsp;&nbsp; ICS 206 &nbsp;
 
-13.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-
-&nbsp; &nbsp; &nbsp;
+<br>
+ <strong><span class="style14"  id="SubjectText"> </span></strong><p></p>
+&nbsp;&nbsp; <input type="button" value=" Load ICS206 Data " onClick="document.getElementById('txtfiletoread').click();" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#pop1"><span style="color: rgb(204, 0, 0);">Form Info</span></a>
+<input name="FormTitle" type="hidden" id="FormTitle" />
+<textarea name="parseme" cols="80" rows="3" id="parseme" placeholder="data here"  style="display: none;"></textarea><br>
 <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/></td>
 
 </tr>
 
-<tr>
+<tr valign="top">
 
-<td style="text-align: center;" colspan="5"><div align="left"><small><br>
-  
-&nbsp;&nbsp;1. Incident Name: 
-        <input title="Incident number optional" maxlength="45" name="Incident_Name" required="required" size="50"> 
-      &nbsp;<br>
-  
-      <br>
-        &nbsp;&nbsp;2./3. Date/Time Prepared:&nbsp;</small><small>&nbsp;</small>
-        <input style="color: rgb(204, 0, 0);" required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="23" id="ActivityDateTime1" size="24" onclick="TimeNow('ActivityDateTime1', 'Activities1')">
-        <br>
-  
-      <small><br>
-  
-&nbsp;&nbsp;4.Operational Period:</small>        
-      <input title="24 hour format in local time" maxlength="30" name="Operational_Period" required="required" size="35">
-        <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" value=" Load ICS206 Data " onclick="document.getElementById('txtfiletoread').click();" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#pop1"><big><span style="color: rgb(204, 0, 0);">Form Info</span></big></a><br>
-  
-      <br>
-  
+<td height="103" colspan="6" style="text-align: center;"><div align="left">
+  <table width="100%" height="87"  border="1" cellpadding="2" cellspacing="0">
+    <tr valign="top">
+      <td width="52%"><strong>&nbsp;<span class="style16">1. Incident Name:</span></strong>        <input title="Incident number optional" maxlength="45" name="Incident_Name" required="required" size="50">
+&nbsp;</td>
+      <td width="48%"><table style="width: 416px; height: 87px;" border="0" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td colspan="4" class="style16"><span class="style16">&nbsp;<strong> 2. Operational Period:</strong></span></td>
+          </tr>
+          <tr>
+            <td style="width: 28%;">Date From:</td>
+            <td width="27%"><b>
+              <input size="12" name="DateFrom" id="DateFrom" maxlength="12" required="required" />
+            </b></td>
+            <td width="20%">Date To:</td>
+            <td width="26%"><b>
+              <input size="12" name="DateTo" id="DateTo" maxlength="12" required="required" />
+            </b></td>
+          </tr>
+          <tr>
+            <td>Time From:</td>
+            <td><b>
+              <input title="Local 24 hr time" size="10" name="TimeFrom" id="TimeFrom" maxlength="10" required="required" />
+            </b></td>
+            <td>Time To:</td>
+            <td><b>
+              <input title="Local 24 hr time" size="10" name="TimeTo" id="TimeTo" maxlength="10" required="required" />
+            </b></td>
+          </tr>
+        </tbody>
+      </table></td>
+    </tr>
+  </table>
+
 </div></td>
 
 </tr>
 
-<tr>
+<tr bgcolor="#dee9f9">
 
-<td colspan="5" style="background-color: rgb(204, 204, 204); text-align: center;"><small pbzloc="54"><span style="color: black;">5.
+<td height="23" colspan="6" style="btext-align: center;"><strong class="style16">&nbsp;&nbsp;3.
 
-Incident Medical Aid Stations</span></small></td>
+ Medical Aid Stations</strong></td>
+
+</tr>
+
+<tr bgcolor="#f8f8ff">
+
+<td width="268" height="38" bgcolor="#f8f8ff" style="text-align: center; ">Name</td>
+
+<td width="370" bgcolor="#f8f8ff" style="text-align: center;">Location</td>
+
+<td width="254" bgcolor="#f8f8ff" style="text-align: center;">Contact<br>
+  Number(s)/Frequency</td>
+<td width="111" colspan="3" style="text-align: center; ">Paramedics</td>
 
 </tr>
 
 <tr>
 
-<td width="372" style="text-align: center; background-color: rgb(204, 204, 204);"><small>Medical
+<td height="31" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Med_Sta1" size="30" type="text"></td>
 
-Aid Stations</small></td>
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="4"><input maxlength="40" name="Med_Loc1" size="42"  type="text">
+  <input name="Med_Line1" type="hidden" id="Med_Line1"></td>
 
-<td width="479" style="text-align: center; background-color: rgb(204, 204, 204);"><small>Location</small></td>
-
-<td width="154" colspan="3" style="text-align: center; background-color: rgb(204, 204, 204);"><small>Paramedics</small></td>
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="4"><input name="Med_contact1" type="text" id="Med_contact1" size="30" maxlength="28"></td>
+<td colspan="3" nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="29">          <div align="center">
+            <input name="bMed_Line1" type="radio" value="YES" onclick="document.getElementById('Med_Line1').value = 'YES';">
+        Yes 
+        <input name="bMed_Line1" type="radio" value="NO" onclick="document.getElementById('Med_Line1').value = 'NO';"> 
+        No        </div></td>
 
 </tr>
 
 <tr>
 
-<td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Med_Sta1" size="55" type="text"></td>
+<td height="31" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Med_Sta2" size="30" type="text"></td>
 
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="4"><input maxlength="70" name="Med_Loc1" size="75" type="text"></td>
+<td style="text-align: center; vertical-align: middle; background-color: white;" ><input maxlength="40" name="Med_Loc2" size="42"  type="text">
+  <input name="Med_Line2" type="hidden" id="Med_Line2"></td>
 
-<td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="29">&nbsp;&nbsp;
+<td style="text-align: center; vertical-align: middle; background-color: white;" ><input name="Med_contact2" type="text" id="Med_contact2" size="30" maxlength="28"></td>
+<td colspan="3" nowrap style="text-align: center; vertical-align: middle; background-color: white;">          <div align="center">
+            <input name="bMed_Line2" type="radio" value="YES" onclick="document.getElementById('Med_Line2').value = 'YES';">
+        Yes
+        <input name="bMed_Line2" type="radio" value="NO" onclick="document.getElementById('Med_Line2').value = 'NO';">
+        No</div></td>
 
+</tr>
+
+<tr>
+
+<td height="31" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Med_Sta3" size="30" type="text"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="10"><input maxlength="40" name="Med_Loc3" size="42"  type="text">
+  <input name="Med_Line3" type="hidden" id="Med_Line3"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="10"><input name="Med_contact3" type="text" id="Med_contact3" size="30" maxlength="28"></td>
+<td colspan="3" nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="27">        <div align="center">
+            <input name="bMed_Line3" type="radio" value="YES" onclick="document.getElementById('Med_Line3').value = 'YES';">
+        Yes
+        <input name="bMed_Line3" type="radio" value="NO" onclick="document.getElementById('Med_Line3').value = 'NO';">
+        No</div></td>
+
+</tr>
+
+<tr>
+
+<td height="47" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Med_Sta4" size="30" type="text"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="13"><input maxlength="40" name="Med_Loc4" size="42"  type="text">
+  <input name="Med_Line4" type="hidden" id="Med_Line4"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="13"><input name="Med_contact4" type="text" id="Med_contact4" size="30" maxlength="28"></td>
+<td colspan="3" nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="26">          
+          <div align="center">
+            <input name="bMed_Line4" type="radio" value="YES" onclick="document.getElementById('Med_Line4').value = 'YES';">
+          Yes
+          <input name="bMed_Line4" type="radio" value="NO" onclick="document.getElementById('Med_Line4').value = 'NO';">
+        No</div></td>
+
+</tr>
+
+<tr>
+
+<td height="31" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Med_Sta5" size="30" type="text"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;" p><input maxlength="75" name="Med_Loc5" size="42"  type="text">
+  <input name="Med_Line5" type="hidden" id="Med_Line5"></td>
+
+<td style="text-align: center; vertical-align: middle; background-color: white;"><input name="Med_contact5" type="text" id="Med_contact5" size="30" maxlength="28"></td>
+<td colspan="3" nowrap style="text-align: center; vertical-align: middle; background-color: white;" >          
+          <div align="center">
+            <input name="bMed_Line5" type="radio" value="YES" onclick="document.getElementById('Med_Line5').value = 'YES';">
+          Yes
+          <input name="bMed_Line5" type="radio" value="NO" onclick="document.getElementById('Med_Line5').value = 'NO';">
+        No </div></td>
+
+</tr>
+
+<tr bgcolor="#dee9f9" >
+
+<td height="24" colspan="6" style="text-align: center;" pbzloc="11"><div align="left" class="style16"><strong>4. Transportation</strong></div></td>
+
+</tr>
+
+<tr>
+
+<td height="38" style="text-align: center; ">Ambulance Services</td>
+
+<td style="text-align: center; ">Address
+
+and Phone</td>
+
+<td style="text-align: center; ">Contact<br>
+Number(s)/Frequency</td>
+<td style="text-align: center; " colspan="3">Level of Service </td>
+
+</tr>
+
+<tr>
+  <td height="41" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Amb_Name1" size="30" type="text"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="19"><input maxlength="40" name="Amb_Info1" size="42"  type="text">
+    <input name="Amb_Line1" type="hidden" id="Amb_Line1"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="19"><input name="Amb_contact1" type="text" id="Amb_contact1" size="30" maxlength="28"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="24"><div align="center">
+          <input name="BAmb_Line1" type="radio" value="YES" onclick="document.getElementById('Amb_Line1').value = 'ALS';"> 
+      ALS
+        <input name="BAmb_Line1" type="radio" value="NO" onClick="document.getElementById('Amb_Line1').value = 'BLS';">
+        BLS &nbsp;&nbsp;&nbsp;&nbsp;
+  </div></td>
+</tr>
+<tr>
+  <td height="41" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Amb_Name2" size="30" type="text"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="22"><input maxlength="40" name="Amb_Info2" size="42"  type="text">
+    <input name="Amb_Line2" type="hidden" id="Amb_Line2"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="22"><input name="Amb_contact2" type="text" id="Amb_contact2" size="30" maxlength="28"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="30"><input name="BAmb_Line2" type="radio" value="YES" onclick="document.getElementById('Amb_Line2').value = 'ALS';">
+ALS
+  <input name="BAmb_Line2" type="radio" value="NO" onclick="document.getElementById('Amb_Line2').value = 'BLS';">
+BLS &nbsp;&nbsp;&nbsp;&nbsp;
+  </td>
+</tr>
+<tr>
+  <td height="41" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Amb_Name3" size="30" type="text"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="25"><input maxlength="40" name="Amb_Info3" size="42"  type="text">
+    <input name="Amb_Line3" type="hidden" id="Amb_Line3"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="25"><input name="Amb_contact3" type="text" id="Amb_contact3" size="30" maxlength="28"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="31"><input name="BAmb_Line3" type="radio" value="YES" onclick="document.getElementById('Amb_Line3').value = 'ALS';">
+ALS
+  <input name="BAmb_Line3" type="radio" value="NO" onclick="document.getElementById('Amb_Line3').value = 'BLS';">
+BLS &nbsp;&nbsp;&nbsp;&nbsp;
+  </td>
+</tr>
+<tr>
+  <td height="41" style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="28" name="Amb_Name4" size="30" type="text"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="28"><input maxlength="40" name="Amb_Info4" size="42"  type="text">
+    <input name="Amb_Line4" type="hidden" id="Amb_Line4"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="28"><input name="Amb_contact4" type="text" id="Amb_contact4" size="30" maxlength="28"></td>
+  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="32"><input name="BAmb_Line4" type="radio" value="YES" onclick="document.getElementById('Amb_Line4').value = 'ALS';">
+ALS
+  <input name="BAmb_Line4" type="radio" value="NO" onclick="document.getElementById('Amb_Line4').value = 'BLS';">
+BLS &nbsp;&nbsp;&nbsp;
+  </td>
+</tr>
+
+
+
+<tr bgcolor="#dee9f9">
+
+<td height="24" colspan="6" style="text-align: center; "><div align="left"><span class="style16"><strong>5.
+  
+Hospitals</strong></span><strong>&nbsp;&nbsp;</strong><b><small pbzloc="39">&nbsp;
+<input name="HosTrama1" type="hidden" id="HosTrama1">
+<input name="HosTrama2" type="hidden" id="HosTrama2">
+<input name="HosTrama3" type="hidden" id="HosTrama3">
+<input name="HosTrama4" type="hidden" id="HosTrama4">
+<input name="HosTrama5" type="hidden" id="HosTrama5">
+<input name="burn1" type="hidden" id="burn1">
+<input name="burn2" type="hidden" id="burn2">
+<input name="burn3" type="hidden" id="burn3">
+<input name="burn4" type="hidden" id="burn4">
+<input name="burn5" type="hidden" id="burn5">
+<input name="heli1" type="hidden" id="heli1">
+<input name="heli2" type="hidden" id="heli2">
+<input name="heli3" type="hidden" id="heli3">
+<input name="heli4" type="hidden" id="heli4">
+<input name="heli5" type="hidden" id="heli5">
+</b></div></td>
+
+</tr>
+
+<tr valign="top">
+
+<td height="422" colspan="6" pbzloc="214">
+
+  <table border="1" align="left" cellpadding="3" cellspacing="0" style="width: 1027px; " pbzloc="295">
+    <tbody>
+      <tr>
+        <td width="155" rowspan="2" style="text-align: center; " pbzloc="17"><small pbzloc="141">Hospital Name</td>
+        <td width="179" rowspan="2" style="text-align: center; ">Address,<br>
+          Latitude &amp; Longitude<br>
+          if Helipad</td>
+        <td width="95" rowspan="2" style="text-align: center; ">Contact<br>
+Number(s)/<br>
+Frequency</td>
+        <td colspan="2" style="text-align: center; "><p><small pbzloc="279">Travel Time</p>          </td>
+        <td width="200" rowspan="2" style="text-align: center; "><small pbzloc="291">Trauma <br>
+          Center
+        </td>
+        <td width="78" rowspan="2" style="text-align: center; " pbzloc="265"><small pbzloc="296">&nbsp;Burn Center</td>
+        <td width="60" rowspan="2" style="text-align: center; " pbzloc="265">Helipad</td>
+      </tr>
+      <tr>
+        <td width="97" style="text-align: center; ">Air</td>
+        <td width="97" style="text-align: center; ">Ground</td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="289"><input maxlength="30" name="Hosp_Name1" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="189"><input maxlength="30" name="Hosp_Ad1" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="234">
+          <input maxlength="18" name="Hosp_Ph1" size="18" type="text">
+        </td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="223"><input name="airtime1" type="text" id="airtime1" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="223"><input name="groiundtime1" type="text" id="groiundtime1" size="15" maxlength="15"></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="233">&nbsp;
+          <input name="bt1" type="checkbox" id="bt1" value="YES" onclick="Flip('HosTrama1', 'YES, Level:')"> 
+          Yes - Level: 
+          <input name="hoslevel1" type="text" id="hoslevel1" style='width:12px' size="5" maxlength="5"></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="30"><div align="left">
+      <input name="bburn1" type="radio" value="YES" onclick="document.getElementById('burn1').value = 'YES';">
+  Yes <br>
+  <input name="bburn1" type="radio" value="NO" onclick="document.getElementById('burn1').value = 'NO';">
+  No </div></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="30"><div align="left">
+                <input name="bheli1" type="radio" value="YES" onclick="document.getElementById('heli1').value = 'YES';"> 
+            Yes
+              <br>
+              <input name="bheli1" type="radio" value="NO" onclick="document.getElementById('heli1').value = 'NO';"> 
+    No
+        </div></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="240"><input maxlength="30" name="Hosp_Name2" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="43"><input maxlength="30" name="Hosp_Ad2" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="222">
+            <input name="Hosp_Ph2" type="text" id="Hosp_Ph2" size="18" maxlength="18">
+        </td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="62"><input name="airtime2" type="text" id="airtime2" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="62"><input name="groiundtime2" type="text" id="groiundtime2" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="65">&nbsp;
+          <input name="bt2" type="checkbox" id="bt2" value="YES" onclick="Flip('HosTrama2', 'YES, Level:')">
+Yes - Level:
+<input name="hoslevel2" type="text" id="hoslevel2" style='width:12px' size="5" maxlength="5"></td>
+        <td align="left" nowrap style="text-align: left; vertical-align: middle; background-color: white;" pbzloc="14"><input name="bburn2" type="radio" value="YES" onclick="document.getElementById('burn2').value = 'YES';">
+Yes <br>
+<input name="bburn2" type="radio" value="NO" onclick="document.getElementById('burn2').value = 'NO';">
+No </td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="14">        <div align="left">
+          <input name="bheli2" type="radio" value="YES" onclick="document.getElementById('heli2').value = 'YES';">
+Yes <br>
+<input name="bheli2" type="radio" value="NO" onclick="document.getElementById('heli2').value = 'NO';">
+No </div></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="38"><input maxlength="30" name="Hosp_Name3" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="73"><input maxlength="30" name="Hosp_Ad3" size="30" type="text"></td>
+        <td valign="middle" style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="87"><input maxlength="18" name="Hosp_Ph3" size="18" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="76"><input name="airtime3" type="text" id="airtime3" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="76"><input name="groiundtime3" type="text" id="groiundtime3" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="70">&nbsp;
+          <input name="bt3" type="checkbox" id="bt3" value="YES" onClick="Flip('HosTrama3', 'YES, Level:')">
+          Yes - Level:
+<input name="hoslevel3" type="text" id="hoslevel3" style='width:12px' size="5" maxlength="5">
+        </td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="19"><div align="left">
+<input name="bburn3" type="radio" value="YES" onClick="document.getElementById('burn3').value = 'YES';">
+Yes <br>
+<input name="bburn3" type="radio" value="NO" onclick="document.getElementById('burn3').value = 'NO';">
+No </div></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="19">        <div align="left">
+          <input name="bheli3" type="radio" value="YES" onclick="document.getElementById('heli3').value = 'YES';">
+Yes <br>
+<input name="bheli3" type="radio" value="NO" onClick="document.getElementById('heli3').value = 'NO';">
+No </div></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="30" name="Hosp_Name4" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="79"><input maxlength="40" name="Hosp_Ad4" size="30" type="text"></td>
+        <td valign="middle" style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="92"><input maxlength="18" name="Hosp_Ph4" size="18" type="text">   
+        </td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="82"><input name="airtime4" type="text" id="airtime4" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="82"><input name="groiundtime4" type="text" id="groiundtime4" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="85">&nbsp;
+          <input name="bt4" type="checkbox" id="bt4" value="YES" onclick="Flip('HosTrama4', 'YES, Level:')">
+Yes - Level:
+<input name="hoslevel4" type="text" id="hoslevel4" style='width:12px' size="5" maxlength="5">
+        </td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="24"><div align="left">
+<input name="bburn4" type="radio" value="YES" onClick="document.getElementById('burn4').value = 'YES';">
+Yes <br>
+<input name="bburn4" type="radio" value="NO" onclick="document.getElementById('burn4').value = 'NO';">
+No </div></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="24">        <div align="left">
+          <input name="bheli4" type="radio" value="YES" onclick="document.getElementById('heli4').value = 'YES';">
+Yes <br>
+<input name="bheli4" type="radio" value="NO" onClick="document.getElementById('heli4').value = 'NO';">
+No </div></td>
+      </tr>
+      <tr valign="top">
+        <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="30" name="Hosp_Name5" size="30" type="text"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="88"><input maxlength="30" name="Hosp_Ad5" size="30" type="text"></td>
+        <td valign="middle" style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="97"><input maxlength="18" name="Hosp_Ph5" size="18" type="text">          
+        </td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="91"><input name="airtime5" type="text" id="airtime5" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="91"><input name="groiundtime5" type="text" id="groiundtime5" size="15" maxlength="15"></td>
+        <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="95">&nbsp;
+          <input name="bt5" type="checkbox" id="bt5" value="YES" onclick="Flip('HosTrama5', 'YES, Level:')">
+Yes - Level:
+<input name="hoslevel5" type="text" id="hoslevel5" style='width:12px' size="5" maxlength="5">
+        </td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="29"><div align="left">
+          <input name="bburn5" type="radio" value="YES" onClick="document.getElementById('burn5').value = 'YES';">
+Yes <br>
+<input name="bburn5" type="radio" value="NO" onclick="document.getElementById('burn5').value = 'NO';">
+No </div></td>
+        <td nowrap style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="29">        <div align="left">
+          <input name="bheli5" type="radio" value="YES" onclick="document.getElementById('heli5').value = 'YES';">
+Yes <br>
+<input name="bheli5" type="radio" value="NO" onClick="document.getElementById('heli5').value = 'NO';">
+No </div></td>
+      </tr>
+      <tr valign="top">
+        <td colspan="8" style="text-align: center;"><div align="left"><span class="style16"><br>
+&nbsp;<strong>&nbsp;<small pbzloc="44">6. Medical Emergency Procedures &nbsp; (Be brief)</strong></span><strong><small pbzloc="44"><br>
+&nbsp;</strong><small pbzloc="44"><br>
+          <textarea cols="120" name="Procedures" id="Procedures" rows="2" onChange="this.value=RWS(this.value)" onKeyUp="AutoGrowTextArea(this)" ></textarea>
+          <br>
+          <br>
+      </div></td>
+      </tr>
+      <tr>
+        <td height="73" colspan="8" style="text-align: justify;" pbzloc="64"><p><span class="style16" style="font-size: 12px;"><strong>&nbsp;7. Prepared by (MUL):</strong> </span>
+            <input maxlength="25" name="Prepared_By" required="required" size="30">
+            <span style="font-size: 12px;">&nbsp; &nbsp; &nbsp; </span></p>
+          <p><span style="font-size: 12px;"><strong> <span class="style16">&nbsp;8. Approved by (Safety Officer):</span></strong><span class="style16"></big></span></span><span class="style16"><big pbzloc="58"></big></span><big pbzloc="58">
+              <input maxlength="25" name="Review_By" required="required" size="30">
+              <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+              <input name="Templateversion" type="hidden"
+
+                                    id="Templateversion" value="ICS 206 vers 14.1" />
+              <span style="font-size: 12px;"><strong>&nbsp; &nbsp;<span class="style16"> &nbsp;</span><span class="style16">Date/Time: </span>              
+              <input name="approvedatetime" type="text" id="approvedatetime"onclick="TimeNow('approvedatetime');">
+               &nbsp; &nbsp; &nbsp;<span class="style16"> IAP Page:</span> </strong></span> 
+              <input name="IAPage" type="text" id="IAPage" style='width:18px' size="5" maxlength="5">
+              <br>
+              <span style="font-size: 12px;"><big pbzloc="58"><br>
+              <span class="formtext"><span style="font-family: Calibri;">&nbsp;
+              <input type="button" value="Save ICS206 Data"  style="color: blue;"onClick="SaveData()" />
+&nbsp;</span></span> &nbsp; &nbsp; &nbsp;
+            <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" name="Submit" pbzloc="1" size="15" style="height: 26px; width: 56px; color: green;" value="Submit" type="submit">
 &nbsp;
-
-<select multiple="multiple" name="Med_Line1" pbzloc="1" size="2">
-  <option value="YES">YES</option>
-  <option value="NO">NO</option>
-  <option selected="selected" value="--">--</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Med_Sta2" size="55" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="7"><input maxlength="70" name="Med_Loc2" size="75" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="11">&nbsp;&nbsp;
-
-&nbsp;
-
-<select multiple="multiple" name="Med_Line2" pbzloc="5" size="2">
-  <option value="YES">YES</option>
-  <option value="NO">NO</option>
-  <option selected="selected" value="--">--</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Med_Sta3" size="55" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="10"><input maxlength="70" name="Med_Loc3" size="75" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="27">&nbsp;&nbsp;
-
-&nbsp;
-
-<select multiple="multiple" name="Med_Line3" pbzloc="8" size="2">
-  <option value="YES">YES</option>
-  <option value="NO">NO</option>
-  <option selected="selected" value="--">--</option>
-</select></td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Med_Sta4" size="55" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="13"><input maxlength="70" name="Med_Loc4" size="75" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="26">&nbsp;
-
-&nbsp;&nbsp;
-
-<select multiple="multiple" name="Med_Line4" pbzloc="11" size="2">
-  <option value="YES">YES</option>
-  <option value="NO">NO</option>
-  <option selected="selected" value="--">--</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Med_Sta5" size="55" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="16"><input maxlength="75" name="Med_Loc5" size="75" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="25">&nbsp;&nbsp;
-
-&nbsp;
-
-<select multiple="multiple" name="Med_Line5" pbzloc="14" size="2">
-  <option value="YES">YES</option>
-  <option value="NO">NO</option>
-  <option selected="selected" value="--">--</option>
-</select>
-</td>
-
-</tr>
-
-<tr style="color: black;">
-
-<td colspan="5" pbzloc="11" style="background-color: rgb(204, 204, 204); text-align: center;"><small pbzloc="29">6. Transportation</small></td>
-
-</tr>
-
-<tr>
-
-<td colspan="5" style="text-align: center; background-color: rgb(204, 204, 204);"><small>A.
-
-Ambulance Services</small></td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small>Name</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small>Address
-
-and Phone</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);" colspan="3"><small>Paramedics</small></td>
-
-</tr>
-
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Amb_Name1" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="19"><input maxlength="70" name="Amb_Info1" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="24">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Amb_Line1" pbzloc="17" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Amb_Name2" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="22"><input maxlength="70" name="Amb_Info2" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="30">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Amb_Line2" pbzloc="20" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Amb_Name3" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="25"><input maxlength="70" name="Amb_Info3" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="31">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Amb_Line3" pbzloc="23" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Amb_Name4" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="28"><input maxlength="70" name="Amb_Info4" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="32">&nbsp; &nbsp; &nbsp;
-      <select multiple="multiple" name="Amb_Line4" pbzloc="26" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Amb_Name5" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="31"><input maxlength="70" name="Amb_Info5" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="33">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Amb_Line5" pbzloc="29" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-
-<tr>
-
-<td colspan="5" pbzloc="2" style="text-align: center; background-color: rgb(204, 204, 204);"><small pbzloc="34">B.
-
-Incident Ambulances</small></td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small>Name</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small>Location</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);" colspan="3"><small>Paramedics</small></td>
-
-</tr>
-
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Inc_Amb_Name1" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="47"><input maxlength="70" name="Inc_Amb_Info1" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3" pbzloc="36">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Inc_Amb1" pbzloc="45" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="37"><input maxlength="50" name="Inc_Amb_Name2" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="50"><input maxlength="70" name="Inc_Amb_Info2" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Inc_Amb2" pbzloc="48" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Inc_Amb_Name3" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="53"><input maxlength="70" name="Inc_Amb_Info3" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Inc_Amb3" pbzloc="51" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Inc_Amb_Name4" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="33"><input maxlength="70" name="Inc_Amb_Info4" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Inc_Amb4" pbzloc="54" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-<tr>
-  <td style="text-align: center; vertical-align: middle; background-color: white;"><input maxlength="50" name="Inc_Amb_Name5" size="55" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="34"><input maxlength="70" name="Inc_Amb_Info5" size="75" type="text"></td>
-  <td style="text-align: center; vertical-align: middle; background-color: white;" colspan="3">&nbsp;&nbsp;&nbsp; &nbsp;
-      <select multiple="multiple" name="Inc_Amb5" pbzloc="32" size="2">
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        <option selected="selected" value="--">--</option>
-      </select>
-  </td>
-</tr>
-
-<tr>
-
-<td colspan="5" style="text-align: center; background-color: rgb(204, 204, 204);"><span style="color: black;">&nbsp;</span><small style="color: black;" pbzloc="39">7.
-
-Hospitals&nbsp;&nbsp;</small><b><small pbzloc="39">&nbsp;</small></b></td>
-
-</tr>
-
-<tr>
-
-<td colspan="5" pbzloc="214">
-
-<table pbzloc="295" style="width: 1027px; height: 416px;" border="1" cellpadding="1" cellspacing="1">
-
-<tbody>
-
-<tr>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);" pbzloc="17"><small pbzloc="141">Name</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small pbzloc="142">Address</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small pbzloc="68">Travel</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small pbzloc="279">Phone</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);"><small pbzloc="291">Helipad</small></td>
-
-<td style="text-align: center; background-color: rgb(204, 204, 204);" pbzloc="265"><small pbzloc="296">&nbsp;Burn
-
-Center</small></td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="289"><input maxlength="30" name="Hosp_Name1" size="30" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="189"><input maxlength="40" name="Hosp_Ad1" size="40" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="234">&nbsp;
-
-<select multiple="multiple" name="Travel1" pbzloc="41" size="2"><option value="AIR">AIR</option><option value="GND">GND</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="223"><input maxlength="18" name="Hosp_Ph1" size="18" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="233">&nbsp;
-
-<select multiple="multiple" name="Helipad1" pbzloc="38" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td pbzloc="30" style="text-align: center; vertical-align: middle; background-color: white;">
-
-<select multiple="multiple" name="Burn_Cntr1" pbzloc="231" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="240"><input maxlength="30" name="Hosp_Name2" size="30" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="43"><input maxlength="40" name="Hosp_Ad2" size="40" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="222">&nbsp;
-
-<select multiple="multiple" name="Travel2" pbzloc="57" size="2"><option value="AIR">AIR</option><option value="GND">GND</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="62" valign="undefined"><input maxlength="18" name="Hosp_Ph2" size="18" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="65" valign="undefined">&nbsp;
-
-<select multiple="multiple" name="Helipad2" pbzloc="60" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td pbzloc="14" style="text-align: center; vertical-align: middle; background-color: white;">
-
-<select multiple="multiple" name="Burn_Cntr2" pbzloc="63" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="38" valign="undefined"><input maxlength="30" name="Hosp_Name3" size="30" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="73" valign="undefined"><input maxlength="40" name="Hosp_Ad3" size="40" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="87">&nbsp;
-
-<select multiple="multiple" name="Travel3" pbzloc="71" size="2"><option value="AIR">AIR</option><option value="GND">GND</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="76" valign="undefined"><input maxlength="18" name="Hosp_Ph3" size="18" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="70" valign="undefined">&nbsp;
-
-<select multiple="multiple" name="Helipad3" pbzloc="74" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td pbzloc="19" style="text-align: center; vertical-align: middle; background-color: white;">
-
-<select multiple="multiple" name="Burn_Cntr3" pbzloc="68" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" valign="undefined"><input maxlength="30" name="Hosp_Name4" size="30" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="79" valign="undefined"><input maxlength="40" name="Hosp_Ad4" size="40" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="92">&nbsp;
-
-<select multiple="multiple" name="Travel4" pbzloc="77" size="2"><option value="AIR">AIR</option><option value="GND">GND</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="82" valign="undefined"><input maxlength="18" name="Hosp_Ph4" size="18" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="85" valign="undefined">&nbsp;
-
-<select multiple="multiple" name="Helipad4" pbzloc="80" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td pbzloc="24" style="text-align: center; vertical-align: middle; background-color: white;">
-
-<select multiple="multiple" name="Burn_Cntr4" pbzloc="83" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" valign="undefined"><input maxlength="30" name="Hosp_Name5" size="30" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="88" valign="undefined"><input maxlength="40" name="Hosp_Ad5" size="40" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="97">&nbsp;
-
-<select multiple="multiple" name="Travel5" pbzloc="86" size="2"><option value="AIR">AIR</option><option value="GND">GND</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="91" valign="undefined"><input maxlength="18" name="Hosp_Ph5" size="18" type="text"></td>
-
-<td style="text-align: center; vertical-align: middle; background-color: white;" pbzloc="95" valign="undefined">&nbsp;
-
-<select multiple="multiple" name="Helipad5" pbzloc="89" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-<td pbzloc="29" style="text-align: center; vertical-align: middle; background-color: white;">
-
-<select multiple="multiple" name="Burn_Cntr5" pbzloc="92" size="2"><option value="YES">YES</option><option value="NO">NO</option><option selected="selected" value="--">--</option></select>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: center;" colspan="6"><div align="left"><br>
-  
-    <small>&nbsp;</small><small>&nbsp;</small><small pbzloc="44"><span style="color: rgb(153, 0, 0);">8. Medical Emergency
-  
-Procedures </span>&nbsp; (Be
-  
-brief)</small><br>
-  
-&nbsp;<br>
-<textarea cols="120" name="Procedures" id="Procedures" rows="2" onChange="this.value=RWS(this.value)" onKeyUp="AutoGrowTextArea(this)" ></textarea>  
-<br>
-  
-<br>
-  
-</div></td>
-
-</tr>
-
-<tr>
-
-<td style="text-align: justify;" colspan="6" pbzloc="64"><span style="font-size: 14px;"><small pbzloc="68"><small><br>
-</small></small></span>
-  <span style="font-size: 14px;"><small pbzloc="68"><small> &nbsp;9. Prepared by (MUL):</small> </small></span>
-  <input maxlength="25" name="Prepared_By" required="required" size="30"> <small><span style="font-size: 12px;"><small>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<big pbzloc="58"><small>10: Reviewed by (Safety Officer):</small>
-
-</big></small></span></small><input maxlength="25" name="Review_By" required="required" size="30">
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-<input name="Templateversion" type="hidden"
-
-                                    id="Templateversion" value="HICS 213 v 2.2" />
-<br>
-
-<small><span style="font-size: 12px;"><small><big pbzloc="58"><br>
-</big><span class="formtext"><span style="font-family: Calibri;">&nbsp;<big>
-<input type="button" value="Save ICS206 Data"  style="color: blue;"onClick="SaveData()" />
-</big>&nbsp;</span></span></small> &nbsp; &nbsp; &nbsp;
-<input class="SubmitBtn" enctype="multipart/form-data" id="Submit" name="Submit" pbzloc="1" size="15" style="height: 26px; width: 56px; color: green;" value="Submit" type="submit">
-&nbsp;
-<input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset">
-&nbsp; <span style="font-size: 14px;"><small pbzloc="68"><small>&nbsp; &nbsp; &nbsp; </small></small></span><small><big pbzloc="58">
-</big></small></span></small></td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</td>
+            <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset">
+&nbsp; <span style="font-size: 14px;">&nbsp; &nbsp; &nbsp; <big pbzloc="1">&nbsp;ICS 206 <span style="font-weight: bold;">&nbsp;</span>Vers 14.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; </span> </big></span></big></p></td>
+      </tr>
+    </tbody>
+  </table></td>
 
 </tr>
 

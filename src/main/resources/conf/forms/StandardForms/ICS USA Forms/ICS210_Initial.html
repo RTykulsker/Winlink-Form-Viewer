@@ -111,7 +111,7 @@ When targeted it fills the browser window.
 	position:absolute;
 	top:0;
 	left:-500em;
-	visibility: hidden;
+	visibility: visible;
 }
 
 .pop-up:target {position:static; left:0;}
@@ -121,10 +121,10 @@ When targeted it fills the browser window.
 .popBox {
 	background:#ffffff;
 	position:absolute;
-	left:30%;
-	right:30%;
-	top:30%;
-	bottom:30%;
+	left:20%;
+	right:20%;
+	top:20%;
+	bottom:20%;
 	z-index:10;
 	border:1px solid #3a3a3a;
 
@@ -283,6 +283,11 @@ input[type=black1] {
    cursor: pointer;
 }
 
+.style7 {color: #FF0000;
+	font-size: 10px;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 12px}
 </style>
 
 <script type="text/javascript">
@@ -665,10 +670,7 @@ function SaveData() {
      alert("Files are not supported"); 
  } 
 Checkifinbrowser();
-//txt = document.getElementById('parseme').value;
-//var myobject = txt;
-//populateForm(myobject);
- }
+getit(); }
  function Checkifinbrowser() {
 
  var x= document.getElementById("testCall").value; 
@@ -679,6 +681,40 @@ Checkifinbrowser();
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
 
+function RestoreTitle() {
+
+var RightNow = document.getElementById('FormTitle').value;
+
+//document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+	   function store(){
+ 	var formatted= document.getElementById("FormTitle");
+     localStorage.setItem("ics210", formatted.value);
+	 //alert (localStorage.getItem("ics205a"));
+    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("ics210");
+	//alert(storedValue);
+	document.getElementById('FormTitle').value = storedValue;
+	RestoreTitle();
+	
+	}
+	function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('FormTitle').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('FormTitle').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+
+}
+ 
+
  
  </script> 
 
@@ -686,13 +722,8 @@ Checkifinbrowser();
 
 <body>
 
-<br />
-
-<div style="text-align: center;">&nbsp;
-
 <form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
-
-<div id="pop1" class="pop-up"><!-- The pop-up block -->
+  <span class="style8">&nbsp;</span> <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
 <div class="popBox"><!-- If the content becomes larger than the pop-up this div will scroll the content -->
 
@@ -751,21 +782,23 @@ better than Portrait. <br />
 to links</span></a> </div>
 
 </div>
-
-<table align="left" border="0" width="778">
+<p></p>
 
 <tbody>
+<b><input type="button" value="Setup" onclick="SetupTitle()" />
+</b>  <span class="style7">&nbsp;Click to add an agency or group name </span>
+<table align="left" border="0" width="778">
 
 <tr>
 
 <td>
 
   <div align="left">
-    <table style="background-color: rgb(250, 250, 255); width: 887px; height: 1214px;" border="1" bordercolor="#999999" cellpadding="1" cellspacing="1">
+    <table style=" width: 887px; height: 1214px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="0">
     
 <tbody>
     
-<tr>
+<tr bgcolor="#dee9f9">
     
 <script type="text/javascript">
 
@@ -828,15 +861,11 @@ document.getElementById(Timefld).value = RightNow;
 
 
 
-</script> <td style="text-align: center; background-color: rgb(255, 255, 204);" colspan="2">&nbsp; &nbsp; &nbsp; &nbsp;
+</script> <td colspan="2" style="text-align: center; "> <big><span style="font-weight:12 bold;"><strong>RESOURCE
     
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    
-&nbsp;&nbsp; <big><span style="font-weight: bold;">RESOURCE
-    
-STATUS CHANGE &nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS210</small><big><span style="font-weight: bold;"> &nbsp;</span></big><big><span style="font-weight: bold;"> </span></big></big><big><small>Ver 8.3&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+STATUS CHANGE</strong> &nbsp; &nbsp;&nbsp; &nbsp;</span><small>(ICS210)</small><big><span style="font-weight: bold;"> &nbsp;</span></big></big><big><small><br />
+ <span class="style14"  id="SubjectText"><strong> </strong></span>
+&nbsp; &nbsp; &nbsp;
     
 &nbsp; &nbsp; &nbsp; &nbsp;
     
@@ -846,9 +875,9 @@ STATUS CHANGE &nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS210</small><big><span s
     
 <tr>
     
-<td style="vertical-align: top; width: 50%; text-align: center;" colspan="1"><div align="left"><span style="font-weight: bold;"><br />
+<td width="56%" colspan="1" style="vertical-align: top; width: 50%; text-align: center;"><div align="left"><span style="font-weight: bold;"><br />
             1. Incident Name &nbsp;</span>&nbsp;
-      
+            <input name="FormTitle" type="hidden" id="FormTitle" />      
 </div>
       <p align="left">&nbsp;&nbsp;<b><input title="Enter the name assigned to the incident. Incident number is optional" required="required" id="Incident_Name" maxlength="55" name="Incident_Name" size="60" /></b>&nbsp;</p>
       <p align="left">
@@ -862,31 +891,28 @@ STATUS CHANGE &nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS210</small><big><span s
 &nbsp;</p>
       </td>
     
-<td style="width: 50%; text-align: center; vertical-align: top;"><div align="left"><span style="font-weight: bold;"><br />
-      
+<td width="44%" valign="top" style="width: 50%; text-align: center; vertical-align: top;"><div align="left">
+  <span style="font-weight: bold;"><br />
+        
 2. Operational Period <br style="font-weight: bold;" />
-      
+        
 <br />
-      
-</span>&nbsp; &nbsp; &nbsp; &nbsp;
-      
-&nbsp; &nbsp;&nbsp;<span style="font-weight: bold;">
-      
-DATE</span>&nbsp; &nbsp; <span style="font-style: italic;">From&nbsp;</span> <b>
-      <input title="Enter the start date." required="required" maxlength="11" id="DateFrom" name="DateFrom" size="12" /> 
-&nbsp;</b><span style="font-style: italic;">To</span>&nbsp; <b>
-      <input title="Enter the end date." required="required" maxlength="11" id="DateTo" name="DateTo" size="12" />
-      </b><b>&nbsp;</b><span style="font-weight: bold;">&nbsp; &nbsp;
-      
-&nbsp;&nbsp;</span><b>
-&nbsp;&nbsp; <br />
-      
-<br />
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-weight: bold;"></span>TIME &nbsp; </span>&nbsp;<span style="font-style: italic;"> From</span>&nbsp; <b>
-      <input title="Enter the start time, use the 24-hour clock" required="required" maxlength="11" id="TimeFrom" name="TimeFrom" size="12" /> 
-&nbsp;</b><span style="font-style: italic;">To</span>&nbsp; <b>
-      <input title="Enter the end time, use the 24-hour clock" required="required" maxlength="11" id="TimeTo" name="TimeTo" size="12" />
-    </b></div></td>
+        
+  </span>&nbsp; &nbsp; &nbsp; &nbsp;
+        
+&nbsp; &nbsp;&nbsp; DATE&nbsp; &nbsp; From<span style="font-style: italic;">&nbsp;</span> <b>
+        <input title="Enter the start date." required="required" maxlength="11" id="DateFrom" name="DateFrom" size="12" /> 
+&nbsp;</b>to&nbsp; <b>
+        <input title="Enter the end date." required="required" maxlength="11" id="DateTo" name="DateTo" size="12" />
+        </b><b>&nbsp;</b>&nbsp; &nbsp;
+        
+&nbsp;&nbsp;</p>
+  <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; TIME &nbsp; &nbsp; From<span style="font-style: italic;">&nbsp;</span> <b> </b> <b>
+    <input title="Enter the start time, use the 24-hour clock" required="required" maxlength="11" id="TimeFrom" name="TimeFrom" size="12" />
+&nbsp;  </b>to&nbsp; <b>
+  <input title="Enter the end time, use the 24-hour clock" required="required" maxlength="11" id="TimeTo" name="TimeTo" size="12" />
+  </b>&nbsp;&nbsp; </p>
+</div></td>
     
 </tr>
     
@@ -894,17 +920,17 @@ DATE</span>&nbsp; &nbsp; <span style="font-style: italic;">From&nbsp;</span> <b>
     
 <td colspan="3">
     
-<table style="text-align: left; width: 871px; height: 914px;" border="1" cellpadding="2" cellspacing="2">
+<table style="text-align: left; width: 871px; height: 914px;" border="1" cellpadding="3" cellspacing="0">
     
 <tbody>
     
-<tr>
+<tr bgcolor="#f8f8ff">
     
-<td style="text-align: center; vertical-align: top; width: 11%; background-color: rgb(204, 204, 204);" width="11%"><span style="font-weight: bold;">3.
+<td width="11%" style="text-align: center; vertical-align: top; width: 11%; "><span style="font-weight: bold;">3.
     
 Resource #</span></td>
     
-<td style="text-align: center; vertical-align: top; width: 15%; background-color: rgb(204, 204, 204);" width="15%"><span style="font-weight: bold;">4.
+<td width="15%" style="text-align: center; vertical-align: top; width: 15%;"><span style="font-weight: bold;">4.
     
 New Status<br />
     
@@ -912,7 +938,7 @@ New Status<br />
     
 </td>
     
-<td style="text-align: center; vertical-align: top; width: 20%; background-color: rgb(204, 204, 204);" width="21%">
+<td width="21%" style="text-align: center; vertical-align: top; width: 20%; ">
     
 <div align="center"><span style="font-weight: bold;">5. From<br />
     
@@ -922,7 +948,7 @@ New Status<br />
     
 </td>
     
-<td style="text-align: center; vertical-align: top; background-color: rgb(204, 204, 204);" width="30%">
+<td width="30%" style="text-align: center; vertical-align: top;">
     
 <div align="center"><span style="font-weight: bold;">6. To<br />
     
@@ -932,7 +958,7 @@ Status)</small></div>
     
 </td>
     
-<td style="text-align: center; vertical-align: top; background-color: rgb(204, 204, 204);" colspan="2">
+<td colspan="2" style="text-align: center; vertical-align: top; background-color:">
     
 <div align="center"><span style="font-weight: bold;">7. Time &amp; Date of Change<br />
     
@@ -1616,7 +1642,9 @@ Status)</small></div>
     
 <td style="text-align: center; vertical-align: middle; background-color: white;">
     
-<div align="center"> <input maxlength="10" size="10" name="Time19" id="Time19" placeholder="click for time" onclick="TimeNow('Time19')" /></div>
+<div align="center"> 
+  <input maxlength="10" size="10" name="Time19" id="Time19" placeholder="click for time" onclick="TimeNow('Time19')" />
+</div>
     
 </td>
     
@@ -1676,7 +1704,7 @@ Status)</small></div>
     
 <td style="vertical-align: top; text-align: center;" colspan="3"><div align="left"><span style="font-weight: bold;"><br />
       
-8. Comments</span><br />
+      <span style="font-weight: bold;">&nbsp;</span>8. Comments</span><br />
       
 <textarea title="Enter any special information provided by the resource or dispatch center." cols="120" rows="1" name="Comments" id="Comments"onchange="this.value=RWS(this.value)" onkeyup="AutoGrowTextArea(this)" placeholder="Be brief and accurate."></textarea>
     </div></td>
@@ -1685,22 +1713,23 @@ Status)</small></div>
     
 <tr>
     
-<td colspan="3" style="vertical-align: top; height: 35px; text-align: justify;">&nbsp;<br />
+<td colspan="3" style="vertical-align: top; height: 35px; text-align: justify;"><span style="font-weight: bold;"> 9. Prepared By </span>&nbsp;
+  <input title="Name + Title/Position. Name here is signature for radio delivery." required="required" maxlength="45" size="50" id="PreparedName" name="PreparedName" />
+&nbsp;&nbsp;<span style="font-weight: bold;">Date/Time </span>
+<input title="Enter date (m/d/y) &amp; time prepared (24-hour clock)." required="required" maxlength="21" size="22" id="Date_Time" name="TimeDate" placeholder="Click for Date/Time" onclick="Datetime('Date_Time')" />
+&nbsp;
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+<b><span style="font-weight: normal;"><big>
+<input name="Templateversion" type="hidden"
+
+                                    id="Templateversion" value="ICS210- v 8.3" />
+</big></span></b> <big><big><span style="font-weight: bold;"> </span></big></big><big><small>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ver 8.3 </small></big><br />
+<br />
     
 &nbsp;<small><span style="font-size: 12px;"><small><span class="formtext"><span style="font-family: Calibri;"><big>
     <input type="button" value="Save ICS 210 Form  Data" onclick="SaveData()" />
 </big>&nbsp;</span></span></small> </span></small>&nbsp;
-    <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="6"  value="Submit" type="submit" />&nbsp;<span style="font-weight: bold;"> </span><input class="BtnFormat2" value="Reset Form " name="ResetForm"  type="reset" />&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;"> &nbsp; &nbsp; 9.
-    
-Prepared
-    
-By </span>&nbsp;
-    
-<input title="Name + Title/Position. Name here is signature for radio delivery." required="required" maxlength="45" size="50" id="PreparedName" name="PreparedName" />&nbsp;&nbsp;<span style="font-weight: bold;">Date/Time </span>
-    
-<input title="Enter date (m/d/y) &amp; time prepared (24-hour clock)." required="required" maxlength="21" size="22" id="Date_Time" name="TimeDate" placeholder="Click for Date/Time" onclick="Datetime('Date_Time')" />&nbsp;
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" /></td>
-    
+    <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="6"  value="Submit" type="submit" />&nbsp;<span style="font-weight: bold;"> </span><input class="BtnFormat2" value="Reset Form " name="ResetForm"  type="reset" />&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;"> &nbsp; </span></td>
 </tr>
     
 </tbody>
@@ -1717,7 +1746,5 @@ By </span>&nbsp;
 </table>
 
 </form>
-
-</div>
 
 </body></html>

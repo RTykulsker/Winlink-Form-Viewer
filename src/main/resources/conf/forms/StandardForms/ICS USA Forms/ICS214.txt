@@ -1,9 +1,11 @@
 Form: ICS214_Initial.html,ICS214_Viewer.html
 
 To: 
-Subject: 214-<var Incident_Name>-<var Name>-<var DateTimeFrom> TO <var DateTimeTo>
+Subject: 214- <var Incident_Name> - <var Name>-<var DateTimeFrom> - <var DateTimeTo>
 
 Msg:
+ICS214 
+<var FormTitle>
 PAGE # <var Page>
 
 1. Incident or Event Name:   <var Incident_Name>
@@ -118,9 +120,9 @@ DATE & TIME: <var ActivityDateTime24>
 4. PREPARED BY: <var PreparedName>
 ---------------------------------------------
 
-Form Ver.  16.3
-Express Sender: <var MsgSender>
-
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>
 
 
 

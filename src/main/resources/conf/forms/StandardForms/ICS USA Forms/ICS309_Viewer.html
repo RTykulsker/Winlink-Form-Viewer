@@ -70,7 +70,6 @@ font-size: 12px;
 .style3 {font-size: 14px}
 .style4 {font-size: 14}
 .style5 {font-size: 16px}
-.style34 {color: #FF0000}
 </style>
 </head>
 <body>
@@ -80,23 +79,21 @@ font-size: 12px;
 <tbody>
 <tr>
 <td>
-<table style="background-color: rgb(250, 250, 255); width: 879px; height: 935px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="1">
+<table style="background-color: rgb(250, 250, 255); width: 879px; height: 935px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="0">
 <tbody>
 <tr>
-<td  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><span class="style3"><span class="style4"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><span style="font-size: 16px"><big style="color: rgb(102, 51, 51);"><span style="font-style: italic;">COMMUNICATIONS LOG</span></big>&nbsp; &nbsp;</span></big></b><span class="style5"><big>ICS 309</big><big><small><br />
+<td width="328"  style="vertical-align: top; text-align: center;"><p style="background-color: white;"><span class="style3"><span class="style4"><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <big><span style="font-size: 16px"><big><span style="font-style: italic;">COMMUNICATIONS LOG</span></big>&nbsp; &nbsp;</span></big></b><span class="style5"><span class="style3"><big>(ICS 309)</big></span><big><small><br />
                     <big style="font-style: italic;">{var Title} </big></small></big></span></span></span><big><small><span style="font-style: italic;"><br />
                     </span></small></big></p>
             </td>
-		  <td valign="top" style="vertical-align: top; text-align: center;"><big><small>Task
+		  <td width="172" valign="top" style="vertical-align: top; text-align: center;"><big><small>Task
 #</small>&nbsp;&nbsp;</big><big>
 <input readonly="readonly" value="{var Task}" maxlength="7" size="8" name="Task" />
 <br />
 </big></td>
-<td valign="top" style="vertical-align: top; text-align: center;">&nbsp;
+<td width="345" valign="top" nowrap="nowrap" style="vertical-align: top; text-align: center;">&nbsp;
 &nbsp; &nbsp;Date/Time
-Prepared &nbsp;<br />
-
-&nbsp; &nbsp;
+Prepared &nbsp;&nbsp; &nbsp;
  <input readonly="readonly" value="{var ActivityDateTime1}" maxlength="18" size="20" name="ActivityDateTime1" />
 </td>
 </tr>
@@ -105,26 +102,30 @@ Prepared &nbsp;<br />
       &nbsp;For Operational Period #&nbsp;      
       <input readonly="readonly" value="{var OpPer}" maxlength="15" size="16" name="OpPer" />
 </div></td>
-<td style="vertical-align: top; text-align: center;" colspan="2"><br />
-Task Name &nbsp;<input readonly="readonly" value="{var TaskName}" maxlength="55" size="60" name="TaskName" /></td>
+<td style="vertical-align: top; text-align: center;" colspan="2"><div align="left"><br />
+      Task Name &nbsp;
+      <input readonly="readonly" value="{var TaskName}" maxlength="55" size="60" name="TaskName" />
+</div></td>
 </tr>
 <tr>
 <td style="vertical-align: top; text-align: center;"><div align="left"><br />
        Operator Name&nbsp;
        <input readonly="readonly" value="{var OpName}" maxlength="35" size="40" name="OpName" />
 </div></td>
-<td style="vertical-align: top; text-align: center;"><br />
-Station ID&nbsp; <input readonly="readonly" value="{var OperId}" maxlength="13" size="14" name="OperId" /></td>
-<td style="vertical-align: top; text-align: center;" colspan="2"><span style="color: rgb(0, 102, 0);"></span><span style="color: rgb(153, 0, 0);"><span style="color: rgb(204, 0, 0);"></span></span><span style="color: rgb(0, 153, 0);"><big><small><br />
-  Express
-Sender&nbsp;</small> </big></span>
-  <input title="This is the Call or Tactical that sent this form." readonly="readonly" maxlength="13" size="14" name="MsgSender" value="{var MsgSender}" /><small><small>&nbsp;</small></small></td>
+<td style="vertical-align: top; text-align: center;"><div align="left"><br />
+      Station ID&nbsp;      <input readonly="readonly" value="{var OperId}" maxlength="13" size="14" name="OperId" />
+</div></td>
+<td style="vertical-align: top; text-align: center;" colspan="2"><div align="left"><span style="color: rgb(0, 102, 0);"></span><span style="color: rgb(153, 0, 0);"><span style="color: rgb(204, 0, 0);"></span></span><span style="color: rgb(0, 153, 0);"><big><small><br />
+            Express
+  Sender&nbsp;</small> </big></span>
+      <input title="This is the Call or Tactical that sent this form." readonly="readonly" maxlength="13" size="14" name="MsgSender" value="{var MsgSender}" />
+      <small><small>&nbsp;</small></small></div></td>
 </tr>
-<tr>
-<td style="vertical-align: top; text-align: center; background-color: rgb(204, 204, 204);" colspan="3"><div align="left"><span style="font-weight: bold;"><big><small><span style="font-style: italic;"><span class="style34">PAGE #</span> &nbsp;</span></small>
+<tr bgcolor="#f8f8ff">
+<td colspan="3" style="vertical-align: top; text-align: center; "><div align="left"><big><small><span style="font-style: italic;">PAGE # &nbsp;</span></small>
         <input name="Page" id="Page" readonly="readonly" value="{var Page}" size="3" maxlength="2" />
 </big>&nbsp;<br />
-</span></div></td>
+</div></td>
 </tr>
 <tr>
 <td style="vertical-align: top; text-align: center;" colspan="3">

@@ -93,6 +93,7 @@ When targeted it fills the browser window.
 	position:absolute;
 	top:0;
 	left:-500em;
+	visibility: visible;
 }
 
 .pop-up:target {position:static; left:0;}
@@ -258,6 +259,11 @@ input[type=black1] {
 }
 
 .style21 {color: #000000}
+.style7 {color: #FF0000;
+	font-size: 10px;
+}
+.style7 {font-size: 10px}
+.style8 {font-size: 10px}
 </style>
 <script type="text/javascript">
 
@@ -438,7 +444,7 @@ function SaveData() {
 			
 			 }   
 			 
-			 // note get header info
+			 // note get header info FormTitle
 		
 		var mydata=mydata + document.getElementById('Incident_Name').value+"\t";
 		var mydata=mydata + document.getElementById('DateFrom').value+"\t";
@@ -448,6 +454,7 @@ function SaveData() {
 		
 		var mydata=mydata + document.getElementById('PreparedName').value+"\t";
 		var mydata=mydata + document.getElementById('ActivityDateTime1').value+"\t";
+		var mydata=mydata + document.getElementById('FormTitle').value+"\t";
 		var mydata=mydata+"\n";
 		
 
@@ -481,6 +488,7 @@ var x = line +1;
 			 // now the header & footerto fill
 			
 			     var tabs = lines[line].split('\t',10);
+				 
 			 if (tabs[0] != null){document.getElementById('Incident_Name').value = tabs[0]};
 			  if (tabs[1] != null){document.getElementById('DateFrom').value = tabs[1]};
 			  if (tabs[2] != null){document.getElementById('DateTo').value = tabs[2]};
@@ -489,6 +497,8 @@ var x = line +1;
 				
 			    if (tabs[5] != null){document.getElementById('PreparedName').value = tabs[5]};
 				if (tabs[6] != null){document.getElementById('ActivityDateTime1').value = tabs[6]};
+				if (tabs[7] != null){document.getElementById('FormTitle').value = tabs[7]};
+				RestoreTitle();
 				
 	}
 
@@ -557,6 +567,7 @@ var x = line +1;
      alert("Files are not supported"); 
  } 
  Checkifinbrowser();
+ getit(); 
  }
 
   function Checkifinbrowser() {
@@ -567,15 +578,38 @@ var x = line +1;
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
+function RestoreTitle() {
 
-//  document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
-//    if (evt.target.tagName.toLowerCase() == 'button') {
-//      var startByte = evt.target.getAttribute('data-startbyte');
- //     var endByte = evt.target.getAttribute('data-endbyte');
-   //   readBlob(startByte, endByte);
- //   }
- // }, false);
+var RightNow = document.getElementById('FormTitle').value;
 
+//document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+	   function store(){
+ 	var formatted= document.getElementById("FormTitle");
+     localStorage.setItem("ics205a", formatted.value);
+	 //alert (localStorage.getItem("ics205a"));
+    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("ics205a");
+	//alert(storedValue);
+	document.getElementById('FormTitle').value = storedValue;
+	RestoreTitle();
+	
+	}
+	function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('FormTitle').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('FormTitle').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+
+}
 
 
 
@@ -648,25 +682,31 @@ to links</span></a> </div>
 <tbody>
 <tr>
 <td>
-<table style="background-color: rgb(250, 250, 255); height: 729px; width: 856px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="2">
+  <div align="left"><b>
+    <input type="button" value="Setup" onclick="SetupTitle()" />
+    </b>  <span class="style7">&nbsp;Click to add an agency or group name </span><span class="style8">&nbsp;</span> <span style="font-size: 12px;"></span> <br />
+    </div>
+  <table style="background-color: rgb(250, 250, 255); height: 729px; width: 856px;" border="1" bordercolor="#999999" cellpadding="4" cellspacing="2">
 <tbody>
 <tr>
-<td style="text-align: center; background-color: rgb(255, 255, 204);" colspan="2"> &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<span class="style20"> <span class="style21"><big><span style="font-weight: bold;">COMMUNICATIONS
-LIST &nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS205A</small><big><span style="font-weight: bold;"> &nbsp;</span></big> <small>Ver 11.2</small></big></span><big><small><br /> 
-&nbsp;</small><small></small></big></span><big><small> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;<span style="color: rgb(204, 0, 0);"><br />
+<td style="text-align: center;" colspan="2"> <span class="style20"><span class="style21"><big><span style="font-weight: bold;">COMMUNICATIONS
+LIST </span></big><big><small> (ICS 205A) <br />
+<strong>  <span id="SubjectText"></strong></span></span><br /><br /> 
+&nbsp;<small></small><big><small> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="button" value=" Load ICS205A Data " onclick="document.getElementById('txtfiletoread').click();" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <a style="color: rgb(204, 0, 0);" href="#pop1"><big>Form Info</big></a><br />
+ <a href="#pop1"><big>Form Info</big></a><br />
 <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>  
-</span></small></big></td>
+</small></big></td>
 </tr>
 <tr>
 <td style="vertical-align: top; text-align: center; width: 50%;"><div align="left">
   &nbsp;&nbsp;1. Incident or Event Name
-</div>  <p align="left"><b>&nbsp;&nbsp;  <input title="Incident number is optional" required="required" id="Incident_Name" maxlength="55" name="Incident_Name" size="60" /> </b></p>
+</div>  <p align="left"><b>&nbsp;&nbsp;  <input title="Incident number is optional" required="required" id="Incident_Name" maxlength="55" name="Incident_Name" size="60" /> 
+    <input name="FormTitle" type="hidden" id="FormTitle" />
+</b></p>
 </td>
 <td style="text-align: center; vertical-align: top; width: 50%;"><div align="left">
   &nbsp;&nbsp;2. Operational Period <span style="font-weight: bold;"><br style="font-weight: bold;" />
@@ -809,17 +849,18 @@ radio frequency, phone, cell #, etc.</td>
 </td>
 </tr>
 <tr valign="middle">
-<td height="35" colspan="3" style="vertical-align: top; height: 35px; text-align: left;"><big>
-  <input type="button" value="Save ICS205A Data"  onclick="SaveData()" />
-</big>
-  <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="6" style="color: green;" value="Submit" type="submit" />  
-<input class="BtnFormat2" value="Reset Form " name="ResetForm"  type="reset" />
-&nbsp;&nbsp;4. Approved by <small>(CUL)</small>&nbsp;      <input required="required" maxlength="35" size="40" id="PreparedName" name="PreparedName" />&nbsp;&nbsp;Date/Time&nbsp;  <input style="color: rgb(204, 0, 0);" required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="23" id="ActivityDateTime1" size="24" onclick="TimeNow('ActivityDateTime1', 'Activities1')" />
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-<input name="Templateversion" type="hidden"
+<td height="35" colspan="3" style="vertical-align: top; height: 35px; text-align: left;"><div align="left"><big>
+      <input type="button" value="Save ICS205A Data"  onclick="SaveData()" />
+    </big>
+        <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="6" style="color: green;" value="Submit" type="submit" />  
+        <input class="BtnFormat2" value="Reset Form " name="ResetForm"  type="reset" />
+&nbsp;&nbsp;4. Approved by <small>(CUL)</small>&nbsp;    <input required="required" maxlength="30" size="30" id="PreparedName" name="PreparedName" />
+&nbsp;&nbsp;Date/Time&nbsp;  <input  required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="20" id="ActivityDateTime1" size="20" onclick="TimeNow('ActivityDateTime1', 'Activities1')" />
+    <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+    <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="ICS205A v 11.2" />
-</td>
+                                    id="Templateversion" value="ICS205A v 11.3" />
+    <span class="style20"><span class="style21"><big><span style="font-weight: bold;">&nbsp; &nbsp;&nbsp; &nbsp;</span><small>ICS205A</small><big><span style="font-weight: bold;"> &nbsp;</span></big> <small>Ver 11.3</small></big></span><big><small></small></big></span></div></td>
 </tr>
 </tbody>
 </table>

@@ -322,6 +322,11 @@ input[type=black1] {
    cursor: pointer;
 }
 
+.style18 {color: #FF0000;
+	font-size: 10px;
+}
+.style18 {font-size: 10px}
+.style8 {font-size: 10px}
 </style>
 
 <script>
@@ -933,6 +938,7 @@ function SaveData() {
      alert("Files are not supported"); 
  } 
  Checkifinbrowser();
+getit();
  }
 
 
@@ -942,13 +948,48 @@ var s=s.replace(/\t/g,'|');
 document.getElementById('Message2').value=s;
 
  }
+function RestoreTitle() {
 
+var RightNow = document.getElementById('FormTitle').value;
+
+//document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+	   function store(){
+ 	var formatted= document.getElementById("FormTitle");
+     localStorage.setItem("ics206", formatted.value);
+	 //alert (localStorage.getItem("ics205a"));
+    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("ics206");
+	//alert(storedValue);
+	document.getElementById('FormTitle').value = storedValue;
+	RestoreTitle();
+	
+	}
+	function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('FormTitle').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('FormTitle').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+
+}
+ 
 </script>
 
 
 
 </head>
 <body >
+<b>
+<input type="button" value="Setup" onclick="SetupTitle()" />
+</b>&nbsp; <span class="style18">&nbsp;Click to add an agency or group name </span><span class="style8">&nbsp;</span> <span style="font-size: 12px;"></span>&nbsp;
 <form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
@@ -1135,12 +1176,10 @@ to links</span></a> </div>
 
 <td height="31" colspan="3">
 
-<div  align="center"><span class="style6">&nbsp;
+<div  align="center"><span class="style6">&nbsp;<span class="style16">General
 
-&nbsp; &nbsp; &nbsp; &nbsp;<span class="style16">General
-
-Message (ICS 213)&nbsp;</span></span><span class="style6"><br />
-<br />
+Message (ICS 213)&nbsp;</span></span><span class="style16"><br />
+ <span class="style16"  id="SubjectText"><strong> </strong></span><br />
 <span class="formtext">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1148,7 +1187,9 @@ Message (ICS 213)&nbsp;</span></span><span class="style6"><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="button" value=" Load ICS213 INITIAL Data " onclick="document.getElementById('txtfiletoread').click();" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#pop1" class="style25 style7"><span style="color: rgb(204, 0, 0);">&nbsp;Form Instructions</span></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input name="FormTitle" type="hidden" id="FormTitle" />
+&nbsp;&nbsp;&nbsp; <a href="#pop1" class="style25 style7"><span style="color: rgb(204, 0, 0);">&nbsp;Form Instructions</span></a>
  <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
 </span></span></div>
 
@@ -1252,8 +1293,8 @@ Approved by:&nbsp; </span>
 
 <td width="121" style="width: 120px;">
 
-<div align="right">Ver 41.8
-  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.8" />
+<div align="right">Ver 41.9
+  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.9" />
 </div>
 
 </td>

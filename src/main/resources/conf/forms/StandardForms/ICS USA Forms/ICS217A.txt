@@ -1,8 +1,10 @@
-Form: ICS217A_Initial.html,ICS217A_Viewer.html
+Form: ICS217A_Initial.html, ICS217A_Viewer.html
 
 To: 
-Subject: 217A-<var Incident>-<var ActivityDateTime1>
+Subject: ICS 217A - <var Incident> - <var ActivityDateTime1>
 Msg:
+ICS 217A
+<var FormTitle>
 
 Date/Time (optional): <var ActivityDateTime1>
 Incident/Event: <var Incident>

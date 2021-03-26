@@ -1,128 +1,62 @@
 Form: ICS206_Initial.html,ICS206_Viewer.html
 
 To: 
-Subject: 206-<var Incident_Name>-<var Operational_Period>  
-
+Subject: ICS 206 - <var Incident_Name>
 Msg:
+ICS 206
+<var FormTitle>
+
 1. Incident Name: <var Incident_Name>
 
-2./3. Date/Time Prepared: <var ActivityDateTime1>   
-4. Operational Period: <var Operational_Period> 
+2. Operational Period: 
+From: <var DateFrom>  to  <var DateTo>	
+<var TimeFrom> to <var TimeTo>
 ----------------------------------------------
 
-5. INCIDENT MEDICAL AID STATIONS
+3. MEDICAL AID STATIONS
 
-1: <var Med_Sta1>
-Loc: <var Med_Loc1>
-Paramedics: <var Med_Line1>
+Name	Location	Contact	Number(s)/Frequency	Paramedics
 
-2: <var Med_Sta2>  
-Loc: <var Med_Loc2> 
-Paramedics: <var Med_Line2>
+3. Medical Aid Stations
+Name	Location	Contact
+Number(s)/Frequency	Paramedics
+<var Med_Sta1>	<var Med_Loc1>	<var Med_contact1>	<var Med_Line1>
+<var Med_Sta2>	<var Med_Loc2>	<var Med_contact2>	<var Med_Line2>
+<var Med_Sta3>	<var Med_Loc3>	<var Med_contact3>	<var Med_Line3>
+<var Med_Sta4>	<var Med_Loc4>	<var Med_contact4>	<var Med_Line4>
+<var Med_Sta5>	<var Med_Loc5>	<var Med_contact5>	<var Med_Line5>
 
-3: <var Med_Sta3>  
-Loc: <var Med_Loc3> 
-Paramedics: <var Med_Line3>
+4. Transportation
+Ambulance Services	Address and Phone	Contact	Number(s)/Frequency	Level of Service
+<var Amb_Name1>	<var Amb_Info1>	<var Amb_contact1>	<var Amb_Line1>
+<var Amb_Name2>	<var Amb_Info2>	<var Amb_contact2>	<var Amb_Line2> 
+<var Amb_Name3>	<var Amb_Info3>	<var Amb_contact3>	<var Amb_Line3>
+<var Amb_Name4>	<var Amb_Info4>	<var Amb_contact4>	<var Amb_Line4>
 
-4: <var Med_Sta4>  
-Loc: <var Med_Loc4> 
-Paramedics: <var Med_Line4>
+5. Hospitals   
+Hospital Name	Address/Lat/Lon	Contact	Travel Time air-ground	Trauma Center	Burn Center	Helipad
+<var Hosp_Name1>	<var Hosp_Ad1>	<var Hosp_Ph1>	<var airtime1>	<var groiundtime1>	<var HosTrama1> <var hoslevel1>	<var burn1>	<var heli1>
+<var Hosp_Name2>	<var Hosp_Ad2>	<var Hosp_Ph2>	<var airtime2>	<var groiundtime2>	<var HosTrama2> <var hoslevel2>	<var burn2>	<var heli1>
+<var Hosp_Name3>	<var Hosp_Ad3>	<var Hosp_Ph3>	<var airtime3>	<var groiundtime3>	<var HosTrama3> <var hoslevel3>	<var burn3>	<var heli3>
+<var Hosp_Name4>	<var Hosp_Ad4>	<var Hosp_Ph4>	<var airtime4>	<var groiundtime4>	<var HosTrama4> <var hoslevel4>	<var burn4>	<var heli4>
+<var Hosp_Name5>	<var Hosp_Ad5>	<var Hosp_Ph5>	<var airtime5>	<var groiundtime5>	<var HosTrama5> <var hoslevel5>	<var burn5>	<var heli5>
 
-5: <var Med_Sta5>  
-Loc: <var Med_Loc5> 
-Paramedics: <var Med_Line5>
-
-6. TRANSPORTATION - A
-AMBULANCE SERVICES:
-
-1. <var Amb_Name1>
-Address & Phone: <var Amb_Info1>
-Paramedics: <var Amb_Line1>
-
-2. <var Amb_Name2> 
-Address & Phone: <var Amb_Info2> 
-Paramedics: <var Amb_Line2>
-
-3. <var Amb_Name3> 
-Address & Phone: <var Amb_Info3> 
-Paramedics: <var Amb_Line3>
-
-4. <var Amb_Name4> 
-Address & Phone: <var Amb_Info4> 
-Paramedics: <var Amb_Line4>
-
-5. <var Amb_Name5> 
-Address & Phone: <var Amb_Info5> 
-Paramedics: <var Amb_Line5>
-
-6. TRANSPORTATION - B
-INCIDENT AMBULANCES:
-
-1. <var Inc_Amb_Name1>
-Loc: <var Inc_Amb_Info1> 
-Paramedics: <var Inc_Amb1>
-
-2. <var Inc_Amb_Name2> 
-Loc: <var Inc_Amb_Info2> 
-Paramedics: <var Inc_Amb2>
-
-3. <var Inc_Amb_Name3> 
-Loc: <var Inc_Amb_Info3> 
-Paramedics: <var Inc_Amb3>
-
-4. <var Inc_Amb_Name4> 
-Loc: <var Inc_Amb_Info4> 
-Paramedics: <var Inc_Amb4>
-
-5. <var Inc_Amb_Name5> 
-Loc: <var Inc_Amb_Info5> 
-Paramedics: <var Inc_Amb5>
-
-7. HOSPITALS:
-
-1. <var Hosp_Name1> 
-Address: <var Hosp_Ad1> 
-Travel: <var Travel1> 
-Phone: <var Hosp_Ph1>
-Helipad: <var Helipad1> 
-Burn Center: <var Burn_Cntr1>
-
-2. <var Hosp_Name2> 
-Address: <var Hosp_Ad2> 
-Travel: <var Travel2> 
-Phone: <var Hosp_Ph2>
-Helipad: <var Helipad2> 
-Burn Center: <var Burn_Cntr2>
-
-3. <var Hosp_Name3> 
-Address: <var Hosp_Ad3> 
-Travel: <var Travel3> 
-Phone: <var Hosp_Ph3>
-Helipad: <var Helipad3> 
-Burn Center: <var Burn_Cntr3>
-
-4. <var Hosp_Name4> 
-Address: <var Hosp_Ad4> 
-Travel: <var Travel4> 
-Phone: <var Hosp_Ph4>
-Helipad: <var Helipad4> 
-Burn Center: <var Burn_Cntr4>
-
-5. <var Hosp_Name5> 
-Address: <var Hosp_Ad5> 
-Travel: <var Travel5> 
-Phone: <var Hosp_Ph5>
-Helipad: <var Helipad5> 
-Burn Center: <var Burn_Cntr5>
-
-8. MEDICAL EMERGENCY PROCEDURES:
-
+6. Medical Emergency Procedures 
 <var Procedures>
--------------------------------------------------------
-9. Prepared By: <var Prepared_By>  10: Reviewed By:  <var Review_By>
 
--------------------------------------------------------------
-Express Sender: <var MsgSender>
+
+7. Prepared by (MUL): <var Prepared_By>
+      
+
+8. Approved by (Safety Officer): <var Review_By>
+      Date/Time <var approvedatetime>
+
+IAP Page: <var IAPage>
+
+ ---------------------------------------------
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>
 
 
 

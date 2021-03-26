@@ -1,9 +1,12 @@
 Form: ICS213RR_Initial.html,ICS213RR_Viewer.html
 
 To: 
-Subject: 213RR-<var IncName>-Request #:<var ReqNum> 
+Subject: ICS 213RR- <var IncName>- Request #:<var ReqNum> 
 
 Msg:
+ICS 213RR
+<var FormTitle>
+
 PRIORITY: [<var Priority>]
 
 1. Incident or Event Name: <var IncName>

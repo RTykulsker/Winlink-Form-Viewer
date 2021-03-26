@@ -1,9 +1,12 @@
-Form: ICS210_Initial.html,ICS210_Viewer.html
+Form:  ICS210_Initial.html,ICS210_Viewer.html
 
 To: 
-Subject: 210-Inc# <var Incident_Name>-<var DateFrom> TO: <var DateTo> 
+Subject: ICS 210- Inc# <var Incident_Name>- <var DateFrom> - <var DateTo> 
 
 Msg:
+ICS 210
+<var FormTitle>
+
 1. INCIDENT NAME: <var Incident_Name>
 
 2. Operational Period: 
@@ -151,4 +154,7 @@ Time & Date of Change
    DATE/TIME: <var TimeDate>
 
 -------------------------------
-Winlink Express Sender: <var MsgSender>
+Express Sending Station: <MsgSender>
+Senders Express Version: <ProgramVersion>
+Senders Template Version: <var Templateversion>
+
