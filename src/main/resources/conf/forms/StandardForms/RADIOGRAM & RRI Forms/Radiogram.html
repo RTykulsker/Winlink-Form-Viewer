@@ -1591,7 +1591,7 @@ wnd.document.write(html);   }
  
   <!-- end resr -->
   <div align="left">
-    <table width="1121" height="731" border="1" cellpadding="1" cellspacing="1" style="width: 1122px; height: 613px;">
+    <table width="1111" height="731" border="1" cellpadding="1" cellspacing="1" style="width: 1122px; height: 613px;">
       <tbody>
         <tr>
           <td colspan="8" style="text-align: center; vertical-align: top; background-color: rgb(204, 255, 255);" height="41"> <div align="center"><span class="style5">  <strong class="red"> <span class="style33"></span> </strong>
@@ -1600,14 +1600,14 @@ wnd.document.write(html);   }
         </tr>
         <tr align="center" bgcolor="#ffffaa" valign="middle"> </tr>
         <tr class="Kopfzeile" valign="top">
-          <td rowspan="2" style="width: 50px;" nowrap="nowrap" width="129"><p>Number<br />
+          <td rowspan="2" style="width: 50px;" nowrap="nowrap" width="134"><p>Number<br />
               <input name="SeqNum" id="NumberVal"  title="You may overwrite. This number is controlled in Express: Message > Template settings." onchange="NumberVal.value=NumberVal.value.replace(/^0+/, '');" onkeypress="return isNumberKey(event)" value="{SeqNum}" size="8" maxlength="6" placeholder=" User Input" required="required" />
               <br />
               <br />
               <input name="SVCB" id="SVCB" title="For NTS handler use only." value="SVC" onclick="Flip('SVC')" type="checkbox" />
               SVC <span class="style37">(Handler use)</span><br />
             </p></td>
-          <td width="124" rowspan="2" style="width: 110px;"> <p>Precedence<br /> 
+          <td width="135" rowspan="2" style="width: 110px;"> <p>Precedence<br /> 
               <select size="4" name="Priority" id="Priority" onchange="ClearTo()">
                 <option value="R" selected="selected">R</option>
                 <option class ="red" value="EMERGENCY">EMERGENCY</option>
@@ -1616,9 +1616,10 @@ wnd.document.write(html);   }
                 <option value="TEST P">TEST P</option>
                 <option value="TEST W">TEST W</option>
               </select>
-              <span class="style27"><span class="style1">Emergency</span>  not in use at this time.</span></p>
+              <span class="style27"><span class="style1">Emergency</span>  not in<br />
+              use at this time.</span></p>
           </td>
-          <td width="157" rowspan="2" style="white-space: nowrap; width: 140px;"><br />
+          <td width="158" rowspan="2" style="white-space: nowrap; width: 140px;"><br />
             Handling Instructions<span style="font-weight: normal;">          </span><br />
             <select style="font-weight: normal;" size="3" name="Instructions" id="Instructions">
               <option value="NONE" selected="selected">NONE</option>
@@ -1641,32 +1642,32 @@ wnd.document.write(html);   }
                 <input name="Callsign" class="zentriert " id="Callsign" style="font-weight: normal;" title="Can be overwritten if different." onchange="javascript:this.value=this.value.toUpperCase();" value="{Callsign}" size="18" maxlength="16" />
               </span>
                 <span class="style19">Change  if not you. </span> </div></td>
-          <td rowspan="2" style="text-align: center; vertical-align: top;" width="126"><span style="font-weight: bold;"><br />
+          <td rowspan="2" style="text-align: center; vertical-align: top;" width="132"><span style="font-weight: bold;"><br />
             Check</span><br style="font-weight: normal;" />
             <label style="font-weight: normal;" for="check">
             <input name="check" type="text" class="zentriert" id="check" readonly="readonly" value="0" size="10" maxlength="9" />
           </label></td>
-          <td rowspan="2" style="text-align: center; vertical-align: top; width: 100px;" width="195"><span style="font-weight: bold;"> <br />
-            &nbsp;Place of Origin </span>            <input name="place" id="place" size="30" maxlength="25" required="required"  onkeyup="Strippunct(this.value, this.id);" onchange="javascript:this.value=this.value.toUpperCase(); this.value=this.value.replace(/\./gm, ' '); " />            
+          <td rowspan="2" style="text-align: center; vertical-align: top; width: 100px;" width="150"><span style="font-weight: bold;"> <br />
+            &nbsp;Place of Origin </span>            <input name="place" id="place" size="28" maxlength="25" required="required"  onkeyup="Strippunct(this.value, this.id);" onchange="javascript:this.value=this.value.toUpperCase(); this.value=this.value.replace(/\./gm, ' '); " />            
             <br />            <br />
           </td>
-          <td width="124" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
+          <td width="144" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
             Time</strong> <br />
-            <input name="Time1" id="Time1" title="Optional, include time if relevant" size="7" maxlength="6" placeholder=Optional readonly="readonly" />
+            <input name="Time1" style="width:45px"id="Time1" title="Optional, include time if relevant" size="7" maxlength="6" placeholder="Optional"/>
 &nbsp; </td>
-          <td width="122" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
+          <td width="124" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
             &nbsp;Date</strong> &nbsp; <br />
-            <input name="Date" id="Date" size="7" maxlength="6" readonly="readonly"/>
+            <input name="Date" id="Date"  style="width:40px;text-transform: uppercase;" size="10" maxlength="6" onchange="javascript:this.value=this.value.toUpperCase();"/>
 &nbsp;</td>
         </tr>
         <tr class="Kopfzeile" valign="top">
           <td height="61" colspan="2" bgcolor="#FFFFFF" style="font-weight: normal; vertical-align: top; text-align: center; background-color: rgb(255, 255, 204);"><p align="left">
 &nbsp;&nbsp;
 <input name="tformat" id="tformat"  type="radio" value="UTC" onclick="DateTime('UTC')"/>            
-UTC Time<br />
+Current UTC Time<br />
 &nbsp;&nbsp;
 <input name="tformat" id="tformat" type="radio" value="local" onclick="DateTime('local')" />
-              Local Time<br />
+              Current Local Time<br />
               &nbsp;&nbsp;
 <input name="tformat" type="radio" id="tformat" onclick="DateTime('empty')" value="empty" checked="checked"/>
               <span class="style1">No Time</span> <br />
@@ -1675,10 +1676,10 @@ UTC Time<br />
         </tr>
         <tr>
           <td colspan="8" height="516"><div align="left">
-              <table width="1143" border="1" cellpadding="1" cellspacing="1" class="TabelleHintergrund" style="text-align: left; margin-left: auto; margin-right: auto; width: 1114px; height: 427px;">
+              <table width="1085" border="1" cellpadding="1" cellspacing="1" class="TabelleHintergrund" style="text-align: left; margin-left: auto; margin-right: auto; width: 1114px; height: 427px;">
                 <tbody>
                   <tr>
-                    <td colspan="2" nowrap="nowrap" style="vertical-align: top; text-align: center;"><p align="left"><span class="background_table"><span style="font-weight: bold;">&nbsp; <span class="style7">&nbsp;TO:
+                    <td width="1077" colspan="2" nowrap="nowrap" style="vertical-align: top; text-align: center;"><p align="left"><span class="background_table"><span style="font-weight: bold;">&nbsp; <span class="style7">&nbsp;TO:
                       <input name="filenamefld" type="hidden" id="filenamefld" />
                       <input name="textfield" type="hidden" value="{FormFolder}" />
 					  
@@ -1697,7 +1698,8 @@ UTC Time<br />
 &nbsp;</span> State or Province: &nbsp;<span class="background_table">
                         <input style="text-transform: uppercase;" title="2 Digit State Code." name="State" id="State" size="6" maxlength="2" placeholder="ST" required="required" onchange="javascript:this.value=this.value.toUpperCase(); " onkeyup="Strippunct(this.value, this.id)"onblur="javascript:this.value=this.value.toUpperCase();this.value=this.value.toUpperCase();"/>
 </span> <span class="style29"><a href="#pop6" class="style27">2 Letter Codes</a></span> &nbsp; &nbsp;Zip: &nbsp; <span class="background_table">
-                        <input name="ZIP" id="ZIP" size="7" required="required" title="If Zip not known, use the space bar to move on." style="text-transform: uppercase;" onkeypress="return isNumberKeyspace(event)" maxlength="6" placeholder="USA/CAN" onblur = "this.value = this.value.replace(/[^\d\ ]/g, '')";)/>
+                        <input name="ZIP" id="ZIP" size="8" required="required" title="If Zip not known, use the space bar to move on." style="text-transform: uppercase;"  maxlength="6" placeholder="USA/CAN" 
+						onkeypress="if(event.keyCode==32){return false;}"  onchange="javascript:this.value=this.value.toUpperCase();" />
                         </span> &nbsp;</p>
                       <p align="left">  &nbsp; &nbsp;  Country: &nbsp; <span class="background_table">
                         <input style="text-transform: uppercase;" name="country" id="country" placeholder="OPTIONAL" size="30" maxlength="25" onkeyup="Strippunct(this.value, this.id);  " onchange="javascript:this.value=this.value.toUpperCase();"  onblur="javascript:this.value=this.value.toUpperCase();" />
@@ -1745,7 +1747,9 @@ UTC Time<br />
                   <tr align="left" bgcolor="#ffffaa" valign="middle">
                     <td colspan="2" style="vertical-align: top; height: 2%;" height="42"><p><span class="style28">&gt;&gt;&gt;<a href="javascript:selectaddress();"> NOW CLICK HERE and select a Liaison Station </a>&lt;&lt;&lt; </span> &nbsp;
                         <input name="Mailthisto" id="Mailthisto" size="40" maxlength="35" title="If not using a Liasion Station, then enter the address here." placeholder="YOU MAY ENTER ANY ADDRESS HERE" required="required" type="text" ; />
-                        <span style="font-size: 10px;"><big style="font-style: italic;">&nbsp; </span><small style="color: rgb(0, 153, 0); font-weight: bold;">
+                        <span style="font-size: 10px;"><big style="font-style: italic;">&nbsp; </span><small style="color: rgb(0, 153, 0); font-weight: bold;"></p>
+                      <p>
+                        <span class="background_table">&nbsp; &nbsp; </span>
                         <input enctype="multipart/form-data" id="Submitbutton" method="Post" name=" Submit " value="Submit" onclick="fix(); puttogether();" type="submit" />
                         <span style="font-size: 10px;">&nbsp; </span>
                         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset" />
@@ -1753,7 +1757,7 @@ UTC Time<br />
                         <input name="MsgToSend" type="hidden" id="MsgToSend" />
 &nbsp;
                         <input name="ArchiveThis" type="hidden" id="ArchiveThis" />
-&nbsp;&nbsp;&nbsp; &nbsp; </span> <span class="style36">Contact KB1TCE about this form: <em>Ver 10</em></span></p></td>
+&nbsp;&nbsp;&nbsp; &nbsp; </span> <span class="style36">Contact KB1TCE about this form: <em>Ver 10.5</em></span></p></td>
                   </tr>
                 </tbody>
               </table>

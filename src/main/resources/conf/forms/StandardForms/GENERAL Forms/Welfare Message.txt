@@ -18,7 +18,7 @@ Sent at: <var ActivityDateTime1> (Local)
 
 [PLEASE DO NOT RESPOND TO THIS MESSAGE. IT WILL NOT BE RECEIVED]
 
-This is a ONE WAY email sent by Amateur Radio Operator: [<var CallSign>]
+This is a ONE WAY email sent by Amateur Radio Operator: [<MsgSender>]
 via the Winlink Radio System.   www.winlink.org  
 
 Sent from the above location, to provide information about the above named party(s).                     
