@@ -444,8 +444,18 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+  Checkifinbrowser();
  Fixfields();
  }
+ function Checkifinbrowser() {
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+}
+
  
  function Fixfields() { 
  AutoGrowTextArea(document.getElementById("Input16"));
@@ -457,7 +467,7 @@ AutoGrowTextArea(document.getElementById("Input28"));
 
 </script></head>
 <body>
-<form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+<form  style="font-family: Arial;" pbzloc="3" onsubmit="document.getElementById('parseme').value =''; return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <table width="500" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#999999">
 <tbody>
 <tr>
@@ -468,7 +478,7 @@ AutoGrowTextArea(document.getElementById("Input28"));
 <td height="64" colspan="2" style="height: 20px; vertical-align: bottom; text-align: center; ">&nbsp;<big>
 </big><span style="font-weight: bold;"><big><big><small>WASHINGTON
 STATE RESOURCE REQUEST </small>&nbsp;</big> </big></span><big>&nbsp;(</big>WebEOC Format)<small><big><big>
-&nbsp;&nbsp;</big> <small>&nbsp;Vers 2 &nbsp;
+&nbsp;&nbsp;</big> <small>&nbsp;Vers 2.2 &nbsp;
 <br />
 <br />
   <input type="button" value=" Load WA RR WebEOC data " onclick="document.getElementById('txtfiletoread').click();" />
@@ -563,7 +573,13 @@ STATE RESOURCE REQUEST </small>&nbsp;</big> </big></span><big>&nbsp;(</big>WebEO
     <input type="button" value="Save WA RR WebEOC data "  style="color: blue;"onclick="SaveData()" />
     </span>&nbsp;&nbsp;</small></big></big></small></span></span></small>
     <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="post" name="Submit" size="3" style="height: 24px; width: 48px; color: green;" value="Submit" type="submit" /><b>&nbsp;&nbsp;</b><input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset" /><b>
-</tr>
+    <span style="font-size: 12px;"><b><span style="font-weight: normal;">
+    <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+    <span style="font-size: 12px;"><b><span style="font-weight: normal;">
+    <input name="Templateversion" type="hidden"
+
+                                    id="Templateversion" value="RR WebEOC WA 2.2" />
+    </span></b></span> </span></b></span></tr>
 </tbody>
 </table>
 </td>

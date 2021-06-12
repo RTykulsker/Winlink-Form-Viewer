@@ -14,7 +14,7 @@ GENERAL MESSAGE (ICS 213)
 4. Subject: <var Subjectline>
 5. Date: <var Mdate>
 6. Time: <var mtime>
-7. Message:
+7. Message: 
 
 <var Message>
 

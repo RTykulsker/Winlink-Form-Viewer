@@ -1,7 +1,7 @@
 Form: HICS205A_Initial.html,HICS205A_Viewer.html
 
 To: 
-Subject: HICS205A-<var Incident_Name>-<var Facility>-[<var ContactType>] 
+Subject: HICS205A-<var Incident_Name> - <var Facility> - [<var ContactType>] 
 
 Msg:
 1. Incident Name: <var Incident_Name>
@@ -10,7 +10,7 @@ Msg:
 
 Page [<var Page>] OF [<var Page1>]
 
-2. Operational Period: (#): [<var OpNum>]
+2. Operational Period: (#): [<var OpNum>] 
 Date From: <var DateFrom> To: <var DateTo>
 Time From: <var TimeFrom> To: <var TimeTo>
 ----------------------------------------------
@@ -19,147 +19,147 @@ Time From: <var TimeFrom> To: <var TimeTo>
 
 ASSIGNMENT/NAME: <var Assignment1>
 Radio Ch #/Frequency: <var Ch1>
-Radio Call: <var Phone1>
+Telephone: <var Phone1>
 Fax: <var Fax1>
 Email: <var Email1>
-Cell Phone: <var Mobil1>
+Mobile Phone: <var Mobil1>
 Phone: <var Phone1>
 Issued Device ID#/Comments:
 <var Id1>
 
 ASSIGNMENT/NAME: <var Assignment2>
 Radio Ch #/Frequency: <var Ch2>
-Radio Call: <var Phone2>
+Telephone: <var Phone2>
 Fax: <var Fax2>
 Email: <var Email2>
-Cell Phone: <var Mobil2>
+Mobile Phone: <var Mobil2>
 Phone: <var Phone2>
 Issued Device ID#/Comments:
 <var Id2>
 
 ASSIGNMENT/NAME: <var Assignment3>
 Radio Ch #/Frequency: <var Ch3>
-Radio Call: <var Phone3>
+Telephone: <var Phone3>
 Fax: <var Fax3>
 Email: <var Email3>
-Cell Phone: <var Mobil3>
+Mobile Phone: <var Mobil3>
 Phone: <var Phone3>
 Issued Device ID#/Comments:
 <var Id3>
 
 ASSIGNMENT/NAME: <var Assignment4>
 Radio Ch #/Frequency: <var Ch4>
-Radio Call: <var Phone4>
+Telephone: <var Phone4>
 Fax: <var Fax4>
 Email: <var Email4>
-Cell Phone: <var Mobil4>
+Mobile Phone: <var Mobil4>
 Phone: <var Phone4>
 Issued Device ID#/Comments:
 <var Id4>
 
 ASSIGNMENT/NAME: <var Assignment5>
 Radio Ch #/Frequency: <var Ch5>
-Radio Call: <var Phone5>
+Telephone: <var Phone5>
 Fax: <var Fax5>
 Email: <var Email5>
-Cell Phone: <var Mobil5>
+Mobile Phone: <var Mobil5>
 Phone: <var Phone5>
 Issued Device ID#/Comments:
 <var Id5>
 
 ASSIGNMENT/NAME: <var Assignment6>
 Radio Ch #/Frequency: <var Ch6>
-Radio Call: <var Phone6>
+Telephone: <var Phone6>
 Fax: <var Fax6>
 Email: <var Email6>
-Cell Phone: <var Mobil6>
+Mobile Phone: <var Mobil6>
 Phone: <var Phone6>
 Issued Device ID#/Comments:
 <var Id6>
 
 ASSIGNMENT/NAME: <var Assignment7>
 Radio Ch #/Frequency: <var Ch7>
-Radio Call: <var Phone7>
+Telephone: <var Phone7>
 Fax: <var Fax7>
 Email: <var Email7>
-Cell Phone: <var Mobil7>
+Mobile Phone: <var Mobil7>
 Phone: <var Phone7>
 Issued Device ID#/Comments:
 <var Id7>
 
 ASSIGNMENT/NAME: <var Assignment8>
 Radio Ch #/Frequency: <var Ch8>
-Radio Call: <var Phone8>
+Telephone: <var Phone8>
 Fax: <var Fax8>
 Email: <var Email8>
-Cell Phone: <var Mobil8>
+Mobile Phone: <var Mobil8>
 Phone: <var Phone8>
 Issued Device ID#/Comments:
 <var Id8>
 
 ASSIGNMENT/NAME: <var Assignment9>
 Radio Ch #/Frequency: <var Ch9>
-Radio Call: <var Phone9>
+Telephone: <var Phone9>
 Fax: <var Fax9>
 Email: <var Email9>
-Cell Phone: <var Mobil9>
+Mobile Phone: <var Mobil9>
 Phone: <var Phone9>
 Issued Device ID#/Comments:
 <var Id9>
 
 ASSIGNMENT/NAME: <var Assignment10>
 Radio Ch #/Frequency: <var Ch10>
-Radio Call: <var Phone10>
+Telephone: <var Phone10>
 Fax: <var Fax10>
 Email: <var Email10>
-Cell Phone: <var Mobil10>
+Mobile Phone: <var Mobil10>
 Phone: <var Phone10>
 Issued Device ID#/Comments:
 <var Id10>
 
 ASSIGNMENT/NAME: <var Assignment11>
 Radio Ch #/Frequency: <var Ch11>
-Radio Call: <var Phone11>
+Telephone: <var Phone11>
 Fax: <var Fax11>
 Email: <var Email11>
-Cell Phone: <var Mobil11>
+Mobile Phone: <var Mobil11>
 Phone: <var Phone11>
 Issued Device ID#/Comments:
 <var Id11>
 
 ASSIGNMENT/NAME: <var Assignment12>
 Radio Ch #/Frequency: <var Ch12>
-Radio Call: <var Phone12>
+Telephone: <var Phone12>
 Fax: <var Fax12>
 Email: <var Email12>
-Cell Phone: <var Mobil12>
+Mobile Phone: <var Mobil12>
 Phone: <var Phone12>
 Issued Device ID#/Comments:
 <var Id12>
 
 ASSIGNMENT/NAME: <var Assignment13>
 Radio Ch #/Frequency: <var Ch13>
-Radio Call: <var Phone13>
+Telephone: <var Phone13>
 Fax: <var Fax13>
 Email: <var Email13>
-Cell Phone: <var Mobil13>
+Mobile Phone: <var Mobil13>
 Phone: <var Phone13>
 Issued Device ID#/Comments:
 <var Id13>
 
 ASSIGNMENT/NAME: <var Assignment14>
 Radio Ch #/Frequency: <var Ch14>
-Radio Call: <var Phone14>
+Telephone: <var Phone14>
 Fax: <var Fax14>
 Email: <var Email14>
-Cell Phone: <var Mobil14>
+Mobile Phone: <var Mobil14>
 Phone: <var Phone14>
 Issued Device ID#/Comments:
 <var Id14>
 
 ASSIGNMENT/NAME: <var Assignment15>
 Radio Ch #/Frequency: <var Ch15>
-Radio Call: <var Phone15>
+Telephone: <var Phone15>
 Fax: <var Fax15>
 Email: <var Email15>
 Cell Phone: <var Mobil15>
@@ -173,8 +173,7 @@ Issued Device ID#/Comments:
 <var specialInstructions>
 ---------------------------------------------
 5. Prepared by:(CUL) <var PreparedName>
-Date: <var Date_Time>  Time: <var Time>
-
+   aDate: <var Date_Time>  Time: <var Time>
 ------------------------------------
 Express Sending Station: <MsgSender>
 Senders Express Version: <ProgramVersion>

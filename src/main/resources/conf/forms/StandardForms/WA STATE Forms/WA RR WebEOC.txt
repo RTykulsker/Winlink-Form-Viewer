@@ -1,7 +1,7 @@
 Form: RR_WebEOC_WA_Initial.html,RR_WebEOC_WA_Viewer.html
 
 To: 
-Subject: Washington State Resource Request-<var Input8>
+Subject: Washington State Resource Request-<var Input8> 
 
 Msg:
 Request for Assistance or Resources

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Daily Shelter Report</title>
+<title>HH Daily Shelter Report</title>
 
 <style type="text/css">
 body, td, th {
@@ -658,7 +658,18 @@ alert("Please select text file");
 else {
 alert("Files are not supported");
 }
+  Checkifinbrowser();
 }
+
+function Checkifinbrowser() {
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+}
+
 </script>
 </head>
 <body width:="" 1017px;"="">
@@ -698,7 +709,7 @@ alert("Files are not supported");
 <p align="left">
 <strong>6. Final Instructions:</strong><br />
 &nbsp;&nbsp;&nbsp;&nbsp;a. Enter the name of the individual preparing the report.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;b. Sign the report.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;b. Sign the report. The Originating Station / Callsign are intended for identifying stations that are voice relayed.<br />
 &nbsp;&nbsp;&nbsp;&nbsp;c. Submit the report as instructed by the sheltering lead and according to the Job Tool: Operating a Shelter.<br />
 </p>
 </div>
@@ -730,9 +741,9 @@ to links
 </span><strong><span style="font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp;</span></strong><strong>
 <span style="font-weight: normal;">
 <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="button" value="Load HI Hurricane Daily Shelter Report Data " onclick="document.getElementById('txtfiletoread').click();" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<a href="#pop1"><big style="color: rgb(204, 0, 0);">Form Info</big></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<a href="#pop1"><big style="color: rgb(204, 0, 0);">Form Info</big></a>
 </span>
 </strong><big style="color: rgb(204, 0, 0);">
 <strong><span style="font-weight: normal;"></span></strong><strong><span style="font-weight: normal;"></span></strong><strong>
@@ -880,38 +891,27 @@ Disaster Mental Health
 <tr align="center" valign="top">
 <td height="102" style="text-align: right;">
 </td>
-<td style="text-align: center;"> <p class="vertical2">&nbsp;&nbsp;Cots</p></td>
-<td style="text-align: center;"> <p class="vertical2">&nbsp;&nbsp;Blankets</p></td>
-<td style="text-align: center;">
-<p class="vertical2">
-&nbsp;&nbsp;Comfort
-Kits
-</p>
-</td>
-<td style="text-align: center;"> <p class="vertical2">&nbsp;&nbsp;Health Supplies</p></td>
-<td style="text-align: center;">
-<p class="vertical2">
-&nbsp;&nbsp;Signage
-Kits
-</p>
-</td>
-<td valign="bottom" style="text-align: center;"><input maxlength="9" size="10" name="Op1" /></td>
-<td valign="bottom" style="text-align: center;"><input maxlength="9" size="10" name="Op2" /></td>
+<td style="text-align: center; width: 20px"> <p class="vertical2">&nbsp;&nbsp;Cots</p></td>
+<td style="text-align: center; width: 20px"> <p class="vertical2">&nbsp;&nbsp;Blankets</p></td>
+<td style="text-align: center; width: 20px"> <p class="vertical2">&nbsp;&nbsp;Comfort Kits</p></td>
+<td style="text-align: center; width: 30px"> <p class="vertical2">&nbsp;&nbsp;Health Supplies</p></td>
+<td style="text-align: center; width: 30px"> <p class="vertical2">&nbsp;&nbsp;Signage Kits</p></td>
+<td valign="middle" style="text-align: center;"><input maxlength="10" size="11" name="Op1" placeholder="custom category"/></td>
+<td valign="middle" style="text-align: center;"><input maxlength="10" size="11" name="Op2" placeholder="custom category"/></td>
 </tr>
 <tr>
 <td style="text-align: center;">
 <div align="left">
-&nbsp; #
-Needed ASAP
+&nbsp; # Needed ASAP
 </div>
 </td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis49" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis50" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis51" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis52" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis53" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis54" /></td>
-<td style="text-align: center;"><input maxlength="4" size="5" name="Dis55" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis49" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis50" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis51" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis52" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis53" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis54" /></td>
+<td style="text-align: center;"><input maxlength="4" size="4" name="Dis55" /></td>
 </tr>
 </tbody>
 </table>
@@ -934,14 +934,20 @@ Any Services Needed? &nbsp; Security, Health Dept, Janitorial, Pet Shelter Staff
 </tr>
 <tr>
 <td colspan="3" bgcolor="f4f3ed" style="text-align: center; ">
-<div align="left">
-Preparer
-Name:&nbsp;
-<input name="Approved" size="45" maxlength="35" title="For radio delivery typed name indicates approval" required="required" />
-&nbsp; &nbsp;Preparer Signature:
-<input name="prepApproved" id="prepApproved" title="For radio delivery typed name indicates approval" size="45" maxlength="35" required="required" />
-<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
-</div>
+	<div align="left">
+		Preparer Name:&nbsp;
+		<input name="Approved" size="45" maxlength="35" title="For radio delivery typed name indicates approval" required="required" />
+		&nbsp; &nbsp;
+		Preparer Signature:
+		<input name="prepApproved" id="prepApproved" title="For radio delivery typed name indicates approval" size="45" maxlength="35" required="required" />
+		<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
+		<br /><br />
+		Originating Station:
+		<input name="Origin_Name" size="45" maxlength="35" title="Name of radio relay" />
+		&nbsp; &nbsp;
+		Callsign:
+		<input name="Origin_Call" id="Origin_Call" title="Callsign of radio relay" size="15" maxlength="10" />
+	</div>
 </td>
 </tr>
 <tr>
@@ -961,8 +967,9 @@ Name:&nbsp;
 <span style="font-weight: normal;">
 <small>
 	<span style="font-size: 12px;">
-		<input name="form_version" type="hidden" id="form_version" value="HHDSR v 1.0" />
-	</span>
+		<input name="form_version" type="hidden" id="form_version" value="HHDSR v 1.2" />
+        <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />	
+        </span>
 </small>
 </span>
 </big>
@@ -976,7 +983,7 @@ Name:&nbsp;
 </tr>
 </tbody>
 </table>
-&nbsp;&nbsp;&nbsp;&nbsp;HH Daily Shelter Report [ver 1.0 2020.08.03]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;HH Daily Shelter Report [ver 1.2 2021.4.27]<br />
 <br />
 &nbsp;
 </td>

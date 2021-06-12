@@ -304,6 +304,7 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+ Checkifinbrowser();
  Fixfields();
  }
  
@@ -318,13 +319,21 @@ AutoGrowTextArea(document.getElementById("Schools"));
 AutoGrowTextArea(document.getElementById("Other"));
 }
 // function setcolors() {
+ function Checkifinbrowser() {
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+}
 
 
 
 </script>
 </head>
 <body>
-<form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+<form  style="font-family: Arial;" pbzloc="3" onsubmit="document.getElementById('parseme').value =''; return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <table style="height: 498px; width: 907px;" align="center" border="0">
 <tbody>
 <tr>
@@ -334,7 +343,7 @@ AutoGrowTextArea(document.getElementById("Other"));
 <tr>
 <td colspan="2" style="vertical-align: top; height: 12%; text-align: center; background-color: rgb(204, 255, 255);"><p><span style="font-weight: bold;">&nbsp; &nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;EYEWARN</span> Situation
-  Report (SITREP)&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<small>vers 5
+  Report (SITREP)&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<small>vers 5.1
   <br />
 &nbsp;Clark County Washington </small></p>
   <p><input type="button" value=" Load EyeWarn Report data" onclick="document.getElementById('txtfiletoread').click();" />
@@ -523,7 +532,9 @@ Hr format)</small></td>
   <small>
 &nbsp;<span style="color: rgb(128, 0, 0);"><span><span style="font-size: 12px;"></span></span></span><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;"> </span>&nbsp;&nbsp;&nbsp;
  </span><span style="color: rgb(128, 0, 0);"><small style="color: black;"> Contact K7GJT&nbsp;</small></span></small><small style="color: black;">for form info </small><small style="color: black;">&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; www.eyewarn.net&nbsp;</small></td>
+&nbsp; &nbsp; &nbsp; &nbsp;<span style="font-size: 12px;"><b><span style="font-weight: normal;">
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+</span></b></span>&nbsp; &nbsp; &nbsp; &nbsp; www.eyewarn.net&nbsp;</small></td>
 </tr>
 </tbody>
 </table>

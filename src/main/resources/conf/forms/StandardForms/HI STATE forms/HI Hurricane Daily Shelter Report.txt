@@ -69,6 +69,7 @@ Preparer Name: <var Approved>
 (for radio delivery full name equals signature)
 
 Express Sending Station: <MsgSender>
+Originating Station: <var Origin_Name> - <var Origin_Call>
 Senders Template Version: <var form_version>
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-<title>Daily Shelter Report</title>
+<title>HH Daily Shelter Report</title>
 
 <style type="text/css">
 @media print {
@@ -722,7 +722,7 @@ alert("Files are not supported");
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="file" id="txtfiletoread" accept=".txt" style="display: none;" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>
-<input name="form_version" type="hidden" id="form_version" value="HHDSR v 1.0" />
+<input name="form_version" type="hidden" id="form_version" value="HHDSR v 1.2" />
 </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span>
 </span><strong><span style="font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp;</span></strong><strong>
@@ -875,17 +875,13 @@ FUNCTIONS OR ACTIVITIES STAFF
 <tr align="center" valign="top">
 <td height="102" style="text-align: right;"></td>
 
-
-
-
-<td style="text-align: center;"><p class="vertical2">&nbsp;&nbsp;Cots</p></td>
-<td style="text-align: center;"><p class="vertical2">&nbsp;&nbsp;Blankets</p></td>
-<td style="text-align: center;"><p class="vertical2">&nbsp;&nbsp;Comfort Kits</p></td>
-<td style="text-align: center;"><p class="vertical2">&nbsp;&nbsp;Health Supplies</p></td>
-
-<td style="text-align: center;"><p class="vertical2">&nbsp;&nbsp;Signage Kits</p></td>
-<td valign="bottom" style="text-align: center;"><input maxlength="9" size="10" name="Op1" value="{var Op1}" /></td>
-<td valign="bottom" style="text-align: center;"><input maxlength="9" size="10" name="Op2" value="{var Op2}" /></td>
+<td style="text-align: center; width: 30px"><p class="vertical2">&nbsp;&nbsp;Cots</p></td>
+<td style="text-align: center; width: 30px"><p class="vertical2">&nbsp;&nbsp;Blankets</p></td>
+<td style="text-align: center; width: 30px"><p class="vertical2">&nbsp;&nbsp;Comfort Kits</p></td>
+<td style="text-align: center; width: 30px"><p class="vertical2">&nbsp;&nbsp;Health Supplies</p></td>
+<td style="text-align: center; width: 30px"><p class="vertical2">&nbsp;&nbsp;Signage Kits</p></td>
+<td valign="middle" style="text-align: center;"><input maxlength="10" size="10" name="Op1" readonly value="{var Op1}" style="border:0"/></td>
+<td valign="middle" style="text-align: center;"><input maxlength="10" size="10" name="Op2" readonly value="{var Op2}" style="border:0" /></td>
 </tr>
 <tr>
 <td nowrap="nowrap" style="text-align: center;">
@@ -893,27 +889,27 @@ FUNCTIONS OR ACTIVITIES STAFF
 </td>
 <td nowrap="nowrap" style="text-align: center;">
 <div align="center">
-<input style="text-align:center" readonly="readonly" name="Dis49" value="{var Dis49}" size="5" maxlength="4" />
+<input style="text-align:center" readonly="readonly" name="Dis49" value="{var Dis49}" size="4" maxlength="4" />
 </div>
 </td>
 <td nowrap="nowrap" style="text-align: center;">
 <div align="center">
-<input style="text-align:center" readonly="readonly" name="Dis50" value="{var Dis50}" size="5" maxlength="4" />
+<input style="text-align:center" readonly="readonly" name="Dis50" value="{var Dis50}" size="4" maxlength="4" />
 </div>
 </td>
 <td nowrap="nowrap" style="text-align: center;">
 <div align="center">
-<input style="text-align:center" readonly="readonly" name="Dis51" value="{var Dis51}" size="5" maxlength="4" />
+<input style="text-align:center" readonly="readonly" name="Dis51" value="{var Dis51}" size="4" maxlength="4" />
 </div>
 </td>
 <td nowrap="nowrap" style="text-align: center;">
 <div align="center">
-<input readonly="readonly" name="Dis52" value="{var Dis52}" size="5" maxlength="4" />
+<input readonly="readonly" name="Dis52" value="{var Dis52}" size="4" maxlength="4" />
 </div>
 </td>
 <td nowrap="nowrap" style="text-align: center;">
 <div align="center">
-<input style="text-align:center" readonly="readonly" name="Dis53" value="{var Dis53}" size="5" maxlength="4" />
+<input style="text-align:center" readonly="readonly" name="Dis53" value="{var Dis53}" size="4" maxlength="4" />
 </div>
 </td>
 <td nowrap="nowrap" style="text-align: center;">
@@ -946,17 +942,18 @@ FUNCTIONS OR ACTIVITIES STAFF
 </tr>
 <tr>
 <td colspan="3" bgcolor="f4f3ed" style="text-align: center; ">
-<div align="left">
-<input readonly="readonly" name="Approved" title="For radio delivery typed name indicates approval" value="{var Approved}" size="45" maxlength="35" required="required" />
-Preparer
-Name:&nbsp;&nbsp; &nbsp;Preparer Signature:
-<input name="prepApproved" id="prepApproved" title="For radio delivery typed name indicates approval" value="{var prepApproved}" size="45" maxlength="35" required="required" />
-<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
-</div>
+	<div align="left">
+		Preparer Name:
+		<input readonly name="Approved" title="For radio delivery typed name indicates approval" value="{var Approved}" size="45" maxlength="35"/>
+		&nbsp;&nbsp; &nbsp;Preparer Signature:
+		<input readonly name="prepApproved" id="prepApproved" title="For radio delivery typed name indicates approval" value="{var prepApproved}" size="45" maxlength="35"/>
+		<br /> <br />
+		Originated by:&nbsp; {var Origin_Name}&nbsp;&nbsp;--&nbsp;&nbsp;{var Origin_Call}
+	</div>
 </td>
 </tr>
 </tbody>
-</table>&nbsp;&nbsp;&nbsp;&nbsp;HH Daily Shelter Report [ver 1.0 2020.08.05]<br />
+</table>&nbsp;&nbsp;&nbsp;&nbsp;HH Daily Shelter Report [ver 1.2 2021.4.27]<br />
 <br />
 &nbsp;
 </td>

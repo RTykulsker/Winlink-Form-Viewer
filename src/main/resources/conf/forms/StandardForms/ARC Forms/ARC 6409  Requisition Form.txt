@@ -1,9 +1,9 @@
 Form: ARC Requisition Form 6409.html,ARC Requisition Form 6409 Viewer.html
 
-Subject:ARC FORM 6409: DR#: <var DRnum> Requstion #: <var Reqnumber>, <var Date> 
+Subject:ARC FORM 6409: DR#: <var DRnum> Requisition #: <var Reqnumber>, <var Date> 
 SeqInc:
 Msg: ARC Disaster Requisition  FORM 6409 
-DR#: <var DRnum>   DR Name: <var DRName>   Date: <var Date>  Requstion #: <var Reqnumber>
+DR#: <var DRnum>   DR Name: <var DRName>   Date: <var Date>  Requisition #: <var Reqnumber>
 
 >>> Requestor Name: 
 
@@ -64,7 +64,7 @@ KEY:  Stock #  -  Quanity  -  Unit of measure  -  Total QTY (each)  -  Descripti
    <var Qty6>
    <var unit6> 
    <var tot6>
- <var descp6>
+   <var descp6>
    <var date6>
 
 7.  <var stock7> 
