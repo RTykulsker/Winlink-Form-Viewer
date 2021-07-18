@@ -14,7 +14,7 @@ Location: <var Location>
 Optional GPS Coordinates: <var GPS> 
 City: <var City>  County: <var County>  State: <var State>   
 
-Current Condidtions: 
+Current Conditions
 <var TheConditions>
 
 Temperature <var Temp> °<var mtemp>  HUMIDITY: <var Humidity> % DEWPOINT <var Dew> °<var mtemp>

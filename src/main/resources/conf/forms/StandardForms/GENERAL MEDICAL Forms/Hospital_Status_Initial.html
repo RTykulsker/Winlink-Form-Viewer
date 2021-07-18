@@ -1011,17 +1011,17 @@ to links</span></a> </div>
             YES
               &nbsp;&nbsp;
 &nbsp;&nbsp;
-<input name="Evacuating8" type="radio" value="NO" checked="checked" />              
+<input name="Evacuating8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8a').value = '';document.getElementById('b8a1').checked = false;document.getElementById('b8a2').checked = false; document.getElementById('b8a3').checked = false"/>              
 NO
 </td>
           <td colspan="4">IF Yes, evacuation is: 
-            <input name="b8a" type="radio" value="evacuation is"  onclick=" document.getElementById('A8a').value = 'Evacuation is evacuation is Anticipated'"/>
+            <input name="b8a" id="b8a1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8a').value = 'Evacuation is Anticipated'"/>
             Anticipated
-            &nbsp;
-<input name="b8a" type="radio" value="In progress" onclick=" document.getElementById('A8a').value = 'Evacuation is evacuation is in Progress'" />
+&nbsp;
+<input name="b8a" id="b8a2"  type="radio" value="In progress" onclick=" document.getElementById('A8a').value = 'Evacuation is in Progress'" />
 In progress
 &nbsp;
-<input name="b8a" type="radio" value="Completed" onclick=" document.getElementById('A8a').value = 'Evacuation is evacuation is Completed'" />
+<input name="b8a" id="b8a3" type="radio" value="Completed" onclick=" document.getElementById('A8a').value = 'Evacuation is Completed'" />
 Completed
 <input name="A8a" type="hidden" id="A8a" /></td>
           </tr>
@@ -1030,14 +1030,14 @@ Completed
           <td colspan="2"><span class="formbold">&nbsp; </span>
             <input name="Partial8" type="radio" value="YES" />
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Partial8" type="radio" value="NO" checked="checked" />
+<input name="Partial8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8b').value = '';document.getElementById('b8b1').checked = false;document.getElementById('b8b2').checked = false; document.getElementById('b8b3').checked = false"/>
 NO </td>
           <td colspan="4">IF Yes, evacuation is:
-            <input name="b8b" type="radio" value="evacuation is"  onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is Anticipated'"/>
+            <input name="b8b" id="b8b1"  type="radio" value="evacuation is"  onclick=" document.getElementById('A8b').value = 'Partial Evacuation is Anticipated'"/>
 Anticipated &nbsp;
-<input name="b8b" type="radio" value="In progress" onclick=" document.getElementById('A8b).value = 'Evacuation is evacuation is in Progress'" />
+<input name="b8b" type="radio" id="b8b2"value="In progress" onclick=" document.getElementById('A8b').value = 'Partial Evacuation is in Progress'" />
 In progress &nbsp;
-<input name="b8b" type="radio" value="Completed" onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is Completed'" />
+<input name="b8b" type="radio" id="b8b3"value="Completed" onclick=" document.getElementById('A8b').value = 'Partial Evacuation is Completed'" />
 Completed
 <input name="A8b" type="hidden" id="A8b" /></td>
         </tr>
@@ -1046,14 +1046,14 @@ Completed
           <td colspan="2"><span class="formbold">&nbsp; </span>
             <input name="Total8" type="radio" value="YES" />
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Total8" type="radio" value="NO" checked="checked" />
+<input name="Total8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8c').value = '';document.getElementById('b8c1').checked = false;document.getElementById('b8c2').checked = false; document.getElementById('b8c3').checked = false" />
 NO </td>
           <td colspan="4">IF Yes, evacuation is:
-            <input name="b8c" type="radio" value="evacuation is"  onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is Anticipated'"/>
+            <input name="b8c" id="b8c1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8c').value = 'Total Evacuation is Anticipated'"/>
 Anticipated &nbsp;
-<input name="b8c" type="radio" value="In progress" onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is in Progress'" />
+<input name="b8c" type="radio" id="b8c2" value="In progress" onclick=" document.getElementById('A8c').value = 'Total Evacuation is in Progress'" />
 In progress &nbsp;
-<input name="b8c" type="radio" value="Completed" onclick=" document.getElementById('A8b).value = 'Evacuation is evacuation is Completed'" />
+<input name="b8c" type="radio" id="b8c3"value="Completed" onclick=" document.getElementById('A8c').value = 'Total Evacuation is Completed'" />
 Completed
 <input name="A8c" type="hidden" id="A8c" /></td>
         </tr>
@@ -1062,16 +1062,16 @@ Completed
           <td colspan="2"><span class="formbold">&nbsp; </span>
             <input name="Shelter8" type="radio" value="YES" />
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Shelter8" type="radio" value="NO" checked="checked" />
+<input name="Shelter8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8d').value = '';document.getElementById('b8d1').checked = false;document.getElementById('b8d2').checked = false; document.getElementById('b8d3').checked = false"/>
 NO </td>
           <td colspan="4">IF Yes, evacuation is:
-            <input name="b8d" type="radio" value="evacuation is"  onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is Anticipated'"/>
+            <input name="b8d" id="b8d1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8d').value = 'Shelter in place is Anticipated'"/>
 Anticipated &nbsp;
-<input name="b8d" type="radio" value="In progress" onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is in Progress'" />
+<input name="b8d" type="radio" id="b8d2"value="In progress" onclick=" document.getElementById('A8d').value = 'Shelter in place is in Progress'" />
 In progress &nbsp;
-<input name="b8d" type="radio" value="Completed" onclick=" document.getElementById('A8b').value = 'Evacuation is evacuation is Completed'" />
+<input name="b8d" type="radio" id="b8d3" value="Completed" onclick=" document.getElementById('A8d').value = 'Shelter in place is Completed'" />
 Completed          
-<input name="A8d" type="hidden" id="A8d" /></td>
+          <input name="A8d"id="A8d" type="hidden"  /></td>
         </tr>
         <tr class="FormReg">
           <td colspan="7"><textarea  name="Comments8" cols="130" rows="1" id="Comments8" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea></td>
@@ -1154,8 +1154,8 @@ NO </td>
 <small><span style="font-family: Calibri;">
 
 </span>&nbsp;&nbsp;&nbsp;&nbsp; </small>
-<input name="Templateversion" type="hidden" id="Templateversion" value="1.9.2" />
-</span><span class="FormReg">Version 1.9.2
+<input name="Templateversion" type="hidden" id="Templateversion" value="1.9.3" />
+</span><span class="FormReg">Version 1.9.3
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span></p>
       </td>
