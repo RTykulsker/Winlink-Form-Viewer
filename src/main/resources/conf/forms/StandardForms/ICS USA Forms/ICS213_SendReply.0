@@ -1,5 +1,5 @@
 Form: ICS213_SendReply.html,ICS213_SendReply_Viewer.html
-Def: MsgOriginalBody=<var MsgOriginalBody> 
+Def: MsgOriginalBody=<var MsgOriginalBody>  
 To: 
 Msg:
 GENERAL MESSAGE (ICS 213)

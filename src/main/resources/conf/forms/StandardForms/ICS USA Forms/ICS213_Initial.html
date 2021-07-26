@@ -980,7 +980,12 @@ document.getElementById('SubjectText').innerHTML = RightNow;
 store();
 
 }
- 
+
+function checkform(){
+M1= document.getElementById('Message').value;
+if (M1.length == 0)
+if ( M1== 0){alert ('Please add your message text');document.getElementById('Message').focus(); return false } else {return true}
+} 
 </script>
 
 
@@ -1279,7 +1284,7 @@ Approved by:&nbsp; </span>
 
 <div align="left"> <span class="formtext"><span style="font-family: Calibri;"><small>
   <input type=button value="Save ICS213 INITIAL Data"  onclick="SaveData()" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input value="Submit" style="height: 28px; width: 70px; " size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" /></small></span></span><span class="formtext">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input value="Submit" style="height: 28px; width: 70px; " size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" onclick="return checkform()"; /></small></span></span><span class="formtext">
 <input class="BtnFormat2" value="Reset Form " name="ResetForm"  type="reset" />
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span> <span class="style11"> </span>
@@ -1293,8 +1298,8 @@ Approved by:&nbsp; </span>
 
 <td width="121" style="width: 120px;">
 
-<div align="right">Ver 41.10
-  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.10" />
+<div align="right">Ver 41.11
+  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.11" />
 </div>
 
 </td>

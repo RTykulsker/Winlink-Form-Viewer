@@ -958,6 +958,12 @@ document.getElementById('rply_dtm').value ='';
 document.getElementById('parseme').value ='';	
 window.location.reload(true);
             }
+			
+function checkform(){
+M1= document.getElementById('reply').value;
+if (M1.length == 0)
+if ( M1== 0){alert ('Please add your Reply message text');document.getElementById('reply').focus(); return false } else {return true}
+} 
 
 </script>
 <style>
@@ -1314,7 +1320,7 @@ font-size:14px;
 <div align="left"> <span class="formtext"><span style="font-family: Calibri;"><small>
   <input type=button value="Save ICS213 REPLY Data" onclick="SaveData()" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-<input value="Submit" style="height: 28px; width: 70px;" size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" /></small></span></span><span class="formtext">&nbsp;
+<input value="Submit" style="height: 28px; width: 70px;" size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" onclick="return checkform()"/></small></span></span><span class="formtext">&nbsp;
 <input type="reset" value="Reset Reply Form" onclick="getConfirmation()" >
 <textarea name="parseme" cols="80" rows="3" id="parseme" placeholder="Paste spreadsheet data here" style="display: none;"></textarea>
 </span> <span class="style11"> </span>
@@ -1326,8 +1332,8 @@ font-size:14px;
 
 <td width="121" style="width: 120px;">
 
-<div align="left">Ver 41.10
-  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.10" />
+<div align="left">Ver 41.11
+  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.11" />
 </div>
 
 </td>

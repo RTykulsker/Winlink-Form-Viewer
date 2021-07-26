@@ -642,7 +642,7 @@ if (!isObject(o)) return;
     }
   }
     Fixfields();
-
+checkbarm();
 
 }
 
@@ -719,6 +719,7 @@ function SaveData() {
  Fixfields();
  collect();
   getGPS();
+  checkbarm();
 
  }
  
@@ -754,6 +755,26 @@ if (ans  != '(Not available)'){
 ans = ans.replace(" ", ", "); } else {var ans = ''}
 document.getElementById('GPS').value = ans;
 }
+
+function Trendbuttons(Which){
+
+document.getElementById('bBarmtrend1').disabled=Which;
+document.getElementById('bBarmtrend2').disabled=Which;
+document.getElementById('bBarmtrend3').disabled=Which;
+if (Which === true) {
+document.getElementById('bBarmtrend1').checked=0;
+document.getElementById('bBarmtrend2').checked=0;
+document.getElementById('bBarmtrend3').checked=0;
+document.getElementById('Barmtrend').value='--'; 
+document.getElementById('Barometer').value='--'
+}
+}
+function checkbarm(){
+x= document.getElementById('Barometer').value ;
+if (x ==='--' | x =='') {Trendbuttons(true);} else { Trendbuttons(false); }
+
+}
+
 
 </script>
 
@@ -872,8 +893,8 @@ document.getElementById('GPS').value = ans;
                 <td colspan="4">&nbsp;Current Conditions: Check all that apply </td>
             </tr>
             <tr align="left" valign="top">
-              <td width="17%"><input name="cb1" type="checkbox" id="cb1" value="true" onclick="Flip('cb1fld', '\tSUN     ')"/>            
-                SUN
+              <td width="17%"><input name="cb1" type="checkbox" id="cb1" value="true" onclick="Flip('cb1fld', '\tCLEAR     ')"/>            
+                CLEAR
                   <input name="cb1fld" type="hidden" id="cb1fld"  /></td>
               <td width="25%"><input name="cb2" type="checkbox" id="cb2" value="true" onclick="Flip('cb2fld', '\tRAIN     ')"/>
             RAIN 
@@ -921,15 +942,19 @@ document.getElementById('GPS').value = ans;
 &deg;<span  id="TempFM2">C</span>  </div></td>
     </tr>
     <tr align="left" valign="top">
-      <td colspan="2"><div align="left" class="style27"><span class="style23">Barometer</span> <span class="style23">
-            <input name="Barometer" type="text" id="Barometer" onclick="select()" value="--" size="8" onkeypress="return isNumberKey(event)"/>
-            <span  id="barM">millibars</span> </span>&nbsp; &nbsp; &nbsp; &nbsp;<span class="style23">Three hour trend</span>
-            <input name="Barmtrend" type="radio" value="RISING" />
-            RISING &nbsp;
-            <input name="Barmtrend" type="radio" value="STEADY" checked="checked" />
-            STEADY &nbsp;
-            <input name="Barmtrend" type="radio" value="DROPPING" />
-          DROPPING</div></td>
+      <td colspan="2"><div align="left" class="style27">
+        <p><span class="style23">Barometer</span> <span class="style23">
+              <input name="Barometer" type="text" id="Barometer" onclick="select()" value="--" size="8" onkeypress="return isNumberKey(event)" onchange ="checkbarm()" />
+              <span  id="barM">millibars</span> </span>&nbsp; &nbsp; &nbsp; &nbsp;<span class="style23">Three hour trend</span>
+              <input name="bBarmtrend" type="radio" id = "bBarmtrend1" value="RISING" onclick="document.getElementById('Barmtrend').value = 'RISING'"/>
+              RISING &nbsp;
+              <input name="bBarmtrend" type="radio" id = "bBarmtrend2" value="STEADY" onclick="document.getElementById('Barmtrend').value = 'STEADY'"/>
+              STEADY &nbsp;
+              <input name="bBarmtrend" type="radio" id = "bBarmtrend3" value="DROPPING" onclick="document.getElementById('Barmtrend').value = 'DROPPING'"/>
+            DROPPING
+            <input name="Barmtrend" type="hidden" id="Barmtrend" value="--" />
+        </p>
+        </div></td>
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27"><span class="style23">Cloud cover description:</span> <span class="style23">
@@ -1007,9 +1032,8 @@ document.getElementById('GPS').value = ans;
               <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />
 &nbsp;&nbsp;
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 1.9<span style="font-style: italic;">.1
-<span class="style17"><span class="formtext11">
-<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 1.9.1" />
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 1.9<span style="font-style: italic;">.4<span class="style17"><span class="formtext11">
+<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 1.9.3" />
 </span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>
