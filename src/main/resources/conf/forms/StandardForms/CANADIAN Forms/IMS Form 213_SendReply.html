@@ -124,6 +124,9 @@ font-weight: normal;
 margin: 10px;
 }
 .style3 {font-family: Calibri}
+.style29 {	font-size: 13px;
+	font-weight: bold;
+}
 </style><!-- ICS 213 Template-->
 
 <script>
@@ -135,149 +138,12 @@ shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OC
 monthname = shortmonths [monthnum];
 return monthname;
 }
-function SetDateTime(TType,TheFld, FocusFld) {
-
-//id="tformat" value="Local"
-var txt;
-
-var myprompt;
-
-var d = new Date(),
-
-thisyear = d.getFullYear();
-
-thismonth= d.getMonth();
-
-thisday = d.getDate();
-if (thisday < 10) { thisday = "0" + thisday}
-var monname;
-
-h = (d.getHours()<10?'0':'') + d.getHours()
-
-m = (d.getMinutes()<10?'0':'') + d.getMinutes()
-
-s = (d.getSeconds()<10?'0':'') + d.getSeconds();
-
-var now = new Date();
-
-var utch = now.getUTCHours();
-
-if (utch < 10) { utch = "0"+utch};
-
-var utcs = now.getUTCMinutes();
-
-if (utcs < 10) { utcs = "0"+utcs};
-
-var myUTCtime = utch+":"+utcs+"Z";
-
-var utcstr = d.toUTCString();
-
-var localt = d.toLocaleTimeString();
-
-var isostr = d.toISOString();
-var UTCyear = d.getUTCFullYear();
-//monthname = shortmonth (thismonth);
-var UTCmon = d.getUTCMonth();  
-var UTCmon = UTCmon+1;
-if (UTCmon < 10) { UTCmon = "0" + UTCmon}
-
-var UTCdate = d.getUTCDate();  
-thismonth = thismonth + 1;
-  if (thismonth < 10) { thismonth = "0" + thismonth}
-//if (thismonth < 10) { thismonth = "0" + thismonth}
-
-myUTCdate = UTCyear+'/'+UTCmon+'/'+UTCdate;
-switch (TType) {
-
-case 'hms' :
-
-myprompt = h + ':' + m + ':' + s;
-
-var RightNow = prompt("Time:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'hm' :
-
-
-
- var myprompt = h +':' + m;
-
-var RightNow = prompt("Time:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
-
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
-
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
-
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'mmm-d-y': myprompt = thismonth+'-'+thisday+ '-' + thisyear;
-
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'localampm': var myprompt = localt;
-
-var RightNow = prompt("Local time:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'fulldate': 
-
-var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
-
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
-
-break;
-case 'autofulldate': 
-
-var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
-
-var RightNow =myprompt;
-document.getElementById(TheFld).value = RightNow;
-
-break;
-
-case 'fulldatetime': 
-
-var myprompt = thisyear+'/'+thismonth+ '/'+thisday+' '+h  +':'+ m ;
-var RightNow = prompt("Date:", myprompt);
-
-document.getElementById(TheFld).value = RightNow;
+function findoffset(){
+var d = new Date()
+var gmtHours = -d.getTimezoneOffset()/60;
+var myoffset = '   (GMT ' + gmtHours+')';
+return myoffset;
 }
-}
-
 
 function DateTime() {
 
@@ -290,29 +156,41 @@ thisday = d.getDate();
 var monname;
 h = (d.getHours()<10?'0':'') + d.getHours()
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
-var Localtime = h + m+'L ';
+var Localtime = h + ':'+m;
 var now = new Date();
 var utch = now.getUTCHours();
 if (utch < 10) { utch = '0'+utch};
 var utcs = now.getUTCMinutes();
 if (utcs < 10) { utcs = '0'+utcs};
+thismonth = thismonth + 1;
+if (thismonth < 10) { thismonth = '0'+thismonth};
+if (thisday < 10) { thisday = '0'+thisday};
+
+
 var myUTCtime = utch+""+utcs+"Z";
 var utcstr = d.toUTCString();
 var localt = d.toLocaleTimeString();
 var isostr = d.toISOString();
 monthname = shortmonth (thismonth);
-thismonth = thismonth + 1;
+//thismonth = thismonth + 1;
 var UTCdate = d.getUTCDate();
 var UTCmon = d.getUTCMonth();
 var utcmonthname = shortmonth (UTCmon);
 var UTCmmdd =utcmonthname + " "+UTCdate;
-var Localdate = monthname+' '+thisday;
+
+var Localdate =thisyear+'/'+ thismonth+'/'+thisday;
 var Rightnow =Localdate; //UTCmmdd
-if (document.getElementById('tformat').checked) { Rightnow = UTCmmdd};
+//if (document.getElementById('tformat').checked) { Rightnow = UTCmmdd};
 document.getElementById('Date').value = Rightnow;
-var Rightnow = Localtime; //myUTCtime
-if (document.getElementById('tformat').checked) { Rightnow = myUTCtime};
+var d = new Date()
+var gmtHours = -d.getTimezoneOffset()/60;
+var myoffset = '   (GMT ' + gmtHours+')';
+
+var Rightnow = Localtime+ myoffset; //myUTCtime
+//if (document.getElementById('tformat').checked) { Rightnow = myUTCtime};
 document.getElementById('Time').value = Rightnow;
+
+
 
 };
 function DateTime2() {
@@ -326,7 +204,7 @@ thisday = d.getDate();
 var monname;
 h = (d.getHours()<10?'0':'') + d.getHours()
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
-var Localtime = h + m+'L ';
+var Localtime = h +':'+ m;
 var now = new Date();
 var utch = now.getUTCHours();
 if (utch < 10) { utch = '0'+utch};
@@ -351,6 +229,7 @@ if (document.getElementById('tformat').checked) { Rightnow = myUTCtime};
 document.getElementById('Time').value = Rightnow;
 
 };
+
 
 
 function wordcount(s) {
@@ -635,6 +514,7 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+ Checkifinbrowser();
  fixmsg();
 Fixfields();
  }
@@ -653,8 +533,161 @@ var n=n.replace(/\<br>/gm, "\n");
 document.getElementById('Message2').value = n;
 }
 
+function SetDateTime(TType,TheFld, FocusFld) {
+
+//id="tformat" value="Local"
+var txt;
+
+var myprompt;
+
+var d = new Date(),
+
+thisyear = d.getFullYear();
+
+thismonth= d.getMonth();
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0" + thisday}
+var monname;
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+
+var now = new Date();
+
+var utch = now.getUTCHours();
+
+if (utch < 10) { utch = "0"+utch};
+
+var utcs = now.getUTCMinutes();
+
+if (utcs < 10) { utcs = "0"+utcs};
+
+var myUTCtime = utch+":"+utcs+"Z";
+
+var utcstr = d.toUTCString();
+
+var localt = d.toLocaleTimeString();
+
+var isostr = d.toISOString();
+var UTCyear = d.getUTCFullYear();
+//monthname = shortmonth (thismonth);
+var UTCmon = d.getUTCMonth();  
+var UTCmon = UTCmon+1;
+if (UTCmon < 10) { UTCmon = "0" + UTCmon}
+
+var UTCdate = d.getUTCDate();  
+thismonth = thismonth + 1;
+  if (thismonth < 10) { thismonth = "0" + thismonth}
+//if (thismonth < 10) { thismonth = "0" + thismonth}
+
+myUTCdate = UTCyear+'/'+UTCmon+'/'+UTCdate;
+switch (TType) {
+
+case 'hms' :
+
+myprompt = h + ':' + m + ':' + s;
+
+var RightNow = prompt("Time:", myprompt + findoffset());
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'hm' :
 
 
+
+ var myprompt = h +':' + m;
+
+var RightNow = prompt("Time:", myprompt + findoffset());
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm-d-y': myprompt = thismonth+ '-' + thisday+ '-'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'm/d/y': myprompt = thismonth+ '/' + thisday+ '/'+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'd mmm y': myprompt = thisday+ ' ' + monthname+ ' '+ thisyear;
+
+var RightNow = prompt("Date:", myprompt);
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'mmm-d-y': myprompt = thismonth+'-'+thisday+ '-' + thisyear;
+
+var RightNow = prompt("Date:", myprompt+   findoffset());
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'localampm': var myprompt = localt;
+
+var RightNow = prompt("Local time:", myprompt  + findoffset());
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldate': 
+
+var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
+
+var RightNow = prompt("Date:", myprompt );
+
+document.getElementById(TheFld).value = RightNow;
+
+break;
+case 'autofulldate': 
+
+var myprompt = thisyear+ '/'+thismonth+'/'+thisday;
+
+var RightNow =myprompt;
+document.getElementById(TheFld).value = RightNow;
+
+break;
+
+case 'fulldatetime': 
+
+var myprompt = thisyear+'/'+thismonth+ '/'+thisday+' '+h  +':'+ m ;
+var RightNow = prompt("Date:", myprompt + findoffset());
+
+document.getElementById(TheFld).value = RightNow;
+}
+}
+function Checkifinbrowser() {
+
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+//document.getElementById("MsgSender").value = '';
+
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+ 
+ // document.getElementById('testlnkbtn').style.visibility='hidden';
+}
 //load="SetDateTime('autodate','Date');SetDateTime('autotime','Time'); SetDateTime('afulldatetime','DateTime')">
 
 </script></head>
@@ -666,7 +699,12 @@ document.getElementById('Message2').value = n;
 <td pbzloc="5">
 <table width="874px"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><div align="center" class="style2">IMS Form 213-R </div></td>
+    <td><div align="center" class="style2">IMS Form 213-R <br />
+	<span  id="SubjectText"><strong> </strong></span><span class="style29">{var FormTitle}</span>
+	<input name="FormTitle" type="hidden" id="FormTitle" value="{var FormTitle}" />
+	<input name="OrgStation" type="hidden" id="OrgStation" value="{var OrgStation}" />
+	<br />
+    </div></td>
   </tr>
 </table>
 <table style="width: 874px; height: 318px;" border="1" bordercolor="#333333" cellpadding="4" cellspacing="0">
@@ -679,7 +717,7 @@ document.getElementById('Message2').value = n;
 <td width="94" height="38" style="vertical-align: top; text-align: center;">No
 &nbsp;<br />
 <input readonly="readonly"name="initialSeqNum" id="initialSeqNum" title="User Option. Overwrite if desired." value="{var initialSeqNum}" size="8" maxlength="7" placeholder="User option" readonly;/></td>
-<td width="109" style="vertical-align: top; text-align: center;">Precedence>
+<td width="109" style="vertical-align: top; text-align: center;">Precedence
   <br />
   {var Priority} 
   <input readonly="readonly"name="Priority" type="hidden" id="Priority" value="{var Priority}" />
@@ -691,9 +729,9 @@ document.getElementById('Message2').value = n;
 <td width="183" style="text-align: center; vertical-align: top;">Place of Origin <br />
   <input readonly="readonly"name="OrgLocation" value="{var OrgLocation}" size="22" maxlength="22" /></td>
 <td width="107" style="vertical-align: top; text-align: center;">Time<br />
-<input readonly="readonly"name="Time" id="Time" value="{var Time}" size="14"  maxlength="24" /> </td>
+  <input readonly="readonly"name="Time" id="Time" value="{var Time}" size="14"  maxlength="24" />     </td>
 <td width="130" style="vertical-align: top; text-align: center;">Date &nbsp;<br />
-<input readonly="readonly"name="Date" id="Date" value="{var Date}" size="14" maxlength="24" /></td>
+  <input readonly="readonly"name="Date" id="Date" value="{var Date}" size="14" maxlength="24" /></td>
 </tr>
 </tbody>
 </table>
@@ -769,7 +807,7 @@ document.getElementById('Message2').value = n;
       <td>9. Position/Contact info of Sender<br /> 
         <input readonly="readonly"name="Approved_PosTitle" type="text" id="Approved_PosTitle" value="{var Approved_PosTitle}" size="35" maxlength="30" required="required" /></td>
       <td>10. Date/Time Sent <br />
-        <input readonly="readonly"name="DateTimeSent" type="text" id="DateTimeSent" value="{var DateTimeSent}" /></td>
+        <input name="DateTimeSent" type="text" id="DateTimeSent" value="{var DateTimeSent}" size="28" maxlength="28" readonly="readonly" /></td>
     </tr>
     <tr>
       <td colspan="3"><br />
@@ -796,12 +834,12 @@ document.getElementById('Message2').value = n;
                     <input readonly="readonly"name="SendTo" type="text" id="SendTo" style="text-transform: uppercase;" onblur="this.value= this.value.toUpperCase();" value="{var SendTo}" size="25" maxlength="23" />
                     <br />
          </div></td>
-          <td width="16%"><div align="center">DATE<br />
-                    <input readonly="readonly"name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="15" maxlength="15" />
-          </div></td>
           <td width="16%"><div align="center">TIME <br />
-                    <input "name="SendTime" readonly="readonly" type="text" id="SendTime" value="{var SendTime}"  size="15" maxlength="25" />
-          </div></td>
+              <input "name="SendTime" readonly="readonly" type="text" id="SendTime" value="{var SendTime}"  size="15" maxlength="25" />
+</div></td>
+          <td width="16%"><div align="center">DATE<br />
+              <input readonly="readonly"name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="15" maxlength="15" />
+</div></td>
         </tr>
       </table></td>
       </tr>
@@ -824,13 +862,13 @@ document.getElementById('Message2').value = n;
                     <td style="vertical-align: top; text-align: center;">&nbsp;Handling<br />
 &nbsp;{var HX}</td>
         <td style="vertical-align: top; text-align: center;">Station of Origin <br />
-            <input readonly="readonly" name="REplyOrgStation" id="REplyOrgStation" onchange="this.value=this.value.toUpperCase();" value="{MsgSender}" size="15" maxlength="15" /></td>
+            <input name="REplyOrgStation" id="REplyOrgStation" onchange="this.value=this.value.toUpperCase();" value="{MsgSender}" size="15" maxlength="15" /> <input name="HX" type="hidden" id="HX" value="{var HX}" /></td>
         <td style="text-align: center; vertical-align: top;">      Place of Origin <br />
             <input name="ReplyOrgLocation" id="ReplyOrgLocation" size="25" maxlength="25" /></td>
+        <td style="vertical-align: top; text-align: center;">Time<br />
+          <input name="ReplyTime" id="ReplyTime" size="18"  maxlength="18" onclick="SetDateTime('hm',this.id)" />          </td>
         <td style="vertical-align: top; text-align: center;">Date &nbsp;<br />
           <input name="ReplyDate" id="ReplyDate" size="15" onclick="SetDateTime('fulldate',this.id)"maxlength="15" /></td>
-        <td style="vertical-align: top; text-align: center;">Time<br />
-            <input name="ReplyTime" id="ReplyTime" size="15"  maxlength="15" onclick="SetDateTime('hm',this.id)" /></td>
       </tr>
     </tbody>
   </table>
@@ -855,7 +893,7 @@ document.getElementById('Message2').value = n;
       <td>14. Position of Replier <br />
           <input id="ReplyPosition" maxlength="30" name="ReplyPosition" required="required" size="35" type="text" /></td>
       <td>15. Date/Time of Reply <br />
-          <input name="ReplyDateTime" type="text" id="ReplyDateTime"onclick="SetDateTime('fulldatetime',this.id)"   /></td>
+          <input name="ReplyDateTime" type="text" id="ReplyDateTime"onclick="SetDateTime('fulldatetime',this.id)" size="30" maxlength="30"   /></td>
     </tr>
     <tr>
       <td colspan="3"><br />
@@ -866,26 +904,26 @@ document.getElementById('Message2').value = n;
                       <input style="text-transform: uppercase;" name="Replyreciever" type="text" id="Replyreciever" size="25" maxlength="23" onblur="this.value= this.value.toUpperCase();"/>
                        <br />
             </div></td>
-            <td width="11%">       <div align="center">DATE<br />
-                    <input  name="ReplyreceiveDate"id="ReplyreceiveDate" onclick="SetDateTime('fulldate',this.id)" size="15" maxlength="15"  mtype="text />
+            <td width="11%">       <div align="center">TIME<br />
+                <input name="ReplyreceiveTime"  id="ReplyreceiveTime" size="15" maxlength="15" onclick="SetDateTime('hm',this.id)"type="text" />
+</div>
+              </td>
+            <td width="8%"><div align="center">DATE<br />
+                <input  name="ReplyreceiveDate"id="ReplyreceiveDate" onclick="SetDateTime('fulldate',this.id)" size="15" maxlength="15"  mtype="text />
           <br />
         </td>
         <td width="11%" bgcolor="#FFFFFF" />
-                   </div>
-              </td>
-            <td width="8%"><div align="center">TIME<br />
-                      <input name="ReplyreceiveTime"  id="ReplyreceiveTime" size="15" maxlength="15" onclick="SetDateTime('hm',this.id)"type="text" />
-            </strong></div></td>
+</div></td>
             <td width="22%"><div align="center">SENT TO <br />
                                  <input style="text-transform: uppercase;" name="ReplySendTo" type="text" id="ReplySendTo" size="25" maxlength="23" onblur="this.value= this.value.toUpperCase();" />
                        <br />
             </strong></div></td>
-            <td width="14%"><div align="center">DATE<br />
-                      <input name="RelyDatereceived" type="text" id="RelyDatereceived" onclick="SetDateTime('fulldate',this.id)" size="15" maxlength="15" />
-            </div></td>
             <td width="14%"><div align="center">TIME <br />
-                      <input name="ReplyTimereceived" type="text" id="ReplyTimereceived" onclick="SetDateTime('hm',this.id)"     size="15" maxlength="15" />
-            </div></td>
+                <input name="ReplyTimereceived" type="text" id="ReplyTimereceived" onclick="SetDateTime('hm',this.id)"     size="18" maxlength="18" />
+</div></td>
+            <td width="14%"><div align="center">DATE<br />
+                <input name="RelyDatereceived" type="text" id="RelyDatereceived" onclick="SetDateTime('fulldate',this.id)" size="15" maxlength="15" />
+</div></td>
           </tr>
       </table></td>
     </tr>
@@ -907,10 +945,12 @@ document.getElementById('Message2').value = n;
 <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
 <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
 <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
-<span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
-<span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
-<input name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v. 1.0" />
-<span class="formbold"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"> v<span class="style3"> 1.1</span></span></span></span></span></span></span></span></span></span></span></span> </td>
+<span><span style="font-family: Calibri;"> <span style="font-weight: normal;"> &nbsp; &nbsp; </span></span></span>
+<span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp; &nbsp;&nbsp; &nbsp;<span><span style="font-family: Calibri;"><span style="font-weight: normal;"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span> </span></span></span>
+<input name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v. 1.2" />
+<span class="formbold"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"> v<span class="style3"> 1.2</span></span></span></span></span></span></span></span></span></span></span></span> </td>
 </tr>
 </tbody>
 </table>

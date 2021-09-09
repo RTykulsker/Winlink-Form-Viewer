@@ -2,7 +2,7 @@ Form:IMS Form 213_SendReply.html,IMS Form 213_SendReply_Viewer.html
 SeqInc:
 To: 
 Msg: 
-No: [<var replySeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Station of Origin: [<var OrgStation>] Check:[<var Check>]  Time: [<var Time>]  Date: [<var Date>]
+No: [<var replySeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Station of Origin: [<var OrgStation>]   Time: [<var Time>]  Date: [<var Date>]
    
 1. INCIDENT NAME: <var Incident_Name>
 2. OPERATIONAL PERIOD: <var OpPeriod>
@@ -25,7 +25,7 @@ SENT TO: <var SendTo>        DATE: <var SendDate>          TIME: <var SendTime>
 
 REPLY
 
-No: [<var replySeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Station of Origin: [<var ReplyOrgLocation>] Check: [<var ReplyCheck>] Time: [<var ReplyTime>]  Date: [<var ReplyDate>]
+No: [<var replySeqNum>] Precedence: [<var Priority>] Handling: [<var HX>] Station of Origin: [<var ReplyOrgLocation>]  Time: [<var ReplyTime>]  Date: [<var ReplyDate>]
 
 11: Reply
 <var Reply>

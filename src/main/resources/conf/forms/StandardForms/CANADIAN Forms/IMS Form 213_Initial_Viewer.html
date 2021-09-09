@@ -474,7 +474,9 @@ AutoGrowTextArea(document.getElementById("Message"));
 <td pbzloc="5">
 <table width="874px"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><div align="center" class="style2">IMS Form 213-R </div></td>
+    <td><div align="center" class="style2">IMS Form 213-R <br />
+	{var FormTitle}<br />
+    </div></td>
   </tr>
 </table>
 <table style="width: 874px; height: 318px;" border="1" bordercolor="#333333" cellpadding="4" cellspacing="0">
@@ -486,8 +488,8 @@ AutoGrowTextArea(document.getElementById("Message"));
               <input readonly="readonly"name="initialSeqNum" id="initialSeqNum" title="User Option. Overwrite if desired." value="{var initialSeqNum}" size="8" maxlength="7" placeholder="User option" readonly;/>
         </div></td>
         <td width="15%"><div align="center">Precedence<br />
-              <input readonly="readonly"name="textfield" type="text" value="{var Priority}" size="11" maxlength="11" />
-              <span style="margin: 7px;  word-wrap:break-word; display:inline-block;">
+            <input readonly="readonly"name="textfield" type="text" value="{var Priority}" size="11" maxlength="11" />              
+            <span style="margin: 7px;  word-wrap:break-word; display:inline-block;">
               <input readonly="readonly"name="Priority" type="hidden" id="Priority" value="{var Priority}" />
               </span>
           </div>
@@ -495,7 +497,7 @@ AutoGrowTextArea(document.getElementById("Message"));
         <td width="12%">
           <div align="center">Handling<br />
          
-            <input readonly="readonly"name="HX" onchange="this.value=this.value.toUpperCase();" value="{var HX}" size="6" maxlength="5" />
+            <input readonly="readonly"name="HX" onchange="this.value=this.value.toUpperCase();" value="{var HX}" size="10" maxlength="10" />
           &nbsp;&nbsp;</div></td>
         <td width="18%"><div align="center">Station of Origin <br />
               <input readonly="readonly"name="OrgStation" onchange="this.value=this.value.toUpperCase();" value="{var OrgStation}" size="10" maxlength="10" />
@@ -576,7 +578,7 @@ AutoGrowTextArea(document.getElementById("Message"));
         <input readonly="readonly"name="Approved_PosTitle" type="text" id="Approved_PosTitle" value="{var Approved_PosTitle}" size="35" maxlength="30" required="required" /></td>
       <td>10. Date/Time Sent <br />
         &nbsp;
-        <input readonly="readonly"name="DateTimeSent" type="text" id="DateTimeSent" value="{var DateTimeSent}" /></td>
+        <input name="DateTimeSent" type="text" id="DateTimeSent" value="{var DateTimeSent}" size="30" maxlength="30" readonly="readonly" /></td>
     </tr>
     <tr>
       <td colspan="3"><br />
@@ -588,26 +590,26 @@ AutoGrowTextArea(document.getElementById("Message"));
                        <br />
             </div></td>
             <td width="15%" bgcolor="#f8f8ff">
-              <div align="center">DATE<br />                  
-                  <input readonly="readonly"name="RDate"id="RDate" value="{var RDate}"  size="13" maxlength="12" type="text />
+              <div align="center">TIME <br />
+                <input readonly="readonly"name="RTime"type="text"  id="RTime" value="{var RTime}" size="18" maxlength="18s" />
+              </div></td>
+            <td width="10%"><div align="center"> DATE<br />
+                <input readonly="readonly"name="RDate"id="RDate" value="{var RDate}"  size="13" maxlength="12" type="text />
           <br />
         <</td>
         <td width="11%" bgcolor="#FFFFFF" />
-                   </div></td>
-            <td width="10%"><div align="center">TIME <br />
-                      <input readonly="readonly"name="RTime"type="text"  id="RTime" value="{var RTime}" size="13" maxlength="12" />
-           </div></td>
+</div></td>
             <td width="24%" bgcolor="#f8f8ff"><div align="center">SENT TO <br />
                       
                     <input readonly="readonly"name="SendTo" type="text" id="SendTo" style="text-transform: uppercase;" onblur="this.value= this.value.toUpperCase();" value="{var SendTo}" size="25" maxlength="23" />
                       <br />
            </div></td>
-            <td width="16%"><div align="center">DATE<br />
-                      <input readonly="readonly"name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="13" maxlength="12" />
-            </div></td>
             <td width="16%"><div align="center">TIME <br />
-                      <input readonly="readonly"name="SendTime" type="text" id="SendTime" value="{var SendTime}"  size="13" maxlength="11" onclick="SetDateTime('hm',this.id)"/>
-            </div></td>
+                <input readonly="readonly"name="SendTime" type="text" id="SendTime" value="{var SendTime}"  size="18" maxlength="18" onclick="SetDateTime('hm',this.id)"/>
+</div></td>
+            <td width="16%"><div align="center">DATE<br />
+                <input readonly="readonly"name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="13" maxlength="12" />
+</div></td>
           </tr>
       </table></td></tr>
   </table>
@@ -616,8 +618,8 @@ AutoGrowTextArea(document.getElementById("Message"));
 <tr>
 <td colspan="4"><div align="right"><span class="FormReg"><span class="formbold"><span style="font-family: Calibri;"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"><span class="formtext1"><span><span style="font-family: Calibri;"><span style="font-weight: normal;"> </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span> <span><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span class="style4">&nbsp; </span></span></span></span> <span class="style4"><span style="font-family: Calibri;"> <span style="font-weight: normal;">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; </span></span></span>
                     <span class="style4">
-                    <input readonly="readonly"name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v. 1.1" />
-                    <span style="font-family: Calibri;"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span style="font-weight: normal;"> v<span class="style3"> 1. 1 </span></span></span></span></span></span></span></span></span></span></span></span></span></div></td>
+                    <input readonly="readonly"name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v. 1." />
+                    <span style="font-family: Calibri;"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span style="font-weight: normal;"> v<span class="style3"> 1. 2 </span></span></span></span></span></span></span></span></span></span></span></span></span></div></td>
 </tr>
 </tbody>
 </table>

@@ -1,47 +1,38 @@
 Form:Shares_Spotrep-2_Initial.html,Shares_Spotrep-2_Viewer.html
-
+SeqInc:
 To: <MsgTo>
 Cc: <MsgCc>
-Subject://WL2K P/ SPOTREP <var UDTG>
+Subject://WL2K <var Precedence>/ SPOTREP <var UDTGfld>
 Msg:
 
-R  <var UDTG>
-FM <var MsgSender>
-TO <var MsgTo>
-INFO <var MsgCc>
+PRECEDENCE: <var Precedence>   
+DATE/TIME Group: <var UDTGfld>   
+TASK# <var MsgNR>
+FROM: <var MsgSender>
+TO: <var MsgTo>
+INFO (CC): <var MsgCc>
 BT
 UNCLASS
 
-SUBJ SPOTREP <var UDTG>
+SUBJ SPOTREP <var UDTGfld>
 
 1. City/State/Territory:  <var City>
+2. Latitude and longitude (if available): <var gpsLat> <var gpsLon> 
+3. LandLines functioning?   [ <var Land> ] <var Comm1>
+4. Cell Phones functioning?  [ <var Cell> ] <var Comm2>
+5. AM/FM Broadcast Stations functioning?  [ <var AMFM> ] <var Comm3>
+6. TV Stations functioning?  [ <var TVStatus> ] <var Comm4>
+7. Public Water Works functioning?  [ <var WaterWorks> ] <var Comm5>
+8. Commercial Power functioning? [ <var PowerWorks> ] <var Comm6>
+9. Internet functioning?  [ <var Inter> ]  <var Comm7>
+10. Additional Comments:  <var Message>
 
-2. Landline Works?  [ <var Land> ]   <var Comm1>
+11. Poc <var POC>
 
-3. Cell Phone Works?  [ <var Cell> ]  <var Comm2>
-
-4. AM/FM broadcast Station Status: <var Comm3>
-
-5. TV Stations Status:  <var Comm4>
-
-6. Public Water Works Status:  <var Comm5>
-
-7. Commercial Power Status:  <var Comm6>
-
-8. Internet Working?  [ <var Inter> ]   <var Comm7>
-
-9. Additional Comments
-
-  <var Message>
-
---------------------------------
-Poc <var POC>
---------------------------------
 BT
 NNNN
 
 (If not using Winlink Express, you may ignore the .xml file attached)
-
 ------------------------------------
 Express Sending Station: <MsgSender>
 Express Version: <ProgramVersion>

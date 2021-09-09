@@ -491,7 +491,8 @@ document.getElementById('Message2').value = n;
 <td pbzloc="5">
 <table width="874px"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><div align="center" class="style2">IMS Form 213-R </div></td>
+    <td><div align="center" class="style2">IMS Form 213-R <br />
+      {var  FormTitle}    </div></td>
   </tr>
 </table>
 <table style="width: 874px; height: 318px;" border="1" bordercolor="#333333" cellpadding="4" cellspacing="0">
@@ -505,13 +506,13 @@ document.getElementById('Message2').value = n;
 &nbsp;<br />
 <input  name="InitialSeqNum" id="InitialSeqNum" title="User Option. Overwrite if desired." value="{var InitialSeqNum}" size="8" maxlength="7" readonly="readonly" placeholder="User option" readonly;/></td>
 <td width="109" style="vertical-align: top; text-align: center;">Precedence<br />
-  <span style="margin: 7px;  word-wrap:break-word; display:inline-block;">{var Priority} 
+  <span style="margin: 7px;  word-wrap:break-word; display:inline-block;">{var Priority} </span>
   <input readonly="readonly" name="Priority" type="hidden" id="Priority" value="{var Priority}" />
 </span> </p></td>
 <td width="104" style="vertical-align: top; text-align: center;">&nbsp;Handling<br />
-{var RplyHX}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <span style="margin: 7px;  word-wrap:break-word; display:inline-block;">{var HX}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td width="121" style="vertical-align: top; text-align: center;">Station of Origin <br />
-<input readonly="readonly" name="OrgStation" onchange="this.value=this.value.toUpperCase();" value="{var OrgStation}" size="10" maxlength="10" /></td>
+<input readonly="readonly" name="OrgStation"  value="{var OrgStation}" size="12" maxlength="12" /></td>
 <td width="179" style="text-align: center; vertical-align: top;">Place of Origin <br />
   <input readonly="readonly" name="OrgLocation" value="{var OrgLocation}" size="22" maxlength="22" /></td>
 <td width="107" style="vertical-align: top; text-align: center;">Time<br />
@@ -520,7 +521,7 @@ document.getElementById('Message2').value = n;
 <input readonly="readonly"  name="Date" id="Date" value="{var Date}" size="15" maxlength="15" placeholder="Click for Date" /></td>
 </tr>
 </tbody>
-</table><br/>
+</table>
 </td>
 </tr>
 <tr>
@@ -617,12 +618,12 @@ document.getElementById('Message2').value = n;
                     <input readonly="readonly"  name="SendTo" type="text" id="SendTo" style="text-transform: uppercase;" onblur="this.value= this.value.toUpperCase();" value="{var SendTo}" size="25" maxlength="23" />
                     <br />
          </div></td>
-          <td width="16%"><div align="center">DATE<br />
-                    <input readonly="readonly"  name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="15" maxlength="15" />
-          </div></td>
           <td width="16%"><div align="center">TIME <br />
-                    <input readonly="readonly"  name="SendTime" type="text" id="SendTime" value="{var SendTime}"  size="15" maxlength="15" />
-          </div></td>
+              <input readonly="readonly"  name="SendTime" type="text" id="SendTime" value="{var SendTime}"  size="15" maxlength="15" />
+</div></td>
+          <td width="16%"><div align="center">DATE<br />
+              <input readonly="readonly"  name="SendDate" type="text" id="SendDate" value="{var SendDate}"  size="15" maxlength="15" />
+</div></td>
         </tr>
       </table></td>
       </tr>
@@ -645,15 +646,15 @@ document.getElementById('Message2').value = n;
                 <input readonly="readonly"  name="Priority" type="hidden" id="Priority" value="{var Priority}" />
                        </div></td>
         <td width="13%" style="vertical-align: top; text-align: center;">&nbsp;Handling<br />
-&nbsp;{var RplyHX}</td>
+&nbsp;{var HX}</td>
         <td width="17%" style="vertical-align: top; text-align: center;">Station of Origin <br />
             <input readonly="readonly"  name="REplyOrgStation" id="REplyOrgStation" onchange="this.value=this.value.toUpperCase();" value="{var REplyOrgStation}" size="10" maxlength="10" /></td>
         <td width="19%" style="text-align: center; vertical-align: top;">Place of Origin <br />
             <input readonly="readonly" name="ReplyOrgLocation" id="ReplyOrgLocation" value="{var ReplyOrgLocation}" size="22" maxlength="22" /></td>
-        <td width="12%" style="vertical-align: top; text-align: center;">Date &nbsp;<br />
-          <input readonly="readonly"  name="ReplyDate" id="ReplyDate" value="{var ReplyDate}" size="12" maxlength="11" placeholder="Click for Date" /></td>
         <td width="12%" style="vertical-align: top; text-align: center;">Time<br />
-            <input readonly="readonly" name="ReplyTime" id="ReplyTime" value="{var ReplyTime}" size="12"  maxlength="11" placeholder="Click for Time" /></td>
+          <input readonly="readonly" name="ReplyTime" id="ReplyTime" value="{var ReplyTime}" size="14"  maxlength="14" placeholder="Click for Time" /></td>
+        <td width="12%" style="vertical-align: top; text-align: center;"> Date &nbsp;<br />
+          <input readonly="readonly"  name="ReplyDate" id="ReplyDate" value="{var ReplyDate}" size="12" maxlength="11" placeholder="Click for Date" /></td>
       </tr>
     </tbody>
   </table></td>
@@ -668,7 +669,7 @@ document.getElementById('Message2').value = n;
   <td colspan="4"><table width="100%"  border="1" cellspacing="0" cellpadding="3">
     <tr valign="top">
       <td colspan="3">12. Date/Time Received from Sender: 
-        <input readonly="readonly" name="dateTimereplysender" type="text" id="dateTimereplysender" value="{var dateTimereplysender}" /></td>
+        <input name="dateTimereplysender" type="text" id="dateTimereplysender" value="{var dateTimereplysender}" size="30" maxlength="30" readonly="readonly" /></td>
       </tr>
     <tr valign="top">
       <td>13. Name/Signature of Replier <br />
@@ -676,7 +677,7 @@ document.getElementById('Message2').value = n;
       <td>14. Position of Replier <br />
           <input readonly="readonly" name="ReplyPosition" type="text" id="ReplyPosition" value="{var ReplyPosition}" size="35" maxlength="30" required="required" /></td>
       <td>15. Date/Time of Reply <br />
-          <input readonly="readonly" name="ReplyDateTime" type="text" id="ReplyDateTime" value="{var ReplyDateTime}" /></td>
+          <input name="ReplyDateTime" type="text" id="ReplyDateTime" value="{var ReplyDateTime}" size="30" maxlength="30" readonly="readonly" /></td>
     </tr>
     <tr>
       <td colspan="3"><br />
@@ -688,24 +689,24 @@ document.getElementById('Message2').value = n;
                       <br />
             </div></td>
             <td width="11%">
-     <div align="center">DATE<br />
-                  <input name="ReplyDate" type="text" id="ReplyDate" value="{var ReplyreceiveDate}" size="15" maxlength="15" readonly="readonly" />
+     <div align="center">TIME <br />
+       <input readonly="readonly" name="ReplyTime" type="text"  id="ReplyTime" value="{var ReplyreceiveTime}" size="15" maxlength="15" />
 </div>
              </td>
-            <td width="8%"><div align="center">TIME <br />
-                      <input readonly="readonly" name="ReplyTime" type="text"  id="ReplyTime" value="{var ReplyreceiveTime}" size="15" maxlength="15" />
-            </div></td>
+            <td width="8%"><div align="center">DATE<br />
+                <input name="ReplyDate" type="text" id="ReplyDate" value="{var ReplyreceiveDate}" size="15" maxlength="15" readonly="readonly" />
+</div></td>
             <td width="22%"><div align="center">SENT TO<br />
                     
                       <input readonly="readonly" name="ReplySendTo" type="text" id="ReplySendTo" style="text-transform: uppercase;" onblur="this.value= this.value.toUpperCase();" value="{var ReplySendTo}" size="25" maxlength="23" />
                       <br />
             </div></td>
-            <td width="14%"><div align="center">DATE<br />
-                      <input readonly="readonly"name="RelyDatereceived" type="text" id="RelyDatereceived" value="{var RelyDatereceived}"  size="15" maxlength="15" />
-            </div></td>
             <td width="14%"><div align="center">TIME <br />
-                      <input readonly="readonly"name="ReplyTimereceived" type="text" id="ReplyTimereceived" value="{var ReplyTimereceived}"  size="15" maxlength="15" />
-           </div></td>
+                <input readonly="readonly"name="ReplyTimereceived" type="text" id="ReplyTimereceived" value="{var ReplyTimereceived}"  size="18" maxlength="18" />
+</div></td>
+            <td width="14%"><div align="center">DATE<br />
+                <input readonly="readonly"name="RelyDatereceived" type="text" id="RelyDatereceived" value="{var RelyDatereceived}"  size="15" maxlength="15" />
+</div></td>
           </tr>
       </table>
        
@@ -713,8 +714,8 @@ document.getElementById('Message2').value = n;
 </tr>
 <tr>
   <td colspan="4" class="formbold"><span style="font-family: Calibri;"><span style="font-family: Calibri;"><span><span style="font-family: Calibri;"><span style="font-weight: normal;">
-    <input name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v 1.1" />
-v 1.1</span></span></span></span> </span></td>
+    <input name="Templateversion" type="hidden" id="templateversion" value="IMS Form 213-R  v 1.2" />
+v 1.12</span></span></span></span></span></td>
 </tr>
 </tbody>
 </table>
