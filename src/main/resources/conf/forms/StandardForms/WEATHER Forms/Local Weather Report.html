@@ -492,7 +492,7 @@ collect();
 function isNumberKey(evt)
 {
 var charCode = (evt.which) ? evt.which : event.keyCode
-if (charCode > 32 && (charCode < 45 || charCode > 57))
+if (charCode > 32 && (charCode < 44 || charCode > 57))
 //if (charCode > 32 && (charCode < 40 ))
 return false;
 return true;
@@ -856,9 +856,11 @@ if (x ==='--' | x =='') {Trendbuttons(true);} else { Trendbuttons(false); }
       </p>
         <p class="style32">   If you have a GPS device connected, coordinates will be displayed</p></td>
       <td align="left" valign="top" nowrap="nowrap" bgcolor="#f8f8ff" ><p class="style27">Optional <strong>Decimal</strong> GPS:&nbsp;&nbsp; <span class="style23">
-          <input name="GPS" id="GPS" title="If GPS device is connected, coordinates are auto filled in, or enter manually. FORMAT MUST BE: 32.5042,-116.9834" value="{GPS_SIGNED_DECIMAL}" size="30" maxlength="45" placeholder="EX: 32.5042,-116.9834" />
-</span></p>
-        <p class="style27"><strong>Manual entry format</strong>:&nbsp;&nbsp;&nbsp;&nbsp;<span class="style31">EX: 32.5042,-116.9834 &nbsp;Note the comma.</span></p></td>
+          <input name="GPS" id="GPS" onkeypress="return isNumberKey(event)" title="If GPS device is connected, coordinates are auto filled in, or enter manually. FORMAT MUST BE: 32.5042,-116.9834" value="{GPS_SIGNED_DECIMAL}" size="30" maxlength="45" placeholder="EX: 32.5042,-116.9834" />
+          <br />
+          ONLY DECIMAL FORMAT IS ACCEPTABLE<br />
+</span><strong>Manual entry format</strong>:&nbsp;&nbsp;&nbsp;&nbsp;<span class="style31">EX: 32.5042,-116.9834 &nbsp;Note the comma.</span></p>
+        </td>
     </tr>
     <tr>
       <td align="left" valign="top" nowrap="nowrap" bgcolor="#f8f8ff" ><span class="style27">City: 
@@ -1032,9 +1034,10 @@ if (x ==='--' | x =='') {Trendbuttons(true);} else { Trendbuttons(false); }
               <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />
 &nbsp;&nbsp;
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 1.9<span style="font-style: italic;">.4<span class="style17"><span class="formtext11">
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 1.9<span style="font-style: italic;">.5<span class="style17"><span class="formtext11">
+<span style="font-style: italic;"><span style="font-style: italic;">
 <input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 1.9.3" />
-</span></span></span>    </span> </p></td>
+</span></span></span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>
 

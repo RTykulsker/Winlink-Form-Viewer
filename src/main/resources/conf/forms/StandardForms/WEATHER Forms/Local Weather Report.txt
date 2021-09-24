@@ -27,7 +27,7 @@ Snow 1 HR: <var Snow1hr> <var SnowMeasure>    Snow Total: <var SnowTotal> <var S
 
 NWS Level: <var Warning>   <var WarningFld>
 
-Notes:
+Notes: 
 
 <var Narrative>
 
