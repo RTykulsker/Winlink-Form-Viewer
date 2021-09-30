@@ -326,7 +326,6 @@ font-weight: inherit;
 .style39 {font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
 
 .style40 {font-size: 10px; color: #FF0000; }
-.style43 {color: black}
 </style>
 
 
@@ -1068,23 +1067,25 @@ if (num !='')
 		document.getElementById(fld).value = '';
 		document.getElementById(fld).focus();
 	}
-	if (fld =='gpsLat' && (num <-90) || ( num >90)) {alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
+	if (fld =='gpsLat') { 
+	if ((num <-90)  || ( num >90)) { alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
 		document.getElementById(fld).focus();}
-		else {
-	if (fld =='gpsLon' && (num <-180) || ( num >180)) {alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
+		}
+		
+	if (fld =='gpsLon'){ 
+	if ((num <-180) || ( num >180)) 
+		{ alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
 		document.getElementById(fld).focus();}
+
 	}
-	}}
+	}
+	}
 
 function checkform(){
 
 num1 = parseFloat(document.getElementById('gpsLat').value);
 
 num2 = parseFloat (document.getElementById('gpsLon').value);
- 	//if (a !=num){alert('Please enter coordinates in Decimal format
-
-//if (isNaN(num1) | isNaN(num2)){ alert('WRONG');return false } else {return true}
-//if (isNaN(num1) | isNaN(num2)){ alert('You have not entered GPS coordinates. Your location will not be reported on the Spot Rep Map')}
 
 if (isNaN(num1) | isNaN(num2)){ return confirm('You have not entered GPS coordinates. \nYour location will not be reported on the Spot Rep Map')}
 
@@ -1580,9 +1581,9 @@ Unknown - N/A</td>
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.6.1" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.7" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span class="style2">Ver 9</span>.<span class="style2">6.6</span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span class="style2">Ver 9</span>.<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">6.7</span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 
