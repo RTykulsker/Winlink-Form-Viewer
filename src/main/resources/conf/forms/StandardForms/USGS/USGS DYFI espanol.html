@@ -711,6 +711,7 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+  flipID('EXERCISE');
  SetDateTime('autodate'); SetDateTime('autotime');
  copyGPS();
  }
@@ -860,7 +861,7 @@ var clatl =ckc+ckd+ ckb;
 if (clatl=='')  {var b = '\nDebes especificar tu ubicación durante el evento';var ifOk = false;}
 //if ((ckb=='') & ckl) {var b = '\nYou must specify your location during the event';var ifOk = false;}
 //if (ckb ==''){ var b = '\nYou must specify your location during the event'; var haserror = true;}
-if (ifOk == false) {alert ('Uno o más campos obligatorios están en error. Ver abajo para más detalles: \n'+a+b);} else {var isOk = false}
+if (ifOk == false) {alert ('Uno o más campos obligatorios tienen error. Ver abajo para más detalles: \n'+a+b);} else {var isOk = false}
 
 return ifOk ;
 }
@@ -1045,7 +1046,20 @@ window.location.href = "#pop2";
 
 }
 
+function flipID (x) { 
+if (x == 'EXERCISE'){document.getElementById('prompttxt').innerHTML =' ID de ejercicio opcional: ';
+document.getElementById('eventid').value ='';
+document.getElementById('eventid').style.display = "none";
+document.getElementById('exercise_id').style.display = "inline";
+}
 
+if (x == 'REAL EVENT'){document.getElementById('prompttxt').innerHTML =' ID de evento de USGS: ';
+document.getElementById('exercise_id').value = '';
+document.getElementById('eventid').style.display = 'inline';
+document.getElementById('exercise_id').style.display = "none";
+
+}
+}
 </script>
 <title>Did You Feel It?</title></head>
 
@@ -1075,6 +1089,26 @@ The DYFI Winlink report defaults to a USGS email address, meaning your DYFI Winl
     N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215</p>
     <p class="style37"><strong>NOTA</strong>: Para que las coordenadas decimales GPS ingresadas autom&aacute;ticamente funcionen, debe tener un dispositivo GPS conectado y configurado que funcione con Winlink Express. De lo contrario, se puede utilizar la entrada manual en el formato indicado.</p>
     <hr>
+	<strong>ID de evento de USGS / ID de ejercicio opcional</strong>
+<p>ID de evento de USGS<br>
+  Al informar un EVENTO REAL, puede agregar el ID de evento de USGS. Esto es opcional, pero ayuda al USGS a relacionar su informe con el terremoto que est&aacute; informando.<br>
+  Hay varias formas de obtener un ID de evento de USGS:<br>
+  1) Desde la web.<br>
+  Vaya a <a href="https://earthquake.usgs.gov/earthquakes/map">https://earthquake.usgs.gov/earthquakes/map</a><br>
+  Haga clic en el terremoto que est&aacute; informando. Haga clic en Did You Feel It<br>
+  El ID de USGS estar&aacute; en la tercera l&iacute;nea del encabezado, por ejemplo ID: ci40063464<br>
+  En este ejemplo, informar&iacute;a ci40063464</p>
+<p>2) De la direcci&oacute;n web<br>
+  Si tiene un enlace al sitio de USGS de un terremoto, la identificaci&oacute;n aparecer&aacute; en la direcci&oacute;n web.<br>
+  Por ejemplo, <a href="https://earthquake.usgs.gov/earthquakes/eventpage/ci40063464/executive">https://earthquake.usgs.gov/earthquakes/eventpage/ci40063464/executive</a></p>
+<p>3) Del Servicio de Notificaci&oacute;n de Terremotos (ENS)<br>
+  Si recibe notificaciones de terremoto de USGS, el aviso tambi&eacute;n incluir&aacute; el ID de evento, por ejemplo<br>
+  ID de evento: ci 40063464<br>
+  ENS es un servicio gratuito. Puede suscribirse, ajustar preferencias y darse de baja en https://earthquake.usgs.gov/ens/</p>
+<p>ID de ejercicio opcional</p>
+<p>USGS alienta a los radioaficionados a enviar informes de ejercicios, especialmente cuando son parte de ejercicios organizados. Agregar la ID de ejercicio opcional ayuda a los eventos de ejercicios grupales de USGS.</p>
+<p>Aseg&uacute;rese de que todos en su grupo usen el mismo nombre de ejercicio. Algunos ejemplos son ShakeOut2021, ARESLAX0815, SeattleDrill14, etc.</p>
+<hr />
     <span class="style37">    El desarrollo del formulario DYFI Winlink fue posible gracias a la colaboraci&oacute;n del Servicio Geol&oacute;gico de los Estados Unidos (USGS), ARES LAX (Servicio de Emergencia de Radioaficionados, Los &Aacute;ngeles) y el Equipo de Desarrollo de Winlink.</span>
 <p class="style37">Capacitaci&oacute;n, pruebas de datos y formularios proporcionadas por</p>
 
@@ -1172,12 +1206,16 @@ to links</span></a>  --></div>
     <table width="100%"  border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
       <tr>
         <td valign="top" bgcolor="#FFFFFF"><p><span class="style33">&gt;&gt;&gt;&gt; Este informe de terremoto es un
-              <input name="xeventtype" type="radio" onclick="document.getElementById('eventType').value = 'EXERCISE'" value="EXERCISE" checked="checked" />
+              <input name="xeventtype" type="radio" onclick="document.getElementById('eventType').value = 'EXERCISE';  flipID('EXERCISE')" value="EXERCISE" checked="checked" />
           EJERCICIO  <span class="style32">
-          <input name="xeventtype" type="radio" value="Real Event" onclick="document.getElementById('eventType').value = 'REAL EVENT'"/> 
+          <input name="xeventtype" type="radio" value="Real Event" onclick="document.getElementById('eventType').value = 'REAL EVENT';  flipID ('REAL EVENT')"/> 
           EVENTO REAL</span>          
           <input name="eventType" type="hidden" id="eventType" value="EXERCISE" />
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+ &nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+          <p><span class="style33">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span  id="prompttxt"> ID de ejercicio opcional: </span>
+              <input name="exercise_id" type="text" id="exercise_id" size="38" placeholder = '(ID del ejercicio solo si se le indica)' />
+              <input name="eventid" type="text" id="eventid" size="38"  placeholder = '(Solo si se conoce; por ejemplo, nc72282711)' />
+&nbsp;</span></p>
           <hr />
           <p><span class="style23">&iquest;Sinti&oacute; usted el temblor? <span class="style11"><span class="style13">(REQUERIDO)</span></span></span></p>
           <p><span class="style11">&nbsp; &nbsp;
@@ -1205,8 +1243,7 @@ to links</span></a>  --></div>
 
                           placeholder="Haga clic por hora" onclick="SetDateTime('hm',this.id)" readonly
 
-                          required="required" />  es
-  Haga clic en el campo de fecha u hora para modificar
+                          required="required" /> Haga clic en el campo de fecha u hora para modificar
   <input placeholder="Time of earthquake" name="ciim_time" type="hidden" id="ciim_time" size="30" maxlength="30" />
           </p>
           <p><span class="style13">&nbsp; &nbsp;<em> &nbsp;</em></span><span class="style36"> (Al abrir este formulario se inserta su fecha y hora actual, puede cambiar manualmente haciendo clic en el campo)</span></p></td>
@@ -1328,7 +1365,7 @@ Moderada</span></td>
 Fuerte</span></td>
               <td><span class="style11">
                 <input name="xDescShake" type="radio" value="5"onclick="document.getElementById('fldExperience_shaking').value = this.value" />
-Violenta</span></td>
+Violento</span></td>
               <td>&nbsp;</td>
             </tr>
           </table>          </td>
@@ -1365,7 +1402,7 @@ Violenta</span></td>
       Muy asustado</span></td>
               <td><span class="style11">
                 <input name="xReactfld" type="radio" value="5"onclick="document.getElementById('fldExperience_reaction').value = this.value" />
-      Asustado en lo extremo</span></td>
+      Extremadamente asustado</span></td>
               <td>&nbsp;</td>
             </tr>
           </table>          </td>
@@ -1680,9 +1717,9 @@ Se separaron de la estructura el balc&oacute;n, <br />
         <input name="user_id" type="hidden" id="user_id" value="{Callsign}" />
         <input name="user_id_type" type="hidden" id="user_id_type" value="Callsign" />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></td>
-      <td width="10%">&nbsp;Ver  8.1 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver  8.2 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
-      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.1 es" />
+      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.2 es" />
       </span></span></span></span> </span></span> </span> </span></td>
     </tr>
   </table>
