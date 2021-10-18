@@ -14,7 +14,7 @@ font-family: Arial,Helvetica,sans-serif;
 
 
 
-font-size: 12px;
+font-size: 14px;
 
 
 
@@ -70,7 +70,7 @@ font-family: Arial,Helvetica,sans-serif;
 
 
 
-font-size: 12px;
+font-size: 14px;
 
 
 
@@ -110,7 +110,7 @@ font-family: Arial,Helvetica,sans-serif;
 
 
 
-font-size: 12px;
+font-size: 14px;
 
 
 
@@ -126,7 +126,7 @@ font-weight: inherit;
 
 
 
-font-size: 12px;
+font-size: 14px;
 
 
 
@@ -220,7 +220,7 @@ width:40px;
 
 
 
-.style2 {font-size: 12px}
+.style2 {font-size: 14px}
 
 .style3 {font-size: 14px}
 
@@ -234,6 +234,7 @@ font-weight: inherit;
 
 .style13 {font-size: 16px}
 
+.style14 {font-size: 12px}
 </style>
 
 
@@ -266,7 +267,7 @@ font-weight: inherit;
 
 <td colspan="2" style="vertical-align: top; height: 8%; background-color: #dee9f9; text-align: center;"><p align="right" class="style2">   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small> &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp;  <span class="style3">SHARES
 
-  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6</span>.6.1&nbsp;&nbsp;&nbsp;
+  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6</span>.9&nbsp;&nbsp;&nbsp;
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
@@ -314,7 +315,7 @@ font-weight: inherit;
 
 <p><span style="font-size: 14px;"><span class="style2"><span style="font-size: 14px;">&nbsp;<span style="font-size: 14px;">&nbsp;</span></span>TO:</span><span style="font-size: 12px"></span>&nbsp; <span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"></span></span></span></span><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"></span><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 12px;"><span class="style3"><span style="width:640px; margin: 1px;  word-wrap:break-word; display:inline-block;">{var MsgTo}</span></span></span></span></span></span></span></span><span style="font-size: 14px;"></span></p>
 
-<p><span style="font-size: 14px;"><span class="style2"><span style="font-size: 14px;">&nbsp;<span style="font-size: 14px;">&nbsp;</span></span><span style="font-size: 14px;">INFO&nbsp;(CC): </span></span><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"></span></span></span></span><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 12px;"><span class="style3"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 12px;"><span style="width:640px; margin: 1px;  word-wrap:break-word; display:inline-block;">{var MsgCc}</span></span></span></span></span></span></span></span></span></span></span></span></span><span style="font-size: 14px;"></span></p>
+<p><span style="font-size: 14px;"><span class="style2"><span style="font-size: 14px;">&nbsp;<span style="font-size: 14px;">&nbsp;</span>INFO&nbsp;(CC):</span></span> {var MsgCc}</span></p>
 
 <span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"></pbzloc></span><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"></pbzloc></span></td>
 
@@ -322,19 +323,18 @@ font-weight: inherit;
 
 <tr>
 
-<td colspan="5"><p>
+<td colspan="5"><table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#f8f8ff">
 
-      <span style="font-size: 12px;"> &nbsp;  &nbsp;</span>1. City/State/Territory: &nbsp;
+    <tr valign="middle" bgcolor="#f8f8ff">
+      <td height="31"><span style="font-size: 12px;"><span class="style13"><span class="style3">&nbsp; </span></span>&nbsp;</span>1. City/State/Territory: &nbsp; </td>
+      <td><span class="style3">{var City} </span></td>
+    </tr>
+    <tr valign="middle" bgcolor="#FFFFFF">
+      <td height="37" colspan="2"><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span>2.</span></span><span class="style3">&nbsp;LAT: {var gpsLat} &nbsp;&nbsp;&nbsp;LON: {var gpsLon}<span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span> MGRS:&nbsp;{var MGRS}<span style="font-size: 14px;"><span style="font-size: 14px;"> &nbsp;</span> &nbsp;</span> &nbsp;<span style="font-size: 14px;"><span style="font-size: 14px;">&nbsp;Latitude, longitude, and MGRS (if available) </span></span></span></span></span></td>
+      </tr>
+    <tr valign="middle">
 
-      <span class="style3">{var City} </span></p>
-
-  <p><span class="style13"><span class="style3">&nbsp; 2.</span></span><span class="style2">&nbsp;LAT: {var gpsLat} &nbsp;&nbsp;&nbsp;LON: {var gpsLon}<span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;">&nbsp;</span></span><span style="font-size: 14px;"><span style="font-size: 14px;">&nbsp;&nbsp;&nbsp;</span></span>&nbsp;</span></span><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="font-size: 14px;">&nbsp;<span class="style13"><span class="style3"></span></span>Latitude and longitude (if available)<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"> </span></span> </span></span></span></span></span></p>
-
-  <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#f8f8ff">
-
-  <tr valign="middle">
-
-    <td width="28%"><span style="font-size: 12px;">&nbsp; &nbsp;</span>3.&nbsp;LandLines functioning? </td>
+    <td width="28%"><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span></span></span>3.&nbsp;LandLines functioning? </td>
 
     <td width="72%"> <span class="style3"> {var Land}</span></td>
 
@@ -354,7 +354,7 @@ font-weight: inherit;
 
   <tr valign="middle">
 
-    <td width="28%"><span style="font-size: 12px;">&nbsp; 4 </span>. Cell Phones functioning? </td>
+    <td width="28%"><span style="font-size: 12px;"><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span></span></span>4 </span>. Cell Phones functioning? </td>
 
     <td width="72%"> {var Cell}</td>
 
@@ -372,9 +372,9 @@ font-weight: inherit;
 
   <tr valign="middle" bgcolor="#f8f8ff">
 
-    <td width="28%" nowrap="nowrap"><span style="font-size: 12px;">&nbsp; &nbsp;</span>5. AM/FM Broadcast Stations functioning?	</td>
+    <td width="28%" nowrap="nowrap"><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span></span></span>5. AM/FM Broadcast Stations functioning?	</td>
 
-    <td width="72%"> {var AMFM}</td>
+    <td width="72%" bgcolor="#f8f8ff"> {var AMFM}</td>
 
   </tr>
 
@@ -446,7 +446,7 @@ font-weight: inherit;
 
   <tr valign="middle">
 
-    <td width="28%"><span style="font-size: 12px;">&nbsp; &nbsp;</span><span style="font-size: 12px;">9</span>. Internet functioning?   </td>
+    <td width="28%" class="style3">&nbsp; &nbsp;9. Internet functioning? </td>
 
     <td width="72%">{var Inter}</td>
 
@@ -508,9 +508,9 @@ font-weight: inherit;
 
 </span></span></span></span></span></span></span></span></span><span style="color: rgb(128, 0, 0);"><span style="color: black;">&nbsp;</span></span><span style="color: rgb(128, 0, 0);"><span style="color: black;">&nbsp;</span></span></span></span><span style="color: rgb(128, 0, 0);"><span style="color: black;"></span></span><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.7" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.9" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3">Ver<span class="style2"> 9.6.7</span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3">Ver<span class="style2"> 9.6.<span class="style14">9</span></span></span></span></span></span></span></span></td>
 
 </tr>
 

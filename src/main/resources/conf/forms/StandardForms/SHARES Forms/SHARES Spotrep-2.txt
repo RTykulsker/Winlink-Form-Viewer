@@ -3,6 +3,7 @@ To: <MsgTo>
 Cc: <MsgCc>
 Readonly:True
 Subject://WL2K <var Precedence>/ SPOTREP <var UDTGfld>
+
 Readonly:True
 Msg:
 
@@ -18,7 +19,7 @@ UNCLASS
 SUBJ SPOTREP <var UDTGfld>
 
 1. City/State/Territory:  <var City>
-2. Latitude and longitude (if available): <var gpsLat> <var gpsLon> 
+2. Latitude and longitude (if available): <var gpsLat> <var gpsLon>  MGRS: <var MGRS> 
 3. LandLines functioning?   [ <var Land> ] <var Comm1>
 4. Cell Phones functioning?  [ <var Cell> ] <var Comm2>
 5. AM/FM Broadcast Stations functioning?  [ <var AMFM> ] <var Comm3>
@@ -35,6 +36,12 @@ NNNN
 [No changes or editing of this message are allowed]
 (If not using Winlink Express, you may ignore the .xml file attached)
 
+
+--- json data --
+
+<var myjasondata>
+
+--- end of json data --
 ------------------------------------
 Express Sending Station: <MsgSender>
 Express Version: <ProgramVersion>

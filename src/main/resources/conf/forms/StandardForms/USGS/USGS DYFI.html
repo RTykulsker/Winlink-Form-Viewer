@@ -1069,7 +1069,7 @@ document.getElementById('exercise_id').style.display = "none";
 </script>
 <title>Did You Feel It?</title></head>
 
-<body onload = "document.getElementById('eventid').style.display = 'none';">
+<body >
 <form   method="post" id="myform" onsubmit="formDataToObject(document.getElementById('myform'))" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
@@ -1095,7 +1095,30 @@ The DYFI Winlink report defaults to a USGS email address, meaning your DYFI Winl
     N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215</p>
     <p class="style37"><strong>NOTE:</strong> For auto entered GPS decimal coordinates to work, you must have a connected and configured GPS device working with Winlink Express. Otherwise manual entry in the indicated format can be used.</p>
     <hr>
-    <span class="style37">    The development of the DYFI Winlink form was made possible through a collaboration of the United States Geological Survey (USGS), ARES LAX (Amateur Radio Emergency Service, Los Angeles) and the Winlink Development Team.
+    <strong>USGS Event ID / Optional Exercise ID
+</strong>
+<p><strong>USGS Event ID</strong> <br>
+  When reporting a REAL EVENT you can add the USGS Event ID. This is optional, but it helps USGS match your report with the earthquake you are reporting.<br>
+  There are several ways to obtain a USGS Event ID:<br>
+  1) From the web. <br>
+  Go to <a href="https://earthquake.usgs.gov/earthquakes/map%20">https://earthquake.usgs.gov/earthquakes/map </a><br>
+  Click on the earthquake you are reporting. Click on Did You Feel It<br>
+  The USGS ID will be on the third line of the header, for example ID:ci40063464 <br>
+In this example you would report ci40063464 </p>
+<p>2) From the web address<br>
+  If you have a link to the USGS site of an earthquake the ID will be listed in the webaddress.<br>
+  For example, <a href="https://earthquake.usgs.gov/earthquakes/eventpage/ci40063464/executive">https://earthquake.usgs.gov/earthquakes/eventpage/ci40063464/executive</a></p>
+<p>3) From the Earthquake Notification Service (ENS)<br>
+  If you receive earthquake notifications from USGS the notice will also list the Event ID, for example<br>
+  event ID : ci 40063464 <br>
+  ENS is a free service. You can subscribe, adjust preferences and unsubscribe at <a href="https://earthquake.usgs.gov/ens/%20">https://earthquake.usgs.gov/ens/ </a></p>
+<p>Optional Exercise ID</p>
+<p>USGS encourages radio amateurs to send in exercise reports, especially when they are part of organized exercises. Adding the optional exercise ID helps USGS group exercise events.</p>
+<p>Please make sure that everyone in your group uses the same exercise name. Examples are ShakeOut2021, ARESLAX0815, SeattleDrill14, etc. <br>
+</p>
+<hr />
+	
+	<span class="style37">    The development of the DYFI Winlink form was made possible through a collaboration of the United States Geological Survey (USGS), ARES LAX (Amateur Radio Emergency Service, Los Angeles) and the Winlink Development Team.
     </span>
 <p class="style37">Training, data and form testing provided by:</p>
     <p class="style37">
@@ -1708,7 +1731,7 @@ Building permanently shifted over foundation<br />
         <input name="user_id_type" type="hidden" id="user_id_type" value="Callsign" />
  &nbsp;&nbsp;&nbsp;&nbsp;<span class="style13"><span class="style28">
  </span></span></span></span></td>
-      <td width="10%">&nbsp;Ver 8.2 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver 8.3 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.3 en" />
       </span></span></span></span> </span></span> </span> </span></td>

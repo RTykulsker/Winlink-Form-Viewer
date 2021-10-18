@@ -326,6 +326,10 @@ font-weight: inherit;
 .style39 {font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
 
 .style40 {font-size: 10px; color: #FF0000; }
+.style12 {	color: #FF0000;
+	font-style: italic;
+}
+.style41 {color: black}
 </style>
 
 
@@ -346,10 +350,9 @@ font-weight: inherit;
 
      localStorage.setItem("SharesCity", formatted.value);
 
+ var formatted= document.getElementById("MGRS");
 
-
-	 
-
+     localStorage.setItem("Sharesmgrs", formatted.value);
 	 
 
     }
@@ -370,11 +373,13 @@ var storedValue = localStorage.getItem("SharesCity");
 
 	document.getElementById('City').value = storedValue;
 
+var storedValue = localStorage.getItem("Sharesmgrs");
 
+	document.getElementById('MGRS').value = storedValue;
 
 	}
 
-
+//Add the stored GPS
 
 
 
@@ -523,7 +528,6 @@ return text2.trim();
 
 
 
-
 function saveTextAsFile(fileNameToSaveAs, textToWrite) {
 
 var textToWrite = document.getElementById('parseme').value; 
@@ -631,8 +635,113 @@ function loadFileAsText()
 }
 
 
+function shortmonth(monthnum) {
+var monthname;
+shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
+monthname = shortmonths [monthnum];s
+ return monthname;
+		
+}
+function DateTime(TType,TheFld, dopromt) {
+var txt;
+var  myprompt;
+var d = new Date(),
+ thisyear = d.getFullYear();
+ thismonth= d.getMonth();
+ thisday = d.getDate();
+var monname;
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var utcstr = d.toUTCString();
+var localt  = d.toLocaleTimeString();
+var isostr = d.toISOString();
+monthname = shortmonth (thismonth);
+thismonth = thismonth + 1;
+switch (TType) {
+    case 'hms'  :
+        myprompt = h + ':' + m + ':' + s;
+		var RightNow = prompt("Time:", myprompt);
+		document.getElementById(TheFld).value = RightNow;
+        break;
+		case 'hm'  :
+        myprompt = h + ':' + m;
+		var RightNow = prompt("Time:", myprompt);
+		document.getElementById(TheFld).value = RightNow;
+        break;
+		case 'm-d-y':     
+			myprompt = thismonth+ '-' + thisday+ '-'+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		 case 'm/d/y':     
+			myprompt = thismonth+ '/' + thisday+ '/'+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		     break;
+		 case 'd mmm y':     
+			myprompt = thisday+ ' ' + monthname+ ' '+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'mmm-d-y':     
+			myprompt = monthname+'-'+thisday+ '-' +  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+        case 'localampm':     
+			var myprompt = localt;
+			var RightNow = prompt("Local time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
 
-
+		case 'fulldate':     
+			var myprompt = thisyear+ '-'+thismonth+'-'+thisday;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'fulldatetime':     
+			var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m + ':' + s;
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		    case 'iso':     
+			var myprompt = isostr;
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'utc':     
+			var myprompt = utcstr;
+			if (dopromt) { document.getElementById(TheFld).value = myprompt; TimeStamp();
+} else {
+			var RightNow = prompt("UTC Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;TimeStamp();
+}
+			
+		   break;
+		  
+		   case 'zulu':     
+			var myprompt = isostr;
+			myprompt = isostr.replace("T", "  "); 
+			slen = myprompt.length;
+			myprompt = myprompt.substr(0, slen-5)+'Z';
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+			TimeStamp();
+		   break;
+		   case 'autozulu':     
+			var myprompt = isostr;
+			myprompt = isostr.replace("T", "  "); 
+			slen = myprompt.length;
+			myprompt = myprompt.substr(0, slen-5)+'Z';
+			var RightNow = myprompt;
+			document.getElementById('UDTGfld').value = RightNow;
+			TimeStamp();
+		   break;
+		}
+				
+	// if(FocusFld !== null && FocusFld !== '') {document.getElementById(FocusFld).focus()} --/
+	};
 
 function DateforFile(RightNow) {
 
@@ -947,6 +1056,7 @@ function SaveData() {
      alert("Files are not supported"); 
 
  } 
+ var t1; var t2;
 
  getit();
 
@@ -954,12 +1064,61 @@ function SaveData() {
 
 copyGPS();
 
-
-
  Fixfields();
 
+ DateTime('autozulu','UDTGfld', true);
+TimeStamp();
  }
 
+function parethisdate() {
+
+var thedatetime=  document.getElementById('UDTGfld').value;
+//d= new Date(Date.parse(thedatetime)).toString();
+var d= new Date(Date.parse(thedatetime));
+
+//alert (Date.parse(thedatetime));
+//d =parseDate(thedatetime);
+utcstr = d.toUTCString()
+alert (utcstr);
+document.getElementById('timestamp2').value= utcstr;
+}
+
+function TimeStamp(){
+var d1 = new Date();
+mtime = Math.floor(d1.getTime())
+//var d = new Date();
+
+//yyyyMMddhhmmss 
+var thedatetime=  document.getElementById('UDTGfld').value;
+var d = new Date();
+var d= new Date(Date.parse(thedatetime));
+  var nyyyy = d.getUTCFullYear();
+  nyyyy= nyyyy.toString();
+
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+ 
+var ndd = d.getUTCHours();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+
+  var nhh = d.getUTCHours();
+    if(nhh<10) {ndd= '0'+nhh}
+  nhh=nhh.toString()
+    var nmm = d.getUTCMinutes();
+	if(nmm<10) {nmm= '0'+nmm}
+  nmm=nmm.toString()
+	 var nss = d.getUTCSeconds();
+	 if(nss<10) {nss= '0'+nss}
+  nss=nss.toString()
+
+ document.getElementById("timestamp").value = mtime; ;
+ x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+
+ 
+}
  
 
  function Fixfields() {  
@@ -1031,9 +1190,6 @@ document.getElementById("MsgSender").value = '';
 function copyGPS() {
 
 
-
-
-
 var GPSstr= document.getElementById("ExtGPS").value;
 
 var nameArr = GPSstr.split(" ");
@@ -1047,39 +1203,66 @@ var b =nameArr[1];
 if(!isNaN (a)){document.getElementById('gpsLat').value =a;store();}
 
 if(!isNaN (b)){document.getElementById('gpsLon').value =b;store();}
-
+checkLatLon();
 }
 
 function isNumberKey(evt)
 {
+
 var charCode = (evt.which) ? evt.which : event.keyCode
 //if (charCode =45){alert('45')} 
+if(charCode ==13){return false;}
+
 if (charCode > 32 && (charCode < 45 || charCode > 57))
 //if (charCode > 32 && (charCode < 40 )) event.keyCode==13
 return false;
 return true;
 }
-function checklatlon(num, fld) {
-if (num !='')
-	{
- 	var a = parseFloat(num);
- 	if (a !=num){alert('Please enter coordinates in Decimal format.');
-		document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();
-	}
-	if (fld =='gpsLat') { 
-	if ((num <-90)  || ( num >90)) { alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
-		}
-		
-	if (fld =='gpsLon'){ 
-	if ((num <-180) || ( num >180)) 
-		{ alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
 
-	}
-	}
-	}
+function CheckLat(){
+var latCheck = 1;
+var num =document.getElementById('gpsLat').value;
+if ((num <-90)  || ( num >90)) { document.getElementById('gpsLat').value=0;alert ('Latitude must be between -90 and 90'); 
+document.getElementById('gpsLat').value = '';
+		document.getElementById('gpsLat').focus();
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var latCheck = 0;
+
+} 
+return latCheck;
+}
+
+function CheckLon(){
+var lonCheck= 1;
+var num =document.getElementById('gpsLon').value
+if ((num <-180) || ( num >180)) 
+		{ alert ('Longitude must be between -180 and 180'); 
+		document.getElementById('gpsLon').value = '';
+		document.getElementById('gpsLon').focus();
+		var lonCheck= 0;} 
+	//alert(lonCheck)
+return lonCheck;
+}
+
+
+
+function checkLatLon() {
+var cnt = 1;
+//var x1=0; var x2=0;
+x1 = CheckLat();
+x2 = CheckLon();
+
+
+//alert('total='+x1+x2)
+//alert(CheckLat());alert(CheckLon());
+if (x1==1 && x2==1) {// now set string for latlon
+	var mlat = document.getElementById('gpsLat').value;
+	var mlon = document.getElementById('gpsLon').value;
+	document.getElementById('GPS2').value =mlat+','+mlon;
+	convertthis();
+} 
+}
 
 function checkform(){
 
@@ -1090,6 +1273,266 @@ num2 = parseFloat (document.getElementById('gpsLon').value);
 if (isNaN(num1) | isNaN(num2)){ return confirm('You have not entered GPS coordinates. \nYour location will not be reported on the Spot Rep Map')}
 
 }
+function MGRSString ()
+
+//function MGRSString (51.172,-1.779)
+// 51.172,-1.779  38.556, -121.793
+{ //var Lat = 38.556; var Long=-121.793; 
+//var Lat1 = 38.556; var Long1=-121.793; 
+var thestring= document.getElementById("GPS2").value;
+ var res = thestring.split(",");
+ var Lat = parseFloat(res[0]); var Long=parseFloat(res[1]); 
+if (isNaN(Lat)) {return} 
+if (isNaN(Long)) {return} 
+// var Long = res[1]; ('long >'+Long+'<');
+ //Lat=38.556; Long=-121.793
+if (Lat < -80) return 'Too far South' ; if (Lat > 84) return 'Too far North' ;
+var c = 1 + Math.floor ((Long+180)/6);
+var e = c*6 - 183 ;
+var k = Lat*Math.PI/180; 
+var l = Long*Math.PI/180;
+var m = e*Math.PI/180;
+var n = Math.cos (k);
+var o = 0.006739496819936062*Math.pow (n,2);
+var p = 40680631590769/(6356752.314*Math.sqrt(1 + o));
+var q = Math.tan (k);
+var r = q*q;
+var s = (r*r*r) - Math.pow (q,6);
+var t = l - m;
+var u = 1.0 - r + o;
+var v = 5.0 - r + 9*o + 4.0*(o*o);
+var w = 5.0 - 18.0*r + (r*r) + 14.0*o - 58.0*r*o;
+var x = 61.0 - 58.0*r + (r*r) + 270.0*o - 330.0*r*o;
+var y = 61.0 - 479.0*r + 179.0*(r*r) - (r*r*r);
+var z = 1385.0 - 3111.0*r + 543.0*(r*r) - (r*r*r);
+
+var aa = p*n*t + (p/6.0*Math.pow (n,3)*u*Math.pow (t,3)) + (p/120.0*Math.pow (n,5)*w*Math.pow (t,5)) + (p/5040.0*Math.pow (n,7)*y*Math.pow (t,7));
+var ab = 6367449.14570093*(k - (0.00251882794504*Math.sin (2*k)) + (0.00000264354112*Math.sin (4*k)) - (0.00000000345262*Math.sin (6*k)) + (0.000000000004892*Math.sin (8*k))) + (q/2.0*p*Math.pow (n,2)*Math.pow (t,2)) + (q/24.0*p*Math.pow (n,4)*v*Math.pow (t,4)) + (q/720.0*p*Math.pow (n,6)*x*Math.pow (t,6)) + (q/40320.0*p*Math.pow (n,8)*z*Math.pow (t,8));
+aa = aa*0.9996 + 500000.0;
+
+ab = ab*0.9996; if (ab < 0.0) ab += 10000000.0;
+var ad = 'CDEFGHJKLMNPQRSTUVWXX'.charAt (Math.floor (Lat/8 + 10));
+var ae = Math.floor (aa/100000);
+var af = ['ABCDEFGH','JKLMNPQR','STUVWXYZ'][(c-1)%3].charAt (ae-1);
+var ag = Math.floor (ab/100000)%20;
+var ah = ['ABCDEFGHJKLMNPQRSTUV','FGHJKLMNPQRSTUVABCDE'][(c-1)%2].charAt (ag);
+function pad (val) {if (val < 10) {val = '0000' + val} else if (val < 100) {val = '000' + val} else if (val < 1000) {val = '00' + val} else if (val < 10000) {val = '0' + val};return val};
+aa = Math.floor (aa%100000); aa = pad (aa); 
+ab = Math.floor (ab%100000); ab = pad (ab);
+//var mrgs= c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var MRGS2=c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var mrgs= c + ad + af + ah  + aa + ab;
+document.getElementById('MGRS').value =mrgs;
+store();
+//document.getElementById('MGRS').value =mrgs;
+//document.getElementById('MGRS2').value =MRGS2;
+};
+function Flip() {  
+var withspace = document.getElementById('WithSpaces').value;
+
+
+//document.getElementById('MGRS').value =mrgs;
+   var Checked = document.getElementById("Format").checked;
+   
+    document.getElementById('addformat').value =Checked;
+   if (Checked) { document.getElementById('MGRS').value =withspace;}  else{document.getElementById('MGRS').value =nospace;}
+   
+}  
+
+function checkformgrs(thestring){
+//var thestring= document.getElementById("MGRS").value;
+var spc = thestring.split(" ");
+ var n = thestring.search(",");
+ var nlen=thestring.length;
+if (n>0) {alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253" '); document.getElementById('MGRS').value='';}
+if(nlen<15){alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253'); document.getElementById('MGRS').value='';}
+
+if (spc.length >2){LatLongFromMGRSstring(thestring);
+ } else{
+ 
+ var n = thestring.search(",")
+var spc = thestring.split(" ");
+//(spc.length);
+if (n ==-1) {// try to parse
+
+var str = document.getElementById("MGRS").value;  
+var res = str.substring(0, 3);
+    var res1 = str.substring(3, 5);
+      var res2 = str.substring(5, 10);
+       var res3 = str.substring(10, 15);
+//( res+' '+res1+' '+res2+ ' '+res3);
+LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+}
+}
+}
+
+function convertthis(){
+document.getElementById('MGRS').value ='';
+var nameArr=[];
+var thestring= document.getElementById("GPS2").value;
+//(thestring);
+document.getElementById("GPS2").value = thestring;
+ var n = thestring.search(",");
+ var n1= thestring.search(" ");
+var res = thestring.split(",");
+var p=res.length;
+//alert('p='+p+' ' +res[0]+' '+res[1]);
+if (p==2){MGRSString(); } else 
+{ ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
+document.getElementById('GPS2').value ='';
+
+document.getElementById('MGRS').value ='';
+
+ document.getElementById("GPS2").focus()}
+}
+
+
+function LatLongFromMGRSstring (a) 
+{
+var b = a.trim();
+b = b.match(/\S+/g);
+if (b == null || b.length != 4) return [false,null,null];
+var c = (b[0].length < 3) ? b[0][0] : b[0].slice(0,2);
+var d = (b[0].length < 3) ? b[0][1] : b[0][2];
+var e = (c*6-183)*Math.PI / 180;
+var f = ["ABCDEFGH","JKLMNPQR","STUVWXYZ"][(c-1) % 3].indexOf(b[1][0]) + 1;
+var g = "CDEFGHJKLMNPQRSTUVWXX".indexOf(d);
+var h = ["ABCDEFGHJKLMNPQRSTUV","FGHJKLMNPQRSTUVABCDE"][(c-1) % 2].indexOf(b[1][1]);
+var i = [1.1,2.0,2.8,3.7,4.6,5.5,6.4,7.3,8.2,9.1,0,0.8,1.7,2.6,3.5,4.4,5.3,6.2,7.0,7.9];
+var j = [0,2,2,2,4,4,6,6,8,8,0,0,0,2,2,4,4,6,6,6];
+var k = i[g];
+var l = Number(j[g]) + h / 10;
+if (l < k) l += 2;
+var m = f*100000.0 + Number(b[2]);
+var n = l*1000000 + Number(b[3]);
+m -= 500000.0;
+if (d < 'N') n -= 10000000.0;
+m /= 0.9996; n /= 0.9996;
+var o = n / 6367449.14570093;
+var p = o + (0.0025188266133249035*Math.sin(2.0*o)) + (0.0000037009491206268*Math.sin(4.0*o)) + (0.0000000074477705265*Math.sin(6.0*o)) + (0.0000000000170359940*Math.sin(8.0*o));
+var q = Math.tan(p);
+var r = q*q;
+var s = r*r;
+var t = Math.cos(p);
+var u = 0.006739496819936062*Math.pow(t,2);
+var v = 40680631590769 / (6356752.314*Math.sqrt(1 + u));
+var w = v;
+var x = 1.0 / (w*t); w *= v;
+var y = q / (2.0*w); w *= v;
+var z = 1.0 / (6.0*w*t); w *= v;
+var aa = q / (24.0*w); w *= v;
+var ab = 1.0 / (120.0*w*t); w *= v;
+var ac = q / (720.0*w); w *= v;
+var ad = 1.0 / (5040.0*w*t); w *= v;
+var ae = q / (40320.0*w);
+var af = -1.0-u;
+var ag = -1.0-2*r-u;
+var ah = 5.0 + 3.0*r + 6.0*u-6.0*r*u-3.0*(u*u)-9.0*r*(u*u);
+var ai = 5.0 + 28.0*r + 24.0*s + 6.0*u + 8.0*r*u;
+var aj = -61.0-90.0*r-45.0*s-107.0*u + 162.0*r*u;
+var ak = -61.0-662.0*r-1320.0*s-720.0*(s*r);
+var al = 1385.0 + 3633.0*r + 4095.0*s + 1575*(s*r);
+var lat = p + y*af*(m*m) + aa*ah*Math.pow(m,4) + ac*aj*Math.pow(m,6) + ae*al*Math.pow(m,8);
+var lng = e + x*m + z*ag*Math.pow(m,3) + ab*ai*Math.pow(m,5) + ad*ak*Math.pow(m,7);
+lat = lat*180 / Math.PI;
+lat = lat.toFixed (4);
+lng = lng*180 / Math.PI;
+lng = lng.toFixed (4);
+
+document.getElementById('GPS2').value = lat+','+lng;
+//document.getElementById('dd').value = lat+','+lng;
+document.getElementById('gpsLat').value = lat;
+document.getElementById('gpsLon').value = lng;
+//gpsLat
+convertthis();
+//return [true,lat,lng];
+
+}
+
+function createjson () {
+
+var jsontext =document.getElementById('myjasondata').value;
+var temp1= document.getElementById('gpsLat').value;
+
+var jsontext=jsontext.replace('j1', temp1);
+temp1= document.getElementById('gpsLon').value;
+var jsontext=jsontext.replace('j2', temp1);
+//var temp1= document.getElementById('UDTGfld').value;
+//var jsontext=jsontext.replace('j3', temp1);
+
+var temp1= document.getElementById('k4').value;//enmBroadcastStation
+var jsontext=jsontext.replace('j4',temp1);
+
+var temp1= document.getElementById('k5').value;//CEll
+var jsontext=jsontext.replace('j5',temp1);
+
+var temp1= document.getElementById('k6').value;//enmInternet
+var jsontext=jsontext.replace('j6',temp1);
+
+var temp1= document.getElementById('k7').value;//enmLandline
+var jsontext=jsontext.replace('j7',temp1);
+
+var temp1= document.getElementById('k8').value;//enmPower
+var jsontext=jsontext.replace('j8',temp1);
+
+var temp1= document.getElementById('k9').value;//enmTVStation
+var jsontext=jsontext.replace('j9',temp1);
+
+var temp1= document.getElementById('k10').value;
+var jsontext=jsontext.replace('j10',temp1);//enmWater
+
+//NOw the txt fields
+
+var temp1= document.getElementById('Comm1').value;
+var jsontext=jsontext.replace('j15',temp1);
+var temp1= document.getElementById('Comm2').value;
+var jsontext=jsontext.replace('j12',temp1);//enmWater
+
+var temp1= document.getElementById('Comm3').value;
+var jsontext=jsontext.replace('j11',temp1);//enmWater
+
+var temp1= document.getElementById('Comm4').value;
+var jsontext=jsontext.replace('j22',temp1);//enmWater
+
+var temp1= document.getElementById('Comm5').value;
+var jsontext=jsontext.replace('j24',temp1);//enmWater
+
+var temp1= document.getElementById('Comm6').value;
+var jsontext=jsontext.replace('j19',temp1);//enmWater
+
+var temp1= document.getElementById('Comm7').value;
+var jsontext=jsontext.replace('j14',temp1);//enmWater
+
+var temp1= document.getElementById('Message').value;
+var jsontext=jsontext.replace('j13',temp1);//enmWater
+
+var temp1= document.getElementById('testCall').value;
+var jsontext=jsontext.replace('j20',temp1);//enmWater
+
+var temp1= document.getElementById('POC').value;
+var jsontext=jsontext.replace('j18',temp1);//enmWater
+
+var temp1= document.getElementById('MsgNR').value;
+var jsontext=jsontext.replace('j23',temp1);//enmWater
+
+var temp1= document.getElementById('City').value;
+var jsontext=jsontext.replace('j16',temp1);//enmWater
+
+var temp1= document.getElementById('timestamp2').value;
+var jsontext=jsontext.replace('j3',temp1);
+
+var temp1= document.getElementById('Precedence').value;
+var jsontext=jsontext.replace('j25',temp1);
+
+var temp1= document.getElementById('MGRS').value;
+var jsontext=jsontext.replace('mgrs',temp1);
+
+document.getElementById('myjasondata').value= jsontext;
+
+
+
+}
+
 
 
 </script></head>
@@ -1144,7 +1587,7 @@ to links</span></a> </div>
 
 <td colspan="2" style="vertical-align: top; height: 8%; background-color: #dee9f9; text-align: center;"><p align="right" class="style2">   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small> &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp;  <span class="style3">SHARES
 
-  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.6.1</span>&nbsp;&nbsp;&nbsp;
+  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.9</span>&nbsp;&nbsp;
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
@@ -1188,15 +1631,17 @@ to links</span></a> </div>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> DATE/TIME: 
 
-<input name="UDTGfld" id="UDTGfld" title="You can overwrite if needed." onkeydown="return (event.keyCode!=13);" value="{UDTG}" size="25" maxlength="19" /> 
+<input name="UDTGfld" id="UDTGfld" title="You can overwrite if needed." onkeydown="return (event.keyCode!=13);" onclick=" DateTime('zulu','UDTGfld', false);" size="40" maxlength="40" /> 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TASK # 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TASK # 
 
-<input name="MsgNR" title="Message number; should be sequential." onkeypress="if(event.keyCode==13){return false;}" size="10"  />
+<input name="MsgNR" id="MsgNR"  title="Message number; should be sequential." onkeypress="if(event.keyCode==13){return false;}" size="10"  />
 
-<br />
+        <br />
 
-<br />
+<input name="timestamp" type="hidden" id="timestamp" size="30" />
+<input name="timestamp2" type="hidden" id="timestamp2" size="40" />
+        <br />
 
 </pbzloc><span class="style2">&nbsp;</span>&nbsp;<pbzloc ="1" style="font-weight: normal;">FROM:<span style="font-size: 14px;"> &nbsp; </span><span style="font-size: 14px;"> &nbsp; </span><span style="font-size: 14px;"> &nbsp; </span>
 
@@ -1218,7 +1663,7 @@ to links</span></a> </div>
 
       <textarea name="MsgTo" cols="100" rows="2" id="MsgTo" onkeypress="if(event.keyCode==13){return false;}"  onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
 
-    </pbzloc></span><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"></pbzloc></span></td>
+    </pbzloc></span><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"> </pbzloc></span></td>
 
   </tr>
 
@@ -1268,21 +1713,22 @@ to links</span></a> </div>
 
       <input maxlength="80" size="90" name="City" id="City"  required="required" onchange="store();"  />
       <input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
-
-</p>
-
+      <input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" /> 
+    </p>
   <p><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span>2. </span></span><span class="style2">Latitude and longitude:&nbsp; &nbsp;LAT
 
-      <input name="gpsLat" type="text" id="gpsLat" title= "If entering manually use format: 38.5567"  onchange="checklatlon(this.value, 'gpsLat');"  onkeypress="return isNumberKey(event)" size="12"  maxlength="20" placeholder="Ex: 38.5567" />
+      <input name="gpsLat" type="text" id="gpsLat" title= "If entering manually use format: 38.5567"  onchange="CheckLat();checkLatLon();"  onkeypress="return isNumberKey(event)" size="12"  maxlength="20" placeholder="Ex: 38.5567" />
 
     &nbsp;&nbsp;&nbsp;LON
 
-<input name="gpsLon"  type="text" id="gpsLon"  onchange="checklatlon(this.value, 'gpsLon');" onkeypress="return isNumberKey(event)" size="12" maxlength="22" placeholder="Ex: -116.9824"  />
+<input name="gpsLon"  type="text" id="gpsLon"  onchange="CheckLon();checkLatLon();" onkeypress="return isNumberKey(event)" size="12" maxlength="22" placeholder="Ex: -116.9824"  />
 
     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 
     <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style24"><span class="style13"><span class="style37"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style40">.</span></span></span></span></span></span></span></span><br />
+     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style24"><span class="style13"><span class="style37"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style40">.</span></span></span></span></span></span></span></span> <em>MGRS</em><span class="style12">
+     <input name="MGRS" type="text" onkeypress="if(event.keyCode==13){return false;}"  title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
+     </span><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style24">&nbsp;LAT and LON are required to map this SpotRep. If entering manually use Decimal Degree format or from an attached GPS device.</span>    </span></span></span></p>
 
   <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#f8f8ff">
@@ -1291,15 +1737,15 @@ to links</span></a> </div>
 
     <td width="27%"><span style="font-size: 12px;">&nbsp; </span>3.&nbsp;LandLines functioning? </td>
 
-    <td width="73%"> <input name="Land" type="radio" value="YES" />
+    <td width="73%"> <input name="Land" type="radio" value="YES" onclick="document.getElementById('k7').value = 1" />
 
     YES
 
-    <input name="Land" type="radio" value="NO" /> 
+    <input name="Land" type="radio" value="NO"onclick="document.getElementById('k7').value = 2" /> 
 
     NO 
 
-    <input name="Land" type="radio" value="--" checked="checked" /> 
+    <input name="Land" type="radio" value="--" checked="checked"onclick="document.getElementById('k7').value = 0" /> 
 
     Unknown - N/A </td>
 
@@ -1314,8 +1760,7 @@ to links</span></a> </div>
       <span style="font-size: 14px;">
 
       <textarea placeholder="Comments" name="Comm1" cols="100" rows="1" id="Comm1"  onkeypress="if(event.keyCode==13){return false;}" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
-
-      </span> </span></td>
+</span></span></td>
 
     </tr>
 
@@ -1327,15 +1772,15 @@ to links</span></a> </div>
 
     <td width="27%"><span style="font-size: 12px;">&nbsp; &nbsp;</span>4. Cell Phones functioning? </td>
 
-    <td width="73%"><input placeholder="Comments" name="Cell" type="radio" value="YES" />
+    <td width="73%"><input placeholder="Comments" name="Cell" type="radio" value="YES" onclick="document.getElementById('k5').value = 1"/>
 
       YES
 
-        <input name="Cell" type="radio" value="NO" />
+        <input name="Cell" type="radio" value="NO"onclick="document.getElementById('k5').value = 2"/>
 
       NO
 
-      <input name="Cell" type="radio" value="--" checked="CHECKED" />
+      <input name="Cell" type="radio" value="--" checked="CHECKED"onclick="document.getElementById('k5').value = 0"/>
 
       Unknown - N/A </td>
 
@@ -1361,15 +1806,15 @@ to links</span></a> </div>
 
     <td width="27%"><span style="font-size: 12px;">&nbsp; &nbsp;</span>5.AM/FM Broadcast Stations functioning?	</td>
 
-    <td width="73%"><input placeholder="Comments" name="AMFM" type="radio" value="YES" />
+    <td width="73%"><input placeholder="Comments" name="AMFM" type="radio" value="YES" onclick="document.getElementById('k4').value = 1"/>
 
 YES
 
-  <input name="AMFM" type="radio" value="NO" />
+  <input name="AMFM" type="radio" value="NO" onclick="document.getElementById('k4').value = 2" />
 
 NO
 
-<input name="AMFM" type="radio" value="--" checked="checked" />
+<input name="AMFM" type="radio" value="--" checked="checked" onclick="document.getElementById('k4').value = 0"/>
 
 Unknown - N/A </td>
 
@@ -1393,15 +1838,15 @@ Unknown - N/A </td>
 
     <td width="28%"><span style="font-size: 12px;">&nbsp; &nbsp;</span>6. TV Stations functioning?</td>
 
-    <td width="72%"><input placeholder="Comments" name="TVStatus" type="radio" value="YES" />
+    <td width="72%"><input placeholder="Comments" name="TVStatus" type="radio" value="YES" onclick="document.getElementById('k9').value = 1"/>
 
 YES
 
-  <input name="TVStatus" type="radio" value="NO" />
+  <input name="TVStatus" type="radio" value="NO" onclick="document.getElementById('k9').value = 2"/>
 
 NO
 
-<input name="TVStatus" type="radio" value="--" checked="checked" />
+<input name="TVStatus" type="radio" value="--" checked="checked" onclick="document.getElementById('k9').value = 0" />
 
 Unknown - N/A </td>
 
@@ -1427,15 +1872,15 @@ Unknown - N/A </td>
 
     <td width="28%"><span style="font-size: 12px;">&nbsp; &nbsp;</span><span style="font-size: 14px;"></span>7. Public Water Works functioning?</td>
 
-    <td width="72%"><input placeholder="Comments" name="WaterWorks" type="radio" value="YES" />
+    <td width="72%"><input placeholder="Comments" name="WaterWorks" type="radio" value="YES"  onclick="document.getElementById('k10').value = 1" />
 
 YES
 
-  <input name="WaterWorks" type="radio" value="NO" />
+  <input name="WaterWorks" type="radio" value="NO" onclick="document.getElementById('k10').value = 2" />
 
 NO
 
-<input name="WaterWorks" type="radio" value="--" checked="checked" />
+<input name="WaterWorks" type="radio" value="--" checked="checked"onclick="document.getElementById('k10').value = 0"  />
 
 Unknown - N/A</td>
 
@@ -1459,15 +1904,15 @@ Unknown - N/A</td>
 
     <td width="28%"><span style="font-size: 12px;">&nbsp; </span><span style="font-size: 14px;"><span style="font-size: 12px;"> &nbsp;</span></span>8. Commercial Power functioning?</td>
 
-    <td width="72%"><input placeholder="Comments" name="PowerWorks" type="radio" value="YES" />
+    <td width="72%"><input placeholder="Comments" name="PowerWorks" type="radio" value="YES" onclick="document.getElementById('k8').value = 1"/>
 
 YES
 
-  <input name="PowerWorks" type="radio" value="NO" />
+  <input name="PowerWorks" type="radio" value="NO" onclick="document.getElementById('k8').value = 0"/>
 
 NO
 
-<input name="PowerWorks" type="radio" value="--" checked="checked" />
+<input name="PowerWorks" type="radio" value="--" checked="checked"  onclick="document.getElementById('k8').value = 0"/>
 
 Unknown - N/A</td>
 
@@ -1491,15 +1936,15 @@ Unknown - N/A</td>
 
     <td width="28%"><span style="font-size: 12px;">&nbsp; &nbsp;</span><span style="font-size: 12px;">&nbsp;</span>9. Internet functioning?   </td>
 
-    <td width="72%"><input name="Inter" type="radio" value="YES" />
+    <td width="72%"><input name="Inter" type="radio" value="YES" onclick="document.getElementById('k6').value = 1"/>
 
       YES
 
-        <input name="Inter" type="radio" value="NO" />
+        <input name="Inter" type="radio" value="NO" onclick="document.getElementById('k6').value = 2"//>
 
       NO
 
-      <input name="Inter" type="radio" value="--" checked="checked" />      Unknown - N/A </td>
+      <input name="Inter" type="radio" value="--" checked="checked" onclick="document.getElementById('k6').value = 0"//>      Unknown - N/A </td>
 
   </tr>
 
@@ -1523,9 +1968,9 @@ Unknown - N/A</td>
 
 <td height="102" colspan="5" style="height: 88px; vertical-align: top; text-align: center;"><div align="left">
 
-  <p><span style="font-size: 12px;">&nbsp; </span><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;10. </span>Additional Comments          <span style="font-size: 12px;"> &nbsp;</span><span style="font-style: italic"><small style="color: rgb(0, 102, 0);">Brief
+  <p><span style="font-size: 12px;">&nbsp; </span><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;10. </span>Additional Comments          <span style="font-size: 12px;"> &nbsp;</span><span style="font-style: italic"><small style="color: rgb(0, 102, 0);"><span class="style37">Brief
 
-      summary of current situation - expected outage times, major observations, etc.</span><br />
+      summary of current situation - expected outage times, major observations, etc.</span></span><br />
 
       
 
@@ -1541,16 +1986,57 @@ Unknown - N/A</td>
 
 </tr>
 
-<tr><td style="text-align: center;" colspan="2"><div align="left"><br />
-
+<tr><td style="text-align: center;" colspan="2"><div align="left">
+  <p><br />
+  
         <span style="font-size: 14px;"><span style="font-size: 12px;">&nbsp;&nbsp;</span>&nbsp;<span class="style39">11. </span></span><span class="style39">POC</span><span class="style39" style="color: black;"><span style="color: rgb(204, 0, 0);">&nbsp;</span> </span><span class="style39" style="color: black;"></span><span style="color: black;">&nbsp;</span>
-
-        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" maxlength="78" size="80" name="POC"  onkeydown="return (event.keyCode!=13);"/>
-
-        <span style="color: rgb(128, 0, 0);"><span style="color: black;"> &nbsp;<br /> 
-
-        &nbsp;&nbsp;</span></span><br />
-
+  
+        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" maxlength="78" size="80" name="POC"   id="POC" onkeydown="return (event.keyCode!=13);"/>
+  
+        <span style="color: rgb(128, 0, 0);"><span style="color: black;"> &nbsp;</span></span></p>
+  <p><span class="style41">
+    <input name="k3" type="hidden" id="k3" value="0" />
+    <input name="k4" type="hidden" id="k4" value="0" />
+    <input name="k5" type="hidden" id="k5" value="0" />
+    <input name="k6" type="hidden" id="k6" value="0" />
+	 <input name="k7" type="hidden" id="k7" value="0" />
+	  <input name="k8" type="hidden" id="k8" value="0" />
+	   <input name="k9" type="hidden" id="k9" value="0" />
+	    <input name="k10" type="hidden" id="k10" value="0" />
+		
+</span></p>
+  <p><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
+    <textarea name="myjasondata" cols="50" rows="25" id="myjasondata" style="display: none";>[{"dblLatitude":"j1",
+"dblLongitude":"j2",
+"strDate":"j3",
+"enmBroadcastStation":"j4",
+"enmCellPhone":"j5",
+"enmInternet":"j6",
+"enmLandline":"j7",
+"enmPower":"j8",
+"enmTVStation":"j9",
+"enmWater":"j10",
+"strBroadcastStation":"j11",
+"strCellPhone":"j12",
+"strComments":"j13",
+"strInternet":"j14",
+"strLandLine":"j15",
+"strLocation":"j16",
+"strMessageId":"",
+"strPOC":"j18",
+"strPower":"j19",
+"strSender":"j20",
+"strSubject":"",
+"strTVStation":"j22",
+"strTaskNumber":"j23",
+"strPrecedence": "j25",
+"strMGRS":"mgrs",
+"strWater":"j24"}]</textarea>
+  </span></span>    <span style="color: rgb(128, 0, 0);"><span style="color: black;">
+    </span></span><br />
+&nbsp;&nbsp;</span></span><br />
+    
+</p>
 </div></td>
 
 </tr><tr>
@@ -1563,7 +2049,7 @@ Unknown - N/A</td>
 
   </span></small>&nbsp;&nbsp;&nbsp; <small>
 
-  <input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" onclick="return checkform();store(); ";enctype="multipart/form-data" class="SubmitBtn1" type="submit" />
+  <input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" onclick="createjson();return checkform();store(); ";enctype="multipart/form-data" class="SubmitBtn1" type="submit" />
 
 &nbsp; </small></span>
 
@@ -1581,9 +2067,9 @@ Unknown - N/A</td>
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.7" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.9" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span class="style2">Ver 9</span>.<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">6.7</span></span></span></span></span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span class="style2">Ver 9</span>.<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">6.9</span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 
