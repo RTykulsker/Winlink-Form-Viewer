@@ -16,10 +16,10 @@ INFO (CC): <var MsgCc>
 BT
 UNCLASS
 
-SUBJ SPOTREP <var UDTGfld>
+SUBJ SPOTREP <var UDTGfld> 
 
 1. City/State/Territory:  <var City>
-2. Latitude and longitude (if available): <var gpsLat> <var gpsLon>  MGRS: <var MGRS> 
+2. Latitude :<var gpsLat>  Longitude:<var gpsLon>   MGRS:<var MGRS> 
 3. LandLines functioning?   [ <var Land> ] <var Comm1>
 4. Cell Phones functioning?  [ <var Cell> ] <var Comm2>
 5. AM/FM Broadcast Stations functioning?  [ <var AMFM> ] <var Comm3>

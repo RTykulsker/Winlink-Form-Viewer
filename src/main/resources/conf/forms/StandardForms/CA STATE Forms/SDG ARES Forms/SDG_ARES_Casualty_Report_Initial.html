@@ -214,7 +214,6 @@ input[type=black1] {
 }
 
 .style20 {color: #000000}
-.style21 {color: rgb(128, 0, 0)}
 </style>
 
 <script>
@@ -804,14 +803,15 @@ Diego County ARES - ACS</small></big></b></big></small></span>
         </tr>
         <tr>
           <td height="47">Extent of Injury&nbsp;&nbsp;
-      <select name="CasInj1" size="3">
-        <option>Minor</option>
-        <option>Delayed</option>
-        <option>IMMEDIATE</option>
+      <select name="CasInj1" onchange="document.getElementById('fCasInj1').value= (this.value);" size="3">
+        <option value="Minor">Minor</option>
+        <option value="Delayed">Delayed</option>
+        <option value="IMMEDIATE">IMMEDIATE</option>
       </select>
 &nbsp;&nbsp; Describe&nbsp;
 <input maxlength="75" size="80" name="Desc1" />
-&nbsp;&nbsp;&nbsp;</td>
+&nbsp;&nbsp;&nbsp;
+<input name="fCasInj1" type="hidden" id="fCasInj1" /></td>
         </tr>
         <tr>
           <td>            <br />
@@ -839,19 +839,21 @@ Diego County ARES - ACS</small></big></b></big></small></span>
             Tracking #</span> &nbsp;
                   <input placeholder="If being used" maxlength="18" size="20" name="CasTrack2" />
 &nbsp;&nbsp;&nbsp;<strong>Destination
-<input name="Hosp2" id="Hosp2" size="65" maxlength="60" required="required" placeholder="Be sure of destination, use full facilty name" />
+<input name="Hosp2" id="Hosp2" size="65" maxlength="60"  placeholder="Be sure of destination, use full facilty name" />
 </strong></div></td>
         </tr>
         <tr>
           <td height="47"><div align="left">Extent of Injury&nbsp;&nbsp;
-            <select name="CasInj2" size="3">
-              <option>Minor</option>
-              <option>Delayed</option>
-              <option>IMMEDIATE</option>
-            </select>
+              <select name="CasInj2" size="3" id="CasInj2" onchange="document.getElementById('fCasInj2').value= (this.value);">
+                <option value="Minor">Minor</option>
+                <option value="Delayed">Delayed</option>
+                <option value="IMMEDIATE">IMMEDIATE</option>
+              </select>
             &nbsp;&nbsp; Describe&nbsp;
   <input maxlength="75" size="80" name="Desc2" />
-&nbsp; </div></td>
+&nbsp; 
+<input name="fCasInj2" type="hidden" id="fCasInj2" />
+          </div></td>
         </tr>
         <tr>
           <td height="35"><div align="left">
@@ -881,18 +883,18 @@ Diego County ARES - ACS</small></big></b></big></small></span>
             Tracking #</span> &nbsp;
                 <input placeholder="If being used" maxlength="18" size="20" name="CasTrack3" />
 &nbsp;&nbsp;<strong>Destination
-<input name="Hosp3" id="Hosp3" size="65" maxlength="60" required="required" placeholder="Be sure of destination, use full facilty name" />
+<input name="Hosp3" id="Hosp3" size="65" maxlength="60" placeholder="Be sure of destination, use full facilty name" />
 </strong></div></td>
         </tr>
         <tr>
           <td height="50">Extent of Injury&nbsp;&nbsp;
-            <select name="CasInj3" size="3">
-              <option>Minor</option>
-              <option>Delayed</option>
-              <option>IMMEDIATE</option>
+            <select name="CasInj3" size="3" id="CasInj3" onchange="document.getElementById('fCasInj3').value= (this.value);">
+              <option value="Minor">Minor</option>
+              <option value="Delayed">Delayed</option>
+              <option value="IMMEDIATE">IMMEDIATE</option>
             </select>
 &nbsp;&nbsp; Describe &nbsp;
-<input maxlength="75" size="80" name="Desc3" /></td>
+<input maxlength="75" size="80" name="Desc3" /> <input name="fCasInj3" type="hidden" id="fCasInj3" /></td>
         </tr>
         <tr>
           <td height="35">Ambulance &nbsp;
@@ -930,13 +932,13 @@ Diego County ARES - ACS</small></big></b></big></small></span>
   <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
 <small>&nbsp;&nbsp;
 <small style="color: black;"><span><span style="font-size: 12px;">&nbsp; </span></span></small></small><small><big><b><big><small><span style="font-size: 12px;"><big><big><small><small>
-<input name="Templateversion" type="hidden" id="Templateversion" value="13.2" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="13.3" />
 </small></small></big></big></span> &nbsp; <small style="color: black;"><span><span style="font-size: 12px;"><span style="font-family: Calibri;"><small><big =""><big><small><span><span style="font-family: Calibri;"><small><big =""><big><small><span>
 <input name="Vers" type="hidden" id="Vers" value="{ProgramVersion}" />
 </span></small></big></big></small></span></span></small></big></big></small></span></span></span></small>&nbsp; &nbsp; </small></big></b></big></small><small><span style="color: rgb(128, 0, 0);">
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: rgb(128, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp; &nbsp; &nbsp;  &nbsp;<span class="style20"><small><big><small>Vers 13.<span class="style21">2</span></small></big></small></span>&nbsp;<big><small> </small></big></span></small></td>
+&nbsp; &nbsp; &nbsp;  &nbsp;<span class="style20"><small><big><small>Vers 1</small></big></small></span></span><small><big><small>3,3</small></big></small><span style="color: rgb(128, 0, 0);"><span class="style20"><small><big><small></small></big></small></span></span></small></td>
 </tr>
 </tbody>
 </table>

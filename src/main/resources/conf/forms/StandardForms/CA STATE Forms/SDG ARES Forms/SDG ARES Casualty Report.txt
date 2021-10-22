@@ -18,7 +18,7 @@ Destination Hospital:
 
 Ambulance: <var Amb1>
 
-Injury: <var CasInj1>
+Injury: <var fCasInj1>
 Description: <var Desc1>
 
 Casualty Comments:
@@ -32,7 +32,7 @@ Destination Hospital:
 
 Ambulance: <var Amb2>
 
-Injury: <var CasInj2>
+Injury: <var fCasInj2>
 Description: <var Desc2>
 
 Casualty Comments:
@@ -46,7 +46,7 @@ Destination Hospital:
 
 Ambulance: <var Amb3>
 
-Injury: <var CasInj3>
+Injury: <var fCasInj3>
 Description: <var Desc3>
 
 Casualty Comments:

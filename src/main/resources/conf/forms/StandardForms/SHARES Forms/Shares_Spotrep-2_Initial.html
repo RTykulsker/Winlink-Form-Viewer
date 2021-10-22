@@ -17,7 +17,7 @@
 	position:absolute;
 	left:25%;
 	right:25%;
-	top:25%;
+	top:15%;
 	bottom:25%;
 	z-index:10;
 	border:1px solid #3a3a3a;
@@ -1059,12 +1059,11 @@ function SaveData() {
  var t1; var t2;
 
  getit();
-
- Checkifinbrowser();
+Checkifinbrowser();
 
 copyGPS();
 
- Fixfields();
+Fixfields();
 
  DateTime('autozulu','UDTGfld', true);
 TimeStamp();
@@ -1079,43 +1078,54 @@ var d= new Date(Date.parse(thedatetime));
 //alert (Date.parse(thedatetime));
 //d =parseDate(thedatetime);
 utcstr = d.toUTCString()
-alert (utcstr);
+//alert (utcstr);
 document.getElementById('timestamp2').value= utcstr;
 }
 
 function TimeStamp(){
 var d1 = new Date();
-mtime = Math.floor(d1.getTime())
-//var d = new Date();
-
-//yyyyMMddhhmmss 
+mtime = d1.getTime();
 var thedatetime=  document.getElementById('UDTGfld').value;
-var d = new Date();
-var d= new Date(Date.parse(thedatetime));
+
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime=thedatetime.replace(' ', ',');
+var thedatetime = thedatetime.replace("Z", "") ;
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
   var nyyyy = d.getUTCFullYear();
   nyyyy= nyyyy.toString();
 
   var nMM = d.getUTCMonth();
   if(nMM<10) {nMM= '0'+nMM}
  nMM=nMM.toString()
- 
-var ndd = d.getUTCHours();
+var ndd = d.getUTCDate();
   if(ndd<10) {ndd= '0'+ndd}
   ndd=ndd.toString()
-
+  
   var nhh = d.getUTCHours();
-    if(nhh<10) {ndd= '0'+nhh}
-  nhh=nhh.toString()
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
     var nmm = d.getUTCMinutes();
-	if(nmm<10) {nmm= '0'+nmm}
-  nmm=nmm.toString()
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
 	 var nss = d.getUTCSeconds();
-	 if(nss<10) {nss= '0'+nss}
+	
   nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
 
  document.getElementById("timestamp").value = mtime; ;
  x=nyyyy+nmm+ndd+nhh+nmm+nss;
    document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
 
  
 }
@@ -1160,19 +1170,21 @@ AutoGrowTextArea(document.getElementById("Message"));
 
 
 function Checkifinbrowser() {
-
-
-
  var x= document.getElementById("testCall").value; 
-
  var n = x.search("{Msg");
-
  if (n>-1) { 
 
  document.getElementById('Submit').style.visibility='hidden';
 
 document.getElementById("MsgSender").value = '';
-
+//test 
+//document.getElementById('savebtn').style.visibility='hidden';
+ //document.getElementById('loadbtn').style.visibility='hidden';
+  //document.getElementById('resetbtn').style.visibility='hidden';
+   document.getElementById('MGRS').readOnly = true;
+    document.getElementById('gpsLat').readOnly = true;
+	 document.getElementById('gpsLon').readOnly = true;
+	 document.getElementById('GPSnote').innerHTML= 'To enter coordinates, you must run this from Winlink Express.';
 
 
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
@@ -1203,8 +1215,9 @@ var b =nameArr[1];
 if(!isNaN (a)){document.getElementById('gpsLat').value =a;store();}
 
 if(!isNaN (b)){document.getElementById('gpsLon').value =b;store();}
-checkLatLon();
+//checkLatLon();
 }
+
 
 function isNumberKey(evt)
 {
@@ -1219,47 +1232,72 @@ return false;
 return true;
 }
 
-function CheckLat(){
+function GetDefaults (){
+s = '{latitude}';
+var num =s;
+z1 =(Number(num));
+z2 = (isNaN (z1));
+alert(z1);
+if (z1 !== 'NaN') {alert('lat error'); }
+
+}
+
+function CheckLat(SkipMsg){
 var latCheck = 1;
 var num =document.getElementById('gpsLat').value;
-if ((num <-90)  || ( num >90)) { document.getElementById('gpsLat').value=0;alert ('Latitude must be between -90 and 90'); 
-document.getElementById('gpsLat').value = '';
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+if (z1 == 'NaN') {alert ('error')}
+if ((num <-90)  || ( num >90) || isNaN (z1) ) { document.getElementById('gpsLat').value='';
+//alert ('Latitude must be between -90 and 90\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+alert ('Latitude must be between -90 and 90');
+ document.getElementById('gpsLat').value ='';
 		document.getElementById('gpsLat').focus();
 		document.getElementById('MGRS').value = '';
 		document.getElementById('GPS2').value = '';
 		var latCheck = 0;
+}
 
-} 
 return latCheck;
 }
 
-function CheckLon(){
-var lonCheck= 1;
-var num =document.getElementById('gpsLon').value
-if ((num <-180) || ( num >180)) 
-		{ alert ('Longitude must be between -180 and 180'); 
-		document.getElementById('gpsLon').value = '';
-		document.getElementById('gpsLon').focus();
-		var lonCheck= 0;} 
-	//alert(lonCheck)
+function CheckLon(SkipMsg){
+var lonCheck = 1;
+var num =document.getElementById('gpsLon').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+
+if ((num <-180) || ( num >180) || isNaN (z1) ) { document.getElementById('gpsLon').value='';
+alert ('Longitude must be between -180 and 180 '); 
+//alert ('Longitude must be between -180 and 180\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+ document.getElementById('gpsLon').value = '';
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var lonCheck = 0;
+
+} 
+
 return lonCheck;
 }
+
 
 
 
 function checkLatLon() {
 var cnt = 1;
 //var x1=0; var x2=0;
-x1 = CheckLat();
-x2 = CheckLon();
+x1 = CheckLat(true);
+x2 = CheckLon(true);
 
-
-//alert('total='+x1+x2)
-//alert(CheckLat());alert(CheckLon());
 if (x1==1 && x2==1) {// now set string for latlon
 	var mlat = document.getElementById('gpsLat').value;
 	var mlon = document.getElementById('gpsLon').value;
 	document.getElementById('GPS2').value =mlat+','+mlon;
+	
 	convertthis();
 } 
 }
@@ -1270,15 +1308,19 @@ num1 = parseFloat(document.getElementById('gpsLat').value);
 
 num2 = parseFloat (document.getElementById('gpsLon').value);
 
-if (isNaN(num1) | isNaN(num2)){ return confirm('You have not entered GPS coordinates. \nYour location will not be reported on the Spot Rep Map')}
+if (isNaN(num1) | isNaN(num2)){  document.getElementById('gpsLon').value = '{longitude}';  
+document.getElementById('gpsLat').value = '{latitude}';
+checkLatLon();
+	return confirm('You have not entered valid GPS coordinates. \nBy default, the Latitude and Longitude will be calculated from you Grid Square.')}}
 
-}
+
 function MGRSString ()
 
 //function MGRSString (51.172,-1.779)
 // 51.172,-1.779  38.556, -121.793
 { //var Lat = 38.556; var Long=-121.793; 
 //var Lat1 = 38.556; var Long1=-121.793; 
+//var thestring= document.getElementById("GPS2").value;
 var thestring= document.getElementById("GPS2").value;
  var res = thestring.split(",");
  var Lat = parseFloat(res[0]); var Long=parseFloat(res[1]); 
@@ -1341,6 +1383,8 @@ var withspace = document.getElementById('WithSpaces').value;
 
 function checkformgrs(thestring){
 //var thestring= document.getElementById("MGRS").value;
+var thestring= thestring.replace(/\s/g, '');
+ document.getElementById("MGRS").value = thestring;
 var spc = thestring.split(" ");
  var n = thestring.search(",");
  var nlen=thestring.length;
@@ -1367,7 +1411,7 @@ LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
 }
 
 function convertthis(){
-document.getElementById('MGRS').value ='';
+//document.getElementById('MGRS').value ='';
 var nameArr=[];
 var thestring= document.getElementById("GPS2").value;
 //(thestring);
@@ -1529,8 +1573,6 @@ var jsontext=jsontext.replace('mgrs',temp1);
 
 document.getElementById('myjasondata').value= jsontext;
 
-
-
 }
 
 
@@ -1554,10 +1596,10 @@ document.getElementById('myjasondata').value= jsontext;
 </h4>
     <span class="style37"><strong>SHARES SpotRep Form</strong>
     </span>
-    <p class="style37">SHARES SpotRep Form of a new feature in Winlink Express - Display a SitRep Map and report. To display the SitRep map you must provide the GPS coordinates of the event.<p>Providing GPS information is optional but very valuable. We encourage you to do so.<br>
-    LAT/LON: The form accepts only Decimal Degree latitude and longitude. 4 decimals are preferred. <br>
-    N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215</p>
-    <p class="style37"><strong>NOTE:</strong> For auto entered GPS decimal coordinates to work, you must have a connected and configured GPS device working with Winlink Express. Otherwise manual entry in the indicated format can be used.</p>
+    <p class="style37">SHARES SpotRep Form of a new feature in Winlink Express - Display a SitRep Map and report. To display the SitRep map you must provide the GPS coordinates of the event.<p>Providing GPS information is very valuable. We encourage you to do so.<br>If you leave the LAT/LON fields empty, by default, the LAT/LON calculated from your grid square in Express will be used. <br><br>
+    LAT/LON: The form accepts only Decimal Degree latitude and longitude. 4 decimals are preferred. <br> <br>
+    N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215<br> <br>
+	You may also enter a valid MGRS position.</p>
     <hr>
  </span>
 
@@ -1587,7 +1629,7 @@ to links</span></a> </div>
 
 <td colspan="2" style="vertical-align: top; height: 8%; background-color: #dee9f9; text-align: center;"><p align="right" class="style2">   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small> &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp;  <span class="style3">SHARES
 
-  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.9</span>&nbsp;&nbsp;
+  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.13</span>&nbsp;&nbsp;
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
@@ -1595,7 +1637,7 @@ to links</span></a> </div>
 
 &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"><span class="style5">UNCLASSIFIED</span> &nbsp; &nbsp; &nbsp; </p>
 
-  <p><span style="font-size: 12px;"><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><small style="color: rgb(0, 102, 0);"><input type="button" value=" Load SHARES Spotrep data " onclick="document.getElementById('txtfiletoread').click();" />
+  <p><span style="font-size: 12px;"><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><small style="color: rgb(0, 102, 0);"><input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load SHARES Spotrep data " />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#pop1">Form info</a>
   </span></p></td>
 
@@ -1662,8 +1704,7 @@ to links</span></a> </div>
     <td width="91%"><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;">
 
       <textarea name="MsgTo" cols="100" rows="2" id="MsgTo" onkeypress="if(event.keyCode==13){return false;}"  onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
-
-    </pbzloc></span><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"> </pbzloc></span></td>
+</pbzloc></span><span style="font-size: 14px;"><pbzloc ="1" style="font-weight: normal;"> </pbzloc></span></td>
 
   </tr>
 
@@ -1717,11 +1758,11 @@ to links</span></a> </div>
     </p>
   <p><span class="style13"><span class="style3"><span style="font-size: 12px;">&nbsp; &nbsp;</span>2. </span></span><span class="style2">Latitude and longitude:&nbsp; &nbsp;LAT
 
-      <input name="gpsLat" type="text" id="gpsLat" title= "If entering manually use format: 38.5567"  onchange="CheckLat();checkLatLon();"  onkeypress="return isNumberKey(event)" size="12"  maxlength="20" placeholder="Ex: 38.5567" />
+      <input name="gpsLat" type="text" id="gpsLat" title= "If entering manually use format: 38.5567"  onchange="checkLatLon(); "  onkeypress="return isNumberKey(event)" size="12"  maxlength="20" placeholder="Ex: 38.5567" />
 
     &nbsp;&nbsp;&nbsp;LON
 
-<input name="gpsLon"  type="text" id="gpsLon"  onchange="CheckLon();checkLatLon();" onkeypress="return isNumberKey(event)" size="12" maxlength="22" placeholder="Ex: -116.9824"  />
+<input name="gpsLon"  type="text" id="gpsLon"  onchange="CheckLon();checkLatLon()" onkeypress="return isNumberKey(event)" size="12" maxlength="22" placeholder="Ex: -116.9824"  />
 
     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 
@@ -1729,7 +1770,7 @@ to links</span></a> </div>
      <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style24"><span class="style13"><span class="style37"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span class="style40">.</span></span></span></span></span></span></span></span> <em>MGRS</em><span class="style12">
      <input name="MGRS" type="text" onkeypress="if(event.keyCode==13){return false;}"  title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
      </span><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style24">&nbsp;LAT and LON are required to map this SpotRep. If entering manually use Decimal Degree format or from an attached GPS device.</span>    </span></span></span></p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style24"><span  id="GPSnote">LAT and LON are required to map this SpotRep. If entering manually use Decimal Degree format or from an attached GPS device.</span>   </span> </span></span></span></p>
 
   <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#f8f8ff">
 
@@ -2049,17 +2090,13 @@ Unknown - N/A</td>
 
   </span></small>&nbsp;&nbsp;&nbsp; <small>
 
-  <input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" onclick="createjson();return checkform();store(); ";enctype="multipart/form-data" class="SubmitBtn1" type="submit" />
+  <input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" onclick="checkform(); createjson();return store(); ";enctype="multipart/form-data" class="SubmitBtn1" type="submit" />
 
 &nbsp; </small></span>
 
-  <input type="reset" value="Reset Form" />
+  <input name="resetbtn" type="reset" id="resetbtn" value="Reset Form" />
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: rgb(128, 0, 0);">&nbsp; <span style="color: black;">&nbsp;&nbsp;&nbsp;
-
-&nbsp;  &nbsp; &nbsp;
-
-<span style="font-style: italic;">&nbsp;For form use or info contact: &nbsp;</span></span></span><tt><tt style=""><span style="font-style: italic;">Dan Midyett/NNB4DW/NCS36</span>1</tt></tt><span style="color: rgb(128, 0, 0);"><span style="color: black;">&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;  <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="font-style: italic;">&nbsp;For form use or info contact: &nbsp;</span></span></span><tt><tt style=""><span style="font-style: italic;">Dan Midyett/NNB4DW/NCS36</span>1</tt></tt><span style="color: rgb(128, 0, 0);"><span style="color: black;">&nbsp; &nbsp;
 
 &nbsp; &nbsp;<span style="color: rgb(128, 0, 0);"><span style="color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
 
@@ -2067,9 +2104,9 @@ Unknown - N/A</td>
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.9" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.13" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span class="style2">Ver 9</span>.<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">6.9</span></span></span></span></span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver 9.6.13</span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 
