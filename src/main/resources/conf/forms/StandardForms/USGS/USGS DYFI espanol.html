@@ -880,14 +880,15 @@ function checklatlon(num, fld) {
 if (num !='')
 	{
  	var a = parseFloat(num);
- 	if (a !=num){alert('Por favor, introduzca las coordenadas en formato decimal.');
+ 	if (a !=num){alert('Please enter coordinates in Decimal format.');
 		document.getElementById(fld).value = '';
 		document.getElementById(fld).focus();
 	}
-	if (fld =='ciim_mapLat' && (num <-90) || ( num >90)) {alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
-	if (fld =='ciim_mapLon' && (num <-180) || ( num >180)) {alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
+	if (fld =='ciim_mapLat'){if (num <-90 ||  num >90) { alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
+		document.getElementById(fld).focus();}}
+		
+	if (fld =='ciim_mapLon'){if (num <-180 || num >180){alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
+		document.getElementById(fld).focus();}}
 	}
 	}
 	
@@ -1249,9 +1250,9 @@ to links</span></a>  --></div>
           <p><span class="style13">&nbsp; &nbsp;<em> &nbsp;</em></span><span class="style36"> (Al abrir este formulario se inserta su fecha y hora actual, puede cambiar manualmente haciendo clic en el campo)</span></p></td>
       </tr>
       <tr>
-        <td valign="top" bgcolor="#FFFFFF"><p class="style23">&iquest;Tu localizaci&oacute;n cuando ocurrio el sismo?: (<span class="style11"><span class="style13">REQUERIDO</span></span>) 
+        <td valign="top" bgcolor="#FFFFFF"><p class="style23">Tu ubicación - Calle, Ciudad y Estado durante el sismo: (<span class="style11"><span class="style13">REQUERIDO</span></span>) 
           <p class="style13">&nbsp;&nbsp;&nbsp;
-            <input placeholder="DIRECCIÓN DE CALLE ÚNICAMENTE." title="* DIRECCIÓN O DIRECCIÓN PARCIAL. SIN COORDENADAS GPS, use las CAJAS A CONTINUACIÓN *" name="ciim_mapAddress" type="text" id="ciim_mapAddress" size="85" maxlength="85" />              
+            <input placeholder="CALLE, CIUDAD, ESTADO" title="* DIRECCIÓN O DIRECCIÓN PARCIAL. SIN COORDENADAS GPS, use las CAJAS A CONTINUACIÓN *" name="ciim_mapAddress" type="text" id="ciim_mapAddress" size="85" maxlength="85" />              
             <span class="style34">&lt;-No ingrese las coordenadas GPS aquí.</span></p>
           <p class="style13"> <span class="style11">Coordenadas GPS opcionales en el siguiente formato:<span class="style35">32.504892 -116.982466</span></span>&nbsp;&nbsp;LAT 
             <input name="ciim_mapLat"  style="color:blue" type="text" id="ciim_mapLat" size="22" maxlength="22" placeholder="Ejemplo: 32.504891" onkeypress="return isNumberKey(event)" onchange="checklatlon(this.value, 'ciim_mapLat')";>
@@ -1717,9 +1718,9 @@ Se separaron de la estructura el balc&oacute;n, <br />
         <input name="user_id" type="hidden" id="user_id" value="{Callsign}" />
         <input name="user_id_type" type="hidden" id="user_id_type" value="Callsign" />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></td>
-      <td width="10%">&nbsp;Ver  8.2 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver  8.5 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
-      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.2 es" />
+      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.5 es" />
       </span></span></span></span> </span></span> </span> </span></td>
     </tr>
   </table>

@@ -889,10 +889,11 @@ if (num !='')
 		document.getElementById(fld).value = '';
 		document.getElementById(fld).focus();
 	}
-	if (fld =='ciim_mapLat' && (num <-90) || ( num >90)) {alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
-	if (fld =='ciim_mapLon' && (num <-180) || ( num >180)) {alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
-		document.getElementById(fld).focus();}
+	if (fld =='ciim_mapLat'){if (num <-90 ||  num >90) { alert ('Latitude must be between -90 and 90'); document.getElementById(fld).value = '';
+		document.getElementById(fld).focus();}}
+		
+	if (fld =='ciim_mapLon'){if (num <-180 || num >180){alert ('Longitude must be between -180 and 180'); document.getElementById(fld).value = '';
+		document.getElementById(fld).focus();}}
 	}
 	}
 	
@@ -1260,9 +1261,9 @@ to links</span></a>  --></div>
           <p><span class="style13">&nbsp; &nbsp;<em> &nbsp;</em></span><span class="style36"> (Opening this form inserts your current  Date &amp; Time, you may manually change by click in the field)</span></p></td>
       </tr>
       <tr>
-        <td valign="top" bgcolor="#FFFFFF"><p class="style23">Your location - street address when the earthquake occurred: (REQUIRED) 
+        <td valign="top" bgcolor="#FFFFFF"><p class="style23">Your location - street address,  city, and state when the earthquake occurred: &nbsp;&nbsp;(REQUIRED) 
           <p class="style13"> &nbsp; &nbsp; &nbsp;
-              <input placeholder="STREET ADDRESS ONLY." Title="*ADDRESS O. NO GPS COORDINATES, use the BOXES BELOW*" name="ciim_mapAddress" type="text" id="ciim_mapAddress" size="100" maxlength="90" /> 
+              <input placeholder="STREET ADDRESS , CITY, STATE" Title="*STREET ADDRESS , CITY, STATE *" name="ciim_mapAddress" type="text" id="ciim_mapAddress" size="100" maxlength="90" /> 
               <span class="style34">&lt;- Do not enter GPS coordinates here.
               </span></p>
           <p class="style13"> <span class="style11">Optional GPS coordinates in the following  format: <span class="style35">32.504892 -116.982466</span></span>&nbsp;&nbsp;LAT 
@@ -1731,9 +1732,9 @@ Building permanently shifted over foundation<br />
         <input name="user_id_type" type="hidden" id="user_id_type" value="Callsign" />
  &nbsp;&nbsp;&nbsp;&nbsp;<span class="style13"><span class="style28">
  </span></span></span></span></td>
-      <td width="10%">&nbsp;Ver 8.3 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver 8.5 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
-      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.3 en" />
+      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 8.5 en" />
       </span></span></span></span> </span></span> </span> </span></td>
     </tr>
   </table>

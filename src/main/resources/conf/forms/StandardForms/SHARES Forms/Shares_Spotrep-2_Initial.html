@@ -1059,7 +1059,7 @@ function SaveData() {
  var t1; var t2;
 
  getit();
-Checkifinbrowser();
+//Checkifinbrowser();
 
 copyGPS();
 
@@ -1311,7 +1311,7 @@ num2 = parseFloat (document.getElementById('gpsLon').value);
 if (isNaN(num1) | isNaN(num2)){  document.getElementById('gpsLon').value = '{longitude}';  
 document.getElementById('gpsLat').value = '{latitude}';
 checkLatLon();
-	return confirm('You have not entered valid GPS coordinates. \nBy default, the Latitude and Longitude will be calculated from you Grid Square.')}}
+	return confirm('You have not entered valid GPS coordinates. \nBy default, the Latitude and Longitude will be calculated from your Grid Square.')}}
 
 
 function MGRSString ()
@@ -1493,6 +1493,11 @@ convertthis();
 
 }
 
+function fix(s) {
+var s =  s.replace(/\\/g, "\\\\");
+var s =  s.replace(/\"/g, '\\"');
+return s}
+
 function createjson () {
 
 var jsontext =document.getElementById('myjasondata').value;
@@ -1528,38 +1533,50 @@ var jsontext=jsontext.replace('j10',temp1);//enmWater
 //NOw the txt fields
 
 var temp1= document.getElementById('Comm1').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j15',temp1);
 var temp1= document.getElementById('Comm2').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
+
 var jsontext=jsontext.replace('j12',temp1);//enmWater
 
 var temp1= document.getElementById('Comm3').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j11',temp1);//enmWater
 
 var temp1= document.getElementById('Comm4').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j22',temp1);//enmWater
 
 var temp1= document.getElementById('Comm5').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j24',temp1);//enmWater
 
 var temp1= document.getElementById('Comm6').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j19',temp1);//enmWater
 
 var temp1= document.getElementById('Comm7').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j14',temp1);//enmWater
 
 var temp1= document.getElementById('Message').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j13',temp1);//enmWater
 
 var temp1= document.getElementById('testCall').value;
 var jsontext=jsontext.replace('j20',temp1);//enmWater
 
 var temp1= document.getElementById('POC').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j18',temp1);//enmWater
 
 var temp1= document.getElementById('MsgNR').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j23',temp1);//enmWater
 
 var temp1= document.getElementById('City').value;
+var temp1 = JSON.stringify(temp1); fix(temp1);
 var jsontext=jsontext.replace('j16',temp1);//enmWater
 
 var temp1= document.getElementById('timestamp2').value;
@@ -1629,7 +1646,7 @@ to links</span></a> </div>
 
 <td colspan="2" style="vertical-align: top; height: 8%; background-color: #dee9f9; text-align: center;"><p align="right" class="style2">   &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small> &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"></small>&nbsp;  <span class="style3">SHARES
 
-  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.13</span>&nbsp;&nbsp;
+  SPOTREP-2&nbsp;&nbsp;&nbsp;Ver 9.6.15</span>&nbsp;&nbsp;
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
@@ -1859,6 +1876,7 @@ NO
 
 Unknown - N/A </td>
 
+
   </tr>
 
   <tr bgcolor="#f8f8ff">
@@ -2047,7 +2065,7 @@ Unknown - N/A</td>
 		
 </span></p>
   <p><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
-    <textarea name="myjasondata" cols="50" rows="25" id="myjasondata" style="display: none";>[{"dblLatitude":"j1",
+    <textarea name="myjasondata" cols="70" rows="25" id="myjasondata" style="display: none";>[{"dblLatitude":"j1",
 "dblLongitude":"j2",
 "strDate":"j3",
 "enmBroadcastStation":"j4",
@@ -2057,22 +2075,22 @@ Unknown - N/A</td>
 "enmPower":"j8",
 "enmTVStation":"j9",
 "enmWater":"j10",
-"strBroadcastStation":"j11",
-"strCellPhone":"j12",
-"strComments":"j13",
-"strInternet":"j14",
-"strLandLine":"j15",
-"strLocation":"j16",
+"strBroadcastStation":j11,
+"strCellPhone":j12,
+"strComments":j13,
+"strInternet":j14,
+"strLandLine":j15,
+"strLocation":j16,
 "strMessageId":"",
-"strPOC":"j18",
-"strPower":"j19",
+"strPOC":j18,
+"strPower":j19,
 "strSender":"j20",
 "strSubject":"",
-"strTVStation":"j22",
-"strTaskNumber":"j23",
+"strTVStation":j22,
+"strTaskNumber":j23,
 "strPrecedence": "j25",
 "strMGRS":"mgrs",
-"strWater":"j24"}]</textarea>
+"strWater":j24}]</textarea>
   </span></span>    <span style="color: rgb(128, 0, 0);"><span style="color: black;">
     </span></span><br />
 &nbsp;&nbsp;</span></span><br />
@@ -2104,9 +2122,9 @@ Unknown - N/A</td>
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.13" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.6.15" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver 9.6.13</span></span></span></span></span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver 9.6.15</span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 
