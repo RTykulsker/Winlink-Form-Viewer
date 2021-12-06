@@ -28,20 +28,13 @@ SUBJ SPOTREP <var UDTGfld>
 8. Commercial Power functioning? [ <var PowerWorks> ] <var Comm6>
 9. Internet functioning?  [ <var Inter> ]  <var Comm7>
 10. Additional Comments:  <var Message>
-11. Poc <var POC>
+11. POC <var POC>
 
 BT
 NNNN
 
 [No changes or editing of this message are allowed]
-(If not using Winlink Express, you may ignore the .xml file attached)
 
-
---- json data --
-
-<var myjasondata>
-
---- end of json data --
 ------------------------------------
 Express Sending Station: <MsgSender>
 Express Version: <ProgramVersion>

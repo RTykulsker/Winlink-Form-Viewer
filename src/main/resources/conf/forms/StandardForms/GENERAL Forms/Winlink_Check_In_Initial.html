@@ -248,50 +248,66 @@ width:40px;
 
 function RestoreTitle() {
 
-var RightNow = document.getElementById('Title').value;
+var RightNow = document.getElementById('Organization').value;
 
-document.getElementById('Title').value = RightNow;
+document.getElementById('Organization').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
 store();
 }
 
 	   function store(){
- 	var formatted= document.getElementById("Title");
+ 	var formatted= document.getElementById("Organization");
      localStorage.setItem("CheckinTitle", formatted.value);
 	  	var formatted= document.getElementById("MsgTo");
-     localStorage.setItem("CheckinMsgTo", formatted.value);
+		     localStorage.setItem("CheckinMsgTo", formatted.value);
+
+		var formatted= document.getElementById("mapLat");
+
+     localStorage.setItem("CheckinLat", formatted.value);
+	 var formatted= document.getElementById("mapLon");
+     localStorage.setItem("CheckinLon", formatted.value);
+		 var formatted= document.getElementById("City");
     }
 
 	function getit() {
+	var storedValue = localStorage.getItem("CheckinLat");
+	document.getElementById('mapLat').value = storedValue;
+	var storedValue = localStorage.getItem("CheckinLon");
+	document.getElementById('mapLon').value = storedValue;
 	var storedValue = localStorage.getItem("CheckinTitle");
-	document.getElementById('Title').value = storedValue;
-	var storedValue = localStorage.getItem("CheckinMsgTo");
+	document.getElementById('Organization').value = storedValue;
+var storedValue = localStorage.getItem("CheckinMsgTo");
 	document.getElementById('MsgTo').value = storedValue;
 	RestoreTitle();
 	}
 function SetupTitle() {
 var myprompt = '';
-var myttemp = document.getElementById('Title').value;
+var myttemp = document.getElementById('Organization').value;
 var RightNow = prompt("Enter Agency/Group Title",   myprompt);
 if (RightNow.length == 0) { RightNow = myttemp}
-document.getElementById('Title').value = RightNow;
+document.getElementById('Organization').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
 store();
 }
-function TimeNow(Timefld, FocusFld) {
+function TimeNow(Timefld, doprompt) {
 var txt;
 var d = new Date(),
 thisyear = d.getFullYear();
 thismonth= d.getMonth();
 thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0"+thismonth};
+
 thisday = d.getDate();
+if (thisday < 10) { thisday = "0"+thisday};
+
 h = (d.getHours()<10?'0':'') + d.getHours()
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
 s = (d.getSeconds()<10?'0':'') + d.getSeconds();
-var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m;
-var RightNow = prompt("", myprompt);
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
 document.getElementById(Timefld).value = RightNow;
-} </script>
+ TimeStamp();} </script>
 <script>
 function punctwrdcnt(s, fieldid) {  
   
@@ -401,7 +417,7 @@ switch (TType) {
 			document.getElementById(TheFld).value = RightNow;
 		   break;
 		   case 'fulldatetime':     
-			var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m ;
+			var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m+':'+s ;
 			var RightNow = prompt("Date time:", myprompt);
 			document.getElementById(TheFld).value = RightNow;
 		   break;
@@ -443,14 +459,37 @@ document.getElementById('Comments').value = '';
 	store();
 	}
 
+function splitPaste(str) {
+var str = str.replace(",", " ");
+var str = str.replace("  ", " ");
+var d= str.split(' ');
+var cnt = d.length;
+if (cnt >1) {
+document.getElementById('mapLat').value =d[0];
+document.getElementById('mapLon').value =d[1];
+}
+}
+function copyGPS() {
 
+
+var GPSstr= document.getElementById("ExtGPS").value;
+
+var nameArr = GPSstr.split(" ");
+
+var a =nameArr[0];
+
+var b =nameArr[1];
+
+
+
+if(!isNaN (a)){document.getElementById('mapLat').value =a;}
+
+if(!isNaN (b)){document.getElementById('mapLon').value =b;}
+//checkLatLon();
+}
 function GetGPS(){
 var ans = document.getElementById('ExtGPS').value;
 //
-
-
-//document.getElementById('GPS2').value = ans;
-
 
 if (ans  != '(Not available)'){
 myMGRS=ans;
@@ -459,11 +498,13 @@ var ans = ans.replace(" ", ",");
 
  if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
 //now the mrgs
+
 var d= myMGRS.split(' ');
 MGRSString(d[0],d[1]);
 //store();
 //what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
 //lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
 
 var mypram = {lat:+d[0], lng:+d[1]};
 //alert(mypram);
@@ -474,7 +515,7 @@ what3words.api.convertTo3wa(mypram, 'en')
   
   //alert(theword.words);
   });
-  
+  convertthis();
 } 
 
 }
@@ -695,11 +736,15 @@ function SaveData() {
  else { 
      ("Files are not supported"); 
  } 
-getit();
+
 document.getElementById('testlnkbtn').style.visibility='visible';
 Checkifinbrowser();
+getit();
 GetGPS();
-Fixarea() 
+copyGPS();
+Fixarea();
+TimeNow('DateTime', false);
+checkLatLon();
 //checkinternet();
 }
  
@@ -710,10 +755,16 @@ function MGRSString ()
 { //var Lat = 38.556; var Long=-121.793; 
 //var Lat1 = 38.556; var Long1=-121.793; 
 var thestring= document.getElementById("GPS2").value;
+
+if (thestring ==''){ return;}
  var res = thestring.split(",");
- var Lat = parseFloat(res[0]); var Long=parseFloat(res[1]); 
+ var Lat = parseFloat(res[0]); 
+ var Long=parseFloat(res[1]); 
+ if (isNaN(Lat)) {return} 
+if (isNaN(Long)) {return}
 latLonToGridSquare(res[0],res[1]);
-// var Long = res[1]; ('long >'+Long+'<');
+
+
  //Lat=38.556; Long=-121.793
 if (Lat < -80) return 'Too far South' ; if (Lat > 84) return 'Too far North' ;
 var c = 1 + Math.floor ((Long+180)/6);
@@ -781,7 +832,14 @@ document.getElementById("GPS2").value = thestring;
 var res = thestring.split(",");
 var p=res.length;
 if (p==2){MGRSString(); 
+
 var mypram = {lat:+res[0], lng:+res[1]};
+document.getElementById('mapLat').value =res[0];
+document.getElementById('mapLon').value =res[1];
+
+if(res[0]==''|res[1]==''){return};
+
+//mapLat
 //alert(mypram);
 what3words.api.convertTo3wa(mypram, 'en')
   .then(function(response) {
@@ -793,8 +851,12 @@ what3words.api.convertTo3wa(mypram, 'en')
   } else 
 { ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
 document.getElementById('GPS2').value ='';
+document.getElementById('mapLat').value ='';
+document.getElementById('mapLon').value ='';
+document.getElementById('w3w').value ='';
 document.getElementById('WithSpaces').value ='';
 document.getElementById('MGRS').value ='';
+document.getElementById('Grid').value ='';
 document.getElementById('NoSpaces').value ='';
  document.getElementById("GPS2").focus()}
 }
@@ -849,8 +911,10 @@ latLonToGridSquare = function(param1,param2){
     lat = toNum(param1);
     lon = toNum(param2);
   }
-  if (isNaN(lat)) throw "lat is NaN";
-//  if (isNaN(lon)) throw "lon is NaN";
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
   if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
   if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
   if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
@@ -892,6 +956,8 @@ var res = str.substring(0, 3);
        var res3 = str.substring(10, 15);
 //( res+' '+res1+' '+res2+ ' '+res3);
 LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+convertthis();
+store();
 }
 }
 }
@@ -961,7 +1027,7 @@ what3words.api.convertTo3wa(mypram, 'en')
   //alert(theword.words);
   });
 
-convertthis();
+
 //return [true,lat,lng];
 
 }
@@ -983,7 +1049,7 @@ function Checkifinbrowser() {
 function addtabs (s,fieldid){
 
 
-var s = s.replace(/(\r\n|\n|\r)/gm,"  "); 
+var s = s.replace(/(\r\n|\n|\r)/gm," "); 
 document.getElementById(fieldid).value = s;  
 
 }
@@ -994,6 +1060,8 @@ what3words.api.convertToCoordinates(convertTo3wa)
   
 var xx=("[convertToCoordinates]", response);
 document.getElementById('GPS2').value =xx.coordinates.lat+','+xx.coordinates.lng;  
+document.getElementById('mapLat').value= xx.coordinates.lat
+document.getElementById('mapLon').value= +xx.coordinates.lng
 
 convertthis();
 // alert(xx.coordinates.lat);  alert(xx.coordinates.lng);
@@ -1022,6 +1090,275 @@ if (x = true) {
 document.getElementById('testlnkbtn').style.display ='none'; }
 }
 
+function CheckLat(SkipMsg){
+var latCheck = 1;
+var num =document.getElementById('mapLat').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+if (z1 == 'NaN') {alert ('error')}
+if ((num <-90)  || ( num >90) || isNaN (z1) ) { document.getElementById('mapLat').value='';
+//alert ('Latitude must be between -90 and 90\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+alert ('Latitude must be between -90 and 90');
+ document.getElementById('mapLat').value ='';
+		document.getElementById('mapLat').focus();
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var latCheck = 0;
+}
+
+return latCheck;
+}
+
+function CheckLon(SkipMsg){
+var lonCheck = 1;
+var num =document.getElementById('mapLon').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+
+if ((num <-180) || ( num >180) || isNaN (z1) ) { document.getElementById('mapLon').value='';
+alert ('Longitude must be between -180 and 180 '); 
+//alert ('Longitude must be between -180 and 180\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+ document.getElementById('mapLon').value = '';
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var lonCheck = 0;
+
+} 
+
+return lonCheck;
+}
+
+function removeLinebreaks (s){
+
+var s = s.replace(/(\r\n|\n|\r)/gm," "); 
+return s;
+}
+
+
+function checkLatLon() {
+var cnt = 1;
+//var x1=0; var x2=0;
+x1 = CheckLat(true);
+x2 = CheckLon(true);
+
+if (x1==1 && x2==1) {// now set string for latlon
+	var mlat = document.getElementById('mapLat').value;
+	var mlon = document.getElementById('mapLon').value;
+	document.getElementById('GPS2').value =mlat+','+mlon;
+	
+	convertthis();
+} 
+}
+
+
+function checkform(){
+
+num1 = parseFloat(document.getElementById('mapLat').value);
+
+num2 = parseFloat (document.getElementById('mapLon').value);
+
+if (isNaN(num1) | isNaN(num2)){  document.getElementById('mapLon').value = '{longitude}';  
+document.getElementById('mapLat').value = '{latitude}';
+checkLatLon();
+return confirm('You have not entered valid GPS coordinates. \nBy default, the Latitude and Longitude will be calculated from your Grid Square.')
+}}
+function createjson () {
+
+var jsontext =document.getElementById('FormData').value;
+var temp1= document.getElementById('Mapfilename').value;
+var jsontext=jsontext.replace('j1', temp1);
+
+var temp1= document.getElementById('Status').value;
+var jsontext=jsontext.replace('j0', temp1);
+
+var temp1= document.getElementById('Organization').value;
+var jsontext=jsontext.replace('j2', temp1);
+
+var temp1= document.getElementById('timestamp').value;
+var jsontext=jsontext.replace('j3', temp1);
+
+var temp1= document.getElementById('mapLat').value;
+var jsontext=jsontext.replace('j4', temp1);
+
+var temp1= document.getElementById('mapLon').value;
+var jsontext=jsontext.replace('j5', temp1);
+
+var temp1= document.getElementById('MsgSender').value;//enmBroadcastStation
+var jsontext=jsontext.replace('j6', temp1);
+
+var temp1= document.getElementById('Assigned').value;//CEll
+var jsontext=jsontext.replace('j7',temp1);
+
+var temp1= document.getElementById('Location').value;//enmInternet
+var jsontext=jsontext.replace('j8',temp1);
+
+
+var temp1= document.getElementById('MGRS').value;//enmLandline
+var jsontext=jsontext.replace('j9',temp1);
+
+var temp1= document.getElementById('Grid').value;//enmPower
+var jsontext=jsontext.replace('j10',temp1);
+
+var temp1= document.getElementById('w3w').value;//enmTVStation
+var jsontext=jsontext.replace('j11',temp1);
+
+var temp1= document.getElementById('Band').value;
+var jsontext=jsontext.replace('j12',temp1);//enmWater
+var temp1= document.getElementById('Session').value;
+var jsontext=jsontext.replace('j13',temp1);//enmWater
+var temp1= document.getElementById('Comments').value;
+
+temp1 = removeLinebreaks(temp1);
+var jsontext=jsontext.replace('j14',temp1);//enmWater
+
+
+//document.getElementById('FormData').value= jsontext;
+//document.getElementById('attached_text').value = jsontext;
+document.getElementById('attached_text').value = jsontext;
+var attached_file = 'FormData.txt';
+
+
+//attached_text = jsontext;
+}//attached_text
+
+function parsethisdate() {
+var thedatetime=  document.getElementById('DateTime').value;
+//d= new Date(Date.parse(thedatetime)).toString();
+var d= new Date(Date.parse(thedatetime));
+
+//alert (Date.parse(thedatetime));
+//d =parseDate(thedatetime);
+utcstr = d.toISOString()
+//alert (utcstr);
+document.getElementById('timestamp2').value= utcstr;
+return utcstr;
+}
+function TimeStamp(){
+var d1 = new Date();
+mtime = d1.getTime();
+//var thedatetime=  document.getElementById('UDTGfld').value;
+var thedatetime= parsethisdate();
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime = thedatetime.replace("T", " ") 
+var thedatetime=thedatetime.replace(' ', ',');
+var thedatetime = thedatetime.replace("Z", "") ;
+var thedatetime = thedatetime.replace(".000", "") ;
+
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+//alert (thesplit[1]);
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
+  var nyyyy = d.getUTCFullYear();
+  nyyyy= nyyyy.toString();
+
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+var ndd = d.getUTCDate();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+ // alert(ndd);
+  var nhh = d.getUTCHours();
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
+    var nmm = d.getUTCMinutes();
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
+	 var nss = d.getUTCSeconds();
+	
+  nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
+var test = (thesplit[0])+(thesplit[1])+(thesplit[2])+(thesplit[3])+(thesplit[4])+(thesplit[5]);
+
+
+test = test.replace(/\s/g,'');
+ document.getElementById("timestamp").value = test; ;
+  //  document.getElementById("timestamp2").value= test;
+ //x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   
+   
+  // document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+  // alert (nyyyy+nMM+ndd+nhh+nmm+nss);
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
+
+ 
+}
+
+function TimeStamporiginal(){
+var d1 = new Date();
+mtime = d1.getTime();
+
+//var thedatetime=  document.getElementById('DateTime').value;
+thedatetime= parsethisdate();
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime=thedatetime.replace(' ', ',');
+//var thedatetime = thedatetime.replace("Z", "") ;
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+//var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+var d = new Date((parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+//alert (thesplit[1]);
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
+ var localOffset= d.getTimezoneOffset() * 60000;
+    d.setTime(d.getTime() + localOffset);
+
+var ndate = parsethisdate();
+
+d= new Date((ndate));
+//var d = d.toUTCString();
+  var nyyyy = d.getFullYear();
+
+  nyyyy= nyyyy.toString();
+  alert(nyyyy);
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+var ndd = d.getUTCDate();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+ // alert(ndd);
+  var nhh = d.getUTCHours();
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
+    var nmm = d.getUTCMinutes();
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
+	 var nss = d.getUTCSeconds();
+	
+  nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
+var test = (thesplit[0])+(thesplit[1])+(thesplit[2])+(thesplit[3])+(thesplit[4])+(thesplit[5]);
+
+
+test = test.replace(/\s/g,'');
+ document.getElementById("timestamp").value = test; ;
+//    document.getElementById("timestamp2").value= test;
+ //x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   
+   
+  // document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+  // alert (nyyyy+nMM+ndd+nhh+nmm+nss);
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
+//parsethisdate();
+ 
+}
 </script>
 </head>
 <body >
@@ -1037,7 +1374,7 @@ document.getElementById('testlnkbtn').style.display ='none'; }
 <table width="855"  border="3" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 829px; ">
 <tbody>
 <tr>
-<td height="71" colspan="2" valign="top" bgcolor="#dee9f9" style="vertical-align: bottom; height: 5%; text-align: center; background-color: "><p style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
+<td height="71" valign="top" bgcolor="#dee9f9" style="vertical-align: bottom; height: 5%; text-align: center; background-color: "><p style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
   <span class="style4">Express Check In</span><br />
 <span class="style20"  id="SubjectText">  </span><br />
   <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
@@ -1057,52 +1394,55 @@ document.getElementById('testlnkbtn').style.display ='none'; }
  
   </tr>
 <tr>
-<td style="text-align: center;" colspan="2"><span style="font-style: italic;"><span style="color: #2A5F00;">This is for
+<td style="text-align: center;"><span style="font-style: italic;"><span style="color: #2A5F00;">This is for
 an initial
 check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><span class="style9"> Also sent as plain text in message body for non-Express users.</span> </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; text-align: center; width: 50%;" colspan="2">
+<td nowrap="nowrap" style="vertical-align: middle; text-align: center; width: 50%;">
 <div align="left">
   <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span></span></span><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span><span class="style17">Date/Time</span></span></span> &nbsp; 
-        <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime" required="required" maxlength="19" id="ActivityDateTime1" size="21" onclick="TimeNow('ActivityDateTime1', 'Activities1')" /> 
+        <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" /> 
 &nbsp; <span class="style48" style="font-family: Arial, Helvetica, sans-serif;;">Select Status </span>&nbsp; &nbsp;
-    <select name="Status" size="3" id="Status" required="required" > 
-      <option selected="selected">Exercise </option>
-      <option>Net</option>
-      <option>REAL EVENT</option>
+    <select name="Status" size="3" id="Status" required="required" >
+      <option value="Exercise " selected="selected">Exercise </option>
+      <option value="Net">Net</option>
+      <option value="REAL EVENT">REAL EVENT</option>
     </select>
     &nbsp; &nbsp;
     Band&nbsp; &nbsp;&nbsp;<span class="style2">
     <select name="Band" size="3" id="Band" required="required">
-      <option>-N/A-</option>
-      <option>VHF</option>
-      <option>220</option>
-      <option>UHF</option>
-      <option>HF Amateur</option>
-      <option>HF Shares</option>
+      <option value="-N/A-" selected="selected">-N/A-</option>
+      <option value="VHF">VHF</option>
+      <option value="220">220</option>
+      <option value="UHF">UHF</option>
+      <option value="HF Amateur">HF Amateur</option>
+      <option value="HF Shares">HF Shares</option>
     </select>
 &nbsp;&nbsp; Mode &nbsp; </span>
     <select name="Session" size="3" id="Session" required="required">
-      <option>Telnet</option>
-	  <option>Mesh</option>	  
-	  <option>Packet</option>
-      <option>Ardop</option>
-      <option>Vara HF</option>
-      <option>Vara FM</option>
-      <option>Pactor</option>
-      <option>Other</option>
+      <option value="Telnet" selected="selected">Telnet</option>
+      <option value="Packet">Packet</option>
+      <option value="Ardop">Ardop</option>
+      <option value="Vara HF">Vara HF</option>
+      <option value="Vara FM">Vara FM</option>
+      <option value="Pactor">Pactor</option>
+      <option value="Other">Other</option>
     </select>
     <span class="style2">&nbsp;<br />
-&nbsp;</span><br />
+&nbsp;</span><span style="font-size: 14px;">
+<span style="font-size: 14px;">
+<input name="timestamp" type="hidden" id="timestamp" size="30" />
+</span><input name="timestamp2" type="hidden" id="timestamp2" size="40" />
+</span><br />
     <br />
     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 &nbsp;<span class="style1">&nbsp;</span></span><span class="style22">Send To</span></span>
 &nbsp; 
     <input placeholder="Separate Calls/Emails with a SEMICOLON; You can modify prior to posting." maxlength="79" size="79" name="MsgTo"  id="MsgTo" onchange="this.value=this.value.toUpperCase();" onblur= "store();"/> 
     <span class="style3">
-    <input name="Title" type="hidden" id="Title" value="Winlink Net" />
-&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries. </a><br />
+    <input name="Organization" type="hidden" id="Organization" value="Winlink Net" />
+&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries.</a><br />
     <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style49">Entries  will remain until you change or clear them.</span><br />
      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span>
      <span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
@@ -1118,6 +1458,8 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
      <input placeholder="Enter ONLY CALLSIGNS!" maxlength="60" required="required" size="65" name="Assigned" id="Assigned" onchange="this.value=this.value.toUpperCase();"/>
 &nbsp;&nbsp;Sender &nbsp;
     <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
+    <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+    <input name="Mapfilename" type="hidden" id="Mapfilename" value="Express CheckIn" />
     <br />
     <br />
     <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
@@ -1125,7 +1467,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 </td>
 </tr>
 <tr>
-<td colspan="4" bgcolor="#f8f8ff" style="text-align: center; vertical-align: middle; background-color: " pbzloc="6">
+<td colspan="3" bgcolor="#f8f8ff" style="text-align: center; vertical-align: middle; background-color: " pbzloc="6">
 <div align="left">
   <p><br />
       <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;Location&nbsp;
@@ -1140,44 +1482,67 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
   <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span>&nbsp;
-    </span></span>Decimal GPS Coordinates 
-    <input name="GPS2" type="text" id="GPS2" size="40" onchange="convertthis()" onKeyPress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
-<em><span class="style12">&nbsp; </span>MGRS</em><span class="style12">     
+</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
+<input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12"  /> 
+</span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
+<input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12"  />
+</span>MGRS</em><span class="style12">     
      <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span><em>&nbsp;Grid&nbsp;
-<input name="Grid" readonly="readonly" type="text" id="Grid" size="8" maxlength="8" />
-<span class="style12">&nbsp;</span></em></p>
+<input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+<span class="style12">&nbsp;
+<input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
+<span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+<input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+</span></span></span></span></em></p>
   <p><em> <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;What3words location: 
-    <input name="w3w" type="text" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value)";/>
+    <input name="w3w" type="text" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>
     <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp; </span></em>       <input type="button" name="testlnkbtn"  id="testlnkbtn"onclick="testlink();"value="View w3w location in a new tab" />
-</em></p>
-  <p align="left"><span class="style12"><em> </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style23">Auto filled if GPS device is working in Express, or you can enter decimal degrees / MGRS coordinates manually.<br />
-      <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Ex: 38.5567,-121.7932 (note comma) / Ex: 11SNR0184195204 or 11S NR 01841 95204<br />
+  </em></p>
+  <p align="left"><span class="style12"><em> </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style23">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude andLongitude / MGRS coordinates manually.<br />
+      <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. <br />
       <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>* What3words currently requires an internet connection. See <a href="#pop1">Form Info</a>.</span></p>
   </div>
 </td>
 </tr>
 <tr>
-<td height="106" colspan="5" style="vertical-align: top; text-align: center; height: 70px;">
+<td  colspan="4" style="vertical-align: top; text-align: center; height: 70px;">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 250 &nbsp;</span></span>
-    <textarea placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER." cols="140" rows="2" maxlength="250" name="Comments" id="Comments" 
- onkeyup="AutoGrowTextArea(this)" onchange="addtabs(this.value,'Commentstab')"></textarea>            
-    <textarea  cols="140" rows="2" maxlength="250" name="Commentstab" id="Commentstab" 
+  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 180 &nbsp;</span></span>
+    <textarea name="Comments"  height: 100px; maxlength="180"  cols="140" rows="3" id="Comments" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER."></textarea> 
+    <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
+    <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
+    <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
+    <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
+    <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
+Status:M=j0
+Organization:T=j2
+DateTime:T=j3
+Latitude:T=j4
+Longitude:T=j5
+Sender:T=j6
+On site Operators:T=j7
+Location:T=j8
+MGRS:T=j9
+Grid:T=j10
+What3Words location:T=j11
+Band:M=j12
+Session Type:M=j13
+Comments:T=j14</textarea>
+    </span></span></span></span></span></span></span></span></span></span></span></span> </span></span></span></span>    <textarea  cols="140" rows="2" maxlength="250" name="Commentstab" id="Commentstab" 
  style="display: none;"></textarea>
-            <span style="font-family:  Arial, Helvetica, sans-serif;;">  
-            <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
-			
-          </span></p>
+              <span style="font-family:  Arial, Helvetica, sans-serif;;">  
+              <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
+			  
+            </span></p>
   </div>
 </td>
 </tr>
 <tr>
-<td height="38" colspan="2"><span style="font-family:  Arial, Helvetica, sans-serif;;"> <span style="font-family:  Arial, Helvetica, sans-serif;">
+<td height="38"><span style="font-family:  Arial, Helvetica, sans-serif;;"> <span style="font-family:  Arial, Helvetica, sans-serif;">
   <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Check in Data" />
 </span>&nbsp;&nbsp; 
-<input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
+<input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" onclick="checkform();createjson(); "; method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
 &nbsp; </span>
  <input type="reset" value="Reset Form" onclick="myreset();" />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -1190,9 +1555,11 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 3.01 </span>&nbsp;&nbsp;<span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 3.01" />
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
+&nbsp; <span class="style25">Ver 4.0.14</span><span style="font-size: 12px;">
+<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.14" />
+</span></span>
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>
 </tr>
 </tbody>
@@ -1202,6 +1569,8 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 </tr>
 </tbody>
 </table>
+<span style="font-family:  Arial, Helvetica, sans-serif;"><br />
+&nbsp;</span></table>
 <div id="pop1" class="pop-up"><!-- The pop-up block -->
 
 <div class="popBox"><!-- If the content becomes larger than the pop-up this div will scroll the content -->
