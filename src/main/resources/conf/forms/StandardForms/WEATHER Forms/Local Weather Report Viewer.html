@@ -225,6 +225,11 @@ hr.new1 {
 .style26 {color: #000000; font-size: 12px; }
 .style27 {font-size: 12px}
 .style28 {color: #2A5F00}
+.style24 {color: #FF0000;
+
+	font-style: italic;
+}
+.style29 {font-size: 14px}
 </style>
 
 <script type="text/javascript">
@@ -520,19 +525,21 @@ if (document.getElementById('cb8fld').value != '') { document.getElementById('cb
       <td width="48%" align="left"bgcolor="#f8f8ff" ><span class="style26" >Observer Name : {var RepName}      </span></td>
     </tr>
     <tr>
-      <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">Date:&nbsp; {var ReportDate} </span></td>
-      <td align="left" valign="top" nowrap="nowrap" bgcolor="#f8f8ff" ><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">&nbsp;Report Time: (local): {var ReportTime} </span></td>
+      <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">Date Time: </span></td>
+      <td align="left" valign="top" nowrap="nowrap" bgcolor="#f8f8ff" ><span class="style26">Location: {var Location} </span></td>
     </tr>
     <tr>
-      <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style26">Location: {var Location} </span></td>
-      <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">Optional Decimal GPS:&nbsp; {var GPS} </span></td>
-    </tr>
+      <td colspan="2" align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">City:{var City}&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;State: {var State}<span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; County: {var County} </span></span></td>
+      </tr>
     <tr>
-      <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">City:{var City}&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;State: {var State}</span></td>
-      <td align="left" valign="top" bgcolor="#f8f8ff" ><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="style27">County:
-            {var County}
-      </span> </span></td>
-    </tr>
+      <td colspan="2" align="left" valign="top" bgcolor="#f8f8ff" ><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="style29"><span style="color: rgb(0, 102, 0);"><span style="color: black;"><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span></span></span>Latitude: &nbsp;
+            {var mapLat}</span><span class="style27"><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> &nbsp; &nbsp; &nbsp;</span></span>&nbsp;&nbsp;Longitude</span><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">:
+            {var mapLon}            <span class="style23"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="style29">&nbsp; &nbsp; </span></span></span></span><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><em>&nbsp; </em><span class="style23">MGRS</span><em>:&nbsp; </em>
+            {var MGRS}
+            <span class="style24">&nbsp;</span><em><em> <em><em><em> <span class="style24">&nbsp;</span></em></em></em><span class="style24"><span class="style27"> &nbsp; &nbsp; &nbsp; &nbsp;</span>&nbsp;</span></em></em><span class="style29">Grid:</span><em>&nbsp;
+            {var Grid}
+            </em> </span></td>
+      </tr>
     <tr align="left" valign="top">
       <td colspan="2" class="style26"><table width="89%"  border="0" cellspacing="0" cellpadding="0"  bordercolor="#999999" >
         <tr valign="top">
@@ -557,8 +564,7 @@ if (document.getElementById('cb8fld').value != '') { document.getElementById('cb
       <td colspan="2"><div align="left" class="style27">Temperature &nbsp;
             {var Temp} 
 &deg;<span  id="TempFM1">{var mtemp}</span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;HUMIDITY:
-  {var Humidity}
-  % &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DEWPOINT:
+  {var Humidity}% &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DEWPOINT:
   {var Dew}
 &deg;<span  id="TempFM1">{var mtemp}</span></div></td>
     </tr>
@@ -604,9 +610,9 @@ if (document.getElementById('cb8fld').value != '') { document.getElementById('cb
 </span></div>        <div align="left"><span class="style27"></span></div></td>
       </tr>
     <tr align="left" valign="top">
-      <td colspan="2"><p align="left" class="style27"> &nbsp; <span class="style28">&nbsp;Notes:&nbsp;&nbsp; </span> <span style="width:750px; margin: 8px;  word-wrap:break-word; display:inline-block;">{var Narrative} </span>       </p>
-        <p align="left" class="style27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;</span></span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form Concept by KF5SMH&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 1.9.5
-            <input name="version" type="hidden" id="version" value="1.9.5" />
+      <td colspan="2"><p align="left" class="style27"> &nbsp; <span class="style28">&nbsp;Notes:&nbsp;&nbsp; </span> <span style="width:750px; margin: 8px;  word-wrap:break-word; display:inline-block;">{var cOMMENTS} </span>       </p>
+        <p align="left" class="style27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;</span></span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form Concept by KF5SMH&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 2.1
+            <input name="version" type="hidden" id="version" value="2.1" />
     </span> </p></td>
     </tr>
   </table>  </td>

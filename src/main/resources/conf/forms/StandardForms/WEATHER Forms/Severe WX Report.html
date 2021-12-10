@@ -70,7 +70,7 @@ box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
 
 	transition: opacity 0.8s ease-out;
 
-	visibility: hidden;
+	visibility: visible;
 
 }  
 
@@ -149,41 +149,25 @@ z-index:5;
   
 
 .close:visited {
-
 	position: absolute;
-
 	top: -0.75em;
-
 	right: -0.75em;
-
 	display: block;
-
 	width: 2em;
-
 	height: 2em;
-
 	line-height: 1.8;
-
 	padding: 0;
-
 	text-align: center;
-
 	text-decoration: none;
-
 	background-color: #000;
-
 	border: 2px solid #fff;
-
 	color: #fff;
-
 	border-radius: 50%;
 
   
 
 box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
-
-	visibility: hidden;
-
+	visibility: visible;
 }  
 
   
@@ -241,27 +225,18 @@ display: block;
   
 
 .popScroll {
-
 	position:absolute;
-
 	top: 1rem;
-
 	left: 1rem;
-
 	right: 1rem;
-
 	bottom: 1rem;
-
 	overflow-y: auto;
 
   
 
 *overflow-y: scroll;  
-
 	padding-right: 0.5em;
-
-	visibility: hidden;
-
+	visibility: visible;
 }  
 
   
@@ -498,6 +473,9 @@ margin: 10px;
 
 .style29 {font-size: 14px}
 .style23 {color: #000000}
+.style19 {font-size: 12px; color: #006600; }
+.style45 {font-size: 12px}
+.style45 {color: #2A5F00}
 </style>
 
 
@@ -506,63 +484,36 @@ margin: 10px;
 
 
 
-function TimeNow(Timefld, FocusFld) {
-
-
-
+function TimeNow(Timefld, doprompt) {
 var txt;
-
-
-
 var d = new Date(),
-
-
-
 thisyear = d.getFullYear();
-
-
-
 thismonth= d.getMonth();
-
-
-
 thismonth = thismonth+1;
-
-
+if (thismonth < 10) { thismonth = "0"+thismonth};
 
 thisday = d.getDate();
-
-
+if (thisday < 10) { thisday = "0"+thisday};
 
 h = (d.getHours()<10?'0':'') + d.getHours()
-
-
-
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
-
-
-
-//s = (d.getSeconds()<10?'0':'') + d.getSeconds();
-
-
-
-var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m ;
-
-
-
-var RightNow = prompt("Local Date/Time", myprompt);
-
-
-
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
 document.getElementById(Timefld).value = RightNow;
+ TimeStamp();} </script>
+<script>
+function punctwrdcnt(s, fieldid) {  
+  
+var s = s.replace(/(\r\n|\n|\r)/gm,"   \t"); 
+document.getElementById(fieldid).value = s;  
+  
+return(s); 
+//punctwrdcnt =s;
 
-
-
-document.getElementById(FocusFld).focus();
-
-
-
-} function AutoGrowTextArea(textField)
+}  
+ function AutoGrowTextArea(textField)
 
 
 
@@ -662,7 +613,7 @@ function Fixarea() {
 
 
 
-newfix("Narrative");
+newfix("Comments");
 
 
 
@@ -670,7 +621,7 @@ newfix("Narrative");
 
 
 
-AutoGrowTextArea(document.getElementById("Narrative"));
+AutoGrowTextArea(document.getElementById("Comments"));
 
 
 
@@ -1134,19 +1085,20 @@ function SaveData() {
 
  } 
 
-  Checkifinbrowser();
-
- Fixfields();
-
- getGPS();
-
+//  Checkifinbrowser();
+Checkifinbrowser();
+GetGPS();
+copyGPS();
+Fixarea();
+TimeNow('DateTime', false);
+checkLatLon();
  }
 
  
 
  function Fixfields() {
 
-AutoGrowTextArea(document.getElementById("Narrative"));
+AutoGrowTextArea(document.getElementById("Comments"));
 
 
 
@@ -1209,6 +1161,574 @@ function Checkifinbrowser() {
 
 }
 
+// new stuff
+
+function copyGPS() {
+var GPSstr= document.getElementById("ExtGPS").value;
+var nameArr = GPSstr.split(" ");
+var a =nameArr[0];
+var b =nameArr[1];
+if(!isNaN (a)){document.getElementById('mapLat').value =a;}
+if(!isNaN (b)){document.getElementById('mapLon').value =b;}
+
+}
+
+function GetGPS(){
+var ans = document.getElementById('ExtGPS').value;
+//
+
+if (ans  != '(Not available)'){
+myMGRS=ans;
+var ans = ans.replace(" ", ",");
+
+
+ if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
+//now the mrgs
+
+var d= myMGRS.split(' ');
+MGRSString(d[0],d[1]);
+//store();
+//what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
+//lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
+
+//var mypram = {lat:+d[0], lng:+d[1]};
+//alert(mypram);
+//what3words.api.convertTo3wa(mypram, 'en')
+ // .then(function(response) {
+//  theword = ("[convertTo3wa]", response);
+//  document.getElementById('w3w').value = theword.words
+  
+  //alert(theword.words);
+ // });
+  convertthis();
+ 
+
+}
+
+
+//document.getElementById('GPS').value = ans;
+}
+
+function parsethisdate() {
+var thedatetime=  document.getElementById('DateTime').value;
+//d= new Date(Date.parse(thedatetime)).toString();
+var d= new Date(Date.parse(thedatetime));
+
+//alert (Date.parse(thedatetime));
+//d =parseDate(thedatetime);
+utcstr = d.toISOString()
+//alert (utcstr);
+document.getElementById('timestamp2').value= utcstr;
+return utcstr;
+}
+function TimeStamp(){
+var d1 = new Date();
+mtime = d1.getTime();
+//var thedatetime=  document.getElementById('UDTGfld').value;
+var thedatetime= parsethisdate();
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime = thedatetime.replace("T", " ") 
+var thedatetime=thedatetime.replace(' ', ',');
+var thedatetime = thedatetime.replace("Z", "") ;
+var thedatetime = thedatetime.replace(".000", "") ;
+
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+//alert (thesplit[1]);
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
+  var nyyyy = d.getUTCFullYear();
+  nyyyy= nyyyy.toString();
+
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+var ndd = d.getUTCDate();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+ // alert(ndd);
+  var nhh = d.getUTCHours();
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
+    var nmm = d.getUTCMinutes();
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
+	 var nss = d.getUTCSeconds();
+	
+  nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
+var test = (thesplit[0])+(thesplit[1])+(thesplit[2])+(thesplit[3])+(thesplit[4])+(thesplit[5]);
+
+
+test = test.replace(/\s/g,'');
+ document.getElementById("timestamp").value = test; ;
+  //  document.getElementById("timestamp2").value= test;
+ //x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   
+   
+  // document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+  // alert (nyyyy+nMM+ndd+nhh+nmm+nss);
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
+
+ 
+}
+function MGRSString ()
+
+//function MGRSString (51.172,-1.779)
+// 51.172,-1.779  38.556, -121.793
+{ //var Lat = 38.556; var Long=-121.793; 
+//var Lat1 = 38.556; var Long1=-121.793; 
+var thestring= document.getElementById("GPS2").value;
+
+if (thestring ==''){ return;}
+ var res = thestring.split(",");
+ var Lat = parseFloat(res[0]); 
+ var Long=parseFloat(res[1]); 
+ if (isNaN(Lat)) {return} 
+if (isNaN(Long)) {return}
+latLonToGridSquare(res[0],res[1]);
+
+
+ //Lat=38.556; Long=-121.793
+if (Lat < -80) return 'Too far South' ; if (Lat > 84) return 'Too far North' ;
+var c = 1 + Math.floor ((Long+180)/6);
+var e = c*6 - 183 ;
+var k = Lat*Math.PI/180; 
+var l = Long*Math.PI/180;
+var m = e*Math.PI/180;
+var n = Math.cos (k);
+var o = 0.006739496819936062*Math.pow (n,2);
+var p = 40680631590769/(6356752.314*Math.sqrt(1 + o));
+var q = Math.tan (k);
+var r = q*q;
+var s = (r*r*r) - Math.pow (q,6);
+var t = l - m;
+var u = 1.0 - r + o;
+var v = 5.0 - r + 9*o + 4.0*(o*o);
+var w = 5.0 - 18.0*r + (r*r) + 14.0*o - 58.0*r*o;
+var x = 61.0 - 58.0*r + (r*r) + 270.0*o - 330.0*r*o;
+var y = 61.0 - 479.0*r + 179.0*(r*r) - (r*r*r);
+var z = 1385.0 - 3111.0*r + 543.0*(r*r) - (r*r*r);
+
+var aa = p*n*t + (p/6.0*Math.pow (n,3)*u*Math.pow (t,3)) + (p/120.0*Math.pow (n,5)*w*Math.pow (t,5)) + (p/5040.0*Math.pow (n,7)*y*Math.pow (t,7));
+var ab = 6367449.14570093*(k - (0.00251882794504*Math.sin (2*k)) + (0.00000264354112*Math.sin (4*k)) - (0.00000000345262*Math.sin (6*k)) + (0.000000000004892*Math.sin (8*k))) + (q/2.0*p*Math.pow (n,2)*Math.pow (t,2)) + (q/24.0*p*Math.pow (n,4)*v*Math.pow (t,4)) + (q/720.0*p*Math.pow (n,6)*x*Math.pow (t,6)) + (q/40320.0*p*Math.pow (n,8)*z*Math.pow (t,8));
+aa = aa*0.9996 + 500000.0;
+
+ab = ab*0.9996; if (ab < 0.0) ab += 10000000.0;
+var ad = 'CDEFGHJKLMNPQRSTUVWXX'.charAt (Math.floor (Lat/8 + 10));
+var ae = Math.floor (aa/100000);
+var af = ['ABCDEFGH','JKLMNPQR','STUVWXYZ'][(c-1)%3].charAt (ae-1);
+var ag = Math.floor (ab/100000)%20;
+var ah = ['ABCDEFGHJKLMNPQRSTUV','FGHJKLMNPQRSTUVABCDE'][(c-1)%2].charAt (ag);
+function pad (val) {if (val < 10) {val = '0000' + val} else if (val < 100) {val = '000' + val} else if (val < 1000) {val = '00' + val} else if (val < 10000) {val = '0' + val};return val};
+aa = Math.floor (aa%100000); aa = pad (aa); 
+ab = Math.floor (ab%100000); ab = pad (ab);
+//var mrgs= c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var MRGS2=c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var mrgs= c + ad + af + ah  + aa + ab;
+
+document.getElementById('MGRS').value =mrgs;
+
+
+//document.getElementById('MGRS2').value =MRGS2;
+};
+
+function convertthis(){
+
+document.getElementById('MGRS').value ='';
+var nameArr=[];
+var thestring= document.getElementById("GPS2").value;
+//(thestring);
+document.getElementById("GPS2").value = thestring;
+ var n = thestring.search(",");
+ var n1= thestring.search(" ");
+var res = thestring.split(",");
+var p=res.length;
+if (p==2){MGRSString(); 
+
+var mypram = {lat:+res[0], lng:+res[1]};
+document.getElementById('mapLat').value =res[0];
+document.getElementById('mapLon').value =res[1];
+
+if(res[0]==''|res[1]==''){return};
+
+//mapLat
+//alert(mypram);
+//what3words.api.convertTo3wa(mypram, 'en')
+//  .then(function(response) {
+//  theword = ("[convertTo3wa]", response);
+//  document.getElementById('w3w').value = theword.words
+  
+  //alert(theword.words);
+//  });
+  } else 
+{ ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
+document.getElementById('GPS2').value ='';
+document.getElementById('mapLat').value ='';
+document.getElementById('mapLon').value ='';
+//document.getElementById('w3w').value ='';
+//document.getElementById('WithSpaces').value ='';
+document.getElementById('MGRS').value ='';
+document.getElementById('Grid').value ='';
+//document.getElementById('NoSpaces').value ='';
+ document.getElementById("GPS2").focus()}
+}
+
+latLonToGridSquare = function(param1,param2){
+  var lat=-100.0;
+  var lon=0.0;
+  var adjLat,adjLon,GLat,GLon,nLat,nLon,gLat,gLon,rLat,rLon;
+  var U = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+  var L = U.toLowerCase();
+  // support Chris Veness 2002-2012 LatLon library and
+  // other objects with lat/lon properties
+  // properties could be getter functions, numbers, or strings
+  function toNum(x){
+    if (typeof(x) === 'number') return x;
+    if (typeof(x) === 'string') return parseFloat(x);
+    if (typeof(x) === 'function') return parseFloat(x());
+   // 9-20-20 ( "HamGridSquare -- toNum -- can not convert input: "+x);
+  }
+  if (typeof(param1)==='object'){
+    if (param1.length === 2){
+      lat = toNum(param1[0]);
+      lon = toNum(param1[1]);
+    } else if (('lat' in param1) && ('lon' in param1)){
+      lat = toNum(param1.lat);
+      lon = toNum(param1.lon);
+    } else if (('latitude' in param1) && ('longitude' in param1)){
+      lat = toNum(param1.latitude);
+      lon = toNum(param1.longitude);
+    } else {
+      ( "Please correct your coordinates -- "+param1);
+    }
+  } else {
+    lat = toNum(param1);
+    lon = toNum(param2);
+  }
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
+  if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
+  if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
+  if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
+  adjLat = lat + 90;
+  adjLon = lon + 180;
+  GLat = U[Math.trunc(adjLat/10)];
+  GLon = U[Math.trunc(adjLon/20)];
+  nLat = ''+Math.trunc(adjLat % 10);
+  nLon = ''+Math.trunc((adjLon/2) % 10);
+  rLat = (adjLat - Math.trunc(adjLat)) * 60;
+  rLon = (adjLon - 2*Math.trunc(adjLon/2)) *60;
+  gLat = L[Math.trunc(rLat/2.5)];
+  gLon = L[Math.trunc(rLon/5)];
+  var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
+  //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
+  document.getElementById('Grid').value =mygrid;
+}
+
+
+function CheckLat(SkipMsg){
+var latCheck = 1;
+var num =document.getElementById('mapLat').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+if (z1 == 'NaN') {alert ('error')}
+if ((num <-90)  || ( num >90) || isNaN (z1) ) { document.getElementById('mapLat').value='';
+//alert ('Latitude must be between -90 and 90\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+alert ('Latitude must be between -90 and 90');
+ document.getElementById('mapLat').value ='';
+		document.getElementById('mapLat').focus();
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var latCheck = 0;
+}
+
+return latCheck;
+}
+
+function CheckLon(SkipMsg){
+var lonCheck = 1;
+var num =document.getElementById('mapLon').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+
+if ((num <-180) || ( num >180) || isNaN (z1) ) { document.getElementById('mapLon').value='';
+alert ('Longitude must be between -180 and 180 '); 
+//alert ('Longitude must be between -180 and 180\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+ document.getElementById('mapLon').value = '';
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var lonCheck = 0;
+
+} 
+
+return lonCheck;
+}
+
+function removeLinebreaks (s){
+
+var s = s.replace(/(\r\n|\n|\r)/gm," "); 
+return s;
+}
+
+
+function checkLatLon() {
+var cnt = 1;
+//var x1=0; var x2=0;
+x1 = CheckLat(true);
+x2 = CheckLon(true);
+
+if (x1==1 && x2==1) {// now set string for latlon
+	var mlat = document.getElementById('mapLat').value;
+	var mlon = document.getElementById('mapLon').value;
+	document.getElementById('GPS2').value =mlat+','+mlon;
+	
+	convertthis();
+} 
+}
+function splitPaste(str) {
+var str = str.replace(",", " ");
+var str = str.replace("  ", " ");
+var d= str.split(' ');
+var cnt = d.length;
+if (cnt >1) {
+document.getElementById('mapLat').value =d[0];
+document.getElementById('mapLon').value =d[1];
+}
+}
+
+
+function LatLongFromMGRSstring (a) 
+{
+var b = a.trim();
+b = b.match(/\S+/g);
+if (b == null || b.length != 4) return [false,null,null];
+var c = (b[0].length < 3) ? b[0][0] : b[0].slice(0,2);
+var d = (b[0].length < 3) ? b[0][1] : b[0][2];
+var e = (c*6-183)*Math.PI / 180;
+var f = ["ABCDEFGH","JKLMNPQR","STUVWXYZ"][(c-1) % 3].indexOf(b[1][0]) + 1;
+var g = "CDEFGHJKLMNPQRSTUVWXX".indexOf(d);
+var h = ["ABCDEFGHJKLMNPQRSTUV","FGHJKLMNPQRSTUVABCDE"][(c-1) % 2].indexOf(b[1][1]);
+var i = [1.1,2.0,2.8,3.7,4.6,5.5,6.4,7.3,8.2,9.1,0,0.8,1.7,2.6,3.5,4.4,5.3,6.2,7.0,7.9];
+var j = [0,2,2,2,4,4,6,6,8,8,0,0,0,2,2,4,4,6,6,6];
+var k = i[g];
+var l = Number(j[g]) + h / 10;
+if (l < k) l += 2;
+var m = f*100000.0 + Number(b[2]);
+var n = l*1000000 + Number(b[3]);
+m -= 500000.0;
+if (d < 'N') n -= 10000000.0;
+m /= 0.9996; n /= 0.9996;
+var o = n / 6367449.14570093;
+var p = o + (0.0025188266133249035*Math.sin(2.0*o)) + (0.0000037009491206268*Math.sin(4.0*o)) + (0.0000000074477705265*Math.sin(6.0*o)) + (0.0000000000170359940*Math.sin(8.0*o));
+var q = Math.tan(p);
+var r = q*q;
+var s = r*r;
+var t = Math.cos(p);
+var u = 0.006739496819936062*Math.pow(t,2);
+var v = 40680631590769 / (6356752.314*Math.sqrt(1 + u));
+var w = v;
+var x = 1.0 / (w*t); w *= v;
+var y = q / (2.0*w); w *= v;
+var z = 1.0 / (6.0*w*t); w *= v;
+var aa = q / (24.0*w); w *= v;
+var ab = 1.0 / (120.0*w*t); w *= v;
+var ac = q / (720.0*w); w *= v;
+var ad = 1.0 / (5040.0*w*t); w *= v;
+var ae = q / (40320.0*w);
+var af = -1.0-u;
+var ag = -1.0-2*r-u;
+var ah = 5.0 + 3.0*r + 6.0*u-6.0*r*u-3.0*(u*u)-9.0*r*(u*u);
+var ai = 5.0 + 28.0*r + 24.0*s + 6.0*u + 8.0*r*u;
+var aj = -61.0-90.0*r-45.0*s-107.0*u + 162.0*r*u;
+var ak = -61.0-662.0*r-1320.0*s-720.0*(s*r);
+var al = 1385.0 + 3633.0*r + 4095.0*s + 1575*(s*r);
+var lat = p + y*af*(m*m) + aa*ah*Math.pow(m,4) + ac*aj*Math.pow(m,6) + ae*al*Math.pow(m,8);
+var lng = e + x*m + z*ag*Math.pow(m,3) + ab*ai*Math.pow(m,5) + ad*ak*Math.pow(m,7);
+lat = lat*180 / Math.PI;
+lat = lat.toFixed (4);
+lng = lng*180 / Math.PI;
+lng = lng.toFixed (4);
+
+document.getElementById('GPS2').value = lat+','+lng;
+//document.getElementById('dd').value = lat+','+lng;
+document.getElementById('mapLat').value = lat;
+document.getElementById('mapLon').value = lng;
+//gpsLat
+convertthis();
+//return [true,lat,lng];
+
+}
+
+
+function checkformgrs(thestring){
+//var thestring= document.getElementById("MGRS").value;
+var spc = thestring.split(" ");
+ var n = thestring.search(",");
+ var nlen=thestring.length;
+if (n>0) {alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253" '); document.getElementById('MGRS').value='';}
+if(nlen<15){alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253'); document.getElementById('MGRS').value='';}
+
+if (spc.length >2){LatLongFromMGRSstring(thestring);
+ } else{
+ 
+ var n = thestring.search(",")
+var spc = thestring.split(" ");
+//(spc.length);
+if (n ==-1) {// try to parse
+
+var str = document.getElementById("MGRS").value;  
+var res = str.substring(0, 3);
+    var res1 = str.substring(3, 5);
+      var res2 = str.substring(5, 10);
+       var res3 = str.substring(10, 15);
+//( res+' '+res1+' '+res2+ ' '+res3);
+LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+convertthis();
+store();
+}
+}
+}
+function checkformgrs(thestring){
+//var thestring= document.getElementById("MGRS").value;
+var thestring= thestring.replace(/\s/g, '');
+ document.getElementById("MGRS").value = thestring;
+var spc = thestring.split(" ");
+ var n = thestring.search(",");
+ var nlen=thestring.length;
+if (n>0) {alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253" '); document.getElementById('MGRS').value='';}
+if(nlen<12){alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253'); document.getElementById('MGRS').value=''; return}
+document.getElementById('mapLat').value = '';
+document.getElementById('mapLon').value = '';
+if (spc.length >2){(thestring);
+ } else{
+ 
+ var n = thestring.search(",")
+var spc = thestring.split(" ");
+//(spc.length);
+if (n ==-1) {// try to parse
+var str = document.getElementById("MGRS").value;  
+var res = str.substring(0, 3);
+    var res1 = str.substring(3, 5);
+	// check len
+	var checklen = str.substring(5, 20);
+	// alert (checklen);
+	
+if (checklen.length ==10) {
+     var res2 = checklen.substring(0, 5); 
+     var res3 = checklen.substring(5, 15);
+	} //if 8
+    if (checklen.length == 8) {
+	 var res2 = checklen.substring(0, 4); var res2 =  res2+'0';
+     var res3 = checklen.substring(4, 13); var res3 = res3 + '0'; 
+	}
+	LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+
+document.getElementById("MGRS").value = res+res1+res2+res3;
+}
+}
+}
+
+function checkform(){
+
+num1 = parseFloat(document.getElementById('mapLat').value);
+
+num2 = parseFloat (document.getElementById('mapLon').value);
+
+if (isNaN(num1) | isNaN(num2)){  document.getElementById('mapLon').value = '{longitude}';  
+document.getElementById('mapLat').value = '{latitude}';
+checkLatLon();
+return confirm('You have not entered valid GPS coordinates. \nBy default, the Latitude and Longitude will be calculated from your Grid Square.')
+}}
+
+function createjson () {
+
+var jsontext =document.getElementById('FormData').value;
+var temp1= document.getElementById('Mapfilename').value;
+var jsontext=jsontext.replace('j1', temp1);
+
+var temp1= document.getElementById('Mapfilename').value;
+var jsontext=jsontext.replace('j1', temp1);
+
+var temp1= document.getElementById('timestamp').value;
+var jsontext=jsontext.replace('j2', temp1);
+
+var temp1= document.getElementById('Type').value;
+var jsontext=jsontext.replace('j3', temp1);
+
+
+var temp1= document.getElementById('Call').value;
+var jsontext=jsontext.replace('j4', temp1);
+
+var temp1= document.getElementById('RepName').value;
+var jsontext=jsontext.replace('j5', temp1);
+var temp1= document.getElementById('Phone').value;
+var jsontext=jsontext.replace('j6', temp1);
+var temp1= document.getElementById('Email').value;
+var jsontext=jsontext.replace('j7', temp1);
+var temp1= document.getElementById('Region').value;
+var jsontext=jsontext.replace('j8', temp1);
+var temp1= document.getElementById('County').value;
+var jsontext=jsontext.replace('j9', temp1);
+var temp1= document.getElementById('City').value;
+var jsontext=jsontext.replace('j10', temp1);
+
+var temp1= document.getElementById('Other').value;
+var jsontext=jsontext.replace('j11', temp1);
+var temp1= document.getElementById('mapLat').value;
+var jsontext=jsontext.replace('j12', temp1);
+
+var temp1= document.getElementById('mapLon').value;
+var jsontext=jsontext.replace('j13', temp1);
+var temp1= document.getElementById('MGRS').value;
+var jsontext=jsontext.replace('j14', temp1);
+
+var temp1= document.getElementById('Flood').value;
+var jsontext=jsontext.replace('j15', temp1);
+var temp1= document.getElementById('HailSize').value;
+var jsontext=jsontext.replace('j16', temp1);
+
+var temp1= document.getElementById('Windspeed').value;
+var jsontext=jsontext.replace('j17', temp1);
+var temp1= document.getElementById('Tornado').value;
+var jsontext=jsontext.replace('j18', temp1);
+
+var temp1= document.getElementById('WindDamage').value;
+var jsontext=jsontext.replace('j19', temp1);
+var temp1= document.getElementById('Precipitation').value;
+var jsontext=jsontext.replace('j20', temp1);
+
+var temp1= document.getElementById('Snow').value;
+var jsontext=jsontext.replace('j21', temp1);
+var temp1= document.getElementById('FreezingRain').value;
+var jsontext=jsontext.replace('j22', temp1);
+var temp1= document.getElementById('Rain').value;
+var jsontext=jsontext.replace('j23', temp1);
+
+var temp1= document.getElementById('RainPeriod').value;
+var jsontext=jsontext.replace('j24', temp1);
+
+var temp1= document.getElementById('Comments').value;
+temp1 = removeLinebreaks(temp1);
+var jsontext=jsontext.replace('j25', temp1);
+
+document.getElementById('attached_text').value = jsontext;
+var attached_file = 'FormData.txt';
+
+}
 
 
 </script>
@@ -1313,7 +1833,7 @@ function Checkifinbrowser() {
 
 
 
-<table width="869" height="1039" border="3" cellpadding="2" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 875px; height: 981px;">
+<table width="1046"  border="3" cellpadding="2" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 875px; height: 981px;">
 
 
 
@@ -1325,7 +1845,7 @@ function Checkifinbrowser() {
 
 
 
-<td colspan="2" bgcolor="#dee9f9" style="height: 15%; vertical-align: top; text-align: center; "><p><span class="style2">SEVERE WEATHER REPORT&nbsp;</span></p>
+<td width="1034" colspan="2" bgcolor="#dee9f9" style="height: 15%; vertical-align: top; text-align: center; "><p><span class="style2">SEVERE WEATHER REPORT&nbsp;</span></p>
 
  <input type="button" value=" Load Severe WX Data " onclick="document.getElementById('txtfiletoread').click();" />
 
@@ -1354,26 +1874,27 @@ function Checkifinbrowser() {
 
     
 
-  <input required="required" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="23" id="ActivityDateTime1" size="24" onclick="TimeNow('ActivityDateTime1', 'Activities1')" />
+  <input required="required" placeholder="Click to Add Date/Time" name="DateTime" maxlength="23" id="DateTime" size="24"  onclick="TimeNow('DateTime', true)" />
 
     
 
-   &nbsp;<span class="style29"> <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Report Version (Select one): </span></span>
+   &nbsp;<span class="style29"> <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Report Version (Select one): </span></span><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+   <input name="Type1" type="radio" value="First Report" checked="checked" onclick="document.getElementById('Type').value =this.value "/>
+First Report
+<input name="Type1" type="radio" value="Update Report" onclick="document.getElementById('Type').value =this.value " />
+Update Report
+<input name="Type1" type="radio" value="Final Report"  onclick="document.getElementById('Type').value =this.value "/>
+Final Report
+<input name="Type" type="hidden" id="Type" value="First Report" />
+<span style="font-size: 14px;"><span style="font-size: 14px;">
+<span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;">
+<input name="timestamp" type="hidden" id="timestamp" size="30" />
+</span></span></span></span>
+<input name="timestamp2" type="hidden" id="timestamp2" value="{GPS_SIGNED_DECIMAL}" size="40" />
+<input name="ExtGPS" type="hidden" id="ExtGPS" value="{Latitude},{Longitude}" />
 
-     <span class="style29">
-     <input name="Type" type="radio" onclick="document.getElementById('Rversion').value = 'INITIAL'" value="initial" checked="checked"="" style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; orphans: 2; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" />
-
-     <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> Initial   </span></span>
-
-     <span class="style29">
-     <input name="Type" type="radio" value="Update" onclick="document.getElementById('Rversion').value = 'UPDATE';" style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; orphans: 2; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" />
-
-     <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> Update   </span></span>
-
-     <span class="style29">
-     <input name="Type" type="radio" value="Final" onclick="document.getElementById('Rversion').value = 'FINAL'" ;="" style="font-size: 12px; font-family: Arial, Helvetica, sans-serif; orphans: 2; white-space: normal; widows: 2; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;" />   
-
-     <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> Final Message<span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"> &nbsp;</span>         </span></span><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><br />
+</span><br />
+<br />
 
    </span></p>
 
@@ -1425,7 +1946,7 @@ function Checkifinbrowser() {
 
   Name&nbsp;
 
-    <input required="required" title="Name of reporting party, or yours if you are the observer" maxlength="55" name="RepName" size="65" />
+    <input name="RepName" id="RepName" title="Name of reporting party, or yours if you are the observer" size="65" maxlength="55" required="required" />
 
 &nbsp; &nbsp;</p>
 
@@ -1447,7 +1968,7 @@ function Checkifinbrowser() {
 
     
 
-        <input title="Reporting party # if known, or yours if you are the observer." maxlength="55" name="Phone" size="65" />
+        <input name="Phone" id="Phone" title="Reporting party # if known, or yours if you are the observer." size="65" maxlength="55" />
 
 <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>    
 
@@ -1467,7 +1988,7 @@ function Checkifinbrowser() {
 
 <td style="text-align: center;"><div align="left">
 
-      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Reporting Party Email Address&nbsp;            <input title="Reporting party Email, or yours if you are the observer (Winlink OK)" maxlength="55" name="Email" size="65" />
+      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Reporting Party Email Address&nbsp;            <input name="Email" id="Email" title="Reporting party Email, or yours if you are the observer (Winlink OK)" size="65" maxlength="55" />
 
     
 
@@ -1485,55 +2006,23 @@ function Checkifinbrowser() {
 
 
 
-<td height="38" style="text-align: center; background-color: white;">&nbsp;&nbsp;
+<td bgcolor="#f8f8ff" style="text-align: center; "><span style="font-style: italic; font-weight: bold;">&nbsp;EVENT AREA&nbsp;</span> &nbsp;<div align="left">
+  <p>
+        <span style="color: rgb(0, 102, 0);"><span style="color: black;"> </span></span>City&nbsp;
+        <input name="City" id="City" size="40" maxlength="35" />
+&nbsp;State/Province/Region&nbsp;  <input name="Region" id="Region" onchange="javascript:this.value=this.value.toUpperCase();" size="40" maxlength="35"/>
+&nbsp;</p>
+  <p> County&nbsp;
+    
 
-
-
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp;<span style="font-weight: bold;"> &nbsp;
-
-
-
-&nbsp;</span> &nbsp;<br style="color: rgb(0, 102, 0);" />
-
-
-
-<span style="font-style: italic; font-weight: bold;">&nbsp;EVENT AREA&nbsp;</span>
-
-
-
-&nbsp;</td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td bgcolor="#f8f8ff" style="text-align: center; "><div align="left"><br />
-
-
-
-      <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>State/Province/Region&nbsp;      <input maxlength="35" size="40" name="Region" onchange="javascript:this.value=this.value.toUpperCase();"/>
-
-
-
-    &nbsp; County&nbsp;
-
-
-
-      <input maxlength="35" size="40" name="County"  />
-
-
-
-</div></td>
+    
+      <input name="County" id="County" size="35" maxlength="35"  />
+      &nbsp;&nbsp;Other 
+      <input name="Other" id="Other" title="Country or other geographical info if needed." size="60" maxlength="55" />
+      <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+      <input name="Mapfilename" type="hidden" id="Mapfilename" value="Severe WX Report" />
+</p>
+  </div></td>
 
 
 
@@ -1546,33 +2035,23 @@ function Checkifinbrowser() {
 
 
 <td height="80" bgcolor="#f8f8ff" style="text-align: center;"><div align="left">
+  <p>Latitude and longitude: LAT<em><span class="style4">&nbsp;
+        <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" size="12" placeholder="ex: 38.5567" />
+  </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style4">
+  <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" size="12" placeholder="ex:-121.7932" />
+  </span></em><em>&nbsp;MGRS</em><span class="style4">
+  <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
+&nbsp;</span><em>&nbsp;Grid&nbsp;
+<input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+<span class="style4">&nbsp;
+<input name="GPS2" type="hidden" id="GPS2" title= "If entering manually use format: 38.5567,-121.7932" onchange="convertthis()" onkeypress="return isNumberKey(event)" value="{Latitude},{Longitude}" size="40"  maxlength="40" placeholder="Ex: 38.5567,-121.7932" />
+<span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+<input name="GPS" type="hidden" id="GPS" value="{Latitude},{Longitude}" />
+</span></span></span></span></em></p>
 
-  <p><br />
-
-  
-
-    <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>City&nbsp;      <input maxlength="35" size="40" name="City" />
-
-&nbsp; Other&nbsp;  <input title="Country or other geographical info if needed." maxlength="55" size="60" name="Other" /> 
-
-  
-
-  <br />
-
-  
-
-  <br />
-
-  
-
-  <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Optional <strong>Decimal</strong> GPS Coordinates &nbsp;
-
-    <input name="GPS" id="GPS" onkeypress="return isNumberKey(event)" title="If no connected GPS device you may enter manually EX: 32.5042,-116.9834" placeholder="EX:32.5042,-116.9834" value="{GPS_SIGNED_DECIMAL}" size="35" maxlength="30" />
-
-    <span class="style22">&nbsp;<em><span class="style27"><span class="style23"><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>ONLY DECIMAL FORMAT IS ACCEPTABLE. </span></span></em></span></p>
-
-  <p><em> <span class="style27"><span class="style23"><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span><span class="style22">Auto filled via a connected GPS device or enter manually</span> &nbsp; &nbsp; &nbsp; &nbsp;</span><strong>Manual entry format</strong>:&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">EX: 32.5042,-116.9834 &nbsp;Note the comma.</span></span></em></p>
-
+  <p><span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style1">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude andLongitude / MGRS coordinates manually.<br />
+        <span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. </span><span class="style19"><span class="style29"></span></span></p>
+  <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p>
 </div></td>
 
 
@@ -1601,54 +2080,10 @@ function Checkifinbrowser() {
 
 
 
-<td height="40" style="text-align: center; background-color: white; vertical-align: top;">&nbsp;
+<td height="50" nowrap="nowrap" style="vertical-align: top; text-align: center;"><div align="left">
 
-
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-
-
-
-&nbsp; &nbsp; &nbsp;&nbsp; <span style="font-style: italic;">&nbsp;</span><span style="color: black; font-style: italic;"><br />
-
-
-
-<span style="font-weight: bold; ">&nbsp;OBSERVED&nbsp;EVENT
-
-
-
-</span></span><span style="font-style: italic;"><span style="font-weight: bold;">CONDITIONS</span></span><span style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;</span></td>
-
-
-
-</tr>
-
-
-
-<tr>
-
-
-
-<td height="60" nowrap="nowrap" style="vertical-align: top; text-align: center;"><div align="left">
-
-  <p><span =""><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span><span class="style4">Check All That Apply.</span></span></p>
-
+  <p align="center"><span =""><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;<span style="color: black; font-style: italic;"><span style="font-weight: bold; ">&nbsp;OBSERVED&nbsp;EVENT </span></span><span style="font-style: italic;"><span style="font-weight: bold;">CONDITIONS</span></span><span style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;</span></span></span></span></p>
+  <p><span =""><span class="style4">Check All That Apply.</span></span></p>
   <p>Flood: 
 
     <select name="Flood" id="Flood">
@@ -1681,7 +2116,7 @@ function Checkifinbrowser() {
 
   <p>Hail:   
 
-    <select name="HailSize" id="HailSize"onchange="document.getElementById('HailSize').value = document.getElementById('HailSizem').value">
+    <select name="HailSize" id="HailSize"onchange="document.getElementById('HailSize').value = document.getElementById('HailSize').value">
 
         <option value="N/A" selected="selected">Choose</option>
 
@@ -1767,7 +2202,7 @@ Tornado / Funnel Cloud:
 
 <br />
 
-<hr class="new1" />
+
 
 <p>Wind Damage: 
 
@@ -1813,9 +2248,7 @@ Tornado / Funnel Cloud:
 
   </select>
 
-  <br />
-
-</p>
+  </p>
 
 <hr class="new1" />
 
@@ -1863,9 +2296,7 @@ Tornado / Funnel Cloud:
 
     </select>  
 
-  <br />
-
-</p>
+  </p>
 
 <hr class="new1" />
 
@@ -1965,15 +2396,41 @@ Freezing Rain:
 
     <hr class="new1" />
 
+    <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
 <br />
 
  &nbsp;&nbsp;&nbsp;Additional Information or Damage Descriptions <em>(Be Brief)</em> <br />
 
   <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;&nbsp; </span></span>
 
-  <textarea placeholder="Anything of importance or damages noted. No names or specific addesses" cols="120" rows="4" name="Narrative" id="Narrative"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
-
-  <br />
+  <hr class="new1" />
+  <textarea placeholder="Anything of importance or damages noted. No names or specific addesses" cols="120" rows="4" name="Comments" id="Comments"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>   
+  <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
+Report Date/Time:T=j2
+Report Status:M=j3
+Message Sender:T=j4 
+Reporting Party:T=j5 
+Phone Number:T=j6
+Email:T=j7
+State or Region:T=j8
+County:T=j9 
+City:T=j10
+Other:T=j11  
+Latitude:T=j12
+Longitude:T=j13
+MGRS:T=j14
+Flood:M=j15 
+Hail:M=j16
+High Wind Speed:M=j17
+Tornado / Funnel Cloud:M=j18
+Wind Damage:M=j19
+Winter Precipitation:M=j20
+Snow:M=j21
+Freezing Rain:M=j22
+Heavy Rain:M=j23
+Rain period:M=j24
+Additional Comments:T=j25</textarea>
+   <br />
 
   <span class="clrbox">
 
@@ -2003,7 +2460,7 @@ Freezing Rain:
 
 </big></span></span></small></span></small><span style="color: rgb(128, 0, 0);"><span><span style="font-size: 12px;"></span></span></span>&nbsp; &nbsp;
 
-<input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />&nbsp;&nbsp;<input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
+<input class="SubmitBtn" enctype="multipart/form-data" id="Submit"  onclick="checkform();createjson(); " method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />&nbsp;&nbsp;<input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
 
 
 
@@ -2017,13 +2474,13 @@ Freezing Rain:
 
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 
-</span></b></span>&nbsp;</span></span>Ver 2.6<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></b></span>&nbsp;</span></span>Ver 3.1<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
-<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 2.5" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.1" />
 
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 
