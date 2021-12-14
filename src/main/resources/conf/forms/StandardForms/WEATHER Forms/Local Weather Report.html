@@ -246,9 +246,56 @@ margin: 10px;
 .style4 {color: #FF0000; font-style: italic; }
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
+.style7 {font-size: 10px;
+}
+.style7 {font-size: 10px}
+.style7 {color: #333333;
+	font-size: 10px;
+}
+.style7 {font-size: 10px}
+input[type=regular] {
+ border: 1.75px solid #999999;
+  border-radius:.25rem;
+width:40px;
+  background-color: white;
+ 
+  padding: 2px 2px;
+  font-size: 12px;
+   cursor: pointer;
+}
+
 </style>
 
 <script type="text/javascript">
+
+function RestoreTitle() {
+
+var RightNow = document.getElementById('Title').value;
+
+document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
+
+   function store(){
+ 	var formatted= document.getElementById("Title");
+     localStorage.setItem("CheckinTitle", formatted.value);
+	    }
+
+	function getit() {
+	var storedValue = localStorage.getItem("CheckinTitle");
+	document.getElementById('Title').value = storedValue;
+		RestoreTitle();
+	}
+function SetupTitle() {
+var myprompt = '';
+var myttemp = document.getElementById('Title').value;
+var RightNow = prompt("Enter Agency/Group Title",   myprompt);
+if (RightNow.length == 0) { RightNow = myttemp}
+document.getElementById('Title').value = RightNow;
+document.getElementById('SubjectText').innerHTML = RightNow;
+store();
+}
 function Setmeasure(which) {
 //x = document.getElementById('Measurmentused').value;
 //<span  id="TempFM1">F</span>
@@ -636,8 +683,9 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+ getit();
 //  Checkifinbrowser();
-//Checkifinbrowser();
+Checkifinbrowser();
 GetGPS();
 copyGPS();
 Fixarea();
@@ -729,6 +777,8 @@ function Checkifinbrowser() {
 // new stuff
 
 function copyGPS() {
+//document.getElementById('mapLon').value ='{Latitude}';//,{Longitude}
+//{Latitude},{Longitude}
 var GPSstr= document.getElementById("ExtGPS").value;
 var nameArr = GPSstr.split(" ");
 var a =nameArr[0];
@@ -1285,8 +1335,8 @@ var temp1= document.getElementById('CloudCover').value;
 var jsontext=jsontext.replace('j21', temp1);
 var temp1= document.getElementById('WindSpeed').value;
 var jsontext=jsontext.replace('j22', temp1);//Type1
-var temp1= document.getElementById('Type1').value;
-var jsontext=jsontext.replace('j22a', temp1);//Type1
+//var temp1= document.getElementById('Type1').value;
+//var jsontext=jsontext.replace('j22a', temp1);//Type1
 var temp1= document.getElementById('Type1').value;
 var jsontext=jsontext.replace('j23', temp1);
 
@@ -1295,14 +1345,14 @@ var jsontext=jsontext.replace('j24', temp1);
 
 var temp1= document.getElementById('Gusts').value;
 var jsontext=jsontext.replace('j25', temp1);
-var temp1= document.getElementById('mspeed').value;
+var temp1= document.getElementById('MaxGusts').value;
 var jsontext=jsontext.replace('j26', temp1);
 
-var temp1= document.getElementById('mspeed').value;
-var jsontext=jsontext.replace('j27', temp1);
+//var temp1= document.getElementById('mspeed').value;
+//var jsontext=jsontext.replace('j27', temp1);
 
-var temp1= document.getElementById('mspeed').value;
-var jsontext=jsontext.replace('j28', temp1);
+//var temp1= document.getElementById('mspeed').value;
+//var jsontext=jsontext.replace('j28', temp1);
 
 var temp1= document.getElementById('Rain1hr').value;
 var jsontext=jsontext.replace('j29', temp1);
@@ -1326,8 +1376,6 @@ var temp1= document.getElementById('SnowMeasure').value;
 var jsontext=jsontext.replace('j36', temp1);
 var temp1= document.getElementById('WaterContent').value;
 var jsontext=jsontext.replace('j37', temp1);
-var temp1= document.getElementById('WaterContent').value;
-var jsontext=jsontext.replace('j37', temp1);
 
 var temp1= document.getElementById('Warning').value;
 var jsontext=jsontext.replace('j38', temp1);
@@ -1345,7 +1393,7 @@ document.getElementById('attached_text').value = jsontext;
 var attached_file = 'FormData.txt';
 
 }
-
+//Wind Gusts MAX:T=j27  j28
 
 </script>
 
@@ -1400,10 +1448,26 @@ var attached_file = 'FormData.txt';
 
   <table  border="1" cellspacing="0" cellpadding="5">
     <tr bgcolor="#dee9f9">
-      <td colspan="2" ><div align="center"><strong>CURRENT LOCAL WEATHER CONDITIONS<br /><br />
-<input type="button" value=" Load Local WX Report Data " onclick="document.getElementById('txtfiletoread').click();" />
- <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
-      </strong></div></td>
+      <td colspan="2" ><div align="center">
+        <p><strong>CURRENT LOCAL WEATHER CONDITIONS<br />
+		<span class="style20"  id="SubjectText">  </span>
+              </strong>
+        <table width="100%"  border="0" cellspacing="0" cellpadding="1">
+          <tr>
+            <td width="41%"><b>
+              <input type="regular" value="Setup" onclick="SetupTitle()" />
+            </b><span class="style7">&nbsp;Click to add your agency/group name to title </span></td>
+            <td width="57%"><strong>
+			  <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
+
+              <input type="button" value=" Load Local WX Report Data " onclick="document.getElementById('txtfiletoread').click();" />
+  <input name="Title" type="hidden" id="Title" value="LOcal WX" />            </strong></td>
+            <td width="2%">&nbsp;</td>
+          </tr>
+        </table>
+      
+                </strong></p>
+      </div></td>
       </tr>
     <tr>
       <td width="50%" align="left" valign="top" bgcolor="#f8f8ff" ><div align="left"><span class="style26" >Call sign:
@@ -1416,9 +1480,10 @@ var attached_file = 'FormData.txt';
     <tr>
       <td align="left" valign="top" bgcolor="#f8f8ff" ><span class="style27">Report Date/Time (local):&nbsp;
             <input required="required" placeholder="Click to Add Date/Time" name="DateTime" maxlength="23" id="DateTime" size="24"  onclick="TimeNow('DateTime', true)" />
-      </span></td>
+            <em><span class="style4"><span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;">
+            </span></span></span></span></span></span></span></span></span></span></em> </span></td>
       <td align="left" valign="top" bgcolor="#f8f8ff" ><span style="color: #000000; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span class="style26">Location:
-            <input name="Location" placeholder="Street name or known closest landmark" type="text" id="Location" size="50" maxlength="45" />
+            <input name="Location" type="text" id="Location" size="50" maxlength="45" placeholder="Street name or known closest landmark" />
       </span> </span></td>
     </tr>
     <tr>
@@ -1433,11 +1498,11 @@ var attached_file = 'FormData.txt';
     </tr>
     <tr align="left" valign="top" bgcolor="#f8f8ff">
       <td colspan="2" class="style26"><p>Latitude and longitude: LAT<em><span class="style4">&nbsp;
-                <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" size="12" placeholder="ex: 38.5567" />
+                <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" value="{Latitude}" size="12" placeholder="ex: 38.5567" />
         </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style4">
-        <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" size="12" placeholder="ex:-121.7932" />
+        <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" value="{Longitude}" size="12" placeholder="ex:-121.7932" />
         </span></em><em>&nbsp;MGRS</em><span class="style4">
-        <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
+        <input name="MGRS"   type="text" id="MGRS" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" onchange="checkformgrs(this.value)"onkeypress="if(event.keyCode==13){return false;}"size="25" maxlength="25" placeholder="Ex:11SNR0184195204" />
 &nbsp;</span><em>&nbsp;Grid&nbsp;
   <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
   <span class="style4">&nbsp;
@@ -1459,7 +1524,12 @@ var attached_file = 'FormData.txt';
   </span></span></span></span></em></p>
         <p><span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style1">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude and Longitude / MGRS coordinates manually.<br />
               <span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. </span><span class="style32"><span class="style29"></span></span></p>
-        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p></td>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p>
+        <p><span class="style45"><em><span class="style4"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;">
+          <input name="maptimestamp" type="hidden" id="maptimestamp" size="30" />
+        </span></span></span></span>
+                        <input name="maptimestamp2" type="HIDDEN" id="maptimestamp2" value="{GPS_SIGNED_DECIMAL}" size="40" />
+        </span></span></span></span></span></em></span></p></td>
     </tr>
     <tr align="left" valign="top">
       <td colspan="2" class="style26"><p>Measurements used:&nbsp;          
@@ -1618,8 +1688,8 @@ var attached_file = 'FormData.txt';
               <textarea placeholder="Anything of importance, damages noted, or weather type not indicated in above form." cols="120" rows="4" name="Comments" id="Comments"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
               <input name="TheConditions" type="HIDDEN" id="TheConditions" />
 </p>  <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: NONE;">MapFileName:T=j1
-Report Date/Time:T=j2
-Call sign:T=j3 
+DateTime:T=j2
+Sender:T=j3 
 Observer Name:T=j4 
 Location:T=j5 
 City:T=j6 
@@ -1629,16 +1699,15 @@ Latitude:T=j9
 Longitude:T=j10
 MGRS:T=j11
 Current Conditions:T=j12
-Temperature:T=j13deg j14
+Temperature:T=j13 deg. j14
 HUMIDITY:T=j15% 
-DEWPOINT: T=j16deg   j17
+DEWPOINT: T=j16 deg. j17
 Barometer:T=j18 j19
 Three hour trend:T=j20 
 Cloud Cover:T=j21
-Wind Speed:T=j22  j22a  j23
+Wind Speed:T=j22  j23
 Direction from:T=j24
-Wind Gusts:T=j25  j26
-Wind Gusts MAX:T=j27  j28
+Wind Gusts:T=j25  Max Gusts j26
 Rain 1 HR:T=j29  j30
 Rain Total:T=j31 j32
 Snow 1 HR:T=j33   j34  
@@ -1655,9 +1724,9 @@ Comments: T=j40
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 2.1<span style="font-style: italic;"><span class="style17"><span class="formtext11">
+&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 2.5<span style="font-style: italic;"><span class="style17"><span class="formtext11">
 <span style="font-style: italic;"><span style="font-style: italic;">
-<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.0" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.5" />
 </span></span></span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>

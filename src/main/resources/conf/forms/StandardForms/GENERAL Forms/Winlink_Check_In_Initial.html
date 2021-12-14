@@ -234,7 +234,7 @@ width:40px;
 .style45 {color: #2A5F00}
 .style47 {color: #000000}
 .style48 {
-	color: #FF0000;
+	color: #333333;
 	font-size: 12px;
 	font-weight: bold;
 }
@@ -242,6 +242,7 @@ width:40px;
 	color: #006600;
 	font-style: italic;
 }
+.style50 {color: #333333}
 </style>
 <script type="text/javascript">
 
@@ -261,19 +262,24 @@ store();
 	  	var formatted= document.getElementById("MsgTo");
 		     localStorage.setItem("CheckinMsgTo", formatted.value);
 
-		var formatted= document.getElementById("mapLat");
+		//var formatted= document.getElementById("mapLat");
 
-     localStorage.setItem("CheckinLat", formatted.value);
-	 var formatted= document.getElementById("mapLon");
-     localStorage.setItem("CheckinLon", formatted.value);
-		 var formatted= document.getElementById("City");
+     //localStorage.setItem("CheckinLat", formatted.value);
+	// //var formatted= document.getElementById("mapLon");
+     //localStorage.setItem("CheckinLon", formatted.value);
+		 //.var formatted= document.getElementById("City");
     }
 
 	function getit() {
-	var storedValue = localStorage.getItem("CheckinLat");
-	document.getElementById('mapLat').value = storedValue;
-	var storedValue = localStorage.getItem("CheckinLon");
-	document.getElementById('mapLon').value = storedValue;
+	var z1 = '{Latitude}';
+var z2= '{Longitude}';
+document.getElementById('mapLat').value =z1;
+document.getElementById('mapLon').value =z2;
+checkLatLon();
+	//var storedValue = localStorage.getItem("CheckinLat");
+	//document.getElementById('mapLat').value = storedValue;
+	//var storedValue = localStorage.getItem("CheckinLon");
+	//document.getElementById('mapLon').value = storedValue;
 	var storedValue = localStorage.getItem("CheckinTitle");
 	document.getElementById('Organization').value = storedValue;
 var storedValue = localStorage.getItem("CheckinMsgTo");
@@ -291,7 +297,7 @@ store();
 }
 function TimeNow(Timefld, doprompt) {
 var txt;
-var d = new Date(),
+var d = new Date();
 thisyear = d.getFullYear();
 thismonth= d.getMonth();
 thismonth = thismonth+1;
@@ -479,19 +485,20 @@ var nameArr = GPSstr.split(" ");
 var a =nameArr[0];
 
 var b =nameArr[1];
-
-
-
-if(!isNaN (a)){document.getElementById('mapLat').value =a;}
-
-if(!isNaN (b)){document.getElementById('mapLon').value =b;}
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+//if(!isNaN (a)){{Latitude},{Longitude}=a;}
+if(!isNaN (a)){document.getElementById('mapLon').value =z2;}
+if(!isNaN (b)){document.getElementById('mapLon').value =z2;}
 //checkLatLon();
 }
 function GetGPS(){
 var ans = document.getElementById('ExtGPS').value;
-//
 
 if (ans  != '(Not available)'){
+//fill it with defaults
+//alert(ans);
+
 myMGRS=ans;
 var ans = ans.replace(" ", ",");
 
@@ -1071,21 +1078,27 @@ convertthis();
 
 function checkinternet(){
 
+var test = document.getElementById('internetcheck').value
+if (test!=='YES') {
 
-alert("It appears that you are not connected to the internet.\n This test version of checkin will not be able to determine your w3w location.");
-//
-return true;
+
+document.getElementById("w3w").disabled = true; 
+document.getElementById('w3w').placeholder = 'W3W not available.';
+
+//alert("It appears that you are not connected to the internet.\n This test version of checkin will not be able to determine your w3w location.");
+}
+
 }
 
 function testlink() {
 
 var mylink = document.getElementById('w3w').value
-
+if (mylink!=''){
 window.open(
   'https://what3words.com/'+mylink, '_blank' )// <- This is what makes it open in a new window.
-
 }
-function hidbtn(x){alert('at hide');
+}
+function hidbtn(x){
 if (x = true) {
 document.getElementById('testlnkbtn').style.display ='none'; }
 }
@@ -1375,7 +1388,7 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 <tbody>
 <tr>
 <td height="71" valign="top" bgcolor="#dee9f9" style="vertical-align: bottom; height: 5%; text-align: center; background-color: "><p style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-  <span class="style4">Express Check In</span><br />
+  <span class="style4">Winlink Check In</span><br />
 <span class="style20"  id="SubjectText">  </span><br />
   <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
  </span><span class="style6"><span style="font-weight: normal;"><span style="font-weight: normal;"><span class="style45"><span class="style20"  id="SubjectText">
@@ -1401,9 +1414,9 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <tr>
 <td nowrap="nowrap" style="vertical-align: middle; text-align: center; width: 50%;">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span></span></span><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span><span class="style17">Date/Time</span></span></span> &nbsp; 
+  <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>Date/Time</span></span> <span class="style15">&nbsp;</span> 
         <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" /> 
-&nbsp; <span class="style48" style="font-family: Arial, Helvetica, sans-serif;;">Select Status </span>&nbsp; &nbsp;
+&nbsp; <span class="style48" style="font-family: Arial, Helvetica, sans-serif;;">Select Status </span><span class="style50">&nbsp;</span> &nbsp;
     <select name="Status" size="3" id="Status" required="required" >
       <option value="Exercise " selected="selected">Exercise </option>
       <option value="Net">Net</option>
@@ -1427,6 +1440,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
       <option value="Vara HF">Vara HF</option>
       <option value="Vara FM">Vara FM</option>
       <option value="Pactor">Pactor</option>
+      <option value="Mesh">Mesh</option>
       <option value="Other">Other</option>
     </select>
     <span class="style2">&nbsp;<br />
@@ -1442,8 +1456,11 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
     <input placeholder="Separate Calls/Emails with a SEMICOLON; You can modify prior to posting." maxlength="79" size="79" name="MsgTo"  id="MsgTo" onchange="this.value=this.value.toUpperCase();" onblur= "store();"/> 
     <span class="style3">
     <input name="Organization" type="hidden" id="Organization" value="Winlink Net" />
-&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries.</a><br />
-    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style49">Entries  will remain until you change or clear them.</span><br />
+&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries.</a>
+<input name="internetcheck" type="hidden" id="internetcheck" value="{InternetAvailable} " />
+<input name="GPSvalid" type="hidden" id="GPSvalid" value="{GPSValid} " />
+<br />
+    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style49">Entries  will remain until you change or clear them</span><br />
      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span>
      <span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
 &nbsp;
@@ -1459,7 +1476,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 &nbsp;&nbsp;Sender &nbsp;
     <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
     <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-    <input name="Mapfilename" type="hidden" id="Mapfilename" value="Express CheckIn" />
+    <input name="Mapfilename" type="hidden" id="Mapfilename" value="Winlink Check In" />
     <br />
     <br />
     <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
@@ -1467,7 +1484,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 </td>
 </tr>
 <tr>
-<td colspan="3" bgcolor="#f8f8ff" style="text-align: center; vertical-align: middle; background-color: " pbzloc="6">
+<td colspan="3" nowrap="nowrap" bgcolor="#f8f8ff" style="text-align: center; vertical-align: middle; background-color: " pbzloc="6">
 <div align="left">
   <p><br />
       <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;Location&nbsp;
@@ -1499,9 +1516,10 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
     <input name="w3w" type="text" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>
     <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp; </span></em>       <input type="button" name="testlnkbtn"  id="testlnkbtn"onclick="testlink();"value="View w3w location in a new tab" />
   </em></p>
-  <p align="left"><span class="style12"><em> </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style23">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude andLongitude / MGRS coordinates manually.<br />
-      <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. <br />
-      <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>* What3words currently requires an internet connection. See <a href="#pop1">Form Info</a>.</span></p>
+  <p align="left"><span class="style12"><em> </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAT/LON and MGRS  default to the center of the grid square listed in Express Settings, </span><span class="style12">&nbsp;unless a GPS is used or Lat/LON<br />
+    <span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style23">&nbsp;&nbsp;&nbsp;</span><span class="style23">&nbsp;&nbsp;&nbsp;</span>    or MGRS are entered manually.</span><span class="style23"><br />
+        <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. <br />
+        <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>* What3words currently requires an internet connection. See <a href="#pop1">Form Info</a>.</span></p>
   </div>
 </td>
 </tr>
@@ -1521,13 +1539,13 @@ DateTime:T=j3
 Latitude:T=j4
 Longitude:T=j5
 Sender:T=j6
-On site Operators:T=j7
+Operators:T=j7
 Location:T=j8
 MGRS:T=j9
 Grid:T=j10
-What3Words location:T=j11
+What3Words:T=j11
 Band:M=j12
-Session Type:M=j13
+Session:M=j13
 Comments:T=j14</textarea>
     </span></span></span></span></span></span></span></span></span></span></span></span> </span></span></span></span>    <textarea  cols="140" rows="2" maxlength="250" name="Commentstab" id="Commentstab" 
  style="display: none;"></textarea>
@@ -1555,9 +1573,9 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.14</span><span style="font-size: 12px;">
+&nbsp; <span class="style25">Ver 4.0.20</span><span style="font-size: 12px;">
 <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.14" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.20" />
 </span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>
@@ -1579,7 +1597,7 @@ Comments:T=j14</textarea>
 
 <p> </p>
 <strong>More Information</strong><br /><br />
-<strong>This form is normally sent only upon initial checkin, unless other arrangements are made. There is a separate CHECK OUT form that can be used when closing the station.</strong><br /> <br />
+<strong>This form is normally sent only upon initial check in, unless other arrangements are made. There is a separate CHECK OUT form that can be used when closing the station.</strong><br /> <br />
 
 The SETUP Icon top left allows you to add your agency or groups name to the template. It will remain as such until you change it. You can clear the title by opening SETUP again and use your space bar.<br />
 <br />

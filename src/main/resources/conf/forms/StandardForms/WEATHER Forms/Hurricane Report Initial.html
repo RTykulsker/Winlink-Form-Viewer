@@ -141,6 +141,21 @@ margin: 10px;
 
 <script>
 
+function Checkifinbrowser() {
+
+ var x= document.getElementById("testCall").value; 
+ var n = x.search("{Msg");
+ if (n>-1) { 
+ document.getElementById('Submit').style.visibility='hidden';
+ document.getElementById("MsgSender").value = '';
+
+  alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
+ } else {document.getElementById('Submit').style.visibility='visible';  }
+ 
+ // document.getElementById('testlnkbtn').style.visibility='hidden';
+}
+
+
 function shortmonth(monthnum) {
 var monthname;
 shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
@@ -569,6 +584,9 @@ function SaveData() {
  else { 
      alert("Files are not supported"); 
  } 
+   Checkifinbrowser() ;
+ defaultGPS();
+
 GetGPS();
 copyGPS();
 checkLatLon();
@@ -583,7 +601,13 @@ AutoGrowTextArea(document.getElementById("Comments"));
 
 //  AutoGrowTextArea(document.getElementById("Comm3"));
 }
-
+function defaultGPS(){
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+document.getElementById('mapLat').value =z1;
+document.getElementById('mapLon').value =z2;
+checkLatLon();
+}
 function copyGPS() {
 var GPSstr= document.getElementById("ExtGPS").value;
 var nameArr = GPSstr.split(" ");
@@ -1343,8 +1367,8 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
 </span></span></span></span></em></p>
- <p><span class="style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style8">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude andLongitude / MGRS coordinates manually.<br />
-     <span class="style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. </span><span class="style19"><span class="style32"></span></span></p>
+ <p><span class="style2">&nbsp;</span><span class="style2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings,<br />
+ </span><span class="style2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unless a GPS is used or Lat/LON or MGRS are entered manually.</span><span class="style8"></span></p>
  <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style8">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p>
  </div></td>
 
@@ -1465,12 +1489,12 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 <textarea placeholder="Severe Flooding, Storm Surge, Rain Amount, Damage Reports, Evacuations, etc" name="Comments" id="Comments" rows="3" cols="110"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
 <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
 DateTime:T=j2
-Report Status:M=j3
+Status:M=j3
 Latitude:T=j4
 Longitude:T=j5
 MGRS:T=j6
 Grid:T=j7
-Radio Station Sending Call:T=j8
+Sender:T=j8
 Is Sending Station the Observing Party?:M=j9
 Reporting Observer Email:T=j10
 Reporting Observer Phone Number:T=j11
@@ -1496,10 +1520,12 @@ Event Comments:T=j22
   <input value="Submit" style="height: 28px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="checkform();createjson(); " enctype="multipart/form-data" class="SubmitBtn" type="submit" />
  &nbsp;<span style="color: rgb(128, 0, 0);"></span></small>
   <input style="color: rgb(204, 0, 0);" name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
-  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.1</small></span>
+  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.2</small></span>
   <span class="style17"><span class="formtext11">
   <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.1" />
-  </span></span>  
+  <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+  <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
+  </span></span> </span></span>  
   <p align="left">  
 </tr>
 

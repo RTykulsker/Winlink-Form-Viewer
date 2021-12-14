@@ -10,7 +10,7 @@ Is Sending Station the Observing Party? <var Party>
 Reporting Observer Email: <var Email>
 Reporting Observer Phone Number: <var Phone>
 
---Geographic Area of Observed Event:
+--Geographic Area of Observed Event: 
 
 City: <var City>
 State: <var State>

@@ -1174,6 +1174,7 @@ if(!isNaN (b)){document.getElementById('mapLon').value =b;}
 }
 
 function GetGPS(){
+
 var ans = document.getElementById('ExtGPS').value;
 //
 
@@ -2049,9 +2050,9 @@ Final Report
 <input name="GPS" type="hidden" id="GPS" value="{Latitude},{Longitude}" />
 </span></span></span></span></em></p>
 
-  <p><span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style1">Auto filled if GPS device is working in Express, or you can<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span>enter Latitude andLongitude / MGRS coordinates manually.<br />
-        <span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. </span><span class="style19"><span class="style29"></span></span></p>
-  <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p>
+  <p><span class="style4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings,<br />
+  </span><span class="style4"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unless a GPS is used or Lat/LON or MGRS are entered manually.</span></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style1">If sending report for someone else, do not use your GPS Lat/Lon, obtain theirs if available and manually enter in decimal format.</span></p>
 </div></td>
 
 
@@ -2406,9 +2407,9 @@ Freezing Rain:
   <hr class="new1" />
   <textarea placeholder="Anything of importance or damages noted. No names or specific addesses" cols="120" rows="4" name="Comments" id="Comments"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>   
   <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
-Report Date/Time:T=j2
-Report Status:M=j3
-Message Sender:T=j4 
+DateTime:T=j2
+Status:M=j3
+Sender:T=j4 
 Reporting Party:T=j5 
 Phone Number:T=j6
 Email:T=j7
@@ -2422,7 +2423,7 @@ MGRS:T=j14
 Flood:M=j15 
 Hail:M=j16
 High Wind Speed:M=j17
-Tornado / Funnel Cloud:M=j18
+Tornado/Funnel Cloud:M=j18
 Wind Damage:M=j19
 Winter Precipitation:M=j20
 Snow:M=j21
@@ -2474,13 +2475,13 @@ Additional Comments:T=j25</textarea>
 
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 
-</span></b></span>&nbsp;</span></span>Ver 3.1<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></b></span>&nbsp;</span></span>Ver 3.2<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
-<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.1" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.2" />
 
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 

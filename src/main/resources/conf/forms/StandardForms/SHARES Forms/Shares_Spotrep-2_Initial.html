@@ -8,7 +8,7 @@
 	position:absolute;
 	top:0;
 	left:-500em;
-	visibility: hidden;
+	visibility: visible;
 }
 .pop-up:target {position:static; left:0;}
 /* The pop-up itself */
@@ -26,7 +26,7 @@ border-radius:.25rem;
 box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
 	opacity:0;
 	transition: opacity 0.8s ease-out;
-	visibility: hidden;
+	visibility: visible;
 }
 :target .popBox {position:fixed; opacity:1;}
 /* Light box properties */
@@ -62,7 +62,7 @@ z-index:5;
 	color: #fff;
 	border-radius: 50%;
 box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
-	visibility: hidden;
+	visibility: visible;
 }
 .close:before {content:"X";}
 .close:hover,
@@ -86,7 +86,7 @@ display: block;
 	overflow-y: auto;
 *overflow-y: scroll;
 	padding-right: 0.5em;
-	visibility: hidden;
+	visibility: visible;
 }
 .popScroll h2 {margin-top:0}
 .style37 {color: black; font-size: 14px; }
@@ -363,11 +363,11 @@ font-weight: inherit;
 
 	var storedValue = localStorage.getItem("SharesLat");
 
-	document.getElementById('gpsLat').value = storedValue;
+	//document.getElementById('gpsLat').value = storedValue;
 
 var storedValue = localStorage.getItem("SharesLon");
 
-	document.getElementById('gpsLon').value = storedValue;
+	//document.getElementById('gpsLon').value = storedValue;
 
 var storedValue = localStorage.getItem("SharesCity");
 
@@ -375,7 +375,7 @@ var storedValue = localStorage.getItem("SharesCity");
 
 var storedValue = localStorage.getItem("Sharesmgrs");
 
-	document.getElementById('MGRS').value = storedValue;
+	//document.getElementById('MGRS').value = storedValue;
 
 	}
 
@@ -505,7 +505,7 @@ AutoGrowTextArea(document.getElementById("Comments"));
 
 
 
-function RWS(str){
+function RWS(text1){
 
 
 
@@ -1054,21 +1054,51 @@ function SaveData() {
  else { 
 
      alert("Files are not supported"); 
-
- } 
- var t1; var t2;
-
- getit();
-//Checkifinbrowser();
-
+}
+Checkifinbrowser()
 copyGPS();
 checkLatLon();
 
-Fixfields();
 
  DateTime('autozulu','UDTGfld', true);
 TimeStamp();
- }
+}
+function GetGPS(){
+var ans = document.getElementById('ExtGPS').value;
+
+if (ans  != '(Not available)'){
+//fill it with defaults
+//alert(ans);
+
+myMGRS=ans;
+var ans = ans.replace(" ", ",");
+
+
+ if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
+//now the mrgs
+
+var d= myMGRS.split(' ');
+MGRSString(d[0],d[1]);
+//store();
+//what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
+//lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
+
+var mypram = {lat:+d[0], lng:+d[1]};
+//alert(mypram);
+what3words.api.convertTo3wa(mypram, 'en')
+  .then(function(response) {
+  theword = ("[convertTo3wa]", response);
+  document.getElementById('w3w').value = theword.words
+  
+  //alert(theword.words);
+  });
+} 
+  convertthis();
+
+}
+
+
 
 function parethisdate() {
 
@@ -1175,7 +1205,6 @@ AutoGrowTextArea(document.getElementById("Message"));
 }
 
 
-
 function Checkifinbrowser() {
  var x= document.getElementById("testCall").value; 
  var n = x.search("{Msg");
@@ -1208,6 +1237,10 @@ document.getElementById("MsgSender").value = '';
 
 function copyGPS() {
 
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+document.getElementById('gpsLat').value =z1;
+document.getElementById('gpsLon').value =z2;
 
 var GPSstr= document.getElementById("ExtGPS").value;
 
@@ -1886,9 +1919,9 @@ to links</span></a> </div>
      <input name="MGRS" type="text" onkeypress="if(event.keyCode==13){return false;}"  title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
      </span><em>&nbsp;Grid&nbsp;
      <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
-     <span class="style12">&nbsp;</span></em><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style24"><span  id="GPSnote">LAT and LON are required to map this SpotRep. If entering manually use Decimal Degree format or from an attached GPS device.</span>   </span> </span></span></span></p>
-
+     <span class="style12">&nbsp;</span></em><span class="style12"><br />
+</span><span class="style12"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="style24"><span  id="GPSnote">LAT and LON are required to map this SpotRep. If entering manually use Decimal Degree format or from an attached GPS device.</span> <br />
+<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;<span class="style12">&nbsp;</span><span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By default &nbsp;LAT,  LON and MGRS  to the center of the grid square listed in Express Settings<span class="style41"> </span></span></span></span></span></span></span></span></p>
   <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#f8f8ff">
 
   <tr valign="middle">
@@ -1984,7 +2017,7 @@ Unknown - N/A </td>
     <td colspan="2"><span style="font-size: 14px;"> <span style="font-size: 12px;">&nbsp; </span><span style="font-size: 12px;">&nbsp; </span><span style="font-size: 12px;">&nbsp; </span>
 
           <textarea placeholder="Comments" name="Comm3" cols="100" rows="1" id="Comm3" onkeypress="if(event.keyCode==13){return false;}"  onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
-
+  
     </span></td>
 
   </tr>
@@ -2139,35 +2172,12 @@ Unknown - N/A</td>
       <textarea title="Be brief and concise." cols="120" rows="3" name="Message" id="Message"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
 
           <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
-<br />
-
 </p>
-
-  </div></td>
-
-</tr>
-
-<tr><td style="text-align: center;" colspan="2"><div align="left">
   <p><br />
   
-        <span style="font-size: 14px;"><span style="font-size: 12px;">&nbsp;&nbsp;</span>&nbsp;<span class="style39">11. </span></span><span class="style39">POC</span><span class="style39" style="color: black;"><span style="color: rgb(204, 0, 0);">&nbsp;</span> </span><span class="style39" style="color: black;"></span><span style="color: black;">&nbsp;</span>
-  
-        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" maxlength="78" size="80" name="POC"   id="POC" onkeydown="return (event.keyCode!=13);"/>
-  
-        <span style="color: rgb(128, 0, 0);"><span style="color: black;"> &nbsp;</span></span></p>
-  <p><span class="style41">
-    <input name="k3" type="hidden" id="k3" value="Unknown - N/A" />
-    <input name="k4" type="hidden" id="k4" value="Unknown - N/A" />
-    <input name="k5" type="hidden" id="k5" value="Unknown - N/A" />
-    <input name="k6" type="hidden" id="k6" value="Unknown - N/A" />
-	 <input name="k7" type="hidden" id="k7" value="Unknown - N/A" />
-	  <input name="k8" type="hidden" id="k8" value="Unknown - N/A" />
-	   <input name="k9" type="hidden" id="k9" value="Unknown - N/A" />
-	    <input name="k10" type="hidden" id="k10" value="Unknown - N/A" />
-		
-</span></p>
-  <p><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
-    <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none";>MapFileName:T=SPOTREP-2
+</p>
+</div></td>
+  <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none";>MapFileName:T=SPOTREP-2
 Precedence:M=j25
 Task Number:T=j23
 Sender:T=j20
@@ -2193,12 +2203,28 @@ Public Water Works note:T=j24
 Additional Comments:T=j13
 POC:T=j18
 </textarea>
-  </span></span>    <span style="color: rgb(128, 0, 0);"><span style="color: black;">
-    </span></span><br />
-&nbsp;&nbsp;</span></span><br />
-    
+</tr>
+
+<tr><td style="text-align: center;" colspan="2"><div align="left">
+  <p><br />
+  
+        <span style="font-size: 14px;"><span style="font-size: 12px;">&nbsp;&nbsp;</span>&nbsp;<span class="style39">11. </span></span><span class="style39">POC</span><span class="style39" style="color: black;"><span style="color: rgb(204, 0, 0);">&nbsp;</span> </span><span class="style39" style="color: black;"></span><span style="color: black;">&nbsp;</span>
+  
+        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" maxlength="78" size="80" name="POC"   id="POC" onkeydown="return (event.keyCode!=13);"/>
+  
+        <span style="color: rgb(128, 0, 0);"><span style="color: black;"> &nbsp;</span></span></p>
+  <p><span class="style41">
+    <input name="k3" type="hidden" id="k3" value="Unknown - N/A" />
+    <input name="k4" type="hidden" id="k4" value="Unknown - N/A" />
+    <input name="k5" type="hidden" id="k5" value="Unknown - N/A" />
+    <input name="k6" type="hidden" id="k6" value="Unknown - N/A" />
+	 <input name="k7" type="hidden" id="k7" value="Unknown - N/A" />
+	  <input name="k8" type="hidden" id="k8" value="Unknown - N/A" />
+	   <input name="k9" type="hidden" id="k9" value="Unknown - N/A" />
+	    <input name="k10" type="hidden" id="k10" value="Unknown - N/A" />
+</span><br />
 </p>
-</div></td>
+  </div></td>
 
 </tr><tr>
 
@@ -2224,9 +2250,9 @@ POC:T=j18
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.8.4" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.91" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver <span class="style2"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">9.8</span></span></span></span></span></span></span></span>4</span></span></span></span></span></span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver <span class="style2"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">9.91</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 
