@@ -17,7 +17,7 @@
 
 		<args4j.version>2.33</args4j.version>
 		<logback.version>1.2.7</logback.version>
-		<jsoup.version>1.13.1</jsoup.version>
+		<jsoup.version>1.14.2</jsoup.version>
 		<junit.version>4.13.1</junit.version>
 		<sparkjava-version>2.9.3</sparkjava-version>
 		<zip4j.version>2.6.4</zip4j.version>
