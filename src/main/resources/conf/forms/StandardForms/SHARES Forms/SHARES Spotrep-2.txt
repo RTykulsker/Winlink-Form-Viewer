@@ -1,6 +1,6 @@
 Form:Shares_Spotrep-2_Initial.html,Shares_Spotrep-2_Viewer.html
-To: <MsgTo>
-Cc: <MsgCc>
+To: <var MsgTo>
+Cc: <var MsgCc>
 Readonly:True
 Subject://WL2K <var Precedence>/ SPOTREP <var UDTGfld>
 
