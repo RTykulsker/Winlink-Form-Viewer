@@ -4,6 +4,7 @@ ReplyTemplate: ICS213_SendReply.0
 To: 
 Subject:213-<var inc_name>-<var Subjectline> - <var Mdate> <var mtime>
 SeqInc:
+Readonly:True
 Msg:
 GENERAL MESSAGE (ICS 213)
 <var FormTitle>

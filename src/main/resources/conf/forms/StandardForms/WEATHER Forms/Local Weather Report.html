@@ -238,7 +238,6 @@ font-weight: normal;
 margin: 10px;
 }
 .style17 {font-size: 12px; font-family: Arial, Helvetica, sans-serif}
-.style31 {color: #FF0000}
 .style32 {color: #006600; font-size: 12px; }
 .style1 {color: #FF0000}
 .style1 {color: #FF0000}
@@ -264,6 +263,7 @@ width:40px;
    cursor: pointer;
 }
 
+.style46 {color: #2A5F00; font-size: 14px; }
 </style>
 
 <script type="text/javascript">
@@ -300,6 +300,8 @@ function Setmeasure(which) {
 //x = document.getElementById('Measurmentused').value;
 //<span  id="TempFM1">F</span>
 if (which == 'Imperial') {
+document.getElementById('Mapfilename').value = 'Local WX- Imperial';
+document.getElementById('measuereused').value = 'Imperial units';
 
 document.getElementById('TempFM1').innerHTML = 'F';
 document.getElementById('TempFM2').innerHTML = 'F';
@@ -319,6 +321,9 @@ document.getElementById('Rain2').innerHTML = 'inches';
 
 
 } else {
+
+document.getElementById('Mapfilename').value = 'Local WX- Metric';
+document.getElementById('measuereused').value = 'Metric units';
 
 document.getElementById('TempFM1').innerHTML = 'C';
 document.getElementById('TempFM2').innerHTML = 'C';
@@ -1297,6 +1302,11 @@ var jsontext=jsontext.replace('j10', temp1);
 
 var temp1= document.getElementById('MGRS').value;
 var jsontext=jsontext.replace('j11', temp1);
+var temp1= document.getElementById('measuereused').value;
+var jsontext=jsontext.replace('j00', temp1)
+
+
+
 var temp1= document.getElementById('TheConditions').value;
 emp1 = removeTabs(temp1)
 
@@ -1325,9 +1335,7 @@ var jsontext=jsontext.replace('j20', temp1);
 var temp1= document.getElementById('CloudCover').value;
 var jsontext=jsontext.replace('j21', temp1);
 var temp1= document.getElementById('WindSpeed').value;
-var jsontext=jsontext.replace('j22', temp1);//Type1
-//var temp1= document.getElementById('Type1').value;
-//var jsontext=jsontext.replace('j22a', temp1);//Type1
+var jsontext=jsontext.replace('j22', temp1);
 var temp1= document.getElementById('Type1').value;
 var jsontext=jsontext.replace('j23', temp1);
 
@@ -1339,11 +1347,14 @@ var jsontext=jsontext.replace('j25', temp1);
 var temp1= document.getElementById('MaxGusts').value;
 var jsontext=jsontext.replace('j26', temp1);
 
-//var temp1= document.getElementById('mspeed').value;
-//var jsontext=jsontext.replace('j27', temp1);
+var temp1= document.getElementById('mspeed').value;
+var jsontext=jsontext.replace('mu2', temp1);
 
-//var temp1= document.getElementById('mspeed').value;
-//var jsontext=jsontext.replace('j28', temp1);
+var temp1= document.getElementById('mspeed').value;
+var jsontext=jsontext.replace('mu3', temp1);
+
+var temp1= document.getElementById('mspeed').value;
+var jsontext=jsontext.replace('mu4', temp1);
 
 var temp1= document.getElementById('Rain1hr').value;
 var jsontext=jsontext.replace('j29', temp1);
@@ -1440,7 +1451,7 @@ var attached_file = 'FormData.txt';
   <table  border="1" cellspacing="0" cellpadding="5">
     <tr bgcolor="#dee9f9">
       <td colspan="2" ><div align="center">
-        <p><strong>CURRENT LOCAL WEATHER CONDITIONS<br />
+        <p><strong>CURRENT LOCAL WEATHER CONDITIONS <br />
 		<span class="style20"  id="SubjectText">  </span>
               </strong>
         <table width="100%"  border="0" cellspacing="0" cellpadding="1">
@@ -1507,7 +1518,7 @@ var attached_file = 'FormData.txt';
   <input name="ExtGPS" type="hidden" id="ExtGPS" value="{Latitude},{Longitude}" />
   </span></span>
   <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-  <input name="Mapfilename" type="hidden" id="Mapfilename" value="Local WX Report" />
+  <input name="Mapfilename" type="hidden" id="Mapfilename" value="Local WX- Metric" />
 </span></span></span>
   <input name="GPS2" type="hidden" id="GPS2" title= "If entering manually use format: 38.5567,-121.7932" onchange="convertthis()" onkeypress="return isNumberKey(event)" value="{Latitude},{Longitude}" size="40"  maxlength="40" placeholder="Ex: 38.5567,-121.7932" />
   <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
@@ -1528,7 +1539,7 @@ var attached_file = 'FormData.txt';
         Metric &nbsp; &nbsp;
         <input name="Measurmentused" type="radio" value="Imperial" onclick="Setmeasure('Imperial')";/>
         Imperial
-        <input name="measuereused" type="hidden" id="measuereused" />
+        <input name="measuereused" type="hidden" id="measuereused" value="Metric units" />
         <span style="font-weight: bold;"><span style="font-weight: bold;">
         <input name="mtemp" type="hidden" id="mtemp" value="C" />
         <span style="font-weight: bold;"><span style="font-weight: bold;">
@@ -1689,35 +1700,36 @@ State:T=j8
 Latitude:T=j9
 Longitude:T=j10
 MGRS:T=j11
+Measurement is in:T=j00
 Current Conditions:T=j12
-Temperature:T=j13 deg. j14
-HUMIDITY:T=j15% 
-DEWPOINT: T=j16 deg. j17
-Barometer:T=j18 j19
+Temperature (deg. j14):N=j13 
+HUMIDITY %:N=j15 
+DEWPOINT (deg. j17): N=j16 
+Barometer (j19):N=j18
 Three hour trend:T=j20 
 Cloud Cover:T=j21
-Wind Speed:T=j22  j23
+j23 Wind Speed (mu2):N=j22
 Direction from:T=j24
-Wind Gusts:T=j25  Max Gusts j26
-Rain 1 HR:T=j29  j30
-Rain Total:T=j31 j32
-Snow 1 HR:T=j33   j34  
-Snow Total:T=j35   j36
-Water Content:T=j37 
+Wind Gusts (mu3):N=j25  
+Max Gusts (mu4):N=26
+Rain 1 HR (j34):N=j29    
+Snow Total (j36):N=j35
+Water Content:N=j37 
 NWS Level:T=j38  
 Comments: T=j40 
 </textarea>
-          <p align="left" class="style27"><small><small><span style="font-size: 12px;"><small><span class="formtext"><span style="font-family: Calibri;"><big>
+          <p align="left" class="styj30
+<small><small><span style="font-size: 12px;"><small><span class="formtext"><span style="font-family: Calibri;"><big>
             <input type="button" value="Save Local WX Data"  style="color: blue;"onclick="SaveData()" />
           </big></span></span></small></span></small></small>&nbsp;&nbsp;
               <input class="SubmitBtn" enctype="multipart/form-data" id="Submit"  onclick="collect();checkform();createjson(); " method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />
 &nbsp;&nbsp;
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span>Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span><span class="style46">Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;</span></span>Ver 2.6<span style="font-style: italic;"><span class="style17"><span class="formtext11">
+&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="style29">&nbsp;</span></span></span><span class="style29">Ver 2.8</span><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 <span style="font-style: italic;"><span style="font-style: italic;">
-<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.6" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.7" />
 </span></span></span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>

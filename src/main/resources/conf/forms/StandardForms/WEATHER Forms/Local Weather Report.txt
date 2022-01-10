@@ -1,7 +1,7 @@
-Form: Local Weather Report.html,Local Weather Report Viewer.html
+Form:Local Weather Report.html,Local Weather Report Viewer.html
 
 To:
-Subject: WX Report <var Location> City: <var City>, <var DateTime>
+Subject: WX Report <var Location>, <var City>, <var DateTime>
 
 Msg:
 CURRENT LOCAL WEATHER CONDITIONS
