@@ -158,6 +158,9 @@ padding-right: 0.5em;
 	color: #2A0000;
 }
     .style3 {color: #FF0000}
+    .style49 {color: #FF0000;
+	font-style: italic;
+}
     </style>
     <script>
 function shortmonth(monthnum) {
@@ -379,10 +382,7 @@ document.getElementById('TotalBeds').value = mytotal;
                   <tr>
                     <td style="text-align: center; vertical-align: top;" colspan="2">
                       <div align="left"><br />
-                        <span style="color: rgb(204, 0, 0);">  <span class="style3"> </span></span><span class="style1">As of
-                        Time:</span>  
-                        <span class="style3">{var Time1} </span>         Date:  
-                        {var Date}
+                        <span style="color: rgb(204, 0, 0);">  <span class="style3"> </span></span><span class="style1">Date/Time:</span>                        {var DateTime}
                           </div>
                     </td>
                   </tr>
@@ -412,11 +412,11 @@ document.getElementById('TotalBeds').value = mytotal;
                                 width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left" width="26%" valign="top"><span
+                                    <td align="left" width="25%" valign="top"><span
 
                                         style="color: rgb(204, 0, 0);"> <span style="color: rgb(204, 0, 0);">  </span></span>Name
                                       of Reporting Facility:  </td>
-                                    <td align="left" width="74%" valign="top"><span class="style3">{var Facility}</span></td>
+                                    <td align="left" width="75%" valign="top">{var Facility}</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -702,17 +702,17 @@ document.getElementById('TotalBeds').value = mytotal;
                     </td>
                   </tr>
                   <tr>
-                    <td width="665"><small> <span style="font-family: Calibri;"><small> 
-                            
- <span style="color: rgb(204, 0, 0);"></span></small></span></small><small>  <span
+                    <td width="665"><div align="left"><small> <span
 
-style="color: rgb(128, 0, 0);"><span><span style="font-size: 12px;"></span></span></span><span
+                                          style="color: rgb(204, 0, 0);"></span>GPS Coordinates: Latitude: <em><span class="style49"></span></em> {var mapLat}  Longitude<em><span class="style3"></span></em>: {var mapLon}<br />
+                          <span
 
-style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">      
-                                                  </span> </span><span style="color: rgb(128, 0, 0);"> <span
+                                          style="color: rgb(204, 0, 0);"></span>MGRS Coordinates: {var MGRS} Grid Square: {var Grid} </small><small><span
 
-style="font-size: 12px;">                </span> </span><span style="color: rgb(128, 0, 0);"> </span></small></td>
-<td width="111"><div align="center"><small>Version 9.2<span style="font-size: 12px;"><big
+style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">                   </span> </span><span style="color: rgb(128, 0, 0);"> <span
+
+style="font-size: 12px;">                </span> </span><span style="color: rgb(128, 0, 0);"> </span></small></div></td>
+<td width="111"><div align="center"><small>Version 9.6<span style="font-size: 12px;"><big
 
 style="font-weight: bold;"><big><small> </small><span class="Header">
 </span></big></big></span></small></div></td>

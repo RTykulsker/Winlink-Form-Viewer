@@ -154,6 +154,13 @@ display: block;
 	font-weight: bold;
 }
 .style12 {color: #2A0000}
+    .style49 {color: #FF0000;
+	font-style: italic;
+}
+.style45 {font-size: 12px}
+.style45 {color: #2A5F00}
+.style48 {color: #2A5F00; font-size: 12px; font-style: italic; }
+    .style2 {font-size: 14px}
     </style> <script>
 	function RestoreTitle() {
 
@@ -161,8 +168,6 @@ var RightNow = document.getElementById('Title').value;
 
 //document.getElementById('Title').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
-document.getElementById('loadbtn').value = 'Load '+RightNow+ ' BED data' ;
-document.getElementById('savebtn').value = 'Save '+RightNow+ ' BED data' ;
 store();
 }
 
@@ -177,6 +182,107 @@ store();
 	RestoreTitle();
 	
 	}
+	function DateTime(TType,TheFld, dopromt) {
+var txt;
+var  myprompt;
+var d = new Date(),
+ thisyear = d.getFullYear();
+ thismonth= d.getMonth();
+ thisday = d.getDate();
+var monname;
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var utcstr = d.toUTCString();
+var localt  = d.toLocaleTimeString();
+var isostr = d.toISOString();
+monthname = shortmonth (thismonth);
+thismonth = thismonth + 1;
+switch (TType) {
+    case 'hms'  :
+        myprompt = h + ':' + m + ':' + s;
+		var RightNow = prompt("Time:", myprompt);
+		document.getElementById(TheFld).value = RightNow;
+        break;
+		case 'hm'  :
+        myprompt = h + ':' + m;
+		var RightNow = prompt("Time:", myprompt);
+		document.getElementById(TheFld).value = RightNow;
+        break;
+		case 'm-d-y':     
+			myprompt = thismonth+ '-' + thisday+ '-'+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		 case 'm/d/y':     
+			myprompt = thismonth+ '/' + thisday+ '/'+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		     break;
+		 case 'd mmm y':     
+			myprompt = thisday+ ' ' + monthname+ ' '+  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'mmm-d-y':     
+			myprompt = monthname+'-'+thisday+ '-' +  thisyear;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+        case 'localampm':     
+			var myprompt = localt;
+			var RightNow = prompt("Local time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+
+		case 'fulldate':     
+			var myprompt = thisyear+ '-'+thismonth+'-'+thisday;
+			var RightNow = prompt("Date:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'fulldatetime':     
+			var myprompt = thisyear+'-'+thismonth+ '-'+thisday+' '+h + ':' + m + ':' + s;
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		    case 'iso':     
+			var myprompt = isostr;
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+		   break;
+		   case 'utc':     
+			var myprompt = utcstr;
+			if (dopromt) { document.getElementById(TheFld).value = myprompt; TimeStamp();
+} else {
+			var RightNow = prompt("UTC Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;TimeStamp();
+}
+			
+		   break;
+		  
+		   case 'zulu':     
+			var myprompt = isostr;
+			myprompt = isostr.replace("T", "  "); 
+			slen = myprompt.length;
+			myprompt = myprompt.substr(0, slen-5)+'Z';
+			var RightNow = prompt("Date time:", myprompt);
+			document.getElementById(TheFld).value = RightNow;
+			TimeStamp();
+		   break;
+		   case 'autozulu':     
+			var myprompt = isostr;
+			myprompt = isostr.replace("T", "  "); 
+			slen = myprompt.length;
+			myprompt = myprompt.substr(0, slen-5)+'Z';
+			var RightNow = myprompt;
+			document.getElementById('UDTGfld').value = RightNow;
+			TimeStamp();
+		   break;
+		}
+				
+	// if(FocusFld !== null && FocusFld !== '') {document.getElementById(FocusFld).focus()} --/
+	};
+
 function shortmonth(monthnum) {
 var monthname;
 shortmonths = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"] ;
@@ -603,6 +709,13 @@ function SaveData() {
  } 
  getit();
  Checkifinbrowser();
+ defaultGPS();
+
+GetGPS();
+copyGPS();
+checkLatLon();
+TimeNow('DateTime', false);
+TimeStamp();
 
  //Fixfields();
  }
@@ -630,6 +743,693 @@ function Checkifinbrowser() {
  document.getElementById('Submit').style.visibility='hidden';
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
  } else {document.getElementById('Submit').style.visibility='visible';  }
+}
+
+//GIS codes
+
+function checkLatLon() {
+var cnt = 1;
+//var x1=0; var x2=0;
+x1 = CheckLat(true);
+x2 = CheckLon(true);
+
+if (x1==1 && x2==1) {// now set string for latlon
+	var mlat = document.getElementById('mapLat').value;
+	var mlon = document.getElementById('mapLon').value;
+	document.getElementById('GPS2').value =mlat+','+mlon;
+	
+	convertthis();
+} 
+}
+function CheckLat(SkipMsg){
+var latCheck = 1;
+var num =document.getElementById('mapLat').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+if (z1 == 'NaN') {alert ('error')}
+if ((num <-90)  || ( num >90) || isNaN (z1) ) { document.getElementById('mapLat').value='';
+//alert ('Latitude must be between -90 and 90\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+alert ('Latitude must be between -90 and 90');
+ document.getElementById('mapLat').value ='';
+		document.getElementById('mapLat').focus();
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var latCheck = 0;
+}
+
+return latCheck;
+}
+
+function CheckLon(SkipMsg){
+var lonCheck = 1;
+var num =document.getElementById('mapLon').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+
+if ((num <-180) || ( num >180) || isNaN (z1) ) { document.getElementById('mapLon').value='';
+alert ('Longitude must be between -180 and 180 '); 
+//alert ('Longitude must be between -180 and 180\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+ document.getElementById('mapLon').value = '';
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var lonCheck = 0;
+
+} 
+
+return lonCheck;
+}
+function copyGPS() {
+
+
+var GPSstr= document.getElementById("ExtGPS").value;
+
+var nameArr = GPSstr.split(" ");
+
+var a =nameArr[0];
+
+var b =nameArr[1];
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+//if(!isNaN (a)){{Latitude},{Longitude}=a;}
+if(!isNaN (a)){document.getElementById('mapLon').value =z2;}
+if(!isNaN (b)){document.getElementById('mapLon').value =z2;}
+//checkLatLon();
+}
+function GetGPS(){
+var ans = document.getElementById('ExtGPS').value;
+
+if (ans  != '(Not available)'){
+//fill it with defaults
+//alert(ans);
+
+myMGRS=ans;
+var ans = ans.replace(" ", ",");
+
+
+ if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
+//now the mrgs
+
+var d= myMGRS.split(' ');
+MGRSString(d[0],d[1]);
+//store();
+//what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
+//lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
+
+var mypram = {lat:+d[0], lng:+d[1]};
+//alert(mypram);
+what3words.api.convertTo3wa(mypram, 'en')
+  .then(function(response) {
+  theword = ("[convertTo3wa]", response);
+  document.getElementById('w3w').value = theword.words
+  
+  //alert(theword.words);
+  });
+  convertthis();
+} 
+
+}
+
+function MGRSString ()
+
+//function MGRSString (51.172,-1.779)
+// 51.172,-1.779  38.556, -121.793
+{ //var Lat = 38.556; var Long=-121.793; 
+//var Lat1 = 38.556; var Long1=-121.793; 
+var thestring= document.getElementById("GPS2").value;
+
+if (thestring ==''){ return;}
+ var res = thestring.split(",");
+ var Lat = parseFloat(res[0]); 
+ var Long=parseFloat(res[1]); 
+ if (isNaN(Lat)) {return} 
+if (isNaN(Long)) {return}
+latLonToGridSquare(res[0],res[1]);
+
+
+ //Lat=38.556; Long=-121.793
+if (Lat < -80) return 'Too far South' ; if (Lat > 84) return 'Too far North' ;
+var c = 1 + Math.floor ((Long+180)/6);
+var e = c*6 - 183 ;
+var k = Lat*Math.PI/180; 
+var l = Long*Math.PI/180;
+var m = e*Math.PI/180;
+var n = Math.cos (k);
+var o = 0.006739496819936062*Math.pow (n,2);
+var p = 40680631590769/(6356752.314*Math.sqrt(1 + o));
+var q = Math.tan (k);
+var r = q*q;
+var s = (r*r*r) - Math.pow (q,6);
+var t = l - m;
+var u = 1.0 - r + o;
+var v = 5.0 - r + 9*o + 4.0*(o*o);
+var w = 5.0 - 18.0*r + (r*r) + 14.0*o - 58.0*r*o;
+var x = 61.0 - 58.0*r + (r*r) + 270.0*o - 330.0*r*o;
+var y = 61.0 - 479.0*r + 179.0*(r*r) - (r*r*r);
+var z = 1385.0 - 3111.0*r + 543.0*(r*r) - (r*r*r);
+
+var aa = p*n*t + (p/6.0*Math.pow (n,3)*u*Math.pow (t,3)) + (p/120.0*Math.pow (n,5)*w*Math.pow (t,5)) + (p/5040.0*Math.pow (n,7)*y*Math.pow (t,7));
+var ab = 6367449.14570093*(k - (0.00251882794504*Math.sin (2*k)) + (0.00000264354112*Math.sin (4*k)) - (0.00000000345262*Math.sin (6*k)) + (0.000000000004892*Math.sin (8*k))) + (q/2.0*p*Math.pow (n,2)*Math.pow (t,2)) + (q/24.0*p*Math.pow (n,4)*v*Math.pow (t,4)) + (q/720.0*p*Math.pow (n,6)*x*Math.pow (t,6)) + (q/40320.0*p*Math.pow (n,8)*z*Math.pow (t,8));
+aa = aa*0.9996 + 500000.0;
+
+ab = ab*0.9996; if (ab < 0.0) ab += 10000000.0;
+var ad = 'CDEFGHJKLMNPQRSTUVWXX'.charAt (Math.floor (Lat/8 + 10));
+var ae = Math.floor (aa/100000);
+var af = ['ABCDEFGH','JKLMNPQR','STUVWXYZ'][(c-1)%3].charAt (ae-1);
+var ag = Math.floor (ab/100000)%20;
+var ah = ['ABCDEFGHJKLMNPQRSTUV','FGHJKLMNPQRSTUVABCDE'][(c-1)%2].charAt (ag);
+function pad (val) {if (val < 10) {val = '0000' + val} else if (val < 100) {val = '000' + val} else if (val < 1000) {val = '00' + val} else if (val < 10000) {val = '0' + val};return val};
+aa = Math.floor (aa%100000); aa = pad (aa); 
+ab = Math.floor (ab%100000); ab = pad (ab);
+//var mrgs= c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var MRGS2=c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var mrgs= c + ad + af + ah  + aa + ab;
+//document.getElementById('WithSpaces').value =MRGS2;
+//document.getElementById('NoSpaces').value =mrgs;
+document.getElementById('MGRS').value =mrgs;
+
+document.getElementById('MGRS').value =mrgs;
+//document.getElementById('MGRS2').value =MRGS2;
+};
+
+function convertthis(){
+
+document.getElementById('MGRS').value ='';
+var nameArr=[];
+var thestring= document.getElementById("GPS2").value;
+//(thestring);
+document.getElementById("GPS2").value = thestring;
+ var n = thestring.search(",");
+ var n1= thestring.search(" ");
+var res = thestring.split(",");
+var p=res.length;
+if (p==2){MGRSString(); 
+
+var mypram = {lat:+res[0], lng:+res[1]};
+document.getElementById('mapLat').value =res[0];
+document.getElementById('mapLon').value =res[1];
+
+if(res[0]==''|res[1]==''){return};
+
+//mapLat
+//alert(mypram);
+  } else 
+{ ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
+document.getElementById('GPS2').value ='';
+document.getElementById('mapLat').value ='';
+document.getElementById('mapLon').value ='';
+//document.getElementById('WithSpaces').value ='';
+document.getElementById('MGRS').value ='';
+document.getElementById('Grid').value ='';
+//document.getElementById('NoSpaces').value ='';
+ document.getElementById("GPS2").focus()}
+}
+
+function TimeNow(Timefld, doprompt) {
+var txt;
+var d = new Date();
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0"+thismonth};
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0"+thisday};
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
+document.getElementById(Timefld).value = RightNow;
+ TimeStamp();} 
+ 
+ latLonToGridSquare = function(param1,param2){
+  var lat=-100.0;
+  var lon=0.0;
+  var adjLat,adjLon,GLat,GLon,nLat,nLon,gLat,gLon,rLat,rLon;
+  var U = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+  var L = U.toLowerCase();
+  // support Chris Veness 2002-2012 LatLon library and
+  // other objects with lat/lon properties
+  // properties could be getter functions, numbers, or strings
+  function toNum(x){
+    if (typeof(x) === 'number') return x;
+    if (typeof(x) === 'string') return parseFloat(x);
+    if (typeof(x) === 'function') return parseFloat(x());
+   // 9-20-20 ( "HamGridSquare -- toNum -- can not convert input: "+x);
+  }
+  if (typeof(param1)==='object'){
+    if (param1.length === 2){
+      lat = toNum(param1[0]);
+      lon = toNum(param1[1]);
+    } else if (('lat' in param1) && ('lon' in param1)){
+      lat = toNum(param1.lat);
+      lon = toNum(param1.lon);
+    } else if (('latitude' in param1) && ('longitude' in param1)){
+      lat = toNum(param1.latitude);
+      lon = toNum(param1.longitude);
+    } else {
+      ( "Please correct your coordinates -- "+param1);
+    }
+  } else {
+    lat = toNum(param1);
+    lon = toNum(param2);
+  }
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
+  if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
+  if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
+  if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
+  adjLat = lat + 90;
+  adjLon = lon + 180;
+  GLat = U[Math.trunc(adjLat/10)];
+  GLon = U[Math.trunc(adjLon/20)];
+  nLat = ''+Math.trunc(adjLat % 10);
+  nLon = ''+Math.trunc((adjLon/2) % 10);
+  rLat = (adjLat - Math.trunc(adjLat)) * 60;
+  rLon = (adjLon - 2*Math.trunc(adjLon/2)) *60;
+  gLat = L[Math.trunc(rLat/2.5)];
+  gLon = L[Math.trunc(rLon/5)];
+  var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
+  //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
+  document.getElementById('Grid').value =mygrid;
+}
+function removeLinebreaks (s){
+
+var s = s.replace(/(\r\n|\n|\r)/gm," "); 
+return s;
+}
+function removeTabs (s){
+
+var s = s.replace(/(\t)/gm,"-  "); 
+return s;
+}
+function createjson () {
+var defaultLat = '{Latitude}';
+var defaultLon = '{Longitude}';
+
+
+var jsontext =document.getElementById('FormData').value;
+var temp1 =document.getElementById('Mapfilename').value;
+var jsontext=jsontext.replace('j1', temp1);
+var temp1 =document.getElementById('DateTime').value;
+var jsontext=jsontext.replace('j2', temp1);
+var temp1 =document.getElementById('mapLat').value;
+if (temp1 == '') {temp1= defaultLat;document.getElementById('mapLat').value=defaultLat }
+var jsontext=jsontext.replace('j4', temp1);
+var temp1 =document.getElementById('mapLon').value;
+if (temp1 == '') {temp1= defaultLon; document.getElementById('mapLon').value=defaultLon}
+
+var jsontext=jsontext.replace('j5', temp1);
+var temp1 =document.getElementById('MGRS').value;
+var jsontext=jsontext.replace('j6', temp1);
+var temp1 =document.getElementById('Grid').value;
+var jsontext=jsontext.replace('j7', temp1);
+var temp1 =document.getElementById('Title').value;
+var jsontext=jsontext.replace('j9', temp1);
+var temp1 =document.getElementById('Facility').value;
+var jsontext=jsontext.replace('j10', temp1);
+var temp1 =document.getElementById('Contact').value;
+var jsontext=jsontext.replace('j11', temp1);
+var temp1 =document.getElementById('Phone').value;
+var jsontext=jsontext.replace('j12', temp1);
+var temp1 =document.getElementById('Email').value;
+var jsontext=jsontext.replace('j13', temp1);
+
+var temp1 =document.getElementById('Email').value;
+var jsontext=jsontext.replace('j14', temp1);
+var temp1 =document.getElementById('B1').value;
+var jsontext=jsontext.replace('j15', temp1);
+var temp1 =document.getElementById('Note1').value;
+var jsontext=jsontext.replace('Note1', temp1);
+
+var temp1 =document.getElementById('B2').value;
+var jsontext=jsontext.replace('j16', temp1);
+var temp1 =document.getElementById('Note2').value;
+var jsontext=jsontext.replace('Note2', temp1);
+
+var temp1 =document.getElementById('B3').value;
+var jsontext=jsontext.replace('j17', temp1);
+var temp1 =document.getElementById('Note3').value;
+var jsontext=jsontext.replace('Note3', temp1);
+var temp1 =document.getElementById('B4').value;
+var jsontext=jsontext.replace('j18', temp1);
+var temp1 =document.getElementById('Note4').value;
+var jsontext=jsontext.replace('Note4', temp1);
+
+var temp1 =document.getElementById('B5').value;
+var jsontext=jsontext.replace('j19', temp1);
+var temp1 =document.getElementById('Note5').value;
+var jsontext=jsontext.replace('Note5', temp1);
+
+var temp1 =document.getElementById('B6').value;
+var jsontext=jsontext.replace('j20', temp1);
+var temp1 =document.getElementById('Note6').value;
+var jsontext=jsontext.replace('Note6', temp1);
+
+var temp1 =document.getElementById('OtherType2').value;
+var jsontext=jsontext.replace('j21', temp1);
+var temp1 =document.getElementById('B7').value;
+var jsontext=jsontext.replace('j22', temp1);
+var temp1 =document.getElementById('Note7').value;
+var jsontext=jsontext.replace('Note7', temp1);
+
+var temp1 =document.getElementById('OtherType3').value;
+var jsontext=jsontext.replace('j23', temp1);
+var temp1 =document.getElementById('B8').value;
+var jsontext=jsontext.replace('j24', temp1);
+var temp1 =document.getElementById('Note8').value;
+var jsontext=jsontext.replace('Note8', temp1);
+
+var temp1 =document.getElementById('TotalBeds').value;
+var jsontext=jsontext.replace('j25', temp1);
+var temp1 =document.getElementById('Comments').value;
+temp1 = removeLinebreaks(temp1);
+
+var jsontext=jsontext.replace('j26', temp1);
+document.getElementById('attached_text').value = jsontext;
+var attached_file = 'FormData.txt';
+
+
+//attached_text = jsontext;
+}//attached_text
+
+function splitPaste(str) {
+var str = str.replace(",", " ");
+var str = str.replace("  ", " ");
+var d= str.split(' ');
+var cnt = d.length;
+if (cnt >1) {
+document.getElementById('mapLat').value =d[0];
+document.getElementById('mapLon').value =d[1];
+}
+}
+
+function checkformgrs(thestring){
+//var thestring= document.getElementById("MGRS").value;
+var spc = thestring.split(" ");
+ var n = thestring.search(",");
+ var nlen=thestring.length;
+if (n>0) {alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253" '); document.getElementById('MGRS').value='';}
+if(nlen<15){alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253'); document.getElementById('MGRS').value='';}
+
+if (spc.length >2){LatLongFromMGRSstring(thestring);
+ } else{
+ 
+ var n = thestring.search(",")
+var spc = thestring.split(" ");
+//(spc.length);
+if (n ==-1) {// try to parse
+
+var str = document.getElementById("MGRS").value;  
+var res = str.substring(0, 3);
+    var res1 = str.substring(3, 5);
+      var res2 = str.substring(5, 10);
+       var res3 = str.substring(10, 15);
+//( res+' '+res1+' '+res2+ ' '+res3);
+LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+convertthis();
+store();
+}
+}
+}
+
+ latLonToGridSquare = function(param1,param2){
+  var lat=-100.0;
+  var lon=0.0;
+  var adjLat,adjLon,GLat,GLon,nLat,nLon,gLat,gLon,rLat,rLon;
+  var U = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+  var L = U.toLowerCase();
+  // support Chris Veness 2002-2012 LatLon library and
+  // other objects with lat/lon properties
+  // properties could be getter functions, numbers, or strings
+  function toNum(x){
+    if (typeof(x) === 'number') return x;
+    if (typeof(x) === 'string') return parseFloat(x);
+    if (typeof(x) === 'function') return parseFloat(x());
+   // 9-20-20 ( "HamGridSquare -- toNum -- can not convert input: "+x);
+  }
+  if (typeof(param1)==='object'){
+    if (param1.length === 2){
+      lat = toNum(param1[0]);
+      lon = toNum(param1[1]);
+    } else if (('lat' in param1) && ('lon' in param1)){
+      lat = toNum(param1.lat);
+      lon = toNum(param1.lon);
+    } else if (('latitude' in param1) && ('longitude' in param1)){
+      lat = toNum(param1.latitude);
+      lon = toNum(param1.longitude);
+    } else {
+      ( "Please correct your coordinates -- "+param1);
+    }
+  } else {
+    lat = toNum(param1);
+    lon = toNum(param2);
+  }
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
+  if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
+  if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
+  if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
+  adjLat = lat + 90;
+  adjLon = lon + 180;
+  GLat = U[Math.trunc(adjLat/10)];
+  GLon = U[Math.trunc(adjLon/20)];
+  nLat = ''+Math.trunc(adjLat % 10);
+  nLon = ''+Math.trunc((adjLon/2) % 10);
+  rLat = (adjLat - Math.trunc(adjLat)) * 60;
+  rLon = (adjLon - 2*Math.trunc(adjLon/2)) *60;
+  gLat = L[Math.trunc(rLat/2.5)];
+  gLon = L[Math.trunc(rLon/5)];
+  var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
+  //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
+  document.getElementById('Grid').value =mygrid;
+}
+function LatLongFromMGRSstring (a) 
+{
+var b = a.trim();
+b = b.match(/\S+/g);
+if (b == null || b.length != 4) return [false,null,null];
+var c = (b[0].length < 3) ? b[0][0] : b[0].slice(0,2);
+var d = (b[0].length < 3) ? b[0][1] : b[0][2];
+var e = (c*6-183)*Math.PI / 180;
+var f = ["ABCDEFGH","JKLMNPQR","STUVWXYZ"][(c-1) % 3].indexOf(b[1][0]) + 1;
+var g = "CDEFGHJKLMNPQRSTUVWXX".indexOf(d);
+var h = ["ABCDEFGHJKLMNPQRSTUV","FGHJKLMNPQRSTUVABCDE"][(c-1) % 2].indexOf(b[1][1]);
+var i = [1.1,2.0,2.8,3.7,4.6,5.5,6.4,7.3,8.2,9.1,0,0.8,1.7,2.6,3.5,4.4,5.3,6.2,7.0,7.9];
+var j = [0,2,2,2,4,4,6,6,8,8,0,0,0,2,2,4,4,6,6,6];
+var k = i[g];
+var l = Number(j[g]) + h / 10;
+if (l < k) l += 2;
+var m = f*100000.0 + Number(b[2]);
+var n = l*1000000 + Number(b[3]);
+m -= 500000.0;
+if (d < 'N') n -= 10000000.0;
+m /= 0.9996; n /= 0.9996;
+var o = n / 6367449.14570093;
+var p = o + (0.0025188266133249035*Math.sin(2.0*o)) + (0.0000037009491206268*Math.sin(4.0*o)) + (0.0000000074477705265*Math.sin(6.0*o)) + (0.0000000000170359940*Math.sin(8.0*o));
+var q = Math.tan(p);
+var r = q*q;
+var s = r*r;
+var t = Math.cos(p);
+var u = 0.006739496819936062*Math.pow(t,2);
+var v = 40680631590769 / (6356752.314*Math.sqrt(1 + u));
+var w = v;
+var x = 1.0 / (w*t); w *= v;
+var y = q / (2.0*w); w *= v;
+var z = 1.0 / (6.0*w*t); w *= v;
+var aa = q / (24.0*w); w *= v;
+var ab = 1.0 / (120.0*w*t); w *= v;
+var ac = q / (720.0*w); w *= v;
+var ad = 1.0 / (5040.0*w*t); w *= v;
+var ae = q / (40320.0*w);
+var af = -1.0-u;
+var ag = -1.0-2*r-u;
+var ah = 5.0 + 3.0*r + 6.0*u-6.0*r*u-3.0*(u*u)-9.0*r*(u*u);
+var ai = 5.0 + 28.0*r + 24.0*s + 6.0*u + 8.0*r*u;
+var aj = -61.0-90.0*r-45.0*s-107.0*u + 162.0*r*u;
+var ak = -61.0-662.0*r-1320.0*s-720.0*(s*r);
+var al = 1385.0 + 3633.0*r + 4095.0*s + 1575*(s*r);
+var lat = p + y*af*(m*m) + aa*ah*Math.pow(m,4) + ac*aj*Math.pow(m,6) + ae*al*Math.pow(m,8);
+var lng = e + x*m + z*ag*Math.pow(m,3) + ab*ai*Math.pow(m,5) + ad*ak*Math.pow(m,7);
+lat = lat*180 / Math.PI;
+lat = lat.toFixed (4);
+lng = lng*180 / Math.PI;
+lng = lng.toFixed (4);
+
+document.getElementById('GPS2').value = lat+','+lng;
+//document.getElementById('dd').value = lat+','+lng;
+document.getElementById('mapLat').value = lat;
+document.getElementById('mapLon').value = lng;
+//gpsLat
+convertthis();
+//return [true,lat,lng];
+
+}
+function TimeNow(Timefld, doprompt) {
+var txt;
+var d = new Date();
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0"+thismonth};
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0"+thisday};
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
+document.getElementById(Timefld).value = RightNow;
+ TimeStamp();} 
+ 
+
+function testlink() {
+
+var mylink = document.getElementById('w3w').value
+if (mylink!=''){
+window.open(
+  'https://what3words.com/'+mylink, '_blank' )// <- This is what makes it open in a new window.
+}
+}
+
+function defaultGPS(){
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+document.getElementById('mapLat').value =z1;
+document.getElementById('mapLon').value =z2;
+checkLatLon();
+}
+function copyGPS() {
+var GPSstr= document.getElementById("ExtGPS").value;
+var nameArr = GPSstr.split(" ");
+var a =nameArr[0];
+var b =nameArr[1];
+if(!isNaN (a)){document.getElementById('mapLat').value =a;}
+if(!isNaN (b)){document.getElementById('mapLon').value =b;}
+
+}
+
+function GetGPS(){
+
+document.getElementById('mapLat').value ={Latitude};
+document.getElementById('mapLon').value = {Longitude}
+var ans = document.getElementById('ExtGPS').value;
+//
+
+if (ans  != '(Not available)'){var ans = '{GPS_SIGNED_DECIMAL}'
+myMGRS=ans;
+var ans = ans.replace(" ", ",");
+
+
+ if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
+//now the mrgs
+
+var d= myMGRS.split(' ');
+MGRSString(d[0],d[1]);
+//store();
+//what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
+//lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
+
+//var mypram = {lat:+d[0], lng:+d[1]};
+//alert(mypram);
+//what3words.api.convertTo3wa(mypram, 'en')
+ // .then(function(response) {
+//  theword = ("[convertTo3wa]", response);
+//  document.getElementById('w3w').value = theword.words
+  
+  //alert(theword.words);
+ // });
+  convertthis();
+ 
+
+}
+
+
+//document.getElementById('GPS').value = ans;
+}
+function parsethisdate() {
+var thedatetime=  document.getElementById('DateTime').value;
+//d= new Date(Date.parse(thedatetime)).toString();
+var d= new Date(Date.parse(thedatetime));
+
+//alert (Date.parse(thedatetime));
+//d =parseDate(thedatetime);
+utcstr = d.toISOString()
+//alert (utcstr);
+document.getElementById('timestamp2').value= utcstr;
+return utcstr;
+}
+function TimeStamp(){
+var d1 = new Date();
+mtime = d1.getTime();
+//var thedatetime=  document.getElementById('UDTGfld').value;
+var thedatetime= parsethisdate();
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime = thedatetime.replace("T", " ") 
+var thedatetime=thedatetime.replace(' ', ',');
+var thedatetime = thedatetime.replace("Z", "") ;
+var thedatetime = thedatetime.replace(".000", "") ;
+
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+//alert (thesplit[1]);
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
+  var nyyyy = d.getUTCFullYear();
+  nyyyy= nyyyy.toString();
+
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+var ndd = d.getUTCDate();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+ // alert(ndd);
+  var nhh = d.getUTCHours();
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
+    var nmm = d.getUTCMinutes();
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
+	 var nss = d.getUTCSeconds();
+	
+  nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
+var test = (thesplit[0])+(thesplit[1])+(thesplit[2])+(thesplit[3])+(thesplit[4])+(thesplit[5]);
+
+
+test = test.replace(/\s/g,'');
+ document.getElementById("timestamp").value = test; ;
+  //  document.getElementById("timestamp2").value= test;
+ //x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   
+   
+  // document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+  // alert (nyyyy+nMM+ndd+nhh+nmm+nss);
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
+
+ 
 }
 </script>
 <script type="text/javascript">
@@ -715,7 +1515,7 @@ to links</span></a> </div>
                             
                           <small><span style="font-size: 12px;"></span></small></div></td>
                           <td width="454"><div align="center">
-                            <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load Compiled Hospital Bed Report " />
+                            <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load Hospital Bed Report " />
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></td>
                           <td width="189" valign="top"> <div align="center"><span style="font-size: 12px;"><a
  href="#pop1">Form Info</a><br />
@@ -729,34 +1529,26 @@ to links</span></a> </div>
                   <tr>
                     <td colspan="2" nowrap="nowrap" style="text-align: center; vertical-align: top;">
                       <div align="left"><br />
-                        <span style="color: rgb(204, 0, 0);">  </span><span class="style9">As of
-                        Time:</span>  
-                        <input maxlength="12" size="12" name="Time1" id="Time1"
-
-                          placeholder="Click for Time" onclick="SetDateTime('hm',this.id)"
-
-                          required="required" />   Date:  <input title="Overwrite if needed"
-
-                          maxlength="12" size="12" name="Date" id="Date" placeholder="Click for Date"
-
-                          onclick="SetDateTime('mmm-d-y',this.id)" required="required" />
-                          
-                          
+                        <span style="color: rgb(204, 0, 0);"> </span>Report<span class="style9">                        </span>Date/Time<span class="style9">:</span>  
+                        <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" />  
                         
                              
                           <small>
                         <input name="Title" type="hidden" id="Title" value="COMPILED" />
-                        </small><small><span
+ <input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
+  <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" /> 
+  <span class="style2">&nbsp;</span><span style="font-size: 14px;"> <span style="font-size: 14px;">
+  <input name="timestamp" type="hidden" id="timestamp" size="30" />
+  </span>
+  <input name="timestamp2" type="hidden" id="timestamp2" size="40" />
+  <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+<textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
+  </span>                        </small><small><span
 
                             style="font-size: 12px;"><big style="font-weight: bold;"><big><span
 
                                   class="Header">                        </span></big></big></span></small></div>
                     </td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: justify;" colspan="2"><span style="color: rgb(204, 0, 0);"><span style="color: red;">  
-                            <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
-                    </span></span></td>
                   </tr>
                   <tr>
                     <td colspan="5" style="text-align: center; vertical-align: middle;"
@@ -794,15 +1586,33 @@ This form will total the available bed counts for you. </p>
                                 width="100%">
                                 <tbody>
                                   <tr>
-                                    <td align="left" width="26%" valign="top"><span
+                                    <td align="left" valign="top"><span
 
                                         style="color: rgb(204, 0, 0);"> <span style="color: rgb(204, 0, 0);">  </span></span>Name
-                                      of Reporting Facility:  </td>
-                                    <td align="left" width="74%" valign="top"><input
+                                      of Reporting Facility:  
+                                      <input
 
-                                        maxlength="50" size="60" name="Facility"
+                                        maxlength="50" size="60" name="Facility" ID="Facility"
 
-                                        placeholder="Full Name of Facility" required="required" /></td>
+                                        placeholder="Full Name of Facility" required="required" />
+                                      <p><span
+
+                                        style="color: rgb(204, 0, 0);"> <span style="color: rgb(204, 0, 0);">  </span></span>Latitude<em><span class="style49">&nbsp;
+    <input name="mapLat"  type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12" />
+    </span><span class="style45"> &nbsp;</span></em><span class="style48">&nbsp;</span>Longitude<em><span class="style9">
+    <input name="mapLon"  type="text" id="mapLon"  placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12" />
+    </span><span style="color: black;"><span style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;</span></span>&nbsp; </em>MGRS<em><span class="style9">
+    <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
+&nbsp;</span>&nbsp;</em>Grid<em>&nbsp;
+    <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+    <span class="style49">&nbsp;
+    <input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
+    <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+    <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+    <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style9">&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON&nbsp;&nbsp; or MGRS are entered manually.</span><span class="style9"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For accurate mapping you must enter the latitude and longitude. <br />
+    </span>    <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>  </span></span></span></span></em></p></td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -817,13 +1627,18 @@ This form will total the available bed counts for you. </p>
                                 width="100%">
                                 <tbody>
                                   <tr>
+                                    <td align="left" valign="top">&nbsp;</td>
+                                    <td align="left" valign="top" nowrap="nowrap"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+                                    </span></span></span></span></td>
+                                  </tr>
+                                  <tr>
                                     <td align="left" width="26%" valign="top"><span
 
                                         style="color: rgb(204, 0, 0);"> <span style="color: rgb(204, 0, 0);">  </span></span>Contact
                                       Person:  </td>
                                     <td align="left" width="74%" valign="top"><input
 
-                                        maxlength="50" size="60" name="Contact"
+                                        maxlength="50" size="60" name="Contact" ID="Contact" 
 
                                         required="required" /></td>
                                   </tr>
@@ -849,7 +1664,7 @@ This form will total the available bed counts for you. </p>
                                         Phone Number:  </td>
                                       <td align="left" width="74%" valign="top"><input
 
-                                          maxlength="50" size="60" name="Phone" /></td>
+                                          maxlength="50" size="60" name="Phone" id="Phone" /></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -871,7 +1686,7 @@ This form will total the available bed counts for you. </p>
                                         </span></td>
                                       <td align="left" width="74%" valign="top"><input
 
-                                          maxlength="50" size="60" name="Email" /></td>
+                                          maxlength="50" size="60" name="Email" id="Email" /></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -917,7 +1732,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B1" style="color: black;" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5"
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5"
 
                                         maxlength="4" />
                                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
@@ -943,7 +1758,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B2" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
 <input name="Note2" type="text" id="Note2" size="75" maxlength="75" /></td>
                                   </tr>
@@ -966,7 +1781,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B3" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
                                     &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                                     <input name="Note3" type="text" id="Note3" size="75" maxlength="75" /></td>
                                   </tr>
@@ -987,7 +1802,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B4" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <input name="Note4" type="text" id="Note4" size="75" maxlength="75" /></td>
                                 </tr>
@@ -1007,7 +1822,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B5" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
 <input name="Note5" type="text" id="Note5" size="75" maxlength="75" /></td>
                                 </tr>
@@ -1027,7 +1842,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B6" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 <input name="Note6" type="text" id="Note6" size="75" maxlength="75" /></td>
                                 </tr>
@@ -1052,7 +1867,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B7" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 <input name="Note7" type="text" id="Note7" size="75" maxlength="75" /></td>
                                 </tr>
@@ -1076,7 +1891,7 @@ This form will total the available bed counts for you. </p>
 
                                         class="right" id="B8" onchange="BedTotals()"
 
-                                        onclick="this.select();" onkeypress="return isNumberKey(event)" value="0" size="5" maxlength="4" />
+                                        onclick="this.select();" onkeypress="return isNumberKey(event)" size="5" maxlength="4" />
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
 <input name="Note8" type="text" id="Note8" size="75" maxlength="75" /></td>
                                 </tr>
@@ -1117,20 +1932,51 @@ cols="120" rows="2" name="Comments" id="Comments" o="" nchange="this.value=RWS(t
 
 onkeyup="AutoGrowTextArea(this)" placeholder="Be Brief and Concise"></textarea>
                         <br />
-                        <p></p>
+						 <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+           <input name="Mapfilename" type="hidden" id="Mapfilename" value="General Hospital Bed Report" />
+<textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
+DateTime:T=j2
+Latitude:T=j4
+Longitude:T=j5
+MGRS:T=j6
+Grid:T=j7
+Jurisdiction/Group:T=j9
+REPORTING FACILITY:T=j10
+Contact Person:T=j11
+Phone Number:T=j12
+Email:T=j14
+Emergency Beds:N=j15
+-Note:T=Note1
+Pediatrics:N=j16
+-Note:T=Note2
+Medical/Surgery:N=j17 
+-Note:T=Note3
+Psychiatry:N=j18
+-Note:T=Note4
+Burn:N=j19
+-Note:T=Note5
+Critical Care:N=j20
+-Note:T=Note6
+Other-j21:N=j22
+-Note:T=Note7
+Other-j23:N=j24
+-Note:T=Note8
+TOTAL Beds AVAILABLE:N=j25
+Comments:T=j26</textarea>                            
+<p></p>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <td width="753" height="34"><small> 
                       <span style="font-family: Calibri;">
-                      <input name="savebtn" type="button" id="savebtn"  style="color: blue;"onclick="SaveData()" value="Save Compiled Hospital Bed Report " />
+                      <input name="savebtn" type="button" id="savebtn"  style="color: blue;"onclick="SaveData()" value="Save Hospital Bed Report " />
                       </span>&nbsp;&nbsp;<span style="color: rgb(128, 0, 0);"><span><span style="font-size: 12px;"></span></span></span>&nbsp;&nbsp;
                       <input class="SubmitBtn" enctype="multipart/form-data"
 
 id="Submit" method="Post" name="Submit" size="8" style="height: 28px;  color: green;"
 
-value="Submit" type="submit" /> 
+value="Submit" type="submit"  onclick="createjson(); " /> 
    </small>
   <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);"
 
@@ -1151,10 +1997,10 @@ style="font-size: 12px;"></span></small></td>
                                   class="Header">
   <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="Hosp Bed Report 9.2" />
-</span></big></big></span>Version 9.2<span style="font-size: 12px;"><big
+                                    id="Templateversion" value="Hosp Bed Report 9.5" />
+</span></big></big></span>Version 9.6<span style="font-size: 12px;"><big
 
-style="font-weight: bold;"><big><small>  </small><span class="Header">
+style="font-weight: bold;"><big><small> </small><span class="Header">
 </span></big></big></span></small></div></td>
 </tr>
 </tbody>
