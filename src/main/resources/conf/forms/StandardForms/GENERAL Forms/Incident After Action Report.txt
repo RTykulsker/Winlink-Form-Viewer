@@ -31,4 +31,4 @@ Phone: <var Phone>
  ---------------------------------------------
 Express Sending Station: <MsgSender>
 Senders Express Version: <ProgramVersion>
-Senders Template Version: <var Templateversion>
+Senders Template Version: Ver 6.5
