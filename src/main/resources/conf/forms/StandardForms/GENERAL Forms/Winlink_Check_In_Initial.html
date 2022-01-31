@@ -744,7 +744,7 @@ function SaveData() {
      ("Files are not supported"); 
  } 
 
-document.getElementById('testlnkbtn').style.visibility='visible';
+//document.getElementById('testlnkbtn').style.visibility='visible';
 Checkifinbrowser();
 getit();
 GetGPS();
@@ -1216,8 +1216,8 @@ var jsontext=jsontext.replace('j9',temp1);
 var temp1= document.getElementById('Grid').value;//enmPower
 var jsontext=jsontext.replace('j10',temp1);
 
-var temp1= document.getElementById('w3w').value;//enmTVStation
-var jsontext=jsontext.replace('j11',temp1);
+//var temp1= document.getElementById('w3w').value;//enmTVStation
+//var jsontext=jsontext.replace('j11',temp1);
 
 var temp1= document.getElementById('Band').value;
 var jsontext=jsontext.replace('j12',temp1);//enmWater
@@ -1511,15 +1511,9 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
 <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span></span></span></em></p>
-  <p><em> <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>OPTIONAL - &nbsp;What3words location: 
-      <input name="w3w" type="text" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>
-    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp; </span></em>       <input type="button" name="testlnkbtn"  id="testlnkbtn"onclick="testlink();"value="View w3w location in a new tab" />
-  </em></p>
-  <p align="left"><span class="style12"><em> </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LAT/LON and MGRS  default to the center of the grid square listed in Express Settings, </span><span class="style12">&nbsp;unless a GPS is used or Lat/LON<br />
-    <span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style23">&nbsp;&nbsp;&nbsp;</span><span class="style23">&nbsp;&nbsp;&nbsp;</span>    or MGRS are entered manually.</span><span class="style23"><br />
-        <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>For accurate mapping you must enter the latitude and longitude. <br />
-        <span class="style12">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>* What3words currently requires an internet connection. See <a href="#pop1">Form Info</a>.</span></p>
+</span></span></span></span></em><em><input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>    
+    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;</span></em></em></p>
+  <p align="left"><span class="style12"><em> </em></span></p>
   </div>
 </td>
 </tr>
@@ -1543,7 +1537,6 @@ Operators:T=j7
 Location:T=j8
 MGRS:T=j9
 Grid:T=j10
-What3Words:T=j11
 Band:M=j12
 Session:M=j13
 Comments:T=j14</textarea>
@@ -1573,9 +1566,9 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.3</span><span style="font-size: 12px;">
+&nbsp; <span class="style25">Ver 4.0.4</span><span style="font-size: 12px;">
 <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.3" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.4" />
 </span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>
@@ -1624,7 +1617,7 @@ PDF then print the PDF. In some instances Landscape mode may print
 
 better than Portrait. <br /> <br /> 
 
- You may enter manually Decimal Degrees: 32.5042,-116.9834 or enter MGRS Coordinates: 11SNR0184195204 or 11S NR 01841 95204, or What3Words format:  incomes.amount.formed.
+ You may enter manually Decimal Degrees: 32.5042,-116.9834 or enter MGRS Coordinates: 11SNR0184195204 or 11S NR 01841 95204.
  <br /> <br /> 
 Providing GPS information is optional but very valuable. We encourage you to do so.
 <br /> LAT/LON: The form accepts only Decimal Degree latitude and longitude. 4 decimals are preferred.
@@ -1632,24 +1625,8 @@ Providing GPS information is optional but very valuable. We encourage you to do 
 
 NOTE: For auto entered GPS decimal coordinates to work, you must have a connected and configured GPS device working with Winlink Express. Otherwise manual entry in the indicated format can be used.
 </p><br />
-<div align="left"><strong>OPTIONAL - What3Words </strong>is a geolocation service that segments the world into 3m by 3m (9ft by 9ft) squares. Each square has a unique three word address.<br>
-  For example, the Hollywood Sign in Los Angeles California is located at ///incomes.amount.formed <br>
-  Check it out here: https://w3w.co/incomes.amount.formed<br>
-  The equivalent latitude and longitude are 34.134115, -118.32155.<br>
-  The center of the &quot;H&quot; of Hollywood sign is located at ///spite.focal.hedge <br>
-  Check it out here: <a href="https://w3w.co/spite.focal.hedge" target="_blank">https://w3w.co/spite.focal.hedge</a>)<br>
-  The equivalent latitude and longitude are 34.134042, -118.32218<br>
-  <br />Three words are relatively quick and easy to transmit over radio. <br>
-  Keep in mind that accuracy matters and spelling mistakes can change the location by hundreds of miles.<br><br />
-  You can find a W3W address for any point on the planet using the free apps available for Apple and Android ( <a href="https://what3words.com/products/what3words-app/" target="_blank">https://what3words.com/products/what3words-app/</a> ). <br>
-  These apps work with and without the internet as they pull the data from the GPS in your phone.<br>
-  Or you can check for a location anywhere on the planet using the website: <a href="https://what3words.com/incomes.amount.formed" target="_blank">https://what3words.com/incomes.amount.formed
-  </a>
-</div>
-</p>
-<p align="left"><strong>Note: at present W3W requires the internet for full functionality. If the internet is present, entering a W3W address will automatically populate the Degree Decimal, MGRS and Grid Square Fields, and vice versa, entering the Degree Decimal address will update the W3W address. Without the internet the W3W information will have to be entered manually, if it is desired. </strong></p>
 
-<p align="left">The Winlink Check-in, Check-out and Position Report forms endeavour to provide you with useful options such as latitude/longitude, MGRS and W3W so you can move seamlessly between coordinate systems used by different organizations.</p>
+<p align="left">The Winlink Check-in, Check-out and Position Report forms endeavour to provide you with useful options such as latitude/longitude, and MGRS so you can move seamlessly between coordinate systems used by different organizations.</p>
 . 
 <td width="0%"></p>
 
