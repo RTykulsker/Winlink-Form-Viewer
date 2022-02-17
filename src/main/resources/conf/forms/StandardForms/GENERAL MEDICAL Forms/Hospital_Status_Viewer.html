@@ -303,25 +303,20 @@ else { document.getElementById(theid).value = '';}
           <td width="12%">1. Incident Name</td>
           <td width="22%"><strong><span class="style49">
 {var Incident1}         </span></strong></td>
-          <td width="18%">2a. Date: 
-            {var Date}</td>
-          <td width="48%">2b Time: <span class="style49">
-{var Time}         </span></td>
-        </tr>
+          <td colspan="2">2a. Date/Time:<strong>            {var DateTime}</strong></td>
+          </tr>
         <tr class="FormReg">
           <td>3a. Facility Name</td>
           <td><strong><span class="style49"> {var FacilityName3a}
 </span></strong></td>
-          <td colspan="2">3b. Facility Type: {var FacilType} : 
-            {var Othertype}</td>
+          <td colspan="2">3b. Facility Type:<strong> {var FacilType} :</strong> {var Othertype}</td>
           </tr>
         <tr class="FormReg">
           <td>4a. Contact Name</td>
           <td><strong><span class="style49">
 {var Contact4}         </span></strong></td>
-          <td>4b. Contact Phone</td>
-          <td>{var Contactphone}
-&nbsp;&nbsp;            X&nbsp;&nbsp;&nbsp; {var phoneX}           </td>
+          <td width="18%">4b. Contact Phone</td>
+          <td width="48%"><strong>{var Contactphone} &nbsp;&nbsp;            X&nbsp;&nbsp;&nbsp; {var phoneX} </strong></td>
         </tr>
         <tr class="FormReg">
           <td>4c. Cell Phone</td>
@@ -329,7 +324,7 @@ else { document.getElementById(theid).value = '';}
             {var Cell4}
           </span></strong></td>
           <td>4d. Contact Email Address</td>
-          <td>{var Contactemail}</td>
+          <td><strong>{var Contactemail}</strong></td>
         </tr>
       </table>
       <table width="100%"  border="1" cellspacing="0" cellpadding="4">
@@ -357,82 +352,82 @@ else { document.getElementById(theid).value = '';}
           <td colspan="6"><div align="left"><span style="width:750px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Comments5}</span>        </div></td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="6" class="formbold">6. COMMUNICATIONS</td>
+          <td colspan="6" class="formbold">6. COMMUNICATIONS Impacted {var commipaired}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Email</td>
+          <td>6a.&nbsp;&nbsp;Email</td>
           <td colspan="5" nowrap="nowrap">{var A6a}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Landline Phone</td>
+          <td>6b.&nbsp;&nbsp;Landline Phone</td>
           <td colspan="5" nowrap="nowrap">{var A6b}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Fax</td>
+          <td>6c.&nbsp;&nbsp;Fax</td>
           <td colspan="5" nowrap="nowrap">{var A6c}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Internet</td>
+          <td>6d.&nbsp;&nbsp;Internet</td>
           <td colspan="5" nowrap="nowrap">{var A6d}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Cell Phone</td>
+          <td>6e.&nbsp;Cell Phone</td>
           <td colspan="5" nowrap="nowrap">{var A6e}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Satellite Phone</td>
+          <td>6f.&nbsp;&nbsp;Satellite Phone</td>
           <td colspan="5" nowrap="nowrap">{var A6f}</td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp; Amateur Radio</td>
+          <td>6g.&nbsp; Amateur Radio</td>
           <td colspan="5" nowrap="nowrap">{var A6g}</td>
           </tr>
         <tr class="FormReg">
-          <td colspan="6"><span style="width:750px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Comments6}<span></span> </td>
+          <td colspan="6">6h.<span style="width:750px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Comments6}<span></span> </td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="6" class="formbold">7. UTILITIES</td>
+          <td colspan="6" class="formbold">7. UTILITIES &nbsp;&nbsp; Impacted: {var utilitiesimpared}</td>
           </tr>
         <tr class="FormReg">
-          <td>Power</td>
+          <td>7a. Power</td>
           <td colspan="5" nowrap="nowrap">{var A7a}</td>
           </tr>
         <tr class="FormReg">
-          <td>Water</td>
+          <td>7b. Water</td>
           <td colspan="5" nowrap="nowrap">{var A7b}</td>
           </tr>
         <tr class="FormReg">
-          <td>Sanitation</td>
+          <td>7c. Sanitation</td>
           <td colspan="5" nowrap="nowrap">{var A7c}</td>
           </tr>
         <tr class="FormReg">
-          <td>Heating/Ventilation/AC</td>
+          <td>7d.Heating/Ventilation/AC</td>
           <td colspan="5" nowrap="nowrap">{var A7d}</td>
           </tr>
         <tr class="FormReg">
           <td colspan="6"><span style="width:750px; margin: 5px;  word-wrap:break-word; display:inline-block;">{var Comments7}</span> </td>
           </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="6" class="formbold">8. EVACUATION</td>
+          <td colspan="6" class="formbold">8. EVACUATIONS &nbsp;&nbsp; {var evacConcerns}</td>
           </tr>
         <tr class="FormReg">
-          <td>Evacuating?</td>
-          <td width="45%"><span class="formbold">&nbsp; </span>
-            {var Evacuating8}</td>
-          <td width="27%" colspan="4">  {var A8a}</td>
+          <td>8a. Evacuating?</td>
+          <td width="30%"><span class="formbold">&nbsp; </span>
+            {var Evac8}</td>
+          <td width="42%" colspan="4">  {var A8a}</td>
           </tr>
         <tr class="FormReg">
-          <td>Partial Evacuation</td>
+          <td>8b. Partial Evacuation</td>
           <td><span class="formbold">&nbsp; </span> {var Partial8}</td>
           <td colspan="4">{var A8b}</td>
         </tr>
         <tr class="FormReg">
-          <td>Total Evacuation</td>
+          <td>8c. Total Evacuation</td>
           <td><span class="formbold">&nbsp; </span> {var Total8}</td>
           <td colspan="4">{var A8c}</td>
         </tr>
         <tr class="FormReg">
-          <td>Shelter in place</td>
+          <td>8d. Shelter in place</td>
           <td><span class="formbold">&nbsp; </span> {var Shelter8}</td>
           <td colspan="4">{var A8d}</td>
         </tr>
@@ -441,7 +436,7 @@ else { document.getElementById(theid).value = '';}
           <td colspan="4">&nbsp;</td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="6" class="formbold">9. IMPACT/CASUALTIES&ndash;provide estimated numbers and any comments:</td>
+          <td colspan="6" class="formbold">9. CASUALTIES &nbsp;&nbsp;{var thereArecausalties}</td>
           </tr>
         <tr class="FormReg">
           <td bgcolor="#FF9999">Immediate injuries = Critical care needed <strong>RED</strong> </td>
@@ -482,13 +477,15 @@ else { document.getElementById(theid).value = '';}
               <td>Emergency generator power in use?</td>
               <td>{var generator10}</td>
               <td>Will you send Resource Request within 4 hours?</td>
-              <td>{var ResiourceRequest10}</td>
+              <td>{var ResourceRreq10}</td>
             </tr>
             <tr>
               <td colspan="4"><span style="width:750px; margin: 5px;  word-wrap:break-word; display:inline-block;">                {var Comments10}</span></td>
               </tr>
           </table>
-            <p><span class="formbold">&nbsp;V 1.9.3</span></p></td>
+            <p><span class="formbold">
+              <input name="Templateversion" type="hidden" id="Templateversion" value="General Hospital Status 2.0" />
+            </span>Version 2.0</p></td>
           </tr>
       </table>
       </td>

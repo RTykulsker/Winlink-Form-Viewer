@@ -195,6 +195,7 @@ padding-right: 0.5em;
 	color: #2A5F00;
 }
 .style22 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; font-weight: bold; }
+.style23 {color: #000000}
 </style>
 
 <script>
@@ -615,8 +616,8 @@ var RightNow = document.getElementById('Title').value;
 
 //document.getElementById('Title').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
-document.getElementById('loadbtn').value = 'Load '+RightNow+ ' SITREP data' ;
-document.getElementById('savebtn').value = 'Save '+RightNow+ ' SITREP data' ;
+//document.getElementById('loadbtn').value = 'Load '+RightNow+ ' SITREP data' ;
+//document.getElementById('savebtn').value = 'Save '+RightNow+ ' SITREP data' ;
 store();
 }
 
@@ -626,8 +627,8 @@ var RightNow = prompt("Enter Agency/Group Title",   myprompt);
 if (RightNow.length == 0) { RightNow = 'General';}
 document.getElementById('Title').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
-document.getElementById('loadbtn').value = 'Load '+RightNow+ ' SITREP data' ;
-document.getElementById('savebtn').value = 'Save '+RightNow+ ' SITREP data' ;
+//document.getElementById('loadbtn').value = 'Load '+RightNow+ ' SITREP data' ;
+//document.getElementById('savebtn').value = 'Save '+RightNow+ ' SITREP data' ;
 store();
 }
 </script></head>
@@ -642,15 +643,14 @@ store();
 <table width="957" border="1" cellpadding="2" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 870px; height: 893px;">
 <tbody>
 <tr>
-<td width="949" bgcolor="#dcdef7" style="height: 15%; vertical-align: top; text-align: justify; "><p align="center">  <span class="style13" style="font-style: italic;"><span class="style13" style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>Situation Report &nbsp;SITREP</strong></span><span style="font-weight: bold; font-style: italic;">&nbsp;</span><big><span style="font-style: italic;"> &nbsp;&nbsp;</span>
-  </big><span class="style5"><small>Vers 8&nbsp;<br />
+<td width="949" bgcolor="#dcdef7" style="height: 15%; vertical-align: top; text-align: justify; "><p align="center">  <span class="style13" style="font-style: italic;"><span class="style13" style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>Situation Report &nbsp;SITREP</strong></span><span class="style5"><small><br />
   <span class="style22" id="SubjectText">General</span>
   </small></span></p>
  
   <div align="left"><small><b><big>&nbsp; 
     <input type="regular" value="Setup" onclick="SetupTitle()"  />
     </big></b><span class="style7"><big>&nbsp;Click to add your agency or group name</big></span><b><big>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-    <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load General Sitrep data" /> 
+    <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load  Sitrep data" /> 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><span class="style10"><a href="#pop1" class="style25 style7"><span style="color: rgb(204, 0, 0);">Form Instructions</span></a></span></small> <br />
     <small><b><big>&nbsp;</big></b><b><big>&nbsp;</big></b><b><big>&nbsp;</big></b><b><big>&nbsp;</big></b><b><big>&nbsp;</big></b></small>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
     <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
@@ -767,7 +767,7 @@ store();
 </tr>
 <tr>
 <td height="50" style="text-align: justify;"><div align="left"><small><span class="formtext"><span style="font-family: Calibri;"><small><span style="font-family: Calibri;"><small><span style="font-family: Calibri;"><small><span class="formtext1"><span style="font-family: Calibri;"><small><big><big><small><span style="font-family: Calibri;">
-    <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Nevada Sitrep data " />
+    <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Sitrep data " />
   </span>&nbsp;&nbsp;</small></big></big></small></span></span></small></span></small></span></small></span></span>
         <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px;  " value="Submit" type="submit" />
         <span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp;</span>&nbsp;</span></small>
@@ -775,9 +775,13 @@ store();
       <small><span style="color: rgb(128, 0, 0);"> <span style="color: black;">&nbsp; </span></span></small>&nbsp;<small><span style="color: rgb(128, 0, 0);"> &nbsp; </span></small><small><span style="color: rgb(128, 0, 0);"><span style="color: black;">
       </span></span></small><small><span style="color: rgb(128, 0, 0);"> &nbsp;</span></small> 
       <input title="Click for current date and time." maxlength="20" size="20" name="DateTime" value=""  id="DateTime"placeholder="Click for Date/Time"   style="display: none;" onclick="SetDateTime('fulldatetime',this.id)"  />
-      <small><span style="color: rgb(128, 0, 0);">&nbsp; &nbsp; </span><span class="style3">
+      <small><span style="color: rgb(128, 0, 0);">&nbsp; <span style="font-size: 12px;">
+      <input name="Templateversion" type="hidden" id="Templateversion" value="SitRep Report V. 9.0" />
+      </span>&nbsp; </span><span class="style3">
       <input name="TimeStampOR" type="hidden" id="TimeStampOR" />
-    </span><span style="color: rgb(128, 0, 0);">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></small></div></td>
+    </span><span style="color: rgb(128, 0, 0);">&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: black;">
+    <input readonly="readonly" maxlength="16" size="16" name="MsgSender" value="{var MsgSender}" />
+    </span>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<span class="style23">&nbsp;SitRep Report V. 9.0</span></span></small></div></td>
 </tr>
 </tbody>
 </table>

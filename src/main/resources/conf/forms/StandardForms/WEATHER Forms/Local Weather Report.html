@@ -740,13 +740,13 @@ if (Which === true) {
 document.getElementById('bBarmtrend1').checked=0;
 document.getElementById('bBarmtrend2').checked=0;
 document.getElementById('bBarmtrend3').checked=0;
-document.getElementById('Barmtrend').value='--'; 
-document.getElementById('Barometer').value='--'
+document.getElementById('Barmtrend').value=''; 
+document.getElementById('Barometer').value=''
 }
 }
 function checkbarm(){
 x= document.getElementById('Barometer').value ;
-if (x ==='--' | x =='') {Trendbuttons(true);} else { Trendbuttons(false); }
+if (x ==='' | x =='') {Trendbuttons(true);} else { Trendbuttons(false); }
 
 }
 function getGPS(){
@@ -1602,17 +1602,17 @@ var attached_file = 'FormData.txt';
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27">Temperature &nbsp;
-            <input name="Temp" id="Temp" onclick="select()"onkeypress="return isNumberKey(event)" value="--" size="6" maxlength="6" />
+            <input name="Temp" id="Temp" onclick="select()"onkeypress="return isNumberKey(event)" value="" size="6" maxlength="6" />
 &deg;<span  id="TempFM1">C</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;HUMIDITY:
-  <input name="Humidity" id="Humidity" onclick="select()"onkeypress="return isNumberKey(event)" value="--" size="5" maxlength="4"/>
+  <input name="Humidity" id="Humidity" onclick="select()"onkeypress="return isNumberKey(event)" value="" size="5" maxlength="4"/>
   % &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DEWPOINT
-  <input name="Dew" id="Dew" onclick="select()"onkeypress="return isNumberKey(event)" value="--" size="5" maxlength="4" />
+  <input name="Dew" id="Dew" onclick="select()"onkeypress="return isNumberKey(event)" value="" size="5" maxlength="4" />
 &deg;<span  id="TempFM2">C</span>  </div></td>
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27">
         <p><span class="style23">Barometer</span> <span class="style23">
-              <input name="Barometer" type="text" id="Barometer" onclick="select()" value="--" size="8" onkeypress="return isNumberKey(event)" onchange ="checkbarm()" />
+              <input name="Barometer" type="text" id="Barometer" onclick="select()" value="" size="8" onkeypress="return isNumberKey(event)" onchange ="checkbarm()" />
               <span  id="barM">millibars</span> </span>&nbsp; &nbsp; &nbsp; &nbsp;<span class="style23">Three hour trend</span>
               <input name="bBarmtrend" type="radio" id = "bBarmtrend1" value="RISING" onclick="document.getElementById('Barmtrend').value = 'RISING'"/>
               RISING &nbsp;
@@ -1620,7 +1620,7 @@ var attached_file = 'FormData.txt';
               STEADY &nbsp;
               <input name="bBarmtrend" type="radio" id = "bBarmtrend3" value="DROPPING" onclick="document.getElementById('Barmtrend').value = 'DROPPING'"/>
             DROPPING
-            <input name="Barmtrend" type="hidden" id="Barmtrend" value="--" />
+            <input name="Barmtrend" type="hidden" id="Barmtrend" value="" />
         </p>
         </div></td>
     </tr>
@@ -1631,7 +1631,7 @@ var attached_file = 'FormData.txt';
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27"> Wind Speed:
-              <input name="WindSpeed" id="WindSpeed" value="--" size="4" maxlength="4"  onclick="select()" onkeypress="return isNumberKey(event)" />
+              <input name="WindSpeed" id="WindSpeed" value="" size="4" maxlength="4"  onclick="select()" onkeypress="return isNumberKey(event)" />
 &nbsp; <span  id="Speed1">KM/h</span>&nbsp;
           <select name="Type1" id="Type1">
                 <option selected="selected">Estimated</option>
@@ -1656,25 +1656,25 @@ var attached_file = 'FormData.txt';
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27">Wind Gusts:
-              <input name="Gusts" id="Gusts" value="--" size="4" maxlength="4" onclick="select()"onkeypress="return isNumberKey(event)" />
+              <input name="Gusts" id="Gusts" value="" size="4" maxlength="4" onclick="select()"onkeypress="return isNumberKey(event)" />
 &nbsp; <span  id="Speed2">KM/h</span>&nbsp;&nbsp; Wind Gusts MAX:
-  <input name="MaxGusts" id="MaxGusts" value="--" size="4" maxlength="4" onclick="select()" onkeypress="return isNumberKey(event)"/>
+  <input name="MaxGusts" id="MaxGusts" value="" size="4" maxlength="4" onclick="select()" onkeypress="return isNumberKey(event)"/>
 &nbsp; <span  id="Speed3">KM/h</span>&nbsp;</div></td>
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"> <div align="left" class="style27">Rain 1 HR:
-              <input name="Rain1hr" type="text" id="Rain1hr" value="--" size="10" onclick="select()"onkeypress="return isNumberKey(event)" />
+              <input name="Rain1hr" type="text" id="Rain1hr" value="" size="10" onclick="select()"onkeypress="return isNumberKey(event)" />
 &nbsp;<span  id="Rain1">millimeters</span>  &nbsp; &nbsp; Rain Total:
-          <input name="Raintotal" type="text" id="Raintotal" value="--" size="10" onclick="select()" onkeypress="return isNumberKey(event)" />
+          <input name="Raintotal" type="text" id="Raintotal" value="" size="10" onclick="select()" onkeypress="return isNumberKey(event)" />
  <span  id="Rain2">millimeters</span>       </div></td>
     </tr>
     <tr align="left" valign="top">
       <td colspan="2"><div align="left" class="style27">Snow 1 HR:
-              <input name="Snow1hr" type="text" id="Snow1hr" value="--" size="10" onclick="select()" onkeypress="return isNumberKey(event)"/>
+              <input name="Snow1hr" type="text" id="Snow1hr" value="" size="10" onclick="select()" onkeypress="return isNumberKey(event)"/>
           <span  id="Snowa">centimeters</span>&nbsp; &nbsp; Snow Total:
-          <input name="SnowTotal" type="text" id="SnowTotal" value="--" size="10" onclick="select()"onkeypress="return isNumberKey(event)"/>
+          <input name="SnowTotal" type="text" id="SnowTotal" value="" size="10" onclick="select()"onkeypress="return isNumberKey(event)"/>
  <span  id="Snowb">centimeters</span>&nbsp; &nbsp; Water Content:
-<input name="WaterContent" type="text" id="WaterContent" value="--" size="15" onclick="select()" onkeypress="return isNumberKey(event)"/>
+<input name="WaterContent" type="text" id="WaterContent" value="" size="15" onclick="select()" onkeypress="return isNumberKey(event)"/>
         </div></td>
     </tr>
     <tr align="left" valign="top">
@@ -1692,8 +1692,9 @@ var attached_file = 'FormData.txt';
       <td colspan="2"><p align="left" class="style27"> &nbsp; &nbsp;<span class="style28">Notes: </span>(optional)<br />
               <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;&nbsp; </span></span>
               <textarea placeholder="Anything of importance, damages noted, or weather type not indicated in above form." cols="120" rows="4" name="Comments" id="Comments"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
+              <span class="style45">
               <input name="TheConditions" type="HIDDEN" id="TheConditions" />
-</p>  <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: NONE;">MapFileName:T=j1
+              </span></p>  <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: NONE;">MapFileName:T=j1
 DateTime:T=j2
 Sender:T=j3 
 Organization:T=j03
@@ -1730,11 +1731,11 @@ Comments: T=j40
               <input class="SubmitBtn" enctype="multipart/form-data" id="Submit"  onclick="collect();checkform();createjson(); " method="Post" name="Submit" size="8" style="height: 28px; color: green;" value="Submit" type="submit" />
 &nbsp;&nbsp;
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
-&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span><span class="style46">Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span><span class="style46">Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="style29">&nbsp;</span></span></span><span class="style29">Ver 2.9</span><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></span></span></span>&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="style29">&nbsp;</span></span></span><span class="style29">Ver 2.9.1</span><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 <span style="font-style: italic;"><span style="font-style: italic;">
-<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.7" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.9.1" />
 </span></span></span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>

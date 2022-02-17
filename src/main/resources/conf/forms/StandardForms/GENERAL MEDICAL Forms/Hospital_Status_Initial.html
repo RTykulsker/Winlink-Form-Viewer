@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <!-- Coded by KG6SJT  KG6SJT@gmail.com -->
 
-<title>Hospital Quick Status</title>
+<title>General Hospital Status Status</title>
 
 <style type="text/css">
 <!--
@@ -53,20 +53,29 @@ h2 {margin-top:0}
 Still readable by screen-reader software.
 When targeted it fills the browser window.
 */
-.pop-up {position:absolute; top:0; left:-500em;}
+.pop-up {
+	position:absolute;
+	top:0;
+	left:-500em;
+	visibility: visible;
+}
 .pop-up:target {position:static; left:0;}
 /* The pop-up itself */
 .popBox {
-background:#ffffff;
-/* alternatively fixed width / height and negative margins from 50% */
-position:absolute; left:20%; right:20%; top:10%; bottom:15%;
-z-index:10;
-border:1px solid #3a3a3a;
+	background:#ffffff;
+	position:absolute;
+	left:20%;
+	right:20%;
+	top:10%;
+	bottom:15%;
+	z-index:10;
+	border:1px solid #3a3a3a;
 /* CSS3 where available: rounded corners, drop-shadow, and fade in. */
 border-radius:.25rem;
 box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
-opacity:0;
-transition: opacity 0.8s ease-out;
+	opacity:0;
+	transition: opacity 0.8s ease-out;
+	visibility: visible;
 }
 :target .popBox {position:fixed; opacity:1;}
 /* Light box properties */
@@ -87,21 +96,22 @@ z-index:5;
 /* The pop-ups close link, moved via CSS to the top right of the pop-up */
 .close:link,
 .close:visited {
-position: absolute;
-top: -0.75em;
-right: -0.75em;
-display: block;
-width: 2em;
-height: 2em;
-line-height: 1.8;
-padding: 0;
-text-align: center;
-text-decoration: none;
-background-color: #000;
-border: 2px solid #fff;
-color: #fff;
-border-radius: 50%;
+	position: absolute;
+	top: -0.75em;
+	right: -0.75em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 1.8;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 50%;
 box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+	visibility: visible;
 }
 .close:before {content:"X";}
 .close:hover,
@@ -126,6 +136,7 @@ display: block;
 *overflow-y: scroll;
 	padding-right: 0.5em;
 	width: 2528px;
+	visibility: visible;
 }
 .popScroll h2 {margin-top:0}
 .style7 {color: #FF0000;
@@ -137,6 +148,14 @@ display: block;
 .style50 {font-size: 10px; color: #000000; }
 .style57 {font-size: 9px}
 .style58 {color: #000000; font-size: 9px; }
+.style45 {font-size: 12px}
+.style45 {color: #2A5F00}
+.style59 {color: #2A5F00; font-size: 12px; font-style: italic; }
+.style60 {color: #FF0000;
+	font-style: italic;
+}
+.style61 {color: #FF0000}
+.style2 {font-size: 14px}
 </style>
 <script>
 function shortmonth(monthnum) {
@@ -520,7 +539,15 @@ function SaveData() {
  } 
 getit();
 Fixfields();
-Checkifinbrowser()
+//Checkifinbrowser()
+ defaultGPS();
+
+GetGPS();
+copyGPS();
+checkLatLon();
+TimeNow('DateTime', false);
+TimeStamp();
+
  }
  
   function Fixfields() {
@@ -540,8 +567,6 @@ var RightNow = document.getElementById('Title').value;
 
 //document.getElementById('Title').value = RightNow;
 document.getElementById('SubjectText').innerHTML = RightNow;
-document.getElementById('loadbtn').value = 'Load '+RightNow+ ' Hospital Status data' ;
-document.getElementById('savebtn').value = 'Save '+RightNow+ ' Hospital Status data' ;
 store();
 }
 
@@ -603,6 +628,603 @@ return true;
 
 }
 
+//GIS codes
+
+function checkLatLon() {
+var cnt = 1;
+//var x1=0; var x2=0;
+x1 = CheckLat(true);
+x2 = CheckLon(true);
+
+if (x1==1 && x2==1) {// now set string for latlon
+	var mlat = document.getElementById('mapLat').value;
+	var mlon = document.getElementById('mapLon').value;
+	document.getElementById('GPS2').value =mlat+','+mlon;
+	
+	convertthis();
+} 
+}
+function CheckLat(SkipMsg){
+var latCheck = 1;
+var num =document.getElementById('mapLat').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+if (z1 == 'NaN') {alert ('error')}
+if ((num <-90)  || ( num >90) || isNaN (z1) ) { document.getElementById('mapLat').value='';
+//alert ('Latitude must be between -90 and 90\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+alert ('Latitude must be between -90 and 90');
+ document.getElementById('mapLat').value ='';
+		document.getElementById('mapLat').focus();
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var latCheck = 0;
+}
+
+return latCheck;
+}
+
+function CheckLon(SkipMsg){
+var lonCheck = 1;
+var num =document.getElementById('mapLon').value;
+if (num=='') {document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';}
+z1 =(Number(num));
+z2 = (isNaN (z1));
+
+if ((num <-180) || ( num >180) || isNaN (z1) ) { document.getElementById('mapLon').value='';
+alert ('Longitude must be between -180 and 180 '); 
+//alert ('Longitude must be between -180 and 180\n\nBy default the calculated Latitude from the Grid Square entered in Winlink Express Setup will be used. '); 
+ document.getElementById('mapLon').value = '';
+		document.getElementById('MGRS').value = '';
+		document.getElementById('GPS2').value = '';
+		var lonCheck = 0;
+
+} 
+
+return lonCheck;
+}
+function copyGPS() {
+
+
+var GPSstr= document.getElementById("ExtGPS").value;
+
+var nameArr = GPSstr.split(" ");
+
+var a =nameArr[0];
+
+var b =nameArr[1];
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+//if(!isNaN (a)){{Latitude},{Longitude}=a;}
+if(!isNaN (a)){document.getElementById('mapLon').value =z2;}
+if(!isNaN (b)){document.getElementById('mapLon').value =z2;}
+//checkLatLon();
+}
+function GetGPS(){
+var ans = document.getElementById('ExtGPS').value;
+
+if (ans  != '(Not available)'){
+//fill it with defaults
+//alert(ans);
+
+myMGRS=ans;
+var ans = ans.replace(" ", ",");
+
+
+ if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
+//now the mrgs
+
+var d= myMGRS.split(' ');
+MGRSString(d[0],d[1]);
+//store();
+//what3words.api.convertTo3wa({lat:51.508344, lng:-0.12549900}, 'en')<br />
+//lat:38.5565, lng:-121.7931  38.5566,-121.7931
+
+  convertthis();
+} 
+
+}
+
+function MGRSString ()
+
+//function MGRSString (51.172,-1.779)
+// 51.172,-1.779  38.556, -121.793
+{ //var Lat = 38.556; var Long=-121.793; 
+//var Lat1 = 38.556; var Long1=-121.793; 
+var thestring= document.getElementById("GPS2").value;
+
+if (thestring ==''){ return;}
+ var res = thestring.split(",");
+ var Lat = parseFloat(res[0]); 
+ var Long=parseFloat(res[1]); 
+ if (isNaN(Lat)) {return} 
+if (isNaN(Long)) {return}
+latLonToGridSquare(res[0],res[1]);
+
+
+ //Lat=38.556; Long=-121.793
+if (Lat < -80) return 'Too far South' ; if (Lat > 84) return 'Too far North' ;
+var c = 1 + Math.floor ((Long+180)/6);
+var e = c*6 - 183 ;
+var k = Lat*Math.PI/180; 
+var l = Long*Math.PI/180;
+var m = e*Math.PI/180;
+var n = Math.cos (k);
+var o = 0.006739496819936062*Math.pow (n,2);
+var p = 40680631590769/(6356752.314*Math.sqrt(1 + o));
+var q = Math.tan (k);
+var r = q*q;
+var s = (r*r*r) - Math.pow (q,6);
+var t = l - m;
+var u = 1.0 - r + o;
+var v = 5.0 - r + 9*o + 4.0*(o*o);
+var w = 5.0 - 18.0*r + (r*r) + 14.0*o - 58.0*r*o;
+var x = 61.0 - 58.0*r + (r*r) + 270.0*o - 330.0*r*o;
+var y = 61.0 - 479.0*r + 179.0*(r*r) - (r*r*r);
+var z = 1385.0 - 3111.0*r + 543.0*(r*r) - (r*r*r);
+
+var aa = p*n*t + (p/6.0*Math.pow (n,3)*u*Math.pow (t,3)) + (p/120.0*Math.pow (n,5)*w*Math.pow (t,5)) + (p/5040.0*Math.pow (n,7)*y*Math.pow (t,7));
+var ab = 6367449.14570093*(k - (0.00251882794504*Math.sin (2*k)) + (0.00000264354112*Math.sin (4*k)) - (0.00000000345262*Math.sin (6*k)) + (0.000000000004892*Math.sin (8*k))) + (q/2.0*p*Math.pow (n,2)*Math.pow (t,2)) + (q/24.0*p*Math.pow (n,4)*v*Math.pow (t,4)) + (q/720.0*p*Math.pow (n,6)*x*Math.pow (t,6)) + (q/40320.0*p*Math.pow (n,8)*z*Math.pow (t,8));
+aa = aa*0.9996 + 500000.0;
+
+ab = ab*0.9996; if (ab < 0.0) ab += 10000000.0;
+var ad = 'CDEFGHJKLMNPQRSTUVWXX'.charAt (Math.floor (Lat/8 + 10));
+var ae = Math.floor (aa/100000);
+var af = ['ABCDEFGH','JKLMNPQR','STUVWXYZ'][(c-1)%3].charAt (ae-1);
+var ag = Math.floor (ab/100000)%20;
+var ah = ['ABCDEFGHJKLMNPQRSTUV','FGHJKLMNPQRSTUVABCDE'][(c-1)%2].charAt (ag);
+function pad (val) {if (val < 10) {val = '0000' + val} else if (val < 100) {val = '000' + val} else if (val < 1000) {val = '00' + val} else if (val < 10000) {val = '0' + val};return val};
+aa = Math.floor (aa%100000); aa = pad (aa); 
+ab = Math.floor (ab%100000); ab = pad (ab);
+//var mrgs= c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var MRGS2=c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
+var mrgs= c + ad + af + ah  + aa + ab;
+//document.getElementById('WithSpaces').value =MRGS2;
+//document.getElementById('NoSpaces').value =mrgs;
+document.getElementById('MGRS').value =mrgs;
+
+document.getElementById('MGRS').value =mrgs;
+//document.getElementById('MGRS2').value =MRGS2;
+};
+
+function convertthis(){
+
+document.getElementById('MGRS').value ='';
+var nameArr=[];
+var thestring= document.getElementById("GPS2").value;
+//(thestring);
+document.getElementById("GPS2").value = thestring;
+ var n = thestring.search(",");
+ var n1= thestring.search(" ");
+var res = thestring.split(",");
+var p=res.length;
+if (p==2){MGRSString(); 
+
+var mypram = {lat:+res[0], lng:+res[1]};
+document.getElementById('mapLat').value =res[0];
+document.getElementById('mapLon').value =res[1];
+
+if(res[0]==''|res[1]==''){return};
+
+//mapLat
+//alert(mypram);
+  } else 
+{ ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
+document.getElementById('GPS2').value ='';
+document.getElementById('mapLat').value ='';
+document.getElementById('mapLon').value ='';
+//document.getElementById('WithSpaces').value ='';
+document.getElementById('MGRS').value ='';
+document.getElementById('Grid').value ='';
+//document.getElementById('NoSpaces').value ='';
+ document.getElementById("GPS2").focus()}
+}
+
+function TimeNow(Timefld, doprompt) {
+var txt;
+var d = new Date();
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0"+thismonth};
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0"+thisday};
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
+document.getElementById(Timefld).value = RightNow;
+ TimeStamp();
+ alert(RightNow);} 
+ 
+ latLonToGridSquare = function(param1,param2){
+  var lat=-100.0;
+  var lon=0.0;
+  var adjLat,adjLon,GLat,GLon,nLat,nLon,gLat,gLon,rLat,rLon;
+  var U = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+  var L = U.toLowerCase();
+  // support Chris Veness 2002-2012 LatLon library and
+  // other objects with lat/lon properties
+  // properties could be getter functions, numbers, or strings
+  function toNum(x){
+    if (typeof(x) === 'number') return x;
+    if (typeof(x) === 'string') return parseFloat(x);
+    if (typeof(x) === 'function') return parseFloat(x());
+   // 9-20-20 ( "HamGridSquare -- toNum -- can not convert input: "+x);
+  }
+  if (typeof(param1)==='object'){
+    if (param1.length === 2){
+      lat = toNum(param1[0]);
+      lon = toNum(param1[1]);
+    } else if (('lat' in param1) && ('lon' in param1)){
+      lat = toNum(param1.lat);
+      lon = toNum(param1.lon);
+    } else if (('latitude' in param1) && ('longitude' in param1)){
+      lat = toNum(param1.latitude);
+      lon = toNum(param1.longitude);
+    } else {
+      ( "Please correct your coordinates -- "+param1);
+    }
+  } else {
+    lat = toNum(param1);
+    lon = toNum(param2);
+  }
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
+  if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
+  if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
+  if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
+  adjLat = lat + 90;
+  adjLon = lon + 180;
+  GLat = U[Math.trunc(adjLat/10)];
+  GLon = U[Math.trunc(adjLon/20)];
+  nLat = ''+Math.trunc(adjLat % 10);
+  nLon = ''+Math.trunc((adjLon/2) % 10);
+  rLat = (adjLat - Math.trunc(adjLat)) * 60;
+  rLon = (adjLon - 2*Math.trunc(adjLon/2)) *60;
+  gLat = L[Math.trunc(rLat/2.5)];
+  gLon = L[Math.trunc(rLon/5)];
+  var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
+  //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
+  document.getElementById('Grid').value =mygrid;
+}
+function removeLinebreaks (s){
+
+var s = s.replace(/(\r\n|\n|\r)/gm," "); 
+return s;
+}
+function removeTabs (s){
+
+var s = s.replace(/(\t)/gm,"-  "); 
+return s;
+}
+function replacement( jsontext, Varible){
+var temp1= document.getElementById(Varible).value;
+var jsontext=jsontext.replace(Varible,temp1);
+return jsontext;
+}
+
+function createjson () {
+
+var defaultLat = '{Latitude}';
+var defaultLon = '{Longitude}';
+var jsontext =document.getElementById('FormData').value;
+//var temp1 =document.getElementById('Mapfilename').value;
+//var jsontext=jsontext.replace('j1', temp1);
+var temp1 =document.getElementById('DateTime').value;
+var jsontext=jsontext.replace('j2', temp1);
+var temp1 =document.getElementById('mapLat').value;
+if (temp1 == '') {temp1= defaultLat;document.getElementById('mapLat').value=defaultLat }
+var jsontext=jsontext.replace('j4', temp1);
+var temp1 =document.getElementById('mapLon').value;
+if (temp1 == '') {temp1= defaultLon; document.getElementById('mapLon').value=defaultLon}
+
+var jsontext=jsontext.replace('j5', temp1);
+var temp1 =document.getElementById('MGRS').value;
+var jsontext=jsontext.replace('j6', temp1);
+var temp1 =document.getElementById('Grid').value;
+var jsontext=jsontext.replace('j7', temp1);
+jsontext=replacement( jsontext,'aReportType');
+jsontext=replacement( jsontext,'updatenum');
+jsontext=replacement( jsontext,'Incident1');
+var temp1 =document.getElementById('DateTime').value;
+var jsontext=jsontext.replace('Datetime', temp1);
+
+jsontext=replacement( jsontext, 'FacilityName3a');
+jsontext=replacement( jsontext, 'FacilType');
+jsontext=replacement( jsontext, 'Contact4');
+jsontext=replacement( jsontext, 'Contactphone');
+jsontext=replacement( jsontext, 'phoneX');
+jsontext=replacement( jsontext, 'Cell4');
+jsontext=replacement( jsontext, 'A5a');
+jsontext=replacement( jsontext, 'Contactemail');
+var temp1 =document.getElementById('commipaired').value;
+var jsontext=jsontext.replace('commipaired', temp1);
+jsontext=replacement( jsontext, 'utilitiesimpared');
+jsontext=replacement( jsontext, 'evacConcerns');
+jsontext=replacement( jsontext, 'thereArecausalties');
+jsontext=replacement( jsontext, 'plan10a');
+jsontext=replacement( jsontext, 'FCCActive10');
+jsontext=replacement( jsontext, 'generator10');
+jsontext=replacement( jsontext, 'ResourceRreq10');
+jsontext=replacement( jsontext, 'Comments10');
+document.getElementById('attached_text').value = jsontext;
+var attached_file = 'FormData.txt';
+//attached_text = jsontext;
+}//attached_text
+
+function splitPaste(str) {
+var str = str.replace(",", " ");
+var str = str.replace("  ", " ");
+var d= str.split(' ');
+var cnt = d.length;
+if (cnt >1) {
+document.getElementById('mapLat').value =d[0];
+document.getElementById('mapLon').value =d[1];
+}
+}
+
+function checkformgrs(thestring){
+//var thestring= document.getElementById("MGRS").value;
+var spc = thestring.split(" ");
+ var n = thestring.search(",");
+ var nlen=thestring.length;
+if (n>0) {alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253" '); document.getElementById('MGRS').value='';}
+if(nlen<15){alert('Please correct your coordinates --\nEnter valid MGRS string.\nExample: 10SFH0514968253 or 10S FH 05149 68253'); document.getElementById('MGRS').value='';}
+
+if (spc.length >2){LatLongFromMGRSstring(thestring);
+ } else{
+ 
+ var n = thestring.search(",")
+var spc = thestring.split(" ");
+//(spc.length);
+if (n ==-1) {// try to parse
+
+var str = document.getElementById("MGRS").value;  
+var res = str.substring(0, 3);
+    var res1 = str.substring(3, 5);
+      var res2 = str.substring(5, 10);
+       var res3 = str.substring(10, 15);
+//( res+' '+res1+' '+res2+ ' '+res3);
+LatLongFromMGRSstring(res+' '+res1+' '+res2+ ' '+res3);
+convertthis();
+store();
+}
+}
+}
+
+ latLonToGridSquare = function(param1,param2){
+  var lat=-100.0;
+  var lon=0.0;
+  var adjLat,adjLon,GLat,GLon,nLat,nLon,gLat,gLon,rLat,rLon;
+  var U = 'ABCDEFGHIJKLMNOPQRSTUVWX'
+  var L = U.toLowerCase();
+  // support Chris Veness 2002-2012 LatLon library and
+  // other objects with lat/lon properties
+  // properties could be getter functions, numbers, or strings
+  function toNum(x){
+    if (typeof(x) === 'number') return x;
+    if (typeof(x) === 'string') return parseFloat(x);
+    if (typeof(x) === 'function') return parseFloat(x());
+   // 9-20-20 ( "HamGridSquare -- toNum -- can not convert input: "+x);
+  }
+  if (typeof(param1)==='object'){
+    if (param1.length === 2){
+      lat = toNum(param1[0]);
+      lon = toNum(param1[1]);
+    } else if (('lat' in param1) && ('lon' in param1)){
+      lat = toNum(param1.lat);
+      lon = toNum(param1.lon);
+    } else if (('latitude' in param1) && ('longitude' in param1)){
+      lat = toNum(param1.latitude);
+      lon = toNum(param1.longitude);
+    } else {
+      ( "Please correct your coordinates -- "+param1);
+    }
+  } else {
+    lat = toNum(param1);
+    lon = toNum(param2);
+  }
+  //if (isNaN(lat)) throw "lat is NaN";
+   if (isNaN(lat)) return;
+// if (isNaN(lon)) throw "lon is NaN";
+ if (isNaN(lon)) {return} 
+  if (Math.abs(lat) === 90.0) throw "grid squares invalid at N/S poles";
+  if (Math.abs(lat) > 90)  ("invalid latitude: "+lat);
+  if (Math.abs(lon) > 180) ( "invalid longitude: "+lon);
+  adjLat = lat + 90;
+  adjLon = lon + 180;
+  GLat = U[Math.trunc(adjLat/10)];
+  GLon = U[Math.trunc(adjLon/20)];
+  nLat = ''+Math.trunc(adjLat % 10);
+  nLon = ''+Math.trunc((adjLon/2) % 10);
+  rLat = (adjLat - Math.trunc(adjLat)) * 60;
+  rLon = (adjLon - 2*Math.trunc(adjLon/2)) *60;
+  gLat = L[Math.trunc(rLat/2.5)];
+  gLon = L[Math.trunc(rLon/5)];
+  var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
+  //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
+  document.getElementById('Grid').value =mygrid;
+}
+function LatLongFromMGRSstring (a) 
+{
+var b = a.trim();
+b = b.match(/\S+/g);
+if (b == null || b.length != 4) return [false,null,null];
+var c = (b[0].length < 3) ? b[0][0] : b[0].slice(0,2);
+var d = (b[0].length < 3) ? b[0][1] : b[0][2];
+var e = (c*6-183)*Math.PI / 180;
+var f = ["ABCDEFGH","JKLMNPQR","STUVWXYZ"][(c-1) % 3].indexOf(b[1][0]) + 1;
+var g = "CDEFGHJKLMNPQRSTUVWXX".indexOf(d);
+var h = ["ABCDEFGHJKLMNPQRSTUV","FGHJKLMNPQRSTUVABCDE"][(c-1) % 2].indexOf(b[1][1]);
+var i = [1.1,2.0,2.8,3.7,4.6,5.5,6.4,7.3,8.2,9.1,0,0.8,1.7,2.6,3.5,4.4,5.3,6.2,7.0,7.9];
+var j = [0,2,2,2,4,4,6,6,8,8,0,0,0,2,2,4,4,6,6,6];
+var k = i[g];
+var l = Number(j[g]) + h / 10;
+if (l < k) l += 2;
+var m = f*100000.0 + Number(b[2]);
+var n = l*1000000 + Number(b[3]);
+m -= 500000.0;
+if (d < 'N') n -= 10000000.0;
+m /= 0.9996; n /= 0.9996;
+var o = n / 6367449.14570093;
+var p = o + (0.0025188266133249035*Math.sin(2.0*o)) + (0.0000037009491206268*Math.sin(4.0*o)) + (0.0000000074477705265*Math.sin(6.0*o)) + (0.0000000000170359940*Math.sin(8.0*o));
+var q = Math.tan(p);
+var r = q*q;
+var s = r*r;
+var t = Math.cos(p);
+var u = 0.006739496819936062*Math.pow(t,2);
+var v = 40680631590769 / (6356752.314*Math.sqrt(1 + u));
+var w = v;
+var x = 1.0 / (w*t); w *= v;
+var y = q / (2.0*w); w *= v;
+var z = 1.0 / (6.0*w*t); w *= v;
+var aa = q / (24.0*w); w *= v;
+var ab = 1.0 / (120.0*w*t); w *= v;
+var ac = q / (720.0*w); w *= v;
+var ad = 1.0 / (5040.0*w*t); w *= v;
+var ae = q / (40320.0*w);
+var af = -1.0-u;
+var ag = -1.0-2*r-u;
+var ah = 5.0 + 3.0*r + 6.0*u-6.0*r*u-3.0*(u*u)-9.0*r*(u*u);
+var ai = 5.0 + 28.0*r + 24.0*s + 6.0*u + 8.0*r*u;
+var aj = -61.0-90.0*r-45.0*s-107.0*u + 162.0*r*u;
+var ak = -61.0-662.0*r-1320.0*s-720.0*(s*r);
+var al = 1385.0 + 3633.0*r + 4095.0*s + 1575*(s*r);
+var lat = p + y*af*(m*m) + aa*ah*Math.pow(m,4) + ac*aj*Math.pow(m,6) + ae*al*Math.pow(m,8);
+var lng = e + x*m + z*ag*Math.pow(m,3) + ab*ai*Math.pow(m,5) + ad*ak*Math.pow(m,7);
+lat = lat*180 / Math.PI;
+lat = lat.toFixed (4);
+lng = lng*180 / Math.PI;
+lng = lng.toFixed (4);
+
+document.getElementById('GPS2').value = lat+','+lng;
+//document.getElementById('dd').value = lat+','+lng;
+document.getElementById('mapLat').value = lat;
+document.getElementById('mapLon').value = lng;
+//gpsLat
+convertthis();
+//return [true,lat,lng];
+
+}
+function TimeNow(Timefld, doprompt) {
+var txt;
+var d = new Date();
+thisyear = d.getFullYear();
+thismonth= d.getMonth();
+thismonth = thismonth+1;
+if (thismonth < 10) { thismonth = "0"+thismonth};
+
+thisday = d.getDate();
+if (thisday < 10) { thisday = "0"+thisday};
+
+h = (d.getHours()<10?'0':'') + d.getHours()
+m = (d.getMinutes()<10?'0':'') + d.getMinutes()
+s = (d.getSeconds()<10?'0':'') + d.getSeconds();
+var myprompt = thisyear+ '-'+thismonth+'-'+thisday+' '+h + ':' + m+':'+s;
+var RightNow = myprompt;
+if (doprompt) {var RightNow = prompt("", myprompt);}
+document.getElementById(Timefld).value = RightNow;
+ TimeStamp();} 
+ 
+
+
+
+function defaultGPS(){
+var z1 = '{Latitude}';
+var z2= '{Longitude}';
+document.getElementById('mapLat').value =z1;
+document.getElementById('mapLon').value =z2;
+checkLatLon();
+}
+function copyGPS() {
+var GPSstr= document.getElementById("ExtGPS").value;
+var nameArr = GPSstr.split(" ");
+var a =nameArr[0];
+var b =nameArr[1];
+if(!isNaN (a)){document.getElementById('mapLat').value =a;}
+if(!isNaN (b)){document.getElementById('mapLon').value =b;}
+
+}
+
+
+function parsethisdate() {
+var thedatetime=  document.getElementById('DateTime').value;
+//d= new Date(Date.parse(thedatetime)).toString();
+var d= new Date(Date.parse(thedatetime));
+
+//alert (Date.parse(thedatetime));
+//d =parseDate(thedatetime);
+utcstr = d.toISOString()
+//alert (utcstr);
+document.getElementById('timestamp2').value= utcstr;
+return utcstr;
+}
+function TimeStamp(){
+var d1 = new Date();
+mtime = d1.getTime();
+//var thedatetime=  document.getElementById('UDTGfld').value;
+var thedatetime= parsethisdate();
+var thedatetime=thedatetime.replace(/-/g, ',');
+var thedatetime=thedatetime.replace(/:/g, ',');
+//alert ('the dt '+thedatetime);
+var thedatetime = thedatetime.replace("T", " ") 
+var thedatetime=thedatetime.replace(' ', ',');
+var thedatetime = thedatetime.replace("Z", "") ;
+var thedatetime = thedatetime.replace(".000", "") ;
+
+//alert ('the dt '+thedatetime);
+var thesplit = thedatetime.split (',');
+var d = new Date(Date.UTC(parseInt(thesplit[0]),parseInt(thesplit[1]),parseInt(thesplit[2]),parseInt(thesplit[3]),parseInt(thesplit[4]),parseInt(thesplit[5])));
+//alert (thesplit[1]);
+//var d= new Date(Date.parse('2020/11/24 15:30:01'));
+  var nyyyy = d.getUTCFullYear();
+  nyyyy= nyyyy.toString();
+
+  var nMM = d.getUTCMonth();
+  if(nMM<10) {nMM= '0'+nMM}
+ nMM=nMM.toString()
+var ndd = d.getUTCDate();
+  if(ndd<10) {ndd= '0'+ndd}
+  ndd=ndd.toString()
+ // alert(ndd);
+  var nhh = d.getUTCHours();
+nhh=nhh.toString();
+ if(nhh.length <2) {nhh= '0'+nhh}
+// alert ('after hour'+nhh);
+    var nmm = d.getUTCMinutes();
+	  nmm=nmm.toString();
+	if(nmm.length <2) {nmm= '0'+nmm}
+	 var nss = d.getUTCSeconds();
+	
+  nss=nss.toString()
+   if(nss.length <2) {nss= '0'+nss}
+//
+var test = (thesplit[0])+(thesplit[1])+(thesplit[2])+(thesplit[3])+(thesplit[4])+(thesplit[5]);
+
+
+test = test.replace(/\s/g,'');
+ document.getElementById("timestamp").value = test; ;
+  //  document.getElementById("timestamp2").value= test;
+ //x=nyyyy+nmm+ndd+nhh+nmm+nss;
+   
+   
+  // document.getElementById("timestamp2").value = nyyyy+nMM+ndd+nhh+nmm+nss
+  // alert (nyyyy+nMM+ndd+nhh+nmm+nss);
+   var x=(document.getElementById("timestamp2").value);
+
+if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyyy-mm-dd hh:mm:ssZ\n \nDEFAULTING  to current UTC Time.');DateTime('autozulu','UDTGfld', true); }
+
+ 
+}
 </script>
 
 </head>
@@ -728,25 +1350,34 @@ to links</span></a> </div>
                 <input name="RType" type="radio" value="FINAL" onclick=" document.getElementById('aReportType').value = 'FINAL'" />
               </span>Final 
                 <input name="aReportType" type="hidden" id="aReportType" required/>
-<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>    </td>
+                <small>
+                <input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
+                <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+                <span class="style2">&nbsp;</span><span style="font-size: 14px;"> <span style="font-size: 14px;">
+                <input name="timestamp" type="hidden" id="timestamp" size="30" />
+</span>
+                <input name="timestamp2" type="hidden" id="timestamp2" size="40" />
+                <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" /> 
+                <input name="Mapfilename" type="hidden" id="Mapfilename" value="General Hospital Status" />
+ <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
+                </span></small>
+            <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>    </td>
           </tr>
         <tr class="FormReg">
           <td width="12%">1. Incident Name</td>
           <td width="22%"><strong><span class="style49">
             <input name="Incident1" type="text" id="Incident1" size="40" maxlength="38" />
           </span></strong></td>
-          <td width="18%">2a. Date: 
-            <input name="Date" type="text" id="Date"  onclick="DateTime('m/d/y',this.id)" size="12"  placeholder="Click for Date" required/></td>
-          <td width="48%">2b Time: <span class="style49">
-            <input name="Time" type="text" id="Time"  onclick="DateTime('localampm',this.id)" size="12"  placeholder="Click for Time" required/>
-          </span></td>
-        </tr>
+          <td colspan="2">2. Date/time: 
+            <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" />
+            <span class="style49"></span></td>
+          </tr>
         <tr class="FormReg">
           <td>3a. Facility Name</td>
           <td><strong><span class="style49">
             <input name="FacilityName3a" type="text" id="FacilityName3a" size="40" maxlength="38" />
           </span></strong></td>
-          <td colspan="2">3b. Facility Type 
+          <td colspan="2" nowrap="nowrap">3b. Facility Type 
             <input name="Factype3b" type="radio" value="Hospital"  onclick=" document.getElementById('FacilType').value = 'Hospital'" /> 
             Hospital 
             &nbsp;&nbsp;
@@ -756,16 +1387,35 @@ to links</span></a> </div>
             <input name="Factype3b" type="radio" value="LTCF"  onclick=" document.getElementById('FacilType').value = 'LTCF'" /> 
             LTCF&nbsp;&nbsp; <input name="Factype3b" type="radio" value="Other" onclick=" document.getElementById('FacilType').value = 'Other: '" />
             Other, specify: 
-            <input  name="Othertype" type="text" id="Othertype" placeholder="Specify Other" />
+            <input  name="Othertype" type="text" id="Othertype" size="20" placeholder="Specify Other" />
             <input name="FacilType" type="hidden" id="FacilType" /></td>
+          </tr>
+        <tr class="FormReg">
+          <td colspan="4"><span
+
+                                        style="color: rgb(204, 0, 0);"><span style="color: rgb(204, 0, 0);">&nbsp;</span></span>Latitude<em><span class="style60">&nbsp;
+                <input name="mapLat"  type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12" />
+          </span><span class="style45"> &nbsp;</span></em><span class="style59">&nbsp;</span>Longitude<em><span class="style61">
+          <input name="mapLon"  type="text" id="mapLon"  placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12" />
+          </span><span style="color: black;"><span style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;</span></span>&nbsp; </em>MGRS<em><span class="style61">
+          <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
+&nbsp;</span>&nbsp;</em>Grid<em>&nbsp;
+<input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+<span class="style60">&nbsp;
+<input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
+<span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+<input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style61">&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON&nbsp;&nbsp; or MGRS are entered manually.</span><span class="style61"><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For accurate mapping you must enter the latitude and longitude. </span></span></span></span></span></em></td>
           </tr>
         <tr class="FormReg">
           <td>4a. Contact Name</td>
           <td><strong><span class="style49">
           <input name="Contact4" type="text" id="Contact4" size="40" maxlength="38" required/>
 </span></strong></td>
-          <td>4b. Contact Phone</td>
-          <td><input name="Contactphone" type="text" id="Contactphone" required />
+          <td width="18%">4b. Contact Phone</td>
+          <td width="48%"><input name="Contactphone" type="text" id="Contactphone" required />
 &nbsp;&nbsp;            X&nbsp;&nbsp;&nbsp;            <input name="phoneX" type="text" id="phoneX" size="8" /></td>
         </tr>
         <tr class="FormReg">
@@ -779,16 +1429,14 @@ to links</span></a> </div>
       </table>
       <table width="100%"  border="1" cellspacing="0" cellpadding="4">
         <tr valign="top" bgcolor="#dee9f9">
-          <td colspan="7" class="formbold">5. FACILITY OPERATING STATUS <br />
-            <table width="100%"  border="0" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
+          <td height="87" colspan="7" class="formbold">5. FACILITY OPERATING STATUS <br />
+            <table width="85%"  border="0" align="center" cellpadding="4" cellspacing="0" bgcolor="#FFFFFF">
               <tr class="FormReg">
-                <td width="8%">&nbsp;</td>
-                <td width="12%">&nbsp;<span class="style50">Normal</span> </td>
-                <td width="36%">&nbsp;<span class="style50">Modified<span class="style57">- partially functional - no assistance needed (explain)</span></span></td>
-                <td width="44%" class="style50">&nbsp;Limited- <span class="style57">partially functional,- Some assistance needed (explain)&nbsp;&nbsp;</span></td>
+                <td width="15%">&nbsp;<span class="style50">Normal</span> </td>
+                <td width="35%" nowrap="nowrap">&nbsp;<span class="style50">Modified<span class="style57">- partially functional - no assistance needed (explain)</span></span></td>
+                <td width="50%" class="style50">&nbsp;Limited- <span class="style57">partially functional,- Some assistance needed (explain)&nbsp;&nbsp;</span></td>
               </tr>
               <tr class="FormReg">
-                <td>&nbsp;</td>
                 <td>&nbsp;<span class="style50">UNKNOWN</span></td>
                 <td><span class="style50">&nbsp;Impaired-</span><span class="style58"> major assistance needed (explain)</span></td>
                 <td class="style50">&nbsp;Not functional- <span class="style57">major assistance needed (explain)</span></td>
@@ -800,7 +1448,7 @@ to links</span></a> </div>
           <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" onclick=" document.getElementById('A5a').value = 'NORMAL'" value="NORMAL" checked="checked"/>
     NORMAL
       <input name="A5a" type="hidden" id="A5a" value="NORMAL" /></td>
-          <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="MODIFIED partially functional - no assistance needed"  onclick=" document.getElementById('A5a').value = 'MODIFIED'" />
+          <td width="11%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="MODIFIED"  onclick=" document.getElementById('A5a').value = 'MODIFIED'" />
     MODIFIED </td>
           <td width="10%" nowrap="nowrap"><input name="FACILITY5" type="radio" value="LIMITED" onclick=" document.getElementById('A5a').value = 'LIMITED'" />
     LIMITED </td>
@@ -815,10 +1463,15 @@ to links</span></a> </div>
           <td colspan="7"><textarea name="Comments5" cols="130" rows="1" id="Comments5" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>            </td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="7" class="formbold">6. COMMUNICATIONS</td>
+          <td colspan="7" class="formbold">6. COMMUNICATIONS   &nbsp;&nbsp;Impacted:
+            <input name="bcommipaired" type="radio" value="YES" onclick=" document.getElementById('commipaired').value ='YES'"/>            
+            YES&nbsp;&nbsp;&nbsp;&nbsp;
+<input name="bcommipaired" type="radio" value="NO" checked="checked" onclick=" document.getElementById('commipaired').value ='NO'" />
+NO
+<input name="commipaired" type="hidden" id="commipaired" value="NO" /></td>
           </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Email</td>
+          <td>6a.&nbsp;&nbsp;Email</td>
           <td nowrap="nowrap"><input name="CommsEmail" type="radio" onclick=" document.getElementById('A6a').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6a" type="hidden" id="A6a" value="NORMAL" /></td>
@@ -834,7 +1487,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Landline Phone</td>
+          <td>6b.&nbsp;&nbsp;Landline Phone</td>
           <td nowrap="nowrap"><input name="CommsLL" type="radio" onclick=" document.getElementById('A6b').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6b" type="hidden" id="A6b" value="NORMAL" /></td>
@@ -850,7 +1503,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Fax</td>
+          <td>&nbsp;6c. &nbsp;Fax</td>
           <td nowrap="nowrap"><input name="CommsFax" type="radio" onclick=" document.getElementById('A6c').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6c" type="hidden" id="A6c" value="NORMAL" /></td>
@@ -866,7 +1519,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Internet</td>
+          <td>6d. &nbsp;&nbsp;Internet</td>
           <td nowrap="nowrap"><input name="CommsInternet" type="radio" onclick=" document.getElementById('A6c').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL    
     <input name="A6d" type="hidden" id="A6d" value="NORMAL" /></td>
@@ -882,7 +1535,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Cell Phone</td>
+          <td>&nbsp;6e. &nbsp;Cell Phone</td>
           <td nowrap="nowrap"><input name="CommsCell" type="radio" onclick=" document.getElementById('A6e').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6e" type="hidden" id="A6e" value="NORMAL" /></td>
@@ -898,7 +1551,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>&nbsp;&nbsp;Satellite Phone</td>
+          <td>6f. &nbsp;Satellite Phone</td>
           <td nowrap="nowrap"><input name="Commssat" type="radio" onclick=" document.getElementById('A6f').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6f" type="hidden" id="A6f" value="NORMAL" /></td>
@@ -914,7 +1567,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td> &nbsp; Amateur Radio</td>
+          <td> &nbsp;6g.  Amateur Radio</td>
           <td nowrap="nowrap"><input name="CommsHeart" type="radio" onclick=" document.getElementById('A6g').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A6g" type="hidden" id="A6g" value="NORMAL" /></td>
@@ -933,10 +1586,15 @@ to links</span></a> </div>
           <td colspan="7"><textarea  name="Comments6" cols="130" rows="1" id="Comments6" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea></td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="7" class="formbold">7. UTILITIES</td>
+          <td colspan="7" class="formbold">7. UTILITIES  &nbsp;&nbsp; Impacted:
+            <input name="butilitiesimpared" type="radio" value="YES" onclick=" document.getElementById('utilitiesimpared').value ='YES'"/>
+YES &nbsp;&nbsp; &nbsp;&nbsp;
+<input name="butilitiesimpared" type="radio" value="NO" checked="checked" onclick=" document.getElementById('utilitiesimpared').value ='NO'" />
+NO
+<input name="utilitiesimpared" type="hidden" id="utilitiesimpared" value="NO" /></td>
           </tr>
         <tr class="FormReg">
-          <td>Power</td>
+          <td>7a. Power</td>
           <td nowrap="nowrap"><input name="Utilitiesa" type="radio" onclick=" document.getElementById('A7a').value = 'NORMAL'" value="NORMAL" checked="checked"/>  
             NORMAL
       <input name="A7a" type="hidden" id="A7a" value="NORMAL" /></td><td nowrap="nowrap"><input name="Utilitiesa" type="radio"  onclick=" document.getElementById('A7a').value = 'MODIFIED'" value="MODIFIED" />
@@ -951,7 +1609,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>Water</td>
+          <td>7b. Water</td>
           <td nowrap="nowrap"><input name="Utilitiesb" type="radio" onclick=" document.getElementById('A7b').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A7b" type="hidden" id="A7b" value="NORMAL" /></td>
@@ -967,7 +1625,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>Sanitation</td>
+          <td>7c. Sanitation</td>
           <td nowrap="nowrap"><input name="Utilitiesc" type="radio" onclick=" document.getElementById('A7c').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A7c" type="hidden" id="A7c" value="NORMAL" /></td>
@@ -983,7 +1641,7 @@ to links</span></a> </div>
   UNKNOWN </td>
         </tr>
         <tr class="FormReg">
-          <td>Heating/Ventilation/AC</td>
+          <td>7d. Heating/Ventilation/AC</td>
           <td nowrap="nowrap"><input name="Utilitiesd" type="radio" onclick=" document.getElementById('A7d').value = 'NORMAL'" value="NORMAL" checked="checked"/>
   NORMAL
     <input name="A7d" type="hidden" id="A7d" value="NORMAL" /></td>
@@ -1002,20 +1660,25 @@ to links</span></a> </div>
           <td colspan="7"><textarea  name="Comments7" cols="130" rows="1" id="Comments7" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea></td>
         </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="7" class="formbold">8. EVACUATION</td>
-          </tr>
+          <td colspan="7" class="formbold">8. EVACUATIONS  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+            <input name="bevacConcerns" type="radio" value="YES" onclick=" document.getElementById('evacConcerns').value ='YES'"/>
+YES &nbsp;&nbsp; &nbsp;&nbsp;
+<input name="bevacConcerns" type="radio" value="NO" checked="checked" onclick=" document.getElementById('evacConcerns').value ='NO'" />
+NO            
+<input name="evacConcerns" type="hidden" id="evacConcerns" value="NO" /></td>
+        </tr>
         <tr class="FormReg">
-          <td>Evacuating?</td>
+          <td>8a. Evacuating?</td>
           <td colspan="2"><span class="formbold">&nbsp; </span>
-            <input name="Evacuating8" type="radio" value="YES" /> 
+            <input name="bEvac8" type="radio" value="YES" onclick=" document.getElementById('Evac8').value ='YES'" />            
             YES
               &nbsp;&nbsp;
 &nbsp;&nbsp;
-<input name="Evacuating8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8a').value = '';document.getElementById('b8a1').checked = false;document.getElementById('b8a2').checked = false; document.getElementById('b8a3').checked = false"/>              
+          <input name="bEvac8" type="radio" onclick=" document.getElementById('Evac8').value ='NO'" value="NO" checked="checked" /> 
 NO
-</td>
-          <td colspan="4">IF Yes, evacuation is: 
-            <input name="b8a" id="b8a1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8a').value = 'Evacuation is Anticipated'"/>
+<input name="Evac8" type="hidden" id="Evac8" value="NO" /></td>
+          <td colspan="4">IF Yes, it is: 
+            <input name="b8a" id="b8a1" type="radio" value="Anticipated"  onclick=" document.getElementById('A8a').value = 'Evacuation is Anticipated'"/>
             Anticipated
 &nbsp;
 <input name="b8a" id="b8a2"  type="radio" value="In progress" onclick=" document.getElementById('A8a').value = 'Evacuation is in Progress'" />
@@ -1026,30 +1689,32 @@ Completed
 <input name="A8a" type="hidden" id="A8a" /></td>
           </tr>
         <tr class="FormReg">
-          <td>Partial Evacuation</td>
+          <td>8b. Partial Evacuation</td>
           <td colspan="2"><span class="formbold">&nbsp; </span>
-            <input name="Partial8" type="radio" value="YES" />
+            <input name="bPartial8" type="radio" value="YES" onclick="document.getElementById('Partial8').value ='YES'" v/>
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Partial8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8b').value = '';document.getElementById('b8b1').checked = false;document.getElementById('b8b2').checked = false; document.getElementById('b8b3').checked = false"/>
-NO </td>
-          <td colspan="4">IF Yes, evacuation is:
-            <input name="b8b" id="b8b1"  type="radio" value="evacuation is"  onclick=" document.getElementById('A8b').value = 'Partial Evacuation is Anticipated'"/>
+<input name="bPartial8" type="radio" onclick="document.getElementById('Partial8').value ='NO'" value="NO" checked="checked" />
+NO
+<input name="Partial8" type="hidden" id="Partial8" value="NO" /></td>
+          <td colspan="4">IF Yes, it is:
+            <input name="b8b" id="b8b1"  type="radio" value="Anticipated"  onclick=" document.getElementById('A8b').value = 'Partial Evacuation is Anticipated'"/>
 Anticipated &nbsp;
 <input name="b8b" type="radio" id="b8b2"value="In progress" onclick=" document.getElementById('A8b').value = 'Partial Evacuation is in Progress'" />
 In progress &nbsp;
 <input name="b8b" type="radio" id="b8b3"value="Completed" onclick=" document.getElementById('A8b').value = 'Partial Evacuation is Completed'" />
 Completed
-<input name="A8b" type="hidden" id="A8b" /></td>
+          <input name="A8b" type="hidden" id="A8b" /></td>
         </tr>
         <tr class="FormReg">
-          <td>Total Evacuation</td>
+          <td>8c. Total Evacuation</td>
           <td colspan="2"><span class="formbold">&nbsp; </span>
-            <input name="Total8" type="radio" value="YES" />
+            <input name="bTotal8" type="radio" value="YES" onclick=" document.getElementById('Total8').value ='YES'" />
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Total8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8c').value = '';document.getElementById('b8c1').checked = false;document.getElementById('b8c2').checked = false; document.getElementById('b8c3').checked = false" />
-NO </td>
-          <td colspan="4">IF Yes, evacuation is:
-            <input name="b8c" id="b8c1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8c').value = 'Total Evacuation is Anticipated'"/>
+<input name="bTotal8" type="radio" onclick=" document.getElementById('Total8').value ='NO'" value="NO" checked="checked" />
+NO 
+<input name="Total8" type="hidden" id="Total8" value="NO" /></td>
+          <td colspan="4">IF Yes, it is:
+            <input name="b8c" id="b8c1" type="radio" value="Anticipated"  onclick=" document.getElementById('A8c').value = 'Total Evacuation is Anticipated'"/>
 Anticipated &nbsp;
 <input name="b8c" type="radio" id="b8c2" value="In progress" onclick=" document.getElementById('A8c').value = 'Total Evacuation is in Progress'" />
 In progress &nbsp;
@@ -1058,14 +1723,15 @@ Completed
 <input name="A8c" type="hidden" id="A8c" /></td>
         </tr>
         <tr class="FormReg">
-          <td>Shelter in place</td>
+          <td>8d. Shelter in place</td>
           <td colspan="2"><span class="formbold">&nbsp; </span>
-            <input name="Shelter8" type="radio" value="YES" />
-YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="Shelter8" type="radio" value="NO" checked="checked" onclick="document.getElementById('A8d').value = '';document.getElementById('b8d1').checked = false;document.getElementById('b8d2').checked = false; document.getElementById('b8d3').checked = false"/>
-NO </td>
-          <td colspan="4">IF Yes, evacuation is:
-            <input name="b8d" id="b8d1" type="radio" value="evacuation is"  onclick=" document.getElementById('A8d').value = 'Shelter in place is Anticipated'"/>
+            <input name="bShelter8" type="radio" value="YES" onclick=" document.getElementById('Shelter8').value ='YES'" v/>
+            YES &nbsp;&nbsp; &nbsp;&nbsp;
+<input name="bShelter8" type="radio" onclick=" document.getElementById('Shelter8').value ='NO'" value="NO" checked="checked" />
+NO 
+          <input name="Shelter8" type="hidden" id="Shelter8" value="NO" /></td>
+          <td colspan="4">IF Yes, it is:
+            <input name="b8d" id="b8d1" type="radio" value="Anticipated"  onclick=" document.getElementById('A8d').value = 'Shelter in place is Anticipated'"/>
 Anticipated &nbsp;
 <input name="b8d" type="radio" id="b8d2"value="In progress" onclick=" document.getElementById('A8d').value = 'Shelter in place is in Progress'" />
 In progress &nbsp;
@@ -1077,13 +1743,42 @@ Completed
           <td colspan="7"><textarea  name="Comments8" cols="130" rows="1" id="Comments8" placeholder="Comments" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea></td>
           </tr>
         <tr bgcolor="#dee9f9" class="FormReg">
-          <td colspan="7" class="formbold">9. IMPACT/CASUALTIES&ndash;provide estimated numbersare ) by default,and any comments:</td>
+          <td colspan="7" class="formbold">9. CASUALTIES&nbsp;&nbsp;            <input name="bthereArecausalties" type="radio" value="YES" onclick=" document.getElementById('thereArecausalties').value ='YES'"/>
+YES &nbsp;&nbsp; &nbsp;&nbsp;
+<input name="bthereArecausalties" type="radio" value="NO" checked="checked" onclick=" document.getElementById('thereArecausalties').value ='NO'" />
+NO  <input name="thereArecausalties" type="hidden" id="thereArecausalties" value="NO" /></td>
           </tr>
         <tr class="FormReg">
           <td bgcolor="#FF9999">Immediate injuries = Critical care needed <strong>RED</strong> </td>
           <td colspan="2"><span class="formbold">&nbsp; </span>Estimated # 
             <input name="Immediate9" type="text" id="Immediate9" onkeypress="return isNumberKey(event)" value="0" size="6" maxlength="6"  /></td>
-          <td colspan="4" rowspan="4" valign="top">&nbsp;</td>
+          <td colspan="4" rowspan="4" valign="top"><textarea name="FormData" cols="70" rows="40" id="FormData" style="display: none;">MapFileName:T=General Hospital Status
+DateTime:T=j2
+Latitude:T=j4
+Longitude:T=j5
+MGRS:T=j6
+Grid:T=j7
+Report Type:T=aReportType
+Status:M:updatenum
+01. Incident Name:M=Incident1
+02a. Date/Time:T=Datetime
+03. Facility Name: T=FacilityName3a  
+03b. Facility Type: T=FacilType  
+04a. Contact Name: T=Contact4
+04b. Contact Phone:T=Contactphone
+04c. Extension:T=phoneX
+04d. Cell Phone: T=Cell4
+04e. Contact Email Address: T=Contactemail
+05. Facility Operating Status: M:NORMAL,MODIFIED,LIMITED,IMPAIRED,NOT FUNCTIONAL,UNKNOWN=A5a
+06. COMMUNICATIONS Impacted:M:YES,NO=commipaired
+07. Utilities Impacted:M:YES,NO=utilitiesimpared
+08. EVACUATIONS:M:YES,NO=evacConcerns
+09. CASULITIES:M:YES,NO=thereArecausalties
+10. Internal disaster plan activated:M:YES,NO=plan10a 
+10a.  Facility Command Center activated:M:YES,NO=FCCActive10
+10b.  Emergency generator power in use:M:YES,NO=generator10
+10c.  Resource Request within 4 hours:M:YES,NO=ResourceRreq10
+10d. ADDITIONAL INFORMATION: T=Comments10</textarea>            &nbsp;</td>
           </tr>
         <tr class="FormReg">
           <td bgcolor="#FFFF99">Delayed injuries = Moderate care needed <strong>YELLOW</strong> </td>
@@ -1110,30 +1805,34 @@ Completed
           <td height="108" colspan="7"><table width="100%"  border="1" cellspacing="0" cellpadding="4">
             <tr>
               <td width="26%">Internal disaster plan activated?</td>
-              <td width="22%"><input name="plan10a" type="radio" value="YES" />
+              <td width="22%"><input name="bplan10a" type="radio" value="YES" onclick=" document.getElementById('plan10a').value ='YES'"/>
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="plan10a" type="radio" value="NO" checked="checked" />
-NO </td>
+<input name="bplan10a" type="radio" value="NO" checked="checked" onclick=" document.getElementById('plan10a').value ='NO'" />
+NO 
+<input name="plan10a" type="hidden" id="plan10a" value="NO" /></td>
               <td width="34%">Facility Command Center activated?</td>
-              <td width="18%"><input name="FCCActive10" type="radio" value="YES" />
+              <td width="18%"><input name="bFCCActive10" type="radio" value="YES" onclick=" document.getElementById('FCCActive10').value ='YES'"/>
 YES&nbsp;&nbsp;&nbsp;&nbsp;
-<input name="FCCActive10" type="radio" value="NO" checked="checked" />
-NO </td>
+<input name="bFCCActive10" type="radio" value="NO" onclick=" document.getElementById('FCCActive10').value ='NO'"checked="checked" />
+NO 
+<input name="FCCActive10" type="hidden" id="FCCActive10" value="NO" /></td>
             </tr>
             <tr>
               <td>Emergency generator power in use?</td>
-              <td><input name="generator10" type="radio" value="YES" />
+              <td><input name="bgenerator10" type="radio" value="YES" onclick=" document.getElementById('generator10').value ='YES'" />
 YES &nbsp;&nbsp; &nbsp;&nbsp;
-<input name="generator10" type="radio" value="NO" checked="checked" />
-NO </td>
+<input name="bgenerator10" type="radio" value="NO" checked="checked" " />
+NO
+<input name="generator10" type="hidden" id="generator10" value="NO" onclick=" document.getElementById('generator10').value ='NO'" /></td>
               <td>Will you send Resource Request within 4 hours?</td>
-              <td><input name="ResiourceRequest10" type="radio" value="YES" />
-YES&nbsp; &nbsp; &nbsp;
-<input name="ResiourceRequest10" type="radio" value="NO" checked="checked" />
-NO </td>
+              <td><input name="bResiourceRequest10" type="radio" value="YES" onclick=" document.getElementById('ResourceRreq10').value ='YES'" />
+                YES&nbsp;&nbsp;&nbsp;&nbsp; <input name="bResiourceRequest10" type="radio" onclick=" document.getElementById('ResourceRreq10').value ='NO'"  checked="checked"/>
+NO 
+<input name="ResourceRreq10" type="hidden" id="ResourceRreq10" value="NO" /></td>
             </tr>
             <tr>
-              <td height="46" colspan="4">   <p>                      <strong>                </strong>                <textarea  placeholder="Comments"name="Comments10" cols="130" rows="1" id="Comments10"  onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
+              <td height="46" colspan="4">   <p>                      <strong>                </strong>                Comments<br />
+                  <textarea  placeholder="Comments" name="Comments10" cols="130" rows="1" id="Comments10"  onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
 </p>
                 </td>
               </tr>
@@ -1147,15 +1846,16 @@ NO </td>
       &nbsp;<span class="formbold"><small><span style="font-family: Calibri;">
       <input name="savebtn" type="button" id="savebtn"  style="color: blue;"onclick="SaveData()" value="Save Hospital Status" />
       </span></small></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input value="Submit" style="height: 28px; width: 70px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="return checkform1(), checkform2()"; enctype="multipart/form-data" class="SubmitBtn" type="submit" />
-          </small></span></span>&nbsp; <span class="formtext">
+      <span style="font-family: Calibri;"><small>
+      <input value="Submit" style="height: 28px; width: 70px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="createjson();;return checkform1(), checkform2();createjson();"; enctype="multipart/form-data" class="SubmitBtn" type="submit" />
+      </small></span>          </small></span></span>&nbsp; <span class="formtext">
           <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset" />
           </span>&nbsp; &nbsp;<span class="formbold">
 <small><span style="font-family: Calibri;">
 
 </span>&nbsp;&nbsp;&nbsp;&nbsp; </small>
-<input name="Templateversion" type="hidden" id="Templateversion" value="1.9.3" />
-</span><span class="FormReg">Version 1.9.3
+<input name="Templateversion" type="hidden" id="Templateversion" value="General Hospital Status 2.0" />
+</span><span class="FormReg">Version 2.0
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span></p>
       </td>
