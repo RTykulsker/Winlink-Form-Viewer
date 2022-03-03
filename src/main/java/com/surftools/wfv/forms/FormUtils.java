@@ -126,20 +126,17 @@ public class FormUtils {
     logger.info("checking for new form version via: " + requestUriString);
 
     try {
-      HttpClient client = HttpClient.newBuilder()
-          .followRedirects(Redirect.NORMAL)
-          .build(); 
+      HttpClient client = HttpClient.newBuilder().followRedirects(Redirect.NORMAL).build();
 
-      HttpRequest request = HttpRequest.newBuilder() 
-          .uri(URI.create(requestUriString))   
-          .build();
+      HttpRequest request = HttpRequest.newBuilder().uri(URI.create(requestUriString)).build();
 
       HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
       String responseUriString = response.uri().toURL().toString();
       remoteVersion = responseUriString.substring(urlPrefix.length());
       updateURL = findUpdateURL(response.body());
-      logger.debug(
-          "remoteVersion: " + remoteVersion + ", updateURL: " + updateURL + ", responseURI: " + responseUriString);
+      logger
+          .debug(
+              "remoteVersion: " + remoteVersion + ", updateURL: " + updateURL + ", responseURI: " + responseUriString);
     } catch (Exception e) {
       logger.error("Error in isFormsUpdateAvailable(): " + e.getMessage(), e);
     }
@@ -164,6 +161,7 @@ public class FormUtils {
    *
    * @return 0 if nothing to update, 1 if updated
    */
+  @SuppressWarnings("resource")
   public void updateForms() {
     if (formsAlreadyUpdated) {
       logger.info("forms already updated during startup");
@@ -187,13 +185,9 @@ public class FormUtils {
     }
 
     try {
-      HttpClient client = HttpClient.newBuilder()
-          .followRedirects(Redirect.NORMAL) 
-          .build();
+      HttpClient client = HttpClient.newBuilder().followRedirects(Redirect.NORMAL).build();
 
-      HttpRequest request = HttpRequest.newBuilder()
-          .uri(URI.create(updateURL))
-          .build();
+      HttpRequest request = HttpRequest.newBuilder().uri(URI.create(updateURL)).build();
 
       HttpResponse<String> firstResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
       String responseUriString = firstResponse.uri().toURL().toString();
@@ -201,9 +195,7 @@ public class FormUtils {
       responseUriString = responseUriString.replace("/redir", "/download");
       logger.debug("updated responseUriString: " + responseUriString);
 
-      request = HttpRequest.newBuilder()
-          .uri(URI.create(responseUriString))
-          .build();
+      request = HttpRequest.newBuilder().uri(URI.create(responseUriString)).build();
 
       HttpResponse<byte[]> secondResponse = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
       byte[] bytes = secondResponse.body();
@@ -238,9 +230,7 @@ public class FormUtils {
         logger.info("downloaded new forms, version: " + getVersion());
         formsAlreadyUpdated = true;
       }
-    } catch (
-
-    Exception e) {
+    } catch (Exception e) {
       logger.error("Error in updateForms(): " + e.getMessage(), e);
     }
 
