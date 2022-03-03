@@ -15,8 +15,8 @@
 .popBox {
 	background:#ffffff;
 	position:absolute;
-	left:25%;
-	right:25%;
+	left:20%;
+	right:20%;
 	top:15%;
 	bottom:25%;
 	z-index:10;
@@ -330,6 +330,7 @@ font-weight: inherit;
 	font-style: italic;
 }
 .style41 {color: black}
+.style43 {font-size: 16px; color: black; }
 </style>
 
 
@@ -1750,7 +1751,8 @@ latLonToGridSquare = function(param1,param2){
     <p class="style37">SHARES SpotRep Form of a new feature in Winlink Express - Display a SitRep Map and report. To display the SitRep map you must provide the GPS coordinates of the event.<p>Providing GPS information is very valuable. We encourage you to do so.<br>If you leave the LAT/LON fields empty, by default, the LAT/LON calculated from your grid square in Express will be used. <br><br>
     LAT/LON: The form accepts only Decimal Degree latitude and longitude. 4 decimals are preferred. <br> <br>
     N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215<br> <br>
-	You may also enter a valid MGRS position.</p>
+	You may also enter a valid MGRS position.</p><br />
+	Note: POC: Point of contact.  Can be different than the FROM call, who is sending the message.
     <hr>
  </span>
 
@@ -1786,8 +1788,8 @@ to links</span></a> </div>
 
 &nbsp; &nbsp; <small style="color: rgb(0, 102, 0);"><span class="style5">UNCLASSIFIED</span> &nbsp; &nbsp; &nbsp; </p>
 
-  <p><span style="font-size: 12px;"><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;</span><small style="color: rgb(0, 102, 0);"><input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load SHARES Spotrep data " />
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#pop1">Form info</a>
+  <p><span style="font-size: 12px;"><span style="font-size: 12px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;<span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span></span></span> &nbsp;&nbsp;</span></span><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span>&nbsp;</span><small style="color: rgb(0, 102, 0);"><input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load SHARES Spotrep data " />
+      <span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span><span style="font-size: 12px;"><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style43"><a href="#pop1" class="style41">Form info</a>
   </span></p></td>
 
 </tr>
@@ -2210,7 +2212,7 @@ POC:T=j18
   
         <span style="font-size: 14px;"><span style="font-size: 12px;">&nbsp;&nbsp;</span>&nbsp;<span class="style39">11. </span></span><span class="style39">POC</span><span class="style39" style="color: black;"><span style="color: rgb(204, 0, 0);">&nbsp;</span> </span><span class="style39" style="color: black;"></span><span style="color: black;">&nbsp;</span>
   
-        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" maxlength="78" size="80" name="POC"   id="POC" onkeydown="return (event.keyCode!=13);"/>
+        <input title="Ex: Jorge Rivera/NCS382 PR acm4jr@gmail.com" placeholder="Point of Contact" maxlength="78" size="80" name="POC"   id="POC" onkeydown="return (event.keyCode!=13);"/>
   
         <span style="color: rgb(128, 0, 0);"><span style="color: black;"> &nbsp;</span></span></p>
   <p><span class="style41">
@@ -2250,9 +2252,9 @@ POC:T=j18
 
 </span></span></span></span></span></span></span></span><span style="color: black;">&nbsp;&nbsp;</span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
 
-<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.9.3" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Shares Spotrep-2 V 9.9.4" />
 
-</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver <span class="style2"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">9.9.3</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></td>
+</span></span></span></span></span><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style2"><span class="style3"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span class="style37">Ver <span class="style2"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">9.9.4</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></td>
 
 </tr>
 

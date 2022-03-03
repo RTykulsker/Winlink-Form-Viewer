@@ -233,11 +233,6 @@ width:40px;
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
 .style47 {color: #000000}
-.style48 {
-	color: #333333;
-	font-size: 12px;
-	font-weight: bold;
-}
 .style49 {
 	color: #006600;
 	font-style: italic;
@@ -1202,6 +1197,9 @@ var jsontext=jsontext.replace('j5', temp1);
 
 var temp1= document.getElementById('MsgSender').value;//enmBroadcastStation
 var jsontext=jsontext.replace('j6', temp1);
+var temp1= document.getElementById('ContactName').value;//enmBroadcastStation
+var jsontext=jsontext.replace('j6a', temp1);
+
 
 var temp1= document.getElementById('Assigned').value;//CEll
 var jsontext=jsontext.replace('j7',temp1);
@@ -1416,7 +1414,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <div align="left">
   <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>Date/Time</span></span> <span class="style15">&nbsp;</span> 
         <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" /> 
-&nbsp; <span class="style48" style="font-family: Arial, Helvetica, sans-serif;;">Select Status </span><span class="style50">&nbsp;</span> &nbsp;
+&nbsp; <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 12px;">Select Status </span><span class="style50">&nbsp;</span> &nbsp;
     <select name="Status" size="3" id="Status" required="required" >
       <option value="Exercise " selected="selected">Exercise </option>
       <option value="Net">Net</option>
@@ -1471,16 +1469,19 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
-     </span><span> <span></span></span> &nbsp; Calls Signs of Initial  On-Site Operator(s)&nbsp; 
+     </span><span> <span></span></span> &nbsp; <span class="style22">Calls Signs of Initial  On-Site Operator(s)&nbsp;</span> 
      <input placeholder="Enter ONLY CALLSIGNS!" maxlength="60" required="required" size="65" name="Assigned" id="Assigned" onchange="this.value=this.value.toUpperCase();"/>
-&nbsp;&nbsp;Sender &nbsp;
-    <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
-    <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-    <input name="Mapfilename" type="hidden" id="Mapfilename" value="Winlink Check In" />
-    <br />
-    <br />
-    <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
-  </div>
+&nbsp;&nbsp;</p>
+  <p><span class="style22">&nbsp; Station Contact Name: </span>
+    <input title="Call sign or tactical being used to send mail" placeholder="Station contact Name" maxlength="25" size="25" id="ContactName"  name="ContactName" />
+    &nbsp; &nbsp;<span class="style22">&nbsp; &nbsp;Station Call sign&nbsp;</span>
+      <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
+      <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+      <input name="Mapfilename" type="hidden" id="Mapfilename" value="Winlink Check In" />
+      <br />
+      <br />
+      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
+</div>
 </td>
 </tr>
 <tr>
@@ -1498,21 +1499,23 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
       </p>
   <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-<input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
+</span></span><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
 <input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12"  /> 
 </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
 <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12"  />
-</span>MGRS</em><span class="style12">     
+</span></em>&nbsp;MGRS<span class="style12">     
      <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
-&nbsp;</span><em>&nbsp;Grid&nbsp;
+&nbsp;</span><em>&nbsp;</em>Grid<em>&nbsp;
 <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
 <span class="style12">&nbsp;
 <input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
 <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span></span></span></em><em><input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>    
-    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;</span></em></em></p>
+</span></span></span></span>
+<input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>    
+    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+    <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+    </span></span></span></span></span></em></em></p>
   <p align="left"><span class="style12"><em> </em></span></p>
   </div>
 </td>
@@ -1520,8 +1523,9 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <tr>
 <td  colspan="4" style="vertical-align: top; text-align: center; height: 70px;">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 180 &nbsp;</span></span>
+  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 180
     <textarea name="Comments"  height: 100px; maxlength="180"  cols="140" rows="3" id="Comments" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER."></textarea> 
+    &nbsp;</span></span>
     <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
@@ -1533,6 +1537,7 @@ DateTime:T=j3
 Latitude:T=j4
 Longitude:T=j5
 Sender:T=j6
+Station Contact Name:T=j6a
 Operators:T=j7
 Location:T=j8
 MGRS:T=j9
@@ -1566,9 +1571,9 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.4</span><span style="font-size: 12px;">
+&nbsp; <span class="style25">Ver 4.0.5</span><span style="font-size: 12px;">
 <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.4" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.5" />
 </span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>

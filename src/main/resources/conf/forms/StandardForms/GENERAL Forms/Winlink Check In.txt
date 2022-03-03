@@ -11,6 +11,8 @@ Msg:
 Status: [<var Status>]
 Date/Time: <var DateTime>
 Initial Assigned Operators: <var Assigned>
+Station Contact Name: <var ContactName>
+Call/Tactical Sender: <var MsgSender>
 Location: <var Location>
 GPS Coordinates: LAT <var mapLat>  LON <var mapLon>    MGRS Coordinates: <var MGRS> 
 Grid Square: <var Grid>
@@ -28,10 +30,10 @@ Below Info Used for Copy and Paste to Spreadsheet
 
 TAB Delimited:
 
-<var Organization>	<var DateTime>	<var MsgSender>	<var Assigned>	<var Location>	<var GPS2>	<var MGRS>	<var Grid>	<var Band>	<var Session>	<var Commentstab>
+<var Organization>	<var DateTime>	<var MsgSender>	<var Assigned>	<var ContactName>	<var Location>	<var GPS2>	<var MGRS>	<var Grid>	<var Band>	<var Session>	<var Commentstab>
 
 Semicolon Delimited Values: 
 
-<var Organization>;<var DateTime>;<var MsgSender>;<var Assigned>;<var Location>;<var GPS2>;<var MGRS>;<var Grid>;<var Band>;<var Session>;<var Commentstab>
+<var Organization>;<var DateTime>;<var MsgSender>;<var Assigned>;<var ContactName>;<var Location>;<var GPS2>;<var MGRS>;<var Grid>;<var Band>;<var Session>;<var Commentstab>
 ----------
 <var Templateversion>
