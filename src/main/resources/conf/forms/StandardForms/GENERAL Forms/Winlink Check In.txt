@@ -14,8 +14,7 @@ Initial Assigned Operators: <var Assigned>
 Station Contact Name: <var ContactName>
 Call/Tactical Sender: <var MsgSender>
 Location: <var Location>
-GPS Coordinates: LAT <var mapLat>  LON <var mapLon>    MGRS Coordinates: <var MGRS> 
-Grid Square: <var Grid>
+GPS Coordinates: LAT <var mapLat> LON <var mapLon>    MGRS Coordinates: <var MGRS> Grid Square: <var Grid>
 Band Used: <var Band>
 Session Type: <var Session>
 Call/Tactical Sender: <var MsgSender>
