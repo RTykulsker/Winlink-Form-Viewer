@@ -37,7 +37,7 @@ font-size:14px;
 transition: none; /*-- THIS IS IMPORTANT -- */
 
 }
-
+}
 input, textarea {
 
 outline: none !important;
@@ -50,7 +50,7 @@ overflow: visible;
 
 font-family: Arial, Helvetica, sans-serif;
 
-font-size: 11px;
+font-size: 14px;
 
 }
 
@@ -679,25 +679,15 @@ Time:&nbsp;{var Mtime}<font face="Arial, Helvetica, sans-serif"><font face="Aria
 
 <tr valign="top" class="formtext" >
 
-<td height="65" colspan="3">7. Message: <span class="style15">&nbsp;</span><span class="formtext"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">
-
-</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></span><span class="formtext"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"> 
-
-</font></font></font></font></font></font></font></font></font></font></font></font></font></font></span>
+<td height="65" colspan="3">7. Message: <span class="style15">&nbsp;</span><span class="formtext"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">
 
 
 
-<p><span class="formtext1">
-  <textarea style="border: 0;
-
-outline: 0;
-
-box-shadow: none;
-
-font-size:14px;
-
- <textarea   placeholder="Be Brief and Concise" id="Message" rows="10" cols="125" name="Message"  readonly="readonly">{var Message} </textarea>
-  <textarea style="display: none;"name="Message2" cols="125" rows="6" id="Message2">{var Message2}</textarea>
+  <br />
+  <span class="formtext1">
+ <span style="width:750px; margin: 10px;  word-wrap:break-word; display:inline-block;">
+ {var Message} </span>
+      <textarea style="display: none;"name="Message2" cols="125" rows="6" id="Message2">{var Message2}</textarea>
 </span></p>
 
 </td>
@@ -715,8 +705,7 @@ Approved by:&nbsp;{var Approved_Name}
 <span class="formtext">
 
 <input name="Approved_Name" id="Approved_Name" value="{var Approved_Name}" type="hidden" />
-
-</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position
 
 / Title:&nbsp;{var Approved_PosTitle}<span class="formtext"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">
 
@@ -732,7 +721,8 @@ Approved by:&nbsp;{var Approved_Name}
 
 <td height="59" colspan="3">9. Reply:<span class="style15">&nbsp;<br /></span>
 
-  <span style="width:700px; margin: 5px; word-wrap:break-word; display:inline-block;">{var reply}</span>
+  <span class="formtext1" style="width:750px; margin: 13px;  word-wrap:break-word; display:inline-block;">
+{var reply}</span>
 
 </td>
 
@@ -756,7 +746,7 @@ Replied By: {var rply_by}
 
 <span class="formtext"></span></div>
 
-  <div align="right">Ver 41.11</div></td>
+  <div align="right">Ver 41.12</div></td>
 
 </tr>
 
