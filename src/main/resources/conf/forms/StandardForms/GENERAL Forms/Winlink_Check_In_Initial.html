@@ -466,9 +466,11 @@ var str = str.replace("  ", " ");
 var d= str.split(' ');
 var cnt = d.length;
 if (cnt >1) {
-document.getElementById('mapLat').value =d[0];
-document.getElementById('mapLon').value =d[1];
-}
+
+document.getElementById('mapLat').value =checkzero(d[0]);
+document.getElementById('mapLon').value =checkzero(d[1]);
+}else {
+document.getElementById('mapLat').value =checkzero(str)}
 }
 function copyGPS() {
 
@@ -510,13 +512,7 @@ MGRSString(d[0],d[1]);
 
 var mypram = {lat:+d[0], lng:+d[1]};
 //alert(mypram);
-what3words.api.convertTo3wa(mypram, 'en')
-  .then(function(response) {
-  theword = ("[convertTo3wa]", response);
-  document.getElementById('w3w').value = theword.words
-  
-  //alert(theword.words);
-  });
+
   convertthis();
 } 
 
@@ -843,19 +839,13 @@ if(res[0]==''|res[1]==''){return};
 
 //mapLat
 //alert(mypram);
-what3words.api.convertTo3wa(mypram, 'en')
-  .then(function(response) {
-  theword = ("[convertTo3wa]", response);
-  document.getElementById('w3w').value = theword.words
-  
-  //alert(theword.words);
-  });
+
   } else 
 { ( "Please correct your coordinates --\nEnter Coordinates in decimal format with the Lat and Lon separated by a comma.\nExample: 38.556724, -121.793285 " );
 document.getElementById('GPS2').value ='';
 document.getElementById('mapLat').value ='';
 document.getElementById('mapLon').value ='';
-document.getElementById('w3w').value ='';
+//document.getElementById('w3w').value ='';
 document.getElementById('WithSpaces').value ='';
 document.getElementById('MGRS').value ='';
 document.getElementById('Grid').value ='';
@@ -1096,6 +1086,10 @@ window.open(
 function hidbtn(x){
 if (x = true) {
 document.getElementById('testlnkbtn').style.display ='none'; }
+}
+function checkzero (num){
+var num = num *1;
+return num;
 }
 
 function CheckLat(SkipMsg){
@@ -1375,7 +1369,6 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 <body >
 
 <span style="font-family:  Arial, Helvetica, sans-serif;"> </span>
-<script  src="https://assets.what3words.com/sdk/v3/what3words.js?key=XTENHH9U" onerror="hidbtn(true);" ></script>
 
 <form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <table style="width: 951px; height: 406px;" align="center" border="0">
@@ -1502,8 +1495,8 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 </span></span><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
 <input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12"  /> 
 </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
-<input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12"  />
-</span></em>&nbsp;MGRS<span class="style12">     
+
+</span></em>&nbsp;MGRS<span class="style12">     <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon()" size="12"  />
      <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span><em>&nbsp;</em>Grid<em>&nbsp;
 <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
@@ -1516,16 +1509,17 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
     <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
     <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
     </span></span></span></span></span></em></em></p>
-  <p align="left"><span class="style12"><em> </em></span></p>
+  <p><span class="style12">&nbsp;&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON<span class="style23">&nbsp;</span> or MGRS must be entered<br />
+    <span class="style23">&nbsp;&nbsp;&nbsp;</span>    manually.</span><span class="style23"><span class="style12">&nbsp;</span> <strong>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.</strong></span><span class="style12"><em> </em></span></p>
   </div>
 </td>
 </tr>
 <tr>
 <td  colspan="4" style="vertical-align: top; text-align: center; height: 70px;">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 180
-    <textarea name="Comments"  height: 100px; maxlength="180"  cols="140" rows="3" id="Comments" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER."></textarea> 
-    &nbsp;</span></span>
+  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 220<span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span style="font-style: italic;">
+    <textarea name="Comments"  height: 100px; maxlength="220"  cols="140" rows="3" id="Comments" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER."></textarea>
+  </span></span>    &nbsp;</span></span>
     <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
@@ -1571,10 +1565,11 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.5</span><span style="font-size: 12px;">
+&nbsp; <span class="style25">Ver 4.0.8.2</span><span style="font-size: 12px;">
 <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.5" />
-</span></span>
+<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.2" />
+</span></span></span></span></span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>
 </tr>
@@ -1594,7 +1589,7 @@ Comments:T=j14</textarea>
 <div class="popScroll"><!-- Test for help starts here -->
 
 <p> </p>
-<strong>More Information</strong><br /><br />
+<strong>Check-in form Information</strong><br /><br />
 <strong>This form is normally sent only upon initial check in, unless other arrangements are made. There is a separate CHECK OUT form that can be used when closing the station.</strong><br /> <br />
 
 The SETUP Icon top left allows you to add your agency or groups name to the template. It will remain as such until you change it. You can clear the title by opening SETUP again and use your space bar.<br />
@@ -1632,7 +1627,8 @@ NOTE: For auto entered GPS decimal coordinates to work, you must have a connecte
 </p><br />
 
 <p align="left">The Winlink Check-in, Check-out and Position Report forms endeavour to provide you with useful options such as latitude/longitude, and MGRS so you can move seamlessly between coordinate systems used by different organizations.</p>
-. 
+<strong>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.
+</strong>
 <td width="0%"></p>
 
 </div>

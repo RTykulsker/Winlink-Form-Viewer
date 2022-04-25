@@ -1,6 +1,6 @@
 Form: Quick Message Initial.html,Quick Message Viewer.html
 
-To:
+To: <var address>
 Subject: <var Subjectline> - ATTN: <var Attn>	
 Msg:
 
