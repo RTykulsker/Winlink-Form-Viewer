@@ -926,6 +926,7 @@ latLonToGridSquare = function(param1,param2){
 }
 
 function checkformgrs(thestring){
+if (thestring=='') return;//aqdded 4-25-22
 //var thestring= document.getElementById("MGRS").value;
 var spc = thestring.split(" ");
  var n = thestring.search(",");
@@ -1008,20 +1009,6 @@ lng = lng.toFixed (4);
 document.getElementById('GPS2').value = lat+','+lng;
 mlon = lng;
 mlat = lat;
-//document.getElementById('dd').value = lat+','+lng;
-var mypram = {lat:+mlat, lng:+mlon};
-//alert(mypram);
-what3words.api.convertTo3wa(mypram, 'en')
-  .then(function(response) {
-  theword = ("[convertTo3wa]", response);
-  document.getElementById('w3w').value = theword.words
-  
-  //alert(theword.words);
-  });
-
-
-//return [true,lat,lng];
-
 }
 
 function Checkifinbrowser() {
@@ -1565,11 +1552,10 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.8.2</span><span style="font-size: 12px;">
-<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.2" />
-</span></span></span></span></span></span>
+&nbsp; <span class="style25">Ver 4.0.8.3</span><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.3" />
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>
 </tr>
