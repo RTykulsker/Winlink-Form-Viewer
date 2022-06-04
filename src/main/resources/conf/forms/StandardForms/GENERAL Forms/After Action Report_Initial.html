@@ -245,7 +245,8 @@ var d = new Date(),
  thisyear = d.getFullYear();
  thismonth= d.getMonth();
  thisday = d.getDate();
- 
+ if (thismonth<10) {thismonth = '0'+thismonth};
+if (thisday<10) {thisday = '0'+thisday};
 var monname;
 h = (d.getHours()<10?'0':'') + d.getHours()
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
@@ -330,7 +331,10 @@ var d = new Date(),
 thisyear = d.getFullYear();
 thismonth= d.getMonth();
 thismonth = thismonth+1;
+if (thismonth<10) {thismonth = '0'+thismonth};
 thisday = d.getDate();
+if (thisday<10) {thisday = '0'+thisday};
+
 h = (d.getHours()<10?'0':'') + d.getHours()
 m = (d.getMinutes()<10?'0':'') + d.getMinutes()
 s = (d.getSeconds()<10?'0':'') + d.getSeconds();
@@ -360,7 +364,7 @@ function AutoGrowTextArea(textField)
 function saveTextAsFile(fileNameToSaveAs, textToWrite) {
 var textToWrite = document.getElementById('parseme').value; 
 var mytemp = document.getElementById('Title').value; 
-var fileNameToSaveAs = mytemp+"AFter Action Report " + DateforFile()+".txt";
+var fileNameToSaveAs = mytemp+" After Action Report " + DateforFile()+".txt";
 fileNameToSaveAs = prompt("", fileNameToSaveAs);
 
   /* Saves a text string as a blob file*/  
@@ -474,6 +478,9 @@ function populateForm(o) {
 o =  JSON.parse(document.getElementById('parseme').value);
  //if (!isObject(o)) return;
 if (!isObject(o)) return;
+var Theversion = document.getElementById('Templateversion').value; // save the template version before load
+
+
   for (var i in o) {
     var el = document.getElementById(i) || document.querySelector('[name=' + i + ']');
     if (el.type==='radio') el = document.querySelectorAll('[name=' + i + ']');
@@ -497,7 +504,11 @@ if (!isObject(o)) return;
           el.value = o[i];
         }
     }
+	
   }
+document.getElementById('Templateversion').value =Theversion;//reset template to form number
+
+  RestoreTitle();
     Fixfields();
 
 
@@ -695,7 +706,7 @@ to links</span></a> </div>
   <pbzloc ="1" style="font-weight: normal;">&nbsp;&nbsp;</pbzloc></span>&nbsp;
 &nbsp;&nbsp; <big><big><br />
   &nbsp; Report Date/Time:&nbsp;</big><span style="font-size: 14px;"></span></big>&nbsp;</small>
-      <input style="color: rgb(204, 0, 0);" placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="23" id="ActivityDateTime1" size="24" onclick="TimeNow('ActivityDateTime1', 'Activities1')" />
+      <input  placeholder="Click to Add Date/Time" name="ActivityDateTime1" maxlength="23" id="ActivityDateTime1" size="24" onclick="TimeNow('ActivityDateTime1', 'Activities1')" />
       <small>&nbsp;
 &nbsp; &nbsp; &nbsp;<big><big> Incident - Event Date:
 &nbsp;</big></big></small><small>
@@ -780,9 +791,9 @@ to links</span></a> </div>
         <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
         <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="AAR v 6.6" />
+                                    id="Templateversion" value="AAR v 6.7" />
 </span></span></span></small></td>
-      <td width="6%"><div align="right"><small><big><big><big><small>Ver 6.6</small></big></big></big><b><big><big style="font-weight: bold;"><big><small>&nbsp;</small></big></big></big></b> &nbsp;</small></div></td>
+      <td width="6%"><div align="right"><small><big><big><big><small>Ver 6.7</small></big></big></big><b><big><big style="font-weight: bold;"><big><small>&nbsp;</small></big></big></big></b> &nbsp;</small></div></td>
     </tr>
   </table>
  </td>

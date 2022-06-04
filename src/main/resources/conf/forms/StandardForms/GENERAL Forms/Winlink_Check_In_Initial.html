@@ -634,6 +634,8 @@ function populateForm(o) {
 o =  JSON.parse(document.getElementById('parseme').value);
  //if (!isObject(o)) return;
 if (!isObject(o)) return;
+var Theversion = document.getElementById('Templateversion').value; // save the template version before load
+
   for (var i in o) {
     var el = document.getElementById(i) || document.querySelector('[name=' + i + ']');
     if (el.type==='radio') el = document.querySelectorAll('[name=' + i + ']');
@@ -657,6 +659,8 @@ if (!isObject(o)) return;
           el.value = o[i];
         }
     }
+	document.getElementById('Templateversion').value =Theversion;//reset template to form number
+
   }
   RestoreTitle();
     Fixfields();
@@ -1552,9 +1556,9 @@ Comments:T=j14</textarea>
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.8.3</span><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+&nbsp; <span class="style25">Ver 4.0.8.4</span><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
 <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.3" />
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.4" />
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span>
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
 </span></span></td>

@@ -16,7 +16,7 @@ Phone: <var Phone>
 
 [Assignment or role on this incident-event]:
 
- <var Comm1>
+ <var Comm1> 
 ------------------------
 
 [Re-cap of incident-event and any major occurrences]:
