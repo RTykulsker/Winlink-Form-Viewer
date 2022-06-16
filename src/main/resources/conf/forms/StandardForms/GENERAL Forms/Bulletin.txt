@@ -8,7 +8,7 @@ Bulletin From: <var From_Name>
 Date/Time: <var ActivityDateTime1>
 Read Level: <var Level>
 
-<var Message>		-Express Sending Station: <MsgSender>Senders Express Version: <ProgramVersion>Senders Template Version: <var Templateversion>
+<var Message>		
 
 
 
