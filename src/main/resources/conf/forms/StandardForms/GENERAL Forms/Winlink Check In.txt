@@ -1,10 +1,7 @@
 Form:Winlink_Check_In_Initial.html,Winlink_Check_In_Viewer.html
-
 To:<var MsgTo>
-
 Subject: Winlink Check In [<var Status>]-<var MsgSender>-<var Location>
-
-
+Readonly:True
 Msg:
 -
 <var Organization> Check-in
@@ -36,3 +33,4 @@ Semicolon Delimited Values:
 <var Organization>;<var DateTime>;<var MsgSender>;<var Assigned>;<var ContactName>;<var Location>;<var GPS2>;<var MGRS>;<var Grid>;<var Band>;<var Session>;<var Commentstab>
 ----------
 <var Templateversion>
+[No changes or editing of this message are allowed]
