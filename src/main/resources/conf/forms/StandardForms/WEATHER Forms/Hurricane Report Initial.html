@@ -1237,7 +1237,7 @@ var attached_file = 'FormData.txt';
            <span class="style12"><small>If WX4NHC is active and accepting traffic, click to add address.</small></span> </span>         
            <input name="SendTo" type="hidden" id="SendTo" >
            <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-           <input name="Mapfilename" type="hidden" id="Mapfilename" value="Hurricane Report" />
+           <input name="Mapfilename" type="hidden" id="Mapfilename" value="Hurricane Report .02" />
            <span style="font-size: 14px;"><span style="font-size: 14px;">
            <input name="timestamp" type="hidden" id="timestamp" size="30" />
            </span>
@@ -1409,13 +1409,12 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 <td height="30"><div align="left"><span style="text-decoration: underline;"></span> &nbsp; Wind&nbsp;Speed
 
       <input name="Wind1" id="Wind1" size="4" maxlength="4" onchange="document.getElementById('Speed').value = document.getElementById('Wind1').value + ' '+document.getElementById('Speedm').value"/>
-
       <select name="Speedm" size="4" id="Speedm" onchange="document.getElementById('Speed').value = document.getElementById('Wind1').value + ' '+document.getElementById('Speedm').value">
         <option value="--" selected="selected">Unknown</option>
         <option>MPH</option>
         <option>KM/h</option>
         <option>Knots</option>
-      </select>
+      </select>      
       &nbsp;&nbsp;
       <input name="Speed" type="hidden" id="Speed" />
 &nbsp; Gust Speed<span style="font-weight: bold;"> </span>
@@ -1504,10 +1503,10 @@ State:T=j14
 Country:T=j15
 Measurements Were:T=j16
 Weather Instruments Used:T=j17
-Wind Speed:T=j18 
-Gust Speed:T=j19
-Wind Direction:T=j20
-Barometric Pressure:T=j21
+Wind Speed:N=j18 
+Gust Speed:N=j19
+Wind Direction:M=j20
+Barometric Pressure:N=j21
 Event Comments:T=j22
 </textarea>      
 <br />
@@ -1520,9 +1519,9 @@ Event Comments:T=j22
   <input value="Submit" style="height: 28px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="checkform();createjson(); " enctype="multipart/form-data" class="SubmitBtn" type="submit" />
  &nbsp;<span style="color: rgb(128, 0, 0);"></span></small>
   <input style="color: rgb(204, 0, 0);" name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
-  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.2</small></span>
+  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.3</small></span>
   <span class="style17"><span class="formtext11">
-  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.1" />
+  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.3" />
   <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
   <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
   </span></span> </span></span>  
