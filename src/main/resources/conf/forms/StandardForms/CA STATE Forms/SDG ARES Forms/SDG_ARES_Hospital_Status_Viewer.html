@@ -478,6 +478,7 @@ if ("{var sd5E}" == "NO"){ document.getElementById('sd5Ecell').style.background 
 if ("{var sd5F}" == "NO"){ document.getElementById('sd5Fcell').style.background = "#fccac7"; }
 if ("{var sd5G}" == "NO"){ document.getElementById('sd5Gcell').style.background = "#fccac7"; }
 if ("{var sd5H}" == "NO"){ document.getElementById('sd5Hcell').style.background = "#fccac7"; }
+if ("{var sd5I}" == "NO"){ document.getElementById('sd5Icell').style.background = "#fccac7"; }
 
 if ("{var sd6A}" == "NO"){ document.getElementById('sd6Acell').style.background = "#fccac7"; }
 if ("{var sd6B}" == "NO"){ document.getElementById('sd6Bcell').style.background = "#fccac7"; }
@@ -521,7 +522,7 @@ if ("{var BLOCK0}" == "ACTUAL INCIDENT") {document.getElementById('BLOCK12').sty
     <tbody>
       <tr valign="top">
         <td width="1177" height="35" colspan="2"><div style="background-color: rgb(244, 246, 247);" align="center">
-          <p><span class="style6">SAN DIEGO HOSPITAL STATUS REPORT FORM - Essential Elements</span> &nbsp;&nbsp;Ver 6.1<br />
+          <p><span class="style6">SAN DIEGO HOSPITAL STATUS REPORT FORM - Essential Elements</span><br />
             <span class="style8"><span class="style9">San Diego County Health Care Disaster Coalition</span></span></p>
           <p><span class="style8">              <span class="style11">Send this form to San Diego County EMS DOC via WebEOC; or fax to Public Health Preparedness &amp; Response Branch (PHPR)  at 619-285-6531; or phone at 619-285-6433; <br />
             or via ARES-ACS or messenger. </span></span></p>
@@ -573,13 +574,13 @@ if ("{var BLOCK0}" == "ACTUAL INCIDENT") {document.getElementById('BLOCK12').sty
             <td nowrap="nowrap">{var sd1G}</td>
           </tr>
           <tr valign="top" class="formtext">
-            <td colspan="4">[1H] &nbsp; Communications&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td colspan="4">[1H-L] &nbsp; Communications&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {var sd1HWwebeoc}&nbsp;&nbsp;  
                 {var sd1HRadio}&nbsp;&nbsp;
       {var sd1HARES}&nbsp;&nbsp;  {var sd1HOther}</td>
           </tr>
           <tr valign="top" class="formtext">
-            <td colspan="4">[1I] &nbsp;&nbsp;Remarks <span style="width:600px; word-wrap:break-word; display:inline-block;"> <br />
+            <td height="44" colspan="4">[1M] &nbsp;&nbsp;Remarks <span style="width:600px; word-wrap:break-word; display:inline-block;"> <br />
               {var sd1I} </span>            </td>
           </tr>
         </table>
@@ -645,15 +646,19 @@ if ("{var BLOCK0}" == "ACTUAL INCIDENT") {document.getElementById('BLOCK12').sty
                 <td nowrap="nowrap">{var sd5G}</td>
               </tr>
               <tr valign="top" class="formtext">
-                <td colspan="2" rowspan="2" id = "sd4Ecell">[4E] Remarks<br />
+                <td colspan="2" rowspan="3" id = "sd4Ecell">[4E] Remarks<br />
                   <span style="width:350px; word-wrap:break-word; display:inline-block;">{var sd4E} </span>                   
                   <br /></td>
                 <td height="29" nowrap="nowrap" id = "sd5Hcell">[5H] Behavioral Health Unit functioning</td>
                 <td nowrap="nowrap">{var sd5H}</td>
               </tr>
               <tr valign="top" class="formtext">
-                <td colspan="2" >[5I] Remarks<br /> 
-                  <span style="width:350px; word-wrap:break-word; display:inline-block;">{var sd5I}</span></td>
+                <td height="29" nowrap="nowrap" id = "sd5Icell">[5I] Morgue/Mass Fatality Area</td>
+                <td nowrap="nowrap">{var sd5I}</td>
+              </tr>
+              <tr valign="top" class="formtext">
+                <td colspan="2" >[5J] Remarks<br /> 
+                  <span style="width:350px; word-wrap:break-word; display:inline-block;">{var sd5J}</span></td>
               </tr>
           </table></td>
       </tr>
