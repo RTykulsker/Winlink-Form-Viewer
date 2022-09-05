@@ -23,15 +23,15 @@ MGRS <var MGRS>
 OBSERVED EVENT CONDITIONS
 
 Flood: <var Flood>
-Hail: <var HailSize>
-High Wind Speed:  <var Windspeed>
+Hail (inches): <var HailSize> 
+High Wind Speed (MPH):  <var Windspeed>
 Tornado / Funnel Cloud: <var Tornado>
 Wind Damage: <var WindDamage>
 Winter Precipitation: <var Precipitation>
-Snow: <var Snow>
-Freezing Rain: <var FreezingRain>
-Heavy Rain: <var Rain>   
-Rain period: <var RainPeriod>
+Snow (inches): <var Snow>
+Freezing Rain (inches): <var FreezingRain>
+Heavy Rain (inches): <var Rain>   
+Rain period: <var RainPeriod>  hour
 
 Additional Information or Comments:
 
@@ -41,5 +41,5 @@ Additional Information or Comments:
 Express Sending Station: <MsgSender>
 Senders Express Version: <ProgramVersion> 
 Senders Template Version: <var Templateversion>
-
+Map Fi9le Name:  <var Mapfilename>
 

@@ -102,7 +102,6 @@ top: 3px;
 	font-style: italic;
 }
 .style3 {font-size: 15px}
-.style5 {color: rgb(0, 102, 0)}
 .style6 {font-size: 14px; font-style: italic; color: #2A0000; }
 .style8 {color: #FF0000}
 .style11 {color: #2A0000}
@@ -127,16 +126,9 @@ font-weight: normal;
 margin: 10px;
 }
 .style17 {font-size: 12px; font-family: Arial, Helvetica, sans-serif}
-.style19 {font-size: 12px; color: #006600; }
-.style28 {font-size: 10px}
-.style22 {font-size: 12;
-	font-style: italic;
-}
-.style30 {font-size: 14px; font-style: italic; }
-.style31 {color: #FF0000; font-size: 12px; }
-.style32 {font-size: 14px}
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
+.style46 {color: #000000}
 </style>
 
 <script>
@@ -1173,16 +1165,22 @@ var jsontext=jsontext.replace('j16', temp1);
 
 var temp1= document.getElementById('Instruments').value;
 var jsontext=jsontext.replace('j17', temp1);
-var temp1= document.getElementById('Speed').value;
+var temp1= document.getElementById('Wind1').value;
 var jsontext=jsontext.replace('j18', temp1);
+var temp1= document.getElementById('Speedm').value;
+var jsontext=jsontext.replace('j18a', temp1);
 
-var temp1= document.getElementById('Speed2').value;
+var temp1= document.getElementById('Wind2').value;
 var jsontext=jsontext.replace('j19', temp1);
+var temp1= document.getElementById('Speed2m').value;
+var jsontext=jsontext.replace('j19a', temp1);
 var temp1= document.getElementById('Direction').value;
 var jsontext=jsontext.replace('j20', temp1);
 
-var temp1= document.getElementById('Pressure2').value;
+var temp1= document.getElementById('Pressure').value;
 var jsontext=jsontext.replace('j21', temp1);
+var temp1= document.getElementById('Pressure2m').value;
+var jsontext=jsontext.replace('j21a', temp1);
 var temp1= document.getElementById('Comments').value;
 temp1 = removeLinebreaks(temp1);
 var jsontext=jsontext.replace('j22', temp1);
@@ -1237,7 +1235,7 @@ var attached_file = 'FormData.txt';
            <span class="style12"><small>If WX4NHC is active and accepting traffic, click to add address.</small></span> </span>         
            <input name="SendTo" type="hidden" id="SendTo" >
            <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-           <input name="Mapfilename" type="hidden" id="Mapfilename" value="Hurricane Report .02" />
+           <input name="Mapfilename" type="hidden" id="Mapfilename" value="Hurricane Report .03" />
            <span style="font-size: 14px;"><span style="font-size: 14px;">
            <input name="timestamp" type="hidden" id="timestamp" size="30" />
            </span>
@@ -1250,9 +1248,9 @@ var attached_file = 'FormData.txt';
 <td colspan="2" nowrap="nowrap" style="text-align: center; vertical-align: top;">
 
   <div align="left">  &nbsp; <br />
-    &nbsp;<span style="font-size: 14px;"> DATE/TIME:
+    &nbsp;<span style="font-size: 14px;"> 1. DATE/TIME:
     <input name="UDTGfld" id="UDTGfld" title="You can overwrite if needed." onkeydown="return (event.keyCode!=13);" onclick=" DateTime('zulu','UDTGfld', false);" size="40" maxlength="40" />
-&nbsp;</span>&nbsp;&nbsp;<span style="color: rgb(204, 0, 0);">Report
+&nbsp;</span>&nbsp;&nbsp;<span style="color: #000000;">2. Report
 
   Status</span>
   
@@ -1281,16 +1279,16 @@ Final Report
 
 <tr align="center">
 
-<td height="30"><div align="left"><span style="color: rgb(0, 102, 0);"> &nbsp;&nbsp;Sender</span>&nbsp;
-  <input size="15" name="MsgSender"  id="MsgSender" maxlength="15" value="{MsgSender}" title="Call sign or Tactical of station sending." readonly="readonly" />
-&nbsp;<span style="color: rgb(0, 102, 0);">
+<td height="30"><div align="left"><span style="color: rgb(0, 102, 0);"> &nbsp;&nbsp;<span class="style46">3. Sender</span></span>&nbsp;
+    <input size="15" name="MsgSender"  id="MsgSender" maxlength="15" value="{MsgSender}" title="Call sign or Tactical of station sending." readonly="readonly" />
+&nbsp;<span style="color: #000000;">
   
-Are you the Reporting Observer?</span>
+4. Are you the Reporting Observer?</span>
   
 <span style="color: rgb(204, 0, 0)"><small style="color: red; font-style: italic;">
-  <span style="color: rgb(204, 0, 0)"></span><span style="color: rgb(204, 0, 0)"><small style="color: red; font-style: italic;"> </small></span>
+   
   <input name="Party" id="Party"type="radio" value="YES" checked="checked" />
-  <span class="style5">Yes</span><span style="color: rgb(204, 0, 0)"><small style="color: red; font-style: italic;">&nbsp;&nbsp;<input name="Party" type="radio" value="YES" />
+  <span class="style46">Yes</span><span style="color: rgb(204, 0, 0)"><small style="color: red; font-style: italic;">&nbsp;&nbsp;<input name="Party" type="radio" value="YES" />
   </small></span>NO, means you are  sending </small></span> <span class="style2">for another</span> <span class="style2">observer </span>&nbsp; &nbsp; &nbsp;&nbsp;
   
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -1302,7 +1300,7 @@ Are you the Reporting Observer?</span>
 <tr align="center">
 
 <td height="30"><div align="left">
- &nbsp; Reporting Observer
+ &nbsp; 5. Reporting Observer
 
   Email&nbsp;  
   <input size="70" name="Email" id="Email" maxlength="60" placeholder="If it is YOU, enter your email or Winlink address." />
@@ -1314,7 +1312,7 @@ Are you the Reporting Observer?</span>
 <tr align="center">
 
 <td height="30"><div align="left">
- &nbsp; Reporting Observer Phone Number &nbsp;
+ &nbsp; 6. Reporting Observer Phone Number &nbsp;
 
   <input size="70" name="Phone" id="Phone" maxlength="60" placeholder="If it is YOU, enter your phone number." />
 
@@ -1334,23 +1332,22 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 
 <td height="95" nowrap="nowrap" bgcolor="#e6fff7" ><div align="left">
   
- <p>City&nbsp;&nbsp;  
+ <p>&nbsp; 6. City&nbsp;&nbsp;  
     
    <input name="City" id="City" size="40" maxlength="35" />
 &nbsp;
     
-&nbsp;&nbsp;State
-<input name="State" id="State"size="40" maxlength="35" />
+&nbsp;7. County&nbsp;
+<input placeholder="County- Province-Parish- Region" name="County" id="County"size="35" maxlength="35" />
+&nbsp;&nbsp;8. State
+<input name="State" id="State"size="25" maxlength="25" />
 <br />
     
   <br />
-  County&nbsp;
-  <input placeholder="County- Province-Parish- Region" name="County" id="County"size="40" maxlength="35" />
-&nbsp; &nbsp;&nbsp;
-    
-  <span style="color: #2A0000;"><em>Country</em></span>&nbsp;
-    
+  &nbsp;&nbsp;9. Country&nbsp; 
   <input name="Country" id="Country"size="40" maxlength="35" />
+&nbsp;
+    
   <input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
   <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" /> 
   </p>
@@ -1384,7 +1381,7 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 
 <tr align="center">
 
-<td height="30"><div align="left"><span style="color: rgb(0, 102, 0);"><span style="color: black;"> &nbsp; Measurements</span>&nbsp;</span>
+<td height="30"><div align="left"><span style="color: rgb(0, 102, 0);"><span style="color: black;"> 10.&nbsp; Measurements</span>&nbsp;</span>
 
       <select name="Type1" id="Type1" size="2">
 
@@ -1394,7 +1391,7 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 
       </select>
 
-&nbsp; List Any Weather Instruments Used&nbsp;<small> &nbsp; 
+&nbsp; 11. List Any Weather Instruments Used&nbsp;<small> &nbsp; 
 
   <input name="Instruments" id="Instruments" size="60" maxlength="55" placeholder="If  &quot;Measured&quot; indicate instruments." />
 
@@ -1406,23 +1403,23 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 
 <tr align="center">
 
-<td height="30"><div align="left"><span style="text-decoration: underline;"></span> &nbsp; Wind&nbsp;Speed
+<td height="30"><div align="left"><span style="text-decoration: underline;"></span> &nbsp;12.  Wind&nbsp;Speed
 
-      <input name="Wind1" id="Wind1" size="4" maxlength="4" onchange="document.getElementById('Speed').value = document.getElementById('Wind1').value + ' '+document.getElementById('Speedm').value"/>
-      <select name="Speedm" size="4" id="Speedm" onchange="document.getElementById('Speed').value = document.getElementById('Wind1').value + ' '+document.getElementById('Speedm').value">
+      <input name="Wind1" id="Wind1" size="4" maxlength="4" />
+      <select name="Speedm" size="4" id="Speedm" >
         <option value="--" selected="selected">Unknown</option>
         <option>MPH</option>
         <option>KM/h</option>
         <option>Knots</option>
-      </select>      
+            </select>
       &nbsp;&nbsp;
       <input name="Speed" type="hidden" id="Speed" />
-&nbsp; Gust Speed<span style="font-weight: bold;"> </span>
+&nbsp;13. Gust Speed<span style="font-weight: bold;"> </span>
 
-  <input name="Wind2" id="Wind2"  onchange="document.getElementById('Speed2').value = document.getElementById('Wind2').value + ' '+document.getElementById('Speed2m').value"size="4" maxlength="4" />
+  <input name="Wind2" id="Wind2"  size="4" maxlength="4" />
 
   <span style="font-weight: bold;">&nbsp;&nbsp;</span>
-  <select name="Speed2m"  size="4" id="Speed2m" onchange="document.getElementById('Speed2').value = document.getElementById('Wind2').value + ' '+document.getElementById('Speed2m').value">
+  <select name="Speed2m"  size="4" id="Speed2m" >
     <option value="--" selected="selected">Unknown</option>
     <option>MPH</option>
     <option>KM/h</option>
@@ -1433,7 +1430,7 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 &nbsp; 
 <input name="Speed2" type="hidden" id="Speed2" />
 &nbsp;&nbsp;
- Wind
+ 14. Wind
 
   Direction<span style="font-weight: bold;"></span><span style="font-weight: bold;">&nbsp; <span style="font-weight: bold;">
   <select name="Directionm" size="4" id="Directionm" onchange="document.getElementById('Direction').value = document.getElementById('Directionm').value" >
@@ -1456,15 +1453,15 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 <tr align="center">
 
 <td height="30"><div align="left"><span style="text-decoration: underline;"></span><span style="font-weight: bold; text-decoration: underline;"></span><span style="text-decoration: underline;"></span>  <span style="font-weight: bold;"><span style="font-weight: bold;">
-  </span> </span>&nbsp;&nbsp;<span style="color: rgb(204, 0, 0);"></span><span style="color: rgb(204, 0, 0);"></span>Barometric
+  </span> </span>&nbsp;&nbsp;<span style="color: rgb(204, 0, 0);"></span><span style="color: rgb(204, 0, 0);"></span>15. Barometric
 
   Pressure&nbsp;&nbsp;
 
-  <input title="Must be attained using calibrated barometer" name="Pressure"  id="Pressure" size="8" maxlength="8" onchange="document.getElementById('Pressure2').value = document.getElementById('Pressure').value + ' '+document.getElementById('Pressure2m').value"/>
+  <input title="Must be attained using calibrated barometer" name="Pressure"  id="Pressure" size="8" maxlength="8"/>
 
 &nbsp;&nbsp;
 
-  <select name="Pressure2m" size="3" id="Pressure2m"  onchange="document.getElementById('Pressure2').value = document.getElementById('Pressure').value + ' '+document.getElementById('Pressure2m').value">
+  <select name="Pressure2m" size="3" id="Pressure2m"  >
     <option value="--" selected="selected">Unknown</option>
     <option>Inches</option>
     <option>Millibars</option>
@@ -1482,32 +1479,36 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
 <tr align="center">
 
 <td height="100" valign="top">  <p align="left">    &nbsp; <br />
-&nbsp;  Comments: <span class="style16">(brief information to help quantify the intensity of this event).</span> <br />
+&nbsp;  16. Comments: <span class="style16">(brief information to help quantify the intensity of this event).</span> <br />
 &nbsp;
     
 <textarea placeholder="Severe Flooding, Storm Surge, Rain Amount, Damage Reports, Evacuations, etc" name="Comments" id="Comments" rows="3" cols="110"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
 <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
-DateTime:T=j2
-Status:M=j3
+
 Latitude:T=j4
 Longitude:T=j5
 MGRS:T=j6
 Grid:T=j7
-Sender:T=j8
-Is Sending Station the Observing Party?:M=j9
-Reporting Observer Email:T=j10
-Reporting Observer Phone Number:T=j11
-City:T=j12
-County:T=j13
-State:T=j14
-Country:T=j15
-Measurements Were:T=j16
-Weather Instruments Used:T=j17
-Wind Speed:N=j18 
-Gust Speed:N=j19
-Wind Direction:M=j20
-Barometric Pressure:N=j21
-Event Comments:T=j22
+DateTime:T=j2 
+01. Status:M=j3
+02. Is Sending Station the Observing Party?:M=j9
+03. Sender:T=j8
+04. Reporting Observer Email:T=j10
+05. Reporting Observer Phone Number:T=j11
+06. City:T=j12
+07. County:T=j13
+08. State:T=j14
+09. Country:T=j15
+10. Measurements Were:T=j16
+11. Weather Instruments Used:T=j17
+12. Wind Speed:N=j18 
+12b. Unit:M=j18a
+13. Gust Speed:N=j19
+13b. Unit:M=j19a
+14. Wind Direction:M=j20
+15. Barometric Pressure:N=j21
+15b. Unit:M=j21a
+16. Event Comments:T=j22
 </textarea>      
 <br />
   <small><small><span style="font-family: Calibri;">
@@ -1519,9 +1520,9 @@ Event Comments:T=j22
   <input value="Submit" style="height: 28px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="checkform();createjson(); " enctype="multipart/form-data" class="SubmitBtn" type="submit" />
  &nbsp;<span style="color: rgb(128, 0, 0);"></span></small>
   <input style="color: rgb(204, 0, 0);" name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
-  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.3</small></span>
+  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.4</small></span>
   <span class="style17"><span class="formtext11">
-  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.3" />
+  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.4" />
   <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
   <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
   </span></span> </span></span>  
