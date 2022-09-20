@@ -293,6 +293,11 @@ padding-right: 0.5em;
 }
 .popScroll h2 {margin-top:0}
 .style18 {font-size: 13px}
+.MSGtext {font-family: Arial,Helvetica,sans-serif;  
+  
+font-size: 12px;  
+}
+.style40 {font-family: Arial, Helvetica, sans-serif}
 </style>
 <script type="text/javascript">
 function TimeNow(Timefld, FocusFld) {
@@ -644,7 +649,7 @@ to links</span></a> </div>
 <td colspan="2" style="height: 15%; text-align: center; background-color: rgb(255, 255, 234);"><small>&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </b><big><big><big><small>Quick
 Health &amp; Welfare - Status or Information Message</small></big></big>&nbsp;
-</big><b><big>&nbsp;</big></b><span style="font-size: 14px;"><big style="font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;&nbsp;</big></big></span></small>&nbsp;<big>&nbsp;<small>&nbsp;</small></big><small><big>Vers 1.8
+</big><b><big>&nbsp;</big></b><span style="font-size: 14px;"><big style="font-weight: bold;"><big>&nbsp;&nbsp;&nbsp;&nbsp;</big></big></span></small>&nbsp;<big>&nbsp;<small>&nbsp;</small></big><small><big>Vers 1.8.1
 </big><span style="font-size: 12px;"><big style="font-weight: bold;"><big>&nbsp;&nbsp;</big></big></span></small></td>
 </tr>
 <tr>
@@ -707,7 +712,42 @@ Info - Read Please </big></a>
 </big></big></small></div></td>
 </tr>
 <tr align="center">
-<td colspan="5" style="height: 88px; vertical-align: top; text-align: center;"><div align="left"><big><br />
+<td colspan="5" style="height: 88px; vertical-align: top; text-align: center;"><div align="left"><big><span class="background_table"><span style="font-weight: bold;"><span class="style7"><span style="font-weight: normal;"><span class="MSGtext"><strong><span style="font-weight: bold;"><span style="font-weight: normal;"><span class="style40"><span style="font-weight: bold;"><span style="font-weight: normal;">
+  <input name="phone" type="text" placeholder="Enter 10 digits" id="phone" onclick="doclear()" style="display: none" onkeypress="return isNumberKey(event)" value="" size="12" />
+</span></span></span></span></span></strong></span></span></span></span></span><span class="background_table"><span style="font-weight: bold;"><span class="style7"><span style="font-weight: normal;"><span class="MSGtext"><strong><span style="font-weight: bold;"><span style="font-weight: normal;"><span class="style40">
+<select name="carrier" id="carrier" style="display: none" >
+  <option selected="selected">Select Carrier</option>
+  <option value="UNITED STATES">-- UNITED STATES --</option>
+  <option value="@alltel.com">Alltel</option>
+  <option value="@txt.att.net">ATT (SMS)</option>
+  <option value="@mms.att.net">ATT (MMS, preferred)</option>
+  <option value="@myboostmobile.com">Boost Mobile</option>
+  <option value="@mailmymobile.net">Consumer Cellular</option>
+  <option value="@mms.firstnet-mail.com">FirstNet</option>
+  <option value="@msg.fi.google.com">Google Fi</option>
+  <option value="@mymetropcs.com">MetroPCS</option>
+  <option value="@messaging.nextel.com">Nextel</option>
+  <option value="@messaging.sprintpcs.com">Sprint (SMS)</option>
+  <option value="@pm.sprint.com">Sprint (MMS, preferred)</option>
+  <option value="@tmomail.net">T-Mobile (SMS,MMS)</option>
+  <option value="@mmst5.tracfone.com">Tracfone (MMS)</option>
+  <option value="@email.uscc.net">US Cellular</option>
+  <option value="@mms.uscc.net">US Cellular (MMS, preferred)</option>
+  <option value="@vtext.com">Verizon (SMS)</option>
+  <option value="@vzwpix.com">Verizon (MMS, preferred)</option>
+  <option value="@vmobl.com">Virgin Mobile</option>
+  <option value="CANADA ">-- CANADA -- </option>
+  <option value="@txt.bell.ca">Bell Canada</option>
+  <option value="@text.mts.net">Bell MTS</option>
+  <option value="@fido.ca">Fido Solutions</option>
+  <option value="@txt.freedommobile.ca">Freedom Mobile</option>
+  <option value="@msg.telus.com">Koodo Mobile</option>
+  <option value="@mobiletxt.ca">PC Mobile</option>
+  <option value="@pcs.rogers.com">Rogers Communications</option>
+  <option value="@sms.sasktel.com">SaskTel</option>
+  <option value="@msg.telus.com">Telus</option>
+</select>
+</span></span></span></strong></span></span></span></span></span><br />
 &nbsp;&nbsp;&nbsp; Message&nbsp;<small style="color: rgb(0, 102, 0);"><small><span style="font-style: italic;"></span><span style="color: rgb(0, 102, 0); font-style: italic;"></span></small>
   </small><br />
   </big><small>
@@ -728,8 +768,10 @@ Info - Read Please </big></a>
 &nbsp; </span></span><span style="color: rgb(204, 0, 0);"><span style="color: black; font-style: italic;">The message
 is formatted&nbsp;as plain text in the body of the sent
 email, and easy to read by the recipient (s).<span class="style18">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Quick H&W v. 18" />
-</span></span></span></td>
+<input name="Templateversion" type="hidden" id="Templateversion" value="Quick H&W v. 1.8." />
+<span style="color: rgb(204, 0, 0);"><span style="color: black; font-style: italic;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
+</span></span></span></span></span></span></span></td>
 </tr>
 </tbody>
 </table>
