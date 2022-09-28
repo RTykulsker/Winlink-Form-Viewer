@@ -3,7 +3,6 @@ Form: SRReport.html,SRDisplay.html
 Subject: SITREP - 911 Contacted: <var R911>
 
 Msg:
-
 Incident: <var RPInc>
 Was 911 Contacted: <var R911>
 
@@ -36,6 +35,4 @@ Pole Damage: <var EPowd>
 Report:
 <var RCom>
 
-
---
-Version <var form_version>
+[<var form_version>]

@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>PISR Report</title>
-<meta name="generator" content="WYSIWYG Web Builder 14 - http://www.wysiwygwebbuilder.com">
+<meta name="generator" content="WYSIWYG Web Builder 15 - http://www.wysiwygwebbuilder.com">
 <style>
 div#container
 {
@@ -153,6 +153,7 @@ h6, .h6
    font-family: Arial;
    font-weight: normal;
    font-size: 13px;
+   -webkit-appearance: none;
    margin: 0;
 }
 #wb_Text1 
@@ -579,19 +580,6 @@ h6, .h6
    text-align: left;
 }
 #wb_Text19 div
-{
-   text-align: left;
-}
-#wb_Text20 
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px solid #000000;
-   padding: 0;
-   margin: 0;
-   text-align: left;
-}
-#wb_Text20 div
 {
    text-align: left;
 }
@@ -1105,28 +1093,28 @@ h6, .h6
 <div id="container">
 <div id="wb_Form1" style="position:absolute;left:0px;top:99px;width:640px;height:1549px;z-index:44;">
 <form name="TestReport" method="post" action="http://{FormServer}:{FormPort}" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" enctype="multipart/form-data" id="Form1">
-<input name="form_version" type="hidden" id="form_version" value="PIS Report Ver 1.6" />
+<input name="form_version" type="hidden" id="form_version" value="PIS Report Ver 1.7" />
 <input type="text" id="Editbox1" style="position:absolute;left:33px;top:228px;width:278px;height:18px;z-index:0;" name="Add2" value="" tabindex="5" spellcheck="false">
 <input type="text" id="Editbox2" required style="position:absolute;left:143px;top:109px;width:168px;height:20px;z-index:1;" name="RLast" value="" tabindex="3" spellcheck="false">
 <input type="submit" id="Button1" name="" value="Submit" style="position:absolute;left:33px;top:1487px;width:96px;height:25px;z-index:2;" tabindex="26">
 <div id="wb_Text1" style="position:absolute;left:33px;top:144px;width:166px;height:19px;z-index:3;">
 <h6>* Address:</h6></div>
-<div id="wb_Text3" style="position:absolute;left:143px;top:93px;width:38px;height:16px;z-index:4;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">Last</span></div>
-<div id="wb_Text4" style="position:absolute;left:33px;top:212px;width:166px;height:16px;z-index:5;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">Address line 2</span></div>
+<div id="wb_Text3" style="position:absolute;left:143px;top:93px;width:170px;height:15px;z-index:4;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">3 - Last</span></div>
+<div id="wb_Text4" style="position:absolute;left:33px;top:212px;width:166px;height:15px;z-index:5;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">5 - Address line 2</span></div>
 <div id="wb_Text5" style="position:absolute;left:33px;top:74px;width:166px;height:19px;z-index:6;">
 <h6>* Reporting Party:</h6></div>
 <input type="text" id="Editbox5" required style="position:absolute;left:33px;top:179px;width:278px;height:18px;z-index:7;" name="Add1" value="" tabindex="4" spellcheck="false">
-<div id="wb_Text8" style="position:absolute;left:181px;top:312px;width:52px;height:16px;z-index:8;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">Country</span></div>
+<div id="wb_Text8" style="position:absolute;left:181px;top:312px;width:132px;height:15px;z-index:8;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">9 - Country</span></div>
 <input type="text" id="Editbox6" required style="position:absolute;left:33px;top:109px;width:92px;height:20px;z-index:9;" name="RFirst" value="" tabindex="2" spellcheck="false">
-<div id="wb_Text10" style="position:absolute;left:33px;top:312px;width:110px;height:16px;z-index:10;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">Postal / Zip Code</span></div>
+<div id="wb_Text10" style="position:absolute;left:33px;top:312px;width:133px;height:15px;z-index:10;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">8 - Postal / Zip Code</span></div>
 <input type="text" id="Editbox8" style="position:absolute;left:33px;top:328px;width:130px;height:20px;z-index:11;" name="RZip" value="" tabindex="8" spellcheck="false">
 <input type="text" id="Editbox9" style="position:absolute;left:181px;top:328px;width:130px;height:20px;z-index:12;" name="RCountry" value="USA" tabindex="9" spellcheck="false">
-<div id="wb_Text12" style="position:absolute;left:33px;top:1113px;width:215px;height:19px;z-index:13;">
-<h6>Flooding Description:</h6></div>
+<div id="wb_Text12" style="position:absolute;left:33px;top:1113px;width:215px;height:18px;z-index:13;">
+<h6>22 - Flooding Description:</h6></div>
 <input type="text" id="Editbox10" style="position:absolute;left:33px;top:434px;width:278px;height:18px;z-index:14;" name="RGrid" value="" tabindex="13" spellcheck="false">
 <select name="WRainc" size="1" id="Combobox1" style="position:absolute;left:33px;top:757px;width:288px;height:28px;z-index:15;" tabindex="18">
 <option value="NA">NA</option>
@@ -1135,17 +1123,17 @@ h6, .h6
 </select>
 <input type="text" id="Editbox12" style="position:absolute;left:33px;top:1132px;width:278px;height:18px;z-index:16;" name="CFloodd" value="" tabindex="24" spellcheck="false" title="Callsign">
 <input type="number" id="Editbox11" style="position:absolute;left:105px;top:382px;width:46px;height:18px;z-index:17;" name="RNum2" value="" tabindex="11" spellcheck="false">
-<div id="wb_Text15" style="position:absolute;left:33px;top:467px;width:215px;height:19px;z-index:18;">
-<h6>* District:</h6></div>
-<div id="wb_Text16" style="position:absolute;left:33px;top:519px;width:215px;height:19px;z-index:19;">
-<h6>* Reporting Location:</h6></div>
-<div id="wb_Text2" style="position:absolute;left:33px;top:22px;width:166px;height:19px;z-index:20;">
-<h6>* Event:</h6></div>
+<div id="wb_Text15" style="position:absolute;left:33px;top:467px;width:215px;height:18px;z-index:18;">
+<h6>* 12 - District:</h6></div>
+<div id="wb_Text16" style="position:absolute;left:33px;top:519px;width:215px;height:18px;z-index:19;">
+<h6>* 13 - Reporting Location:</h6></div>
+<div id="wb_Text2" style="position:absolute;left:33px;top:22px;width:166px;height:18px;z-index:20;">
+<h6>* 1 - Event:</h6></div>
 <hr id="Line2" style="position:absolute;left:2px;top:1165px;width:636px;z-index:21;">
 <div id="wb_Text17" style="position:absolute;left:33px;top:1017px;width:560px;height:24px;z-index:22;">
 <h4>Critical Observations</h4></div>
-<div id="wb_Text21" style="position:absolute;left:33px;top:894px;width:215px;height:19px;z-index:23;">
-<h6>* Surf:</h6></div>
+<div id="wb_Text21" style="position:absolute;left:33px;top:894px;width:215px;height:18px;z-index:23;">
+<h6>* 19 - Surf:</h6></div>
 <select name="WWinds" size="1" id="Combobox4" style="position:absolute;left:33px;top:861px;width:288px;height:28px;z-index:24;" tabindex="20">
 <option value="NA">NA</option>
 <option value="0 MPH">0 MPH</option>
@@ -1168,8 +1156,8 @@ h6, .h6
 <option value="High">High</option>
 <option value="Extreme">Extreme</option>
 </select>
-<div id="wb_Text26" style="position:absolute;left:33px;top:1244px;width:215px;height:19px;z-index:26;">
-<h6>Additional Comments:</h6></div>
+<div id="wb_Text26" style="position:absolute;left:33px;top:1244px;width:215px;height:18px;z-index:26;">
+<h6>23 - Additional Comments:</h6></div>
 <select name="CFlood" size="1" id="Combobox7" style="position:absolute;left:33px;top:1080px;width:288px;height:28px;z-index:27;" tabindex="23">
 <option value="None">None</option>
 <option value="Light">Light</option>
@@ -1268,44 +1256,42 @@ h6, .h6
 <div id="wb_Text32" style="position:absolute;left:166px;top:388px;width:10px;height:16px;z-index:41;">
 <span style="color:#000000;font-family:Arial;font-size:13px;">-</span></div>
 <input type="number" id="Editbox3" style="position:absolute;left:33px;top:382px;width:46px;height:18px;z-index:42;" name="RNum1" value="808" tabindex="10" spellcheck="false">
-<textarea name="RCom" id="TextArea1" style="position:absolute;left:33px;top:1263px;width:550px;height:194px;z-index:43;" rows="11" cols="89" tabindex="25" spellcheck="false"></textarea>
+<textarea name="RCom" id="TextArea1" style="position:absolute;left:33px;top:1263px;width:550px;height:194px;z-index:43;" rows="12" cols="66" tabindex="25" spellcheck="false"></textarea>
+<div id="wb_Text6" style="position:absolute;left:33px;top:93px;width:96px;height:15px;z-index:44;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">2 - First</span></div>
+<div id="wb_Text9" style="position:absolute;left:33px;top:261px;width:133px;height:15px;z-index:45;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">6 - City</span></div>
+<div id="wb_Text11" style="position:absolute;left:181px;top:261px;width:132px;height:15px;z-index:46;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">7 - State</span></div>
+<div id="wb_Text13" style="position:absolute;left:33px;top:363px;width:251px;height:18px;z-index:47;">
+<h6>10 - Primary Contact Number:</h6></div>
+<div id="wb_Text24" style="position:absolute;left:33px;top:842px;width:280px;height:18px;z-index:48;">
+<h6>18 - Estimated Wind Speeds:</h6></div>
 </form>
 </div>
-<hr id="Line1" style="position:absolute;left:0px;top:87px;width:640px;z-index:45;">
-<div id="wb_Text6" style="position:absolute;left:33px;top:192px;width:38px;height:16px;z-index:46;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">First</span></div>
-<div id="wb_Text7" style="position:absolute;left:33px;top:262px;width:166px;height:16px;z-index:47;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">Street Address</span></div>
-<div id="wb_Text9" style="position:absolute;left:33px;top:360px;width:38px;height:16px;z-index:48;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">City</span></div>
-<div id="wb_Text11" style="position:absolute;left:181px;top:360px;width:38px;height:16px;z-index:49;">
-<span style="color:#000000;font-family:Arial;font-size:13px;">State</span></div>
-<div id="wb_Text13" style="position:absolute;left:33px;top:462px;width:215px;height:19px;z-index:50;">
-<h6>Primary Contact Number:</h6></div>
-<div id="wb_Text14" style="position:absolute;left:33px;top:514px;width:215px;height:19px;z-index:51;">
-<h6>Grid Square:</h6></div>
-<div id="wb_Text18" style="position:absolute;left:33px;top:670px;width:215px;height:19px;z-index:52;">
-<h6>* Your E-Mail Address:</h6></div>
-<div id="wb_Text19" style="position:absolute;left:33px;top:785px;width:215px;height:19px;z-index:53;">
-<h6>* Rain:</h6></div>
-<div id="wb_Text20" style="position:absolute;left:33px;top:785px;width:215px;height:19px;z-index:54;">
-<h6>* Rain:</h6></div>
-<div id="wb_Text22" style="position:absolute;left:33px;top:837px;width:215px;height:19px;z-index:55;">
-<h6>Rain Condition:</h6></div>
-<div id="wb_Text23" style="position:absolute;left:33px;top:889px;width:215px;height:19px;z-index:56;">
-<h6>* Winds:</h6></div>
-<div id="wb_Text24" style="position:absolute;left:33px;top:941px;width:215px;height:19px;z-index:57;">
-<h6>Estimated Wind Speeds:</h6></div>
-<hr id="Line3" style="position:absolute;left:2px;top:722px;width:636px;z-index:58;">
-<div id="wb_Text25" style="position:absolute;left:33px;top:741px;width:560px;height:24px;z-index:59;">
+<hr id="Line1" style="position:absolute;left:0px;top:87px;width:640px;z-index:50;">
+<div id="wb_Text7" style="position:absolute;left:33px;top:262px;width:166px;height:15px;z-index:51;">
+<span style="color:#000000;font-family:Arial;font-size:13px;">4 - Street Address</span></div>
+<div id="wb_Text14" style="position:absolute;left:33px;top:514px;width:215px;height:18px;z-index:52;">
+<h6>11 - Grid Square:</h6></div>
+<div id="wb_Text18" style="position:absolute;left:33px;top:670px;width:215px;height:18px;z-index:53;">
+<h6>* 14 - Your E-Mail Address:</h6></div>
+<div id="wb_Text19" style="position:absolute;left:33px;top:785px;width:215px;height:18px;z-index:54;">
+<h6>* 15 - Rain:</h6></div>
+<div id="wb_Text22" style="position:absolute;left:33px;top:837px;width:215px;height:18px;z-index:55;">
+<h6>16 - Rain Condition:</h6></div>
+<div id="wb_Text23" style="position:absolute;left:33px;top:889px;width:215px;height:18px;z-index:56;">
+<h6>* 17 - Winds:</h6></div>
+<hr id="Line3" style="position:absolute;left:2px;top:722px;width:636px;z-index:57;">
+<div id="wb_Text25" style="position:absolute;left:33px;top:741px;width:560px;height:24px;z-index:58;">
 <h4>Weather Observations</h4></div>
-<div id="wb_Text27" style="position:absolute;left:33px;top:1045px;width:215px;height:19px;z-index:60;">
-<h6>Wave height in feet:</h6></div>
-<div id="wb_Text30" style="position:absolute;left:33px;top:1160px;width:215px;height:19px;z-index:61;">
-<h6>* Flooding:</h6></div>
-<div id="wb_Text31" style="position:absolute;left:1px;top:28px;width:639px;height:37px;text-align:center;z-index:62;">
-<h1>Situational Report (Post Event)</h1><span style="color:#000000;font-family:Arial;font-size:13px;"><br>Hawaii County Civil Defense [ver 1.6]</div>
-<div id="wb_Text33" style="position:absolute;left:95px;top:487px;width:10px;height:16px;z-index:63;">
+<div id="wb_Text27" style="position:absolute;left:33px;top:1045px;width:215px;height:18px;z-index:59;">
+<h6>20 - Wave height in feet:</h6></div>
+<div id="wb_Text30" style="position:absolute;left:33px;top:1160px;width:215px;height:18px;z-index:60;">
+<h6>* 21 - Flooding:</h6></div>
+<div id="wb_Text31" style="position:absolute;left:1px;top:28px;width:639px;height:37px;text-align:center;z-index:61;">
+<h1>Situational Report (Post Event)</h1><span style="color:#000000;font-family:Arial;font-size:13px;"><br>Hawaii County Civil Defense [ver 1.7]</div>
+<div id="wb_Text33" style="position:absolute;left:95px;top:487px;width:10px;height:16px;z-index:62;">
 <span style="color:#000000;font-family:Arial;font-size:13px;">-</span></div>
 </div>
 </body>

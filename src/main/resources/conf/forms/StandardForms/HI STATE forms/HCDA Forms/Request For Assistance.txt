@@ -27,6 +27,4 @@ Referred To: <var Referred>
 Screened By: <var SFirst> <var SLast>
 Administrative Email: <var Admail>
 
-
---
-Version <var form_version>
+[<var form_version>]

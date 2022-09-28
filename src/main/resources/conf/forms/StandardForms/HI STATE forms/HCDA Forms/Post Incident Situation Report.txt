@@ -3,7 +3,6 @@ Form: PISRReport.html,PISRDisplay.html
 Subject: SITREP - Post Event - <var REvent>
 
 Msg:
-
 Event: <var REvent>
 
 Reported By: <Var RFirst> <var RLast>
@@ -27,6 +26,4 @@ Flood: <var CFlood> - <var CFloodd>
 
 Comments: <var RCom>
 
-
---
-Version <var form_version>
+[<var form_version>] 
