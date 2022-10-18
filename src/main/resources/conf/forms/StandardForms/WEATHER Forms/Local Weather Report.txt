@@ -10,7 +10,7 @@ Call sign: <var Call>
 Observer Name: <var RepName>
 DateTime: <var DateTime>
 Location: <var Location>    
-Optional GPS Coordinates: <var GPS> 
+Coordinates: LAT: <var mapLat>  LON: <var mapLon>
 City: <var City>       County: <var County>      State: <var State>   
 
 Current Conditions

@@ -20,7 +20,7 @@ DELIVER TO:
 
 MESSAGE:
 <var message>
-
+From: <var From>
 For radio operator use only:
 RECEIVED 
 FROM: <var Rfrom>  

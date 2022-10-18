@@ -1442,7 +1442,7 @@ var attached_file = 'FormData.txt';
 </div>
 <div style="text-align: center;">
 
-<form  style="font-family: Arial;" pbzloc="3" onsubmit=" return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
+<form  style="font-family: Arial;" pbzloc="3" onsubmit=" return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');  document.getElementById('parseme').value='';" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 
 <table style="width: 1071px;" align="center" border="0">
 
@@ -1504,9 +1504,9 @@ var attached_file = 'FormData.txt';
     </tr>
     <tr align="left" valign="top" bgcolor="#f8f8ff">
       <td colspan="2" class="style26"><p>Latitude and longitude: LAT<em><span class="style4">&nbsp;
-                <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" value="{Latitude}" size="12" placeholder="ex: 38.5567" />
+                <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" size="12" placeholder="ex: 38.5567" />
         </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style4">
-        <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" value="{Longitude}" size="12" placeholder="ex:-121.7932" />
+        <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" size="12" placeholder="ex:-121.7932" />
         </span></em><em>&nbsp;MGRS</em><span class="style4">
         <input name="MGRS"   type="text" id="MGRS" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" onchange="checkformgrs(this.value)"onkeypress="if(event.keyCode==13){return false;}"size="25" maxlength="25" placeholder="Ex:11SNR0184195204" />
 &nbsp;</span><em>&nbsp;Grid&nbsp;
@@ -1733,9 +1733,9 @@ Comments: T=j40
         <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="height: 28px; color: rgb(204, 0, 0);" type="reset" />
 &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="font-style: italic;"> &nbsp;<span style="font-weight: bold;"> &nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span><span style="font-style: italic;">&nbsp;&nbsp;&nbsp;</span></span><span class="style46">Form Concept by KF5SMH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;<span style="font-style: italic;"><span style="font-weight: bold;"><span style="font-style: italic;"><span style="font-weight: bold;">
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-</span></span></span></span>&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="style29">&nbsp;</span></span></span><span class="style29">Ver 2.9.1</span><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></span></span></span>&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;</span>&nbsp;<span class="style29">&nbsp;</span></span></span><span class="style29">Ver 2.9.2</span><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 <span style="font-style: italic;"><span style="font-style: italic;">
-<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.9.1" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Local Weather V 2.9.2" />
 </span></span></span></span></span>    </span> </p></td>
     </tr>
   </table>  </td>
