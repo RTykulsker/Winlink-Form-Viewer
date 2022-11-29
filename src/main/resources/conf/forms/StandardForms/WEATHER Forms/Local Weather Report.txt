@@ -1,4 +1,4 @@
-Form:Local Weather Report.html,Local Weather Report Viewer.html
+Form:Local Weather Report Initial.html,Local Weather Report Viewer.html
 
 To:
 Subject: WX Report <var Location>, <var City>, <var DateTime>

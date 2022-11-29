@@ -10,19 +10,20 @@ Resource Request Medical and Health: FIELD/HCF to Op Area
 2C. Requestor Tracking Number# <var TrackingNum> 
 
 3. REQUESTOR 
-Name: <var REQName> 
-Agency: <var REQAgency>
-Position: <var REQPosition> 
-Phone : <var REQPhone>    Email: <var REQemail> 
+Name:	<var REQName> 
+Agency:	<var REQAgency>
+Position:	<var REQPosition> 
+Phone:	<var REQPhone>
+Email:	<var REQemail> 
 
 4, DESCRIBE MISSION
 <var Mission> 
 
 5. ORDER SHEETS - ATTACH ADDITIONAL
-   SUPPLIES <var Supply>
-   EQUIPMENT <var Equipment>
-   PERSONNEL <var Personnel>
-   OTHER <var Other>
+   SUPPLIES	<var Supply>
+   EQUIPMENT	<var Equipment>
+   PERSONNEL	<var Personnel>
+   OTHER	<var Other>
 
 6. ORDER SUPPLY / EQUIPMENT / PERSONNEL REQUEST DETAILS 
 Item#	Priority	ITEM DESCRIPTION	Quantity Requested	EXPECTED EQUIPMENT/STAFF DURATION
@@ -46,14 +47,14 @@ vendors, contractors, MOU/MOA's or corporate office?
 8.COMMAND/MANAGEMENT REVIEW AND VERIFICATION
 (NAME, POSITION , AND SIGNATURE - SIGNATURE INDICATES VERIFICATION OF NEED AND APPROVAL)
 
-Name: <var CMDName> 
-Position: <var CMDPosition> 
-Signature: <var CMDSignature>
+Name:	<var CMDName> 
+Position:	<var CMDPosition> 
+Signature:	<var CMDSignature>
 
 ------------------------
-Express Sending Station: <MsgSender>
-Senders Express Version: <ProgramVersion>
-Senders Template Version: <var Templateversion>
+Express Sending Station:	<MsgSender>
+Senders Express Version:	<ProgramVersion>
+Senders Template Version:	<var Templateversion>
 
 
 
