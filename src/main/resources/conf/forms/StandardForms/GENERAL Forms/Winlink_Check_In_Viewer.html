@@ -331,9 +331,9 @@ var nospace = document.getElementById('NoSpaces').value;
             <input name="addformat" type="hidden" id="addformat" value="{var addformat}" />
           </p>
           <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;</span></span><span class="style12">GPS Coordinates   LAT<em><span class="style24">&nbsp;
-                    <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" value="{var mapLat}" size="12" placeholder="ex: 38.5567" />
+                    <input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" value="{var mapLat}" size="12" readonly="readonly" />
             </span><span class="style45"> &nbsp;&nbsp;</span></em>LON<em> <span class="style24">
-            <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" value="{var mapLon}" size="12" placeholder="ex:-121.7932" />
+            <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" value="{var mapLon}" size="12" readonly="readonly" />
             </span></em></span>&nbsp; <em>&nbsp; &nbsp;  </em><span class="style12">MGRS</span><em>&nbsp; </em>
             <input name="MGRS" type="text" id="MGRS" value="{var MGRS}" readonly="readonly" size="25" maxlength="25" placeholder="Optional- MGRS coordinates"/>
             <span class="style24">&nbsp;</span><em><em> <em><em><em> <span class="style24">&nbsp;</span></em></em></em><span class="style24">&nbsp;</span></em></em><span class="style12">Grid</span><em>&nbsp;

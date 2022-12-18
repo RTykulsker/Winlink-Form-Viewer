@@ -122,7 +122,8 @@ public class FormUtils {
     String urlPrefix = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_PREFIX);
 
     String localVersion = getVersion(); // 10141
-    String requestUriString = urlPrefix + localVersion;
+    // String requestUriString = urlPrefix + localVersion;
+    String requestUriString = urlPrefix;
     logger.info("checking for new form version via: " + requestUriString);
 
     try {
@@ -132,8 +133,9 @@ public class FormUtils {
 
       HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
       String responseUriString = response.uri().toURL().toString();
-      remoteVersion = responseUriString.substring(urlPrefix.length());
-      updateURL = findUpdateURL(response.body());
+      String responseBody = response.body();
+      remoteVersion = findRemoteVersion(responseBody);
+      updateURL = findUpdateURL(responseBody);
       logger
           .debug(
               "remoteVersion: " + remoteVersion + ", updateURL: " + updateURL + ", responseURI: " + responseUriString);
@@ -141,6 +143,19 @@ public class FormUtils {
       logger.error("Error in isFormsUpdateAvailable(): " + e.getMessage(), e);
     }
     return remoteVersion;
+  }
+
+  private String findRemoteVersion(String body) {
+    Document doc = Jsoup.parse(body);
+    Elements links = doc.select("a[href]");
+    String magic = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_MAGIC, "1drv.ms");
+    for (Element e : links) {
+      String link = e.attr("href");
+      if (link.contains(magic)) {
+        return e.text().trim();
+      }
+    }
+    return null;
   }
 
   private String findUpdateURL(String body) {

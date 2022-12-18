@@ -185,6 +185,7 @@ font-weight: inherit;
 .style15 {color: #2A5F00; font-size: 12px; }
 .style17 {font-size: small}
 .style20 {font-size: 18px}
+    .style30 {font-size:14px;text-align: center;}
 .style22 {font-family: Arial, Helvetica, sans-serif; color: #000000; }
 .style23 {color: #FF0000}
 
@@ -823,6 +824,7 @@ document.getElementById('MGRS').value =mrgs;
 
 document.getElementById('MGRS').value =mrgs;
 //document.getElementById('MGRS2').value =MRGS2;
+ 
 };
 function Flip() {  
 var withspace = document.getElementById('WithSpaces').value;
@@ -940,6 +942,7 @@ latLonToGridSquare = function(param1,param2){
   var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
   //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
   document.getElementById('Grid').value =mygrid;
+       Testlon();
 }
 
 function checkformgrs(thestring){
@@ -1368,6 +1371,27 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 //parsethisdate();
  
 }
+    
+// test home hemisphere]    
+function Testlon(){
+    
+   var RegGrid= "{GridSquare}";
+    var RegGrid= RegGrid.toUpperCase();
+   
+    var whichway =document.getElementById('Grid').value;
+  ;
+    var whichway=whichway.toUpperCase();
+      if (whichway === RegGrid){document.getElementById('WarningText').innerHTML = ''}else
+
+   {document.getElementById('WarningText').innerHTML = '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*The entered coordinates are not in your registered Grid Square *';   }
+  
+     
+    
+    }
+              
+    
+    
+    
 </script>
 </head>
 <body >
@@ -1424,6 +1448,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
       <option value="VHF">VHF</option>
       <option value="220">220</option>
       <option value="UHF">UHF</option>
+	  <option value="SHF">UHF-SHF (Mesh)</option>
       <option value="HF Amateur">HF Amateur</option>
       <option value="HF Shares">HF Shares</option>
     </select>
@@ -1431,14 +1456,14 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
     <select name="Session" size="3" id="Session" required="required">
       <option value="Telnet" selected="selected">Telnet</option>
       <option value="Packet">Packet</option>
-      <option value="Ardop">Ardop</option>
+	  <option value="Vara FM">Vara FM</option>
+	  <option value="Pactor">Pactor</option>
       <option value="Vara HF">Vara HF</option>
-      <option value="Vara FM">Vara FM</option>
-      <option value="Pactor">Pactor</option>
+      <option value="Ardop">Ardop</option>
       <option value="Mesh">Mesh</option>
       <option value="Other">Other</option>
     </select>
-    <span class="style2">&nbsp;<br />
+    <span class="style2">&nbsp; <br />
 &nbsp;</span><span style="font-size: 14px;">
 <span style="font-size: 14px;">
 <input name="timestamp" type="hidden" id="timestamp" size="30" />
@@ -1500,8 +1525,9 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12"  /> 
 </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
 
-</span></em>&nbsp;MGRS<span class="style12">     <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon()" size="12"  />
-     <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
+</span></em>&nbsp;<span class="style12">     <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon();Testlon()" size="12"  />
+ <span style="color: #000000">&nbsp;&nbsp;MGRS</span>
+<input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span><em>&nbsp;</em>Grid<em>&nbsp;
 <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
 <span class="style12">&nbsp;
@@ -1512,7 +1538,9 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
 <input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>    
     <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
     <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span></span></span></span></em></em></p>
+</span></span></span></span></span></em></em><span style="font-size: 12px;">
+<input name="testlonfld" type="hidden" id="testlonfld" value="{Longitude}" size="14" maxlength="13" />
+</span></p><span class="style30"  id="WarningText">  </span><br />
   <p><em></em></p>
   <p><span class="style12">&nbsp;&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON<span class="style23">&nbsp;</span> or MGRS must be entered<br />
     <span class="style23">&nbsp;&nbsp;&nbsp;</span>    manually.</span><span class="style23"><span class="style12">&nbsp;</span> <strong>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.</strong></span><span class="style12"><em> </em></span></p>
