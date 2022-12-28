@@ -58,11 +58,12 @@ public class FormUtils {
   private static final Logger logger = LoggerFactory.getLogger(FormUtils.class);
 
   // this is the format that is in StandardForms/Standard_Forms_Version.dat
-  private static final String LAST_KNOWN_VERSION = "1.0.141.0";
+  private static final String LAST_KNOWN_LONG_VERSION = "1.0.141.0";
 
   private final IConfigurationManager cm;
   private final File formsDir;
-  private String version = LAST_KNOWN_VERSION;
+  private String longVersion = LAST_KNOWN_LONG_VERSION;
+  private String shortVersion;
   private String updateURL;
   private boolean formsAlreadyUpdated = false;
 
@@ -98,30 +99,40 @@ public class FormUtils {
     Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
     File versionFile = versionPath.toFile();
     if (versionFile.exists()) {
-      version = Files.readString(versionPath).trim();
+      longVersion = Files.readString(versionPath).trim();
     }
 
     // this chops off the last dotted decimal and removes all dots
     // this is the format for getting versions
-    version = version.substring(0, version.lastIndexOf(".")).replace(".", "");
+    shortVersion = makeShortVersion(longVersion);
 
-    logger.debug("Forms path: " + formsDir + ", version: " + version);
+    logger.info("Forms path: " + formsDir + ", long version: " + longVersion + ", short version: " + shortVersion);
+  }
+
+  /**
+   * this chops off the last dotted decimal and removes all dots
+   *
+   * @param s
+   * @return
+   */
+  String makeShortVersion(String s) {
+    return s.substring(0, s.lastIndexOf(".")).replace(".", "");
   }
 
   /**
    * get the latest version available
    *
-   * SIDE EFFECT: sets remoteURL
+   * SIDE EFFECT: sets updateURL
    *
    * @return
    */
-  public String getRemoteVersion() {
+  public String getRemoteLongVersion() {
     String remoteVersion = null;
 
     // https://winlink.org/content/how_manually_update_standard_templates_version_10142
     String urlPrefix = cm.getAsString(ConfigurationKey.FORMS_UPDATE_URL_PREFIX);
 
-    String localVersion = getVersion(); // 10141
+    // String localVersion = getVersion(); // 10141
     // String requestUriString = urlPrefix + localVersion;
     String requestUriString = urlPrefix;
     logger.info("checking for new form version via: " + requestUriString);
@@ -183,17 +194,18 @@ public class FormUtils {
     }
 
     logger.info("Checking for latest Winlink forms");
-    logger.info("Currently installed version: " + getVersion());
+    var currentLongVersion = getLongVersion();
+    logger.info("Currently installed version: " + currentLongVersion);
 
-    String remoteVersion = getRemoteVersion();
-    logger.info("Latest available version: " + remoteVersion);
+    String remoteLongVersion = getRemoteLongVersion();
+    logger.info("Latest available version: " + remoteLongVersion);
 
-    if (remoteVersion.equals(getVersion())) {
+    if (remoteLongVersion.equals(currentLongVersion)) {
       logger.info("The installed version is the same as the most current version");
     }
 
     boolean okToContinue = Utils
-        .promptForBoolean("Update currently installed forms with version " + remoteVersion + "? Default [no]: ");
+        .promptForBoolean("Update currently installed forms with version " + remoteLongVersion + "? Default [no]: ");
     if (!okToContinue) {
       logger.info("skipping forms update");
       return;
@@ -222,7 +234,7 @@ public class FormUtils {
         String formsDirName = cm.getAsString(ConfigurationKey.FORMS_PATH);
         File formsDir = new File(formsDirName);
         String formsParentDirName = formsDir.getParent();
-        File renameDir = new File(formsDir + "-" + getVersion());
+        File renameDir = new File(formsDir + "-" + getShortVersion());
         logger.info("rename formsDir from: " + formsDirName + " to: " + renameDir.getName());
         formsDir.renameTo(renameDir);
 
@@ -238,11 +250,11 @@ public class FormUtils {
 
         // rename zip
         Path versionPath = Paths.get(formsDirName, "Standard_Forms_Version.dat");
-        version = Files.readString(versionPath);
-        File renameZipFile = new File(formsDirName + "-" + getVersion() + ".zip");
+        longVersion = Files.readString(versionPath);
+        File renameZipFile = new File(formsDirName + "-" + getLongVersion() + ".zip");
         zipFile.renameTo(renameZipFile);
         logger.info("wrote zipped forms file to: " + renameZipFile.getName());
-        logger.info("downloaded new forms, version: " + getVersion());
+        logger.info("downloaded new forms, version: " + getLongVersion());
         formsAlreadyUpdated = true;
       }
     } catch (Exception e) {
@@ -280,8 +292,12 @@ public class FormUtils {
     return matchingPaths.get(0).toFile().getCanonicalPath();
   }
 
-  public String getVersion() {
-    return version;
+  public String getLongVersion() {
+    return longVersion;
+  }
+
+  public String getShortVersion() {
+    return shortVersion;
   }
 
   public String getUpdateURL() {

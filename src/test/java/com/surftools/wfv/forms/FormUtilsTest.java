@@ -52,7 +52,7 @@ public class FormUtilsTest {
     final FormUtils fu = new FormUtils(cm);
 
     assertNotNull(fu);
-    logger.debug("version: " + fu.getVersion());
+    logger.debug("version: " + fu.getLongVersion());
 
     logger.debug("end test_version");
   }
