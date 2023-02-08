@@ -1717,6 +1717,43 @@ var attached_file = 'FormData.txt';
 }
 
 
+// JavaScript to test hemisphere
+
+// Add to lat lon HTMLField
+//Testlat(); pn changes
+
+function Testlon(){   
+    // get user loc via lat lon and then compare
+     
+    var homelon = "{Longitude}";
+       var msg = 'Verify entered coordinates before submitting form.'
+    var num =document.getElementById('mapLon').value;
+ 
+    if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
+        document.getElementById('mapLon').style.backgroundColor = '#ffdde2';
+          alert('Warning\nThe entered longitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Western longitudes are negative numbers. Eastern longitudes are positive numbers.\n\nClick OK to edit the longitude or ignore this warning and continue with the entered longitude.');
+      
+    }else {document.getElementById('mapLon').style.backgroundColor = '';
+         }            
+}
+    
+    
+function Testlat(){
+    
+      // get user loc via lat lon and then compare
+   //var themsg = document.getElementById('mapLon').value;
+    var homelat = "{Latitude}";
+    var num =document.getElementById('mapLat').value;    
+   
+    
+    if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
+        document.getElementById('mapLat').style.backgroundColor = '#ffdde2';
+       alert('Warning\nThe entered latitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Southern latitudes are negative numbers. Northern latitudes are positive numbers.\n\nClick OK to edit the latitude or ignore this warning and continue with the entered latitude.');
+             }
+    else {document.getElementById('mapLat').style.backgroundColor = '';
+               }    
+   
+}
 </script>
 
 
@@ -2022,9 +2059,9 @@ Final Report
 
 <td height="80" bgcolor="#f8f8ff" style="text-align: center;"><div align="left">
   <p>Latitude and longitude: LAT<em><span class="style4">&nbsp;
-        <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" size="12" placeholder="ex: 38.5567" />
+        <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon(); Testlat(); " size="12" placeholder="ex: 38.5567" />
   </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style4">
-  <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" size="12" placeholder="ex:-121.7932" />
+  <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon(); Testlon(); " size="12" placeholder="ex:-121.7932" />
   </span></em><em>&nbsp;MGRS</em><span class="style4">
   <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span><em>&nbsp;Grid&nbsp;
@@ -2300,13 +2337,13 @@ Additional Comments:T=j25</textarea>
 
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 
-</span></b></span>&nbsp;</span></span>Ver 3.5<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></b></span>&nbsp;</span></span>Ver 3.6<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
-<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.5" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.6" />
 
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 

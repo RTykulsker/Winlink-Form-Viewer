@@ -1033,8 +1033,8 @@ var s = s.replace(/(\t)/gm,"-  ");
 return s;
 }
 function createjson () {
-var defaultLat = '{Latitude}';
-var defaultLon = '{Longitude}';
+var defaultLat = '{GPSLatitude}';
+var defaultLon = '{GPSLongitude}';
 
 
 var jsontext =document.getElementById('FormData').value;
@@ -1307,8 +1307,8 @@ window.open(
 }
 
 function defaultGPS(){
-var z1 = '{Latitude}';
-var z2= '{Longitude}';
+var z1 = '{GPSLatitude}';
+var z2= '{GPSLongitude}';
 document.getElementById('mapLat').value =z1;
 document.getElementById('mapLon').value =z2;
 checkLatLon();
@@ -1325,8 +1325,8 @@ if(!isNaN (b)){document.getElementById('mapLon').value =b;}
 
 function GetGPS(){
 
-document.getElementById('mapLat').value ={Latitude};
-document.getElementById('mapLon').value = {Longitude}
+document.getElementById('mapLat').value ='{GPSLatitude}';
+document.getElementById('mapLon').value = '{GPSLongitude}';
 var ans = document.getElementById('ExtGPS').value;
 //
 
@@ -1431,6 +1431,45 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 
  
 }
+      
+      // JavaScript to test hemisphere
+
+// Add to lat lon HTMLField
+//Testlat(); pn changes
+
+function Testlon(){   
+    // get user loc via lat lon and then compare
+     
+    var homelon = "{Longitude}";
+       var msg = 'Verify entered coordinates before submitting form.'
+    var num =document.getElementById('mapLon').value;
+ 
+    if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
+        document.getElementById('mapLon').style.backgroundColor = '#ffdde2';
+          alert('Warning\nThe entered longitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Western longitudes are negative numbers. Eastern longitudes are positive numbers.\n\nClick OK to edit the longitude or ignore this warning and continue with the entered longitude.');
+      
+    }else {document.getElementById('mapLon').style.backgroundColor = '';
+         }            
+}
+    
+    
+function Testlat(){
+    
+      // get user loc via lat lon and then compare
+   //var themsg = document.getElementById('mapLon').value;
+    var homelat = "{Latitude}";
+    var num =document.getElementById('mapLat').value;    
+   
+    
+    if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
+        document.getElementById('mapLat').style.backgroundColor = '#ffdde2';
+       alert('Warning\nThe entered latitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Southern latitudes are negative numbers. Northern latitudes are positive numbers.\n\nClick OK to edit the latitude or ignore this warning and continue with the entered latitude.');
+             }
+    else {document.getElementById('mapLat').style.backgroundColor = '';
+               }    
+   
+}
+    
 </script>
 <script type="text/javascript">
 
@@ -1598,13 +1637,13 @@ This form will total the available bed counts for you. </p>
                                       <p><span
 
                                         style="color: rgb(204, 0, 0);"> <span style="color: rgb(204, 0, 0);">  </span></span>Latitude<em><span class="style49">&nbsp;
-    <input name="mapLat"  type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12" />
+    <input name="mapLat"  type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();Testlat();" size="12" />
     </span><span class="style45"> &nbsp;</span></em><span class="style48">&nbsp;</span>Longitude<em><span class="style9">
-    <input name="mapLon"  type="text" id="mapLon"  placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon()" size="12" />
+    <input name="mapLon"  type="text" id="mapLon"  placeholder="ex:-121.7932" onchange="CheckLon();checkLatLon();Testlon();" size="12" />
     </span><span style="color: black;"><span style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;</span></span>&nbsp; </em>MGRS<em><span class="style9">
     <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span>&nbsp;</em>Grid<em>&nbsp;
-    <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+    <input name="Grid" type="text" id="Grid" value="" size="8" maxlength="8" readonly="readonly" />
     <span class="style49">&nbsp;
     <input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
     <span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
@@ -1997,8 +2036,8 @@ style="font-size: 12px;"></span></small></td>
                                   class="Header">
   <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="Hosp Bed Report 9.5" />
-</span></big></big></span>Version 9.7<span style="font-size: 12px;"><big
+                                    id="Templateversion" value="Hosp Bed Report 9.8" />
+</span></big></big></span>Version 9.8<span style="font-size: 12px;"><big
 
 style="font-weight: bold;"><big><small> </small><span class="Header">
 </span></big></big></span></small></div></td>

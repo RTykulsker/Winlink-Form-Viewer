@@ -1194,6 +1194,44 @@ var attached_file = 'FormData.txt';
 }//attached_text
 
 
+    // JavaScript to test hemisphere
+
+// Add to lat lon HTMLField
+//Testlat(); pn changes
+
+function Testlon(){   
+    // get user loc via lat lon and then compare
+     
+    var homelon = "{Longitude}";
+       var msg = 'Verify entered coordinates before submitting form.'
+    var num =document.getElementById('mapLon').value;
+ 
+    if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
+        document.getElementById('mapLon').style.backgroundColor = '#ffdde2';
+          alert('Warning\nThe entered longitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Western longitudes are negative numbers. Eastern longitudes are positive numbers.\n\nClick OK to edit the longitude or ignore this warning and continue with the entered longitude.');
+      
+    }else {document.getElementById('mapLon').style.backgroundColor = '';
+         }            
+}
+    
+    
+function Testlat(){
+    
+      // get user loc via lat lon and then compare
+   //var themsg = document.getElementById('mapLon').value;
+    var homelat = "{Latitude}";
+    var num =document.getElementById('mapLat').value;    
+   
+    
+    if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
+        document.getElementById('mapLat').style.backgroundColor = '#ffdde2';
+       alert('Warning\nThe entered latitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Southern latitudes are negative numbers. Northern latitudes are positive numbers.\n\nClick OK to edit the latitude or ignore this warning and continue with the entered latitude.');
+             }
+    else {document.getElementById('mapLat').style.backgroundColor = '';
+               }    
+   
+}
+    
 </script></head>
 
 <body>
@@ -1352,9 +1390,9 @@ Observed Event&nbsp;&nbsp;</strong></span></span></td>
   <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" /> 
   </p>
  <p> Latitude and longitude: LAT<em><span class="style2">&nbsp;
-       <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();" size="12" placeholder="ex: 38.5567" />
+       <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon();Testlat(); " size="12" placeholder="ex: 38.5567" />
  </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style2">
- <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon()" size="12" placeholder="ex:-121.7932" />
+ <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon();Testlon(); " size="12" placeholder="ex:-121.7932" />
  </span>&nbsp;MGRS</em><span class="style2">
  <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
 &nbsp;</span><em>&nbsp;Grid&nbsp;
@@ -1520,9 +1558,9 @@ DateTime:T=j2
   <input value="Submit" style="height: 28px; color: green;" size="8" name="Submit" method="Post" id="Submit" onclick="checkform();createjson(); " enctype="multipart/form-data" class="SubmitBtn" type="submit" />
  &nbsp;<span style="color: rgb(128, 0, 0);"></span></small>
   <input style="color: rgb(204, 0, 0);" name="ResetForm" value="Reset Form " class="BtnFormat2" type="reset" />
-  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.4</small></span>
+  <small> &nbsp;<span class="style15"> <span class="style13"><span class="style11"><span class="style2">Hurricane Watch Net Frequency When Active: 14.325 MHZ</span></span></span></span></small> &nbsp;&nbsp;<small>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><span class="style15"><small>Ver 16.5</small></span>
   <span class="style17"><span class="formtext11">
-  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.4" />
+  <input name="Templateversion" type="hidden" id="templateversion" value="Hurricane Report v. 16.5" />
   <span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
   <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
   </span></span> </span></span>  

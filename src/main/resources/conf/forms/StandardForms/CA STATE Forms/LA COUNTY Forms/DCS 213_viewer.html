@@ -1183,9 +1183,7 @@ n = document.getElementById("Message").value
 
 }
 function Flip(theid,working) {
-x1 = document.getElementById(theid).value;
-if (x1 == '') { document.getElementById(theid).value = working;} 
-else { document.getElementById(theid).value = '';}
+ return false;
 }
 
 function CheckFlip(theid,working) {
@@ -1229,15 +1227,15 @@ else
     <tr>
       <td style="text-align: center;" colspan="6"><div align="left"><strong style="font-weight: normal;"><br />
             <span class="style18">INCIDENT NAME</span></strong><span style="font-size: 14px"><strong style="font-weight: normal;">:</strong></span>
-          <input name="Incident_Name" type="text" id="Incident_Name" value="{var Incident_Name}" size="70" maxlength="60" required="required" />
+          <input name="Incident_Name" type="text" required="required" id="Incident_Name" value="{var Incident_Name}" size="70" maxlength="60" readonly="readonly" />
       </div></td>
     </tr>
     <tr class="style18">
       <td width="330" nowrap="nowrap" style="text-align: center;"><div align="left">TO :<big> </big>
-              <input name="To_Name" type="text" id="To_Name" value="{var To_Name}" size="35" maxlength="35" required="required" />
+              <input name="To_Name" type="text" required="required" id="To_Name" value="{var To_Name}" size="35" maxlength="35" readonly="readonly" />
       </div></td>
       <td colspan="2" nowrap="nowrap" style="text-align: center;"><div align="left">POSITION:
-              <input name="To_position" type="text" id="To_position" value="{var To_position}" size="20" maxlength="18" required="required" />
+              <input name="To_position" type="text" required="required" id="To_position" value="{var To_position}" size="20" maxlength="18" readonly="readonly" />
       </div></td>
       <td width="243" rowspan="2" valign="top" style="text-align: top;">
           <div align="center"><br />
@@ -1246,23 +1244,23 @@ else
     </tr>
     <tr class="style18">
       <td nowrap="nowrap" style="text-align: center;"><div align="left"><strong><span style="font-weight: normal;">FROM</span></strong>:<big> </big>
-              <input name="From" type="text" id="From" value="{var From}" size="35" maxlength="35" required="required" />
+              <input name="From" type="text" required="required" id="From" value="{var From}" size="35" maxlength="35" readonly="readonly" />
       </div></td>
       <td colspan="2" nowrap="nowrap" style="text-align: center;"><div align="left">POSITION: :
-              <input name="From_position" type="text" id="From_position" value="{var From_position}" size="20" maxlength="18" required="required" />
+              <input name="From_position" type="text" required="required" id="From_position" value="{var From_position}" size="20" maxlength="18" readonly="readonly" />
       </div></td>
     </tr>
     <tr class="style18">
       <td nowrap="nowrap" style="text-align: center;"><div align="left">SUBJECT:&nbsp;
-              <input id="Subjectline" maxlength="28" name="Subjectline" required="required" size="30" value="{var Subjectline}" type="text" />
+              <input name="Subjectline" type="text" required="required" id="Subjectline" value="{var Subjectline}" size="30" maxlength="28" readonly="readonly" />
 </div></td>
-      <td width="182" valign="top" nowrap="nowrap" style="text-align: center;"><div align="left">DATE:&nbsp;            <input name="Mdate" id="Mdate" title="Click to change the date or overwrite" onclick="SetDateTime('fulldate',this.id)" value="{var Mdate}" size="11" maxlength="10" required="required" />      
+      <td width="182" valign="top" nowrap="nowrap" style="text-align: center;"><div align="left">DATE:&nbsp;            <input name="Mdate" required="required" id="Mdate" title="Click to change the date or overwrite"  value="{var Mdate}" size="11" maxlength="10" readonly="readonly" />      
         </div></td>
       <td width="158" valign="top" nowrap="nowrap" style="text-align: center;"><div align="left">TIME:&nbsp;
-          <input name="Mtime" id="Mtime" title="Click to change the time or overwrite" onclick="SetDateTime('hm',this.id)" value="{var Mtime}" size="6" maxlength="6" required="required" />
+          <input name="Mtime" required="required" id="Mtime" title="Click to change the time or overwrite"  value="{var Mtime}" size="6" maxlength="6" readonly="readonly" />
       </div></td>
       <td colspan="2" style="text-align: center;"><div align="left">MESSAGE#: 
-            <input name="Msgnum" type="text" id="Msgnum" value="{var Msgnum}" size="8" maxlength="8" />
+            <input name="Msgnum" type="text" id="Msgnum" value="{var Msgnum}" size="8" maxlength="8" readonly="readonly" />
       </div></td>
     </tr>
     <tr>
@@ -1275,36 +1273,37 @@ else
             <td width="13%"><div align="right"><span class="style20">&nbsp;</span><span class="style20"> </span><br />              
             </div></td>
             <td width="9%" nowrap="nowrap" class="style20">&nbsp;
-              <input name="b1" type="checkbox" id="b1" onclick="Flip('f1', 'Incoming ')" value="checkbox"/>
+              <input name="b1" type="checkbox" id="b1"  value="checkbox"/>
 Incoming
 <input name="f1" type="hidden" id="f1" value="{var f1}" /></td>
-            <td width="9%" nowrap="nowrap" class="style20"><input name="b2" type="checkbox" id="b2" onclick="Flip('f2', 'Outgoing ')" value="checkbox"/>
+            <td width="9%" nowrap="nowrap" class="style20"><input name="b2" type="checkbox" id="b2"  value="checkbox"/>
               Outgoing 
   <input name="f2" type="hidden" id="f2" value="{var f2}" /></td>
-            <td width="8%" nowrap="nowrap" class="style20"><input name="b3" type="checkbox" id="b3" onclick="Flip('f3', 'Circuit: 2M " value="checkbox"/>
-Circuit: 2M
+            <td width="8%" nowrap="nowrap" class="style20">Circuit:
+<input name="b3" type="checkbox" id="b3" value="checkbox"/>
+              2M
   <input name="f3" type="hidden" id="f3" value="{var f3}" />  
   &nbsp;&nbsp;</td>
-            <td width="7%" nowrap="nowrap" class="style20"><input name="b4" type="checkbox" id="b4" onclick="Flip('f4', '220 ')" value="checkbox"/>
+            <td width="7%" nowrap="nowrap" class="style20"><input name="b4" type="checkbox" id="b4"  value="checkbox"/>
 220 
   <input name="f4" type="hidden" id="f4" value="{var f4}" /> </td>
-            <td width="7%" nowrap="nowrap" class="style20"><input name="B5" type="checkbox" id="b5" onclick="Flip('f5', '440 ')" value="checkbox"/>
+            <td width="7%" nowrap="nowrap" class="style20"><input name="B5" type="checkbox" id="b5"value="checkbox"/>
               440
                 <input name="f5" type="hidden" id="f5" value="{var f5}" /></td>
-            <td width="8%" nowrap="nowrap" class="style20"><input name="B6" type="checkbox" id="b6" onclick="Flip('f6', '10m ')" value="checkbox"/>
+            <td width="8%" nowrap="nowrap" class="style20"><input name="B6" type="checkbox" id="b6"  value="checkbox"/>
               10M 
                 <input name="f6" type="hidden" id="f6" value="{var f6}" /></td>
-            <td width="7%" nowrap="nowrap" class="style20"><input name="B7" type="checkbox" id="b7" onclick="Flip('f7', '6M ')" value="checkbox"/>
+            <td width="7%" nowrap="nowrap" class="style20"><input name="B7" type="checkbox" id="b7"  value="checkbox"/>
 6M
   <input name="f7" type="hidden" id="f7" value="{var f7}" />
   </td>
-            <td width="10%" nowrap="nowrap" class="style20"><input name="B8" type="checkbox" id="b8" onclick="Flip('f8', 'HF ')" value="checkbox"/>
+            <td width="10%" nowrap="nowrap" class="style20"><input name="B8" type="checkbox" id="b8" value="checkbox"/>
 HF
   <input name="f8" type="hidden" id="f8" value="{var f8}" /></td>
-            <td width="10%" nowrap="nowrap" class="style20"><input name="B9" type="checkbox" id="b9" onclick="Flip('f9', 'NBEMS ')" value="checkbox"/>
+            <td width="10%" nowrap="nowrap" class="style20"><input name="B9" type="checkbox" id="b9"  value="checkbox"/>
 NBEMS
   <input name="f9" type="hidden" id="f9" value="{var f9}" /></td>
-            <td width="12%" nowrap="nowrap" class="style20"><input name="B10" type="checkbox" id="b10" onclick="Flip('f10', 'Winlink ')" value="checkbox"/>
+            <td width="12%" nowrap="nowrap" class="style20"><input name="B10" type="checkbox" id="b10"  value="checkbox"/>
 Winlink 
   <input name="f10" type="hidden" id="f10" value="{var f10}" /></td>
           </tr>
@@ -1313,7 +1312,7 @@ Winlink
               <table width="100%"  border="1" cellspacing="0" cellpadding="0">
                 <tr>
                   <td><span class="style20">
-                    <input name="B11" type="checkbox" id="b11" onclick="Flip('f11', 'OPS. CMDR, ')" value="checkbox"/>
+                    <input name="B11" type="checkbox" id="b11"  value="checkbox"/>
                   </span></td>
                   <td><span class="style20">OPS. CMDR
                     <input name="f11" type="hidden" id="f11" value="{var f11}" />
@@ -1321,140 +1320,140 @@ Winlink
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B12" type="checkbox" id="b12" onclick="Flip('f12', 'DEP. OPS. CMDR, ')" value="checkbox"/>
+                    <input name="B12" type="checkbox" id="b12"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;DEP. OPS. CMDR
                     <input name="f12" type="hidden" id="f12" value="{var f12}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B13" type="checkbox" id="b13" onclick="Flip('f13', 'CHIEF of STAFF, ')" value="checkbox"/>
+                    <input name="B13" type="checkbox" id="b13"   align=""value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;CHIEF of STAFF                    
                     <input name="f13" type="hidden" id="f13" value="{var f13}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B14" type="checkbox" id="b14" onclick="Flip('f14', 'OPS. OFFICER, ')" value="checkbox"/>
+                    <input name="B14" type="checkbox" id="b14"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;OPS. OFFICER
                     <input name="f14" type="hidden" id="f14" value="{var f14}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B15" type="checkbox" id="b15" onclick="Flip('f15', 'OPERATIONS ')" value="checkbox"/>
+                    <input name="B15" type="checkbox" id="b15"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;OPERATIONS
                     <input name="f15" type="hidden" id="f15" value="{var f15}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                  <input name="B16" type="checkbox" id="b16" onclick="Flip('f16', 'LOGISTICS, ')" value="checkbox"/>
+                  <input name="B16" type="checkbox" id="b16"   value="checkbox"/>
 </span></td>
                   <td class="style20">&nbsp;LOGISTICS
                     <input name="f16" type="hidden" id="f16" value="{var f16}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B17" type="checkbox" id="b17" onclick="Flip('f17', 'PERSONNEL, ')" value="checkbox"/>
+                    <input name="B17" type="checkbox" id="b17"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;PERSONNEL
                     <input name="f17" type="hidden" id="f17" value="{var f17}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B18" type="checkbox" id="b18" onclick="Flip('f18', '&nbsp;INTELLIGENCE, ')" value="checkbox"/>
+                    <input name="B18" type="checkbox" id="b18"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;INTELLIGENCE
                     <input name="f18" type="hidden" id="f18" value="{var f18}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B19" type="checkbox" id="b19" onclick="Flip('f19', 'DPSS/REDCROSS, ')" value="checkbox"/>
+                    <input name="B19" type="checkbox" id="b19"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;DPSS/REDCROSS
                     <input name="f19" type="hidden" id="f19" value="{var f19}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B20" type="checkbox" id="b20" onclick="Flip('f20', 'ENGINEER, ')" value="checkbox"/>
+                    <input name="B20" type="checkbox" id="b20"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;ENGINEER
                     <input name="f20" type="hidden" id="f20" value="{var f20}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B21" type="checkbox" id="b21" onclick="Flip('f21', 'FIRE, ')" value="checkbox"/>
+                    <input name="B21" type="checkbox" id="b21"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;FIRE
                     <input name="f21" type="hidden" id="f21" value="{var f21}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B22" type="checkbox" id="b22" onclick="Flip('f22', 'FLOOD, ')" value="checkbox"/>
+                    <input name="B22" type="checkbox" id="b22"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;FLOOD                    
                     <input name="f22" type="hidden" id="f22" value="{var f22}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B23" type="checkbox" id="b23" onclick="Flip('f23', 'OPS. CMDR ')" value="checkbox"/>
+                    <input name="B23" type="checkbox" id="b23"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;HEALTH                    
                     <input name="f23" type="hidden" id="f23" value="{var f23}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B24" type="checkbox" id="b24" onclick="Flip('f24', 'MECHANICAL, ')" value="checkbox"/>
+                    <input name="B24" type="checkbox" id="b24"  value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;MECHANICAL                    
                     <input name="f24" type="hidden" id="f24" value="{var f24}" /></td>
                 </tr>
                 <tr>
-                  <td class="style20"><input name="B25" type="checkbox" id="b25" onclick="Flip('f25', 'PURCH/STORES, ')" value="checkbox"/></td>
+                  <td class="style20"><input name="B25" type="checkbox" id="b25" value="checkbox"/></td>
                   <td class="style20">&nbsp;PURCH/STORES
                     <input name="f25" type="hidden" id="f25" value="{var f25}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B26" type="checkbox" id="b26" onclick="Flip('f26', 'CORONER, ')" value="checkbox"/>
+                    <input name="B26" type="checkbox" id="b26"   value="checkbox"/>
                   </span></td>
                   <td class="style20">CORONER
                     <input name="f26" type="hidden" id="f26" value="{var f26}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B27" type="checkbox" id="b27" onclick="Flip('f27', 'CEO, ')" value="checkbox"/>
+                    <input name="B27" type="checkbox" id="b27"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;CEO
                     <input name="f27" type="hidden" id="f27" value="{var f27}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B28" type="checkbox" id="b28" onclick="Flip('f28', 'CALTRANS, ')" value="checkbox"/>
+                    <input name="B28" type="checkbox" id="b28"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;CALTRANS
                     <input name="f28" type="hidden" id="f28" value="{var f28}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B29" type="checkbox" id="b29" onclick="Flip('f29', 'CHP, ')" value="checkbox"/>
+                    <input name="B29" type="checkbox" id="b29"   value="checkbox"/>
                   </span></td>
                   <td class="style20">&nbsp;CHP
                     <input name="f29" type="hidden" id="f29" value="{var f29}" /></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B30" type="checkbox" id="b30" onclick="CheckFlip('f30', 't30')" value="checkbox"/>
+                    <input name="B30" type="checkbox" id="b30"  value="checkbox"/>
                   </span></td>
                   <td><input name="f30" type="hidden" id="f30" value="{var f30}" size="15" />
                     <span class="style20">
-                    <input name="t30" type="text" id="t30" value="{var t30}" size="18" maxlength="17" />
+                    <input name="t30" type="text" id="t30" value="{var t30}" size="18" maxlength="17"  />
                     </span>                    <span class="style20">                    </span></td>
                 </tr>
                 <tr>
                   <td><span class="style20">
-                    <input name="B31" type="checkbox" id="b31" onclick="CheckFlip('f31', 't31')" value="checkbox"/>
+                    <input name="B31" type="checkbox" id="b31"   value="checkbox"/>
                   </span></td>
                   <td><input name="f31" type="hidden" id="f31" value="{var f31}" size="15" />
                     <span class="style20">
@@ -1466,11 +1465,11 @@ Winlink
           </tr>
         </table>
         <span class="style18">APPROVED BY:
-        <input name="Approved_Name" id="Approved_Name" value="{var Approved_Name}" size="25" maxlength="23" required="required" />
+        <input name="Approved_Name" required="required" id="Approved_Name" value="{var Approved_Name}" size="25" maxlength="23" readonly="readonly" />
 &nbsp; <small><big>&nbsp;&nbsp;SIGNATURE:
-<input name="Approved_Sig" type="text" id="Approved_Sig" value="{var Approved_Sig}" size="20" maxlength="20" required="required" />
+<input name="Approved_Sig" type="text" required="required" id="Approved_Sig" value="{var Approved_Sig}" size="20" maxlength="20" readonly="readonly" />
 &nbsp;&nbsp;&nbsp;POSITION/TITLE:</big></small>
-<input name="Approved_PosTitle" type="text" id="Approved_PosTitle" value="{var Approved_PosTitle}" size="18" maxlength="18" required="required" />
+<input name="Approved_PosTitle" type="text" required="required" id="Approved_PosTitle" value="{var Approved_PosTitle}" size="18" maxlength="18" readonly="readonly" />
 <br />
           <label></label>
         </span>

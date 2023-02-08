@@ -21,7 +21,7 @@ When targeted it fills the browser window.
 }
 .pop-up:target {position:static; left:0;}
 /* The pop-up itself */
-.popBox {
+.popBox { 
 	background:#ffffff;
 	position:absolute;
 	left:25%;
@@ -272,6 +272,7 @@ store();
 var z2= '{Longitude}';
 document.getElementById('mapLat').value =z1;
 document.getElementById('mapLon').value =z2;
+    
 checkLatLon();
 	//var storedValue = localStorage.getItem("CheckinLat");
 	//document.getElementById('mapLat').value = storedValue;
@@ -942,7 +943,7 @@ latLonToGridSquare = function(param1,param2){
   var mygrid = GLon+GLat+nLon+nLat+gLon+gLat;
   //( 'line 52 '+GLon+GLat+nLon+nLat+gLon+gLat);
   document.getElementById('Grid').value =mygrid;
-       Testlon();
+      // 1-18 Testlon();
 }
 
 function checkformgrs(thestring){
@@ -1371,25 +1372,42 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 //parsethisdate();
  
 }
+    // check where express is getting coordinates
+
+    
     
 // test home hemisphere]    
-function Testlon(){
-    
-   var RegGrid= "{GridSquare}";
-    var RegGrid= RegGrid.toUpperCase();
-   
-    var whichway =document.getElementById('Grid').value;
-  ;
-    var whichway=whichway.toUpperCase();
-      if (whichway === RegGrid){document.getElementById('WarningText').innerHTML = ''}else
-
-   {document.getElementById('WarningText').innerHTML = '&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*The entered coordinates are not in your registered Grid Square *';   }
-  
+function Testlon(){   
+    // get user loc via lat lon and then compare
      
+    var homelon = "{Longitude}";
+       var msg = 'Verify entered coordinates before submitting form.'
+    var num =document.getElementById('mapLon').value;
+ 
+    if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
+        document.getElementById('mapLon').style.backgroundColor = '#ffdde2';
+          alert('Warning\nThe entered longitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Western longitudes are negative numbers. Eastern longitudes are positive numbers.\n\nClick OK to edit the longitude or ignore this warning and continue with the entered longitude.');
+      
+    }else {document.getElementById('mapLon').style.backgroundColor = '';
+         }            
+}
     
-    }
-              
+function Testlat(){
     
+      // get user loc via lat lon and then compare
+   //var themsg = document.getElementById('mapLon').value;
+    var homelat = "{Latitude}";
+    var num =document.getElementById('mapLat').value;    
+   
+    
+    if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
+        document.getElementById('mapLat').style.backgroundColor = '#ffdde2';
+       alert('Warning\nThe entered latitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Southern latitudes are negative numbers. Northern latitudes are positive numbers.\n\nClick OK to edit the latitude or ignore this warning and continue with the entered latitude.');
+             }
+    else {document.getElementById('mapLat').style.backgroundColor = '';
+               }    
+   
+}
     
     
 </script>
@@ -1522,7 +1540,7 @@ check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><s
   <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
 </span></span><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
-<input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" size="12"  /> 
+<input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();Testlat()" size="12"  /> 
 </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
 
 </span></em>&nbsp;<span class="style12">     <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon();Testlon()" size="12"  />

@@ -8,7 +8,7 @@ Msg:
 
 REPORT INFORMATION: 
 
-Report Type:	<var aReportType>  <var updatenum>
+Report Type:	<var aReportType>	<var updatenum>
 
 1. Incident Name:	<var Incident1>
 2. Date:	<var DateTime>

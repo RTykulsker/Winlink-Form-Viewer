@@ -1363,6 +1363,38 @@ document.getElementById('ciim_mapLon').value =d[1];
 }
 }
 
+    function Testlon(){   
+   
+    var homelon = "{Longitude}";
+       var msg = 'Verify entered coordinates before submitting form.'
+    var num =document.getElementById('ciim_mapLon').value;
+ 
+    if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
+        document.getElementById('ciim_mapLon').style.backgroundColor = '#ffdde2';
+          alert('Advertencia \nLa longitud ingresada se encuentra en un hemisferio diferente al de las coordenadas de Winlink Express o las de él Position Report. Las longitudes occidentales son números negativos. Las longitudes orientales son números positivos.\n\nHaga clic en OK para editar la longitud o ignore esta advertencia y continúe con la longitud digitada.');
+      
+    }else {document.getElementById('ciim_mapLon').style.backgroundColor = '';
+         }            
+}
+    
+      
+function Testlat(){
+    
+ // get user loc via lat lon and then compare
+ 
+    var homelat = "{Latitude}";
+    var num =document.getElementById('ciim_mapLat').value;    
+   
+    
+    if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
+        document.getElementById('ciim_mapLat').style.backgroundColor = '#ffdde2';
+       alert('Advertencia\nLa latitud ingresada se encuentra en un hemisferio diferente al de las coordenadas de Winlink Express o las de él Position Report. Las latitudes del sur son números negativos. Las latitudes del norte son números positivos.\n\nHaga clic en OK para editar la latitud o ignore esta advertencia y continúe con la latitud digitada.');
+             }
+    else {document.getElementById('ciim_mapLat').style.backgroundColor = '';
+               }    
+   
+}
+
 </script>
 <title>Did You Feel It?</title></head>
 
@@ -1564,9 +1596,9 @@ EVENTO REAL</span>
               <input placeholder="CALLE, CIUDAD, ESTADO" title="* DIRECCI&Oacute;N O DIRECCI&Oacute;N PARCIAL. SIN COORDENADAS GPS, use las CAJAS A CONTINUACI&Oacute;N *" name="ciim_mapAddress" type="text" id="ciim_mapAddress" size="85" maxlength="85" />
               <span class="style34">&lt;-No ingrese las coordenadas GPS aqu&iacute;.</span></p>
           <p class="style13"> <span class="style11">Coordenadas GPS opcionales en el siguiente formato:<span class="style35">32.504892 -116.982466</span></span>&nbsp;&nbsp;LAT
-              <input name="ciim_mapLat"  style="color:blue" type="text" id="ciim_mapLat" size="22" placeholder="Ejemplo: 32.504891" onkeypress="return isNumberKey(event)" onchange="splitPaste(this.value);checklatlon(this.value, 'ciim_mapLat')"; />
+              <input name="ciim_mapLat"  style="color:blue" type="text" id="ciim_mapLat" size="22" placeholder="Ejemplo: 32.504891" onkeypress="return isNumberKey(event)" onchange="splitPaste(this.value);checklatlon(this.value, 'ciim_mapLat');Testlat()"; />
 &nbsp;&nbsp;&nbsp;LON
-  <input name="ciim_mapLon"  style="color:blue" type="text" id="ciim_mapLon" size="22" placeholder="Ejemplo: -116.982466" onkeypress="return isNumberKey(event)" onchange="checklatlon(this.value, 'ciim_mapLon')" />
+  <input name="ciim_mapLon"  style="color:blue" type="text" id="ciim_mapLon" size="22" placeholder="Ejemplo: -116.982466" onkeypress="return isNumberKey(event)" onchange="checklatlon(this.value, 'ciim_mapLon'); Testlon()" />
   <input name="xmyGPS" type="hidden" id="xmyGPS" value="{GPS}" size="20" style="outline: none !important;
     border:1px solid red;" />
           </p>
@@ -2062,10 +2094,10 @@ Comments:T=k25</textarea>
  <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
  <input name="xMapfilename" type="hidden" id="xMapfilename" value="DYFI Map" />
  </span></span> </span></span></span></span></td>
-      <td width="10%">&nbsp;Ver 10.2 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver 10.3 es <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
-      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 10.10 es" />
+      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 10.3es" />
       </span></span></span></span></span></span></span></span> </span></span></span></span> </span></span> </span> </span></td>
     </tr>
   </table>
