@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" /><title>Check In-Initial</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" /><title>Winlink Check-in</title>
 
 <style type="text/css">
 
@@ -105,7 +105,6 @@ display: block;
 	font-size: 20px;
 	font-weight: bold;
 }
-.style9 {font-size: 12px}
 .formtext1 {font-family: Arial, Helvetica, sans-serif;
 font-size: 10pt;
 font-weight: normal;
@@ -116,23 +115,30 @@ font-weight: normal;
 .style7 {font-size: 10px}
 body, td, th {
 font-family: Arial,Helvetica,sans-serif;
-font-size: 12px;
+font-size: 14px;
 font-weight: inherit;
 }
 .zentriert {
-font-size: 12px;
+font-size: 14px;
 font-family: Arial,Helvetica,sans-serif;
 font-weight: inherit;
 }
+    
+    input:focus{
+    outline-color : lightskyblue;
+    outline-width : 5px;
+    border : 1px solid blue;
+}
 input, select {
-padding: 1px;
--moz-border-radius-topleft: 2px;
--moz-border-radius-topright: 2px;
--moz-border-radius-bottomright: 2px;
--moz-border-radius-bottomleft: 2px;
-font-family: Arial,Helvetica,sans-serif;
-font-size: 12px;
-font-weight: inherit;
+    padding: 1px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: inherit;
+    font-style: normal;
 }
 textarea {
 padding: 1px;
@@ -141,16 +147,20 @@ padding: 1px;
 -moz-border-radius-bottomright: 2px;
 -moz-border-radius-bottomleft: 2px;
 font-family: Arial,Helvetica,sans-serif;
-font-size: 12px;
+font-size: 14px;
 font-weight: inherit;
 }
+    textarea:focus{
+    outline-color : lightskyblue;
+    outline-width : 5px;
+    border : 1px solid blue;
 .rechtsbuendig {
-font-size: 12px;
+font-size: 14px;
 font-family: Arial,Helvetica,sans-serif;
 font-weight: inherit;
 }
 .SubmitBtn {
-font-size: 12px;
+font-size: 14px;
 font-family: Arial,Helvetica,sans-serif;
 font-weight: inherit;
 }
@@ -159,34 +169,32 @@ color: #666666;
 position: relative;
 left: 0px;
 top: 3px;
-font-size: 12px;
+font-size: 14px;
 font-family: Arial,Helvetica,sans-serif;
 font-weight: inherit;
 }
 </style>
 <style type="text/css">
-.style1 {font-family: Arial, Helvetica, sans-serif}
-.style2 {font-size: 14px}
 .style4 {
-	font-size: 18px;
-	font-style: italic;
-	font-weight: bold;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: normal;
 }
 .style7 {color: #333333;
 	font-size: 10px;
 }
-.style7 {font-size: 10px}
-.style3 {font-size: 12px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; }
-.style9 {color: #2A5F00}
+.style7 {
+    font-size: 10px;
+    text-align: left;
+}
+.style3 {font-size: 14px; font-weight: normal; font-family: Arial, Helvetica, sans-serif; }
 .style12 {
 	color: #FF0000;
 	font-style: italic;
 }
-.style15 {color: #2A5F00; font-size: 12px; }
-.style17 {font-size: small}
+.style15 {font-size: 14px; }
 .style20 {font-size: 18px}
-    .style30 {font-size:14px;text-align: center;}
-.style22 {font-family: Arial, Helvetica, sans-serif; color: #000000; }
+.style22 {font-family: Arial, Helvetica, sans-serif;  }
 .style23 {color: #FF0000}
 
  input[type=button] {
@@ -226,7 +234,7 @@ width:40px;
   background-color: white;
  
   padding: 2px 2px;
-  font-size: 12px;
+  font-size: 14px;
    cursor: pointer;
 }
 
@@ -234,12 +242,11 @@ width:40px;
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
 .style47 {color: #000000}
-.style49 {
-	color: #006600;
-	font-style: italic;
+.style50 {
+    color: #333333;
+    font-size: 14px;
 }
-.style50 {color: #333333}
-.style52 {font-family: Arial, Helvetica, sans-serif; color: black; }
+.style33 {font-size: 16px; color: #000049; }
 </style>
 <script type="text/javascript">
 
@@ -298,10 +305,11 @@ var myprompt = '';
 var temps = document.getElementById('Status').value;
 var templ = document.getElementById('Location').value;
 var tempsender = document.getElementById('MsgSender').value;
-myttemp = "Winlink Check in "+temps + " - " +tempsender + " - " +templ;
-myprompt = "Winlink Check in "+temps + " - " +tempsender + " - " +templ;
+myttemp = "Winlink Check-in "+temps + " - " +tempsender + " - " +templ;
+    document.getElementById('Newsubject').value = myttemp;
+myprompt = "Winlink Check-in "+temps + " - " +tempsender + " - " +templ;
 var RightNow = prompt("Message Subject:",   myprompt);
-if (RightNow.length == 0) { RightNow = myttemp}
+if (RightNow ==null) { RightNow = myttemp}
 document.getElementById('Newsubject').value = RightNow;
 }
 
@@ -461,7 +469,7 @@ switch (TType) {
 	function myreset ()
 	{  
 document.getElementById('ActivityDateTime1').value = '';
-document.getElementById('Status').value = 'Net Check In';
+document.getElementById('Status').value = 'Net Check-in';
 document.getElementById('Band').value = 'None';
 document.getElementById('Assigned').value = '';
 document.getElementById('Location').value = '';
@@ -476,16 +484,16 @@ document.getElementById('Comments').value = '';
 	}
 
 function splitPaste(str) {
-var str = str.replace(",", " ");
-var str = str.replace("  ", " ");
-var d= str.split(' ');
+   
+
+var d= str.split(', ');
 var cnt = d.length;
 if (cnt >1) {
-
-document.getElementById('mapLat').value =checkzero(d[0]);
-document.getElementById('mapLon').value =checkzero(d[1]);
+document.getElementById('mapLat').value =d[0];
+document.getElementById('mapLon').value =d[1];
+             document.getElementById('mapLat').value =d[0];
 }else {
-document.getElementById('mapLat').value =checkzero(str)}
+document.getElementById('mapLat').value =str}
 }
 function copyGPS() {
 
@@ -512,7 +520,7 @@ if (ans  != '(Not available)'){
 //alert(ans);
 
 myMGRS=ans;
-var ans = ans.replace(" ", ",");
+//var ans = ans.replace(" ", " ");
 
 
  if (ans  != '{GPS_SIGNED_DECIMAL}') {document.getElementById('GPS2').value = ans};
@@ -755,13 +763,13 @@ function SaveData() {
  } 
 
 //document.getElementById('testlnkbtn').style.visibility='visible';
-Checkifinbrowser();
+//Checkifinbrowser();
 getit();
 GetGPS();
 copyGPS();
 Fixarea();
 TimeNow('DateTime', false);
-checkLatLon();
+//checkLatLon();
 //checkinternet();
 }
  
@@ -774,7 +782,7 @@ function MGRSString ()
 var thestring= document.getElementById("GPS2").value;
 
 if (thestring ==''){ return;}
- var res = thestring.split(",");
+ var res = thestring.split(" ");
  var Lat = parseFloat(res[0]); 
  var Long=parseFloat(res[1]); 
  if (isNaN(Lat)) {return} 
@@ -819,25 +827,22 @@ ab = Math.floor (ab%100000); ab = pad (ab);
 //var mrgs= c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
 var MRGS2=c + ad + ' ' + af + ah + ' ' + aa + ' ' + ab;
 var mrgs= c + ad + af + ah  + aa + ab;
-document.getElementById('WithSpaces').value =MRGS2;
-document.getElementById('NoSpaces').value =mrgs;
+//document.getElementById('WithSpaces').value =MRGS2;
+//document.getElementById('NoSpaces').value =mrgs;
 document.getElementById('MGRS').value =mrgs;
 
 document.getElementById('MGRS').value =mrgs;
 //document.getElementById('MGRS2').value =MRGS2;
  
 };
-function Flip() {  
-var withspace = document.getElementById('WithSpaces').value;
-var nospace = document.getElementById('NoSpaces').value;
-
-//document.getElementById('MGRS').value =mrgs;
-   var Checked = document.getElementById("Format").checked;
    
-    document.getElementById('addformat').value =Checked;
-   if (Checked) { document.getElementById('MGRS').value =withspace;}  else{document.getElementById('MGRS').value =nospace;}
-   
-}  
+ function addDec(x){
+    themark = '{decimal_separator}';
+   if (themark =='{decimal_separator}'){themark ='.'};
+    x = x.replace (',',themark);
+    
+    return x
+}
 function convertthis(){
 
 document.getElementById('MGRS').value ='';
@@ -847,13 +852,13 @@ var thestring= document.getElementById("GPS2").value;
 document.getElementById("GPS2").value = thestring;
  var n = thestring.search(",");
  var n1= thestring.search(" ");
-var res = thestring.split(",");
+var res = thestring.split(" ");//6-21
 var p=res.length;
 if (p==2){MGRSString(); 
 
 var mypram = {lat:+res[0], lng:+res[1]};
-document.getElementById('mapLat').value =res[0];
-document.getElementById('mapLon').value =res[1];
+document.getElementById('mapLat').value =addDec(res[0]);
+document.getElementById('mapLon').value =addDec(res[1]);
 
 if(res[0]==''|res[1]==''){return};
 
@@ -866,10 +871,10 @@ document.getElementById('GPS2').value ='';
 document.getElementById('mapLat').value ='';
 document.getElementById('mapLon').value ='';
 //document.getElementById('w3w').value ='';
-document.getElementById('WithSpaces').value ='';
+//document.getElementById('WithSpaces').value ='';
 document.getElementById('MGRS').value ='';
 document.getElementById('Grid').value ='';
-document.getElementById('NoSpaces').value ='';
+//document.getElementById('NoSpaces').value ='';
  document.getElementById("GPS2").focus()}
 }
 
@@ -1027,7 +1032,7 @@ lat = lat.toFixed (4);
 lng = lng*180 / Math.PI;
 lng = lng.toFixed (4);
 
-document.getElementById('GPS2').value = lat+','+lng;
+document.getElementById('GPS2').value = lat+' '+lng;
 mlon = lng;
 mlat = lat;
 }
@@ -1096,13 +1101,15 @@ if (x = true) {
 document.getElementById('testlnkbtn').style.display ='none'; }
 }
 function checkzero (num){
+    return;
 var num = num *1;
 return num;
 }
 
 function CheckLat(SkipMsg){
 var latCheck = 1;
-var num =document.getElementById('mapLat').value;
+var num =fixcomma(document.getElementById('mapLat').value);
+    
 if (num=='') {document.getElementById('MGRS').value = '';
 		document.getElementById('GPS2').value = '';}
 z1 =(Number(num));
@@ -1123,7 +1130,7 @@ return latCheck;
 
 function CheckLon(SkipMsg){
 var lonCheck = 1;
-var num =document.getElementById('mapLon').value;
+var num =fixcomma(document.getElementById('mapLon').value);
 if (num=='') {document.getElementById('MGRS').value = '';
 		document.getElementById('GPS2').value = '';}
 z1 =(Number(num));
@@ -1148,7 +1155,11 @@ var s = s.replace(/(\r\n|\n|\r)/gm," ");
 return s;
 }
 
-
+function fixcomma (x){
+     x=x.replace(',','.');
+    //alert (x);
+    return x;
+}
 function checkLatLon() {
 var cnt = 1;
 //var x1=0; var x2=0;
@@ -1156,9 +1167,10 @@ x1 = CheckLat(true);
 x2 = CheckLon(true);
 
 if (x1==1 && x2==1) {// now set string for latlon
-	var mlat = document.getElementById('mapLat').value;
-	var mlon = document.getElementById('mapLon').value;
-	document.getElementById('GPS2').value =mlat+','+mlon;
+	var mlat =fixcomma( document.getElementById('mapLat').value);
+	var mlat =fixcomma( document.getElementById('mapLat').value);
+	var mlon = fixcomma(document.getElementById('mapLon').value);
+	document.getElementById('GPS2').value =mlat+' '+mlon;
 	
 	convertthis();
 } 
@@ -1193,18 +1205,30 @@ var jsontext=jsontext.replace('j3', temp1);
 
 var temp1= document.getElementById('mapLat').value;
 var jsontext=jsontext.replace('j4', temp1);
+    var jsontext=jsontext.replace('new4', temp1);
 
 var temp1= document.getElementById('mapLon').value;
 var jsontext=jsontext.replace('j5', temp1);
+      var jsontext=jsontext.replace('new5', temp1);
 
 var temp1= document.getElementById('MsgSender').value;//enmBroadcastStation
 var jsontext=jsontext.replace('j6', temp1);
 var temp1= document.getElementById('ContactName').value;//enmBroadcastStation
 var jsontext=jsontext.replace('j6a', temp1);
 
+    var temp1= document.getElementById('Newsubject').value;//subject
+    var jsontext=jsontext.replace('new1', temp1)
+    
+var temp1= document.getElementById('MsgTo').value;//subject
+var jsontext=jsontext.replace('new2', temp1);
+    var temp1= document.getElementById('Service').value;//subject
+var jsontext=jsontext.replace('new3', temp1);
+
+
 
 var temp1= document.getElementById('Assigned').value;//CEll
 var jsontext=jsontext.replace('j7',temp1);
+        
 
 var temp1= document.getElementById('Location').value;//enmInternet
 var jsontext=jsontext.replace('j8',temp1);
@@ -1212,6 +1236,7 @@ var jsontext=jsontext.replace('j8',temp1);
 
 var temp1= document.getElementById('MGRS').value;//enmLandline
 var jsontext=jsontext.replace('j9',temp1);
+      var jsontext=jsontext.replace('new6', temp1);
 
 var temp1= document.getElementById('Grid').value;//enmPower
 var jsontext=jsontext.replace('j10',temp1);
@@ -1380,9 +1405,9 @@ if (x.search("NaN")!==-1){alert ('Invalid date please enter UTC date time as yyy
 function Testlon(){   
     // get user loc via lat lon and then compare
      
-    var homelon = "{Longitude}";
+    var homelon =fixcomma ("{Longitude}");
        var msg = 'Verify entered coordinates before submitting form.'
-    var num =document.getElementById('mapLon').value;
+    var num =fixcomma(document.getElementById('mapLon').value);
  
     if ( (homelon <0 && num >0) || (homelon >0 && num <0)  ){
         document.getElementById('mapLon').style.backgroundColor = '#ffdde2';
@@ -1396,15 +1421,15 @@ function Testlat(){
     
       // get user loc via lat lon and then compare
    //var themsg = document.getElementById('mapLon').value;
-    var homelat = "{Latitude}";
-    var num =document.getElementById('mapLat').value;    
+    var homelat = fixcomma("{Latitude}");
+    var num =fixcomma(document.getElementById('mapLat').value);    
    
-    
+    //alert(homelat+' '+ num);
     if ( (homelat <0 && num >0) || (homelat >0 && num <0)  ){
         document.getElementById('mapLat').style.backgroundColor = '#ffdde2';
        alert('Warning\nThe entered latitude is in a different hemisphere than the Winlink Express or Position Report coordinates. Southern latitudes are negative numbers. Northern latitudes are positive numbers.\n\nClick OK to edit the latitude or ignore this warning and continue with the entered latitude.');
              }
-    else {document.getElementById('mapLat').style.backgroundColor = '';
+    else { document.getElementById('mapLat').style.backgroundColor = '';
                }    
    
 }
@@ -1421,11 +1446,11 @@ function Testlat(){
 <tbody>
 <tr>
 <td><span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;</span>
-<table width="855"  border="3" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 829px; ">
+<table width="1040"  border="3" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 829px; ">
 <tbody>
 <tr>
 <td height="71" valign="top" bgcolor="#dee9f9" style="vertical-align: bottom; height: 5%; text-align: center; background-color: "><p style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-  <span class="style4">Winlink Check In</span><br />
+  <span class="style4">Winlink Check-in</span><br />
 <span class="style20"  id="SubjectText">  </span><br />
   <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
  </span><span class="style6"><span style="font-weight: normal;"><span style="font-weight: normal;"><span class="style45"><span class="style20"  id="SubjectText">
@@ -1433,10 +1458,10 @@ function Testlat(){
   <table width="100%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#dee9f9">
     <tr>
       <td width="37%"><b>
-      <input type="regular" value="Setup" onclick="SetupTitle()" />
+      <input type="button" value="Setup" onclick="SetupTitle()" />
       </b><span class="style7">&nbsp;Click to add your agency/group name to title </span></td>
       <td width="31%"><div align="center"><span class="style6"><span style="font-weight: normal;"><span style="font-weight: normal;"><span class="style45"><span class="style20"  id="SubjectText">
-        <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load Check in Data" />
+        <input name="loadbtn" type="button" id="loadbtn" onclick="document.getElementById('txtfiletoread').click();" value=" Load Check-in Data" />
       </span></span></span></span></span> </div></td>
     <td width="32%"><div align="center"><span class="style6"><span style="font-weight: normal;"><span class="style45"><a href="#pop1">Form Info</a></span></span></span>&nbsp; </div></td>
     </tr>
@@ -1444,152 +1469,163 @@ function Testlat(){
  
   </tr>
 <tr>
-<td style="text-align: center;"><span style="font-style: italic;"><span style="color: #2A5F00;">This is for
-an initial
-check in via Winlink Express. </span><span class="style9">&nbsp;</span></span><span class="style9"> Also sent as plain text in message body for non-Express users.</span> </td>
+  <td nowrap="nowrap" style="vertical-align: middle; text-align: center; width: 50%; font-weight: normal;">
+  <div align="left">
+    <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 14px;"><span style="color: black;"><span style="font-family: Arial, Helvetica, sans-serif; ; color: black; font-size: 14px;"><strong>&nbsp;1. STATION</strong></span></span></span></span></p>
+    <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><strong>a.</strong> <strong>Date/Time:</strong></span></span> <span class="style15">&nbsp;</span> 
+      <input name="DateTime"  required="required" id="DateTime"  placeholder="Click to Add Date/Time" tabindex="1"  title="Can be overwritten if needed." onclick="TimeNow('DateTime', true)" size="21" maxlength="19" /> 
+      &nbsp;&nbsp; &nbsp;<span style="font-size: 14px;">
+        <span style="font-size: 14px;">
+          <input name="timestamp" type="hidden" id="timestamp" size="30" />
+          </span><input name="timestamp2" type="hidden" id="timestamp2" size="40" />
+      </span></p>
+    <p> <strong>b.</strong><span class="style22"> </span><strong> To:</strong><span style="font-weight: normal">
+      <input  name="MsgTo" id="MsgTo" placeholder="Separate Calls/Emails with a SEMICOLON; You can modify prior to posting." tabindex="2" title="Name of Station Contact" size="75" maxlength="75"  onblur="store()" />
+    </span>&nbsp;<span class="style3">
+        <input name="Organization" type="hidden" id="Organization" value="Winlink Net" />
+        &nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries.</a>
+          <input name="internetcheck" type="hidden" id="internetcheck" value="{InternetAvailable} " />
+          <input name="GPSvalid" type="hidden" id="GPSvalid" value="{GPSValid} " />
+          <input name="Newsubject" type="Hidden" id="Newsubject" />
+          <br />
+          </span><span style="font-family:  Arial, Helvetica, sans-serif;;"><br />
+            </span> <strong><span class="style22"> c.</span></strong><span class="style22"> <strong>From</strong>:&nbsp;</span>
+      <span style="font-weight: normal">
+        <input  name="MsgSender" id="MsgSender" placeholder="Station Contact Name" title="Name of Station Contact" value="{MsgSender}" size="14" maxlength="12" readonly="readonly" />
+        </span><span class="style22">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>d. Station Contact Name</strong>: </span>
+      <span style="font-weight: normal">
+        <input  name="ContactName" id="ContactName" placeholder="Station Contact Name" tabindex="3" title="Name of Station Contact" size="25" maxlength="25" />
+        &nbsp; </span>&nbsp;<span class="style22">&nbsp;</span>
+      <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
+      <input name="Mapfilename" type="hidden" id="Mapfilename" value="Winlink Check-in V5" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      <span class="style22"><strong>e.</strong> <strong>Initial Operator(s):</strong>&nbsp;</span>&nbsp;<span style="font-weight: normal">
+      <input  name="Assigned" id="Assigned" placeholder="Initial Operator(s)" tabindex="4" title="Initial Operator(s)" size="40" maxlength="40" />
+      </span>&nbsp;<br />
+      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
+  </div>
+  </td>
 </tr>
 <tr>
-<td nowrap="nowrap" style="vertical-align: middle; text-align: center; width: 50%;">
+  <td valign="middle" nowrap="nowrap" bgcolor="#f8f8ff" style="vertical-align: middle; text-align: left; width: 50%; font-size: 14px;"><p><strong>2. SESSION</strong></p>
+    <p><strong>a. <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">Type</span></strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span><span class="style33"> &nbsp;&nbsp;
+      <input name="Status" type="radio" tabindex="5"  onclick="document.getElementById('Status').value =  this.value;" value="EXERCISE"" checked="checked" />
+      <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">EXERCISE&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="Status" type="radio" tabindex="6" onclick="document.getElementById('Status').value =  this.value;" value="REAL EVENT" />
+        REAL EVENT</span></span><span style="font-size: 14px;">
+          <input name="Status" type="hidden" id="Status" value="EXERCISE" size="14" maxlength="13" />
+          </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><strong>b. Service</strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span>
+            <input name="Service" type="radio" tabindex="7" onclick="document.getElementById('Service').value = this.value;" value="AMATEUR" checked="checked" />
+            <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">AMATEUR&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+              <input name="Service" type="radio" tabindex="8" onclick="document.getElementById('Service').value = this.value;" value="SHARES" />
+              </span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">SHARES&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;">
+                <input name="Service" type="hidden" id="Service" value="AMATEUR" size="14" maxlength="13" />
+                </span></span></span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style33"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><strong>c. Band</strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span>&nbsp;
+                  <input name="Band" type="radio" tabindex="9" onclick="document.getElementById('Band').value = this.value" value="NA" checked="checked" />
+                  <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">NA&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                    <input name="Band" type="radio" tabindex="10" onclick="document.getElementById('Band').value = this.value" value="Telnet" />
+                    </span>Telnet &nbsp;&nbsp;</span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                      <input name="Band" type="radio" tabindex="11" onclick="document.getElementById('Band').value = this.value"  value="HF" />
+                      HF<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"> &nbsp;
+                        <input name="Band" type="radio" tabindex="12" onclick="document.getElementById('Band').value = this.value" value="VHF" />
+                        <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">VHF &nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;
+                          <input name="Band" type="radio" tabindex="13" onclick="document.getElementById('Band').value = this.value" value="UHF" />
+                          U<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">HF</span></span></span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;&nbsp;
+                            <input name="Band" type="radio" tabindex="14" onclick="document.getElementById('Band').value = this.value"  value="SHF" />
+                            <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">SHF &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;">
+                              <input name="Band" type="hidden" id="Band" value="NA" size="14" maxlength="13" />
+                            </span></span></span></span></p>
+    <p class="style33"><span style="font-size: 12px"><span style="font-size: 14px"><strong>d</strong></span><strong>.</strong></span><strong> <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">Session</span></strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span><span class="style50"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+      <input name="Session" type="radio" tabindex="15" onclick="document.getElementById('Session').value = this.value" value="Telnet" checked="checked" />
+      </span> Telnet&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+        <input name="Session" type="radio" tabindex="16" onclick="document.getElementById('Session').value = this.value" value="Packet" />
+        Packet</span>&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+          <input name="Session" type="radio" tabindex="17" onclick="document.getElementById('Session').value = this.value" value="Pactor" />
+          Pactor</span>&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+            <input name="Session" type="radio" tabindex="18" onclick="document.getElementById('Session').value = this.value" value="Robust Packet" />
+            Robust Packet
+            &nbsp;&nbsp; <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+              <input name="Session" type="radio" tabindex="19" onclick="document.getElementById('Session').value = this.value" value="Ardop" />
+              </span>Ardop</span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                <input name="Session" type="radio" tabindex="20" onclick="document.getElementById('Session').value = this.value" value="VARA HF" />
+                VARA HF </span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                  <input name="Session" type="radio" tabindex="21" onclick="document.getElementById('Session').value = this.value" value="VARA FM" />
+                  VARA FM&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                    <input name="Session" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Iridium Go" />
+                    Iridium Go</span>&nbsp; &nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
+                      <input name="Session" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Mesh" />
+                      Mesh </span>&nbsp;</span><span style="font-size: 14px;">
+                        <input name="Session" type="hidden" id="Session" value="Telnet" size="14" maxlength="13" />
+</span></p></td>
+  </tr>
+<tr>
+<td colspan="3" valign="top" style="text-align: center; vertical-align: middle; background-color: ; font-style: normal; font-size: 14px;" pbzloc="6">
 <div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>Date/Time</span></span> <span class="style15">&nbsp;</span> 
-        <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" /> 
-&nbsp; <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 12px;">Select Status </span><span class="style50">&nbsp;</span> &nbsp;
-    <select name="Status" size="3" id="Status" required="required" >
-      <option value="Exercise " selected="selected">Exercise </option>
-      <option value="Net">Net</option>
-      <option value="REAL EVENT">REAL EVENT</option>
-    </select>
-    &nbsp; &nbsp;
-    Band&nbsp; &nbsp;&nbsp;<span class="style2">
-    <select name="Band" size="3" id="Band" required="required">
-      <option value="-N/A-" selected="selected">-N/A-</option>
-      <option value="VHF">VHF</option>
-      <option value="220">220</option>
-      <option value="UHF">UHF</option>
-	  <option value="SHF">UHF-SHF (Mesh)</option>
-      <option value="HF Amateur">HF Amateur</option>
-      <option value="HF Shares">HF Shares</option>
-    </select>
-&nbsp;&nbsp; Mode &nbsp; </span>
-    <select name="Session" size="3" id="Session" required="required">
-      <option value="Telnet" selected="selected">Telnet</option>
-      <option value="Packet">Packet</option>
-	  <option value="Vara FM">Vara FM</option>
-	  <option value="Pactor">Pactor</option>
-      <option value="Vara HF">Vara HF</option>
-      <option value="Ardop">Ardop</option>
-      <option value="Mesh">Mesh</option>
-      <option value="Other">Other</option>
-    </select>
-    <span class="style2">&nbsp; <br />
-&nbsp;</span><span style="font-size: 14px;">
-<span style="font-size: 14px;">
-<input name="timestamp" type="hidden" id="timestamp" size="30" />
-</span><input name="timestamp2" type="hidden" id="timestamp2" size="40" />
-</span><br />
-    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-&nbsp;<span class="style1">&nbsp;</span></span><span class="style22">Send To</span></span>
-&nbsp; 
-    <input placeholder="Separate Calls/Emails with a SEMICOLON; You can modify prior to posting." maxlength="79" size="79" name="MsgTo"  id="MsgTo" onchange="this.value=this.value.toUpperCase();" onblur= "store();"/> 
-    <span class="style3">
-    <input name="Organization" type="hidden" id="Organization" value="Winlink Net" />
-&nbsp;&nbsp;&nbsp;</span>  <span class="style12"> <a href="javascript:clearsendto();" class="style23">Clear ALL &quot;Send To&quot; Entries.</a>
-<input name="internetcheck" type="hidden" id="internetcheck" value="{InternetAvailable} " />
-<input name="GPSvalid" type="hidden" id="GPSvalid" value="{GPSValid} " />
-<input name="Newsubject" type="hidden" id="Newsubject" />
-<br />
-    <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style49">Entries  will remain until you change or clear them</span><br />
-     <span style="font-family:  Arial, Helvetica, sans-serif;;"></span>
-     <span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br />
-     </span><span> <span></span></span> &nbsp; <span class="style22">Calls Signs of Initial  On-Site Operator(s)&nbsp;</span> 
-     <input placeholder="Enter ONLY CALLSIGNS!" maxlength="60" required="required" size="65" name="Assigned" id="Assigned" onchange="this.value=this.value.toUpperCase();"/>
-&nbsp;&nbsp;</p>
-  <p><span class="style22">&nbsp; Station Contact Name: </span>
-    <input title="Name of Station Contact" placeholder="Station Contact Name" maxlength="25" size="25" id="ContactName"  name="ContactName" />
-    &nbsp; &nbsp;<span class="style22">&nbsp; &nbsp;Station Call sign&nbsp;</span>
-      <input title="Call sign or tactical being used to send mail" readonly="readonly" maxlength="16" size="17" id="MsgSender"  name="MsgSender" value="{MsgSender}" />
-      <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-      <input name="Mapfilename" type="hidden" id="Mapfilename" value="Winlink Check In" />
-      <br />
-      <br />
-      <span style="font-family:  Arial, Helvetica, sans-serif;;"></span></p>
+  <p><strong>3. LOCATION</strong></p>
+  <p>a. <strong>Location</strong>:<span style="font-weight: normal">
+    <input  name="Location" required="required" id="Location" placeholder="Example: Hope Hospital, parking lot C near ER entrance" tabindex="23" title="Example: Hope Hospital, parking lot C near ER entrance" size="60" maxlength="60" />
+    </span>&nbsp;&nbsp;
+  <input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
+    <input name="addformat" type="hidden" id="addformat" />
+    <span class="style12"> <span class="style45"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+      <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+      </span></span></span>
+    <input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>
+    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+      <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
+      </span></span></span></em><span style="font-size: 14px;">
+        <input name="testlonfld" type="hidden" id="testlonfld" value="{Longitude}" size="14" maxlength="13" />
+      </span></p>
+  <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
+ <strong>b</strong>. </span></span> <strong>LATITUDE</strong>:<span style="font-weight: normal">
+ <input  name="mapLat" id="mapLat" placeholder="ex: 38.5567" tabindex="24" size="14" maxlength="12"  onchange="splitPaste(this.value);checkLatLon();Testlat()" />
+ </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;c. LONGITUDE</strong>:<span class="style12"><span style="font-weight: normal">
+ <input  name="mapLon" id="mapLon" placeholder="ex:-121.7932" tabindex="25" size="14" maxlength="12" onchange="CheckLon();checkLatLon();Testlon()" />
+ </span><span style="color: #000000; font-style: normal; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;d.  MGRS:</strong></span>
+<span style="font-weight: normal">
+<input  name="MGRS" id="MGRS" placeholder="Ex:11SNR0184195204" tabindex="26" size="18" maxlength="15" readonly="readonly" onChange="checkformgrs(this.value)"/>
+</span>&nbsp;</span>&nbsp;&nbsp;&nbsp;</em><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e</strong>.<span style="font-weight: normal"><strong>GRID SQUARE:</strong></span>&nbsp;<span style="font-weight: normal">
+<input  name="Grid" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
+</span><span class="style12">&nbsp;
+<input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
+</span></p>
+  <p><span style="font-size: 14px;">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="style12">&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON<span class="style23">&nbsp;</span> or MGRS must be entered
+    manually.</span><span class="style23"><span class="style12">&nbsp;</span> <br />
+  <strong><span style="font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.</strong></span><span class="style12"><em> </em></span> </p>
 </div>
 </td>
 </tr>
 <tr>
-<td colspan="3" nowrap="nowrap" bgcolor="#f8f8ff" style="text-align: center; vertical-align: middle; background-color: " pbzloc="6">
+<td  colspan="4" bgcolor="#FCFCFF" style="vertical-align: top; text-align: center; height: 70px; font-size: 14px;">
 <div align="left">
-  <p><br />
-      <span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;Location&nbsp;
-       
-  <input placeholder="Example: Hope Hospital, parking lot C near ER entrance" size="75" required="required" name="Location" id="Location" maxlength="70"  />
-&nbsp;&nbsp;
-<input name="ExtGPS" type="hidden" id="ExtGPS" value="{GPS_SIGNED_DECIMAL}" />
-<input name="WithSpaces" type="hidden" id="WithSpaces" />
-<input name="NoSpaces" type="hidden" id="NoSpaces" />
-<input name="addformat" type="hidden" id="addformat" />
-      </p>
-  <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-</span></span><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">&nbsp;&nbsp;</span></span>&nbsp;</span></span>Latitude and longitude: LAT<em><span class="style12">&nbsp;
-<input name="mapLat" type="text" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();Testlat()" size="12"  /> 
-</span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style12">
-
-</span></em>&nbsp;<span class="style12">     <input name="mapLon" type="text" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon();Testlon()" size="12"  />
- <span style="color: #000000">&nbsp;&nbsp;MGRS</span>
-<input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onChange="checkformgrs(this.value)"size="25" maxlength="25" />
-&nbsp;</span><em>&nbsp;</em>Grid<em>&nbsp;
-<input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
-<span class="style12">&nbsp;
-<input name="GPS2" type="hidden" id="GPS2" size="40" onchange="convertthis()" onkeypress="return isNumberKey(event)"  maxlength="40" title= "If entering manually use format: 38.5567,-121.7932" placeholder="Ex: 38.5567,-121.7932" />
-<span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-<input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span></span></span>
-<input name="w3w" type="hidden" id="w3w" size="50" placeholder = "Ex: contrived.rides.thankfully" onkeypress="if(event.keyCode==13){return false;}"  onchange="convert3words(this.value);convertthis() ";/>    
-    <em><span class="style12">&nbsp; </span></em> <em><span class="style12">&nbsp;<span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
-    <input name="GPS" type="hidden" id="GPS" value="{GPS_SIGNED_DECIMAL}" />
-</span></span></span></span></span></em></em><span style="font-size: 12px;">
-<input name="testlonfld" type="hidden" id="testlonfld" value="{Longitude}" size="14" maxlength="13" />
-</span></p><span class="style30"  id="WarningText">  </span><br />
-  <p><em></em></p>
-  <p><span class="style12">&nbsp;&nbsp;&nbsp;LAT/LON and MGRS default to the center of the grid square listed in Express Settings, &nbsp;unless a GPS is used or Lat/LON<span class="style23">&nbsp;</span> or MGRS must be entered<br />
-    <span class="style23">&nbsp;&nbsp;&nbsp;</span>    manually.</span><span class="style23"><span class="style12">&nbsp;</span> <strong>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.</strong></span><span class="style12"><em> </em></span></p>
-  </div>
-</td>
-</tr>
-<tr>
-<td  colspan="4" style="vertical-align: top; text-align: center; height: 70px;">
-<div align="left">
-  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> &nbsp;<span class="style15" style="font-family: Arial, Helvetica, sans-serif;;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style47">&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span class="style17"><span class="style45">Comments</span></span><span style="font-style: italic;">&nbsp; Max Characters 220<span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span style="font-style: italic;">
-    <textarea name="Comments"  height: 100px; maxlength="220"  cols="140" rows="3" id="Comments" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER."></textarea>
+  <p><span style="font-family:  Arial, Helvetica, sans-serif"><span class="style47" style="font-style: italic;"> <span class="style15" style="font-family: Arial, Helvetica, sans-serif;;"><span class="style47"><strong><span style="font-style: normal">4.</span></strong>. </span></span></span></span><span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><strong>COMMENTS</strong>:<span style="font-style: italic;">&nbsp; Max Characters 500<span class="style47" style="font-family:  Arial, Helvetica, sans-serif"><span style="font-style: italic;">
+    <br />
+    <textarea name="Comments"  cols="140" rows="3" maxlength="500" id="Comments" placeholder="Such as: On batteries. Need relief in 6 hours. A Brief SitRep. Operators Names. Special notes for next shift. Mode being used that was indicated as OTHER." tabindex="27" onchange="addtabs(this.value,'Commentstab')"  onkeyup="AutoGrowTextArea(this)"  height: 100px;></textarea>
   </span></span>    &nbsp;</span></span>
     <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
     <span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span style="color: rgb(128, 0, 0);"><span style="color: black;">
     <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
-Status:M=j0
-Organization:T=j2
-DateTime:T=j3
 Latitude:T=j4
-Longitude:T=j5
-Sender:T=j6
-Station Contact Name:T=j6a
-Operators:T=j7
-Location:T=j8
+Longitude:T=j5 
 MGRS:T=j9
-Grid:T=j10
-Band:M=j12
-Session:M=j13
-Comments:T=j14</textarea>
+0a. Organization:T=j2
+0b. Subject:T=new1 
+1a. Date/Time:T=j3
+1b. To:T=new2
+1c. From:T=j6
+1d. Station Contact Name: T=j6a
+1e. Initial Operators:T=j7
+2a. Type:M:EXERCISE,REAL EVENT=j0
+2b. Service:M:AMATEUR,SHARES=new3
+2c. Band:M:N/A,Telnet,HF,VHF,UHF,SHF=j12
+2d. Session:M:Telnet,Packet,Pactor,Robust Packet,Ardop,VARA HF,VARA FM,Iridium Go,Mesh=j13
+3a. Location:T=j8
+3b. Latitude:T=new4
+3c. Longitude:T=new5 
+3d. MGRS:T=new6
+3e. Grid Square:T=j10
+4a. Comments:T=j14</textarea>
     </span></span></span></span></span></span></span></span></span></span></span></span> </span></span></span></span>    <textarea  cols="140" rows="2" maxlength="250" name="Commentstab" id="Commentstab" 
  style="display: none;"></textarea>
               <span style="font-family:  Arial, Helvetica, sans-serif;;">  
@@ -1601,26 +1637,25 @@ Comments:T=j14</textarea>
 </tr>
 <tr>
 <td height="38"><span style="font-family:  Arial, Helvetica, sans-serif;;"> <span style="font-family:  Arial, Helvetica, sans-serif;">
-  <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Check in Data" />
+  <input name="savebtn" type="button" id="savebtn"  onclick="SaveData()" value="Save Check-in Data" />
 </span>&nbsp;&nbsp; 
-<input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" onclick="Getsubject();checkform();createjson(); "; method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
+<input value="Submit" style="height: 28px; width: 52px; " size="8" name="Submit" onclick="Getsubject();checkform();createjson();  document.getElementById('parseme').value=''"; method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" />
 &nbsp; </span>
  <input type="reset" value="Reset Form" onclick="myreset();" />
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="color: black;"><span><span style="font-size: 12px;"></span></span></span><span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp; </span>&nbsp;
+&nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="color: black;"><span><span style="font-size: 14px;"></span></span></span><span style="color: rgb(128, 0, 0);"><span style="font-size: 14px;">&nbsp; </span>&nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; </span></span><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="color: rgb(128, 0, 0);">
 &nbsp; &nbsp; &nbsp;
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
-&nbsp; <span class="style25">Ver 4.0.8.5</span><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;"><span style="font-family:  Arial, Helvetica, sans-serif;;"><span style="font-size: 12px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check in 4.0.8.4" />
-</span></span></span></span></span></span></span></span></span></span></span></span></span></span>
-<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="</table>13" />
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="style25">Ver 5.0.2</span><span style="font-size: 14px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check-in 5.0.2" />
+<input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="&lt;/table&gt;13" />
 </span></span></td>
 </tr>
 </tbody>
@@ -1639,46 +1674,48 @@ Comments:T=j14</textarea>
 <div class="popScroll"><!-- Test for help starts here -->
 
 <p> </p>
-<strong>Check-in form Information</strong><br /><br />
-<strong>This form is normally sent only upon initial check in, unless other arrangements are made. There is a separate CHECK OUT form that can be used when closing the station.</strong><br /> <br />
-
-The SETUP Icon top left allows you to add your agency or groups name to the template. It will remain as such until you change it. You can clear the title by opening SETUP again and use your space bar.<br />
-<br />
-In the Send To: entry field, you can pre address the form. This will stay as such until you change or clear it. Many groups send the check in form to a common address(s).
-Separate calls or Emails with a semicolon; You can always modify prior to posting the message.
-<br />
-<br />
-Copy and paste to a spreadsheet is available, TAB separation, located in the bottom portion of the sent text message.<br />
-<br />
-
-Printing this form is dependent upon your selected
-
-printer and its settings. Various Web Browsers and and their viewing
-
-sizes are not all the same. Printing from a browsers print function
-
-may be different from the operating systems default print mode.
-
-Select what works for you, for both printing and viewing.
-
-You may print direct to the printer as a HTML or save as a
-
-PDF then print the PDF. In some instances Landscape mode may print
-
-better than Portrait. <br /> <br /> 
-
- You may enter manually Decimal Degrees: 32.5042,-116.9834 or enter MGRS Coordinates: 11SNR0184195204 or 11S NR 01841 95204.
- <br /> <br /> 
-Providing GPS information is optional but very valuable. We encourage you to do so.
-<br /> LAT/LON: The form accepts only Decimal Degree latitude and longitude. 4 decimals are preferred.
-<br /> N/E/S/W: North and East are positive numbers in Decimal Degrees, South and West are negative numbers in Decimal Degrees. For example, the Hollywood Sign is located at Decimal Degrees 34.1341, -118.3215
-
-NOTE: For auto entered GPS decimal coordinates to work, you must have a connected and configured GPS device working with Winlink Express. Otherwise manual entry in the indicated format can be used.
-</p><br />
-
-<p align="left">The Winlink Check-in, Check-out and Position Report forms endeavour to provide you with useful options such as latitude/longitude, and MGRS so you can move seamlessly between coordinate systems used by different organizations.</p>
-<strong>Without properly formatted GPS coordinates this form cannot be mapped in Winlink Express.
-</strong>
+<p><strong>The Check-in Form notifies net control or the agency having jurisdiction (AHJ)  that a station is available. Use the CHECK-OUT form when leaving the net, changing shifts or securing the station.</strong></p>
+<p><strong>Winlink Check-In Form - Initial Entry</strong><br>
+SETUP:  add your agency or group name to the form. It will remain until you change it. Clear:click on setup, delete the entry and enter a space. Then click OK.</p>
+<p>1. STATION (Information)<br>
+  <strong>a. Date/Time:</strong> automatically defaults to LOCAL time. Can be manually changed.<br>
+  <strong>b. To: </strong>Enter recipient email address. Addresses in this field populate the Winlink Message To: field.<br>
+  For Winlink recipients only enter the callsign or tactical address. <br>
+  For internet recipients enter the email address.<br>
+  Multiple addresses should be separated by semicolons (;).<br>
+  <strong>c. From: </strong>Sending callsign or tactical address. Populated by Winlink message From: field.<br>
+  <strong>d. Station Contact:</strong> Name of the station contact at sending station. Refers to the person with authority to send traffic. Depending on the situation that may be an emergency manager, agency personnel, radio operator, etc.<br>
+  <strong>e. Initial Operator(s</strong>):   Callsigns of initial operator(s) on site. Useful when the From: is a tactical address or when one or more operators are on site.</p>
+<p>2. SESSION<br>
+  Session information reflects the sender's intent. The actual session may vary.<br>
+  <strong>a. Type:</strong> Select EXERCISE or REAL EVENT.<br>
+  <strong>b. Service:</strong> Select AMATEUR (FCC Part 97 rules) or SHARES (NTIA rules)<br>
+  <strong>c. Band:</strong> Select the band you intend to use. NA = Not available/Unknown; Telnet = Internet/Mesh; HF - High Frequency 3 MHz - 30MHz; VHF - Very High Frequency 30MHz - 300MHz; UHF = Ultra High Frequency 300MHz - 3000MHz; SHF = Super High Frequency 3000MHz and above <br>
+  <strong>d. </strong>Session:   Select the Winlink session you intend to use. Telnet ( via Internet); Packet; Pactor; Robust Packet;’; Ardop; VARA HF; VARA FM; Iridium Go; Mesh (via AREDN, HamNet, HamWAN, etc.)</p>
+<p>3. LOCATION<br>
+  <strong>a. </strong>Location:   Enter your location. This is intended to be a tactical address, descriptor, facility, city, county, region, state, country, etc. This entry is added to the Subject line. Full street addresses are better entered in Comments instead. For precise location enter latitude and longitude or MGRS below. <br>
+  <strong>b.</strong> Latitude:   Enter your latitude or accept the value Winlink suggests*.<br>
+  <strong>c.</strong> Longitude:   Enter your longitude or accept the value Winlink suggests*.<br>
+  <strong>d. </strong>MGRS:   Enter your Military Grid Reference System (MGRS) coordinates or accept the value Winlink suggests.<br>
+  <strong>e. </strong>Grid Square:   The grid square is calculated based on your Latitude, Longitude or MGRS entries.</p>
+<p>*COORDINATES<br>
+  Winlink suggests latitude, longitude, MGRS and grid square coordinates based on<br>
+  -   Center of your grid square coordinates if no GPS is present and no manual entries are entered and activated in Position Reports. <br>
+  -   Manual coordinates manual entries have been entered and activated in Position Reports. <br>
+  -   GPS Coordinates if a GPS is connected to Winlink in Position Reports.<br>
+  Note: form coordinates can be entered and adjusted manually and may therefore differ from the automatic coordinates Winlink attaches to each email by default in the message header. </p>
+<p>4. COMMENTS<br>
+  Enter any comments that may clarify your situation when checking in. </p>
+<p>SAVE and LOAD<br>
+  SAVE:   Saves entries to a text file for later retrieval.<br>
+  LOAD:   Loads entries from saved text file.<br>
+  Hint: Double-check your data before submitting forms with loaded data.<br>
+</p>
+<p><strong>Winlink Message</strong><br>
+You can copy and paste the message data to a spreadsheet. Labels and data are separated by tabs.</p>
+<p><strong>Winlink Check-In Form - Viewer</strong><br>
+  Printing this form depends on your browser and printer settings. Use the Print Preview in your browser to make adjustments.<br>
+</p>
 <td width="0%"></p>
 
 </div>

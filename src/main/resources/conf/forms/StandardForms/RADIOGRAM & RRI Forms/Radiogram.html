@@ -564,25 +564,25 @@ document.getElementById('WarningText').innerHTML = "You have entered "+cnt+ " gr
   
 //wrdleft.value = 30 -cnt;  
   
-var arl = "";  
+var rrc = "";  
   
-var n = s.search(/ARL /i);  
+var n = s.search(/RRC /i);  
   
-var m = s.search(/ ARL /i);  
+var m = s.search(/ RRC /i);  
   
 // need to check that one less than n is not a letter --/  
   
-if (n==0) {arl = "ARL "};  
+if (n==0) {rrc = "RRC "};  
   
-if (m>1) {arl = "ARL "}; // alert ( n +" " + m); --/  
+if (m>1) {rrc = "RRC "}; // alert ( n +" " + m); --/  
   
 var ele = document.getElementById('check');  
 
-ele.value = arl+cnt;  
+ele.value = rrc+cnt;  
 
 var ele2 = document.getElementById('check2');  
 
-ele2.value = arl+cnt;  
+ele2.value = rrc+cnt;  
 
 }  
   
@@ -947,21 +947,21 @@ String1= String1.trim();
 
 //ALERT(String1);  
 
-var arl = "";  
+var rrc = "";  
   
-var n = String1.search(/ARL /i);  
+var n = String1.search(/RRC /i);  
   
-var m = String1.search(/ ARL /i);  
+var m = String1.search(/ RRC /i);  
   
 // need to check that one less than n is not a letter --/  
   
-if (n==0) {arl = "ARL "};  
+if (n==0) {rrc = "RRC "};  
   
-if (m>1) {arl = "ARL "}; var temp = String1.split(' ');  
+if (m>1) {rrc = "RRC "}; var temp = String1.split(' ');  
   
 var howmany = temp.length;  
   
-//= arl+howmany;  
+//= rrc+howmany;  
   
 document.getElementById('check2').value = document.getElementById('check').value   
   
@@ -1262,7 +1262,7 @@ if (n.length >0 && n.length <10) {a6 = ""};
 
 var a6a = document.getElementById('PhoneExtention').value;  
 
-if (a6.length < 1) { a6 = 'NO PHONE'};  
+//if (a6.length < 1) { a6 = 'NO PHONE'};  
 
 if (a6a.length > 0) {var a6a = " EXT "+a6a;}  
 
@@ -1411,18 +1411,18 @@ function allnumeric(inputtxt)
 	
 	var a1 = a2.replace(/\\/g,"/");
 	//alert (a1);
-	 var mydir2 = "file://{FormFolder}/RadioGram Work Sheet.html";
+	 var mydir2 = "{FormFolder}/RadioGram Work Sheet.html";
  	//alert (mydir2);
  	mydir = mydir2;
 	 var url = window.location.pathname;
 	var filename = url.substring(url.lastIndexOf('/')+1);
 	//var nfilename = mypath.replace(filename, "RadioGram Work Sheet.html");
-	document.getElementById('filenamefld').value = "file:///"+a1+"RadioGram Work Sheet.html";
+	document.getElementById('filenamefld').value = ""+a1+"RadioGram Work Sheet.html";
 
    }
     function openPage(){
 var xx = document.getElementById('filenamefld').value
-//var xx="file:///C:/RMS Express/Standard Templates/RADIOGRAM RRI Forms/RadioGram Work Sheet.html";
+//var xx="file://C:/RMS Express/Standard Templates/RADIOGRAM RRI Forms/RadioGram Work Sheet.html";
 location.href =encodeURI( xx);
 }
    
@@ -1464,11 +1464,15 @@ wnd.document.write(html);   }
       <!-- If the content becomes larger than the pop-up this div will scroll the content -->
       <div class="popScroll">
         <p> </p>
-        <h2>ARL Numbered Radiograms</h2>
-        <p>Numbered messages have been established for some of the more common texts sent during emergencies and holiday seasons. When this common text can be used, an <strong>ARL NUMBER </strong>is substituted for the text and sent. The delivering station reads the actual text to the address, not the <strong>ARL NUMBER</strong>.</p>
-        <p> Insert <strong>ARL</strong> followed by the number. Example <strong>ARL FORTY SIX</strong> </p>
+        <h2>RRC Numbered Radiogram Texts</h2>
+        <p>Numbered messages have been established for some of the more common texts. Common messages sent during emergencies or for holiday seasons are 
+        examples. When a common text can be used, a <strong>RRC NUMBER </strong>is substituted for the text and sent. 
+        The delivering station reads the actual text to the addressee, not the <strong>RRC NUMBER</strong>.</p>
+        <p> Insert <strong>RRC</strong> followed by the number spelled out. Example <strong>RRC FORTY SIX</strong> </p>  
+        The following RRC codes are divided into four groups according to purpose. The RRC list also include the traditional ARL nunbers. 
+        There are some gaps in the numbering. These are reserved for future use. 
         <p> </p>
-        <p><strong>One Group -- <span class="style1">For Possible RELIEF EMERGENCY Use</span></strong><br />
+        <p><strong> Group One -- <span class="style1"> - For Possible RELIEF EMERGENCY Use</span></strong><br />
           <br />
           <strong>ONE</strong> Everyone safe here. Please don't worry. <br />
           <strong>TWO</strong> Coming home as soon as possible. <br />
@@ -1482,7 +1486,7 @@ wnd.document.write(html);   }
           <strong>TEN</strong> Please contact _______. Advise to standby and provide further emergency information, instructions or assistance. <br />
           <strong>ELEVEN</strong> Establish Amateur Radio emergency communications with ______ on _______ MHz. <br />
           <strong>TWELVE</strong> Anxious to hear from you. No word in some time. Please contact me as soon as possible. <br />
-          <strong>THIRTEEN</strong> Medical emergency situation exits here. <br />
+          <strong>THIRTEEN</strong> Medical emergency situation exists here. <br />
           <strong>FOURTEEN</strong> Situation here becoming critical. Losses and damage from _______ increasing. <br />
           <strong>FIFTEEN</strong> Please advise your condition and what help is needed. <br />
           <strong>SIXTEEN</strong> Property damage very severe in this area. <br />
@@ -1496,12 +1500,32 @@ wnd.document.write(html);   }
           <strong>TWENTY FOUR</strong> Evacuation of residents from this area urgently needed. Advise plans for help. <br />
           <strong>TWENTY FIVE</strong> Furnish as soon as possible the weather conditions at your location. <br />
           <strong>TWENTY SIX</strong> Help and care for evacuation of sick and injured from this location needed at once.<br />
-          Emergency/priority messages originating from official sources must carry the signature of the originating official.<br />
+          <strong> Note:</strong> Emergency/priority messages originating from official sources must carry the signature of the originating official.<br />
           <br />
-          <strong>Group Two -- <span class="style1">ROUTINE MESSAGES</span></strong><br />
+          <strong>Group Two -- <span class="style1">I Am Safe (Safe & Well) Welfare Messages</span> </br>     <br />
+          <strong>TWENTY SEVEN</strong> I am safe and well.<br />         
+          <strong>TWENTY EIGHT</strong> Household safe and well.<br />
+          <strong>TWENTY NINE</strong> Currently at shelter.<br />
+          <strong>THIRTY</strong> Currently at home.<br />
+          <strong>THIRTY ONE</strong> Currently at family/friend's house.<br />   
+          <strong>THIRTY TWO</strong> Currently at a _______hotel.<br />
+          <strong>THIRTY THREE</strong> Safe but moving to a safer location.<br />
+          <strong>THIRTY FOUR</strong> Evacuating to a shelter.<br />
+          <strong>THIRTY FIVE</strong> Evacuating to family member/friend's house.<br />
+          <strong>THIRTY SIX</strong> Evacuating and safe.<br />
+          <strong>THIRTY SEVEN</strong> At home and plan to remain here.<br />    
+          <strong>THIRTY EIGHT</strong> Will contact you when able.<br />
+          <strong>THIRTY NINE</strong> All communications are down.<br />
+          <strong>FORTY</strong> Share this message with others.<br />
+          </strong><br />
+          
+          <strong>Group Three -- <span class="style1">General Use Messages</span></strong><br />
           <br />
-          <strong>FORTY SIX </strong>Greetings on your birthday and best wishes for many more to come.<br />
+          <strong>FORTY SIX </strong> Greetings on your birthday and best wishes for many more to come.<br />
           <strong>FORTY SEVEN</strong> Reference your message number _____ to _____ delivered on _____ at _____ UTC.<br />
+        
+          <strong>FORTY EIGHT</strong> Reference your message number _____ to _____ not delivered. Telephone _____ (insert number as received) inoperative. Please give better address<br />
+          <strong>FORTY NINE</strong> Reference your message number _____ to _____ . Unable to contact addressee or receive confirmation of delivery.<br />        
           <strong>FIFTY</strong> Greetings by Amateur Radio. <br />
           <strong>FIFTY ONE</strong> Greetings by Amateur Radio. This message is sent as a free public service by ham radio operators at _______. Am having a wonderful time. <br />
           <strong>FIFTY TWO</strong> Really enjoyed being with you. Looking forward to getting together again. <br />
@@ -1509,12 +1533,12 @@ wnd.document.write(html);   }
           <strong>FIFTY FOUR</strong> Many thanks for your good wishes. <br />
           <strong>FIFTY FIVE</strong> Good news is always welcome. Very delighted to hear about yours. <br />
           <strong>FIFTY SIX</strong> Congratulations on your _______, a most worthy and deserved achievement. <br />
-          <strong>FIFTY SEVEN</strong> Wish we could be together <br />
+          <strong>FIFTY SEVEN</strong> Wish we could be together. <br />
           <strong>FIFTY EIGHT</strong> Have a wonderful time. Let us know when you return. <br />
           <strong>FIFTY NINE</strong> Congratulations on the new arrival. Hope mother and child are well. <br />
-          <strong>*SIXTY</strong> Wishing you the best of everything on _______. <br />
+          <strong>SIXTY</strong> Wishing you the best of everything on _______. <br />
           <strong>SIXTY ONE</strong> Wishing you a very Merry Christmas and a Happy New Year. <br />
-          <strong>*SIXTY TWO</strong> Greetings and best wishes to you for a pleasant _______ holiday season. <br />
+          <strong>SIXTY TWO</strong> Greetings and best wishes to you for a pleasant _______ holiday season. <br />
           <strong>SIXTY THREE</strong> Victory or defeat, our best wishes are with you. Hope you win. <br />
           <strong>SIXTY FOUR</strong> Arrived safely at _______. <br />
           <strong>SIXTY FIVE</strong> Arriving _______ on _______. Please arrange to meet me there. <br />
@@ -1522,7 +1546,39 @@ wnd.document.write(html);   }
           <strong>SIXTY SEVEN</strong> Your message number _______ undeliverable because of _______. Please advise. <br />
           <strong> SIXTY EIGHT</strong> Sorry to hear you are ill. Best wishes for a speedy recovery. <br />
           <strong> SIXTY NINE</strong> Welcome to the _______. We are glad to have you with us and hope you will enjoy the fun and fellowship of the organization.</p>
-        <p>*Can be used for all holidays.</p>
+         
+        <strong>SEVENTY </strong> Thank you for the QSO on _____ (frequency/band) _____ (mode) at _____ (time) _____ (date).<br />   <br />
+         
+        
+        <strong>Group Four -- <span class="style1">Network Management and Possible Emergency Communication Use</span></strong><br />
+        <br />
+          
+          <strong>SEVENTY ONE</strong> Order wire net established on _____ (frequency) to coordinate and prioritize access to _____ (digital network name) on _____ (frequency)_____ (mode).<br />
+          <strong>SEVENTY TWO</strong> Establish communications with _____ (name of EmComm group) on _____ frequency _____ mode.<br />
+          <strong>SEVENTY THREE </strong> Establish communications with _____ agency on channel _____ (spell channel number) _____ (mode).<br />
+          <strong>SEVENTY FOUR</strong> Establish communications with _____ agency on _____ (frequency) _____ mode.<br />
+          <strong>SEVENTY FIVE </strong> Priority Entry Point frequencies established on _____ (list frequencies and modes).<br />
+          <strong>SEVENTY SIX </strong> Point to point circuit established on _____ (frequency) ______ (mode). Please establish liaison.<br />
+         
+          <strong>SEVENTY EIGHT</strong> SITREP messages requested every _____ (spell number) hours your location. Transmit to station _____ (call sign) in _____ (state/section).<br />
+          <strong>SEVENTY NINE</strong> WXOBS messages requested every _____ (spell number) hours your location. Transmit to station _____ (call sign) in _____ (state/section).<br />
+          <strong>EIGHTY </strong> OPRED messages requested your station. Update when changes occur. Transmit to station _____ (call sign) in _____ (state/section).<br />
+          
+          <strong>EIGHTY TWO </strong> Digital Traffic Station connect/download frequency at _____ (spell number) minute intervals requested in support of disaster operations.<br />
+          <strong>EIGHTY THREE</strong> RRI Winlink gateway connect/download frequency at _____ (spell number) minute intervals requested in support of disaster operations.<br />
+          <strong>EIGHTY FOUR</strong> Request activate _____ Region Net until further notice.<br />
+          <strong>EIGHTY FIVE </strong> Request activate _____ Ares Net until further notice.<br />
+          <strong>EIGHTY SIX</strong> Advise frequency and mode of ______ state/section nets.<br />
+          <strong>EIGHTY SEVEN</strong> Request assistance with establishment of a temporary message center at _____ (address and/or agency).<br />     
+          <strong>EIGHTY EIGHT</strong> Welfare traffic being originated on (frequency/mode). Request assistance with RRI/NTS liaison<br />
+          <strong>EIGHTY NINE</strong> Priority and/or emergency traffic being originated on _____ (frequency/mode). Request assistance with RRI/NTS liaison.<br />         
+          <strong>NINETY </strong> Please provide a list of stations operational on National SOS Radio Network.<br />
+          <strong>NINETY ONE</strong> Widespread disruptions to cellular data and public switched telephone network this location.<br />
+          <strong>NINETY TWO</strong> Widespread disruptions to Internet service this location.<br />
+          <strong>NINETY THREE</strong> The following broadcast stations are off-air in this area (list call sign, frequency/channel).<br />
+          
+          
+          
       </div>
       <!-- The close pop-up link correctly positioned at the end of the content block -->
       <a href="#links" class="close"><span>Back to links</span></a> </div>
@@ -1604,7 +1660,7 @@ wnd.document.write(html);   }
               <input name="SeqNum" id="NumberVal"  title="You may overwrite. This number is controlled in Express: Message > Template settings." onchange="NumberVal.value=NumberVal.value.replace(/^0+/, '');" onkeypress="return isNumberKey(event)" value="{SeqNum}" size="8" maxlength="6" placeholder=" User Input" required="required" />
               <br />
               <br />
-              <input name="SVCB" id="SVCB" title="For NTS handler use only." value="SVC" onclick="Flip('SVC')" type="checkbox" />
+              <input name="SVCB" id="SVCB" title="For traffic handler use only." value="SVC" onclick="Flip('SVC')" type="checkbox" />
               SVC <span class="style37">(Handler use)</span><br />
             </p></td>
           <td width="135" rowspan="2" style="width: 110px;"> <p>Precedence<br /> 
@@ -1639,7 +1695,7 @@ wnd.document.write(html);   }
           </td>
           <td rowspan="2" style="width: 75px;" text-align="" center="" width="102"><div align="center"><span style="font-weight: bold;"><br />
             Station Of Origin
-                <input name="Callsign" class="zentriert " id="Callsign" style="font-weight: normal;" title="Can be overwritten if different." onchange="javascript:this.value=this.value.toUpperCase();" value="{Callsign}" size="18" maxlength="16" />
+                <input name="Callsign" class="zentriert " id="Callsign" style="font-weight: normal;" title="Can be overwritten if different." required="required" onchange="javascript:this.value=this.value.toUpperCase();" value="{Callsign}" size="18" maxlength="16" />
               </span>
                 <span class="style19">Change  if not you. </span> </div></td>
           <td rowspan="2" style="text-align: center; vertical-align: top;" width="132"><span style="font-weight: bold;"><br />
@@ -1648,7 +1704,7 @@ wnd.document.write(html);   }
             <input name="check" type="text" class="zentriert" id="check" readonly="readonly" value="0" size="10" maxlength="9" />
           </label></td>
           <td rowspan="2" style="text-align: center; vertical-align: top; width: 100px;" width="150"><span style="font-weight: bold;"> <br />
-            &nbsp;Place of Origin </span>            <input name="place" id="place" size="28" maxlength="25" required="required"  onkeyup="Strippunct(this.value, this.id);" onchange="javascript:this.value=this.value.toUpperCase(); this.value=this.value.replace(/\./gm, ' '); " />            
+            &nbsp;Place of Origin </span>            <input name="place" id="place" size="28" maxlength="25"   required="required" placeholder="ex. OWLS HEAD ME" onkeyup="Strippunct(this.value, this.id) ;" onchange="javascript:this.value=this.value.toUpperCase(); this.value=this.value.replace(/\./gm, ' '); " />            
             <br />            <br />
           </td>
           <td width="144" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
@@ -1723,7 +1779,7 @@ Current UTC Time<br />
                   <tr>
                     <td colspan="2" id="MSG" style="vertical-align: top; text-align: center;"><p align="left" class="MSGtext" id="Message"><span style="font-weight: bold;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MESSAGE TEXT </span>Check: 
                         <input name="check2" id="check2" size="10" maxlength="9" class="zentriert" readonly="readonly" value="0" type="text" />
-                        &nbsp;<a href="#pop2"><em>ARL Message Numbering Help </em></a>&nbsp; <strong><span id="WarningText">&nbsp;</span></strong><br />
+                        &nbsp;<a href="#pop2"><em>RRC Message Numbering Help </em></a>&nbsp; <strong><span id="WarningText">&nbsp;</span></strong><br />
 &nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp; &nbsp; &nbsp; </span>
                         <textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." style="text-transform: uppercase;" cols="130" id="MessageTXT" name="MessageTXT" rows="7" placeholder="Suggestion is no more than 25 groups (words)" required="required" onkeyup="punctwrdcnt(this.value, this.id)" onchange="this.value=RWS(this.value); fix()"></textarea>
                          <br />
@@ -1763,7 +1819,7 @@ Current UTC Time<br />
               </table>
             </div></td>
         </tr>
-      </tbody>
+      </tbody>    
       <div id="pop5" class="pop-up">
         <!-- The pop-up block -->
         <div class="popBox">
@@ -1771,56 +1827,109 @@ Current UTC Time<br />
           <div class="popScroll">
             <p> </p>
             <h2>Overview</h2>
-            The Winlink Express Amateur Radio Radiogram Text Creator was developed as a partnership between Radio Relay International and the Winlink Development Team. Its purpose is to provide a structured forms-based approach to producing a correctly formatted radiogram with a text output that appears in the Winlink Express New Message panel. The completed radiogram can then be sent to a Winlink-RRI Liaison Station. That station will then inject the radiogram into the traffic system.
+            The Winlink Express Amateur Radio Radiogram Text Creator was developed as a partnership between Radio Relay International 
+            and the Winlink Development Team. Its purpose is to provide a structured forms-based approach to producing a correctly formatted 
+            radiogram with a text output that appears in the Winlink Express New Message panel. The completed radiogram can then be sent to a 
+            Winlink-RRI Liaison Station. That station will then inject the radiogram into the traffic system.
             </p>
-             <p align="left">
-            Printed copies of a Client Worksheet can be handed out to facilitate template entry, when you have many wishing to send a Radiogram. This worksheet is an HTML, that you can open and then copy/paste to any text editor. It is located in the same folder as the Radiogram. Just click on "Multi Client Work Sheet.txt".</p>
+             
             <div align="left" class="style10">
-              <p><font style="margin: 25px font-size: 12pt">A radiogram is simply a telegram message that is sent by a radio-only network that is comprised of amateur radio operators. These interoperable networks are sponsored by the ARRL (National Traffic System or NTS) and by Radio Relay International (RRI). The networks use phone, cw and digital modes. The cw and phone nets operate through a precisely sequenced and layered system of nets that cover local, section, region, area and transcontinental relays. The digital system consists of a mesh network configuration of automated Pactor hubs that are accessed by appointed Digital Traffic Station operators. </font> </p>
-              The system is in final stages to be able to handle bulk disaster communications out of an affected area, but can be activated upon request in the interim, <span class="style14">see comments in green below.</span> It is in operation 24/7, handling a variety of personal greetings as well as exercise traffic. Thousands of messages are handled on a weekly basis and the networks welcome traffic. Examples include congratulatory messages, thanks for the QSO messages, happy birthday messages, etc. Also, a number of hams have established penpal relationships with hams and even non-ham friends and family members.
+              <p><font style="margin: 25px font-size: 12pt">A radiogram is simply a telegram message that is sent by a radio-only 
+              network that is comprised of amateur radio operators. These interoperable networks are sponsored at the section level 
+              by the ARRL (the National Traffic System or NTS)and by Radio Relay International (RRI) that operates the Digital Traffic 
+              Network (DTN) and many voice and cw nets. </p>
+              
+              <p>The networks use phone, cw and digital modes. The cw and phone nets operate through a precisely sequenced and layered system 
+              of nets that cover local, section, region, area and transcontinental relays. The digital system consists of a mesh network 
+              configuration of automated Pactor and Vara HF hubs that are accessed by appointed Digital Traffic Station operators. 
+              </font> </p>
+              
+              The system is in operation 24/7, handling a variety of personal greetings as well as exercise traffic. Thousands of messages 
+              are handled on a weekly basis and the networks welcome traffic. Examples include congratulatory messages, thanks for the 
+              QSO messages, happy birthday messages, etc. Also, a number of hams have established penpal relationships with hams and 
+              even non-ham friends and family members. There are also RRC codes for welfare messages and emergency use.     </p>      
+              
+              <p>This version Includes a list of standard texts that are numbered and may be inserted just by citing the number. These
+              are an extension of the ARL numbered texts and are called RRC numbered radiogram texts. For example, 
+              RRC FORTY SIX FORTY SIX is "Greetings on your birthday and best wishes for many more to come."          
+              
+              <p> This radiogram template is an implementation of the standard radiogram format. For higher priority communications 
+              using radiograms there are two tailored versions of this template that are present in the RRI Radiogram forms list 
+              in Winlink Express. One is a Welfare radiogram that is specificaally designed for Health &
+              Welfare messages. The RRI Welfare Radiogram is part of a suite of procedures and forms that was developed by disaster 
+              support and communications groups in Seattle, WA and by RRI.  There is also a radiogram template that is in ICS-213 
+              that is optimized for agency communications. </p>   
+                           
+             
               <p align="center"><strong>The Radiogram Format</strong></p>
-              <p>The radiogram format has been in existence since 1949 and is very similar to the old commercial Western Union telegram as well as contemporary military formats. </p>
+             <p>The radiogram format has been in existence since 1949 and is very similar to the old commercial Western Union 
+             telegram as well as contemporary military formats. </p>
               <p>The radiogram has 4 primary sections:</p>
               <ul>
-                <li>The first line is the preamble and includes the message number (assigned by the originating station), precedence (importance i.e. Routine, Welfare, etc.), handling instructions for the delivering station (e.g. HXC is a request for delivery confirmation from the delivering station), originating stations call sign, check (number of words/groups in the message body), town, state and date of origination. Note: If doing a message relay back into the system, be sure to use the original message number. The SVC check box is for NTS handler use for servicing back a message. Time is a user option.</li>
+                <li>The first line is the preamble and includes the message number (assigned by the originating station), precedence 
+                (importance i.e. Routine, Welfare, etc.), handling instructions for the delivering station (e.g. HXC is a request for 
+                delivery confirmation from the delivering station), originating stations call sign, check (number of words/groups 
+                in the message body), town, state and date of origination. Note: If doing a message relay back into the system,
+                 be sure to use the original message number. The SVC check box is for traffic handler use for servicing back a message
+                 to confirm delivery or why the message couldn't be delivered. 
+                 Time is a user option.</li>
               </ul>
               <ul>
-                <li>The preamble is followed by the recipients address and contact information. It is very important to note that routing through the entire system is based on the recipients USA or Canadian postal code, state and town The street address and phone number (10 digits only  555 555 5555) and other information are used by the delivering station. The deliverer is a human who can exercise different methods as might be appropriate to complete the delivery. Also need a phone number, email, or both to ensure delivery. Keep in mind that sending INTO a disaster a welfare check is not recommended, as delivery will be most likely impossible. Sending outbound "I am OK and status" traffic from a shelter or any disaster venue is a good use of the Radiogram. </li>
+                <li>The preamble is followed by the recipients address and contact information. It is very important to note that 
+                routing through the entire system is based on the recipients USA or Canadian postal code, state and town The street 
+                address and phone number (10 digits only  i.e. 555 555 5555) and other information are used by the delivering station. 
+                The deliverer is a human who can exercise different methods as might be appropriate to complete the delivery. 
+                Also need a phone number, email, or both to ensure delivery. Keep in mind that sending INTO a disaster a welfare 
+                check is not recommended, as delivery will be most likely impossible. Sending outbound "I am OK and status" traffic
+                 from a shelter or any disaster venue is a good use of the Radiogram. </li>
               </ul>
               <ul>
-                <li>The message body is enclosed between breaks (BT). For compatibility with all transmission modes, the radiogram uses a limited character set, as is true throughout the radiogram. The period character is interesting as there are several uses. A period at the end of a sentence becomes an X. A decimal point is R, such as 146R750 The &quot;.com in an email address is DOT COM. Other substitutions include QUERY for the question mark, ATSIGN for @, UNDERSCORE for _. The slant bar (slash) / is a permitted character. Telephone numbers are 10 digits - area code, exchange and number with no dashes. An entered extension is numbers only and will add EXT to the front. The / (stroke) can be entered and will remain as a /. </li>
+                <li>The message body is enclosed between breaks (BT). For compatibility with all transmission modes, the 
+                radiogram uses a limited character set, as is true throughout the radiogram. The period character is 
+                interesting as there are several uses. A period at the end of a sentence becomes an X. A decimal point is R, 
+                such as 146R750 The .com in an email address is DOT COM. Other substitutions include QUERY for the 
+                question mark, ATSIGN for @, UNDERSCORE for _. The slant bar (slash) / is a permitted character. 
+                Telephone numbers are 10 digits - area code, exchange and number with no dashes. An entered extension 
+                is numbers only and will add EXT to the front. The / (stroke) can be entered and will remain as a /. </li>
               </ul>
             </div>
-            <blockquote class="style10">
-              <p align="center" class="western style4" style="margin-bottom: 0in; line-height: 100%">The Text Creator assists with all of this by making the substitutions for you, or not allowing certain characters.</p>
-            </blockquote>
+                                                                              
             <div align="left" class="style10">
               <ul>
-                <li><font color="#000000">The last section is the signature of the sender. All radiograms must have a signature, (name). In the case of 3rd party messages, the signature is that of the person who provided the message - not the originating stations ham radio operator. </font> </li>
+                <li><font color="#000000">The last section is a field for the signature of the sender. All radiograms must have 
+                a signature, (name). In the case of 3rd party messages, the signature is that of the person who provided the message - not the originating stations ham radio operator. </font> </li>
               </ul>
-              <blockquote>
-                <p>The first OP NOTE is for special instructions to the traffic handlers. This could be a note that the addressees phone number is a daytime work number, additonal delivery instructions, etc.<br /><br />
-				The last OP NOTE can be for return handling instructions, notes you feel are applicable to pass on. Please keep OP NOTES brief! <br /><br /> If indicating a return email to obtain a delivery notification (SVC) do not use a Winlink address. You do not know if the final traffic handler is in your whitelist.
-				Remember while you are using Winlink to input the traffic, the next delivery route may not be Winlink, it could be CW or voice.  </p>
-              </blockquote>
+                </blockquote>
+                
+        <p>Additionally, there are fields for two OP NOTES. The first OP NOTE is for special instructions to the traffic handlers. This could be a note that the addressees phone
+        number is a daytime work number, additonal delivery instructions, etc.<br /><br />
+				The second OP NOTE can be for return handling instructions, notes you feel are applicable to pass on. Please keep OP NOTES brief! <br /><br /> If indicating a return email to obtain a delivery notification (SVC) do not use a Winlink address. You do not know if the final traffic handler is in your whitelist.
+				  </p>
+         
               <p align="center"><strong>Getting the Message into the System</strong> </p>
-              <font color="#000000">The traditional way to get a message into the network is to check into a local or section traffic net and transmit the message by voice or cw. As a Winlink operator, you will need to get your message to a </font>Winlink-RRI Liaison Station. These are listed as tactical addresses in the drop down at the bottom of the form. When you are ready to send your message, select the Liaison Region that is associated with the addressee's location.
-              <p><span class="style6 style1"><b>Note: </b></span>During the introductory phase of injecting messages into the traffic network by this template, not all of the procedures or personnel have been put in place to handle traffic with a precedence of EMERGENCY. <span class="style6"></span> </p>
-              <span class="style14">However if an event or disaster occurs that warrants originating EMERGENCY precedence traffic, please notify the&nbsp;RRI National Emergency Communications Coordinator immediately to request activation of the RRI National Emergency Communications Response Plan at 269-650-0215 or inject a message requesting RRI emergency activation via an available IATN (Inter-Area Traffic Network) circuit, or to KB1TCE@winlink.org </span>
-              </p>
+              <font color="#000000">The traditional way to get a message into the network is to check into a local or section traffic 
+              net and transmit the message by voice or cw. As a Winlink operator, you will usually transmit your message to a 
+              </font>Winlink-RRI Liaison Station. These are listed as tactical addresses in the drop down at the bottom of the form. 
+              When you are ready to send your message, select the Liaison Region that is associated with the addressee's location.
+              
               
               <p align="center"><strong>References</strong> </p>
-			                 <font color="#000000">The most up to date information on RRI and message handling is being provided by Radio Relay International </font><font color="#0000ff"><u><a href="http://radio-relay.org/%20" target="_blank">http://radio-relay.org/</a></u></font>
+			                 <font color="#000000">The most up to date information on RRI and message handling is being provided by Radio 
+                       Relay International </font><font color="#0000ff"><u><a href="http://radiorelay.org/" target="_blank">http://radiorelay.org/</a></u></font>
               <p></p>
-              <font color="#000000">The Traffic Operations Aid or Pink Card is a concise 2-page summary of radiogram formatting and transmission procedures for voice, cw and digital. Have a copy at your operating position as you enter a message into the Winlink Text Creator. </font>
-              <p><font color="#000000">Direct link to the PDF: </font><font color="#0000ff"><u><a href="http://radio-relay.org/wp-content/uploads/2017/05/RRI-TRAFFIC-OPERATIONS-AID-1720r3.pdf" target="_blank">http://radio-relay.org/wp-content/uploads/2017/05/RRI-TRAFFIC-OPERATIONS-AID-1720r3.pdf</a></u></font> </p>
-              <font color="#000000">The RRI Publications page </font><font color="#0000ff"><u><a href="http://radio-relay.org/about/publications/%20" target="_blank">http://radio-relay.org/about/publications/</a></u></font> <font color="#000000">has a number of other useful guides and aids. Two of special note are the Traffic Operations Field Manual FM-001 and the RRI Training Manual TR-001. </font> </div>
+              
+              <font color="#000000">The RRI Publications page </font><font color="#0000ff"><u><a href="http://radiorelay.org/publications/" target="_blank">http://radiorelay.org/publications/</a></u></font> <font color="#000000">has a number of other useful guides, aids and training videos. Two of special note are the Traffic Operations Field Manual FM-001 and the RRI Training Manual TR-001. </font> </div>
 			  </p>Note: If you desire for future use and with no Interent there are free Zip code data bases available to install.</b></b></td>
             
             </p>
-            <span class="western style4 style10 style1">Questions or suggestions concerning the Radiogram template or its use, may be submitted via Winlink to KB1TCE</span> </div>
+            <span class="western style4 style10 style1">Questions or suggestions concerning the Radiogram template or its use, may be 
+            submitted via Winlink to KB1TCE</span> </div>
           <!-- The close pop-up link correctly positioned at the end of the content block -->
           <a href="#links" class="close"><span>Back to links</span></a> </div>
+  
+      
+            
+              </div>
       </div>
     </table>
     `</div>

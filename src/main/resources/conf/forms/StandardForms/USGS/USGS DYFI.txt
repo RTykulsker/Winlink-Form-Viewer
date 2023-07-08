@@ -1,4 +1,4 @@
-Form: USGS DYFI.html
+Form:USGS DYFI.html
 To: dyfi_reports_automated@usgs.gov
 Subject: DYFI Automatic Entry - Winlink <var EVENTType>
 Readonly:True

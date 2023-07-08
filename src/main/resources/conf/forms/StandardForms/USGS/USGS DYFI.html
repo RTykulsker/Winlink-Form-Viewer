@@ -264,8 +264,15 @@ width:45px;
 
 
 .style12 {font-size: 18px}
-.style13 {font-size: 16px}
-.style15 {font-size: 13px}
+.style13 {
+    font-size: 16px;
+    text-align: left;
+    font-weight: normal;
+}
+.style15 {
+    font-size: 13px;
+    text-align: left;
+}
 .style21 {font-size: 14px; color: #000049; }
 .style23 {font-size: 16px; color: #FF0000; }
 .style24 {
@@ -300,6 +307,19 @@ width:45px;
 .style4 {color: #FF0000; font-style: italic; }
 .style45 {font-size: 12px}
 .style45 {color: #2A5F00}
+    
+  
+}
+.style11 {    font-size: 13px;
+    text-align: left;
+}
+    
+   .toggle {
+       
+       style.display = "none";
+       
+}
+.style111 {font-size: 14px}
 </style>
 <script>
 function shortmonth(monthnum) {
@@ -729,9 +749,16 @@ function SaveData() {
      alert("Files are not supported"); 
  } 
  flipID('EXERCISE');
+      
+   toggleOff('none');
+      
  SetDateTime('autodate'); SetDateTime('autotime');
  copyGPS();
- }
+   // var rows = document.getElementsByClassName('toggle');
+
+;      }
+
+
  
 
 // function setcolors() {
@@ -1349,6 +1376,34 @@ function Testlon(){
 }
     
     
+    
+  function toggleRows(buttonId, className) {
+   var rows = document.getElementsByClassName('toggle');
+  
+ // button.addEventListener("click", function(event) {
+    for (var i = 0; i < rows.length; i++) {
+      if (rows[i].style.display === "none") {
+        rows[i].style.display = "block";
+      } else {
+        rows[i].style.display = "none";
+      }
+    }
+  };
+    function toggleOff(a) {
+    
+   var rows = document.getElementsByClassName("toggle");
+      for (var i = 0; i < rows.length; i++) { 
+    //  if (rows[i].style.display === "") {
+     //   rows[i].style.display = "block";
+   //   } else {
+        rows[i].style.display = a;
+  //   }
+    }
+  };
+
+
+    
+    
 function Testlat(){
     
       // get user loc via lat lon and then compare
@@ -1453,10 +1508,10 @@ event ID : ci40063464</p>
 
 
    	  <span class="style13">
-</p>
+
 
 . 
-<td width="0%"></p>
+<td width="0%">
 
 </div>
 
@@ -1496,18 +1551,16 @@ To complete your form submission, click Continue and close the open browser wind
 
 <!-- The close pop-up link correctly positioned at the end of the content block -->
 
-<!--<a href="#links" class="close"><span>Back
-
-to links</span></a>  --></div>
+<!--<a href="#links" class="close"><span>Backto links</span></a>  --></div>
 </div>
-<table style="width: 1045px;" align="center" border="0">
+<table width="1043" border="0" align="center" style="width: 1045px;">
 <tbody>
 <tr>
-<td>
-<table width="938" border="1" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 900px; ">
+<td width="1037">
+<table width="922" border="1" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 900px; ">
 <tbody>
 <tr>
-<td width="918" height="26" bgcolor="#dee9f9" style="text-align: center; vertical-align: top;"><p class="style12">  Earthquake: Did You Feel it?</p>
+<td width="910" height="26" bgcolor="#dee9f9" style="text-align: center; vertical-align: top;"><p class="style12">  Earthquake: Did You Feel it?</p>
   <p class="style11">Did You Feel It? (DYFI) collects information from people who felt an earthquake and <br />
     helps create maps that show what people experienced and the extent of damage. <br />
     <br />
@@ -1635,6 +1688,73 @@ Other</span> <span class="style11">Describe:
           </table></td>
       </tr>
       <tr>
+        <td valign="top" bgcolor="#FFFFFF"><p class="style13">If you were inside a building, what floor were you on?
+          <input name="fldSituation_floor" type="hidden" id="fldSituation_floor" style="outline: none !important;
+    border:1px solid red;"/>
+        </p>
+          <table width="82%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="3%">&nbsp;</td>
+              <td width="33%"><span class="style11">
+                <input name="xfldfloor" type="radio"onclick="document.getElementById('fldSituation_floor').value = ''" />
+                Not specified</span></td>
+              <td width="33%"><span class="style11">
+                <input name="xfldfloor" type="radio" value="underground"onclick="document.getElementById('fldSituation_floor').value = this.value" />
+                Underground</span></td>
+              <td width="31%"><span class="style11">
+                <input name="xfldfloor" type="radio" value="ground"onclick="document.getElementById('fldSituation_floor').value = this.value" />
+                Ground floor</span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td><span class="style11">
+                <input name="xfldfloor" type="radio" value="floor2"onclick="document.getElementById('fldSituation_floor').value = this.value" />
+                2nd Floor</span></td>
+              <td><span class="style11">
+                <input name="xfldfloor" type="radio" value="floor3" onclick="document.getElementById('fldSituation_floor').value = this.value" />
+                3rd Floor</span></td>
+              <td><span class="style11"> </span></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td colspan="3"><span class="style11">
+                <input name="xfldfloor" type="radio" value="other" onclick="document.getElementById('fldSituation_floor').value = this.value" />
+                Other</span> <span class="style11">: </span>
+                <input placeholder="If higher, please type in the floor" name="ifHigherPleaseDescribe" type="text" id="ifHigherPleaseDescribe" size="80" maxlength="70" /></td>
+            </tr>
+          </table></td>
+      </tr>
+      <tr>
+        <td  valign="top" bgcolor="#F8F8FF"><p class="style13">If you were inside a building, how tall was it?
+            <input name="fldSituation_structureStories" type="hidden" id="fldSituation_structureStories" style="outline: none !important;
+    border:1px solid red;"/>
+        </p>
+          <table width="77%"  border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="3%">&nbsp;</td>
+              <td width="33%"><span class="style11">
+                <input name="xTallfld" type="radio"onclick="document.getElementById('fldSituation_structureStories').value = ''" />
+                Not specified</span></td>
+              <td width="33%"><span class="style11">
+                <input name="xTallfld" type="radio" value="story1"onclick="document.getElementById('fldSituation_structureStories').value = this.value" />
+                1 Story</span></td>
+              <td width="31%"><span class="style11">
+                <input name="xTallfld" type="radio" value="story2"onclick="document.getElementById('fldSituation_structureStories').value = this.value" />
+                2 Stories              </span></td>
+              <td width="31%" nowrap="nowrap"><span class="style11">
+                <input name="xTallfld" type="radio" value="story3"onclick="document.getElementById('fldSituation_structureStories').value = this.value" />
+                3 Stories</span></td>
+            </tr>
+            <tr>
+              <td >&nbsp;</td>
+              <td colspan="4"><span class="style11">
+                <input name="xTallfld" type="radio" value="other" onclick="document.getElementById('fldSituation_structureStories').value = this.value" />
+Other</span> <span class="style11">: </span>
+<input placeholder="If higher, please type in the number of stories" name="howTallPleaseDescribe" type="text" id="howTallPleaseDescribe" size="80" maxlength="70" /></td>
+              </tr>
+          </table></td>
+      </tr>
+      <tr>
         <td valign="top" bgcolor="#FFFFFF"><p class="style13">Were you asleep?
               <input name="fldSituation_sleep" type="hidden" id="fldSituation_sleep" style="outline: none !important;
     border:1px solid red;" />
@@ -1714,7 +1834,7 @@ Violent
             <input name="fldExperience_reaction" type="hidden" id="fldExperience_reaction" style="outline: none !important;
     border:1px solid red;"/>
         </p>
-          <table width="82%"  border="0" cellspacing="0" cellpadding="0">
+          <table width="77%"  border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td width="3%">&nbsp;</td>
               <td width="33%"><span class="style11">
@@ -2039,7 +2159,7 @@ Building permanently shifted over foundation<br />
           </td>
       </tr>
       <tr>
-        <td valign="top" bgcolor="#FFFFFF"><p class="style13">Additional comments:<span class="style28"> &nbsp;(Max 400 Characters) </span></p>
+        <td height="119" valign="top" bgcolor="#FFFFFF"><p class="style13">Additional comments:<span class="style28"> &nbsp;(Max 400 Characters) </span></p>
           <p>
             <textarea placeholder="Nature of the building (such as building floor or height), other damages seen in your area, or any other comments you might have." cols="140" rows="2" name="comments" id="comments"onchange="this.value=RWS(this.value)" onkeypress="if(event.keyCode==13){return false;}"  
  onkeyup="AutoGrowTextArea(this)"></textarea>
@@ -2060,11 +2180,644 @@ Comments:T=k25</textarea>
 
 </textarea>
             <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
-          </p>
+   
           </td>
       </tr>
     </table>
-    <p>    </div></td>
+  </div></td>
+</tr>
+<tr>
+  <td #FFFFFF bgcolor="#fde8e8" style="vertical-align: top; "><p class="style12"><strong style="font-weight: bold; text-align: center;">Optional</strong></p>
+    <p class="style13">Would you like to fill out additional questions about Early Earthquake Warning (EEW) and/or your response to this earthquake?</p>
+    <p class="style13"><span style="font-weight: normal; font-style: oblique; text-align: left; color: #F80509;">Reminder: All amateur Radio traffic is public. </span></p>
+    <p class="style15"><span class="style13">&nbsp;&nbsp;&nbsp;<a href="javascript:toggleRows('optional','toggleRows');">Click to toggle view</a></span></p></td>
+</tr>
+<tr>
+  <td valign="top" class="toggle" style="text-align: left"><p class="style13">Did you or someone near you receive an earthquake alert?
+    <input name="sup_initial" type="hidden" id="sup_initial"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="77%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="2%" valign="top">&nbsp;</td>
+        <td width="20%" valign="top" class="style15"><span class="style11">
+          <input name="xsup_initial" type="radio"onclick="document.getElementById('sup_initial').value = ''" />
+          Not specified</span></td>
+        <td width="12%" valign="top" class="style15"><span class="style111">
+          <input name="xsup_initial" type="radio" value="yes"onclick="document.getElementById('sup_initial').value = this.value" />
+          Yes</span></td>
+        <td width="54%" valign="top" class="style15"><span class="style111">
+          <input name="xsup_initial" type="radio" value="sup_no_expected"onclick="document.getElementById('sup_initial').value = this.value" />
+          I did not receive an alert, but I expected to receive one</span></td>
+        <td width="12%" valign="top" nowrap="nowrap" class="style15"><span class="style111">
+          <input name="xsup_initial" type="radio" value="no"onclick="document.getElementById('sup_initial').value = this.value" />
+          No</span></td>
+        </tr>
+      </table></td>
+</tr>
+<tr>
+  <td valign="top" bgcolor="#F8F8FF" class="toggle" style="text-align: left"><p class="style13">Did you receive an alert message before, during, or after you felt shaking?
+    <input name="sup_whenReceived" type="hidden" id="sup_whenReceived"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="77%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="33%" class="style15"><span class="style11">
+          <input name="xsup_whenReceived" type="radio"onclick="document.getElementById('sup_whenReceived').value = ''" />
+          Not specified</span></td>
+        <td width="33%" class="style15"><span class="style11">
+          <input name="xsup_whenReceived" type="radio" value="sup_before"onclick="document.getElementById('sup_whenReceived').value = this.value" />
+          Before</span></td>
+        <td width="31%" class="style15"><span class="style11">
+          <input name="xsup_whenReceived" type="radio" value="sup_during"onclick="document.getElementById('sup_whenReceived').value = this.value" />
+          During</span></td>
+        <td width="31%" nowrap="nowrap" class="style15"><span class="style11">
+          <input name="xsup_whenReceived" type="radio" value="sup_after"onclick="document.getElementById('sup_whenReceived').value = this.value" />
+          After</span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle" style="text-align: left"><p class="style13">Did you receive an alert message before, during, or after you felt shaking?
+    <input name="sup_howLongBeforeFelt" type="hidden" id="sup_howLongBeforeFelt"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="77%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="33%" class="style15"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio"onclick="document.getElementById('sup_howLongBeforeFelt').value = ''" />
+          Not specified</span></td>
+        <td width="33%" class="style15"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_before_1"onclick="document.getElementById('sup_howLongBeforeFelt').value = this.value" />
+          1-5 seconds</span></td>
+        <td width="31%" class="style15"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_before_6"onclick="document.getElementById('sup_howLongBeforeFelt').value = this.value" />
+          6-10 seconds</span></td>
+        <td width="31%" nowrap="nowrap" class="style15"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_before_11"onclick="document.getElementById('sup_howLongBeforeFelt').value = this.value" />
+          11-15 seconds</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="style15"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_other" onclick="document.getElementById('sup_howLongBeforeFelt').value = this.value" />
+Other</span> <span class="style11">Describe</span>:
+          <span class="style13">
+          <input placeholder="If more, approximately how many seconds total" name="sup_howLongBeforeFeltOther" type="text" id="sup_howLongBeforeFeltOther" size="80" maxlength="70" />
+          </span></td>
+        </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">Where were you when you received the alert?
+    <input name="sup_whereReceived" type="hidden" id="sup_whereReceived"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="94%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="2%">&nbsp;</td>
+        <td width="21%" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio"onclick="document.getElementById('sup_whereReceived').value = ''" />
+          Not specified</span></td>
+        <td width="34%" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_homeInside"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          At home, inside</span></td>
+        <td width="25%" class="style11xsup_whereReceived><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_homeOutside"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          <span style="font-size: 13px">          At home, outside</span></span></td>
+        <td width="18%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_workSchool"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          At work or school</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_movingVeh"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          In a moving vehicle</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_publicPlace"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          In a public space like a shopping mall, store, park, hospital, etc</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_publicTransit"onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          On public transit like a commuter train, subway train, or bus</span></td>
+        <td valign="top" nowrap="nowrap" class="style11">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" valign="top" class="style11"><span class="style11">
+          <input name="xsup_whereReceived" type="radio" value="sup_other" onclick="document.getElementById('sup_whereReceived').value = this.value" />
+          Other</span>
+          <input placeholder="Please describe" name="sup_whereReceivedOther" type="text" id="sup_whereReceivedOther" size="80" maxlength="70" /></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">Were you alone or with others when you received the alert?
+    <input name="sup_aloneOrOthers" type="hidden" id="sup_aloneOrOthers"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="786"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>&nbsp;</td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio"onclick="document.getElementById('xsup_aloneOrOthers').value = ''" />
+          Not specified</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio" value="sup_alone"onclick="document.getElementById('sup_aloneOrOthers').value = this.value" />
+          Alone</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio" value="sup_adult"onclick="document.getElementById('sup_aloneOrOthers').value = this.value" />
+          With other adults</span></td>
+        <td nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio" value="sup_small"onclick="document.getElementById('sup_aloneOrOthers').value = this.value" />
+          With small dependent children only</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="2" class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio" value="sup_adultdependent"onclick="document.getElementById('sup_aloneOrOthers').value = this.value" />
+          With other adults and dependent children</span></td>
+        <td colspan="2" class="style11"><span class="style11">
+          <input name="xsup_aloneOrOthers" type="radio" value="sup_special"onclick="document.getElementById('sup_aloneOrOthers').value = this.value" />
+          With others who have special needs (elderly, disabled, etc.</span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">Given your experience with the earthquake alert you received in this earthquake, how would you rate its usefulness?
+    <input name="sup_alertUsefulness" type="hidden" id="sup_alertUsefulness"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="85%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="33%" class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio"onclick="document.getElementById('sup_alertUsefulness').value = ''" />
+          Not specified</span></td>
+        <td width="33%" class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio" value="sup_useful_5"onclick="document.getElementById('sup_alertUsefulness').value = this.value" />
+          Extremely useful</span></td>
+        <td width="31%" class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio" value="sup_useful_4"onclick="document.getElementById('sup_alertUsefulness').value = this.value" />
+          Somewhat useful</span></td>
+        <td width="31%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio" value="sup_useful_3"onclick="document.getElementById('sup_alertUsefulness').value = this.value" />
+          Neither useful nor useless</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio" value="sup_useful_2"onclick="document.getElementById('sup_alertUsefulness').value = this.value" />
+          Somewhat useless</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_alertUsefulness" type="radio" value="sup_useful_1"onclick="document.getElementById('sup_alertUsefulness').value = this.value" />
+          Totally useless</span></td>
+        <td class="style11">&nbsp;</td>
+        <td nowrap="nowrap" class="style11">&nbsp;</td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#FFFFFF" class="toggle"style="text-align: left"><p class="style13">What action did you take between the time you received the alert message and when you first felt shaking? (Choose one that best describes how you responded)
+    <input name="sup_actionTake" type="hidden" id="sup_actionTake"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7" >&nbsp;</td>
+        <td width="267" valign="top" class="style11"><input name="xsup_actionTake" type="radio"onclick="document.getElementById('sup_actionTake').value = ''" />
+          Not specified</td>
+        <td width="353" valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_noAction"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Took no action, there was too
+          little time to respond
+          </p></td>
+        <td width="285" valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_safe"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Took no action, I was already in a place of safety</td>
+      </tr>
+      <tr>
+        <td height="44">&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_brace"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Took no action, but mentally braced <br />
+          myself for shaking</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_move"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Moved away from hazards near me like windows, unstable objects, masonry walls if outside, etc.</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_exit"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Exited the building I was in</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_stand"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Stood in a doorway</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_drop"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Dropped, covered and held on</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_act"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Acted to protect others near me (e.g. dependent child, special needs person)</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_pull"onclick="document.getElementById('sup_actionTake').value = this.value" />
+          Pulled vehicle over and stopped</td>
+        <td valign="top" nowrap="nowrap" class="style11">&nbsp;</td>
+        <td valign="top" class="style11">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="3" valign="top" class="style11"><input name="xsup_actionTake" type="radio" value="sup_other" onclick="document.getElementById('sup_whereReceived').value = this.value" />
+Other
+  <input placeholder="Please describe" name="sup_whereReceivedOther" type="text" id="sup_whereReceivedOther" size="80" maxlength="70" /></td>
+        </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">If there was too little time to respond, how much warning do you feel you need to respond after receiving an alert for an earthquake?
+    <input name="sup_warningNeed" type="hidden" id="sup_warningNeed"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="77%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="33%" class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio"onclick="document.getElementById('sup_warningNeed').value = ''" />
+          Not specified</span></td>
+        <td width="33%" class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_60" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          More than 1 minute</span></td>
+        <td width="31%" class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_31" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          31-60 seconds</span></td>
+        <td width="31%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_21" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          21-30 second</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_11" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          11-20 seconds</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_6" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          6-10 seconds</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_3" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          3-5 seconds</span></td>
+        <td nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_warningNeed" type="radio" value="sup_warn_2" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          2-3 second</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_warn_0" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          0-2 second</span></td>
+        <td class="style11"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_warn_dontknow" onclick="document.getElementById('sup_warningNeed').value = this.value" />
+          I don't know</span></td>
+        <td class="style11">&nbsp;</td>
+        <td nowrap="nowrap" class="style11">&nbsp;</td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#FFFFFF" class="toggle"style="text-align: left"><p class="style13">Would you say that the shaking you experienced from the earthquake after receiving the alert was:
+    <input name="sup_expectedShaking" type="hidden" id="sup_expectedShaking"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="2%">&nbsp;</td>
+        <td width="19%" class="style11"><span class="style11">
+          <input name="xsup_expectedShaking" type="radio"onclick="document.getElementById('sup_expectedShaking').value = ''" />
+          Not specified</span></td>
+        <td width="29%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_expectedShaking" type="radio" value="sup_expect_less"onclick="document.getElementById('sup_expectedShaking').value = this.value" />
+          Less severe than I expected</span></td>
+        <td width="25%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_expectedShaking" type="radio" value="sup_expect_same"onclick="document.getElementById('sup_expectedShaking').value = this.value" />
+          About what I expected</span></td>
+        <td width="25%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_expectedShaking" type="radio" value="sup_expect_more"onclick="document.getElementById('sup_expectedShaking').value = this.value" />
+          More severe than I expected</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="style11"><span class="style11">
+          <input name="xsup_howLongBeforeFelt" type="radio" value="sup_expect_notfelt" onclick="document.getElementById('sup_expectedShaking').value = this.value" />
+        </span><span class="style11"></span>Not felt</td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">Based on your experience with the earthquake alert you received in this earthquake, would you prefer:
+    <input name="sup_preferAlert" type="hidden" id="sup_preferAlert"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7" height="44" >&nbsp;</td>
+        <td width="267" valign="top" class="style11"><span class="style11">
+          <input name="xsup_preferAlert" type="radio"onclick="document.getElementById('sup_preferAlert').value = ''" />
+          Not specified</span></td>
+        <td width="353" valign="top" class="style11"><input name="xsup_preferAlert" type="radio" value="sup_alertAll"onclick="document.getElementById('sup_preferAlert').value = this.value" />
+          <span class="style11">Alerts for all earthquakes, even very small ones that are barely felt
+            </p>
+          </span></td>
+        <td width="285" valign="top" class="style11"><span class="style11">
+          <input name="xsup_preferAlert" type="radio" value="sup_alertDisrupt"onclick="document.getElementById('sup_preferAlert').value = this.value" />
+          Alerts only for earthquakes that disrupt my activities, but do not cause damage</span></td>
+      </tr>
+      <tr>
+        <td height="44">&nbsp;</td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_preferAlert" type="radio" value="sup_alertDamage"onclick="document.getElementById('sup_preferAlert').value = this.value" />
+          Alerts only for major earthquakes that could cause damage and injury</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_preferAlert" type="radio" value="sup_alertNone"onclick="document.getElementById('sup_preferAlert').value = this.value" />
+          Not to be alerted for any earthquake</span></td>
+        <td valign="top" class="style11">&nbsp;</td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">Do you consider the early warning message you received to be:
+    <input name="sup_adequateWarning" type="hidden" id="sup_adequateWarning"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="7" >&nbsp;</td>
+        <td width="267" valign="top" class="style11"><span class="style11">
+          <input name="xsup_adequateWarning" type="radio"onclick="document.getElementById('sup_adequateWarning').value = ''" />
+          Not specified</span></td>
+        <td width="353" valign="top" class="style11"><input name="xsup_adequateWarning" type="radio" value="sup_adequate" onclick="document.getElementById('sup_adequateWarning').value = this.value" />
+          <span class="style11">Adequate</span></td>
+        <td width="285" valign="top" class="style11"><span class="style11">
+          <input name="xsup_adequateWarning" type="radio" value="sup_magnitude"onclick="document.getElementById('sup_adequateWarning').value = this.value" />
+          Inadequate, need to add earthquake magnitude</span></td>
+      </tr>
+      <tr>
+        <td height="44">&nbsp;</td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_adequateWarning" type="radio" value="sup_map" onclick="document.getElementById('sup_adequateWarning').value = this.value" />
+          Inadequate, need to add a map showing earthquake epicenter and my location</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_adequateWarning" type="radio" value="sup_timeleft" onclick="document.getElementById('sup_adequateWarning').value = this.value" />
+          Inadequate, need to add the amount of time left until shaking begins</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_adequateWarning" type="radio" value="sup_timer"onclick="document.getElementById('sup_adequateWarning').value = this.value" />
+          Inadequate, need to add a countdown time to impact at my location</span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">The US Geological Survey also provides ShakeAlert system performance information after the earthquake has occurred including the earthquake magnitude, location, cities affected, and mapped data. In regard to this post-earthquake information, would you say that this information was:
+    <input name="sup_postEq" type="hidden" id="sup_postEq"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="90%"  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="2%">&nbsp;</td>
+        <td width="19%" class="style11"><span class="style11">
+          <input name="xsup_postEq" type="radio"onclick="document.getElementById('sup_postEq').value = ''" />
+          Not specified</span></td>
+        <td width="29%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_postEq" type="radio" value="sup_useful" onclick="document.getElementById('sup_postEq').value = this.value" />
+          Useful</span></td>
+        <td width="25%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_postEq" type="radio" value="sup_notuseful" onclick="document.getElementById('sup_postEq').value = this.value" />
+          Not useful</span></td>
+        <td width="25%" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_postEq" type="radio" value="sup_notreceived" onclick="document.getElementById('sup_postEq').value = this.value" />
+          I did not receive this information</span></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="style11"><span class="style11">
+          <input name="xsup_postEq" type="radio" value="sup_other" onclick="document.getElementById('sup_postEq').value = this.value" />
+          Other</span>
+          <input placeholder="Please describe" name="sup_postEqOther" type="text" id="sup_postEqOther" size="80" maxlength="70" /></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">Thinking back to how you received the alert, was it:
+    <input name="sup_alertDelivery" type="hidden" id="sup_alertDelivery"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table  border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="10">&nbsp;</td>
+        <td width="266" valign="top" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio"onclick="document.getElementById('sup_alertDelivery').value = ''" />
+          Not specified</span></td>
+        <td width="244" valign="top" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio" value="sup_cellphone"onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          On my own cellphone (mobile device)</span></td>
+        <td width="232" valign="top" nowrap="nowrap" class="style11"><span class="style11"> &nbsp;
+          <input name="xsup_alertDelivery" type="radio" value="sup_others"onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          Informed by others nearby</span></td>
+        <td width="160" valign="top" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio" value="sup_emergency" onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          Emergency alerts on TV or radio</span></td>
+      </tr>
+      <tr>
+        <td height="50">&nbsp;</td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio" value="sup_public"onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          A public announcement or broadcast at my school or workplace</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio" value="sup_road"onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          Electronic road sign</span></td>
+        <td valign="top" class="style11"><span class="style11"> &nbsp;
+          <input name="xsup_alertDelivery" type="radio" value="sup_billboard" onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          Digital billboard on a building</span></td>
+        <td valign="top" class="style11">&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td colspan="4" class="style11"><span class="style11">
+          <input name="xsup_alertDelivery" type="radio" value="sup_other" onclick="document.getElementById('sup_alertDelivery').value = this.value" />
+          Other</span>
+          <input placeholder="Please describe" name="sup_alertDeliveryOther" type="text" id="sup_alertDeliveryOther" size="80" maxlength="70" /></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">Have you experienced an earthquake that caused damage to your property in the past?
+    <input name="sup_damagePast" type="hidden" id="sup_damagePast"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="88%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="10">&nbsp;</td>
+        <td width="212" valign="top" class="style11"><span class="style11">
+          <input name="xsup_damagePast" type="radio"onclick="document.getElementById('sup_damagePast').value = ''" />
+          Not specified</span></td>
+        <td width="196" valign="top" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_damagePast" type="radio" value="yes"onclick="document.getElementById('sup_damagePast').value = this.value" />
+          Yes</span></td>
+        <td width="132" valign="top" nowrap="nowrap" class="style11"><span class="style11"> &nbsp;
+          <input name="xsup_damagePast" type="radio" value="no"onclick="document.getElementById('sup_damagePast').value = this.value" />
+          No</span></td>
+        <td width="259" valign="top" class="style11"><span class="style11">
+          <input name="xsup_damagePast" type="radio" value="sup_dontknow" onclick="document.getElementById('sup_damagePast').value = this.value" />
+          I don't know</span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">Is this the first time you received an alert from an earthquake alerting system?
+    <input name="sup_firstAlert" type="hidden" id="sup_firstAlert"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="88%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="10">&nbsp;</td>
+        <td width="212" valign="top" class="style11"><span class="style11">
+          <input name="xsup_firstAlert" type="radio"onclick="document.getElementById('sup_firstAlert').value = ''" />
+          Not specified</span></td>
+        <td width="196" valign="top" nowrap="nowrap" class="style11"><span class="style11">
+          <input name="xsup_firstAlert" type="radio" value="yes"onclick="document.getElementById('sup_firstAlert').value = this.value" />
+          Yes</span></td>
+        <td width="132" valign="top" nowrap="nowrap" class="style11"><span class="style11"> &nbsp;
+          <input name="xsup_firstAlert" type="radio" value="no"onclick="document.getElementById('sup_firstAlert').value = this.value" />
+          No</span></td>
+        <td width="259" valign="top" class="style11"><span class="style11">
+          <input name="xsup_firstAlert" type="radio" value="sup_dontknow" onclick="document.getElementById('sup_firstAlert').value = this.value" />
+          I don't know</span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">What is your gender?
+    <input name="sup_whatGender" type="hidden" id="sup_whatGender"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="88%"  border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="7"  >&nbsp;</td>
+        <td width="267" valign="top" class="style11"><span class="style11">
+          <input name="xsup_whatGender" type="radio"onclick="document.getElementById('sup_whatGender').value = ''" />
+          Not specified</span></td>
+        <td width="353" valign="top" class="style11"><input name="xsup_whatGender" type="radio" value="sup_female" onclick="document.getElementById('sup_whatGender').value = this.value" />
+          <span class="style11">Female</span></td>
+        <td width="285" valign="top" class="style11"><span class="style11">
+          <input name="xsup_whatGender" type="radio" value="sup_male"onclick="document.getElementById('sup_whatGender').value = this.value" />
+          Male</span></td>
+      </tr>
+      <tr>
+        <td height="22">&nbsp;</td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_whatGender" type="radio" value="sup_nonbinary" onclick="document.getElementById('sup_whatGender').value = this.value" />
+          Non-binary</span></td>
+        <td valign="top" class="style11"><span class="style11">
+          <input name="xsup_whatGender" type="radio" value="sup_noanswer" onclick="document.getElementById('sup_whatGender').value = this.value" />
+          Prefer not to answer</span></td>
+        <td valign="top" class="style11">&nbsp;</td>
+      </tr>
+      <tr>
+        <td >&nbsp;</td>
+        <td colspan="3" valign="top" class="style11"><span class="style11">
+          <input name="xsup_whatGender" type="radio" value="sup_whatGenderother" onclick="document.getElementById('sup_whatGender').value = this.value" />
+          Other: <span class="style13">
+          <input placeholder="Please describe" name="sup_whatGenderOther" type="text" id="sup_whatGenderOther" size="80" maxlength="70" />
+          </span></span></td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">What is your age group?
+    <input name="sup_ageGroup" type="hidden" id="sup_ageGroup"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="88%"  border="0" cellpadding="0" cellspacing="0">
+    <tr></tr>
+    <tr>
+      <td width="10" >&nbsp;</td>
+      <td valign="top" class="style11"><span class="style11">
+        <input name="xsup_ageGroup" type="radio"onclick="document.getElementById('sup_ageGroup').value = ''" />
+        Not specified</span></td>
+      <td valign="top" nowrap="nowrap" class="style11"><span class="style11">
+        <input name="xsup_ageGroup" type="radio" value="sup_age_under18"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        Under 18</span></td>
+      <td width="232" valign="top" nowrap="nowrap" class="style11"><span class="style11"> &nbsp;
+        <input name="xsup_ageGroup" type="radio" value="sup_age_18"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        18-24</span></td>
+      <td valign="top" class="style11"><span class="style11">
+        <input name="xsup_ageGroup" type="radio" value="sup_age_25" onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        25-34</span></td>
+    </tr>
+    <tr>
+      <td >&nbsp;</td>
+      <td valign="top" class="style11"><span class="style11">
+        <input name="xsup_ageGroup" type="radio" value="sup_age_35"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        35-44</span></td>
+      <td valign="top" class="style11"><span class="style11">
+        <input name="xsup_ageGroup" type="radio" value="sup_age_45"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        45-54</span></td>
+      <td valign="top" class="style11"><span class="style11"> &nbsp;
+        <input name="xsup_ageGroup" type="radio" value="sup_age_55" onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        55-64</span></td>
+      <td valign="top" class="style11"><input name="xsup_ageGroup" type="radio" value="sup_age_65"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+        65-74</td>
+    </tr>
+    <tr>
+      <td >&nbsp;</td>
+      <td valign="top" class="style11"><input name="xsup_ageGroup" type="radio" value="sup_age_75"onclick="document.getElementById('sup_ageGroup').value = this.value" />
+75 or older</td>
+      <td >&nbsp;</td>
+      <td valign="top" class="style11">&nbsp;</td>
+      <td valign="top" class="style11">&nbsp;</td>
+    </tr>
+    </table></td>
+</tr>
+<tr>
+  <td bgcolor="#F8F8FF" class="toggle"style="text-align: left"><p class="style13">Please indicate your level of education
+    <input name="sup_levelEducation" type="hidden" id="sup_levelEducation"style="outline: none !important;
+    border:1px solid red;" />
+  </p>
+    <table width="88%"  border="0" cellpadding="0" cellspacing="0">
+      <tr></tr>
+      <tr>
+        <td width="10" >&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio"onclick="document.getElementById('sup_levelEducation').value = ''" />
+          Not specified</td>
+        <td valign="top" nowrap="nowrap" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_no"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          No formal education</td>
+        <td width="232" valign="top" nowrap="nowrap" class="style11">&nbsp;
+          <input name="xsup_levelEducation" type="radio" value="sup_edu_elem"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Elementary school only</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_somehs" onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Some high school</td>
+      </tr>
+      <tr>
+        <td >&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_hs"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          High school graduate</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_somecol"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Some college</td>
+        <td valign="top" class="style11">&nbsp;
+          <input name="xsup_levelEducation" type="radio" value="sup_edu_assoc" onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Associate's degree (2 years)</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_bachelor"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Bachelor's degree or equivalent</td>
+      </tr>
+      <tr>
+        <td >&nbsp;</td>
+        <td valign="top" class="style11"><input name="xsup_levelEducation" type="radio" value="sup_edu_grad"onclick="document.getElementById('sup_levelEducation').value = this.value" />
+          Graduate degree</td>
+        <td valign="top" class="style11">&nbsp;</td>
+        <td valign="top" class="style11">&nbsp;</td>
+        <td valign="top" class="style11">&nbsp;</td>
+      </tr>
+    </table></td>
+</tr>
+<tr>
+  <td class="toggle"style="text-align: left"><p class="style13">Additional comments specifically concerning Earthquake Early Warning</p>
+    <p><span class="style11">
+      <input placeholder="Please describe" name="sup_contact_comments" type="text" id="sup_contact_comments" size="80" maxlength="70" />
+    </span></p></td>
 </tr>
 <tr>
 <td style="height: 35px; text-align: justify; vertical-align: top;" height="54"> <span style="font-family: Calibri;">
@@ -2089,9 +2842,9 @@ Comments:T=k25</textarea>
  <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
  <input name="xMapfilename" type="hidden" id="xMapfilename" value="DYFI Map" />
  </span></span> </span></span></span></span></td>
-      <td width="10%">&nbsp;Ver 10.1 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
+      <td width="10%">&nbsp;Ver 11.0 en<span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
       <span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;"><span style="font-size: 12px;">
-      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 10.1 en" />
+      <input name="form_version" type="hidden" id="form_version" value="DYFI Winlink form Ver 11.0 en" />
       </span></span></span></span> </span></span> </span> </span></td>
     </tr>
   </table>
@@ -2105,5 +2858,6 @@ Comments:T=k25</textarea>
 </tr>
 </tbody>
 </table>
+f
 </form>
 </body></html>

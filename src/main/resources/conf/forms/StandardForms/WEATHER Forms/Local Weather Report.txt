@@ -16,21 +16,21 @@ City: <var City>       County: <var County>      State: <var State>
 Current Conditions
 <var TheConditions>
 
-Temperature <var Temp> °<var mtemp>     
+Temperature [<var TempI>°F | <var TempM>°C]    
 HUMIDITY: <var Humidity> % 
-DEWPOINT <var Dew> °<var mtemp>
-Barometer <var Barometer> <var Barmeasure>    Three hour trend: <var Barmtrend>
-Cloud Cover: <var CloudCover>
-Wind Speed: <var WindSpeed> <var mspeed> <var Type1>      Direction From: <var Direction>
-Wind Gusts: <var Gusts> <var mspeed>   Wind Gusts MAX: <var MaxGusts>  <var mspeed>
-Rain 1 HR: <var Rain1hr> <var RainMeasure>      Rain Total: <var Raintotal> <var RainMeasure>   
-Snow 1 HR: <var Snow1hr> <var SnowMeasure>    Snow Total: <var SnowTotal> <var SnowMeasure>  Water Content: <var WaterContent>
+DEWPOINT [<var DewI>°F | <var DewM>°C]
+Barometer [<var BarometerI> in.Hg | <var BarometerM> millibars]  Three hour trend: <var Barmtrend>
+Sky Cover: <var Skycover>    Precipitation: <var Precipitation>
 
+Wind Speed: [<var WindSpeedI> mph |  <var WindSpeedM> KM/h]      Direction From: <var Direction>
+Wind Gusts: [<var GustsI> MPH|  <var GustsM> KM/h]  Gusts Max: [<var MaxGustsI> MPH|  <var MaxGustsM> KM/h]
+
+Rain 1 HR: [<var Rain1hrI> inches | <var Rain1hrM> millimeters]     Rain Total: [<var RaintotalI> inches | <var RaintotalM> millimeters]
+Snow 1 HR: [<var Snow1hrI> inches | <var Snow1hrM> centimeters]    Snow Total: [<var SnowTotalI> inches | <var SnowTotalM> centimeters]  
 NWS Level: <var Warning>   <var WarningFld>
 
 Notes: 
 <var Comments>
-
 
 ------------------------------------
 Express Sending Station: <MsgSender>
