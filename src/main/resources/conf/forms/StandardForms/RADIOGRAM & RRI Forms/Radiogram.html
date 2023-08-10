@@ -567,15 +567,22 @@ document.getElementById('WarningText').innerHTML = "You have entered "+cnt+ " gr
 var rrc = "";  
   
 var n = s.search(/RRC /i);  
-  
 var m = s.search(/ RRC /i);  
+    //arl
+    var narl = s.search(/ARL /i);  
+    var marl = s.search(/ ARL /i);  
+   
   
 // need to check that one less than n is not a letter --/  
   
 if (n==0) {rrc = "RRC "};  
+    if (narl==0 && rrc == '') {rrc = "ARL "};  
   
-if (m>1) {rrc = "RRC "}; // alert ( n +" " + m); --/  
+if (m>1 && rrc == '') {rrc = "RRC "}; // alert ( n +" " + m); --/  
+ if (marl>1 && rrc == '') {rrc = "ARL "};
   
+    // TEST FOR BOTH
+    if (m>-1 && marl>-1){alert('pick 0ne)')}
 var ele = document.getElementById('check');  
 
 ele.value = rrc+cnt;  
@@ -1422,7 +1429,7 @@ function allnumeric(inputtxt)
    }
     function openPage(){
 var xx = document.getElementById('filenamefld').value
-//var xx="file://C:/RMS Express/Standard Templates/RADIOGRAM RRI Forms/RadioGram Work Sheet.html";
+//var xx="../../../../../../RMS Express/Standard Templates/RADIOGRAM RRI Forms/RadioGram Work Sheet.html";
 location.href =encodeURI( xx);
 }
    
@@ -1464,42 +1471,53 @@ wnd.document.write(html);   }
       <!-- If the content becomes larger than the pop-up this div will scroll the content -->
       <div class="popScroll">
         <p> </p>
-        <h2>RRC Numbered Radiogram Texts</h2>
-        <p>Numbered messages have been established for some of the more common texts. Common messages sent during emergencies or for holiday seasons are 
-        examples. When a common text can be used, a <strong>RRC NUMBER </strong>is substituted for the text and sent. 
-        The delivering station reads the actual text to the addressee, not the <strong>RRC NUMBER</strong>.</p>
-        <p> Insert <strong>RRC</strong> followed by the number spelled out. Example <strong>RRC FORTY SIX</strong> </p>  
-        The following RRC codes are divided into four groups according to purpose. The RRC list also include the traditional ARL nunbers. 
-        There are some gaps in the numbering. These are reserved for future use. 
-        <p> </p>
+        <h2>RRC and Legacy ARL Numbered Radiogram Texts</h2>
+        <p>Numbered messages have used for a long time for some of the more common texts. These serve to reduce the transmitted word
+        count. Common messages sent during emergencies or for holiday seasons are examples.</p>   
+        
+       <p>The traditional numbered texts are preceded by the designator ARL followed by the spelled out number. For example, ARL FIFTY 
+       is <q>Greetings by Amateur Radio.</q> When a numbered text is used, the delivering station reads the actual text to the 
+       addressee, not the number.</p> 
+       
+       <p>The list was expanded in 2022 to include additional numbered
+       messages. The entire list now uses the RRC designator. When either is used, the designtor appears in the Check.</p>   
+       <p>The Radiogram Text Creator permits the operator to use either RRC or ARL numbering designators as appropriate. In the list 
+       that follows, the original ARL designators are identified with an asterisk after the number.</i>
+          
+        <p>More information may be found on the RRI Publications page at https://radiorelay.org/publications under <q>RRC Numbered Radiogram 
+       Texts.</q></p>
+        
+        The following RRC numbered messages are divided into four groups according to purpose. Note there there are some gaps in the 
+        listing. These are reserved for future use. 
+        </p>
         <p><strong> Group One -- <span class="style1"> - For Possible RELIEF EMERGENCY Use</span></strong><br />
           <br />
-          <strong>ONE</strong> Everyone safe here. Please don't worry. <br />
-          <strong>TWO</strong> Coming home as soon as possible. <br />
-          <strong>THREE</strong> Am in _______ hospital. Receiving excellent care and recovering fine. <br />
-          <strong>FOUR</strong> Only slight property damage here. Do not be concerned about disaster reports. <br />
-          <strong>FIVE</strong> Am moving to new location. Send no further mail or communication. Will inform you of new address when relocated. <br />
-          <strong>SIX</strong> Will contact you as soon as possible. <br />
-          <strong>SEVEN</strong> Please reply by Amateur Radio through the amateur delivering this message. This is a free public service. <br />
-          <strong>EIGHT</strong> Need additional _______ mobile or portable equipment for immediate emergency use. <br />
-          <strong>NINE</strong> Additional ______ radio operators needed to assist with emergency at this location. <br />
-          <strong>TEN</strong> Please contact _______. Advise to standby and provide further emergency information, instructions or assistance. <br />
-          <strong>ELEVEN</strong> Establish Amateur Radio emergency communications with ______ on _______ MHz. <br />
-          <strong>TWELVE</strong> Anxious to hear from you. No word in some time. Please contact me as soon as possible. <br />
-          <strong>THIRTEEN</strong> Medical emergency situation exists here. <br />
-          <strong>FOURTEEN</strong> Situation here becoming critical. Losses and damage from _______ increasing. <br />
-          <strong>FIFTEEN</strong> Please advise your condition and what help is needed. <br />
-          <strong>SIXTEEN</strong> Property damage very severe in this area. <br />
-          <strong>SEVENTEEN</strong> REACT communications services also available. Establish REACT communication with _______ on channel _______. <br />
-          <strong>EIGHTEEN</strong> Please contact me as soon as possible at _______. <br />
-          <strong>NINETEEN</strong> Request health and welfare report on _______. (State name, address and telephone number.) <br />
-          <strong>TWENTY</strong> Temporarily stranded. Will need some assistance. Please contact me at _______. <br />
-          <strong>TWENTY ONE</strong> Search and Rescue assistance is needed by local authorities here. Advise availability. <br />
-          <strong>TWENTY TWO</strong> Need accurate information on the extent and type of conditions now existing at your location. Please furnish this information and reply without delay. <br />
-          <strong>TWENTY THREE</strong> Report at once the accessibility and best way to reach your location. <br />
-          <strong>TWENTY FOUR</strong> Evacuation of residents from this area urgently needed. Advise plans for help. <br />
-          <strong>TWENTY FIVE</strong> Furnish as soon as possible the weather conditions at your location. <br />
-          <strong>TWENTY SIX</strong> Help and care for evacuation of sick and injured from this location needed at once.<br />
+          <strong>ONE*</strong> Everyone safe here. Please don't worry. <br />
+          <strong>TWO*</strong> Coming home as soon as possible. <br />
+          <strong>THREE*</strong> Am in _______ hospital. Receiving excellent care and recovering fine. <br />
+          <strong>FOUR*</strong> Only slight property damage here. Do not be concerned about disaster reports. <br />
+          <strong>FIVE*</strong> Am moving to new location. Send no further mail or communication. Will inform you of new address when relocated. <br />
+          <strong>SIX*</strong> Will contact you as soon as possible. <br />
+          <strong>SEVEN*</strong> Please reply by Amateur Radio through the amateur delivering this message. This is a free public service. <br />
+          <strong>EIGHT*</strong> Need additional _______ mobile or portable equipment for immediate emergency use. <br />
+          <strong>NINE*</strong> Additional ______ radio operators needed to assist with emergency at this location. <br />
+          <strong>TEN*</strong> Please contact _______. Advise to standby and provide further emergency information, instructions or assistance. <br />
+          <strong>ELEVEN*</strong> Establish Amateur Radio emergency communications with ______ on _______ MHz. <br />
+          <strong>TWELVE*</strong> Anxious to hear from you. No word in some time. Please contact me as soon as possible. <br />
+          <strong>THIRTEEN*</strong> Medical emergency situation exists here. <br />
+          <strong>FOURTEEN*</strong> Situation here becoming critical. Losses and damage from _______ increasing. <br />
+          <strong>FIFTEEN*</strong> Please advise your condition and what help is needed. <br />
+          <strong>SIXTEEN*</strong> Property damage very severe in this area. <br />
+          <strong>SEVENTEEN*</strong> REACT communications services also available. Establish REACT communication with _______ on channel _______. <br />
+          <strong>EIGHTEEN*</strong> Please contact me as soon as possible at _______. <br />
+          <strong>NINETEEN*</strong> Request health and welfare report on _______. (State name, address and telephone number.) <br />
+          <strong>TWENTY*</strong> Temporarily stranded. Will need some assistance. Please contact me at _______. <br />
+          <strong>TWENTY ONE*</strong> Search and Rescue assistance is needed by local authorities here. Advise availability. <br />
+          <strong>TWENTY TWO*</strong> Need accurate information on the extent and type of conditions now existing at your location. Please furnish this information and reply without delay. <br />
+          <strong>TWENTY THREE*</strong> Report at once the accessibility and best way to reach your location. <br />
+          <strong>TWENTY FOUR*</strong> Evacuation of residents from this area urgently needed. Advise plans for help. <br />
+          <strong>TWENTY FIVE*</strong> Furnish as soon as possible the weather conditions at your location. <br />
+          <strong>TWENTY SIX*</strong> Help and care for evacuation of sick and injured from this location needed at once.<br />
           <strong> Note:</strong> Emergency/priority messages originating from official sources must carry the signature of the originating official.<br />
           <br />
           <strong>Group Two -- <span class="style1">I Am Safe (Safe & Well) Welfare Messages</span> </br>     <br />
@@ -1521,31 +1539,31 @@ wnd.document.write(html);   }
           
           <strong>Group Three -- <span class="style1">General Use Messages</span></strong><br />
           <br />
-          <strong>FORTY SIX </strong> Greetings on your birthday and best wishes for many more to come.<br />
-          <strong>FORTY SEVEN</strong> Reference your message number _____ to _____ delivered on _____ at _____ UTC.<br />
+          <strong>FORTY SIX* </strong> Greetings on your birthday and best wishes for many more to come.<br />
+          <strong>FORTY SEVEN*</strong> Reference your message number _____ to _____ delivered on _____ at _____ UTC.<br />
         
           <strong>FORTY EIGHT</strong> Reference your message number _____ to _____ not delivered. Telephone _____ (insert number as received) inoperative. Please give better address<br />
           <strong>FORTY NINE</strong> Reference your message number _____ to _____ . Unable to contact addressee or receive confirmation of delivery.<br />        
-          <strong>FIFTY</strong> Greetings by Amateur Radio. <br />
-          <strong>FIFTY ONE</strong> Greetings by Amateur Radio. This message is sent as a free public service by ham radio operators at _______. Am having a wonderful time. <br />
-          <strong>FIFTY TWO</strong> Really enjoyed being with you. Looking forward to getting together again. <br />
-          <strong>FIFTY THREE</strong> Received your _______. It's appreciated; many thanks. <br />
-          <strong>FIFTY FOUR</strong> Many thanks for your good wishes. <br />
-          <strong>FIFTY FIVE</strong> Good news is always welcome. Very delighted to hear about yours. <br />
-          <strong>FIFTY SIX</strong> Congratulations on your _______, a most worthy and deserved achievement. <br />
-          <strong>FIFTY SEVEN</strong> Wish we could be together. <br />
-          <strong>FIFTY EIGHT</strong> Have a wonderful time. Let us know when you return. <br />
-          <strong>FIFTY NINE</strong> Congratulations on the new arrival. Hope mother and child are well. <br />
-          <strong>SIXTY</strong> Wishing you the best of everything on _______. <br />
-          <strong>SIXTY ONE</strong> Wishing you a very Merry Christmas and a Happy New Year. <br />
-          <strong>SIXTY TWO</strong> Greetings and best wishes to you for a pleasant _______ holiday season. <br />
-          <strong>SIXTY THREE</strong> Victory or defeat, our best wishes are with you. Hope you win. <br />
-          <strong>SIXTY FOUR</strong> Arrived safely at _______. <br />
-          <strong>SIXTY FIVE</strong> Arriving _______ on _______. Please arrange to meet me there. <br />
-          <strong>SIXTY SIX</strong> DX QSLs are on hand for you at the _______ QSL Bureau. Send _______ self addressed envelopes. <br />
-          <strong>SIXTY SEVEN</strong> Your message number _______ undeliverable because of _______. Please advise. <br />
-          <strong> SIXTY EIGHT</strong> Sorry to hear you are ill. Best wishes for a speedy recovery. <br />
-          <strong> SIXTY NINE</strong> Welcome to the _______. We are glad to have you with us and hope you will enjoy the fun and fellowship of the organization.</p>
+          <strong>FIFTY*</strong> Greetings by Amateur Radio. <br />
+          <strong>FIFTY ONE*</strong> Greetings by Amateur Radio. This message is sent as a free public service by ham radio operators at _______. Am having a wonderful time. <br />
+          <strong>FIFTY TWO*</strong> Really enjoyed being with you. Looking forward to getting together again. <br />
+          <strong>FIFTY THREE*</strong> Received your _______. It's appreciated; many thanks. <br />
+          <strong>FIFTY FOUR*</strong> Many thanks for your good wishes. <br />
+          <strong>FIFTY FIVE*</strong> Good news is always welcome. Very delighted to hear about yours. <br />
+          <strong>FIFTY SIX*</strong> Congratulations on your _______, a most worthy and deserved achievement. <br />
+          <strong>FIFTY SEVEN*</strong> Wish we could be together. <br />
+          <strong>FIFTY EIGHT*</strong> Have a wonderful time. Let us know when you return. <br />
+          <strong>FIFTY NINE*</strong> Congratulations on the new arrival. Hope mother and child are well. <br />
+          <strong>SIXTY*</strong> Wishing you the best of everything on _______. <br />
+          <strong>SIXTY ONE*</strong> Wishing you a very Merry Christmas and a Happy New Year. <br />
+          <strong>SIXTY TWO*</strong> Greetings and best wishes to you for a pleasant _______ holiday season. <br />
+          <strong>SIXTY THREE*</strong> Victory or defeat, our best wishes are with you. Hope you win. <br />
+          <strong>SIXTY FOUR*</strong> Arrived safely at _______. <br />
+          <strong>SIXTY FIVE*</strong> Arriving _______ on _______. Please arrange to meet me there. <br />
+          <strong>SIXTY SIX*</strong> DX QSLs are on hand for you at the _______ QSL Bureau. Send _______ self addressed envelopes. <br />
+          <strong>SIXTY SEVEN*</strong> Your message number _______ undeliverable because of _______. Please advise. <br />
+          <strong> SIXTY EIGHT*</strong> Sorry to hear you are ill. Best wishes for a speedy recovery. <br />
+          <strong> SIXTY NINE8</strong> Welcome to the _______. We are glad to have you with us and hope you will enjoy the fun and fellowship of the organization.</p>
          
         <strong>SEVENTY </strong> Thank you for the QSO on _____ (frequency/band) _____ (mode) at _____ (time) _____ (date).<br />   <br />
          
@@ -1656,14 +1674,14 @@ wnd.document.write(html);   }
         </tr>
         <tr align="center" bgcolor="#ffffaa" valign="middle"> </tr>
         <tr class="Kopfzeile" valign="top">
-          <td rowspan="2" style="width: 50px;" nowrap="nowrap" width="134"><p>Number<br />
+          <td rowspan="2" style="width: 50px;" nowrap="nowrap" width="130"><p>Number<br />
               <input name="SeqNum" id="NumberVal"  title="You may overwrite. This number is controlled in Express: Message > Template settings." onchange="NumberVal.value=NumberVal.value.replace(/^0+/, '');" onkeypress="return isNumberKey(event)" value="{SeqNum}" size="8" maxlength="6" placeholder=" User Input" required="required" />
               <br />
               <br />
               <input name="SVCB" id="SVCB" title="For traffic handler use only." value="SVC" onclick="Flip('SVC')" type="checkbox" />
               SVC <span class="style37">(Handler use)</span><br />
             </p></td>
-          <td width="135" rowspan="2" style="width: 110px;"> <p>Precedence<br /> 
+          <td width="116" rowspan="2" style="width: 110px;"> <p>Precedence<br /> 
               <select size="4" name="Priority" id="Priority" onchange="ClearTo()">
                 <option value="R" selected="selected">R</option>
                 <option class ="red" value="EMERGENCY">EMERGENCY</option>
@@ -1675,7 +1693,7 @@ wnd.document.write(html);   }
               <span class="style27"><span class="style1">Emergency</span>  not in<br />
               use at this time.</span></p>
           </td>
-          <td width="158" rowspan="2" style="white-space: nowrap; width: 140px;"><br />
+          <td width="150" rowspan="2" style="white-space: nowrap; width: 140px;"><br />
             Handling Instructions<span style="font-weight: normal;">          </span><br />
             <select style="font-weight: normal;" size="3" name="Instructions" id="Instructions">
               <option value="NONE" selected="selected">NONE</option>
@@ -1693,25 +1711,25 @@ wnd.document.write(html);   }
             <input name="H_Info" id="H_Info" placeholder="Add More HX Info" style="text-transform: uppercase;" title="Add additional HX Number or Date here" onchange="this.value=this.value.toUpperCase(); Strippunct(this.value, this.id);" value="" size="18" maxlength="18" />
             <br />
           </td>
-          <td rowspan="2" style="width: 75px;" text-align="" center="" width="102"><div align="center"><span style="font-weight: bold;"><br />
+          <td rowspan="2" style="width: 75px;" text-align="" center="" width="123"><div align="center"><span style="font-weight: bold;"><br />
             Station Of Origin
                 <input name="Callsign" class="zentriert " id="Callsign" style="font-weight: normal;" title="Can be overwritten if different." required="required" onchange="javascript:this.value=this.value.toUpperCase();" value="{Callsign}" size="18" maxlength="16" />
               </span>
                 <span class="style19">Change  if not you. </span> </div></td>
-          <td rowspan="2" style="text-align: center; vertical-align: top;" width="132"><span style="font-weight: bold;"><br />
+          <td rowspan="2" style="text-align: center; vertical-align: top;" width="137"><span style="font-weight: bold;"><br />
             Check</span><br style="font-weight: normal;" />
             <label style="font-weight: normal;" for="check">
-            <input name="check" type="text" class="zentriert" id="check" readonly="readonly" value="0" size="10" maxlength="9" />
+            <input name="check" type="text" class="zentriert" id="check" value="0" size="10" maxlength="9" />
           </label></td>
-          <td rowspan="2" style="text-align: center; vertical-align: top; width: 100px;" width="150"><span style="font-weight: bold;"> <br />
+          <td rowspan="2" style="text-align: center; vertical-align: top; width: 100px;" width="187"><span style="font-weight: bold;"> <br />
             &nbsp;Place of Origin </span>            <input name="place" id="place" size="28" maxlength="25"   required="required" placeholder="ex. OWLS HEAD ME" onkeyup="Strippunct(this.value, this.id) ;" onchange="javascript:this.value=this.value.toUpperCase(); this.value=this.value.replace(/\./gm, ' '); " />            
             <br />            <br />
           </td>
-          <td width="144" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
+          <td width="118" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
             Time</strong> <br />
             <input name="Time1" style="width:45px"id="Time1" title="Optional, include time if relevant" size="7" maxlength="6" placeholder="Optional"/>
 &nbsp; </td>
-          <td width="124" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
+          <td width="118" style="font-weight: normal; vertical-align: top; text-align: center; width: 110px;"><strong><br />
             &nbsp;Date</strong> &nbsp; <br />
             <input name="Date" id="Date"  style="width:40px;text-transform: uppercase;" size="10" maxlength="6" onchange="javascript:this.value=this.value.toUpperCase();"/>
 &nbsp;</td>
@@ -1779,7 +1797,7 @@ Current UTC Time<br />
                   <tr>
                     <td colspan="2" id="MSG" style="vertical-align: top; text-align: center;"><p align="left" class="MSGtext" id="Message"><span style="font-weight: bold;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MESSAGE TEXT </span>Check: 
                         <input name="check2" id="check2" size="10" maxlength="9" class="zentriert" readonly="readonly" value="0" type="text" />
-                        &nbsp;<a href="#pop2"><em>RRC Message Numbering Help </em></a>&nbsp; <strong><span id="WarningText">&nbsp;</span></strong><br />
+                        &nbsp;<a href="#pop2"><em>Numbered Message Help </em></a>&nbsp; <strong><span id="WarningText">&nbsp;</span></strong><br />
 &nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">&nbsp; &nbsp; &nbsp; </span>
                         <textarea title="Only punctuation converted to words are  ? @ - . _      The stroke sign / can be entered.  The rest can not." style="text-transform: uppercase;" cols="130" id="MessageTXT" name="MessageTXT" rows="7" placeholder="Suggestion is no more than 25 groups (words)" required="required" onkeyup="punctwrdcnt(this.value, this.id)" onchange="this.value=RWS(this.value); fix()"></textarea>
                          <br />
@@ -1813,7 +1831,7 @@ Current UTC Time<br />
                         <input name="MsgToSend" type="hidden" id="MsgToSend" />
 &nbsp;
                         <input name="ArchiveThis" type="hidden" id="ArchiveThis" />
-&nbsp;&nbsp;&nbsp; &nbsp; </span> <span class="style36">Contact KB1TCE about this form: <em>Ver 10.5</em></span></p></td>
+&nbsp;&nbsp;&nbsp; &nbsp; </span> <span class="style36">Contact KB1TCE about this form: <em>Ver 10.6</em></span></p></td>
                   </tr>
                 </tbody>
               </table>
@@ -1836,22 +1854,21 @@ Current UTC Time<br />
             <div align="left" class="style10">
               <p><font style="margin: 25px font-size: 12pt">A radiogram is simply a telegram message that is sent by a radio-only 
               network that is comprised of amateur radio operators. These interoperable networks are sponsored at the section level 
-              by the ARRL (the National Traffic System or NTS)and by Radio Relay International (RRI) that operates the Digital Traffic 
+              by the ARRL (the National Traffic System or NTS) and by Radio Relay International (RRI) that operates the Digital Traffic 
               Network (DTN) and many voice and cw nets. </p>
               
               <p>The networks use phone, cw and digital modes. The cw and phone nets operate through a precisely sequenced and layered system 
               of nets that cover local, section, region, area and transcontinental relays. The digital system consists of a mesh network 
               configuration of automated Pactor and Vara HF hubs that are accessed by appointed Digital Traffic Station operators. 
-              </font> </p>
+               </p>
               
               The system is in operation 24/7, handling a variety of personal greetings as well as exercise traffic. Thousands of messages 
               are handled on a weekly basis and the networks welcome traffic. Examples include congratulatory messages, thanks for the 
               QSO messages, happy birthday messages, etc. Also, a number of hams have established penpal relationships with hams and 
               even non-ham friends and family members. There are also RRC codes for welfare messages and emergency use.     </p>      
               
-              <p>This version Includes a list of standard texts that are numbered and may be inserted just by citing the number. These
-              are an extension of the ARL numbered texts and are called RRC numbered radiogram texts. For example, 
-              RRC FORTY SIX FORTY SIX is "Greetings on your birthday and best wishes for many more to come."          
+              <p>This version Includes a list of standard texts that are numbered and may be inserted just by citing the number. Details
+              on the use of these is in the <q>Numbered Messages Help</q> just above the Message pane. 
               
               <p> This radiogram template is an implementation of the standard radiogram format. For higher priority communications 
               using radiograms there are two tailored versions of this template that are present in the RRI Radiogram forms list 
@@ -1930,7 +1947,7 @@ Current UTC Time<br />
       
             
               </div>
-      </div>
+ 
     </table>
     `</div>
 	

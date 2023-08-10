@@ -1,4 +1,4 @@
-Form: Severe WX Report.html, Severe WX Report viewer.html
+Form:Severe WX Report.html,Severe WX Report viewer.html
 
 To:
 Subject: Severe WX Report <var Region> <var County> [<var Type>]
@@ -23,14 +23,14 @@ MGRS <var MGRS>
 OBSERVED EVENT CONDITIONS
 
 Flood: <var Flood>
-Hail (inches): <var HailSize> 
-High Wind Speed (MPH):  <var Windspeed>
+Hail: <var HailSize> 
+High Wind Speed:  <var WindspeedI> Mph | <var WindspeedM> KM/h
 Tornado / Funnel Cloud: <var Tornado>
 Wind Damage: <var WindDamage>
 Winter Precipitation: <var Precipitation>
-Snow (inches): <var Snow>
-Freezing Rain (inches): <var FreezingRain>
-Heavy Rain (inches): <var Rain>   
+Snow:: <var SnowI> in. | <var SnowM> cm.
+Freezing Rain: <var FreezingRainI> in. | <var FreezingRainM> mm.
+Heavy Rain: <var RainI> in. | <var RainM> mm.
 Rain period: <var RainPeriod>  hour
 
 Additional Information or Comments:
@@ -41,5 +41,5 @@ Additional Information or Comments:
 Express Sending Station: <MsgSender>
 Senders Express Version: <ProgramVersion> 
 Senders Template Version: <var Templateversion>
-Map Fi9le Name:  <var Mapfilename>
+Map File Name:  <var Mapfilename>
 

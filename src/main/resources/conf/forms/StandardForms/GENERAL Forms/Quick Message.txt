@@ -1,20 +1,9 @@
-Form: Quick Message Initial.html,Quick Message Viewer.html
+Form: Quick Message Initial.html
 
 To: <var address>
-Subject: <var Subjectline> - ATTN: <var Attn>	
+Subject: <var Subjectline>	
 Msg:
-
-ATTN: <var Attn>
-
-MESSAGE FROM: <var From_Name>
-
-DATE/TIME: <var time>
+From <var From_Name>
+Sent on <var time>
 
 <var Message>
-
----------------------------------------
-Express Sending Station: <MsgSender>
-Senders Express Version: <ProgramVersion>
-Senders Template Version: <var Templateversion>
-
-

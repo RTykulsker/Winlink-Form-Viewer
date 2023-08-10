@@ -1,9 +1,11 @@
-Form: LAX Resource Request.html,LAX Resource Request Viewer.html
-To:
+Form:LAX Resource Request.html,LAX Resource Request Viewer.html
+To:
 Subject: LA Resource Request: <var REQAgency> # <var TrackingNum>, <var TheDate>  <var Time1>
 
 Msg: 
-Resource Request Medical and Health: FIELD/HCF to Op Area 
+<var IsExercise>
+
+Resource Request Medical and Health: FIELD/HCF to Op Area 
 1. INCIDENT NAME: <var Incident>
 2a: Date: <var TheDate>
 2b: Time:  <var Time1>
@@ -55,10 +57,10 @@ Signature:	<var CMDSignature>
 Express Sending Station:	<MsgSender>
 Senders Express Version:	<ProgramVersion>
 Senders Template Version:	<var Templateversion>
-
-
-
-
-
-
-
+
+
+
+
+
+
+

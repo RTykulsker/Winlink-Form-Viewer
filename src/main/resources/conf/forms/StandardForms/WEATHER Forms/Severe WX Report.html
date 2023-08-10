@@ -421,7 +421,10 @@ top: 3px;
 
 .style2 {font-weight: bold}
 
-.style4 {color: #FF0000; font-style: italic; }
+.style4 {
+    font-style: normal;
+    color: #FC0509;
+}
 
 
 
@@ -1078,6 +1081,7 @@ Checkifinbrowser();
 GetGPS();
 copyGPS();
 Fixarea();
+Setmeasure('Imperial');
 TimeNow('DateTime', false);
 checkLatLon();
  }
@@ -1141,7 +1145,7 @@ function Checkifinbrowser() {
 
  if (n>-1) { 
 
- document.getElementById('Submit').style.visibility='hidden';
+ //document.getElementById('Submit').style.visibility='hidden';
 
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
 
@@ -1651,9 +1655,14 @@ var jsontext=jsontext.replace('j1', temp1);
 
 var temp1= document.getElementById('timestamp').value;
 var jsontext=jsontext.replace('j2', temp1);
+    
+    var temp1= document.getElementById('DateTime').value;
+var jsontext=jsontext.replace('jdatetime', temp1);
+    
 
 var temp1= document.getElementById('Type').value;
 var jsontext=jsontext.replace('j3', temp1);
+    var jsontext=jsontext.replace('statusv', temp1);
 
 
 var temp1= document.getElementById('Call').value;
@@ -1675,20 +1684,32 @@ var jsontext=jsontext.replace('j10', temp1);
 var temp1= document.getElementById('Other').value;
 var jsontext=jsontext.replace('j11', temp1);
 var temp1= document.getElementById('mapLat').value;
-var jsontext=jsontext.replace('j12', temp1);
+    ;var jsontext=jsontext.replace('j12a', temp1);
+    
+var jsontext=jsontext.replace('j12', temp1)
 
-var temp1= document.getElementById('mapLon').value;
-var jsontext=jsontext.replace('j13', temp1);
+var temp1= document.getElementById('mapLon').value;var jsontext=jsontext.replace('j13a', temp1);
+var jsontext=jsontext.replace('j13c', temp1);
 var temp1= document.getElementById('MGRS').value;
-var jsontext=jsontext.replace('j14', temp1);
+    ;var jsontext=jsontext.replace('j14a', temp1);
+var jsontext=jsontext.replace('j14', temp1)
+    var temp1= document.getElementById('Grid').value;
+var jsontext=jsontext.replace('j14Grid', temp1);
+
 
 var temp1= document.getElementById('Flood').value;
 var jsontext=jsontext.replace('j15', temp1);
 var temp1= document.getElementById('HailSize').value;
 var jsontext=jsontext.replace('j16', temp1);
+    var temp1= document.getElementById('Grid').value;
+var jsontext=jsontext.replace('jgrid', temp1);
 
-var temp1= document.getElementById('Windspeed').value;
-var jsontext=jsontext.replace('j17', temp1);
+var temp1= document.getElementById('WindspeedI').value;
+var jsontext=jsontext.replace('j17I', temp1);
+    
+    var temp1= document.getElementById('WindspeedM').value;
+var jsontext=jsontext.replace('j17M', temp1);
+    
 var temp1= document.getElementById('Tornado').value;
 var jsontext=jsontext.replace('j18', temp1);
 
@@ -1697,20 +1718,24 @@ var jsontext=jsontext.replace('j19', temp1);
 var temp1= document.getElementById('Precipitation').value;
 var jsontext=jsontext.replace('j20', temp1);
 
-var temp1= document.getElementById('Snow').value;
-var jsontext=jsontext.replace('j21', temp1);
-var temp1= document.getElementById('FreezingRain').value;
-var jsontext=jsontext.replace('j22', temp1);
-var temp1= document.getElementById('Rain').value;
-var jsontext=jsontext.replace('j23', temp1);
-
+var temp1= document.getElementById('SnowI').value;
+var jsontext=jsontext.replace('j21I', temp1);
+    var temp1= document.getElementById('SnowM').value;
+var jsontext=jsontext.replace('j21M', temp1);
+var temp1= document.getElementById('FreezingRainI').value;
+var jsontext=jsontext.replace('j22I', temp1);
+    var temp1= document.getElementById('FreezingRainM').value;
+var jsontext=jsontext.replace('j22M', temp1);
+var temp1= document.getElementById('RainM').value;
+var jsontext=jsontext.replace('j23M', temp1);
+    var temp1= document.getElementById('RainI').value;
+var jsontext=jsontext.replace('j23I', temp1);
 var temp1= document.getElementById('RainPeriod').value;
 var jsontext=jsontext.replace('j24', temp1);
 
 var temp1= document.getElementById('Comments').value;
 temp1 = removeLinebreaks(temp1);
 var jsontext=jsontext.replace('j25', temp1);
-
 document.getElementById('attached_text').value = jsontext;
 var attached_file = 'FormData.txt';
 
@@ -1754,6 +1779,75 @@ function Testlat(){
                }    
    
 }
+
+    function getspeed(fldname, fldvalue){
+        //(this.name,this.value, 'km') 
+        //1.609344 
+      x1= document.getElementById('measuereused').value;
+       if (x1==='Metric'){ document.getElementById(fldname+'M').value =fldvalue; num=fldvalue/1.609344;  document.getElementById(fldname+'I').value =num.toFixed(2);     }
+      if (x1==='Imperial') {num=fldvalue*1.609344;document.getElementById(fldname+'I').value =fldvalue; document.getElementById(fldname+'M').value=num.toFixed(2);
+     }
+ }
+    
+    function gettinchmm(fldname, fldvalue){
+      
+      x1= document.getElementById('measuereused').value;
+       if (x1==='Metric'){num= fldvalue / 25.4; document.getElementById(fldname+'M').value =fldvalue;   document.getElementById(fldname+'I').value =num.toFixed(2) ;     }
+      if (x1==='Imperial'){num = fldvalue *25.4;document.getElementById(fldname+'I').value =fldvalue; document.getElementById(fldname+'M').value=num.toFixed(2);}
+ }
+   function gettinchcm(fldname, fldvalue){
+    
+      x1= document.getElementById('measuereused').value;
+       if (x1==='Metric'){num= fldvalue/ 2.54; document.getElementById(fldname+'M').value =fldvalue;   document.getElementById(fldname+'I').value =num.toFixed(2) ;     }
+      if (x1==='Imperial'){num = fldvalue*2.54;;document.getElementById(fldname+'I').value =fldvalue; document.getElementById(fldname+'M').value=num.toFixed(2);
+     }
+ }
+    
+    function Setmeasure(which) {
+document.getElementById('measuereused').value = which;
+//<span  id="TempFM1">F</span>
+if (which === 'Imperial') {
+document.getElementById('Mapfilename').value = 'Severe WX';
+document.getElementById('measuereused').value = 'Imperial';
+
+document.getElementById('Speed1').innerHTML = 'MPH';
+document.getElementById('Snowa').innerHTML = 'inches';
+
+document.getElementById('Snowb').innerHTML = 'inches';
+    document.getElementById('Snowc').innerHTML = 'inches';
+
+// NOW SWAP
+document.getElementById('Windspeed').value = document.getElementById('WindspeedI').value;
+document.getElementById('FreezingRain').value = document.getElementById('FreezingRainI').value;
+document.getElementById('Snow').value = document.getElementById('SnowI').value;
+    document.getElementById('Rain').value = document.getElementById('RainI').value;
+//document.getElementById('SnowTotal').value = document.getElementById('SnowTotalI').value;
+//document.getElementById('Rain').innerHTML = 'inches';
+    document.getElementById('Snowb').innerHTML = 'inches';
+     document.getElementById('Snowc').innerHTML = 'inches';
+
+}if (which === 'Metric'){
+
+//document.getElementById('measuereused').value = 'Metric';
+
+document.getElementById('Speed1').innerHTML = 'KM/h';
+ document.getElementById('Snowa').innerHTML = 'centimeters';
+document.getElementById('Snowb').innerHTML = 'millimeters';
+    document.getElementById('Snowc').innerHTML = 'millimeters';
+    
+
+// NOW SWAp
+    document.getElementById('Windspeed').value = document.getElementById('WindspeedM').value;
+document.getElementById('FreezingRain').value = document.getElementById('FreezingRainM').value;
+document.getElementById('Snow').value = document.getElementById('SnowM').value;
+     document.getElementById('Rain').value = document.getElementById('RainM').value;
+    
+
+}
+}
+
+
+    
 </script>
 
 
@@ -1784,7 +1878,8 @@ function Testlat(){
 
   <tr>
 
-    <td width="12%">30-44 mph (26-39 kt)</td>
+    <td width="20%">30-44 mph<br />
+(48-71 km/h)</td>
 
     <td width="88%" valign="top">Whole trees in motion. Inconvenient walking into the wind. Light-weight loose objects (e.g., lawn furniture) tossed or toppled.</td>
 
@@ -1792,7 +1887,8 @@ function Testlat(){
 
   <tr>
 
-    <td height="96">45-57 mph (39-49 kt)</td>
+    <td height="96">45-57 mph<br />
+(72-92 km/h)</td>
 
     <td valign="top">Large trees bend; twigs, small limbs break and a few larger dead or weak branches may break. Old/weak structures (e.g., sheds, barns) may sustain minor damage (roof, doors). Buildings partially under construction may be damaged. A few loose shingles removed from houses.</td>
 
@@ -1800,7 +1896,9 @@ function Testlat(){
 
   <tr>
 
-    <td>58-74 mph (50-64 kt)</td>
+    <td>58-74 mph
+    <br />(93-119 km/h)
+</td>
 
     <td valign="top">Large limbs break; shallow rooted trees pushed over. Semi-trucks overturned. More significant damage to old/weak structures. Shingles, awnings removed from houses; damage to chimneys and antennas.</td>
 
@@ -1808,7 +1906,8 @@ function Testlat(){
 
   <tr>
 
-    <td>75-89 mph (65-77 kt)</td>
+    <td>75-89 mph <br />
+(120-143 km/h)</td>
 
     <td valign="top">Widespread damage to trees with large limbs down or trees broken/uprooted. Mobile homes may be pushed off foundation or overturned. Roof may be partially peeled off industrial/commercial/ warehouse buildings. Some minor roof damage to homes. Weak structures (e.g., farm buildings, airplane hangars) may be severely damaged.</td>
 
@@ -1816,7 +1915,8 @@ function Testlat(){
 
   <tr>
 
-    <td>90+ mph (78+ kt)</td>
+    <td>90+ mph <br />
+>144+  8km/h</td>
 
     <td valign="top">Many large trees broken and uprooted. Mobile homes damaged. Roofs partially peeled off homes and buildings. Moving automobiles pushed off the road. Barns, sheds demolished.to</td>
 
@@ -1884,12 +1984,13 @@ function Testlat(){
 
 
 
-<td colspan="2" valign="top" style="text-align: center; vertical-align: top;"><div align="left"><p><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">&nbsp;</span><span class="style29">Sender</span>        
-  <input name="Call" type="text" id="Call" value="{MsgSender}" size="17" maxlength="16" />
+<td colspan="2" valign="top" style="text-align: center; vertical-align: top;"><div align="left">
+    <p><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">&nbsp;</span><span class="style29">1. Sender</span>        
+        <input name="Call" type="text" id="Call" value="{MsgSender}" size="17" maxlength="16" />
 
 </span></p>
 
-    <p>Report
+    <p>2. Report
 
     
 
@@ -1901,7 +2002,7 @@ function Testlat(){
 
     
 
-   &nbsp;<span class="style29"> <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Report Version (Select one): </span></span><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
+   &nbsp;<span class="style29"> <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">&nbsp;&nbsp;3. Report Version (Select one): </span></span><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">
    <input name="Type1" type="radio" value="First Report" checked="checked" onclick="document.getElementById('Type').value =this.value "/>
 First Report
 <input name="Type1" type="radio" value="Update Report" onclick="document.getElementById('Type').value =this.value " />
@@ -1963,7 +2064,7 @@ Final Report
 
 <td style="vertical-align: middle; text-align: center;"><div align="left">
 
-  <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Reporting Party
+  <p><span style="color: rgb(0, 102, 0);"><span style="color: black;"></span></span>4. Reporting Party
 
           
 
@@ -1987,7 +2088,7 @@ Final Report
 
 <td style="text-align: center;"><div align="left">
 
-      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Reporting Party Phone Number&nbsp;      
+      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;"></span></span>5. Reporting Party Phone Number&nbsp;      
 
     
 
@@ -2011,7 +2112,8 @@ Final Report
 
 <td style="text-align: center;"><div align="left">
 
-      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp; </span></span>Reporting Party Email Address&nbsp;            <input name="Email" id="Email" title="Reporting party Email, or yours if you are the observer (Winlink OK)" size="65" maxlength="55" />
+      <p><span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;</span></span>6. Reporting Party Email Address&nbsp;            
+        <input name="Email" id="Email" title="Reporting party Email, or yours if you are the observer (Winlink OK)" size="65" maxlength="55" />
 
     
 
@@ -2031,16 +2133,17 @@ Final Report
 
 <td bgcolor="#f8f8ff" style="text-align: center; "><span style="font-style: italic; font-weight: bold;">&nbsp;EVENT AREA&nbsp;</span> &nbsp;<div align="left">
   <p>
-        <span style="color: rgb(0, 102, 0);"><span style="color: black;"> </span></span>City&nbsp;
+        <span style="color: rgb(0, 102, 0);"><span style="color: black;"> </span></span>7. City&nbsp;
         <input name="City" id="City" size="40" maxlength="35" />
-&nbsp;State/Province/Region&nbsp;  <input name="Region" id="Region" onchange="javascript:this.value=this.value.toUpperCase();" size="40" maxlength="35"/>
+&nbsp;8. State/Province/Region&nbsp;  
+<input name="Region" id="Region" onchange="javascript:this.value=this.value.toUpperCase();" size="40" maxlength="35"/>
 &nbsp;</p>
-  <p> County&nbsp;
+  <p> 9. County&nbsp;
     
 
     
       <input name="County" id="County" size="35" maxlength="35"  />
-      &nbsp;&nbsp;Other 
+      &nbsp;&nbsp;10. Other 
       <input name="Other" id="Other" title="Country or other geographical info if needed." size="60" maxlength="55" />
       <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
       <input name="Mapfilename" type="hidden" id="Mapfilename" value="Severe WX Report" />
@@ -2057,14 +2160,14 @@ Final Report
 
 
 
-<td height="80" bgcolor="#f8f8ff" style="text-align: center;"><div align="left">
-  <p>Latitude and longitude: LAT<em><span class="style4">&nbsp;
+<td height="80" nowrap="nowrap" bgcolor="#f8f8ff" style="text-align: center;"><div align="left">
+  <p>11. Latitude<em><span class="style4">&nbsp;
         <input name="mapLat" type="text" id="mapLat" onchange="splitPaste(this.value);checkLatLon(); Testlat(); " size="12" placeholder="ex: 38.5567" />
-  </span><span class="style45"> &nbsp;&nbsp;</span>LON <span class="style4">
+  </span><span class="style45"> &nbsp;&nbsp;</span><span style="font-family: Arial, Helvetica, sans-serif; font-style: normal;">&nbsp;&nbsp;&nbsp;&nbsp;12. Longitude</span> <span class="style4">
   <input name="mapLon" type="text" id="mapLon" onchange="CheckLon();checkLatLon(); Testlon(); " size="12" placeholder="ex:-121.7932" />
-  </span></em><em>&nbsp;MGRS</em><span class="style4">
-  <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="25" maxlength="25" />
-&nbsp;</span><em>&nbsp;Grid&nbsp;
+  </span>&nbsp;&nbsp;&nbsp;&nbsp;13. MGRS</em><span class="style4">
+  <input name="MGRS"onkeypress="if(event.keyCode==13){return false;}"   type="text" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" placeholder="Ex:11SNR0184195204" id="MGRS" onchange="checkformgrs(this.value)"size="18" maxlength="25" />
+&nbsp;</span><em>&nbsp;&nbsp;&nbsp;&nbsp;14. Grid&nbsp;
 <input name="Grid" type="text" id="Grid" value="{GridSquare}" size="8" maxlength="8" readonly="readonly" />
 <span class="style4">&nbsp;
 <input name="GPS2" type="hidden" id="GPS2" title= "If entering manually use format: 38.5567,-121.7932" onchange="convertthis()" onkeypress="return isNumberKey(event)" value="{Latitude},{Longitude}" size="40"  maxlength="40" placeholder="Ex: 38.5567,-121.7932" />
@@ -2091,7 +2194,7 @@ Final Report
 
 
 
-<table style="text-align: left; width: 863px; height: 592px;" border="1" cellpadding="4" cellspacing="0">
+<table width="865" border="1" cellpadding="4" cellspacing="0" style="text-align: left; width: 863px; height: 592px;">
 
 
 
@@ -2103,16 +2206,30 @@ Final Report
 
 
 
-<td height="50" nowrap="nowrap" style="vertical-align: top; text-align: center;"><div align="left">
+<td width="853" height="50" valign="top" nowrap="nowrap" style="vertical-align: top; text-align: center;"><div align="left">
 
   <p align="center">&nbsp;<span style="color: black; font-style: italic;"><span style="font-weight: bold; ">&nbsp;OBSERVED&nbsp;EVENT </span></span><span style="font-style: italic;"><span style="font-weight: bold;">CONDITIONS</span></span><span style="color: red;">&nbsp; &nbsp;&nbsp;&nbsp;</span></p>
-  <p class="style4">Check All That Apply.</p>
-  <p>Flood: 
+  <p align="left">Measurements <span style="text-align: left"></span>used:&nbsp;
+    <input name="Measurmentused" type="radio" onclick="Setmeasure('Imperial');" value="Imperial" checked="checked";/>
+Imperial
+&nbsp;&nbsp;&nbsp;
+<input name="Measurmentused" type="radio" onclick="Setmeasure('Metric')" value="Metric";/>
+Metric &nbsp; &nbsp;
+<input name="measuereused" type="hidden" id="measuereused" value="Imperial" />
+<span style="font-weight: bold;">
+<input name="mtemp" type="hidden" id="mtemp" value="C" />
+<input name="mspeed" type="hidden" id="mspeed" value="KM/h" />
+<input name="Barmeasure" type="hidden" id="Barmeasure" value="millibars" />
+<input name="SnowMeasure" type="hidden" id="SnowMeasure" value="centimeters" />
+<input name="RainMeasure" type="hidden" id="RainMeasure" value="millimeters" />
+<textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
+</span></p>
+  <p>15. Flood: 
     <select name="LFlood" id="LFlood" onchange="document.getElementById('Flood').value = this.value">
       <option selected="selected" disabled>Choose</option>
-
-	        <option value="Unknown">Unknown</option>
-			      <option value="None">None</option>
+      
+      <option value="Unknown">Unknown</option>
+      <option value="None">None</option>
       <option value="Minor Street Flooding">Minor Street Flooding</option>
       <option value="Low Water Crossing Flooded">Low Water Crossing Flooded</option>
       <option value="Wide Spread Flooding">Wide Spread Flooding</option>
@@ -2120,41 +2237,42 @@ Final Report
       <option value="Creek/Stream out of banks">Creek/Stream out of banks</option>
       <option value="River out of Banks">River out of Banks</option>
       <option value="Other">Other (please elaborate below)</option>
-            </select> 
+      </select> 
     <input name="Flood" type="hidden" id="Flood" /> 
-    <hr class="new1">
+    <span style="text-align: left"></span>
+  <hr class="new1">
 
  
 
-  <p>Hail size:   
+  <p>16. Hail size:   
 
     <select name="LHailSize" id="LHailSize"onchange="document.getElementById('HailSize').value = this.value">
-  <option selected="selected" disabled>Choose</option>
+  <option disabled>Choose</option>
   <option value="0">None</option>
-			      <option value="0.25">0.25</option>
-      <option value="0.50">0.50</option>
-      <option value="0.75">0.75 (penny)</option>
-      <option value="0.88">0.88 (nickel)</option>
-      <option value="1.00">1.00 (quarter)</option>
-      <option value="1.25">1.25 (half dollar)</option>
-      <option value="1.50">1.50 (walnut)</option>
-      <option value="1.75">1.75 (golfball)</option>
-      <option value="2.00">2.00 (hens egg)</option>
-      <option value="2.50">2.50 (tennisball)</option>
-      <option value="2.75">2.75 (baseball)</option>
-      <option value="3.00">3.00 (teacup)</option>
-      <option value="4.00">4.00 (grapefruit)</option>
-      <option value="4.50">4.50 (softball)</option>
-            </select>
-    inches
+  <option value="0.25&quot; | 6.35 mm">0.25&quot; | 6.35 mm</option>
+  <option value="0.50&quot; | 12.7 mm">0.50&quot; | 12.7 mm</option>
+  <option value="0.75&quot; | 19.05 mm">0.75&quot; | 19.05 mm (penny)</option>
+  <option value="0.88&quot; | 22.352 mm">0.88&quot; | 22.352 mm (nickel)</option>
+  <option value="1.00&quot; | 25.4 mm">1.00&quot; | 25.4 mm(quarter)</option>
+  <option value="1.25&quot; | 31.75 mm">1.25&quot; | 31.75 mm(half dollar)</option>
+  <option value="1.50&quot; | 38.1 mm">1.50&quot; | 38.1 mm (walnut)</option>
+  <option value="1.75&quot; | 44.45 mm">1.75&quot; | 44.45 mm (golfball)</option>
+  <option value="2.00&quot; | 50.8 mm ">2.00&quot; | 50.8 mm (hens egg)</option>
+  <option value="2.50&quot; | 69.85 mm">2.50&quot; | 69.85 mm (tennisball)</option>
+  <option value="2.75&quot; | 76.2 mm">2.75&quot; | 76.2 mm (baseball)</option>
+  <option value="3.00&quot; | 76.2 mm">3.00&quot; | 76.2 mm(teacup)</option>
+  <option value="4.00&quot; | 101.6 mm">4.00&quot; | 101.6 mm (grapefruit)</option>
+  <option value="4.50&quot; | 1143 mm">4.50&quot; | 114.3 mm (softball)</option>
+    </select>
     <input name="HailSize" type="hidden" id="HailSize" />    
     <hr class="new1">
 
-  <p>High Wind Speed (mph):&nbsp;
-    <input name="Windspeed" type="text" id="Windspeed" size="10" maxlength="10" />    
-    &nbsp;&nbsp;&nbsp; &nbsp;<span style="font-style: italic"><a style=" font-weight: normal;" href="#pop1">View Wind Speed guidelines</a></span>
-    <input name="Windspeed" type="hidden" id="Windspeed" />
-    <br />
+  <p>17. High Wind Speed:&nbsp;
+    <input name="Windspeed" type="text" id="Windspeed" size="10" maxlength="10" onchange="getspeed('Windspeed',this.value)"/>    <span  id="Speed1">KM/h</span>
+    &nbsp;&nbsp;&nbsp; &nbsp;<span style="font-style: italic"><a style=" font-weight: normal;" href="#pop1">View Wind Speed guidelines</a></span><span class="style27">&nbsp;
+    <input name="WindspeedM"  type="hidden"id="WindspeedM" value="" size="4" maxlength="4"   />
+    <input name="WindspeedI" type="hidden" id="WindspeedI" value="" size="4" maxlength="4"   />
+    </span><br />
 
   
 
@@ -2162,7 +2280,7 @@ Final Report
 
   <p>
 
-Tornado / Funnel Cloud: 
+18. Tornado / Funnel Cloud: 
 
   <select name="LTornado" id="LTornado" onchange="document.getElementById('Tornado').value = this.value">
   <option selected="selected" disabled>Choose</option>
@@ -2182,14 +2300,14 @@ Tornado / Funnel Cloud:
 
 
 
-<p>Wind Damage: 
+<p>19. Wind Damage: 
 
   <select name="LWindDamage" id="LWindDamage"onchange="document.getElementById('WindDamage').value = this.value">
   <option selected="selected" disabled>Choose</option>
 	        <option value="Unknown">Unknown</option>
 			      <option value="None">None</option>
-			      <option value="Small Tree Limbs Down < 2">Small Tree Limbs Down (&lt; 2&quot;)</option>
-			      <option value="Large Tree Limbs/Branches Down >= 2 inches">Large Tree Limbs/Branches Down (&gt;= 2&quot;)</option>
+			      <option value="Small Tree Limbs Down ">Small Tree Limbs Down </option>
+			      <option value="Large Tree Limbs/Branches Down ">Large Tree Limbs/Branches Down </option>
 
     <option value="Trees Snapped or Uprooted">Trees Snapped or Uprooted</option>
 
@@ -2204,95 +2322,103 @@ Tornado / Funnel Cloud:
 </p>
 
 <hr class="new1" />
-
-<p>Winter Precipitation: 
-
+<p>20. Winter Precipitation: 
+  
   <select name="LPrecipitation" id="LPrecipitation" onchange="document.getElementById('Precipitation').value = this.value">
-  <option selected="selected" disabled>Choose</option>
-	        <option value="Unknown">Unknown</option>
-			      <option value="None">None</option>
-
+    <option selected="selected" disabled>Choose</option>
+    <option value="Unknown">Unknown</option>
+    <option value="None">None</option>
+    
     <option value="Snow">Snow</option>
-
+    
     <option value="Sleet">Sleet</option>
-
+    
     <option value="Freezing Rain">Freezing Rain</option>
-
+    
     <option value="Mixture">Mixture</option>
-
+    
   </select>
   <input name="Precipitation" type="hidden" id="Precipitation" />
-  </p>
+</p>
+
+<hr class="new1" />
+<span style="font-weight: bold;">
+<textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
+</span>
+<p>21. Snow:
+  
+  <input name="Snow" type="text" id="Snow" size="10" maxlength="10" onchange="gettinchcm('Snow',this.value)"/> 
+ <span  id="Snowa">centimeters</span><span class="style27">
+ <input name="SnowM" id="SnowM" value="" type="hidden" size="4" maxlength="4"   />
+ <input name="SnowI" id="SnowI" value="" type="hidden"size="4" maxlength="4"   />
+ </span></p>
 
 <hr class="new1" />
 
-<p>Snow:
-
-  <input name="Snow" type="text" id="Snow" size="10" maxlength="10" /> 
-  inches  </p>
-
-<hr class="new1" />
-
-<br />
-
-Freezing Rain: 
-<input name="FreezingRain" type="text" id="FreezingRain" size="10" maxlength="10" /> 
-inches
-<br />
+22. Freezing Rain: 
+<input name="FreezingRain" type="text" id="FreezingRain" size="10" maxlength="10" onchange="gettinchmm('FreezingRain',this.value)" /> 
+<span  id="Snowb">millimeters</span>
+<span class="style27">
+<input name="FreezingRainM" id="FreezingRainM" value="" type="hidden" size="4" maxlength="4"   />
+<input name="FreezingRainI" id="FreezingRainI" value="" type="hidden"size="4" maxlength="4"   />
+</span><br />
 
 <hr class="new1" />
 
-<br />
+23. Heavy Rain: 
 
-  Heavy Rain: 
-
-  <input name="Rain" type="text" id="Rain" size="10" maxlength="10" />
-    inches. Time period: 
-
-    
-
-<span class="style21"><em>
-<input name="RainPeriod" type="text" id="RainPeriod" size="10" maxlength="10" />
-</em><span class="style29">hours</span><em> &nbsp;Report 1&quot; or greater in an hour and every inch thereafter, 2 inches or greater storm total</em>.
+  <input name="Rain" type="text" id="Rain" size="10" maxlength="10" onchange="gettinchmm('Rain',this.value)"/>
+   <span  id="Snowc">millimeters.</span>   <span class="style27">
+   <input name="RainM" id="RainM" value="" type="hidden" size="4" maxlength="4"   />
+   <input name="RainI" id="RainI" value="" type="hidden"size="4" maxlength="4"   />
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;. </span>24.Time period: <span class="style21"><em>
+   <input name="RainPeriod" type="text" id="RainPeriod" size="10" maxlength="10" />
+</em><span class="style29">hours</span><em> &nbsp;Report 1&quot; or greater in an hour and every inch thereafter</em>.
 
     </span>    
 
     <hr class="new1" />
 
     <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
-<br />
+    25. &nbsp;Additional Information or Damage Descriptions <em>(Be Brief)</em> <br />
 
- &nbsp;&nbsp;&nbsp;Additional Information or Damage Descriptions <em>(Be Brief)</em> <br />
-
-  <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;&nbsp; </span></span>
-
-  <hr class="new1" />
+  <span style="color: rgb(0, 102, 0);"><span style="color: black;">&nbsp;</span></span>
   <textarea placeholder="Anything of importance or damages noted. No names or specific addesses" cols="120" rows="4" name="Comments" id="Comments"onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>   
   <textarea name="FormData" cols="70" rows="25" id="FormData" style="display: none;">MapFileName:T=j1
 DateTime:T=j2
+Latitude:T=j12a
+Longitude:T=j13a
+MGRS:T=j13a
 Status:M=j3
-Sender:T=j4 
-Reporting Party:T=j5 
-Phone Number:T=j6
-Email:T=j7
-State or Region:T=j8
-County:T=j9 
-City:T=j10
-Other:T=j11  
-Latitude:T=j12
-Longitude:T=j13
-MGRS:T=j14
-Flood:M=j15 
-Hail (inches):N=j16
-High Wind Speed (MPH):N=j17
-Tornado/Funnel Cloud:M=j18
-Wind Damage:M=j19
-Winter Precipitation:M=j20
-Snow (inches):N=j21
-Freezing Rain (inches):N=j22
-Heavy Rain (inches):N=j23
-Rain period:N=j24
-Additional Comments:T=j25</textarea>
+1. Sender:T=j4
+2. Datetime:T=jdatetime
+3. Report Verion:M:First,Update,Final=statusv
+4. Reporting Party:T=j5 
+5. Phone Number:T=j6
+6. Email:T=j7
+7. City:T=j10
+8. State or Region:T=j8
+9.County:T=j9 
+10. Other:T=j11  
+11. Latitude:T=j12
+12. Longitude:T=j13c
+13, MGRS:T=j14
+14. Grid Square:T=jgrid
+15. Flood:M=j15 
+16. Hail:N=j16
+17a. High Wind Speed (MPH):N=j17I
+17b. High Wind Speed (KM/h):N=j17M
+18. Tornado/Funnel Cloud:M=j18
+19. Wind Damage:M=j19
+20. Winter Precipitation:M=j20
+21a. Snow (inches):N=j21I
+21b. Snow (centimeters):N=j21M
+22a. Freezing Rain (inches):N=j22I
+22b. Freezing Rain (millimeters):N=j22M
+23a. Heavy Rain (inches):N=j23I
+23b. Heavy Rain (millimeters):N=j23M
+24. Rain period:N=j24
+25. Additional Comments:T=j25</textarea>
    <br />
 
   <span class="clrbox">
@@ -2337,13 +2463,13 @@ Additional Comments:T=j25</textarea>
 
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 
-</span></b></span>&nbsp;</span></span>Ver 3.6<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
+</span></b></span>&nbsp;</span></span>Ver 4.0<span class="style27"><span style="font-style: italic;"><span style="font-style: italic;"><span class="style17"><span class="formtext11">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
 <span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;"><span style="font-style: italic;">
 
-<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 3.6" />
+<input name="Templateversion" type="hidden" id="templateversion" value="Severe WX. 4.0" />
 
 </span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></p>
 

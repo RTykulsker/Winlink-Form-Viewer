@@ -98,8 +98,114 @@ width:45px;
   font-size: 12px;
    cursor: pointer;
 }
-.style6 {font-size: 16px; font-weight: bold; }
-.style7 {color: rgb(128, 0, 0)}
+.style6 {font-size: 16px; font-weight: normal; }
+.style7 {font-weight: normal;}
+.MSGtext {font-family: Arial,Helvetica,sans-serif;  
+  
+font-size: 12px;  
+}
+.style40 {font-family: Arial, Helvetica, sans-serif}
+.style18 {font-size: 13px}
+.style45 {font-size: 12px}
+.style45 {color: #2A5F00}
+.style61 {	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight: bold;
+}
+    .pop-up {
+	position:absolute;
+	top:0;
+	left:-500em;
+	visibility: visible;
+}
+.pop-up:target {position:static; left:0;}
+/* The pop-up itself */
+.popBox { 
+	background:#ffffff;
+	position:absolute;
+	left:25%;
+	right:25%;
+	top:20%;
+	bottom:20%;
+	z-index:10;
+	border:1px solid #3a3a3a;
+/* CSS3 where available: rounded corners, drop-shadow, and fade in. */
+border-radius:.25rem;
+box-shadow:0 .5rem .5rem rgba(0,0,0,.5);
+	opacity:0;
+	transition: opacity 0.8s ease-out;
+	visibility: visible;
+}
+:target .popBox {position:fixed; opacity:1;}
+/* Light box properties */
+.lightbox {
+display:none;
+text-indent:-200em;
+background-color:rgba(0,0,0,.4);
+width:100%;
+height:100%;
+position:fixed;
+top:0;
+left:0;
+bottom:0;
+right:0;
+z-index:5;
+}
+:target .lightbox {display:block;}
+/* The pop-ups close link, moved via CSS to the top right of the pop-up */
+.close:link,
+.close:visited {
+	position: absolute;
+	top: -0.75em;
+	right: -0.75em;
+	display: block;
+	width: 2em;
+	height: 2em;
+	line-height: 1.8;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	background-color: #000;
+	border: 2px solid #fff;
+	color: #fff;
+	border-radius: 50%;
+box-shadow: 0 0 .5rem .5rem rba(0,0,0,.5);
+	z-index: 12;
+	visibility: visible;
+}
+.close:before {content:"X";}
+.close:hover,
+.close:active,
+.close:focus {
+box-shadow: 0 0 .5rem .5rem rba(255,0,0,.5);
+background-color: #c00;
+color: #fff;
+}
+.close span {
+text-indent: -200em;
+display: block;
+}
+/* The pop-up content div will scroll if it has too much content */
+.popScroll {
+	position:absolute;
+	top: 1rem;
+	left: 1rem;
+	right: 1rem;
+	bottom: 1rem;
+	overflow-y: auto;
+*overflow-y: scroll;
+	padding-right: 0.5em;
+	z-index: 11;
+	visibility: visible;
+}
+.popScroll h2 {margin-top:0}
+.style39 {font-size: 14}
+.zentriert1 {font-size: 12px;
+font-weight: inherit;
+}
+.zentriert1 {font-size: 12px;
+font-weight: inherit;
+}
 </style>
 <script>
 function AutoGrowTextArea(textField)
@@ -387,35 +493,135 @@ function Checkifinbrowser() {
   alert('You are running this form outside of Winlink.\n \nWhen you have completed the form, SAVE the data and then give or send the SAVED data file to the radio operator. The operator will load the SAVED data into the correct form and send via winlink. ');
  } else {document.getElementById('Submit').style.visibility='visible';  }
 }
+    
+	function numbersonly(evt)  
+{  
+var charCode = (evt.which) ? evt.which : event.keyCode  
+if (charCode > 47 && (charCode < 58))  
+return true;  
+return false;  
 
+} 
+function addSemi(myStr){
+var S= myStr;
+if (myStr.trim().length != 0) {
+S = S+';';}
+return S;
+}
+
+    function Getphone(){
+
+var phone = document.getElementById('phone').value;
+var phone= phone.replace(/-/g, '');
+var carrier = document.getElementById('carrier').value;
+if ((carrier!=='Select Carrier') && phone !=='' ){
+var current = document.getElementById('address').value;
+document.getElementById('address').value=current+phone+carrier+";\r";
+//AutoGrowTextArea(document.getElementById("addresses"));
+//doclear();a
+var str = document.getElementById('address').value;
+var temp= str.replace(/\n/g, '');
+document.getElementById('address').value=temp;
+    
+   document.getElementById('AttachXML').value=false; 
+} else {alert('You must enter a phone number AND select a carrier.')};
+}
+    
+   
+    function wordcount(s) {  
+  
+cnt= s.length;
+document.getElementById('check2').value = cnt;  
+  
+ }  
+  
+   
+  
+  
 </script></head>
 <body>
 <form  style="font-family: Arial;" pbzloc="3" onsubmit="return confirm('To complete your form submission, click OK and close the open browser window. You will return to the new message window so you can post your message to the outbox');" method="post" id="myform" enctype="multipart/form-data" action="http://{FormServer}:{FormPort}">
 <table width="900" border="0" align="left" style="height: 498px; width: 900px;">
+ 
 <tbody>
 <tr>
 <td width="800" valign="top">
-<table width="819" border="2" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 900px; height: 348px;">
+<table width="819" border="1" cellpadding="4" cellspacing="0" bordercolor="#999999" style="font-size: 14px; width: 900px; height: 348px;">
 <tbody>
 <tr>
-<td height="39"  colspan="2" style=" text-align: justify; background-color: rgb(222,233,249);"><div align="center" > <span class="style6">QUICK MESSAGE</span><br />
-  <br /><input type="button" value=" Load Quick Message Data" onclick="document.getElementById('txtfiletoread').click();" />
-     <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/> <br />
+<td height="39"  colspan="2" style="text-align: left; background-color: rgb(222,233,249); font-weight: normal;"><div align="center" > <span class="style6">QUICK MESSAGE</span><br />
+  <br />
+  <input type="button" value=" Load Quick Message Data" onclick="document.getElementById('txtfiletoread').click();" />
+          <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      
+    <tbody>
+      <tr>
+        <td> </td>
+        </tr>
+    </tbody>
+  </table>
+  
+  This form generates a short text message that can be sent to an email and/or SMS address.&nbsp;<br />
+    The sender is responsible for knowing the <span style="text-align: left"></span>carrier of the recipient when using SMS messaging.&nbsp;The carrier list contains the most common primary carriers in the US and Canada and is for information only. No resellers listed.Use at your own discretion and risk. No delivery guarantee is made or implied.</p>
+
+
 </div></td>
 </tr>
 <tr>
-<td style="text-align: center;" colspan="2"><div align="left"><br />
-&nbsp;<span class="style2">Attn:</span>&nbsp;
-<input title="Name of intended party" maxlength="45" size="50" required="required" name="Attn" />
-&nbsp; &nbsp;<span class="style2"> Send to address: 
-<input name="address" placeholder="Call sign or email address" type="text" id="address" size="40" />
-</span></div></td>
+<td style="text-align: center;" colspan="2"><div align="left">
+  <p><span class="style2">Send to address:
+<input name="address" placeholder=" Enter email or full SMS address" type="text" id="address" size="60" onchange="this.value = addSemi(this.value);"" />
+  </span></span></p>
+  <p><span class="style2">Add a SMS number: <span style="font-weight: normal;"><a name="SMS" id="SMS"></a></span></span><span class="background_table"><span class="style7"><span style="font-weight: normal;"><span class="MSGtext"><span class="style40">
+    <input name="phone" type="text" placeholder="Enter 10 digits" id="phone" onkeypress="return numbersonly(event)" value="" size="12" />
+    </span></span></span></span></span><span style="font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="style2">Carrier</span>&nbsp;
+      <select name="carrier" id="carrier">
+        <option selected="selected">Select Carrier</option>
+        <option disabled>-- FREQUENTLY USED --</option>
+        <option value="@mms.att.net">ATT (MMS)</option>
+        <option value="@pm.sprint.com">Sprint (MMS)</option>
+        <option value="@tmomail.net">T-Mobile (SMS,MMS)</option>
+        <option value="@mms.uscc.net">US Cellular (MMS)</option>
+        <option value="@vzwpix.com">Verizon (MMS)</option>
+        <option  disabled value="UNITED STATES">-- UNITED STATES --</option>
+        <option value="@alltel.com">Alltel</option>
+        <option value="@mms.att.net">ATT (MMS)</option>
+        <option value="@myboostmobile.com">Boost Mobile</option>
+        <option value="@mailmymobile.net">Consumer Cellular</option>
+        <option value="@mms.firstnet-mail.com">FirstNet</option>
+        <option value="@msg.fi.google.com">Google Fi</option>
+        <option value="@mymetropcs.com">MetroPCS</option>
+        <option value="@messaging.nextel.com">Nextel</option>
+        <option value="@pm.sprint.com">Sprint (MMS)</option>
+        <option value="@tmomail.net">T-Mobile (SMS,MMS)</option>
+        <option value="@mmst5.tracfone.com">Tracfone (MMS)</option>
+        <option value="@mms.uscc.net">US Cellular (MMS)</option>
+        <option value="@vzwpix.com">Verizon (MMS)</option>
+        <option value="@vmobl.com">Virgin Mobile</option>
+        <option value="CANADA ">-- CANADA -- </option>
+        <option value="@txt.bell.ca">Bell Canada</option>
+        <option value="@text.mts.net">Bell MTS</option>
+        <option value="@fido.ca">Fido Solutions</option>
+        <option value="@txt.freedommobile.ca">Freedom Mobile</option>
+        <option value="@msg.telus.com">Koodo Mobile</option>
+        <option value="@mobiletxt.ca">PC Mobile</option>
+        <option value="@pcs.rogers.com">Rogers Communications</option>
+        <option value="@sms.sasktel.com">SaskTel</option>
+        <option value="@msg.telus.com">Telus</option>
+        </select>
+      </strong></span><span class="background_table"><span class="style7"><span style="font-weight: normal;"><span class="MSGtext"><span class="style40">&nbsp;&nbsp;&nbsp;&nbsp;
+  <input name="Addphone" type="button" id="Addphone" onclick="Getphone()" value="Click to add SMS phone" />
+      </span></strong></span></span></span></span></span></span><span class="style18">
+      <input name="AttachXML" type="hidden" id="AttachXML" value="false" />
+      </span></p>
+</div></td>
 </tr>
 <tr>
 <td style="text-align: center; vertical-align: middle;" colspan="2"><div align="left"><span style="font-size: 14px;">
   <pbzloc ="1" style="font-weight: normal;"></pbzloc></span><br />
-   <span style="font-size: 14px;"> &nbsp;From (Name/Group):&nbsp;<span style="font-size: 14px;"> </span></span>
-   <input title="Your name/group or person you are sending for." id="From_Name" maxlength="45" required="required" name="From_Name" size="50" />
+   <span style="font-size: 14px;"> From:&nbsp;<span style="font-size: 14px;"> </span></span>
+   <input title="Your name/group or person you are sending for." id="From_Name" maxlength="30" required="required" name="From_Name" placeholder='Enter your name' size="30" />
 &nbsp;<span class="style2"> &nbsp;&nbsp;Date/Time: &nbsp;</span>
 <input name="time" type="text" id="time" onclick="TimeNow('time')" size="20" maxlength="21"  placeholder="Click for Date/Time"/> 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
@@ -423,21 +629,23 @@ function Checkifinbrowser() {
 </tr>
 <tr>
 <td colspan="4" pbzloc="6" style="text-align: center;"><div align="left"><br />
-            <span class="style2">&nbsp;Subject:&nbsp;</span>
+            <span class="style2">Subject:&nbsp;</span>
         
-            <input id="Subjectline" maxlength="60" name="Subjectline" required="required" size="70" /> 
+            <input id="Subjectline" maxlength="30" name="Subjectline" required="required" placeholder='Short subject.' size="30" /> 
       &nbsp;
       <textarea name="parseme" cols="60" id="parseme" style="display: none;"></textarea>
 </div></td>
 </tr>
 <tr>
-<td colspan="5" style="height: 88px; vertical-align: top; text-align: center;"><div align="left"><br />
-  &nbsp;<span class="style2">Message</span><br />
+<td colspan="5" style="height: 88px; vertical-align: top; text-align: center; font-size: 14px;"><div align="left"><br />
+  <span class="style2">Message</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Charcter count: <span class="MSGtext">
+  <input name="check2" id="check2" size="3" maxlength="3" class="zentriert1" readonly="readonly" value="0" type="text" />
+  </span><br />
   <br />
    
   <label> </label>
   <span class="style2">&nbsp;&nbsp;</span>
-  <textarea cols="120" rows="4" name="Message"  id="Message" onkeyup="AutoGrowTextArea(this)" onchange="this.value=RWS(this.value)"></textarea>
+  <textarea cols="120" rows="3"  maxlength="140" name="Message"  id="Message"  onkeypress="if(event.keyCode==13){return false}"  onkeyup="AutoGrowTextArea(this); wordcount(this.value)" onchange="this.value=RWS(this.value)" placeholder='140 characters max'></textarea>
   <br />
   <br />
 </div></td>
@@ -450,9 +658,9 @@ function Checkifinbrowser() {
 <input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; width: 52px; " value="Submit" type="submit" />&nbsp; <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp; </span></span><span style="color: rgb(128, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="font-weight: normal;"><span class="formtext11">
-<input name="Templateversion" type="hidden" id="templateversion" value="Quick Message version 10.4" />
-</span></span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="color: rgb(128, 0, 0);"><span style="color: rgb(128, 0, 0);"><span class="style4">V<span class="style7">.</span>1</span></span></span>0<span style="color: rgb(128, 0, 0);"><span style="color: rgb(128, 0, 0);"><span class="style4"><span class="style7">.</span></span></span></span>4<span style="color: rgb(128, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: normal;"><span class="formtext11">
+<input name="Templateversion" type="hidden" id="templateversion" value="Quick Message version 11.01" />
+</span></span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;<span style="color: rgb(128, 0, 0);"><span style="color: rgb(128, 0, 0);"><span class="style4">V<span class="style7">. 11.01</span></span></span></span><span style="color: rgb(128, 0, 0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
 </tr>
 </tbody>
 </table>
@@ -461,5 +669,6 @@ function Checkifinbrowser() {
 </tr>
 </tbody>
 </table>
+
 </form>
 </body></html>

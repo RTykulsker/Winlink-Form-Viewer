@@ -484,16 +484,23 @@ document.getElementById('Comments').value = '';
 	}
 
 function splitPaste(str) {
-   
+    
+var str=str.trim();
+     themark = '{decimal_separator}';
+    if (themark==','){return}
+    // count commas
+var ct = str.split(",").length - 1 ;
+var ctsp= str.split(" ").length - 1;
 
-var d= str.split(', ');
+var str = str.replace(",", " ");
+var str = str.replace("  ", " ");
+var d= str.split(' ');
 var cnt = d.length;
 if (cnt >1) {
 document.getElementById('mapLat').value =d[0];
-document.getElementById('mapLon').value =d[1];
-             document.getElementById('mapLat').value =d[0];
-}else {
-document.getElementById('mapLat').value =str}
+document.getElementById('mapLon').value =d[1];//38.30336525671668, -122.02022176466537
+
+}
 }
 function copyGPS() {
 
@@ -686,7 +693,7 @@ var Theversion = document.getElementById('Templateversion').value; // save the t
 
   }
   RestoreTitle();
-    Fixfields();
+   // Fixfields();
 
 
 }
@@ -1508,51 +1515,51 @@ function Testlat(){
 <tr>
   <td valign="middle" nowrap="nowrap" bgcolor="#f8f8ff" style="vertical-align: middle; text-align: left; width: 50%; font-size: 14px;"><p><strong>2. SESSION</strong></p>
     <p><strong>a. <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">Type</span></strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span><span class="style33"> &nbsp;&nbsp;
-      <input name="Status" type="radio" tabindex="5"  onclick="document.getElementById('Status').value =  this.value;" value="EXERCISE"" checked="checked" />
+      <input name="bStatus" type="radio" tabindex="5"  onclick="document.getElementById('Status').value =  this.value;" value="EXERCISE"" checked="checked" />
       <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">EXERCISE&nbsp;&nbsp;&nbsp;&nbsp;
-        <input name="Status" type="radio" tabindex="6" onclick="document.getElementById('Status').value =  this.value;" value="REAL EVENT" />
+        <input name="bStatus" type="radio" tabindex="6" onclick="document.getElementById('Status').value =  this.value;" value="REAL EVENT" />
         REAL EVENT</span></span><span style="font-size: 14px;">
           <input name="Status" type="hidden" id="Status" value="EXERCISE" size="14" maxlength="13" />
           </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><strong>b. Service</strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span>
-            <input name="Service" type="radio" tabindex="7" onclick="document.getElementById('Service').value = this.value;" value="AMATEUR" checked="checked" />
+            <input name="bService" type="radio" tabindex="7" onclick="document.getElementById('Service').value = this.value;" value="AMATEUR" checked="checked" />
             <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">AMATEUR&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-              <input name="Service" type="radio" tabindex="8" onclick="document.getElementById('Service').value = this.value;" value="SHARES" />
+              <input name="bService" type="radio" tabindex="8" onclick="document.getElementById('Service').value = this.value;" value="SHARES" />
               </span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">SHARES&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;">
                 <input name="Service" type="hidden" id="Service" value="AMATEUR" size="14" maxlength="13" />
                 </span></span></span></span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style33"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"><strong>c. Band</strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span>&nbsp;
-                  <input name="Band" type="radio" tabindex="9" onclick="document.getElementById('Band').value = this.value" value="NA" checked="checked" />
+                  <input name="bBand" type="radio" tabindex="9" onclick="document.getElementById('Band').value = this.value" value="NA" checked="checked" />
                   <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">NA&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                    <input name="Band" type="radio" tabindex="10" onclick="document.getElementById('Band').value = this.value" value="Telnet" />
+                    <input name="bBand" type="radio" tabindex="10" onclick="document.getElementById('Band').value = this.value" value="Telnet" />
                     </span>Telnet &nbsp;&nbsp;</span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                      <input name="Band" type="radio" tabindex="11" onclick="document.getElementById('Band').value = this.value"  value="HF" />
+                      <input name="bBand" type="radio" tabindex="11" onclick="document.getElementById('Band').value = this.value"  value="HF" />
                       HF<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;&nbsp;&nbsp;</span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;"> &nbsp;
-                        <input name="Band" type="radio" tabindex="12" onclick="document.getElementById('Band').value = this.value" value="VHF" />
+                        <input name="bBand" type="radio" tabindex="12" onclick="document.getElementById('Band').value = this.value" value="VHF" />
                         <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">VHF &nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;
-                          <input name="Band" type="radio" tabindex="13" onclick="document.getElementById('Band').value = this.value" value="UHF" />
+                          <input name="bBand" type="radio" tabindex="13" onclick="document.getElementById('Band').value = this.value" value="UHF" />
                           U<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">HF</span></span></span></span><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">&nbsp;&nbsp;
                             <input name="Band" type="radio" tabindex="14" onclick="document.getElementById('Band').value = this.value"  value="SHF" />
                             <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">SHF &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 14px;">
                               <input name="Band" type="hidden" id="Band" value="NA" size="14" maxlength="13" />
                             </span></span></span></span></p>
     <p class="style33"><span style="font-size: 12px"><span style="font-size: 14px"><strong>d</strong></span><strong>.</strong></span><strong> <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">Session</span></strong><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">:</span><span class="style50"><span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-      <input name="Session" type="radio" tabindex="15" onclick="document.getElementById('Session').value = this.value" value="Telnet" checked="checked" />
+      <input name="bSession" type="radio" tabindex="15" onclick="document.getElementById('Session').value = this.value" value="Telnet" checked="checked" />
       </span> Telnet&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-        <input name="Session" type="radio" tabindex="16" onclick="document.getElementById('Session').value = this.value" value="Packet" />
+        <input name="bSession" type="radio" tabindex="16" onclick="document.getElementById('Session').value = this.value" value="Packet" />
         Packet</span>&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-          <input name="Session" type="radio" tabindex="17" onclick="document.getElementById('Session').value = this.value" value="Pactor" />
+          <input name="bSession" type="radio" tabindex="17" onclick="document.getElementById('Session').value = this.value" value="Pactor" />
           Pactor</span>&nbsp;&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-            <input name="Session" type="radio" tabindex="18" onclick="document.getElementById('Session').value = this.value" value="Robust Packet" />
+            <input name="bSession" type="radio" tabindex="18" onclick="document.getElementById('Session').value = this.value" value="Robust Packet" />
             Robust Packet
             &nbsp;&nbsp; <span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-              <input name="Session" type="radio" tabindex="19" onclick="document.getElementById('Session').value = this.value" value="Ardop" />
+              <input name="bSession" type="radio" tabindex="19" onclick="document.getElementById('Session').value = this.value" value="Ardop" />
               </span>Ardop</span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                <input name="Session" type="radio" tabindex="20" onclick="document.getElementById('Session').value = this.value" value="VARA HF" />
+                <input name="bSession" type="radio" tabindex="20" onclick="document.getElementById('Session').value = this.value" value="VARA HF" />
                 VARA HF </span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                  <input name="Session" type="radio" tabindex="21" onclick="document.getElementById('Session').value = this.value" value="VARA FM" />
+                  <input name="bSession" type="radio" tabindex="21" onclick="document.getElementById('Session').value = this.value" value="VARA FM" />
                   VARA FM&nbsp;&nbsp;</span>&nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                    <input name="Session" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Iridium Go" />
+                    <input name="bSession" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Iridium Go" />
                     Iridium Go</span>&nbsp; &nbsp;&nbsp;<span class="style50" style="font-family: Arial, Helvetica, sans-serif;;; font-size: 14px;">
-                      <input name="Session" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Mesh" />
+                      <input name="bSession" type="radio" tabindex="22" onclick="document.getElementById('Session').value = this.value" value="Mesh" />
                       Mesh </span>&nbsp;</span><span style="font-size: 14px;">
                         <input name="Session" type="hidden" id="Session" value="Telnet" size="14" maxlength="13" />
 </span></p></td>
@@ -1577,9 +1584,9 @@ function Testlat(){
       </span></p>
   <p><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;">
  <strong>b</strong>. </span></span> <strong>LATITUDE</strong>:<span style="font-weight: normal">
- <input  name="mapLat" id="mapLat" placeholder="ex: 38.5567" tabindex="24" size="14" maxlength="12"  onchange="splitPaste(this.value);checkLatLon();Testlat()" />
+ <input  name="mapLat" id="mapLat" placeholder="ex: 38.5567" tabindex="24" size="20"  onchange="splitPaste(this.value);checkLatLon();Testlat()" />
  </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;c. LONGITUDE</strong>:<span class="style12"><span style="font-weight: normal">
- <input  name="mapLon" id="mapLon" placeholder="ex:-121.7932" tabindex="25" size="14" maxlength="12" onchange="CheckLon();checkLatLon();Testlon()" />
+ <input  name="mapLon" id="mapLon" placeholder="ex:-121.7932" tabindex="25" size="20" onchange="CheckLon();checkLatLon();Testlon()" />
  </span><span style="color: #000000; font-style: normal; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>&nbsp;d.  MGRS:</strong></span>
 <span style="font-weight: normal">
 <input  name="MGRS" id="MGRS" placeholder="Ex:11SNR0184195204" tabindex="26" size="18" maxlength="15" readonly="readonly" onChange="checkformgrs(this.value)"/>
@@ -1653,8 +1660,8 @@ MGRS:T=j9
 &nbsp;</span></span>
 &nbsp; &nbsp; &nbsp;&nbsp;<span style="font-family:  Arial, Helvetica, sans-serif;;">&nbsp;
 &nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="style25">Ver 5.0.2</span><span style="font-size: 14px;">
-<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check-in 5.0.2" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="style25">Ver 5.0.4</span><span style="font-size: 14px;">
+<input name="Templateversion" type="hidden" id="Templateversion" value="Winlink Check-in 5.0.4" />
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="&lt;/table&gt;13" />
 </span></span></td>
 </tr>

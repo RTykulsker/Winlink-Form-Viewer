@@ -19,14 +19,14 @@ Message:
 <var Message>
 
 
-Approved by: <var Approved_Name>  Signature: <var Approved_Sig}
+Approved by: <var Approved_Name>  Signature: <var Approved_Sig>
    Position/Title: <var Approved_PosTitle>
 
 -------------
 Reply:
 <var Reply>
 
-Replied by:  <var rply_by>  Signature: <var rply_sig}
+Replied by:  <var rply_by>  Signature: <var rply_sig>
 Position / Title: <var rply_Position>   	
 Date / Time: <var rply_dtm>
 
