@@ -1171,8 +1171,33 @@ font-size: 20px;
 .style14 {font-size: 20pt}
 
 .style15 {font-size: 10pt}
-.style16 {color: #000000}
 .style17 {font-size: 18px}
+.style12 {color: #FF0000;
+	font-style: italic;
+}
+.style231 {color: #FF0000}
+.formtext {
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+}
+.formtext1 {
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+
+margin: 10px;
+}
+.formtext1 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+}
 </style></head>
 
 <body>
@@ -1196,7 +1221,9 @@ Message (ICS 213)&nbsp;</span><span class="style6">
 <br />
 {var FormTitle}<span class="formtext">
     <input type="file" id="txtfiletoread" accept=".txt"  style="display: none;"/>
-    </span></span></p>
+    </span></span><br />
+    {var IsExercise}    <br />
+  </p>
   </div>
 
 </td>
@@ -1281,7 +1308,7 @@ box-shadow: none;
 font-size:14px;
 }" name="Approved_Name" id="Approved_Name" value="{var Approved_Name}" size="35" maxlength="30"readonly/>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="formtext">&nbsp;Position
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="formtext">8a.&nbsp;Position
 
 / Title: </span>&nbsp;
 <input style="border: 0;
@@ -1290,6 +1317,17 @@ box-shadow: none;
 font-size:14px;
 }"name="Approved_PosTitle" id="Approved_PosTitle" value="{var Approved_PosTitle}" size="35" maxlength="30" rreadonly /> 
 <br />
+<span style="font-family: Calibri">&nbsp;&nbsp;&nbsp;[Sender: {var theMsgSender} Lat: {var mapLat}, Lon:{var mapLon}, MGRS: {var MGRS}]</span> <em><span class="style12">
+<input name="mapLat" type="hidden" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" value="{var mapLat}" size="12"  />
+</span></em><em><span class="style12">
+<input name="mapLon" type="hidden" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon()" value="{var mapLon}" size="12"  />
+</span></em><em><span class="style231">
+<input name="MGRS"   type="hidden" id="MGRS" placeholder="Ex:11SNR0184195204" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" onchange="checkformgrs(this.value)"onkeypress="if(event.keyCode==13){return false;}" value="{var MGRS}"size="25" maxlength="25" />
+</span></em><span class="formtext">
+<input name="IsExercise" type="hidden" id="IsExercise" value="{var IsExercise}"  />
+</span><span class="formtext1">
+<input name="theMsgSender" type="hidden" id="theMsgSender" value="{var theMsgSender}"  />
+</span><br />
 
 </td>
 
@@ -1316,10 +1354,10 @@ font-size:14px;
 
 <td height="36" colspan="2">
 
-<div align="left"> <span class="formtext"><span style="font-family: Calibri;"><small>
-  <input type=button value="Save ICS213 REPLY Data" onclick="SaveData()" />
-&nbsp;&nbsp;&nbsp;&nbsp;
-<input value="Submit" style="height: 28px; width: 70px;" size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" onclick="return checkform()"/></small></span></span><span class="formtext">&nbsp;
+<div align="left"><span class="formtext"><span style="font-family: Calibri;"><small><span class="formtext1"><small>
+  <input value="Submit" style="height: 28px; width: 70px;" size="8" name="Submit" method="Post" id="Submit" enctype="multipart/form-data" class="SubmitBtn" type="submit" onclick="return checkform()"/>
+  </small></span>
+        <input type=button value="Save ICS213 REPLY Data" onclick="SaveData()" /></small></span></span><span class="formtext">
 <input type="reset" value="Reset Reply Form" onclick="getConfirmation()" >
 <textarea name="parseme" cols="80" rows="3" id="parseme" placeholder="Paste spreadsheet data here" style="display: none;"></textarea>
 </span> <span class="style11"> </span>
@@ -1331,8 +1369,8 @@ font-size:14px;
 
 <td width="121" style="width: 120px;">
 
-<div align="left">Ver 41.12
-  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.41.12" />
+<div align="left">Ver 43.0
+  <input name="Templateversion" type="hidden" id="templateversion" value="ICS 213  v.43.0" />
 </div>
 
 </td>

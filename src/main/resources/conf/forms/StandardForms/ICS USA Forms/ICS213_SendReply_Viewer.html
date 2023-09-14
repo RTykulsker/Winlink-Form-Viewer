@@ -568,19 +568,8 @@ font-size: 20px;
 
 }
 
-.style10 {font-size: 10pt}
-
-.style9 {	font-size: medium;
-
-	color: #20002B;
-
-}
-
 .style15 {font-size: 18pt}
 .style7 {font-size: 12px}
-.style19 {color: #FF0000}
-.style20 {font-size: medium; color: #FF0000; }
-.style21 {color: #20002B}
 .formtext1 {
 font-family: Arial, Helvetica, sans-serif;
 
@@ -611,7 +600,9 @@ margin: 10px;
 </span>General
 
 Message (ICS 213)&nbsp;&nbsp;&nbsp;<br />
-{var FormTitle}</span></div>
+{var FormTitle}</span><br />
+{var IsExercise} <br />
+</div>
 
 </td>
 
@@ -713,7 +704,8 @@ Approved by:&nbsp;{var Approved_Name}
 
 
 
-</td>
+<br />
+<span style="font-family: Calibri">&nbsp;&nbsp;&nbsp;[Sender: {var theMsgSender} Lat: {var mapLat}, Lon:{var mapLon}, MGRS: {var MGRS}]</span></td>
 
 </tr>
 
@@ -746,7 +738,7 @@ Replied By: {var rply_by}
 
 <span class="formtext"></span></div>
 
-  <div align="right">Ver 41.12</div></td>
+  <div align="right">Ver 43.0</div></td>
 
 </tr>
 

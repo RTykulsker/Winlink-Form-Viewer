@@ -919,6 +919,10 @@ var defaultLon = '{Longitude}';
 var jsontext =document.getElementById('FormData').value;
 //var temp1 =document.getElementById('Mapfilename').value;
 //var jsontext=jsontext.replace('j1', temp1);
+    var temp1= document.getElementById('IsExercise').value;
+var jsontext=jsontext.replace('R1',temp1);
+
+
 var temp1 =document.getElementById('DateTime').value;
 var jsontext=jsontext.replace('j2', temp1);
 var temp1 =document.getElementById('mapLat').value;
@@ -1377,8 +1381,15 @@ to links</span></a> </div>
   
   <tr valign="top" class="style9">
     <td  colspan="3">      <table width="100%"  border="1" cellspacing="0" cellpadding="4">
-        <tr class="FormReg">
-          <td colspan="4">Report Type (check one)</strong></u> <br />
+        <tr class="FormReg"> <
+
+            
+          <td colspan="4"><input name="exbtn" type="checkbox" id="exbtn" value="true" onclick="if(document.getElementById('IsExercise').value =='') {document.getElementById('IsExercise').value = '** THIS IS AN EXERCISE **'} else { document.getElementById('IsExercise').value = '';}"/>
+              <span style="font-size: 12px">THIS IS AN EXERCISE</span>
+                          <input name="IsExercise" type="hidden" id="IsExercise"  />
+                          <br />
+                          <br />
+              Report Type (check one)</strong></u> <br />
           <span class="style47">
           <input name="RType" type="radio" value="INITIAL" onclick=" document.getElementById('aReportType').value = 'INITIAL'" />
               </span> Initial <span class="style47"> &nbsp;
@@ -1799,6 +1810,7 @@ MGRS:T=j6
 Grid:T=j7
 Report Type:T=aReportType
 Status:M:updatenum
+00. Report note:M=R1 
 01. Incident Name:M=Incident1
 02a. Date/Time:T=Datetime
 03. Facility Name: T=FacilityName3a  
@@ -1893,8 +1905,8 @@ NO
 <small><span style="font-family: Calibri;">
 
 </span>&nbsp;&nbsp;&nbsp;&nbsp; </small>
-<input name="Templateversion" type="hidden" id="Templateversion" value="General Hospital Status 2.1" />
-</span><span class="FormReg">Version 2.1
+<input name="Templateversion" type="hidden" id="Templateversion" value="General Hospital Status 2.2" />
+</span><span class="FormReg">Version 2.2
 <input name="testCall" type="hidden" id="testCall" value="{MsgSender}" size="14" maxlength="13" />
 </span></p>
       </td>

@@ -4,6 +4,7 @@ To:
 Subject: <var Title> Hospital Bed Report - <var Facility>,<var DateTime>
 Msg:  
 
+<var IsExercise>
 For Jurisdication or Group:	<var Title>
 REPORTING FACILITY:	[<var Facility>]
 As of Time:	<DateTime>

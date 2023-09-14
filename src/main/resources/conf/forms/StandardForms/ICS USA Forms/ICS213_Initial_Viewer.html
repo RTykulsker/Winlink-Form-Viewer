@@ -608,6 +608,29 @@ input[type=black1] {
 }
 
 .style27 {font-size: 12pt}
+.formtext1 {    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    font-weight: normal;
+    margin: 10px;
+}
+.style12 {color: #FF0000;
+	font-style: italic;
+}
+.style231 {color: #FF0000}
+.formtext11 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+
+margin: 10px;
+}
+.formtext11 {font-family: Arial, Helvetica, sans-serif;
+
+font-size: 11pt;
+
+font-weight: normal;
+}
 </style></head>
 
 <body onload="Fixarea()">
@@ -659,7 +682,9 @@ to links</span></a> </div>
 </span>General
 
 Message (ICS 213)&nbsp;<br />
-{var  FormTitle}</span></div>
+{var  FormTitle}</span><br />
+{var IsExercise}
+</div>
 
 </td>
 
@@ -671,7 +696,8 @@ Message (ICS 213)&nbsp;<br />
     <input name="inc_name" id="inc_name" value="{var inc_name}" type="hidden" />
     </font></font></font></font></font></font></font></font></font></font></font></font></font></font></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input name="hiddenField" type="hidden" value="{var DR_num}" />
-    <input name="Priority2" type="hidden" id="Priority2" value="{var Priority2}"/></td>
+    <input name="Priority2" type="hidden" id="Priority2" value="{var Priority2}"/>
+    <input name="IsExercise" type="hidden" id="IsExercise" value="{var IsExercise}"  /></td>
 </tr>
 
 <tr>
@@ -717,15 +743,24 @@ Date:&nbsp; {var Mdate}</td>
 
 <tr class="formtext">
 
-<td style="white-space: nowrap; height: 35px; vertical-align: middle;" colspan="3"> 8.
-
-Approved by:&nbsp; {var Approved_Name}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position
-
-/ Title:&nbsp;
-
-{var Approved_PosTitle}<span style="font-family: Calibri;"><small>&nbsp;</small></span></td>
+<td style="white-space: nowrap; height: 35px; vertical-align: middle;" colspan="3"> <p>8.
+  
+  Approved by:&nbsp; {var Approved_Name}
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8b. &nbsp;Position
+  
+  / Title:&nbsp;
+  
+  {var Approved_PosTitle}<span style="font-family: Calibri;"><small>&nbsp;</small></span></p>
+  <p><span style="font-family: Calibri">[Sender: {var MsgSender} Lat: {var mapLat}, Lon:{var mapLon}, MGRS: {var MGRS}]</span><em><span class="style12">
+    <input name="mapLat" type="hidden" id="mapLat" placeholder="ex: 38.5567" onchange="splitPaste(this.value);checkLatLon();" value="{var mapLat}" size="12"  />
+  
+  <input name="mapLon" type="hidden" id="mapLon" placeholder="ex:-121.7932" onchange="this.value=checkzero(this.value);CheckLon();checkLatLon()" value="{var mapLon}" size="12"  />
+  </span><span class="style231">
+  <input name="MGRS"   type="hidden" id="MGRS" placeholder="Ex:11SNR0184195204" title= "If entering manually use format: 11SNR0184195204 or 11S NR 01841 95204" onchange="checkformgrs(this.value)"onkeypress="if(event.keyCode==13){return false;}" value="{var MGRS}"size="25" maxlength="25" />
+  </span></em><span class="formtext11">
+  <input name="MsgSender" type="hidden" id="MsgSender" value="{var MsgSender}"  />
+  </span></p></td>
 
 </tr>
 
@@ -795,7 +830,9 @@ Replied By:
 
 <tr class="formtext" bgcolor="#f8f8ff">
 
-<td height="35" colspan="3" nowrap="nowrap"><div align="right"><span class="no-print"><span class="style10">&nbsp;&nbsp; &nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;</span>&nbsp;<span class="style10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Ver 41.12<span class="style10"></span></span></div></td>
+<td height="35" colspan="3" nowrap="nowrap"><div align="right"><span class="no-print"><span class="style10">&nbsp;&nbsp; &nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="style23">&nbsp;</span>&nbsp;<span class="style10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="formtext1">
+  <input name="MsgSender" type="hidden" id="MsgSender" value="{var MsgSender}" size="14" maxlength="13" />
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Ver 43.0<span class="style10"></span></span></div></td>
 
 </tr>
 

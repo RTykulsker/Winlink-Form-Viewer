@@ -1050,6 +1050,8 @@ if (temp1 == '') {temp1= defaultLon; document.getElementById('mapLon').value=def
 
 var jsontext=jsontext.replace('j5', temp1);
 var temp1 =document.getElementById('MGRS').value;
+    var temp1= document.getElementById('IsExercise').value;
+var jsontext=jsontext.replace('R1',temp1);
 var jsontext=jsontext.replace('j6', temp1);
 var temp1 =document.getElementById('Grid').value;
 var jsontext=jsontext.replace('j7', temp1);
@@ -1567,8 +1569,13 @@ to links</span></a> </div>
                   </tr>
                   <tr>
                     <td colspan="2" nowrap="nowrap" style="text-align: center; vertical-align: top;">
-                      <div align="left"><br />
-                        <span style="color: rgb(204, 0, 0);"> </span>Report<span class="style9">                        </span>Date/Time<span class="style9">:</span>  
+                      <div align="left">
+                        <p>
+                          <input name="exbtn" type="checkbox" id="exbtn" value="true" onclick="if(document.getElementById('IsExercise').value =='') {document.getElementById('IsExercise').value = '** THIS IS AN EXERCISE **'} else { document.getElementById('IsExercise').value = '';}"/>
+                          <span style="font-size: 14px">THIS IS AN EXERCISE</span>
+                          <input name="IsExercise" type="hidden" id="IsExercise"  />
+                        </p>
+                        <p>Report<span class="style9">                        </span>Date/Time<span class="style9">:</span>  
                         <input  title="Can be overwritten if needed."  placeholder="Click to Add Date/Time" name="DateTime"  required="required" maxlength="19" id="DateTime" size="21" onclick="TimeNow('DateTime', true)" />  
                         
                              
@@ -1581,12 +1588,13 @@ to links</span></a> </div>
   </span>
   <input name="timestamp2" type="hidden" id="timestamp2" size="40" />
   <input name="attached_file" type="hidden" id="attached_file" value="FormData.txt" />
-<textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
-  </span>                        </small><small><span
+  <textarea name="attached_text"  cols="140" rows="3" id="attached_text" style="display: none;"></textarea>
+  </span> </small><small><span
 
                             style="font-size: 12px;"><big style="font-weight: bold;"><big><span
 
-                                  class="Header">                        </span></big></big></span></small></div>
+                                  class="Header">                        </span></big></big></span></small></p>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -1978,6 +1986,7 @@ DateTime:T=j2
 Latitude:T=j4
 Longitude:T=j5
 MGRS:T=j6
+00. Report note:M=R1  
 Grid:T=j7
 Organization:T=j9
 REPORTING FACILITY:T=j10
@@ -2036,8 +2045,8 @@ style="font-size: 12px;"></span></small></td>
                                   class="Header">
   <input name="Templateversion" type="hidden"
 
-                                    id="Templateversion" value="Hosp Bed Report 9.8" />
-</span></big></big></span>Version 9.8<span style="font-size: 12px;"><big
+                                    id="Templateversion" value="Hosp Bed Report 9.8.2" />
+</span></big></big></span>Version 9.8.2<span style="font-size: 12px;"><big
 
 style="font-weight: bold;"><big><small> </small><span class="Header">
 </span></big></big></span></small></div></td>
