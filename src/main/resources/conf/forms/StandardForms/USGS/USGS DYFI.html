@@ -1564,8 +1564,12 @@ To complete your form submission, click Continue and close the open browser wind
   <p class="style11">Did You Feel It? (DYFI) collects information from people who felt an earthquake and <br />
     helps create maps that show what people experienced and the extent of damage. <br />
     <br />
-    The USGS email is automatically filled when clicking SUBMIT below and the information is sent directly to the USGS via Winlink.  </p>
-  <p class="style11"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span class="style29"><span class="style31"><a href="https://earthquake.usgs.gov/data/dyfi/" target="_blank">Click here to go to the USGS Web Site if you have Internet.</a> </span></span></span></span></p>
+    The USGS email address is filled when clicking SUBMIT below. <br/>
+	Send the DYFI report to USGS via Winlink Telnet or via RF through any internet connected RMS.
+	</br> 
+	</br>
+	Use this Winlink form to submit <strong>EXERCISE and REAL EVENT earthquake reports</strong> to USGS.</p>
+  <p class="style11"><span style="color: rgb(128, 0, 0);"><span style="color: black;"><span class="style29"><span class="style31">Learn more about earthquake hazards at the <a href="https://www.usgs.gov/programs/earthquake-hazards" target="_blank">USGS Earthquake Hazards Website</a> (available online only). </span></span></span></span></p>
   <table width="100%" height="16"  border="0" cellpadding="0" cellspacing="0">
     <tr>
       <td width="18%">&nbsp;</td>
@@ -1583,16 +1587,16 @@ To complete your form submission, click Continue and close the open browser wind
   <div align="left">
     <table width="100%"  border="1" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC">
       <tr>
-        <td valign="top" bgcolor="#FFFFFF"><p><span class="style33">&gt;&gt;&gt;&gt; This Earthquake report is an
+        <td valign="top" bgcolor="#FFFFFF"><p><span class="style33">&gt;&gt;&gt;&gt; This Earthquake report is a(n)
               <input name="xeventtype" id="xeventtype"type="radio" onclick="document.getElementById('eventType').value = 'EXERCISE'; flipID('EXERCISE')" value="EXERCISE" checked="checked" />
-          Exercise          <span class="style32">
+          EXERCISE          <span class="style32">
           <input name="xeventtype" type="radio" value="Real Event" onclick="document.getElementById('eventType').value = 'REAL EVENT';  flipID ('REAL EVENT')"/> 
           REAL EVENT</span>          
           <input name="eventType" type="hidden" id="eventType" value="EXERCISE" />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><br />
  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span  id="prompttxt"> Optional Exercise ID: </span> 
-  <input name="exercise_id" type="text" id="exercise_id" size="30" placeholder = '(Exercise ID Only if instructed)' />
-<input name="eventid" type="text" id="eventid" size="30" onchange="zapSpace(this.value)" onkeypress="if(event.keyCode==32){return false;}"  placeholder = '(Only if known; e.g. nc72282711)' />
+  <input name="exercise_id" type="text" id="exercise_id" size="30" placeholder = '(If known, e.g. SHAKEOUT, etc.)' />
+<input name="eventid" type="text" id="eventid" size="30" onchange="zapSpace(this.value)" onkeypress="if(event.keyCode==32){return false;}"  placeholder = '(If known, e.g. nc72282711)' />
 </span><span class="style27"><em><span class="style4"><span class="style45"><span style="color: black;"><span style="font-family:  Arial, Helvetica, sans-serif;; color: black;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;"><span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;"><span style="font-size: 14px;"><span style="font-size: 14px;">
 <input name="xmaptimestamp" type="hidden" id="xmaptimestamp" size="30" />
           </span></span></span></span>

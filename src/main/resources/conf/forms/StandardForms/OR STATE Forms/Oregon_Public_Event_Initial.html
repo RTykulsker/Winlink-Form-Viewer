@@ -50,6 +50,10 @@ top: 3px;
 .formbold {font-size: 12px; font-weight: bold; font-family:Arial, Helvetica, sans-serif}
 .style4 {color: #2A0000}
 .style6 {font-size: 16}
+.SubmitBtn1 {text-align: right;
+}
+.SubmitBtn1 {text-align: right;
+}
 </style>
 
 <script>
@@ -588,9 +592,13 @@ function SaveData() {
 <tr>
 <td colspan="2" style="text-align: justify;"><small>
   &nbsp;<span style="color: rgb(153, 0, 0);"><span style="font-style: italic;"><span class="style4"><span class="FormReg"><span class="formbold"><span style="font-family: Calibri;">
+  <small>
+  <input class="SubmitBtn1" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; width: 52px; color: green;" value="Submit" type="submit" />
+  &nbsp;<span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp;</span></span></small>
+  &nbsp;
   <input name="savebtn" type="button" id="savebtn"  style="color: blue;"onclick="SaveData()" value="Save OR Public Event data" />
   </span></span></span></span></span></span>
-  &nbsp;&nbsp;&nbsp;<input class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" size="8" style="height: 28px; width: 52px; color: green;" value="Submit" type="submit" />&nbsp;<span style="color: rgb(128, 0, 0);"><span style="font-size: 12px;">&nbsp;</span></span></small>
+  &nbsp;&nbsp;&nbsp;</small>
   <input class="BtnFormat2" value="Reset Form " name="ResetForm" style="color: rgb(204, 0, 0);" type="reset" />
 <small><span style="color: rgb(128, 0, 0);"> </span></small><span style="color: rgb(153, 0, 0);"><span style="font-style: italic;"><span class="style4">&nbsp;</span></span></span><small><span style="color: rgb(128, 0, 0);">&nbsp;</span>Winlink Express Sender<span style="color: rgb(128, 0, 0);">&nbsp;</span></small><small><span style="color: rgb(128, 0, 0);"><span style="color: black;">
 <input readonly="readonly" maxlength="16" size="10" name="MsgSender" value="{MsgSender}" />

@@ -298,6 +298,8 @@ input[type=black1] {
 .style49 {font-size: 14px}
 .style15 {font-size: 18px}
 .style50 {font-size: 20px}
+.SubmitBtn {font-size: 12px;
+}
 </style>
 
 </head>
@@ -1180,10 +1182,10 @@ function SaveData() {
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </strong><span class="style48">&nbsp;Date:</span><strong><span class="style47"><strong>  <input name="PreparedDate" type="text" id="PreparedDate" placeholder="Click for Date" required="required" onclick="SetDateTime('fulldate',this.id)"  size="20" />
 </strong></span></strong></p>
             <p><span class="version"></span>&nbsp;
+              <input style="height: 28px; width: 52px;" title="After submitting, close browser, then address message for posting" class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" value="Submit" type="submit" />
+&nbsp;&nbsp;
               <input type="button" value="Save ARC Work Assignment Data" onclick="SaveData()" />
 &nbsp; &nbsp;&nbsp;
-<input style="height: 28px; width: 52px;" title="After submitting, close browser, then address message for posting" class="SubmitBtn" enctype="multipart/form-data" id="Submit" method="Post" name="Submit" value="Submit" type="submit" />
-&nbsp;&nbsp;
 <input class="BtnFormat2" value="Reset Form " name="ResetForm" type="reset" />
 &nbsp; &nbsp;</p></td>
 
