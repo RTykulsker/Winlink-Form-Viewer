@@ -47,6 +47,7 @@ public enum ConfigurationKey {
 
   FORMS_UPDATE_URL_PREFIX("forms.update.url.prefix"), //
   FORMS_UPDATE_URL_MAGIC("forms.update.url.magic"), //
+  FORMS_DOWNLOAD_URL("forms.download.url"), //
   ;
 
   private final String key;
