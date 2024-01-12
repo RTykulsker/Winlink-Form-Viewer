@@ -16,7 +16,7 @@
 		<maven.appassembler.plugin.version>1.10</maven.appassembler.plugin.version>
 
 		<args4j.version>2.33</args4j.version>
-		<logback.version>1.2.7</logback.version>
+		<logback.version>1.4.14</logback.version>
 		<jsoup.version>1.15.3</jsoup.version>
 		<junit.version>4.13.1</junit.version>
 		<sparkjava-version>2.9.3</sparkjava-version>
