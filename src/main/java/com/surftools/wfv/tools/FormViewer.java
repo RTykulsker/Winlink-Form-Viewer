@@ -278,6 +278,7 @@ public class FormViewer {
 
   class UploadHandler implements Route {
 
+    @SuppressWarnings("resource")
     @Override
     public Object handle(Request request, Response response) throws Exception {
       String viewContent = null;
