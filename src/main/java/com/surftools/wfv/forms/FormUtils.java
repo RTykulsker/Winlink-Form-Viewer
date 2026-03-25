@@ -230,6 +230,11 @@ public class FormUtils {
     });
 
     if (matchingPaths.size() > 1) {
+      var pathNames = new ArrayList<String>();
+      for (var p : matchingPaths) {
+        pathNames.add(p.toString());
+      }
+      logger.info("Multiple paths: " + String.join("\n", pathNames));
       Utils.fatal(cm, ConfigurationKey.EMSG_MULTIPLE_FORM_FILES_FOUND, displayFormName);
     }
 
